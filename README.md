@@ -52,5 +52,5 @@ npm run dev
 - [x] Phase 1: 스캐폴딩 + DB 스키마 + 온보딩 12문항 (로컬 상태)
 - [x] Phase 2: Supabase 연결 + 로그인 + 프로필/체크 저장
 - [x] Phase 3: 리포트 화면
-- [ ] Phase 4: PDF/docx 내보내기 + 시즌 체크인
+- [x] Phase 4: PDF/docx 내보내기 + 시즌 체크인
 - [ ] Phase 5: 학년 롤오버 + 애널리틱스 + Vercel 배포
