@@ -31,7 +31,7 @@ export default function SummaryStep({ answers, onRestart, onComplete }: SummaryS
           onClick={onComplete}
           className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
         >
-          저장하고 체크리스트 받기
+          내 리포트 보기
         </button>
       ) : (
         <p className="mt-6 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">

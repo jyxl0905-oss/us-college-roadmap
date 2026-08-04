@@ -24,6 +24,15 @@ export function currentSeasonLabel(now: Date = new Date()): string {
   return `${now.getFullYear()}-${currentSeason(now)}`
 }
 
+// 리포트 푸터용 다음 체크인 안내
+export function nextCheckinKo(now: Date = new Date()): string {
+  const season = currentSeason(now)
+  const y = now.getFullYear()
+  if (season === 'fall') return `${y + 1}년 1월 (Spring 체크인)`
+  if (season === 'spring') return `${y}년 6월 (Summer 체크인)`
+  return `${y}년 8월 (Fall 체크인)`
+}
+
 export const seasonLabelKo: Record<Season, string> = {
   fall: 'Fall (가을)',
   spring: 'Spring (봄)',

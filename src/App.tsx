@@ -6,7 +6,8 @@ import { answersToRow, loadProfile, saveProfile, type ProfileRow } from './lib/p
 import OnboardingFlow from './onboarding/OnboardingFlow'
 import EmailStep from './auth/EmailStep'
 import NicknameStep from './auth/NicknameStep'
-import ChecklistView from './checklist/ChecklistView'
+import ReportView from './report/ReportView'
+import PreviewReport from './report/PreviewReport'
 
 const PENDING_KEY = 'pending_answers' // 매직 링크로 나갔다 돌아와도 온보딩 답변 유지
 
@@ -23,13 +24,16 @@ function Screen({ children }: { children: React.ReactNode }) {
   )
 }
 
+type GuestPhase = 'onboarding' | 'preview' | 'email'
+
 export default function App() {
   const [session, setSession] = useState<Session | null>(null)
   const [sessionLoading, setSessionLoading] = useState(isSupabaseConfigured)
   const [profile, setProfile] = useState<ProfileRow | null>(null)
   const [profileLoading, setProfileLoading] = useState(false)
-  // 답변을 이미 마쳤다면(예: 만료된 링크로 되돌아온 경우) 온보딩을 다시 시키지 않고 바로 이메일 화면으로
-  const [emailPhase, setEmailPhase] = useState(() => loadPending() !== null)
+  const [pendingAnswers, setPendingAnswers] = useState<OnboardingAnswers | null>(loadPending)
+  // 답변을 이미 마친 상태(예: 만료된 링크로 되돌아옴)면 온보딩·프리뷰를 건너뛰고 이메일로
+  const [phase, setPhase] = useState<GuestPhase>(() => (loadPending() ? 'email' : 'onboarding'))
 
   useEffect(() => {
     if (!supabase) return
@@ -63,11 +67,11 @@ export default function App() {
     )
   }
 
-  // 로그인 완료 + 프로필 있음 → 체크리스트
+  // 로그인 완료 + 프로필 있음 → 시즌 리포트
   if (session && profile) {
     return (
       <Screen>
-        <ChecklistView
+        <ReportView
           userId={session.user.id}
           profile={profile}
           onLogout={() => supabase!.auth.signOut()}
@@ -104,11 +108,18 @@ export default function App() {
     )
   }
 
-  // 미로그인: 온보딩 → 이메일 입력
-  if (emailPhase) {
+  // 미로그인: 온보딩 → 리포트 프리뷰(블러) → 이메일 입력
+  if (phase === 'email') {
     return (
       <Screen>
         <EmailStep />
+      </Screen>
+    )
+  }
+  if (phase === 'preview' && pendingAnswers) {
+    return (
+      <Screen>
+        <PreviewReport answers={pendingAnswers} onContinue={() => setPhase('email')} />
       </Screen>
     )
   }
@@ -116,7 +127,8 @@ export default function App() {
     <OnboardingFlow
       onComplete={(answers) => {
         localStorage.setItem(PENDING_KEY, JSON.stringify(answers))
-        setEmailPhase(true)
+        setPendingAnswers(answers)
+        setPhase('preview')
       }}
     />
   )
