@@ -19,6 +19,11 @@ export function currentSeason(now: Date = new Date()): Season {
   return 'summer'
 }
 
+// user_checks.season_label용 식별자 (예: '2026-fall')
+export function currentSeasonLabel(now: Date = new Date()): string {
+  return `${now.getFullYear()}-${currentSeason(now)}`
+}
+
 export const seasonLabelKo: Record<Season, string> = {
   fall: 'Fall (가을)',
   spring: 'Spring (봄)',

@@ -5,10 +5,11 @@ import { summaryRows } from './labels'
 interface SummaryStepProps {
   answers: OnboardingAnswers
   onRestart: () => void
+  onComplete?: () => void
 }
 
 // 온보딩 완료 요약 — Phase 3에서 리포트 프리뷰(차트+블러)로 교체 예정
-export default function SummaryStep({ answers, onRestart }: SummaryStepProps) {
+export default function SummaryStep({ answers, onRestart, onComplete }: SummaryStepProps) {
   const grade = answers.gradYear ? gradeFromGradYear(answers.gradYear) : null
 
   return (
@@ -25,9 +26,18 @@ export default function SummaryStep({ answers, onRestart }: SummaryStepProps) {
           </div>
         ))}
       </div>
-      <p className="mt-6 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">
-        다음 단계(Phase 2~3)에서 이메일 로그인, 시즌 체크리스트, 리포트가 이어집니다.
-      </p>
+      {onComplete ? (
+        <button
+          onClick={onComplete}
+          className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
+        >
+          저장하고 체크리스트 받기
+        </button>
+      ) : (
+        <p className="mt-6 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">
+          서버 연결(.env) 전이라 저장은 아직 안 돼요. 다음 단계에서 이어집니다.
+        </p>
+      )}
       <button
         onClick={onRestart}
         className="mt-4 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"

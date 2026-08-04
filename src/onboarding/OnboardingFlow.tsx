@@ -45,7 +45,11 @@ function stepList(a: OnboardingAnswers): StepId[] {
   return steps
 }
 
-export default function OnboardingFlow() {
+interface OnboardingFlowProps {
+  onComplete?: (answers: OnboardingAnswers) => void
+}
+
+export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
   const [answers, setAnswers] = useState<OnboardingAnswers>(emptyAnswers)
   const [stepIndex, setStepIndex] = useState(0)
 
@@ -349,7 +353,13 @@ export default function OnboardingFlow() {
           />
         )
       case 'summary':
-        return <SummaryStep answers={answers} onRestart={restart} />
+        return (
+          <SummaryStep
+            answers={answers}
+            onRestart={restart}
+            onComplete={onComplete ? () => onComplete(answers) : undefined}
+          />
+        )
     }
   }
 }
