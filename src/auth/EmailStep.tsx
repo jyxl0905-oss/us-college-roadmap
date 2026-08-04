@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabase'
 
+// 만료·사용된 링크로 돌아온 경우 URL 해시에 에러가 담겨 옴
+const cameFromExpiredLink = window.location.hash.includes('error')
+
 // 온보딩 완료 후 매직 링크 로그인 — 메일의 링크를 누르면 이 앱으로 돌아와 세션이 생김
 export default function EmailStep() {
   const [email, setEmail] = useState('')
@@ -17,7 +20,12 @@ export default function EmailStep() {
       options: { emailRedirectTo: window.location.origin },
     })
     setSending(false)
-    if (error) setError(error.message)
+    if (error)
+      setError(
+        error.message.includes('rate limit')
+          ? '메일 전송 한도(시간당 2통)를 초과했어요. 1시간 뒤에 다시 시도해 주세요.'
+          : error.message,
+      )
     else setSent(true)
   }
 
@@ -49,6 +57,12 @@ export default function EmailStep() {
         비밀번호 없이 메일로 오는 링크 하나로 로그인돼요. 시즌마다 돌아와서 체크리스트를 이어갈
         수 있어요.
       </p>
+      {cameFromExpiredLink && (
+        <p className="mt-4 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">
+          이전 로그인 링크가 만료됐어요. 이메일을 다시 입력하고 새 링크를 받아주세요. (링크는
+          1회용이에요)
+        </p>
+      )}
       <input
         type="email"
         value={email}
