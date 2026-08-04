@@ -45,8 +45,15 @@ export default function ChecklistSection({ items, checkedIds, onToggle }: Checkl
                   {item.title}
                 </span>
                 <span className="mt-0.5 block text-sm text-gray-500">{item.why_how}</span>
-                <span className="mt-1.5 inline-block rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-600">
-                  {axisLabels[item.axis]}
+                <span className="mt-1.5 inline-flex gap-1.5">
+                  <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-600">
+                    {axisLabels[item.axis]}
+                  </span>
+                  {item.is_guide && (
+                    <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-xs text-indigo-600">
+                      가이드
+                    </span>
+                  )}
                 </span>
               </span>
             </span>

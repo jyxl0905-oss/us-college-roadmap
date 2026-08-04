@@ -31,6 +31,7 @@ create table checklist_items (
   intl_only boolean not null default false,
   no_counselor_only boolean not null default false,
   axis text not null check (axis in ('rigor', 'testing', 'spike', 'leadership', 'validation', 'story')),
+  is_guide boolean not null default false, -- true = 편집 가이드, false = 사실 기반 항목
   sort_order int not null default 0
 );
 

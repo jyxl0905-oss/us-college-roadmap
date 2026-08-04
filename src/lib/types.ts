@@ -87,5 +87,6 @@ export interface ChecklistItem {
   intl_only: boolean
   no_counselor_only: boolean
   axis: 'rigor' | 'testing' | 'spike' | 'leadership' | 'validation' | 'story'
+  is_guide: boolean
   sort_order: number
 }
