@@ -92,9 +92,14 @@ function targetTiers(p: ProfileRow): Set<Tier> {
 }
 
 // 핵심 로직: 학년·시즌·전공·티어·국제학생·카운슬러 조건으로 체크리스트 필터
-export function filterChecklist(items: ChecklistItem[], p: ProfileRow): ChecklistItem[] {
-  const grade = profileGrade(p)
-  const season = currentSeason()
+// opts로 과거 시즌(체크인 화면)의 학년·시즌을 지정할 수 있음
+export function filterChecklist(
+  items: ChecklistItem[],
+  p: ProfileRow,
+  opts?: { grade?: number; season?: string },
+): ChecklistItem[] {
+  const grade = opts?.grade ?? profileGrade(p)
+  const season = opts?.season ?? currentSeason()
   const tiers = targetTiers(p)
   const isIntl = p.applicant_status !== 'domestic'
   const noCounselor = p.has_counselor !== 'yes'

@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+/* PDF 저장 = 브라우저 인쇄. A4 1-2장에 맞게 정리 */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+  }
+  .print-flat {
+    border-color: #d1d5db !important;
+    box-shadow: none !important;
+  }
+}

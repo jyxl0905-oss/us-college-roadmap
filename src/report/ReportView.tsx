@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase'
 import { filterChecklist, profileGrade, type ProfileRow } from '../lib/profile'
 import { currentSeason, currentSeasonLabel, seasonLabelKo, nextCheckinKo } from '../lib/academics'
 import { computeScores, weakestAxis, axisKo, axisDiagnosis } from '../lib/score'
+import { downloadDocx } from '../lib/report-doc'
 import { majorLabel } from '../data/majors'
 import { tierLabels } from '../onboarding/labels'
 import RadarChart from './RadarChart'
@@ -11,17 +12,25 @@ import AoBox from './AoBox'
 import SchoolCards from './SchoolCards'
 import ChecklistSection from './ChecklistSection'
 
+interface PrevReport {
+  season_label: string
+  snapshot: { done: number; total: number }
+}
+
 interface ReportViewProps {
   userId: string
   profile: ProfileRow
   onLogout: () => void
 }
 
-// 로그인 후 메인 화면 — 시즌 리포트 (차트·학교·체크리스트)
+// 로그인 후 메인 화면 — 시즌 리포트 (차트·학교·체크리스트·내보내기)
 export default function ReportView({ userId, profile, onLogout }: ReportViewProps) {
   const [items, setItems] = useState<ChecklistItem[]>([])
+  const [allItems, setAllItems] = useState<ChecklistItem[]>([])
   const [schools, setSchools] = useState<School[]>([])
   const [checkedIds, setCheckedIds] = useState<Set<number>>(new Set())
+  const [carriedIds, setCarriedIds] = useState<Set<number>>(new Set())
+  const [prevReport, setPrevReport] = useState<PrevReport | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -42,32 +51,94 @@ export default function ReportView({ userId, profile, onLogout }: ReportViewProp
       supabase.from('checklist_items').select('*'),
       supabase
         .from('user_checks')
-        .select('item_id')
+        .select('item_id,status')
         .eq('user_id', userId)
-        .eq('season_label', seasonLabel)
-        .eq('status', 'done'),
+        .eq('season_label', seasonLabel),
       schoolsQuery ?? Promise.resolve({ data: [], error: null }),
-    ]).then(([itemsRes, checksRes, schoolsRes]) => {
+      supabase
+        .from('reports')
+        .select('season_label,snapshot')
+        .eq('user_id', userId)
+        .neq('season_label', seasonLabel)
+        .order('created_at', { ascending: false })
+        .limit(1),
+    ]).then(([itemsRes, checksRes, schoolsRes, prevRes]) => {
       if (itemsRes.error) setError(itemsRes.error.message)
-      else setItems(filterChecklist(itemsRes.data as ChecklistItem[], profile))
-      if (checksRes.data) setCheckedIds(new Set(checksRes.data.map((c) => c.item_id)))
-      if (schoolsRes.data) {
-        const list = schoolsRes.data as School[]
-        setSchools([...list].sort((a, b) => a.usnews_rank - b.usnews_rank))
+      else {
+        const all = itemsRes.data as ChecklistItem[]
+        setAllItems(all)
+        setItems(filterChecklist(all, profile))
       }
+      if (checksRes.data) {
+        setCheckedIds(new Set(checksRes.data.filter((c) => c.status === 'done').map((c) => c.item_id)))
+        setCarriedIds(new Set(checksRes.data.filter((c) => c.status === 'carried').map((c) => c.item_id)))
+      }
+      if (schoolsRes.data) {
+        setSchools(([...schoolsRes.data] as School[]).sort((a, b) => a.usnews_rank - b.usnews_rank))
+      }
+      if (prevRes.data && prevRes.data.length > 0) setPrevReport(prevRes.data[0] as PrevReport)
       setLoading(false)
     })
   }, [userId, seasonLabel]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // 이월 항목: 이번 시즌 필터에 없는 체크 기록 (지난 시즌에서 가져온 것)
+  const itemIds = new Set(items.map((i) => i.id))
+  const carriedItems = allItems.filter(
+    (i) => !itemIds.has(i.id) && (carriedIds.has(i.id) || checkedIds.has(i.id)),
+  )
+  const trackedItems = [...items, ...carriedItems]
+  const checkedItems = trackedItems.filter((i) => checkedIds.has(i.id))
+  const scores = computeScores(profile, checkedItems)
+  const weakest = weakestAxis(scores)
+  const doneCount = checkedItems.length
+  const totalCount = trackedItems.length
+
+  // 시즌 스냅샷 저장 (reports) — 리포트를 볼 때마다 최신으로 갱신
+  useEffect(() => {
+    if (!supabase || loading || error) return
+    const snapshot = { done: doneCount, total: totalCount, scores }
+    supabase
+      .from('reports')
+      .select('id')
+      .eq('user_id', userId)
+      .eq('season_label', seasonLabel)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (data) supabase!.from('reports').update({ snapshot }).eq('id', data.id).then(() => {})
+        else
+          supabase!
+            .from('reports')
+            .insert({ user_id: userId, season_label: seasonLabel, snapshot })
+            .then(() => {})
+      })
+  }, [loading, doneCount, totalCount]) // eslint-disable-line react-hooks/exhaustive-deps
+
   const toggle = async (itemId: number) => {
     if (!supabase) return
     const wasChecked = checkedIds.has(itemId)
+    const isCarried = carriedIds.has(itemId) || (!itemIds.has(itemId) && wasChecked)
     setCheckedIds((prev) => {
       const next = new Set(prev)
       if (wasChecked) next.delete(itemId)
       else next.add(itemId)
       return next
     })
+    if (isCarried) {
+      // 이월 항목은 행을 지우지 않고 carried ↔ done으로 상태만 전환
+      setCarriedIds((prev) => {
+        const next = new Set(prev)
+        if (wasChecked) next.add(itemId)
+        else next.delete(itemId)
+        return next
+      })
+      await supabase.from('user_checks').upsert({
+        user_id: userId,
+        item_id: itemId,
+        season_label: seasonLabel,
+        status: wasChecked ? 'carried' : 'done',
+      })
+      return
+    }
     const result = wasChecked
       ? await supabase
           .from('user_checks')
@@ -88,9 +159,6 @@ export default function ReportView({ userId, profile, onLogout }: ReportViewProp
     }
   }
 
-  const checkedItems = items.filter((i) => checkedIds.has(i.id))
-  const scores = computeScores(profile, checkedItems)
-  const weakest = weakestAxis(scores)
   const commonItems = items.filter((i) => !i.intl_only)
   const intlItems = items.filter((i) => i.intl_only)
 
@@ -100,6 +168,12 @@ export default function ReportView({ userId, profile, onLogout }: ReportViewProp
       : profile.target_mode === 'tier' && profile.target_tier
         ? tierLabels[profile.target_tier]
         : '목표 미정'
+
+  const prevPct =
+    prevReport && prevReport.snapshot.total > 0
+      ? Math.round((prevReport.snapshot.done / prevReport.snapshot.total) * 100)
+      : null
+  const nowPct = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0
 
   if (loading) return <p className="mt-20 text-center text-gray-400">리포트 만드는 중…</p>
   if (error) return <p className="mt-20 text-center text-sm text-red-600">불러오기 실패: {error}</p>
@@ -116,8 +190,24 @@ export default function ReportView({ userId, profile, onLogout }: ReportViewProp
           </p>
           <p className="mt-0.5 text-xs text-gray-400">{targetText}</p>
         </div>
-        <button onClick={onLogout} className="shrink-0 text-sm text-gray-400 underline">
+        <button onClick={onLogout} className="no-print shrink-0 text-sm text-gray-400 underline">
           로그아웃
+        </button>
+      </div>
+
+      {/* 내보내기 */}
+      <div className="no-print mt-4 flex gap-2">
+        <button
+          onClick={() => window.print()}
+          className="flex-1 rounded-xl border-2 border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-700 active:bg-gray-50"
+        >
+          PDF로 저장
+        </button>
+        <button
+          onClick={() => downloadDocx(profile, scores, trackedItems, checkedIds, schools)}
+          className="flex-1 rounded-xl border-2 border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-700 active:bg-gray-50"
+        >
+          Word(docx)로 저장
         </button>
       </div>
 
@@ -126,26 +216,32 @@ export default function ReportView({ userId, profile, onLogout }: ReportViewProp
         <AoBox grade={grade} />
       </div>
 
-      {/* 3. 시즌 진행률 */}
-      {items.length > 0 && (
-        <div className="mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+      {/* 3. 시즌 진행률 (+지난 시즌 대비) */}
+      {totalCount > 0 && (
+        <div className="print-flat mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
           <div className="flex items-baseline justify-between">
             <p className="font-semibold text-gray-900">이번 시즌 진행률</p>
             <p className="text-sm font-medium text-blue-700">
-              {checkedItems.length} / {items.length}
+              {doneCount} / {totalCount}
             </p>
           </div>
           <div className="mt-2 h-2 overflow-hidden rounded-full bg-gray-100">
             <div
               className="h-full rounded-full bg-blue-600 transition-all"
-              style={{ width: `${Math.round((checkedItems.length / items.length) * 100)}%` }}
+              style={{ width: `${nowPct}%` }}
             />
           </div>
+          {prevPct !== null && (
+            <p className="mt-2 text-xs text-gray-500">
+              지난 시즌 {prevPct}% → 이번 시즌 {nowPct}%{' '}
+              {nowPct >= prevPct ? '📈' : '— 다시 속도를 내볼까요?'}
+            </p>
+          )}
         </div>
       )}
 
       {/* 4. 6축 밸런스 + 약한 축 진단 */}
-      <div className="mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
+      <div className="print-flat mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
         <p className="font-semibold text-gray-900">6축 밸런스</p>
         <div className="mt-2">
           <RadarChart scores={scores} />
@@ -188,6 +284,16 @@ export default function ReportView({ userId, profile, onLogout }: ReportViewProp
               </p>
             </div>
           )}
+        </div>
+      )}
+
+      {/* 이월된 항목 */}
+      {carriedItems.length > 0 && (
+        <div className="mt-5">
+          <h2 className="font-semibold text-gray-900">지난 시즌에서 이월된 항목</h2>
+          <div className="mt-3">
+            <ChecklistSection items={carriedItems} checkedIds={checkedIds} onToggle={toggle} />
+          </div>
         </div>
       )}
 

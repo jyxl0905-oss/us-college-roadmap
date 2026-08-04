@@ -3,11 +3,13 @@ import type { Session } from '@supabase/supabase-js'
 import type { OnboardingAnswers } from './lib/types'
 import { supabase, isSupabaseConfigured } from './lib/supabase'
 import { answersToRow, loadProfile, saveProfile, type ProfileRow } from './lib/profile'
+import { currentSeasonLabel } from './lib/academics'
 import OnboardingFlow from './onboarding/OnboardingFlow'
 import EmailStep from './auth/EmailStep'
 import NicknameStep from './auth/NicknameStep'
 import ReportView from './report/ReportView'
 import PreviewReport from './report/PreviewReport'
+import CheckinFlow from './checkin/CheckinFlow'
 
 const PENDING_KEY = 'pending_answers' // 매직 링크로 나갔다 돌아와도 온보딩 답변 유지
 
@@ -34,6 +36,10 @@ export default function App() {
   const [pendingAnswers, setPendingAnswers] = useState<OnboardingAnswers | null>(loadPending)
   // 답변을 이미 마친 상태(예: 만료된 링크로 되돌아옴)면 온보딩·프리뷰를 건너뛰고 이메일로
   const [phase, setPhase] = useState<GuestPhase>(() => (loadPending() ? 'email' : 'onboarding'))
+  // 마지막 리포트 시즌 — 현재 시즌과 다르면 체크인 플로우부터
+  const [lastSeason, setLastSeason] = useState<string | null>(null)
+  const [lastSeasonLoading, setLastSeasonLoading] = useState(false)
+  const [checkinDone, setCheckinDone] = useState(false)
 
   useEffect(() => {
     if (!supabase) return
@@ -56,10 +62,26 @@ export default function App() {
       .finally(() => setProfileLoading(false))
   }, [session])
 
+  // 마지막 리포트 시즌 확인 (시즌 체크인 판단용)
+  useEffect(() => {
+    if (!session || !profile || !supabase) return
+    setLastSeasonLoading(true)
+    supabase
+      .from('reports')
+      .select('season_label')
+      .eq('user_id', session.user.id)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .then(({ data }) => {
+        setLastSeason(data && data.length > 0 ? data[0].season_label : null)
+        setLastSeasonLoading(false)
+      })
+  }, [session, profile])
+
   // .env 미설정 → 로컬 전용 모드 (온보딩 체험만)
   if (!isSupabaseConfigured) return <OnboardingFlow />
 
-  if (sessionLoading || profileLoading) {
+  if (sessionLoading || profileLoading || lastSeasonLoading) {
     return (
       <Screen>
         <p className="mt-20 text-center text-gray-400">불러오는 중…</p>
@@ -67,8 +89,23 @@ export default function App() {
     )
   }
 
-  // 로그인 완료 + 프로필 있음 → 시즌 리포트
+  // 로그인 완료 + 프로필 있음 → (새 시즌이면 체크인 먼저) 시즌 리포트
   if (session && profile) {
+    const needsCheckin =
+      !checkinDone && lastSeason !== null && lastSeason !== currentSeasonLabel()
+    if (needsCheckin) {
+      return (
+        <CheckinFlow
+          userId={session.user.id}
+          profile={profile}
+          prevSeasonLabel={lastSeason}
+          onDone={(updated) => {
+            setProfile(updated)
+            setCheckinDone(true)
+          }}
+        />
+      )
+    }
     return (
       <Screen>
         <ReportView
