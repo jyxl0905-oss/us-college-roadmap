@@ -67,6 +67,7 @@ export function summaryRows(a: OnboardingAnswers): [string, string][] {
     ['지원 신분', statusText],
     ['전담 카운슬러', a.hasCounselor === 'yes' ? '있음' : a.hasCounselor === 'no' ? '없음' : '모름'],
     ['학교 국제 인증', a.schoolAccredited === 'yes' ? '있음' : a.schoolAccredited === 'no' ? '없음' : '모름 → 확인 필요'],
+    ['계열', a.majorTrack === 'stem' ? '이과 (STEM)' : a.majorTrack === 'liberal' ? '문과 (Humanities·Social)' : '미정'],
     ['희망 전공 1순위', majorLabel(a.majorPrimary)],
     ['희망 전공 2순위', a.majorSecondary ? majorLabel(a.majorSecondary) : '없음'],
     ['목표 학교', targetText],

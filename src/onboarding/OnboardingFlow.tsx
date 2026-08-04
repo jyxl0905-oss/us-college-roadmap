@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { OnboardingAnswers, Tier } from '../lib/types'
 import { emptyAnswers } from '../lib/types'
-import { majorCategories } from '../data/majors'
+import { majorsByTrack } from '../data/majors'
 import ChoiceStep from './ChoiceStep'
 import GradYearStep from './GradYearStep'
 import TargetSchoolsStep from './TargetSchoolsStep'
@@ -13,6 +13,7 @@ type StepId =
   | 'status'
   | 'counselor'
   | 'accredited'
+  | 'majorTrack'
   | 'majorPrimary'
   | 'majorSecondary'
   | 'targetMode'
@@ -29,9 +30,11 @@ type StepId =
   | 'actValidation'
   | 'summary'
 
-// 답변에 따라 조건부 질문(목표 학교 상세, SAT 밴드, TOEFL)이 끼어드는 전체 스텝 목록
+// 답변에 따라 조건부 질문(전공 상세, 목표 학교 상세, SAT 밴드, TOEFL)이 끼어드는 전체 스텝 목록
 function stepList(a: OnboardingAnswers): StepId[] {
-  const steps: StepId[] = ['gradYear', 'status', 'counselor', 'accredited', 'majorPrimary', 'majorSecondary', 'targetMode']
+  const steps: StepId[] = ['gradYear', 'status', 'counselor', 'accredited', 'majorTrack']
+  if (a.majorTrack !== 'undecided') steps.push('majorPrimary', 'majorSecondary')
+  steps.push('targetMode')
   if (a.targetMode === 'schools') steps.push('targetSchools')
   if (a.targetMode === 'tier') steps.push('targetTier')
   steps.push('gpa', 'math', 'sat')
@@ -139,11 +142,37 @@ export default function OnboardingFlow() {
             onSelect={(v) => answer({ schoolAccredited: v })}
           />
         )
+      case 'majorTrack':
+        return (
+          <ChoiceStep
+            title="문과·이과 중 어느 쪽인가요?"
+            subtitle="관심 있는 계열을 골라주세요. 다음 질문에서 그 계열 전공만 보여드려요."
+            options={[
+              { value: 'stem', label: '이과 (STEM)', description: 'CS, 공학, 수학, 자연과학, 프리메드' },
+              { value: 'liberal', label: '문과 (Humanities·Social)', description: '비즈니스·경제, 사회과학, 인문, 예술' },
+              { value: 'undecided', label: '아직 미정이에요', description: '전공 질문은 건너뛰어요' },
+            ]}
+            selected={answers.majorTrack}
+            onSelect={(v) =>
+              answer(
+                v === 'undecided'
+                  ? { majorTrack: v, majorPrimary: 'undecided', majorSecondary: null }
+                  : { majorTrack: v, majorPrimary: null, majorSecondary: null },
+              )
+            }
+          />
+        )
       case 'majorPrimary':
         return (
           <ChoiceStep
             title="희망 전공 1순위를 골라주세요"
-            options={majorCategories.map((m) => ({ value: m.value, label: m.label }))}
+            options={[
+              ...majorsByTrack(answers.majorTrack === 'liberal' ? 'liberal' : 'stem').map((m) => ({
+                value: m.value,
+                label: m.label,
+              })),
+              { value: 'undecided', label: '이 중에선 아직 미정이에요' },
+            ]}
             selected={answers.majorPrimary}
             onSelect={(v) => answer({ majorPrimary: v })}
           />
@@ -154,8 +183,8 @@ export default function OnboardingFlow() {
             title="2순위 전공도 있나요? (선택)"
             options={[
               { value: '', label: '없어요 / 건너뛰기' },
-              ...majorCategories
-                .filter((m) => m.value !== answers.majorPrimary && m.value !== 'undecided')
+              ...majorsByTrack(answers.majorTrack === 'liberal' ? 'liberal' : 'stem')
+                .filter((m) => m.value !== answers.majorPrimary)
                 .map((m) => ({ value: m.value, label: m.label })),
             ]}
             selected={answers.majorSecondary ?? ''}

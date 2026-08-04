@@ -11,11 +11,14 @@ export type SatStatus = 'none' | 'studying' | 'taken'
 export type SatBand = '1500+' | '1400-1490' | '1300-1390' | 'below1300'
 export type ToeflStatus = 'none' | 'studying' | 'scored'
 
+export type MajorTrackChoice = 'stem' | 'liberal' | 'undecided'
+
 export interface OnboardingAnswers {
   gradYear: number | null
   applicantStatus: ApplicantStatus | null
   hasCounselor: YesNoUnknown | null
   schoolAccredited: YesNoUnknown | null
+  majorTrack: MajorTrackChoice | null
   majorPrimary: string | null
   majorSecondary: string | null
   targetMode: TargetMode | null
@@ -38,6 +41,7 @@ export const emptyAnswers: OnboardingAnswers = {
   applicantStatus: null,
   hasCounselor: null,
   schoolAccredited: null,
+  majorTrack: null,
   majorPrimary: null,
   majorSecondary: null,
   targetMode: null,
