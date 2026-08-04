@@ -326,7 +326,7 @@ export default function ReportView({ userId, profile, onLogout }: ReportViewProp
 
       {/* 8. 푸터 */}
       <div className="mt-8 border-t border-gray-200 pt-4 text-center text-xs text-gray-400">
-        <p>미국 대입 로드맵 · 시즌마다 돌아와서 체크하세요</p>
+        <p>미국 대입 로드맵 · us-college-roadmap.vercel.app</p>
         <p className="mt-1">
           다음 체크인: <strong className="text-gray-500">{nextCheckinKo()}</strong>
         </p>

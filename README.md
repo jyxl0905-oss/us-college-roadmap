@@ -2,6 +2,8 @@
 
 한국 국제학교 학생을 위한 미국 대학 입시 시즌별 체크리스트·리포트 서비스입니다.
 
+**🌐 서비스 주소: https://us-college-roadmap.vercel.app**
+
 ## 프로젝트 목적
 
 미국 대학 진학을 준비하는 한국 국제학교 학생(9~12학년)에게 학년·전공·목표 학교에 맞는
@@ -53,4 +55,10 @@ npm run dev
 - [x] Phase 2: Supabase 연결 + 로그인 + 프로필/체크 저장
 - [x] Phase 3: 리포트 화면
 - [x] Phase 4: PDF/docx 내보내기 + 시즌 체크인
-- [ ] Phase 5: 학년 롤오버 + 애널리틱스 + Vercel 배포
+- [x] Phase 5: 학년 롤오버 + 애널리틱스 + Vercel 배포
+
+## 남은 작업 (콘텐츠)
+
+- checklist_items 30개 PLACEHOLDER → 실제 콘텐츠로 교체
+- schools 10개 → 톱60으로 확장 + 공식 출처(Common Data Set 등) 수치·source_url 채우기
+- 매직 링크 이메일 한도(시간당 2통) — 사용자가 늘면 커스텀 SMTP(Resend 등 무료 티어) 연결 필요
