@@ -10,6 +10,8 @@ import NicknameStep from './auth/NicknameStep'
 import ReportView from './report/ReportView'
 import PreviewReport from './report/PreviewReport'
 import CheckinFlow from './checkin/CheckinFlow'
+import RolloverGate from './RolloverGate'
+import { logEvent } from './lib/analytics'
 
 const PENDING_KEY = 'pending_answers' // 매직 링크로 나갔다 돌아와도 온보딩 답변 유지
 
@@ -47,7 +49,10 @@ export default function App() {
       setSession(data.session)
       setSessionLoading(false)
     })
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, s) => setSession(s))
+    const { data: sub } = supabase.auth.onAuthStateChange((event, s) => {
+      setSession(s)
+      if (event === 'SIGNED_IN' && s) logEvent(s.user.id, 'login')
+    })
     return () => sub.subscription.unsubscribe()
   }, [])
 
@@ -94,27 +99,36 @@ export default function App() {
   if (session && profile) {
     const needsCheckin =
       !checkinDone && typeof lastSeason === 'string' && lastSeason !== currentSeasonLabel()
-    if (needsCheckin) {
-      return (
-        <CheckinFlow
-          userId={session.user.id}
-          profile={profile}
-          prevSeasonLabel={lastSeason}
-          onDone={(updated) => {
-            setProfile(updated)
-            setCheckinDone(true)
-          }}
-        />
-      )
-    }
     return (
-      <Screen>
-        <ReportView
-          userId={session.user.id}
-          profile={profile}
-          onLogout={() => supabase!.auth.signOut()}
-        />
-      </Screen>
+      <RolloverGate
+        userId={session.user.id}
+        profile={profile}
+        onUpdateGradYear={async (gradYear) => {
+          const updated = { ...profile, grad_year: gradYear }
+          await saveProfile(session.user.id, updated)
+          setProfile(updated)
+        }}
+      >
+        {needsCheckin ? (
+          <CheckinFlow
+            userId={session.user.id}
+            profile={profile}
+            prevSeasonLabel={lastSeason as string}
+            onDone={(updated) => {
+              setProfile(updated)
+              setCheckinDone(true)
+            }}
+          />
+        ) : (
+          <Screen>
+            <ReportView
+              userId={session.user.id}
+              profile={profile}
+              onLogout={() => supabase!.auth.signOut()}
+            />
+          </Screen>
+        )}
+      </RolloverGate>
     )
   }
 
@@ -138,6 +152,7 @@ export default function App() {
           onSubmit={async (nickname) => {
             const row = answersToRow(pending, nickname)
             await saveProfile(session.user.id, row)
+            logEvent(session.user.id, 'signup')
             localStorage.removeItem(PENDING_KEY)
             setProfile({ ...row, user_id: session.user.id })
           }}

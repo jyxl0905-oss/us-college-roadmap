@@ -5,6 +5,7 @@ import { filterChecklist, profileGrade, type ProfileRow } from '../lib/profile'
 import { currentSeason, currentSeasonLabel, seasonLabelKo, nextCheckinKo } from '../lib/academics'
 import { computeScores, weakestAxis, axisKo, axisDiagnosis } from '../lib/score'
 import { downloadDocx } from '../lib/report-doc'
+import { logEvent } from '../lib/analytics'
 import { majorLabel } from '../data/majors'
 import { tierLabels } from '../onboarding/labels'
 import RadarChart from './RadarChart'
@@ -37,6 +38,10 @@ export default function ReportView({ userId, profile, onLogout }: ReportViewProp
   const seasonLabel = currentSeasonLabel()
   const grade = profileGrade(profile)
   const isIntl = profile.applicant_status !== 'domestic'
+
+  useEffect(() => {
+    logEvent(userId, 'report_view')
+  }, [userId])
 
   useEffect(() => {
     if (!supabase) return
@@ -116,6 +121,7 @@ export default function ReportView({ userId, profile, onLogout }: ReportViewProp
   const toggle = async (itemId: number) => {
     if (!supabase) return
     const wasChecked = checkedIds.has(itemId)
+    if (!wasChecked) logEvent(userId, 'check')
     const isCarried = carriedIds.has(itemId) || (!itemIds.has(itemId) && wasChecked)
     setCheckedIds((prev) => {
       const next = new Set(prev)
