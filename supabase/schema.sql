@@ -11,12 +11,15 @@ create table schools (
   sat_mid50_low int,
   sat_mid50_high int,
   gpa_note text,
-  intl_accept_rate numeric, -- 국제학생 합격률 (%)
-  need_blind_intl boolean not null default false,
-  demonstrated_interest boolean not null default false,
+  intl_accept_rate numeric, -- 국제학생 합격률 (%) — 공식 공개 시에만
+  need_blind_intl boolean, -- null = 학교가 공식 표명하지 않음
+  demonstrated_interest boolean, -- CDS C7 기준, null = 확인 불가
   direct_admit_majors text[] not null default '{}',
   what_they_value text, -- 공식 출처 기반
-  source_url text
+  source_url text,
+  test_policy text, -- test-required / test-optional / test-free
+  intro_ko text, -- 사실 서술 (소재지·캠퍼스 유형)
+  location_note text -- 사실 서술 (도시 규모·기후)
 );
 
 -- 2. checklist_items — 시즌별 체크리스트 항목 (편집 콘텐츠)
@@ -79,6 +82,35 @@ create table reports (
   created_at timestamptz not null default now()
 );
 
+-- 콘텐츠 테이블 (§4) — 축별 처방·어필 전략·용어집·입시 기본기
+create table prescriptions (
+  id bigint generated always as identity primary key,
+  axis text not null check (axis in ('rigor','testing','spike','leadership','validation','story')),
+  level text not null check (level in ('sufficient','in_progress','large_gap')),
+  grade_band text not null, -- '9', '9-10', '11', '12', 'all'
+  text_ko text not null
+);
+
+create table appeal_strategies (
+  id bigint generated always as identity primary key,
+  axis text not null check (axis in ('rigor','testing','spike','leadership','validation','story','none')),
+  text_ko text not null
+);
+
+create table glossary (
+  id bigint generated always as identity primary key,
+  term text not null,
+  definition_ko text not null,
+  sort_order int not null default 0
+);
+
+create table basics (
+  id bigint generated always as identity primary key,
+  title_ko text not null,
+  body_ko text not null,
+  sort_order int not null default 0
+);
+
 -- 6. analytics_events — 간단한 사용 로그
 create table analytics_events (
   id bigint generated always as identity primary key,
@@ -95,9 +127,18 @@ alter table user_checks enable row level security;
 alter table reports enable row level security;
 alter table analytics_events enable row level security;
 
+alter table prescriptions enable row level security;
+alter table appeal_strategies enable row level security;
+alter table glossary enable row level security;
+alter table basics enable row level security;
+
 -- 공개 읽기 전용 데이터
 create policy "schools are readable by everyone" on schools for select using (true);
 create policy "checklist items are readable by everyone" on checklist_items for select using (true);
+create policy "prescriptions readable" on prescriptions for select using (true);
+create policy "appeal readable" on appeal_strategies for select using (true);
+create policy "glossary readable" on glossary for select using (true);
+create policy "basics readable" on basics for select using (true);
 
 -- 본인 데이터만 접근
 create policy "users manage own profile" on profiles

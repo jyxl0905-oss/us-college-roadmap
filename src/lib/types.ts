@@ -67,13 +67,16 @@ export interface School {
   tier: Tier
   sat_mid50_low: number | null
   sat_mid50_high: number | null
-  gpa_note: string
+  gpa_note: string | null
   intl_accept_rate: number | null
-  need_blind_intl: boolean
-  demonstrated_interest: boolean
+  need_blind_intl: boolean | null // null = 학교가 공식 표명하지 않음
+  demonstrated_interest: boolean | null
   direct_admit_majors: string[]
   what_they_value: string
   source_url: string
+  test_policy: string | null // test-required / test-optional / test-free
+  intro_ko: string | null
+  location_note: string | null
 }
 
 export interface ChecklistItem {
