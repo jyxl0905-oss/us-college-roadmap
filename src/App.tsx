@@ -11,6 +11,7 @@ import ReportView from './report/ReportView'
 import PreviewReport from './report/PreviewReport'
 import CheckinFlow from './checkin/CheckinFlow'
 import RolloverGate from './RolloverGate'
+import GuideView from './report/GuideView'
 import { logEvent } from './lib/analytics'
 
 const PENDING_KEY = 'pending_answers' // 매직 링크로 나갔다 돌아와도 온보딩 답변 유지
@@ -42,6 +43,7 @@ export default function App() {
   // undefined = 아직 조회 전 (조회가 끝나기 전에 리포트를 먼저 그리면 안 됨)
   const [lastSeason, setLastSeason] = useState<string | null | undefined>(undefined)
   const [checkinDone, setCheckinDone] = useState(false)
+  const [showGuide, setShowGuide] = useState(false)
 
   useEffect(() => {
     if (!supabase) return
@@ -119,12 +121,17 @@ export default function App() {
               setCheckinDone(true)
             }}
           />
+        ) : showGuide ? (
+          <Screen>
+            <GuideView onBack={() => setShowGuide(false)} />
+          </Screen>
         ) : (
           <Screen>
             <ReportView
               userId={session.user.id}
               profile={profile}
               onLogout={() => supabase!.auth.signOut()}
+              onOpenGuide={() => setShowGuide(true)}
             />
           </Screen>
         )}

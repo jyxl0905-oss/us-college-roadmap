@@ -3,7 +3,15 @@ import type { ChecklistItem, School } from '../lib/types'
 import { supabase } from '../lib/supabase'
 import { filterChecklist, profileGrade, type ProfileRow } from '../lib/profile'
 import { currentSeason, currentSeasonLabel, seasonLabelKo, nextCheckinKo } from '../lib/academics'
-import { computeScores, weakestAxis, axisKo, axisDiagnosis } from '../lib/score'
+import {
+  computeScores,
+  weakestAxis,
+  strongestAxis,
+  scoreLevel,
+  gradeBandMatches,
+  axisKo,
+  axisDiagnosis,
+} from '../lib/score'
 import { downloadDocx } from '../lib/report-doc'
 import { logEvent } from '../lib/analytics'
 import { majorLabel } from '../data/majors'
@@ -18,20 +26,35 @@ interface PrevReport {
   snapshot: { done: number; total: number }
 }
 
+interface Prescription {
+  axis: string
+  level: string
+  grade_band: string
+  text_ko: string
+}
+
+interface Appeal {
+  axis: string
+  text_ko: string
+}
+
 interface ReportViewProps {
   userId: string
   profile: ProfileRow
   onLogout: () => void
+  onOpenGuide: () => void
 }
 
 // 로그인 후 메인 화면 — 시즌 리포트 (차트·학교·체크리스트·내보내기)
-export default function ReportView({ userId, profile, onLogout }: ReportViewProps) {
+export default function ReportView({ userId, profile, onLogout, onOpenGuide }: ReportViewProps) {
   const [items, setItems] = useState<ChecklistItem[]>([])
   const [allItems, setAllItems] = useState<ChecklistItem[]>([])
   const [schools, setSchools] = useState<School[]>([])
   const [checkedIds, setCheckedIds] = useState<Set<number>>(new Set())
   const [carriedIds, setCarriedIds] = useState<Set<number>>(new Set())
   const [prevReport, setPrevReport] = useState<PrevReport | null>(null)
+  const [prescriptions, setPrescriptions] = useState<Prescription[]>([])
+  const [appeals, setAppeals] = useState<Appeal[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -67,7 +90,9 @@ export default function ReportView({ userId, profile, onLogout }: ReportViewProp
         .neq('season_label', seasonLabel)
         .order('created_at', { ascending: false })
         .limit(1),
-    ]).then(([itemsRes, checksRes, schoolsRes, prevRes]) => {
+      supabase.from('prescriptions').select('*'),
+      supabase.from('appeal_strategies').select('*'),
+    ]).then(([itemsRes, checksRes, schoolsRes, prevRes, presRes, appealRes]) => {
       if (itemsRes.error) setError(itemsRes.error.message)
       else {
         const all = itemsRes.data as ChecklistItem[]
@@ -82,6 +107,8 @@ export default function ReportView({ userId, profile, onLogout }: ReportViewProp
         setSchools(([...schoolsRes.data] as School[]).sort((a, b) => a.usnews_rank - b.usnews_rank))
       }
       if (prevRes.data && prevRes.data.length > 0) setPrevReport(prevRes.data[0] as PrevReport)
+      if (presRes.data) setPrescriptions(presRes.data as Prescription[])
+      if (appealRes.data) setAppeals(appealRes.data as Appeal[])
       setLoading(false)
     })
   }, [userId, seasonLabel]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -95,6 +122,16 @@ export default function ReportView({ userId, profile, onLogout }: ReportViewProp
   const checkedItems = trackedItems.filter((i) => checkedIds.has(i.id))
   const scores = computeScores(profile, checkedItems)
   const weakest = weakestAxis(scores)
+  // 약한 축 처방(§4 prescriptions): 축+등급+학년대 매칭, 없으면 기본 문구
+  const weakLevel = scoreLevel(scores[weakest])
+  const prescription =
+    prescriptions.find(
+      (p) => p.axis === weakest && p.level === weakLevel && gradeBandMatches(p.grade_band, grade),
+    )?.text_ko ?? axisDiagnosis[weakest]
+  // 어필 전략: 가장 강한 축이 원서의 중심축 (모든 축이 약하면 'none' 문구)
+  const strongest = strongestAxis(scores)
+  const appealAxis = scores[strongest] >= 40 ? strongest : 'none'
+  const appealText = appeals.find((a) => a.axis === appealAxis)?.text_ko ?? null
   const doneCount = checkedItems.length
   const totalCount = trackedItems.length
 
@@ -253,8 +290,13 @@ export default function ReportView({ userId, profile, onLogout }: ReportViewProp
           <RadarChart scores={scores} />
         </div>
         <p className="mt-2 rounded-lg bg-blue-50 px-3 py-2.5 text-sm text-blue-900">
-          <strong>{axisKo[weakest]}</strong> 축이 가장 약해요. {axisDiagnosis[weakest]}
+          <strong>{axisKo[weakest]}</strong> 축이 가장 약해요. {prescription}
         </p>
+        {appealText && (
+          <p className="mt-2 rounded-lg bg-green-50 px-3 py-2.5 text-sm text-green-900">
+            <strong>어필 전략</strong> — {appealText}
+          </p>
+        )}
       </div>
 
       {/* 5. 목표 학교 */}
@@ -323,6 +365,14 @@ export default function ReportView({ userId, profile, onLogout }: ReportViewProp
           </div>
         </div>
       )}
+
+      {/* 입시 기본기·용어집 링크 */}
+      <button
+        onClick={onOpenGuide}
+        className="no-print mt-8 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
+      >
+        📚 입시 기본기 · 용어집 보기
+      </button>
 
       {/* 8. 푸터 */}
       <div className="mt-8 border-t border-gray-200 pt-4 text-center text-xs text-gray-400">

@@ -83,6 +83,29 @@ export function weakestAxis(scores: AxisScores): Axis {
   return axisOrder.reduce((weakest, axis) => (scores[axis] < scores[weakest] ? axis : weakest))
 }
 
+export function strongestAxis(scores: AxisScores): Axis {
+  return axisOrder.reduce((strongest, axis) => (scores[axis] > scores[strongest] ? axis : strongest))
+}
+
+// 축 점수 → 처방 등급 (prescriptions.level과 매칭)
+export type ScoreLevel = 'sufficient' | 'in_progress' | 'large_gap'
+
+export function scoreLevel(score: number): ScoreLevel {
+  if (score >= 70) return 'sufficient'
+  if (score >= 40) return 'in_progress'
+  return 'large_gap'
+}
+
+// prescriptions.grade_band('9', '9-10', 'all' 등)과 학년 매칭
+export function gradeBandMatches(band: string, grade: number): boolean {
+  if (band === 'all') return true
+  if (band.includes('-')) {
+    const [lo, hi] = band.split('-').map(Number)
+    return grade >= lo && grade <= hi
+  }
+  return Number(band) === grade
+}
+
 export const axisDiagnosis: Record<Axis, string> = {
   rigor: '수업 난이도·성적 흐름이 상대적으로 약해요. 다음 학기 과목 선택에서 도전성을 한 단계 올려보세요.',
   testing: '표준시험 준비가 뒤처져 있어요. SAT/TOEFL 일정을 이번 시즌 안에 구체화해 보세요.',
