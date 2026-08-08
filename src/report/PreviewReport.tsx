@@ -79,8 +79,8 @@ export default function PreviewReport({ answers, onContinue }: PreviewReportProp
       </div>
 
       {/* 블러 처리된 나머지 — 이메일 입력 유도 */}
-      <div className="relative mt-3">
-        <div className="pointer-events-none select-none blur-[6px]" aria-hidden>
+      <div className="relative mt-3 min-h-80 overflow-hidden">
+        <div className="pointer-events-none select-none opacity-60 blur-[10px]" aria-hidden>
           <ChecklistSection items={blurredItems.slice(0, 3)} checkedIds={emptyChecked} />
           {schools.length > 0 && (
             <div className="mt-5">
@@ -95,19 +95,21 @@ export default function PreviewReport({ answers, onContinue }: PreviewReportProp
             </div>
           )}
         </div>
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-transparent via-gray-50/70 to-gray-50 px-6">
-          <p className="text-center font-semibold text-gray-900">
-            나머지 체크리스트와 학교 분석이 기다리고 있어요
-          </p>
-          <p className="mt-1 text-center text-sm text-gray-500">
-            이메일 하나면 전체 리포트를 무료로 받을 수 있어요
-          </p>
-          <button
-            onClick={onContinue}
-            className="mt-4 w-full max-w-xs rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white shadow-lg active:bg-blue-700"
-          >
-            이메일로 전체 리포트 받기
-          </button>
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-transparent via-gray-50/80 to-gray-50 px-4">
+          <div className="w-full max-w-xs rounded-2xl border border-gray-200 bg-white px-5 py-5 shadow-lg">
+            <p className="text-center font-semibold text-gray-900">
+              나머지 체크리스트와 학교 분석이 기다리고 있어요
+            </p>
+            <p className="mt-1 text-center text-sm text-gray-500">
+              이메일 하나면 전체 리포트를 무료로 받을 수 있어요
+            </p>
+            <button
+              onClick={onContinue}
+              className="mt-4 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
+            >
+              이메일로 전체 리포트 받기
+            </button>
+          </div>
         </div>
       </div>
     </div>
