@@ -19,7 +19,18 @@ create table schools (
   source_url text,
   test_policy text, -- test-required / test-optional / test-free
   intro_ko text, -- 사실 서술 (소재지·캠퍼스 유형)
-  location_note text -- 사실 서술 (도시 규모·기후)
+  location_note text, -- 사실 서술 (도시 규모·기후)
+  -- F3: 마감 캘린더 — 공식 입학처 페이지에서만 수집, 확인 불가 시 null
+  ed_offered boolean, -- Early Decision (binding)
+  ed2_offered boolean, -- Early Decision II
+  ea_offered boolean, -- 비제한 Early Action
+  rea_offered boolean, -- Restrictive EA / Single-Choice EA
+  ed_timing text, -- 시기 라벨: "11월 초" 형식 (월+순, 연도별 날짜 유지보수 최소화)
+  ed2_timing text,
+  ea_timing text, -- REA/SCEA 시기도 여기에
+  rd_timing text,
+  deadlines_source_url text,
+  deadlines_verified_at date
 );
 
 -- 2. checklist_items — 시즌별 체크리스트 항목 (편집 콘텐츠)

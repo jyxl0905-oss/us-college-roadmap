@@ -102,6 +102,17 @@ export interface School {
   test_policy: string | null // test-required / test-optional / test-free
   intro_ko: string | null
   location_note: string | null
+  // F3: 마감 캘린더 — 공식 입학처만, 확인 불가 시 null (시드 JSON엔 아직 없을 수 있어 optional)
+  ed_offered?: boolean | null
+  ed2_offered?: boolean | null
+  ea_offered?: boolean | null
+  rea_offered?: boolean | null
+  ed_timing?: string | null // "11월 초" 형식 (월+순)
+  ed2_timing?: string | null
+  ea_timing?: string | null // REA/SCEA 시기도 여기에
+  rd_timing?: string | null
+  deadlines_source_url?: string | null
+  deadlines_verified_at?: string | null
 }
 
 export interface ChecklistItem {

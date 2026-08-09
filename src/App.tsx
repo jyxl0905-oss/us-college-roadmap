@@ -15,6 +15,7 @@ import GuideView from './report/GuideView'
 import SchoolsListPage from './browse/SchoolsListPage'
 import SchoolDetailPage from './browse/SchoolDetailPage'
 import ComparePage from './browse/ComparePage'
+import DeadlinesPage from './deadlines/DeadlinesPage'
 import { usePath, navigate } from './lib/router'
 import { readPrefillSchoolIds } from './browse/prefill'
 import { logEvent } from './lib/analytics'
@@ -107,6 +108,27 @@ export default function App() {
   // F2: 학교 비교 (?ids=1,2,3)
   if (path === '/compare' || path === '/compare/') {
     return <ComparePage profile={profile} />
+  }
+  // F3: 마감 캘린더 (로그인 전용)
+  if (path === '/deadlines' || path === '/deadlines/') {
+    if (profile) return <DeadlinesPage profile={profile} />
+    return (
+      <Screen>
+        <div className="py-16 text-center">
+          <p className="text-4xl">🗓️</p>
+          <h1 className="mt-4 text-xl font-bold text-gray-900">마감 캘린더</h1>
+          <p className="mt-3 text-sm text-gray-500">
+            내 목표 학교 기준 캘린더는 리포트를 받은 뒤 볼 수 있어요.
+          </p>
+          <button
+            onClick={() => navigate('/')}
+            className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
+          >
+            내 리포트 받기
+          </button>
+        </div>
+      </Screen>
+    )
   }
   if (path.startsWith('/schools/')) {
     return (

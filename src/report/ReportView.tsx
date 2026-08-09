@@ -16,6 +16,7 @@ import {
 import { downloadDocx } from '../lib/report-doc'
 import { logEvent } from '../lib/analytics'
 import { navigate } from '../lib/router'
+import { entriesForSchool, sortEntries } from '../deadlines/DeadlinesPage'
 import { majorLabel } from '../data/majors'
 import { tierLabels } from '../onboarding/labels'
 import RadarChart from './RadarChart'
@@ -243,6 +244,13 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
       : null
   const nowPct = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0
 
+  // F3: 12학년 Fall — 다가오는 마감 3줄 (가을 조기지원 우선, 이어서 겨울)
+  const allDeadlines = schools.flatMap(entriesForSchool)
+  const upcomingDeadlines = [
+    ...sortEntries(allDeadlines.filter((e) => e.plan === 'ED' || e.plan === 'EA' || e.plan === 'REA')),
+    ...sortEntries(allDeadlines.filter((e) => e.plan === 'ED II' || e.plan === 'RD')),
+  ].slice(0, 3)
+
   if (loading) return <p className="mt-20 text-center text-gray-400">리포트 만드는 중…</p>
   if (error) return <p className="mt-20 text-center text-sm text-red-600">불러오기 실패: {error}</p>
 
@@ -278,6 +286,29 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
           Word(docx)로 저장
         </button>
       </div>
+
+      {/* F3: 12학년 Fall — 다가오는 마감 3줄 */}
+      {grade === 12 && currentSeason() === 'fall' && upcomingDeadlines.length > 0 && (
+        <div className="mt-5 rounded-xl border-2 border-red-200 bg-red-50 px-4 py-3.5">
+          <div className="flex items-baseline justify-between">
+            <p className="font-semibold text-red-900">🗓️ 다가오는 마감</p>
+            <button onClick={() => navigate('/deadlines')} className="no-print text-sm text-red-700 underline">
+              전체 보기
+            </button>
+          </div>
+          <div className="mt-2 flex flex-col gap-1">
+            {upcomingDeadlines.map((e, i) => (
+              <p key={i} className="text-sm text-red-900">
+                <span className="font-medium">{e.school.name}</span> — {e.plan} ·{' '}
+                {e.timing ?? '시기 미공개'}
+              </p>
+            ))}
+          </div>
+          <p className="mt-2 text-xs text-red-700">
+            마감일은 매년 변동될 수 있어요 — 지원 전 공식 페이지에서 최종 확인하세요.
+          </p>
+        </div>
+      )}
 
       {/* 2. AO 박스 */}
       <div className="mt-5">
@@ -411,13 +442,21 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
         </div>
       )}
 
-      {/* 입시 기본기·용어집 링크 */}
-      <button
-        onClick={onOpenGuide}
-        className="no-print mt-8 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
-      >
-        📚 입시 기본기 · 용어집 보기
-      </button>
+      {/* 마감 캘린더·입시 기본기 링크 */}
+      <div className="no-print mt-8 flex flex-col gap-2">
+        <button
+          onClick={() => navigate('/deadlines')}
+          className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
+        >
+          🗓️ 마감 캘린더 보기
+        </button>
+        <button
+          onClick={onOpenGuide}
+          className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
+        >
+          📚 입시 기본기 · 용어집 보기
+        </button>
+      </div>
 
       {/* 8. 푸터 */}
       <div className="mt-8 border-t border-gray-200 pt-4 text-center text-xs text-gray-400">
