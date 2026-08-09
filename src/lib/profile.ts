@@ -91,6 +91,28 @@ function targetTiers(p: ProfileRow): Set<Tier> {
   return new Set()
 }
 
+// §0-2: 현재 학년·시즌까지 이 학생에게 노출된 story 태그 항목 수 (스토리 준비 점수의 분모)
+// 학년 순서: 9→12, 학년 내 시즌 순서: fall→spring→summer (미국 학년도 기준)
+const seasonOrder: Record<string, number> = { fall: 1, spring: 2, summer: 3 }
+
+export function countStoryExposure(items: ChecklistItem[], p: ProfileRow): number {
+  const grade = profileGrade(p)
+  const nowSeason = seasonOrder[currentSeason()]
+  const exposedGradeSeasons: { grade: number; season: string }[] = []
+  for (let g = 9; g <= grade; g++) {
+    for (const s of ['fall', 'spring', 'summer']) {
+      if (g < grade || seasonOrder[s] <= nowSeason) exposedGradeSeasons.push({ grade: g, season: s })
+    }
+  }
+  const storyIds = new Set<number>()
+  for (const gs of exposedGradeSeasons) {
+    for (const item of filterChecklist(items, p, gs)) {
+      if (item.axis === 'story') storyIds.add(item.id)
+    }
+  }
+  return storyIds.size
+}
+
 // 핵심 로직: 학년·시즌·전공·티어·국제학생·카운슬러 조건으로 체크리스트 필터
 // opts로 과거 시즌(체크인 화면)의 학년·시즌을 지정할 수 있음
 export function filterChecklist(

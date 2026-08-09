@@ -15,8 +15,12 @@ export const axisKo: Record<Axis, string> = {
   spike: '대표 활동',
   leadership: '리더십',
   validation: '교외 인정',
-  story: '스토리',
+  story: '스토리 준비',
 }
+
+// 스토리 준비 축 설명 (ⓘ 툴팁 공용 문구)
+export const storyAxisTooltip =
+  '에세이·원서에 쓸 재료가 준비되고 있는지를 봄 — 이야기의 좋고 나쁨을 평가하는 것이 아님'
 
 export type AxisScores = Record<Axis, number>
 
@@ -45,7 +49,13 @@ const satPts: Record<string, number> = {
 
 const selfPts: Record<number, number> = { 1: 20, 2: 45, 3: 70 }
 
-export function computeScores(p: ProfileRow, checkedItems: ChecklistItem[]): AxisScores {
+// storyStats: 스토리 준비 점수용 — done(전 시즌 누적 완료 수) / exposed(현재 학년·시즌까지 노출된 항목 수).
+// 저학년이 아직 보지도 못한 항목 때문에 낮게 진단되는 것을 방지 (§0-2)
+export function computeScores(
+  p: ProfileRow,
+  checkedItems: ChecklistItem[],
+  storyStats?: { done: number; exposed: number },
+): AxisScores {
   const checks = (axis: Axis) => checkedItems.filter((i) => i.axis === axis).length
 
   const apCount = Math.min((p.ap_completed ?? 0) + (p.ap_current ?? 0), 8)
@@ -75,7 +85,9 @@ export function computeScores(p: ProfileRow, checkedItems: ChecklistItem[]): Axi
     spike: cap(selfPts[p.activity_spike ?? 1] + checks('spike') * 10),
     leadership: cap(selfPts[p.activity_leadership ?? 1] + checks('leadership') * 10),
     validation: cap(selfPts[p.activity_validation ?? 1] + checks('validation') * 10),
-    story: cap(10 + checks('story') * 15),
+    story: storyStats
+      ? cap((storyStats.done / Math.max(1, storyStats.exposed)) * 100)
+      : cap(10 + checks('story') * 15),
   }
 }
 
@@ -112,7 +124,7 @@ export const axisDiagnosis: Record<Axis, string> = {
   spike: '나를 대표하는 활동이 아직 흐릿해요. 하나를 골라 눈에 보이는 결과물을 만들어 보세요.',
   leadership: "역할이 '참여'에 머물러 있어요. 작은 팀에서라도 주도하는 경험을 만들어 보세요.",
   validation: '교외에서 검증받은 기록이 부족해요. 대회·외부 프로그램 등 외부 평가에 도전해 보세요.',
-  story: '활동들이 아직 하나의 이야기로 묶이지 않아요. 체크리스트의 스토리 항목부터 채워보세요.',
+  story: '스토리 준비 항목을 하나씩 채워보세요 — 시즌마다 남긴 기록이 곧 에세이 재료가 돼요.',
 }
 
 // SAT 밴드의 대표값 — 학교 중간 50% 범위 위 내 위치 표시용

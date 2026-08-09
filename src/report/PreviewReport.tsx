@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import type { ChecklistItem, OnboardingAnswers, School } from '../lib/types'
 import { supabase } from '../lib/supabase'
-import { answersToRow, filterChecklist, profileGrade } from '../lib/profile'
+import { answersToRow, countStoryExposure, filterChecklist, profileGrade } from '../lib/profile'
 import { currentSeason, seasonLabelKo } from '../lib/academics'
-import { computeScores, weakestAxis, axisKo, axisDiagnosis } from '../lib/score'
+import { computeScores, weakestAxis, axisKo, axisDiagnosis, storyAxisTooltip } from '../lib/score'
 import RadarChart from './RadarChart'
 import AoBox from './AoBox'
 import SchoolCards from './SchoolCards'
@@ -21,9 +21,11 @@ export default function PreviewReport({ answers, onContinue }: PreviewReportProp
   const profile = answersToRow(answers, '')
   const [items, setItems] = useState<ChecklistItem[]>([])
   const [schools, setSchools] = useState<School[]>([])
+  const [storyExposed, setStoryExposed] = useState(1)
 
   const grade = profileGrade(profile)
-  const scores = computeScores(profile, []) // 프리뷰는 체크 전이므로 자가진단·프로필 기반
+  // 프리뷰는 체크 전이므로 자가진단·프로필 기반 (스토리 준비는 0/노출 수)
+  const scores = computeScores(profile, [], { done: 0, exposed: storyExposed })
   const weakest = weakestAxis(scores)
 
   // schools·checklist_items는 공개 읽기라 로그인 전에도 조회 가능
@@ -33,7 +35,11 @@ export default function PreviewReport({ answers, onContinue }: PreviewReportProp
       .from('checklist_items')
       .select('*')
       .then(({ data }) => {
-        if (data) setItems(filterChecklist(data as ChecklistItem[], profile))
+        if (data) {
+          const all = data as ChecklistItem[]
+          setItems(filterChecklist(all, profile))
+          setStoryExposed(countStoryExposure(all, profile))
+        }
       })
     const schoolsQuery =
       profile.target_mode === 'schools'
@@ -67,8 +73,14 @@ export default function PreviewReport({ answers, onContinue }: PreviewReportProp
           <RadarChart scores={scores} />
         </div>
         <p className="mt-2 rounded-lg bg-blue-50 px-3 py-2.5 text-sm text-blue-900">
-          <strong>{axisKo[weakest]}</strong> 축이 가장 약해요. {axisDiagnosis[weakest]}
+          <strong>{axisKo[weakest]}</strong>{' '}
+          {weakest === 'story' ? '축은 아직 채워지는 중이에요.' : '축이 가장 약해요.'}{' '}
+          {axisDiagnosis[weakest]}
         </p>
+        <details className="mt-2 text-xs text-gray-400">
+          <summary className="cursor-pointer select-none">ⓘ '스토리 준비' 축이란?</summary>
+          <p className="mt-1 leading-relaxed text-gray-500">{storyAxisTooltip}</p>
+        </details>
       </div>
 
       <div className="mt-5">

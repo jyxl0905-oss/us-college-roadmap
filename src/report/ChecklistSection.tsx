@@ -6,7 +6,7 @@ const axisLabels: Record<ChecklistItem['axis'], string> = {
   spike: '대표 활동',
   leadership: '리더십',
   validation: '교외 인정',
-  story: '스토리',
+  story: '스토리 준비',
 }
 
 interface ChecklistSectionProps {

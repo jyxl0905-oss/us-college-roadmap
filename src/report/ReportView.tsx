@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { ChecklistItem, School } from '../lib/types'
 import { supabase } from '../lib/supabase'
-import { filterChecklist, profileGrade, type ProfileRow } from '../lib/profile'
+import { countStoryExposure, filterChecklist, profileGrade, type ProfileRow } from '../lib/profile'
 import { currentSeason, currentSeasonLabel, seasonLabelKo, nextCheckinKo } from '../lib/academics'
 import {
   computeScores,
@@ -11,6 +11,7 @@ import {
   gradeBandMatches,
   axisKo,
   axisDiagnosis,
+  storyAxisTooltip,
 } from '../lib/score'
 import { downloadDocx } from '../lib/report-doc'
 import { logEvent } from '../lib/analytics'
@@ -52,6 +53,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
   const [schools, setSchools] = useState<School[]>([])
   const [checkedIds, setCheckedIds] = useState<Set<number>>(new Set())
   const [carriedIds, setCarriedIds] = useState<Set<number>>(new Set())
+  const [allDoneIds, setAllDoneIds] = useState<Set<number>>(new Set()) // 전 시즌 누적 완료 (스토리 준비 분자)
   const [prevReport, setPrevReport] = useState<PrevReport | null>(null)
   const [prescriptions, setPrescriptions] = useState<Prescription[]>([])
   const [appeals, setAppeals] = useState<Appeal[]>([])
@@ -92,7 +94,8 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
         .limit(1),
       supabase.from('prescriptions').select('*'),
       supabase.from('appeal_strategies').select('*'),
-    ]).then(([itemsRes, checksRes, schoolsRes, prevRes, presRes, appealRes]) => {
+      supabase.from('user_checks').select('item_id').eq('user_id', userId).eq('status', 'done'),
+    ]).then(([itemsRes, checksRes, schoolsRes, prevRes, presRes, appealRes, allDoneRes]) => {
       if (itemsRes.error) setError(itemsRes.error.message)
       else {
         const all = itemsRes.data as ChecklistItem[]
@@ -109,6 +112,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
       if (prevRes.data && prevRes.data.length > 0) setPrevReport(prevRes.data[0] as PrevReport)
       if (presRes.data) setPrescriptions(presRes.data as Prescription[])
       if (appealRes.data) setAppeals(appealRes.data as Appeal[])
+      if (allDoneRes.data) setAllDoneIds(new Set(allDoneRes.data.map((c) => c.item_id)))
       setLoading(false)
     })
   }, [userId, seasonLabel]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -120,7 +124,11 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
   )
   const trackedItems = [...items, ...carriedItems]
   const checkedItems = trackedItems.filter((i) => checkedIds.has(i.id))
-  const scores = computeScores(profile, checkedItems)
+  // 스토리 준비: 분자 = 전 시즌 누적 완료된 story 항목, 분모 = 현재 학년까지 노출된 story 항목 (§0-2)
+  const storyItemIds = new Set(allItems.filter((i) => i.axis === 'story').map((i) => i.id))
+  const storyDone = [...allDoneIds].filter((id) => storyItemIds.has(id)).length
+  const storyStats = { done: storyDone, exposed: countStoryExposure(allItems, profile) }
+  const scores = computeScores(profile, checkedItems, storyStats)
   const weakest = weakestAxis(scores)
   // 약한 축 처방(§4 prescriptions): 축+등급+학년대 매칭, 없으면 기본 문구
   const weakLevel = scoreLevel(scores[weakest])
@@ -159,6 +167,13 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
     if (!supabase) return
     const wasChecked = checkedIds.has(itemId)
     if (!wasChecked) logEvent(userId, 'check')
+    // 누적 완료 집합도 동기화 (스토리 준비 점수 즉시 반영)
+    setAllDoneIds((prev) => {
+      const next = new Set(prev)
+      if (wasChecked) next.delete(itemId)
+      else next.add(itemId)
+      return next
+    })
     const isCarried = carriedIds.has(itemId) || (!itemIds.has(itemId) && wasChecked)
     setCheckedIds((prev) => {
       const next = new Set(prev)
@@ -290,8 +305,13 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
           <RadarChart scores={scores} />
         </div>
         <p className="mt-2 rounded-lg bg-blue-50 px-3 py-2.5 text-sm text-blue-900">
-          <strong>{axisKo[weakest]}</strong> 축이 가장 약해요. {prescription}
+          <strong>{axisKo[weakest]}</strong>{' '}
+          {weakest === 'story' ? '축은 아직 채워지는 중이에요.' : '축이 가장 약해요.'} {prescription}
         </p>
+        <details className="mt-2 text-xs text-gray-400">
+          <summary className="cursor-pointer select-none">ⓘ '스토리 준비' 축이란?</summary>
+          <p className="mt-1 leading-relaxed text-gray-500">{storyAxisTooltip}</p>
+        </details>
         {appealText && (
           <p className="mt-2 rounded-lg bg-green-50 px-3 py-2.5 text-sm text-green-900">
             <strong>어필 전략</strong> — {appealText}
