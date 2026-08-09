@@ -60,7 +60,35 @@ create table profiles (
   toefl_status text,
   activity_spike smallint check (activity_spike in (1, 2, 3)),
   activity_leadership smallint check (activity_leadership in (1, 2, 3)),
-  activity_validation smallint check (activity_validation in (1, 2, 3))
+  activity_validation smallint check (activity_validation in (1, 2, 3)),
+  quiz_answers jsonb, -- 온보딩 OX 퀴즈 응답 [{id, answer, correct}]
+  info_sources text[], -- 대입 정보원 (복수)
+  research_consent boolean not null default false -- 연구 목적 익명 통계 활용 동의
+);
+
+-- 연구 모듈 (R1)
+create table quiz_items (
+  id bigint primary key,
+  question text not null,
+  answer boolean not null, -- true=O, false=X
+  explanation_2lines text not null, -- 2줄 해설 (\n 구분)
+  sort_order int not null default 0
+);
+
+create table clarity_items (
+  id bigint primary key,
+  question text not null, -- 진로 명확성 단축 척도 문항
+  sort_order int not null default 0
+);
+
+create table clarity_responses (
+  id bigint generated always as identity primary key,
+  user_id uuid not null references auth.users (id) on delete cascade,
+  season_label text not null,
+  item_id bigint not null references clarity_items (id),
+  score smallint not null check (score between 1 and 5),
+  research_ok boolean not null default false, -- 응답 시점의 연구 동의 여부 (연구 플래그 분리)
+  created_at timestamptz not null default now()
 );
 
 -- 4. user_checks — 체크리스트 체크 기록
@@ -139,6 +167,14 @@ create policy "prescriptions readable" on prescriptions for select using (true);
 create policy "appeal readable" on appeal_strategies for select using (true);
 create policy "glossary readable" on glossary for select using (true);
 create policy "basics readable" on basics for select using (true);
+
+alter table quiz_items enable row level security;
+alter table clarity_items enable row level security;
+alter table clarity_responses enable row level security;
+create policy "quiz readable" on quiz_items for select using (true);
+create policy "clarity readable" on clarity_items for select using (true);
+create policy "clarity insert own" on clarity_responses for insert with check (auth.uid() = user_id);
+create policy "clarity select own" on clarity_responses for select using (auth.uid() = user_id);
 
 -- 본인 데이터만 접근
 create policy "users manage own profile" on profiles

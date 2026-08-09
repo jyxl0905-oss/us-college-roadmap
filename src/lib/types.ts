@@ -13,6 +13,27 @@ export type ToeflStatus = 'none' | 'studying' | 'scored'
 
 export type MajorTrackChoice = 'stem' | 'liberal' | 'undecided'
 
+// 온보딩 OX 퀴즈 응답 (R1)
+export interface QuizAnswer {
+  id: number
+  answer: boolean // 사용자가 고른 O(true)/X(false)
+  correct: boolean
+}
+
+export interface QuizItem {
+  id: number
+  question: string
+  answer: boolean
+  explanation_2lines: string
+  sort_order: number
+}
+
+export interface ClarityItem {
+  id: number
+  question: string
+  sort_order: number
+}
+
 export interface OnboardingAnswers {
   gradYear: number | null
   applicantStatus: ApplicantStatus | null
@@ -34,6 +55,8 @@ export interface OnboardingAnswers {
   activitySpike: ActivityLevel | null
   activityLeadership: ActivityLevel | null
   activityValidation: ActivityLevel | null
+  quizAnswers: QuizAnswer[] | null
+  infoSources: string[]
 }
 
 export const emptyAnswers: OnboardingAnswers = {
@@ -57,6 +80,8 @@ export const emptyAnswers: OnboardingAnswers = {
   activitySpike: null,
   activityLeadership: null,
   activityValidation: null,
+  quizAnswers: null,
+  infoSources: [],
 }
 
 export interface School {

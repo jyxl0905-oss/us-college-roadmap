@@ -1,4 +1,4 @@
-import type { OnboardingAnswers, ChecklistItem, School, Tier } from './types'
+import type { OnboardingAnswers, ChecklistItem, School, Tier, QuizAnswer } from './types'
 import { supabase } from './supabase'
 import { gradeFromGradYear, currentSeason } from './academics'
 import schoolsData from '../data/schools.seed.json'
@@ -28,9 +28,16 @@ export interface ProfileRow {
   activity_spike: number | null
   activity_leadership: number | null
   activity_validation: number | null
+  quiz_answers: QuizAnswer[] | null
+  info_sources: string[] | null
+  research_consent: boolean
 }
 
-export function answersToRow(a: OnboardingAnswers, nickname: string): ProfileRow {
+export function answersToRow(
+  a: OnboardingAnswers,
+  nickname: string,
+  researchConsent = false,
+): ProfileRow {
   return {
     nickname,
     grad_year: a.gradYear,
@@ -52,6 +59,9 @@ export function answersToRow(a: OnboardingAnswers, nickname: string): ProfileRow
     activity_spike: a.activitySpike,
     activity_leadership: a.activityLeadership,
     activity_validation: a.activityValidation,
+    quiz_answers: a.quizAnswers,
+    info_sources: a.infoSources.length > 0 ? a.infoSources : null,
+    research_consent: researchConsent,
   }
 }
 

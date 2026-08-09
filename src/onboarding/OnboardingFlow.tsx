@@ -1,12 +1,19 @@
-import { useState } from 'react'
-import type { OnboardingAnswers, Tier } from '../lib/types'
+import { useEffect, useState } from 'react'
+import type { OnboardingAnswers, School, Tier } from '../lib/types'
 import { emptyAnswers } from '../lib/types'
 import { majorsByTrack } from '../data/majors'
+import schoolsData from '../data/schools.seed.json'
+import { tierLabels } from './labels'
 import ChoiceStep from './ChoiceStep'
 import GradYearStep from './GradYearStep'
 import TargetSchoolsStep from './TargetSchoolsStep'
 import ApStep from './ApStep'
 import SummaryStep from './SummaryStep'
+import QuizStep from './QuizStep'
+import InfoSourcesStep from './InfoSourcesStep'
+
+const seedSchools = schoolsData as School[]
+const DRAFT_KEY = 'onboarding_draft' // R1-C-6: 이탈 복구용 임시 저장
 
 type StepId =
   | 'gradYear'
@@ -19,6 +26,7 @@ type StepId =
   | 'targetMode'
   | 'targetSchools'
   | 'targetTier'
+  | 'teaser'
   | 'gpa'
   | 'math'
   | 'sat'
@@ -28,6 +36,8 @@ type StepId =
   | 'actSpike'
   | 'actLeadership'
   | 'actValidation'
+  | 'quiz'
+  | 'infoSources'
   | 'summary'
 
 // 답변에 따라 조건부 질문(전공 상세, 목표 학교 상세, SAT 밴드, TOEFL)이 끼어드는 전체 스텝 목록
@@ -37,24 +47,54 @@ function stepList(a: OnboardingAnswers): StepId[] {
   steps.push('targetMode')
   if (a.targetMode === 'schools') steps.push('targetSchools')
   if (a.targetMode === 'tier') steps.push('targetTier')
+  if (a.targetMode === 'schools' || a.targetMode === 'tier') steps.push('teaser') // R1-C-5: 미리보기 티저
   steps.push('gpa', 'math', 'sat')
   if (a.satStatus === 'taken') steps.push('satBand')
   steps.push('ap')
   if (a.applicantStatus !== 'domestic') steps.push('toefl') // 모름도 국제학생 처리
-  steps.push('actSpike', 'actLeadership', 'actValidation', 'summary')
+  steps.push('actSpike', 'actLeadership', 'actValidation', 'quiz', 'infoSources', 'summary')
   return steps
+}
+
+// R1-C-3: 그룹 전환 브릿지 문구 (해당 스텝 위에 한 줄 표시)
+const bridgeText: Partial<Record<StepId, string>> = {
+  majorTrack: '기본 정보는 끝! 이제 목표를 물어볼게요 🎯',
+  gpa: '이제 지금 상태를 확인할게요 📋',
+  actSpike: '마지막 구간 — 활동 이야기예요 🏃',
 }
 
 interface OnboardingFlowProps {
   onComplete?: (answers: OnboardingAnswers) => void
 }
 
+function loadDraft(): { answers: OnboardingAnswers; stepIndex: number } | null {
+  try {
+    const raw = localStorage.getItem(DRAFT_KEY)
+    if (!raw) return null
+    const d = JSON.parse(raw)
+    if (!d || typeof d.stepIndex !== 'number' || d.stepIndex < 1) return null
+    return { answers: { ...emptyAnswers, ...d.answers }, stepIndex: d.stepIndex }
+  } catch {
+    return null
+  }
+}
+
 export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
   const [answers, setAnswers] = useState<OnboardingAnswers>(emptyAnswers)
   const [stepIndex, setStepIndex] = useState(0)
+  // R1-C-6: 이탈 복구 — 진행하던 초안이 있으면 이어서 하기 제안
+  const [resumeDraft, setResumeDraft] = useState(loadDraft)
 
   const steps = stepList(answers)
   const step = steps[Math.min(stepIndex, steps.length - 1)]
+
+  // 진행 상황 임시 저장 (완료 시 App에서 초안 제거)
+  useEffect(() => {
+    if (resumeDraft) return // 이어서 하기 결정 전에는 덮어쓰지 않음
+    if (stepIndex > 0 && step !== 'summary') {
+      localStorage.setItem(DRAFT_KEY, JSON.stringify({ answers, stepIndex }))
+    }
+  }, [answers, stepIndex, resumeDraft, step])
 
   // 답변 저장 후 다음 스텝으로 (조건부 스텝은 항상 현재 스텝 뒤에 끼어들므로 index+1이 안전)
   const answer = (patch: Partial<OnboardingAnswers>, autoNext = true) => {
@@ -65,11 +105,48 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
   const goBack = () => setStepIndex((i) => Math.max(0, i - 1))
   const goNext = () => setStepIndex((i) => i + 1)
   const restart = () => {
+    localStorage.removeItem(DRAFT_KEY)
     setAnswers(emptyAnswers)
     setStepIndex(0)
   }
+  const complete = () => {
+    localStorage.removeItem(DRAFT_KEY)
+    onComplete?.(answers)
+  }
 
   const progress = stepIndex / (steps.length - 1)
+
+  // 이어서 하기 제안 화면
+  if (resumeDraft) {
+    return (
+      <div className="min-h-dvh bg-gray-50">
+        <div className="mx-auto max-w-md px-5 py-16 text-center">
+          <p className="text-4xl">👋</p>
+          <h1 className="mt-4 text-xl font-bold text-gray-900">진행하던 온보딩이 있어요</h1>
+          <p className="mt-2 text-sm text-gray-500">답변은 저장돼 있으니 이어서 하면 돼요.</p>
+          <button
+            onClick={() => {
+              setAnswers(resumeDraft.answers)
+              setStepIndex(resumeDraft.stepIndex)
+              setResumeDraft(null)
+            }}
+            className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
+          >
+            이어서 하기 ({resumeDraft.stepIndex + 1}번째 질문부터)
+          </button>
+          <button
+            onClick={() => {
+              localStorage.removeItem(DRAFT_KEY)
+              setResumeDraft(null)
+            }}
+            className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
+          >
+            처음부터 하기
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-dvh bg-gray-50">
@@ -89,8 +166,17 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
               style={{ width: `${Math.round(progress * 100)}%` }}
             />
           </div>
+          {/* R1-C-1: 남은 시간 안내 → 중반부터 문구 전환 */}
+          <span className="shrink-0 text-xs text-gray-400">
+            {progress < 0.5 ? '약 3분' : '거의 다 왔어요'}
+          </span>
         </header>
-        <main className="pt-2">{renderStep()}</main>
+        <main className="pt-2">
+          {bridgeText[step] && (
+            <p className="mb-3 text-sm font-medium text-blue-600">{bridgeText[step]}</p>
+          )}
+          {renderStep()}
+        </main>
       </div>
     </div>
   )
@@ -229,6 +315,24 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
             onSelect={(v) => answer({ targetTier: v as Tier })}
           />
         )
+      case 'teaser': {
+        // R1-C-5: 응답이 결과로 변하고 있다는 신호
+        const teaserText =
+          answers.targetMode === 'schools'
+            ? (() => {
+                const first = seedSchools.find((s) => s.id === answers.targetSchoolIds[0])
+                const n = answers.targetSchoolIds.length
+                return first
+                  ? `${first.name_ko.split('(')[0].trim()} 포함 ${n}개 학교 기준으로 리포트를 만들고 있어요`
+                  : `선택한 ${n}개 학교 기준으로 리포트를 만들고 있어요`
+              })()
+            : `${answers.targetTier ? tierLabels[answers.targetTier] : '목표'} 기준으로 리포트를 만들고 있어요`
+        return <TeaserInterstitial text={teaserText} onNext={goNext} />
+      }
+      case 'quiz':
+        return <QuizStep onDone={(qa) => answer({ quizAnswers: qa })} />
+      case 'infoSources':
+        return <InfoSourcesStep onDone={(s) => answer({ infoSources: s })} />
       case 'gpa':
         return (
           <ChoiceStep
@@ -357,9 +461,24 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
           <SummaryStep
             answers={answers}
             onRestart={restart}
-            onComplete={onComplete ? () => onComplete(answers) : undefined}
+            onComplete={onComplete ? complete : undefined}
           />
         )
     }
   }
+}
+
+// R1-C-5: 티저 인터스티셜 — 자동 진행(2초) + 탭으로 즉시
+function TeaserInterstitial({ text, onNext }: { text: string; onNext: () => void }) {
+  useEffect(() => {
+    const t = window.setTimeout(onNext, 2000)
+    return () => window.clearTimeout(t)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  return (
+    <button onClick={onNext} className="mt-16 w-full text-center">
+      <p className="text-4xl">✨</p>
+      <p className="mt-4 text-lg font-semibold leading-relaxed text-gray-900">{text}</p>
+      <p className="mt-3 text-xs text-gray-400">잠시 후 계속 — 탭하면 바로 넘어가요</p>
+    </button>
+  )
 }

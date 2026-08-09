@@ -5,7 +5,7 @@ import { supabase, isSupabaseConfigured } from './lib/supabase'
 import { answersToRow, loadProfile, saveProfile, type ProfileRow } from './lib/profile'
 import { currentSeasonLabel } from './lib/academics'
 import OnboardingFlow from './onboarding/OnboardingFlow'
-import EmailStep from './auth/EmailStep'
+import EmailStep, { RESEARCH_CONSENT_KEY } from './auth/EmailStep'
 import NicknameStep from './auth/NicknameStep'
 import ReportView from './report/ReportView'
 import PreviewReport from './report/PreviewReport'
@@ -157,10 +157,12 @@ export default function App() {
       <Screen>
         <NicknameStep
           onSubmit={async (nickname) => {
-            const row = answersToRow(pending, nickname)
+            const consent = localStorage.getItem(RESEARCH_CONSENT_KEY) === '1'
+            const row = answersToRow(pending, nickname, consent)
             await saveProfile(session.user.id, row)
             logEvent(session.user.id, 'signup')
             localStorage.removeItem(PENDING_KEY)
+            localStorage.removeItem(RESEARCH_CONSENT_KEY)
             setProfile({ ...row, user_id: session.user.id })
           }}
         />

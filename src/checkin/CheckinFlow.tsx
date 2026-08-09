@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import type { ChecklistItem, Tier } from '../lib/types'
+import type { ChecklistItem, ClarityItem, Tier } from '../lib/types'
 import { supabase } from '../lib/supabase'
 import { filterChecklist, saveProfile, type ProfileRow } from '../lib/profile'
 import { gradeFromGradYear, currentSeasonLabel, seasonLabelKo, currentSeason } from '../lib/academics'
@@ -26,8 +26,10 @@ interface CheckinFlowProps {
   onDone: (updated: ProfileRow) => void
 }
 
-type Screen = 'carryover' | 'changes' | 'targets'
+type Screen = 'carryover' | 'changes' | 'targets' | 'clarity'
 type ChangeForm = 'scores' | 'activities' | 'gpa' | null
+
+const CLARITY_EMOJIS = ['😟', '😕', '😐', '🙂', '😄'] // 1~5점
 
 // 시즌 체크인 — ① 지난 시즌 미완료 이월/건너뛰기 ② 변경사항 ③ 전공·목표 확인
 export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }: CheckinFlowProps) {
@@ -40,6 +42,10 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
   const [formStep, setFormStep] = useState(0)
   const [editTargets, setEditTargets] = useState(false)
   const [saving, setSaving] = useState(false)
+  // R1-B: 진로 명확성 단축 척도 — 새 리포트 발급 직전
+  const [clarityItems, setClarityItems] = useState<ClarityItem[]>([])
+  const [clarityScores, setClarityScores] = useState<Record<number, number>>({})
+  const [finalDraft, setFinalDraft] = useState<ProfileRow | null>(null)
 
   const currentLabel = currentSeasonLabel()
 
@@ -54,7 +60,9 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
       supabase.from('checklist_items').select('*'),
       supabase.from('user_checks').select('item_id').eq('user_id', userId).eq('season_label', prevSeasonLabel),
       supabase.from('user_checks').select('item_id').eq('user_id', userId).eq('season_label', currentLabel).eq('status', 'carried'),
-    ]).then(([itemsRes, prevChecks, carriedChecks]) => {
+      supabase.from('clarity_items').select('*').order('sort_order'),
+    ]).then(([itemsRes, prevChecks, carriedChecks, clarityRes]) => {
+      if (clarityRes.data) setClarityItems(clarityRes.data as ClarityItem[])
       const decided = new Set([
         ...(prevChecks.data ?? []).map((c) => c.item_id),
         ...(carriedChecks.data ?? []).map((c) => c.item_id),
@@ -86,10 +94,37 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
 
   const patch = (fields: Partial<ProfileRow>) => setDraft((d) => ({ ...d, ...fields }))
 
-  const finish = async (finalDraft: ProfileRow) => {
+  const saveAndDone = async (d: ProfileRow) => {
     setSaving(true)
-    await saveProfile(userId, finalDraft)
-    onDone(finalDraft)
+    await saveProfile(userId, d)
+    onDone(d)
+  }
+
+  // ③ 목표 확인 완료 → 명확성 척도(R1-B)를 거쳐 새 리포트 발급
+  const finish = (d: ProfileRow) => {
+    if (clarityItems.length === 0) {
+      void saveAndDone(d)
+      return
+    }
+    setFinalDraft(d)
+    setScreen('clarity')
+  }
+
+  const submitClarity = async () => {
+    const d = finalDraft ?? draft
+    if (supabase && clarityItems.length > 0) {
+      // 전원에게 표시하되 연구 동의 여부를 플래그로 분리 저장
+      await supabase.from('clarity_responses').insert(
+        clarityItems.map((item) => ({
+          user_id: userId,
+          item_id: item.id,
+          season_label: currentLabel,
+          score: clarityScores[item.id],
+          research_ok: profile.research_consent ?? false,
+        })),
+      )
+    }
+    await saveAndDone(d)
   }
 
   const wrap = (content: React.ReactNode) => (
@@ -303,6 +338,49 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
           className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
         >
           {changed.size > 0 ? '업데이트 끝, 다음' : '변동 없어요, 다음'}
+        </button>
+      </div>,
+    )
+  }
+
+  // R1-B: 진로 명확성 단축 척도 (새 리포트 발급 직전, 10초)
+  if (screen === 'clarity') {
+    const allAnswered = clarityItems.every((item) => clarityScores[item.id] !== undefined)
+    return wrap(
+      <div>
+        <p className="text-xs text-gray-400">10초면 끝 — 연구 동의자의 응답만 익명 통계로 사용</p>
+        <h1 className="mt-2 text-xl font-bold text-gray-900">요즘 진로에 대한 느낌은 어때요?</h1>
+        <div className="mt-5 flex flex-col gap-4">
+          {clarityItems.map((item) => (
+            <div key={item.id} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+              <p className="text-sm font-medium text-gray-900">{item.question}</p>
+              <div className="mt-3 flex justify-between">
+                {CLARITY_EMOJIS.map((emoji, i) => {
+                  const score = i + 1
+                  const on = clarityScores[item.id] === score
+                  return (
+                    <button
+                      key={score}
+                      onClick={() => setClarityScores((prev) => ({ ...prev, [item.id]: score }))}
+                      aria-label={`${score}점`}
+                      className={`h-12 w-12 rounded-full text-2xl transition-transform ${
+                        on ? 'scale-110 bg-blue-100 ring-2 ring-blue-500' : 'bg-gray-50 active:bg-gray-100'
+                      }`}
+                    >
+                      {emoji}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+        <button
+          onClick={submitClarity}
+          disabled={!allAnswered}
+          className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700 disabled:bg-gray-200 disabled:text-gray-400"
+        >
+          완료 — 새 리포트 받기
         </button>
       </div>,
     )
