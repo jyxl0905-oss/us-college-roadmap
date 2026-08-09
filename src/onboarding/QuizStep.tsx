@@ -76,12 +76,13 @@ export default function QuizStep({ onDone }: QuizStepProps) {
   }
 
   if (phase === 'result') {
+    // §1-A 확정 코멘트 (사용자 제공 — 수정 금지)
     const comment =
       correctCount >= 4
-        ? '감이 좋은데요? 리포트에서 디테일을 더 채워봐요.'
+        ? '이미 기본기가 탄탄함 — 이제 실행이 관건'
         : correctCount >= 2
-          ? '절반쯤 알고 있네요 — 나머지는 리포트가 채워줄 거예요.'
-          : '지금 몰라도 돼요 — 이 툴이 알려주는 게 바로 그거니까요.'
+          ? '감은 있음 — 헷갈린 개념은 용어집에서 바로 확인 가능'
+          : '지금 몰라도 됨 — 이 툴이 알려주는 게 바로 이런 것들이니까'
     return (
       <div className="mt-8 text-center">
         <p className="text-4xl">{correctCount >= 4 ? '🏆' : correctCount >= 2 ? '👍' : '🌱'}</p>
