@@ -120,6 +120,26 @@ export default function ComparePage({ profile }: ComparePageProps) {
         ]
       : []),
     {
+      // F3 데이터 연동: 마감 유형·시기 요약
+      label: '지원 마감',
+      render: (s) => {
+        const parts = [
+          s.ed_offered && `ED ${s.ed_timing ?? '?'}`,
+          s.rea_offered && `REA ${s.ea_timing ?? '?'}`,
+          s.ea_offered && `EA ${s.ea_timing ?? '?'}`,
+          s.ed2_offered && `ED II ${s.ed2_timing ?? '?'}`,
+          s.rd_timing && `RD ${s.rd_timing}`,
+        ].filter(Boolean)
+        return parts.length > 0 ? (
+          <span className="block max-w-40 whitespace-normal text-xs leading-relaxed">
+            {parts.join(' · ')}
+          </span>
+        ) : (
+          <span className="text-gray-400">미공개</span>
+        )
+      },
+    },
+    {
       label: '이 학교가 보는 것',
       render: (s) =>
         s.what_they_value && s.what_they_value !== 'PLACEHOLDER' ? (
