@@ -332,11 +332,21 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
       {/* 5. 목표 학교 */}
       {schools.length > 0 && (
         <div className="mt-5">
-          <div className="flex items-baseline justify-between">
+          <div className="flex items-baseline justify-between gap-3">
             <h2 className="font-semibold text-gray-900">목표 학교</h2>
-            <button onClick={() => navigate('/schools')} className="no-print text-sm text-blue-600">
-              대학 둘러보기 →
-            </button>
+            <div className="no-print flex gap-3 text-sm">
+              {schools.length >= 2 && (
+                <button
+                  onClick={() => navigate(`/compare?ids=${schools.slice(0, 3).map((s) => s.id).join(',')}`)}
+                  className="text-blue-600"
+                >
+                  비교하기
+                </button>
+              )}
+              <button onClick={() => navigate('/schools')} className="text-blue-600">
+                둘러보기 →
+              </button>
+            </div>
           </div>
           <div className="mt-3">
             <SchoolCards

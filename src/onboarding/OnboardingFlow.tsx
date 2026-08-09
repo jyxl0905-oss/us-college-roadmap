@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { OnboardingAnswers, School, Tier } from '../lib/types'
 import { emptyAnswers } from '../lib/types'
-import { readPrefillSchoolId, clearPrefill } from '../browse/prefill'
+import { readPrefillSchoolIds, clearPrefill } from '../browse/prefill'
 import { majorsByTrack } from '../data/majors'
 import schoolsData from '../data/schools.seed.json'
 import { tierLabels } from './labels'
@@ -80,10 +80,11 @@ function loadDraft(): { answers: OnboardingAnswers; stepIndex: number } | null {
   }
 }
 
-// F1: 학교 상세 CTA에서 넘어온 경우 Q6(목표 학교)를 미리 채워줌
+// F1·F2: 학교 상세·비교 CTA에서 넘어온 경우 Q6(목표 학교)를 미리 채워줌
 function initialAnswers(): OnboardingAnswers {
-  const prefillId = readPrefillSchoolId()
-  if (prefillId) return { ...emptyAnswers, targetMode: 'schools', targetSchoolIds: [prefillId] }
+  const prefillIds = readPrefillSchoolIds()
+  if (prefillIds.length > 0)
+    return { ...emptyAnswers, targetMode: 'schools', targetSchoolIds: prefillIds }
   return emptyAnswers
 }
 

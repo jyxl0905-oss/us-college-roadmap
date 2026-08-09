@@ -21,6 +21,12 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
   const [testPolicy, setTestPolicy] = useState<'all' | 'test-required' | 'test-optional' | 'test-free'>('all')
   const [region, setRegion] = useState<'all' | Region>('all')
   const [directAdmitMine, setDirectAdmitMine] = useState(false)
+  const [compareIds, setCompareIds] = useState<number[]>([]) // F2: 최대 3개
+
+  const toggleCompare = (id: number) =>
+    setCompareIds((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : prev.length >= 3 ? prev : [...prev, id],
+    )
 
   useEffect(() => {
     if (!supabase) {
@@ -62,7 +68,7 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
 
   return (
     <div className="min-h-dvh bg-gray-50">
-      <div className="mx-auto max-w-md px-5 py-6 pb-16">
+      <div className={`mx-auto max-w-md px-5 py-6 ${compareIds.length > 0 ? 'pb-28' : 'pb-16'}`}>
         <div className="flex items-center gap-3">
           <button onClick={() => navigate('/')} aria-label="홈으로" className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
             ←
@@ -130,9 +136,26 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
                   <button
                     key={s.id}
                     onClick={() => navigate(`/schools/${slugify(s.name)}`)}
-                    className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 text-left active:bg-gray-50"
+                    className="relative w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 text-left active:bg-gray-50"
                   >
-                    <p className="font-semibold text-gray-900">{s.name}</p>
+                    {/* F2: 비교 선택 (카드 이동과 분리) */}
+                    <span
+                      role="checkbox"
+                      aria-checked={compareIds.includes(s.id)}
+                      aria-label={`${s.name} 비교에 추가`}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        toggleCompare(s.id)
+                      }}
+                      className={`absolute right-3 top-3 rounded-full border-2 px-2.5 py-1 text-xs font-medium ${
+                        compareIds.includes(s.id)
+                          ? 'border-blue-600 bg-blue-600 text-white'
+                          : 'border-gray-200 bg-white text-gray-400'
+                      }`}
+                    >
+                      {compareIds.includes(s.id) ? '✓ 비교' : '비교'}
+                    </span>
+                    <p className="pr-16 font-semibold text-gray-900">{s.name}</p>
                     <p className="text-sm text-gray-500">{s.name_ko}</p>
                     <span className="mt-2 flex flex-wrap gap-1.5 text-xs">
                       <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
@@ -167,6 +190,24 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
           <p className="mt-10 text-center text-sm text-gray-400">조건에 맞는 학교가 없어요.</p>
         )}
       </div>
+
+      {/* F2: 비교하기 바 */}
+      {compareIds.length > 0 && (
+        <div className="fixed inset-x-0 bottom-0 z-20 border-t border-gray-200 bg-white/95 px-5 py-3 backdrop-blur">
+          <div className="mx-auto flex max-w-md items-center gap-3">
+            <button onClick={() => setCompareIds([])} className="shrink-0 text-sm text-gray-400 underline">
+              선택 해제
+            </button>
+            <button
+              onClick={() => navigate(`/compare?ids=${compareIds.join(',')}`)}
+              disabled={compareIds.length < 2}
+              className="flex-1 rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700 disabled:bg-gray-300"
+            >
+              비교하기 ({compareIds.length}/3){compareIds.length < 2 && ' — 2개 이상 골라주세요'}
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

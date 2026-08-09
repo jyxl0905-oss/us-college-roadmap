@@ -4,7 +4,7 @@ import { supabase } from '../lib/supabase'
 import { navigate, slugify } from '../lib/router'
 import { majorLabel } from '../data/majors'
 import { saveProfile, type ProfileRow } from '../lib/profile'
-import { setPrefillSchoolId } from './prefill'
+import { setPrefillSchoolIds } from './prefill'
 import schoolsSeed from '../data/schools.seed.json'
 
 const tierTitles: Record<Tier, string> = { 1: 'Top 20', 2: '21–40위', 3: '41–60위' }
@@ -71,7 +71,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
     if (profile) {
       navigate(`/#school-${s.id}`) // 내 리포트의 해당 학교 카드로
     } else {
-      setPrefillSchoolId(s.id)
+      setPrefillSchoolIds([s.id])
       navigate('/')
     }
   }
@@ -198,7 +198,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
       </div>
 
       {/* 하단 고정 전환 CTA */}
-      <div className="fixed inset-x-0 bottom-0 border-t border-gray-200 bg-white/95 px-5 py-3 backdrop-blur">
+      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-gray-200 bg-white/95 px-5 py-3 backdrop-blur">
         <button
           onClick={cta}
           className="mx-auto block w-full max-w-md rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"

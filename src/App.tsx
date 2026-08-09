@@ -14,8 +14,9 @@ import RolloverGate from './RolloverGate'
 import GuideView from './report/GuideView'
 import SchoolsListPage from './browse/SchoolsListPage'
 import SchoolDetailPage from './browse/SchoolDetailPage'
+import ComparePage from './browse/ComparePage'
 import { usePath, navigate } from './lib/router'
-import { readPrefillSchoolId } from './browse/prefill'
+import { readPrefillSchoolIds } from './browse/prefill'
 import { logEvent } from './lib/analytics'
 
 const PENDING_KEY = 'pending_answers' // 매직 링크로 나갔다 돌아와도 온보딩 답변 유지
@@ -102,6 +103,10 @@ export default function App() {
   // F1: 대학 둘러보기 — 로그인 여부와 무관하게 고유 URL로 접근 가능
   if (path === '/schools' || path === '/schools/') {
     return <SchoolsListPage profile={profile} />
+  }
+  // F2: 학교 비교 (?ids=1,2,3)
+  if (path === '/compare' || path === '/compare/') {
+    return <ComparePage profile={profile} />
   }
   if (path.startsWith('/schools/')) {
     return (
@@ -206,7 +211,7 @@ export default function App() {
     )
   }
   // F1: 홈 이원화 — 학교 상세 CTA에서 프리필을 들고 돌아온 경우엔 바로 온보딩으로
-  if (phase === 'home' && readPrefillSchoolId() === null) {
+  if (phase === 'home' && readPrefillSchoolIds().length === 0) {
     return (
       <Screen>
         <div className="py-10 text-center">
