@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { OnboardingAnswers, School, Tier } from '../lib/types'
 import { emptyAnswers } from '../lib/types'
+import { readPrefillSchoolId, clearPrefill } from '../browse/prefill'
 import { majorsByTrack } from '../data/majors'
 import schoolsData from '../data/schools.seed.json'
 import { tierLabels } from './labels'
@@ -79,8 +80,15 @@ function loadDraft(): { answers: OnboardingAnswers; stepIndex: number } | null {
   }
 }
 
+// F1: 학교 상세 CTA에서 넘어온 경우 Q6(목표 학교)를 미리 채워줌
+function initialAnswers(): OnboardingAnswers {
+  const prefillId = readPrefillSchoolId()
+  if (prefillId) return { ...emptyAnswers, targetMode: 'schools', targetSchoolIds: [prefillId] }
+  return emptyAnswers
+}
+
 export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
-  const [answers, setAnswers] = useState<OnboardingAnswers>(emptyAnswers)
+  const [answers, setAnswers] = useState<OnboardingAnswers>(initialAnswers)
   const [stepIndex, setStepIndex] = useState(0)
   // R1-C-6: 이탈 복구 — 진행하던 초안이 있으면 이어서 하기 제안
   const [resumeDraft, setResumeDraft] = useState(loadDraft)
@@ -106,11 +114,12 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
   const goNext = () => setStepIndex((i) => i + 1)
   const restart = () => {
     localStorage.removeItem(DRAFT_KEY)
-    setAnswers(emptyAnswers)
+    setAnswers(initialAnswers())
     setStepIndex(0)
   }
   const complete = () => {
     localStorage.removeItem(DRAFT_KEY)
+    clearPrefill()
     onComplete?.(answers)
   }
 
@@ -291,7 +300,14 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
               { value: 'undecided', label: '아직 미정이에요' },
             ]}
             selected={answers.targetMode}
-            onSelect={(v) => answer({ targetMode: v, targetSchoolIds: [], targetTier: null })}
+            onSelect={(v) =>
+              // 'schools' 선택 시 기존 선택(둘러보기 프리필 포함)은 유지
+              answer({
+                targetMode: v,
+                targetSchoolIds: v === 'schools' ? answers.targetSchoolIds : [],
+                targetTier: null,
+              })
+            }
           />
         )
       case 'targetSchools':

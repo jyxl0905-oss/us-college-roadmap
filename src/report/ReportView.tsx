@@ -15,6 +15,7 @@ import {
 } from '../lib/score'
 import { downloadDocx } from '../lib/report-doc'
 import { logEvent } from '../lib/analytics'
+import { navigate } from '../lib/router'
 import { majorLabel } from '../data/majors'
 import { tierLabels } from '../onboarding/labels'
 import RadarChart from './RadarChart'
@@ -67,6 +68,15 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
   useEffect(() => {
     logEvent(userId, 'report_view')
   }, [userId])
+
+  // F1: 학교 상세 CTA(/#school-{id})로 들어오면 해당 카드로 스크롤
+  useEffect(() => {
+    if (loading) return
+    const hash = window.location.hash
+    if (!hash.startsWith('#school-')) return
+    document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    window.history.replaceState({}, '', window.location.pathname)
+  }, [loading])
 
   useEffect(() => {
     if (!supabase) return
@@ -322,7 +332,12 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
       {/* 5. 목표 학교 */}
       {schools.length > 0 && (
         <div className="mt-5">
-          <h2 className="font-semibold text-gray-900">목표 학교</h2>
+          <div className="flex items-baseline justify-between">
+            <h2 className="font-semibold text-gray-900">목표 학교</h2>
+            <button onClick={() => navigate('/schools')} className="no-print text-sm text-blue-600">
+              대학 둘러보기 →
+            </button>
+          </div>
           <div className="mt-3">
             <SchoolCards
               schools={schools}

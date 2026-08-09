@@ -1,0 +1,172 @@
+import { useEffect, useMemo, useState } from 'react'
+import type { School, Tier } from '../lib/types'
+import { supabase } from '../lib/supabase'
+import { navigate, slugify } from '../lib/router'
+import { regionLabels, schoolRegion, type Region } from './region'
+import type { ProfileRow } from '../lib/profile'
+import schoolsSeed from '../data/schools.seed.json'
+
+const tierTitles: Record<Tier, string> = { 1: 'Top 20', 2: '21–40위', 3: '41–60위' }
+
+interface SchoolsListPageProps {
+  profile: ProfileRow | null // 로그인 시 전공 direct-admit 필터 노출
+}
+
+// F1: 대학 둘러보기 리스트 — 비로그인 전체 접근
+export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
+  const [schools, setSchools] = useState<School[]>([])
+  const [query, setQuery] = useState('')
+  const [sortByIntl, setSortByIntl] = useState(false)
+  const [needBlindOnly, setNeedBlindOnly] = useState(false)
+  const [testPolicy, setTestPolicy] = useState<'all' | 'test-required' | 'test-optional' | 'test-free'>('all')
+  const [region, setRegion] = useState<'all' | Region>('all')
+  const [directAdmitMine, setDirectAdmitMine] = useState(false)
+
+  useEffect(() => {
+    if (!supabase) {
+      setSchools(schoolsSeed as School[])
+      return
+    }
+    supabase
+      .from('schools')
+      .select('*')
+      .then(({ data }) => setSchools((data ?? schoolsSeed) as School[]))
+  }, [])
+
+  const myMajor = profile?.major_primary && profile.major_primary !== 'undecided' ? profile.major_primary : null
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    return schools.filter((s) => {
+      if (q && !s.name.toLowerCase().includes(q) && !s.name_ko.toLowerCase().includes(q)) return false
+      if (needBlindOnly && s.need_blind_intl !== true) return false
+      if (testPolicy !== 'all' && s.test_policy !== testPolicy) return false
+      if (region !== 'all' && schoolRegion(s) !== region) return false
+      if (directAdmitMine && myMajor && !s.direct_admit_majors.includes(myMajor)) return false
+      return true
+    })
+  }, [schools, query, needBlindOnly, testPolicy, region, directAdmitMine, myMajor])
+
+  const groups: Tier[] = [1, 2, 3]
+  const sortGroup = (list: School[]) =>
+    [...list].sort((a, b) =>
+      sortByIntl
+        ? (b.intl_accept_rate ?? -1) - (a.intl_accept_rate ?? -1)
+        : a.usnews_rank - b.usnews_rank,
+    )
+
+  const chip = (on: boolean) =>
+    `shrink-0 rounded-full border-2 px-3 py-1.5 text-sm font-medium transition-colors ${
+      on ? 'border-blue-600 bg-blue-50 text-blue-700' : 'border-gray-200 bg-white text-gray-600'
+    }`
+
+  return (
+    <div className="min-h-dvh bg-gray-50">
+      <div className="mx-auto max-w-md px-5 py-6 pb-16">
+        <div className="flex items-center gap-3">
+          <button onClick={() => navigate('/')} aria-label="홈으로" className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
+            ←
+          </button>
+          <h1 className="text-xl font-bold text-gray-900">대학 둘러보기</h1>
+        </div>
+
+        <input
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="학교 이름 검색 (예: NYU, 하버드)"
+          className="mt-4 w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-base focus:border-blue-600 focus:outline-none"
+        />
+
+        {/* 필터 칩 */}
+        <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+          <button onClick={() => setSortByIntl(!sortByIntl)} className={chip(sortByIntl)}>
+            국제학생 합격률순
+          </button>
+          <button onClick={() => setNeedBlindOnly(!needBlindOnly)} className={chip(needBlindOnly)}>
+            Need-blind만
+          </button>
+          {myMajor && (
+            <button onClick={() => setDirectAdmitMine(!directAdmitMine)} className={chip(directAdmitMine)}>
+              내 전공 직접 선발
+            </button>
+          )}
+        </div>
+        <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
+          <select
+            value={testPolicy}
+            onChange={(e) => setTestPolicy(e.target.value as typeof testPolicy)}
+            className="shrink-0 rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-600"
+          >
+            <option value="all">시험 정책 전체</option>
+            <option value="test-required">SAT/ACT 필수</option>
+            <option value="test-optional">Test-optional</option>
+            <option value="test-free">시험 미반영</option>
+          </select>
+          <select
+            value={region}
+            onChange={(e) => setRegion(e.target.value as typeof region)}
+            className="shrink-0 rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-600"
+          >
+            <option value="all">지역 전체</option>
+            {(Object.keys(regionLabels) as Region[]).map((r) => (
+              <option key={r} value={r}>
+                {regionLabels[r]}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {schools.length === 0 && <p className="mt-10 text-center text-gray-400">불러오는 중…</p>}
+
+        {groups.map((tier) => {
+          const list = sortGroup(filtered.filter((s) => s.tier === tier))
+          if (list.length === 0) return null
+          return (
+            <div key={tier} className="mt-6">
+              <h2 className="font-semibold text-gray-900">{tierTitles[tier]}</h2>
+              <div className="mt-3 flex flex-col gap-2.5">
+                {list.map((s) => (
+                  <button
+                    key={s.id}
+                    onClick={() => navigate(`/schools/${slugify(s.name)}`)}
+                    className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 text-left active:bg-gray-50"
+                  >
+                    <p className="font-semibold text-gray-900">{s.name}</p>
+                    <p className="text-sm text-gray-500">{s.name_ko}</p>
+                    <span className="mt-2 flex flex-wrap gap-1.5 text-xs">
+                      <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
+                        {tierTitles[s.tier]}
+                      </span>
+                      {s.intl_accept_rate !== null && (
+                        <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
+                          국제 합격률 {s.intl_accept_rate}%
+                        </span>
+                      )}
+                      {s.need_blind_intl === true && (
+                        <span className="rounded-full bg-green-100 px-2 py-0.5 text-green-700">Need-blind</span>
+                      )}
+                      {s.test_policy === 'test-required' && (
+                        <span className="rounded-full bg-red-50 px-2 py-0.5 text-red-700">SAT/ACT 필수</span>
+                      )}
+                      {s.test_policy === 'test-optional' && (
+                        <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">Test-optional</span>
+                      )}
+                      {s.test_policy === 'test-free' && (
+                        <span className="rounded-full bg-blue-50 px-2 py-0.5 text-blue-700">시험 미반영</span>
+                      )}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )
+        })}
+
+        {schools.length > 0 && filtered.length === 0 && (
+          <p className="mt-10 text-center text-sm text-gray-400">조건에 맞는 학교가 없어요.</p>
+        )}
+      </div>
+    </div>
+  )
+}

@@ -23,7 +23,11 @@ export default function SchoolCards({ schools, satBand, majorPrimary }: SchoolCa
           majorPrimary !== null && s.direct_admit_majors.includes(majorPrimary)
 
         return (
-          <div key={s.id} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+          <div
+            key={s.id}
+            id={`school-${s.id}`} // F1: 상세 페이지 CTA에서 /#school-{id}로 이동해 옴
+            className="scroll-mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5"
+          >
             <div className="flex items-baseline justify-between gap-2">
               <p className="font-semibold text-gray-900">{s.name}</p>
               <p className="shrink-0 text-xs text-gray-400">#{s.usnews_rank}</p>

@@ -12,6 +12,10 @@ import PreviewReport from './report/PreviewReport'
 import CheckinFlow from './checkin/CheckinFlow'
 import RolloverGate from './RolloverGate'
 import GuideView from './report/GuideView'
+import SchoolsListPage from './browse/SchoolsListPage'
+import SchoolDetailPage from './browse/SchoolDetailPage'
+import { usePath, navigate } from './lib/router'
+import { readPrefillSchoolId } from './browse/prefill'
 import { logEvent } from './lib/analytics'
 
 const PENDING_KEY = 'pending_answers' // 매직 링크로 나갔다 돌아와도 온보딩 답변 유지
@@ -29,7 +33,7 @@ function Screen({ children }: { children: React.ReactNode }) {
   )
 }
 
-type GuestPhase = 'onboarding' | 'preview' | 'email'
+type GuestPhase = 'home' | 'onboarding' | 'preview' | 'email'
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null)
@@ -38,7 +42,8 @@ export default function App() {
   const [profileLoading, setProfileLoading] = useState(false)
   const [pendingAnswers, setPendingAnswers] = useState<OnboardingAnswers | null>(loadPending)
   // 답변을 이미 마친 상태(예: 만료된 링크로 되돌아옴)면 온보딩·프리뷰를 건너뛰고 이메일로
-  const [phase, setPhase] = useState<GuestPhase>(() => (loadPending() ? 'email' : 'onboarding'))
+  const [phase, setPhase] = useState<GuestPhase>(() => (loadPending() ? 'email' : 'home'))
+  const path = usePath() // F1: /schools 라우팅
   // 마지막 리포트 시즌 — 현재 시즌과 다르면 체크인 플로우부터
   // undefined = 아직 조회 전 (조회가 끝나기 전에 리포트를 먼저 그리면 안 됨)
   const [lastSeason, setLastSeason] = useState<string | null | undefined>(undefined)
@@ -86,9 +91,6 @@ export default function App() {
       })
   }, [session, profile])
 
-  // .env 미설정 → 로컬 전용 모드 (온보딩 체험만)
-  if (!isSupabaseConfigured) return <OnboardingFlow />
-
   if (sessionLoading || profileLoading || (session && profile && lastSeason === undefined)) {
     return (
       <Screen>
@@ -96,6 +98,24 @@ export default function App() {
       </Screen>
     )
   }
+
+  // F1: 대학 둘러보기 — 로그인 여부와 무관하게 고유 URL로 접근 가능
+  if (path === '/schools' || path === '/schools/') {
+    return <SchoolsListPage profile={profile} />
+  }
+  if (path.startsWith('/schools/')) {
+    return (
+      <SchoolDetailPage
+        slug={path.slice('/schools/'.length).replace(/\/+$/, '')}
+        userId={session?.user.id ?? null}
+        profile={profile}
+        onProfileChange={setProfile}
+      />
+    )
+  }
+
+  // .env 미설정 → 로컬 전용 모드 (온보딩 체험만)
+  if (!isSupabaseConfigured) return <OnboardingFlow />
 
   // 로그인 완료 + 프로필 있음 → (새 시즌이면 체크인 먼저) 시즌 리포트
   if (session && profile) {
@@ -182,6 +202,37 @@ export default function App() {
     return (
       <Screen>
         <PreviewReport answers={pendingAnswers} onContinue={() => setPhase('email')} />
+      </Screen>
+    )
+  }
+  // F1: 홈 이원화 — 학교 상세 CTA에서 프리필을 들고 돌아온 경우엔 바로 온보딩으로
+  if (phase === 'home' && readPrefillSchoolId() === null) {
+    return (
+      <Screen>
+        <div className="py-10 text-center">
+          <p className="text-5xl">🎓</p>
+          <h1 className="mt-5 text-2xl font-bold text-gray-900">미국 대학 입시 로드맵</h1>
+          <p className="mt-3 text-sm leading-relaxed text-gray-500">
+            학년·전공·목표 학교에 맞는 시즌별 체크리스트로
+            <br />
+            4년을 관리하는 툴이에요.
+          </p>
+          <button
+            onClick={() => setPhase('onboarding')}
+            className="mt-8 w-full rounded-xl bg-blue-600 px-4 py-4 font-semibold text-white active:bg-blue-700"
+          >
+            내 리포트 받기
+          </button>
+          <button
+            onClick={() => navigate('/schools')}
+            className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-4 font-semibold text-gray-700 active:bg-gray-50"
+          >
+            대학 둘러보기
+          </button>
+          <button onClick={() => setPhase('email')} className="mt-6 text-sm text-gray-400 underline">
+            이미 가입했어요 — 이메일로 로그인
+          </button>
+        </div>
       </Screen>
     )
   }
