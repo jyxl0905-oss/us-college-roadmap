@@ -3,6 +3,7 @@ import type { School, Tier } from '../lib/types'
 import { supabase } from '../lib/supabase'
 import { navigate, slugify } from '../lib/router'
 import { regionLabels, schoolRegion, type Region } from './region'
+import SchoolLogo from './SchoolLogo'
 import type { ProfileRow } from '../lib/profile'
 import schoolsSeed from '../data/schools.seed.json'
 
@@ -155,8 +156,13 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
                     >
                       {compareIds.includes(s.id) ? '✓ 비교' : '비교'}
                     </span>
-                    <p className="pr-16 font-semibold text-gray-900">{s.name}</p>
-                    <p className="text-sm text-gray-500">{s.name_ko}</p>
+                    <span className="flex items-center gap-3 pr-16">
+                      <SchoolLogo schoolId={s.id} name={s.name} size={36} />
+                      <span className="min-w-0">
+                        <p className="font-semibold text-gray-900">{s.name}</p>
+                        <p className="text-sm text-gray-500">{s.name_ko}</p>
+                      </span>
+                    </span>
                     <span className="mt-2 flex flex-wrap gap-1.5 text-xs">
                       <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
                         {tierTitles[s.tier]}

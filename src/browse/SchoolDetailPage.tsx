@@ -5,6 +5,7 @@ import { navigate, slugify } from '../lib/router'
 import { majorLabel } from '../data/majors'
 import { saveProfile, type ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
+import SchoolLogo from './SchoolLogo'
 import schoolsSeed from '../data/schools.seed.json'
 
 const tierTitles: Record<Tier, string> = { 1: 'Top 20', 2: '21–40위', 3: '41–60위' }
@@ -88,8 +89,13 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
           </span>
         </div>
 
-        <h1 className="mt-3 text-2xl font-bold text-gray-900">{s.name}</h1>
-        <p className="text-gray-500">{s.name_ko}</p>
+        <div className="mt-3 flex items-center gap-3">
+          <SchoolLogo schoolId={s.id} name={s.name} size={52} />
+          <div className="min-w-0">
+            <h1 className="text-2xl font-bold text-gray-900">{s.name}</h1>
+            <p className="text-gray-500">{s.name_ko}</p>
+          </div>
+        </div>
 
         {/* 지도 — 지연 로딩 임베드 */}
         <div className="mt-4 overflow-hidden rounded-xl border-2 border-gray-200">

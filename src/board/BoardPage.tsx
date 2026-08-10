@@ -5,6 +5,7 @@ import { navigate } from '../lib/router'
 import { logEvent } from '../lib/analytics'
 import type { ProfileRow } from '../lib/profile'
 import { timingSortKey } from '../deadlines/DeadlinesPage'
+import SchoolLogo from '../browse/SchoolLogo'
 import {
   boardVisible, boardWarnings, offeredRounds, roundTiming, roundLabels, statusLabels,
   autoItems, c7Actions, c7Checkable, isFirstChoice, SUPP_ESSAY_TIP,
@@ -394,7 +395,10 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
                 }`}
               >
                 <div className="flex items-center justify-between gap-2">
-                  <p className="min-w-0 truncate font-semibold text-gray-900">{s.name}</p>
+                  <span className="flex min-w-0 items-center gap-2.5">
+                    <SchoolLogo schoolId={s.id} name={s.name} size={28} />
+                    <p className="min-w-0 truncate font-semibold text-gray-900">{s.name}</p>
+                  </span>
                   {first && (
                     <span className="shrink-0 rounded-full bg-blue-600 px-2 py-0.5 text-xs font-medium text-white">
                       1지망 준비

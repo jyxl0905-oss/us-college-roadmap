@@ -6,6 +6,7 @@ import { satBandMid } from '../lib/score'
 import { majorLabel } from '../data/majors'
 import type { ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
+import SchoolLogo from './SchoolLogo'
 import schoolsSeed from '../data/schools.seed.json'
 
 const tierTitles: Record<Tier, string> = { 1: 'Top 20', 2: '21–40위', 3: '41–60위' }
@@ -177,7 +178,8 @@ export default function ComparePage({ profile }: ComparePageProps) {
                 {schools.map((s) => (
                   <th key={s.id} className="min-w-36 border-b border-gray-200 px-3 py-3 text-left align-top">
                     <button onClick={() => navigate(`/schools/${slugify(s.name)}`)} className="text-left">
-                      <span className="block font-semibold leading-snug text-gray-900">{s.name}</span>
+                      <SchoolLogo schoolId={s.id} name={s.name} size={28} />
+                      <span className="mt-1 block font-semibold leading-snug text-gray-900">{s.name}</span>
                       <span className="mt-0.5 block text-xs font-normal text-gray-500">{s.name_ko}</span>
                     </button>
                   </th>
