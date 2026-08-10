@@ -23,3 +23,46 @@ update schools set c7_very_important = array['rigor','class_rank','gpa','extracu
 update schools set c7_very_important = array['rigor','gpa']::text[], c7_source_url = 'https://obp.umich.edu/wp-content/uploads/pubdata/cds/cds_2025-26_umaa.pdf' where id = 21;
 update schools set c7_very_important = array['rigor','class_rank','gpa','essay','recommendations','extracurricular','talent','character','volunteer_work']::text[], c7_source_url = 'https://drive.google.com/drive/folders/1TsZYMnJhOYuNfNYsaziNrbm9uJIqLS_u' where id = 22;
 update schools set c7_very_important = array['rigor','class_rank','gpa','standardized_tests','essay','recommendations','talent','character']::text[], c7_source_url = 'https://washu.edu/app/uploads/2026/06/2025-2026-WashU-CDS.pdf' where id = 23;
+
+-- 티어2·3 (21-60위, 40곳) — 공식 CDS만, 2026-08-10 검증·승인
+-- FSU(52)=사이트 다운으로 미확인 null, Virginia Tech(54)=아카이브 출처라 null (docs/c7-report.md)
+update schools set c7_very_important = array['rigor','gpa','standardized_tests','extracurricular','talent','character']::text[], c7_source_url = 'https://provost.emory.edu/planning-administration/_includes/documents/sections/institutional-data/emory-common-date-set-2025-2026.pdf' where id = 24;
+update schools set c7_very_important = array['rigor','class_rank','gpa','standardized_tests','essay','recommendations','talent','character']::text[], c7_source_url = 'https://georgetown.box.com/s/0r8akn4cbm52zjkll6i7uttlb9k36px2' where id = 25;
+update schools set c7_very_important = array['rigor','essay','recommendations','extracurricular','talent','character','state_residency']::text[], c7_source_url = 'https://oira.unc.edu/wp-content/uploads/sites/297/2026/06/CDS_UNCCH_2025-26_20260615.pdf' where id = 26;
+update schools set c7_very_important = array['rigor','class_rank','gpa','character','state_residency']::text[], c7_source_url = 'https://ira.virginia.edu/common-data-set/common-data-set-2025-2026' where id = 27;
+update schools set c7_very_important = array['rigor','gpa','essay','recommendations','character']::text[], c7_source_url = 'https://oir.usc.edu/wp-content/uploads/sites/3/2026/10/CDS_2025-26_FINAL.pdf' where id = 28;
+update schools set c7_very_important = array['rigor','gpa','essay']::text[], c7_source_url = 'https://ir.ucsd.edu/stats/undergrad/C3.pdf' where id = 29;
+update schools set c7_very_important = array['rigor','gpa','extracurricular','talent']::text[], c7_source_url = 'https://data-apps.ir.aa.ufl.edu/public/cds/CDS%202025-26_v7_07.15.2026.pdf' where id = 30;
+update schools set c7_very_important = '{}', c7_source_url = 'https://utexas.box.com/s/z5p8zzbr6yk4eluam3v3dt2wyaha3cja' where id = 31;
+update schools set c7_very_important = array['rigor','gpa','character','state_residency']::text[], c7_source_url = 'https://irp.gatech.edu/files/CDS/CDS_2025-2026_FINAL_R3_30MAR2026.pdf' where id = 32;
+update schools set c7_very_important = array['rigor','gpa','essay','recommendations','character']::text[], c7_source_url = 'https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL%20(no%20G).pdf' where id = 33;
+update schools set c7_very_important = array['rigor','gpa']::text[], c7_source_url = 'https://aggiedata.ucdavis.edu/sites/g/files/dgvnsk1841/files/media/documents/CDS_UCD_0.pdf' where id = 34;
+update schools set c7_very_important = array['rigor','gpa','essay','extracurricular','talent','volunteer_work','work_experience']::text[], c7_source_url = 'https://bpb-us-e2.wpmucdn.com/sites.uci.edu/dist/2/5478/files/2026/05/2025-26-CDS-PDF-Upload.pdf' where id = 35;
+update schools set c7_very_important = array['rigor','gpa']::text[], c7_source_url = 'https://www.bc.edu/content/dam/bc1/offices/irp/ir/cds/Boston_College_CDS_2024-2025_Final.pdf' where id = 36;
+update schools set c7_very_important = array['rigor','class_rank','gpa','essay','recommendations','character']::text[], c7_source_url = 'https://provost.tufts.edu/institutionalresearch/wp-content/uploads/sites/5/CDS_2025-2026.pdf' where id = 37;
+update schools set c7_very_important = array['rigor','gpa','extracurricular','talent','character','first_generation']::text[], c7_source_url = 'https://www.dmi.illinois.edu/stuenr/misc/cds_2025_2026.xlsx' where id = 38;
+update schools set c7_very_important = array['rigor','gpa']::text[], c7_source_url = 'https://uwmadison.box.com/s/ilx9kil11ninf8vwj1z87vumhuvpw4px' where id = 39;
+update schools set c7_very_important = array['gpa','essay']::text[], c7_source_url = 'https://drive.google.com/file/d/1FIkvY5dANho45ioG7-JHgO3IPH6-ui1W/view' where id = 40;
+update schools set c7_very_important = array['rigor','class_rank','gpa','standardized_tests']::text[], c7_source_url = 'https://irp.osu.edu/sites/default/files/documents/2026/03/CDS-2025-2026-OSU-Columbus-Campus.pdf' where id = 41;
+update schools set c7_very_important = array['rigor','gpa']::text[], c7_source_url = 'https://www.bu.edu/asir/files/2026/05/CDS-2025-2026-2.pdf' where id = 42;
+update schools set c7_very_important = array['rigor','gpa']::text[], c7_source_url = 'https://oirap.rutgers.edu/CDS/2023/New%20Brunswick%20CDS_2023-2024_final_V1.pdf' where id = 43;
+update schools set c7_very_important = array['rigor']::text[], c7_source_url = 'https://www.irpa.umd.edu/InstitutionalData/CommonDataSet/CDS_2025-2026.xlsx' where id = 44;
+update schools set c7_very_important = array['rigor','gpa','essay','state_residency']::text[], c7_source_url = 'https://uw-s3-cdn.s3.us-west-2.amazonaws.com/wp-content/uploads/sites/162/2026/02/27111247/CDS_2025-2026_Seattle.pdf' where id = 45;
+update schools set c7_very_important = array['rigor','gpa']::text[], c7_source_url = 'https://data.lehigh.edu/sites/data.lehigh.edu/files/4.6.2026_CDS_Finalized-Published_Definition%20Sheet%20Removed%20for%20Website%20Posting_0.pdf' where id = 46;
+update schools set c7_very_important = array['rigor','gpa','standardized_tests','recommendations']::text[], c7_source_url = 'https://uds.northeastern.edu/wp-content/uploads/2026/03/CDS-2024-25.pdf' where id = 47;
+update schools set c7_very_important = array['rigor','gpa','essay']::text[], c7_source_url = 'https://www.purdue.edu/idata/wp-content/uploads/2026/04/CDS-2025-2026.xlsx' where id = 48;
+update schools set c7_very_important = array['rigor','gpa']::text[], c7_source_url = 'http://oir.uga.edu/wp-content/uploads/UGA_CDS_2025-2026.pdf' where id = 49;
+update schools set c7_very_important = array['rigor','gpa','extracurricular','character']::text[], c7_source_url = 'https://www.rochester.edu/provost/wp-content/uploads/2026/06/CDS-2025-26-completed-for-web.pdf' where id = 50;
+update schools set c7_very_important = array['rigor','class_rank','gpa','extracurricular']::text[], c7_source_url = 'https://case.edu/ir/sites/default/files/2026-02/CDS%202025-26%20Adjusted%20Final.pdf' where id = 51;
+update schools set c7_very_important = null, c7_source_url = null where id = 52;
+update schools set c7_very_important = array['rigor','class_rank','gpa','extracurricular','talent']::text[], c7_source_url = 'https://abpa.tamu.edu/_files/_documents/common-data/cds-pdf-2025-2026.pdf' where id = 53;
+update schools set c7_very_important = null, c7_source_url = null where id = 54;
+update schools set c7_very_important = array['rigor','class_rank','gpa','essay','character']::text[], c7_source_url = 'https://prod.wp.cdn.aws.wfu.edu/sites/202/2026/06/CDS_2025-2026-PDF_Template_WFU.pdf' where id = 55;
+update schools set c7_very_important = array['rigor','class_rank','gpa','essay','recommendations','extracurricular','talent','character','state_residency','volunteer_work','work_experience']::text[], c7_source_url = 'https://www.wm.edu/offices/ir/university_data/cds/cds_2025-26_c1.pdf' where id = 56;
+update schools set c7_very_important = array['rigor','gpa','essay']::text[], c7_source_url = 'https://cie.ucmerced.edu/sites/g/files/ufvvjh616/f/page/documents/cds_2025-26_uc_merced.xlsx' where id = 57;
+update schools set c7_very_important = array['rigor','gpa','essay']::text[], c7_source_url = 'https://www.villanova.edu/content/dam/villanova/provost/decision_support/CDS-2025-2026-v3.pdf' where id = 58;
+update schools set c7_very_important = array['rigor','gpa']::text[], c7_source_url = 'https://irp.gwu.edu/sites/g/files/zaxdzs6056/files/2026-04/CDS-PDF-2025-2026.pdf' where id = 59;
+update schools set c7_very_important = array['gpa']::text[], c7_source_url = 'https://bpb-us-e1.wpmucdn.com/sites.psu.edu/dist/d/114442/files/2026/06/UniversityPark_CDS_2025_2026.pdf' where id = 60;
+update schools set c7_very_important = array['rigor','gpa','essay','extracurricular','talent','character','volunteer_work','work_experience']::text[], c7_source_url = 'https://www.scu.edu/media/offices/institutional-research/fampf/common-data-set/CDS-2024-2025---Final---Revised-01152026.pdf' where id = 61;
+update schools set c7_very_important = array['rigor','gpa','standardized_tests','essay']::text[], c7_source_url = 'https://www.stonybrook.edu/irpe/_media/Common_data_sets/CDS_2025-2026.xlsx' where id = 62;
+update schools set c7_very_important = array['rigor','class_rank','gpa']::text[], c7_source_url = 'https://idr.umn.edu/sites/idr.umn.edu/files/cds_2024_2025_tc.pdf' where id = 63;

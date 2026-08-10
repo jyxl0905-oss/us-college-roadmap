@@ -50,15 +50,25 @@ npm run dev
 
 ## 개발 진행 상황
 
-- [x] Phase 0: 리포지토리 초기화
-- [x] Phase 1: 스캐폴딩 + DB 스키마 + 온보딩 12문항 (로컬 상태)
-- [x] Phase 2: Supabase 연결 + 로그인 + 프로필/체크 저장
-- [x] Phase 3: 리포트 화면
-- [x] Phase 4: PDF/docx 내보내기 + 시즌 체크인
-- [x] Phase 5: 학년 롤오버 + 애널리틱스 + Vercel 배포
+- [x] Phase 0~5: 스캐폴딩 → 온보딩 → Supabase → 리포트 → 내보내기·체크인 → 롤오버·배포
+- [x] 콘텐츠: 백본 체크리스트 51 + 전공 오버레이 72 = 123개, 처방 47·어필 7·용어집 30·기본기 5 (전부 실콘텐츠)
+- [x] 연구 모듈(R1): 온보딩 OX 퀴즈 5문항·정보원 문항·연구 동의, 체크인 진로 명확성 척도 4문항 (전부 확정 실문항)
+- [x] 대학 둘러보기(/schools)·비교(/compare)·마감 캘린더(/deadlines)·지원 보드(/board)
 
-## 남은 작업 (콘텐츠)
+## 데이터 현황 (2026-08-10 기준)
 
-- checklist_items 30개 PLACEHOLDER → 실제 콘텐츠로 교체
-- schools 10개 → 톱60으로 확장 + 공식 출처(Common Data Set 등) 수치·source_url 채우기
+| 데이터 | 규모 | 출처·원칙 |
+|---|---|---|
+| schools 기본 데이터 | 63개교 (US News 2026 1~59위) | 공식 CDS·입학처, `source_url` 100% |
+| 마감 구조 (ED/ED2/EA/REA/RD + 시기 라벨) | 63/63 | 공식 입학처 페이지만, `deadlines_source_url` 100%, 검증일 기록 |
+| CDS C7 Very Important 요소 | 60/63 (Brown·FSU·Virginia Tech은 공식 원문 확인 불가로 null) | 각 대학 공식 CDS 문서만, `c7_source_url` 기록 |
+| 체크리스트 | 123개 (공통 51 + 전공별 72) | 편집 콘텐츠는 `is_guide`로 구분 |
+| 용어집·기본기·처방·어필 | 30 · 5 · 47 · 7 | 편집 콘텐츠 |
+
+확인 불가 항목은 그럴듯한 추정으로 채우지 않고 null("미공개")로 표기합니다.
+조사 기록: `docs/deadlines-top20-report.md`, `docs/c7-report.md`, `docs/schools-*.md`
+
+## 남은 작업
+
 - 매직 링크 이메일 한도(시간당 2통) — 사용자가 늘면 커스텀 SMTP(Resend 등 무료 티어) 연결 필요
+- 연 1회(여름) 데이터 갱신: 학교·마감·C7 (특히 FSU 사이트 복구 시 C7 재시도, Minnesota 2025-26판 갱신)

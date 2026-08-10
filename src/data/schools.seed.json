@@ -947,8 +947,15 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://apply.emory.edu/apply/first-year/plans-deadlines/index.html",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "standardized_tests",
+      "extracurricular",
+      "talent",
+      "character"
+    ],
+    "c7_source_url": "https://provost.emory.edu/planning-administration/_includes/documents/sections/institutional-data/emory-common-date-set-2025-2026.pdf"
   },
   {
     "id": 25,
@@ -982,8 +989,17 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://uadmissions.georgetown.edu/apply/first-year-applicants/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "class_rank",
+      "gpa",
+      "standardized_tests",
+      "essay",
+      "recommendations",
+      "talent",
+      "character"
+    ],
+    "c7_source_url": "https://georgetown.box.com/s/0r8akn4cbm52zjkll6i7uttlb9k36px2"
   },
   {
     "id": 26,
@@ -1015,8 +1031,16 @@
     "rd_timing": "1월 중순",
     "deadlines_source_url": "https://admissions.unc.edu/apply/types-of-applications/first-year/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "essay",
+      "recommendations",
+      "extracurricular",
+      "talent",
+      "character",
+      "state_residency"
+    ],
+    "c7_source_url": "https://oira.unc.edu/wp-content/uploads/sites/297/2026/06/CDS_UNCCH_2025-26_20260615.pdf"
   },
   {
     "id": 27,
@@ -1051,8 +1075,14 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://admission.virginia.edu/admission/deadlines-instructions",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "class_rank",
+      "gpa",
+      "character",
+      "state_residency"
+    ],
+    "c7_source_url": "https://ira.virginia.edu/common-data-set/common-data-set-2025-2026"
   },
   {
     "id": 28,
@@ -1087,8 +1117,14 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://admission.usc.edu/apply/first-year-students/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "essay",
+      "recommendations",
+      "character"
+    ],
+    "c7_source_url": "https://oir.usc.edu/wp-content/uploads/sites/3/2026/10/CDS_2025-26_FINAL.pdf"
   },
   {
     "id": 29,
@@ -1123,8 +1159,12 @@
     "rd_timing": "11월 말",
     "deadlines_source_url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/dates-and-deadlines.html",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "essay"
+    ],
+    "c7_source_url": "https://ir.ucsd.edu/stats/undergrad/C3.pdf"
   },
   {
     "id": 30,
@@ -1154,8 +1194,13 @@
     "rd_timing": "1월 중순",
     "deadlines_source_url": "https://admissions.ufl.edu/apply/freshman/deadlines",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "extracurricular",
+      "talent"
+    ],
+    "c7_source_url": "https://data-apps.ir.aa.ufl.edu/public/cds/CDS%202025-26_v7_07.15.2026.pdf"
   },
   {
     "id": 31,
@@ -1195,8 +1240,8 @@
     "rd_timing": "12월 초",
     "deadlines_source_url": "https://admissions.utexas.edu/apply/freshman/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [],
+    "c7_source_url": "https://utexas.box.com/s/z5p8zzbr6yk4eluam3v3dt2wyaha3cja"
   },
   {
     "id": 32,
@@ -1226,8 +1271,13 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://admission.gatech.edu/first-year/deadlines",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "character",
+      "state_residency"
+    ],
+    "c7_source_url": "https://irp.gatech.edu/files/CDS/CDS_2025-2026_FINAL_R3_30MAR2026.pdf"
   },
   {
     "id": 33,
@@ -1261,8 +1311,14 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://www.nyu.edu/admissions/undergraduate-admissions/how-to-apply/all-freshmen-applicants.html",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "essay",
+      "recommendations",
+      "character"
+    ],
+    "c7_source_url": "https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL%20(no%20G).pdf"
   },
   {
     "id": 34,
@@ -1300,8 +1356,11 @@
     "rd_timing": "11월 말",
     "deadlines_source_url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-freshman/dates-and-deadlines.html",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa"
+    ],
+    "c7_source_url": "https://aggiedata.ucdavis.edu/sites/g/files/dgvnsk1841/files/media/documents/CDS_UCD_0.pdf"
   },
   {
     "id": 35,
@@ -1341,8 +1400,16 @@
     "rd_timing": "11월 말",
     "deadlines_source_url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-freshman/dates-and-deadlines.html",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "essay",
+      "extracurricular",
+      "talent",
+      "volunteer_work",
+      "work_experience"
+    ],
+    "c7_source_url": "https://bpb-us-e2.wpmucdn.com/sites.uci.edu/dist/2/5478/files/2026/05/2025-26-CDS-PDF-Upload.pdf"
   },
   {
     "id": 36,
@@ -1375,8 +1442,11 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://www.bc.edu/bc-web/admission/apply/early-decision.html",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa"
+    ],
+    "c7_source_url": "https://www.bc.edu/content/dam/bc1/offices/irp/ir/cds/Boston_College_CDS_2024-2025_Final.pdf"
   },
   {
     "id": 37,
@@ -1409,8 +1479,15 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://admissions.tufts.edu/apply/applying-to-tufts/checklist-and-deadlines/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "class_rank",
+      "gpa",
+      "essay",
+      "recommendations",
+      "character"
+    ],
+    "c7_source_url": "https://provost.tufts.edu/institutionalresearch/wp-content/uploads/sites/5/CDS_2025-2026.pdf"
   },
   {
     "id": 38,
@@ -1449,8 +1526,15 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://www.admissions.illinois.edu/apply/freshman/dates",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "extracurricular",
+      "talent",
+      "character",
+      "first_generation"
+    ],
+    "c7_source_url": "https://www.dmi.illinois.edu/stuenr/misc/cds_2025_2026.xlsx"
   },
   {
     "id": 39,
@@ -1483,8 +1567,11 @@
     "rd_timing": "1월 중순",
     "deadlines_source_url": "https://admissions.wisc.edu/apply/freshman/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa"
+    ],
+    "c7_source_url": "https://uwmadison.box.com/s/ilx9kil11ninf8vwj1z87vumhuvpw4px"
   },
   {
     "id": 40,
@@ -1517,8 +1604,11 @@
     "rd_timing": "11월 말",
     "deadlines_source_url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-freshman/dates-and-deadlines.html",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "gpa",
+      "essay"
+    ],
+    "c7_source_url": "https://drive.google.com/file/d/1FIkvY5dANho45ioG7-JHgO3IPH6-ui1W/view"
   },
   {
     "id": 41,
@@ -1548,8 +1638,13 @@
     "rd_timing": "1월 중순",
     "deadlines_source_url": "https://undergrad.osu.edu/apply/freshmen-columbus/apply-step-by-step",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "class_rank",
+      "gpa",
+      "standardized_tests"
+    ],
+    "c7_source_url": "https://irp.osu.edu/sites/default/files/documents/2026/03/CDS-2025-2026-OSU-Columbus-Campus.pdf"
   },
   {
     "id": 42,
@@ -1585,8 +1680,11 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://www.bu.edu/admissions/apply/deadlines/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa"
+    ],
+    "c7_source_url": "https://www.bu.edu/asir/files/2026/05/CDS-2025-2026-2.pdf"
   },
   {
     "id": 43,
@@ -1622,8 +1720,11 @@
     "rd_timing": "12월 초",
     "deadlines_source_url": "https://admissions.rutgers.edu/apply/dates-deadlines/new-brunswick",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa"
+    ],
+    "c7_source_url": "https://oirap.rutgers.edu/CDS/2023/New%20Brunswick%20CDS_2023-2024_final_V1.pdf"
   },
   {
     "id": 44,
@@ -1660,8 +1761,10 @@
     "rd_timing": "1월 중순",
     "deadlines_source_url": "https://admissions.umd.edu/apply/application-deadlines",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor"
+    ],
+    "c7_source_url": "https://www.irpa.umd.edu/InstitutionalData/CommonDataSet/CDS_2025-2026.xlsx"
   },
   {
     "id": 45,
@@ -1698,8 +1801,13 @@
     "rd_timing": "11월 중순",
     "deadlines_source_url": "https://admit.washington.edu/apply/dates-deadlines/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "essay",
+      "state_residency"
+    ],
+    "c7_source_url": "https://uw-s3-cdn.s3.us-west-2.amazonaws.com/wp-content/uploads/sites/162/2026/02/27111247/CDS_2025-2026_Seattle.pdf"
   },
   {
     "id": 46,
@@ -1729,8 +1837,11 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://www2.lehigh.edu/admissions/apply",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa"
+    ],
+    "c7_source_url": "https://data.lehigh.edu/sites/data.lehigh.edu/files/4.6.2026_CDS_Finalized-Published_Definition%20Sheet%20Removed%20for%20Website%20Posting_0.pdf"
   },
   {
     "id": 47,
@@ -1760,8 +1871,13 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://admissions.northeastern.edu/application-information/admissions-deadlines-decisions/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "standardized_tests",
+      "recommendations"
+    ],
+    "c7_source_url": "https://uds.northeastern.edu/wp-content/uploads/2026/03/CDS-2024-25.pdf"
   },
   {
     "id": 48,
@@ -1801,8 +1917,12 @@
     "rd_timing": "1월 중순",
     "deadlines_source_url": "https://admissions.purdue.edu/deadlines/first-year-college-student/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "essay"
+    ],
+    "c7_source_url": "https://www.purdue.edu/idata/wp-content/uploads/2026/04/CDS-2025-2026.xlsx"
   },
   {
     "id": 49,
@@ -1832,8 +1952,11 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://admissions.uga.edu/admissions/deadlines/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa"
+    ],
+    "c7_source_url": "http://oir.uga.edu/wp-content/uploads/UGA_CDS_2025-2026.pdf"
   },
   {
     "id": 50,
@@ -1863,8 +1986,13 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://admissions.rochester.edu/applying/dates-and-deadlines/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "extracurricular",
+      "character"
+    ],
+    "c7_source_url": "https://www.rochester.edu/provost/wp-content/uploads/2026/06/CDS-2025-26-completed-for-web.pdf"
   },
   {
     "id": 51,
@@ -1894,8 +2022,13 @@
     "rd_timing": "1월 중순",
     "deadlines_source_url": "https://case.edu/admission/apply/first-year-applicants",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "class_rank",
+      "gpa",
+      "extracurricular"
+    ],
+    "c7_source_url": "https://case.edu/ir/sites/default/files/2026-02/CDS%202025-26%20Adjusted%20Final.pdf"
   },
   {
     "id": 52,
@@ -1959,8 +2092,14 @@
     "rd_timing": "12월 초",
     "deadlines_source_url": "https://admissions.tamu.edu/apply/freshman/index.html",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "class_rank",
+      "gpa",
+      "extracurricular",
+      "talent"
+    ],
+    "c7_source_url": "https://abpa.tamu.edu/_files/_documents/common-data/cds-pdf-2025-2026.pdf"
   },
   {
     "id": 54,
@@ -2031,8 +2170,14 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://admissions.wfu.edu/apply/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "class_rank",
+      "gpa",
+      "essay",
+      "character"
+    ],
+    "c7_source_url": "https://prod.wp.cdn.aws.wfu.edu/sites/202/2026/06/CDS_2025-2026-PDF_Template_WFU.pdf"
   },
   {
     "id": 56,
@@ -2062,8 +2207,20 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://www.wm.edu/admission/undergraduateadmission/how-to-apply/datesdeadlines/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "class_rank",
+      "gpa",
+      "essay",
+      "recommendations",
+      "extracurricular",
+      "talent",
+      "character",
+      "state_residency",
+      "volunteer_work",
+      "work_experience"
+    ],
+    "c7_source_url": "https://www.wm.edu/offices/ir/university_data/cds/cds_2025-26_c1.pdf"
   },
   {
     "id": 57,
@@ -2093,8 +2250,12 @@
     "rd_timing": "11월 말",
     "deadlines_source_url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/dates-and-deadlines.html",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "essay"
+    ],
+    "c7_source_url": "https://cie.ucmerced.edu/sites/g/files/ufvvjh616/f/page/documents/cds_2025-26_uc_merced.xlsx"
   },
   {
     "id": 58,
@@ -2128,8 +2289,12 @@
     "rd_timing": "1월 중순",
     "deadlines_source_url": "https://www.villanova.edu/university/undergraduate-admission/applying-to-villanova/dates-and-deadlines.html",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "essay"
+    ],
+    "c7_source_url": "https://www.villanova.edu/content/dam/villanova/provost/decision_support/CDS-2025-2026-v3.pdf"
   },
   {
     "id": 59,
@@ -2166,8 +2331,11 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://undergraduate.admissions.gwu.edu/first-year-applicants",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa"
+    ],
+    "c7_source_url": "https://irp.gwu.edu/sites/g/files/zaxdzs6056/files/2026-04/CDS-PDF-2025-2026.pdf"
   },
   {
     "id": 60,
@@ -2197,8 +2365,10 @@
     "rd_timing": "12월 초",
     "deadlines_source_url": "https://www.psu.edu/admission/undergraduate/how-to-apply/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "gpa"
+    ],
+    "c7_source_url": "https://bpb-us-e1.wpmucdn.com/sites.psu.edu/dist/d/114442/files/2026/06/UniversityPark_CDS_2025_2026.pdf"
   },
   {
     "id": 61,
@@ -2231,8 +2401,17 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://www.scu.edu/admission/undergraduate/first-year-students/fy-key-deadlines/",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "essay",
+      "extracurricular",
+      "talent",
+      "character",
+      "volunteer_work",
+      "work_experience"
+    ],
+    "c7_source_url": "https://www.scu.edu/media/offices/institutional-research/fampf/common-data-set/CDS-2024-2025---Final---Revised-01152026.pdf"
   },
   {
     "id": 62,
@@ -2265,8 +2444,13 @@
     "rd_timing": "1월 중순",
     "deadlines_source_url": "https://www.stonybrook.edu/undergraduate-admissions/apply/freshman",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "gpa",
+      "standardized_tests",
+      "essay"
+    ],
+    "c7_source_url": "https://www.stonybrook.edu/irpe/_media/Common_data_sets/CDS_2025-2026.xlsx"
   },
   {
     "id": 63,
@@ -2304,7 +2488,11 @@
     "rd_timing": "1월 초",
     "deadlines_source_url": "https://admissions.tc.umn.edu/apply/application-checklist/application-checklist-freshman",
     "deadlines_verified_at": "2026-08-10",
-    "c7_very_important": null,
-    "c7_source_url": null
+    "c7_very_important": [
+      "rigor",
+      "class_rank",
+      "gpa"
+    ],
+    "c7_source_url": "https://idr.umn.edu/sites/idr.umn.edu/files/cds_2024_2025_tc.pdf"
   }
 ]
