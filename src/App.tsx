@@ -44,8 +44,8 @@ export default function App() {
   const [profile, setProfile] = useState<ProfileRow | null>(null)
   const [profileLoading, setProfileLoading] = useState(false)
   const [pendingAnswers, setPendingAnswers] = useState<OnboardingAnswers | null>(loadPending)
-  // 답변을 이미 마친 상태(예: 만료된 링크로 되돌아옴)면 온보딩·프리뷰를 건너뛰고 이메일로
-  const [phase, setPhase] = useState<GuestPhase>(() => (loadPending() ? 'email' : 'home'))
+  // 항상 홈에서 시작 — 미인증 답변이 남아 있으면 홈에 '이어서 인증하기' 배너를 보여줌
+  const [phase, setPhase] = useState<GuestPhase>('home')
   const path = usePath() // F1: /schools 라우팅
   // 마지막 리포트 시즌 — 현재 시즌과 다르면 체크인 플로우부터
   // undefined = 아직 조회 전 (조회가 끝나기 전에 리포트를 먼저 그리면 안 됨)
@@ -241,6 +241,13 @@ export default function App() {
   if (phase === 'email') {
     return (
       <Screen>
+        <button
+          onClick={() => setPhase('home')}
+          aria-label="홈으로"
+          className="mb-2 rounded-lg p-2 text-gray-500 active:bg-gray-100"
+        >
+          ←
+        </button>
         <EmailStep />
       </Screen>
     )
@@ -264,21 +271,48 @@ export default function App() {
             <br />
             4년을 관리하는 툴이에요.
           </p>
-          <button
-            onClick={() => setPhase('onboarding')}
-            className="mt-8 w-full rounded-xl bg-blue-600 px-4 py-4 font-semibold text-white active:bg-blue-700"
-          >
-            내 리포트 받기
-          </button>
+          {pendingAnswers ? (
+            <>
+              {/* 미인증 답변이 남은 경우: 이어서 인증 유도 */}
+              <p className="mt-6 rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-900">
+                ✍️ 작성해 둔 답변이 있어요 — 이메일 인증만 하면 리포트가 나와요.
+              </p>
+              <button
+                onClick={() => setPhase('email')}
+                className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-4 font-semibold text-white active:bg-blue-700"
+              >
+                이어서 이메일 인증하기
+              </button>
+              <button
+                onClick={() => {
+                  localStorage.removeItem(PENDING_KEY)
+                  setPendingAnswers(null)
+                  setPhase('onboarding')
+                }}
+                className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 text-sm font-semibold text-gray-500 active:bg-gray-50"
+              >
+                답변 버리고 처음부터 하기
+              </button>
+            </>
+          ) : (
+            <button
+              onClick={() => setPhase('onboarding')}
+              className="mt-8 w-full rounded-xl bg-blue-600 px-4 py-4 font-semibold text-white active:bg-blue-700"
+            >
+              내 리포트 받기
+            </button>
+          )}
           <button
             onClick={() => navigate('/schools')}
             className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-4 font-semibold text-gray-700 active:bg-gray-50"
           >
             대학 둘러보기
           </button>
-          <button onClick={() => setPhase('email')} className="mt-6 text-sm text-gray-400 underline">
-            이미 가입했어요 — 이메일로 로그인
-          </button>
+          {!pendingAnswers && (
+            <button onClick={() => setPhase('email')} className="mt-6 text-sm text-gray-400 underline">
+              이미 가입했어요 — 이메일로 로그인
+            </button>
+          )}
         </div>
       </Screen>
     )
