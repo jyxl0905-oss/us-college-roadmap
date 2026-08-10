@@ -17,6 +17,7 @@ import { downloadDocx } from '../lib/report-doc'
 import { logEvent } from '../lib/analytics'
 import { navigate } from '../lib/router'
 import { entriesForSchool, sortEntries } from '../deadlines/DeadlinesPage'
+import { boardVisible } from '../board/boardLogic'
 import { majorLabel } from '../data/majors'
 import { tierLabels } from '../onboarding/labels'
 import RadarChart from './RadarChart'
@@ -61,6 +62,17 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
   const [appeals, setAppeals] = useState<Appeal[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  // F4 연동: 보드 라운드 배정 → 다가오는 마감을 배정 라운드 기준으로
+  const [assignedRounds, setAssignedRounds] = useState<{ school_id: number; round: string | null }[]>([])
+
+  useEffect(() => {
+    if (!supabase) return
+    supabase
+      .from('applications')
+      .select('school_id, round')
+      .eq('user_id', userId)
+      .then(({ data }) => setAssignedRounds(data ?? []))
+  }, [userId])
 
   const seasonLabel = currentSeasonLabel()
   const grade = profileGrade(profile)
@@ -244,8 +256,13 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
       : null
   const nowPct = totalCount > 0 ? Math.round((doneCount / totalCount) * 100) : 0
 
-  // F3: 12학년 Fall — 다가오는 마감 3줄 (가을 조기지원 우선, 이어서 겨울)
-  const allDeadlines = schools.flatMap(entriesForSchool)
+  // F3: 12학년 Fall — 다가오는 마감 3줄 (가을 조기지원 우선, 이어서 겨울). 보드 배정 라운드가 있으면 그 기준
+  const roundToPlan: Record<string, string> = { ed: 'ED', ed2: 'ED II', ea: 'EA', rea: 'REA', rd: 'RD' }
+  const allDeadlines = schools.flatMap(entriesForSchool).filter((e) => {
+    const app = assignedRounds.find((r) => r.school_id === e.school.id)
+    if (!app?.round) return true
+    return e.plan === roundToPlan[app.round]
+  })
   const upcomingDeadlines = [
     ...sortEntries(allDeadlines.filter((e) => e.plan === 'ED' || e.plan === 'EA' || e.plan === 'REA')),
     ...sortEntries(allDeadlines.filter((e) => e.plan === 'ED II' || e.plan === 'RD')),
@@ -442,8 +459,16 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
         </div>
       )}
 
-      {/* 마감 캘린더·입시 기본기 링크 */}
+      {/* 지원 보드·마감 캘린더·입시 기본기 링크 */}
       <div className="no-print mt-8 flex flex-col gap-2">
+        {boardVisible(profile) && (
+          <button
+            onClick={() => navigate('/board')}
+            className="w-full rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-3.5 font-semibold text-blue-700 active:bg-blue-100"
+          >
+            🗂️ 지원 보드 — 라운드·상태·학교 맞춤 준비
+          </button>
+        )}
         <button
           onClick={() => navigate('/deadlines')}
           className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"

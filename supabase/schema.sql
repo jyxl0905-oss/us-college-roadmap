@@ -30,7 +30,10 @@ create table schools (
   ea_timing text, -- REA/SCEA 시기도 여기에
   rd_timing text,
   deadlines_source_url text,
-  deadlines_verified_at date
+  deadlines_verified_at date,
+  -- F4: CDS C7에서 Very Important로 공시된 요소 슬러그 (공식 CDS만, 미확인 null)
+  c7_very_important text[],
+  c7_source_url text
 );
 
 -- 2. checklist_items — 시즌별 체크리스트 항목 (편집 콘텐츠)
@@ -154,7 +157,7 @@ create table basics (
 create table analytics_events (
   id bigint generated always as identity primary key,
   user_id uuid references auth.users (id) on delete set null,
-  event text not null check (event in ('signup', 'login', 'check', 'report_view')),
+  event text not null check (event in ('signup', 'login', 'check', 'report_view', 'board_view', 'round_assigned')),
   created_at timestamptz not null default now()
 );
 
@@ -196,3 +199,26 @@ create policy "users manage own reports" on reports
   for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 create policy "users insert own events" on analytics_events
   for insert with check (auth.uid() = user_id);
+
+-- F4 지원 보드
+create table applications (
+  user_id uuid not null references auth.users(id) on delete cascade,
+  school_id bigint not null references schools(id),
+  round text check (round in ('ed','ed2','ea','rea','rd')),
+  status text not null default 'preparing' check (status in ('preparing','submitted','waiting','accepted','rejected','waitlisted','deferred')),
+  updated_at timestamptz not null default now(),
+  primary key (user_id, school_id)
+);
+alter table applications enable row level security;
+create policy "own applications" on applications for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+create table custom_tasks (
+  id bigint generated always as identity primary key,
+  user_id uuid not null references auth.users(id) on delete cascade,
+  school_id bigint not null references schools(id),
+  title text not null,
+  done boolean not null default false,
+  created_at timestamptz not null default now()
+);
+alter table custom_tasks enable row level security;
+create policy "own custom_tasks" on custom_tasks for all using (auth.uid() = user_id) with check (auth.uid() = user_id);

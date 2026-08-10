@@ -16,6 +16,7 @@ import SchoolsListPage from './browse/SchoolsListPage'
 import SchoolDetailPage from './browse/SchoolDetailPage'
 import ComparePage from './browse/ComparePage'
 import DeadlinesPage from './deadlines/DeadlinesPage'
+import BoardPage from './board/BoardPage'
 import { usePath, navigate } from './lib/router'
 import { readPrefillSchoolIds } from './browse/prefill'
 import { logEvent } from './lib/analytics'
@@ -109,9 +110,28 @@ export default function App() {
   if (path === '/compare' || path === '/compare/') {
     return <ComparePage profile={profile} />
   }
+  // F4: 지원 보드 (로그인 전용, 11학년 여름부터)
+  if (path === '/board' || path === '/board/') {
+    if (session && profile) return <BoardPage userId={session.user.id} profile={profile} />
+    return (
+      <Screen>
+        <div className="py-16 text-center">
+          <p className="text-4xl">🗂️</p>
+          <h1 className="mt-4 text-xl font-bold text-gray-900">지원 보드</h1>
+          <p className="mt-3 text-sm text-gray-500">지원 보드는 리포트를 받은 뒤 사용할 수 있어요.</p>
+          <button
+            onClick={() => navigate('/')}
+            className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
+          >
+            내 리포트 받기
+          </button>
+        </div>
+      </Screen>
+    )
+  }
   // F3: 마감 캘린더 (로그인 전용)
   if (path === '/deadlines' || path === '/deadlines/') {
-    if (profile) return <DeadlinesPage profile={profile} />
+    if (session && profile) return <DeadlinesPage userId={session.user.id} profile={profile} />
     return (
       <Screen>
         <div className="py-16 text-center">

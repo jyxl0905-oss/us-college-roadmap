@@ -5,7 +5,7 @@ import { navigate } from '../lib/router'
 import type { ProfileRow } from '../lib/profile'
 
 // 시기 라벨("11월 초") → 정렬 키. 입시 사이클 기준 8월이 가장 이름
-function timingSortKey(label: string | null): number {
+export function timingSortKey(label: string | null): number {
   if (!label) return 999
   const m = label.match(/(\d+)월\s*(초|중순|말)?/)
   if (!m) return 999
@@ -56,13 +56,18 @@ const glossaryPrefix: Record<PlanType, string> = {
 }
 
 interface DeadlinesPageProps {
+  userId: string
   profile: ProfileRow
 }
 
+// F4 연동: 보드에서 배정한 라운드 → 캘린더에 그 라운드 마감만 표시
+const roundToPlan: Record<string, PlanType> = { ed: 'ED', ed2: 'ED II', ea: 'EA', rea: 'REA', rd: 'RD' }
+
 // F3: 마감 캘린더 — 내 목표 학교의 지원 마감을 시간순 타임라인으로 (로그인 전용)
-export default function DeadlinesPage({ profile }: DeadlinesPageProps) {
+export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
   const [schools, setSchools] = useState<School[] | null>(null)
   const [glossary, setGlossary] = useState<{ term: string; definition_ko: string }[]>([])
+  const [rounds, setRounds] = useState<{ school_id: number; round: string | null }[]>([])
 
   const hasTarget =
     (profile.target_mode === 'schools' && profile.target_school_ids.length > 0) ||
@@ -80,12 +85,14 @@ export default function DeadlinesPage({ profile }: DeadlinesPageProps) {
     Promise.all([
       query,
       supabase.from('glossary').select('term, definition_ko'),
-    ]).then(([sc, gl]) => {
+      supabase.from('applications').select('school_id, round').eq('user_id', userId),
+    ]).then(([sc, gl, ap]) => {
       setSchools((sc.data ?? []) as School[])
       setGlossary(gl.data ?? [])
+      setRounds(ap.data ?? [])
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [profile.target_mode, profile.target_tier, profile.target_school_ids.join(',')])
+  }, [userId, profile.target_mode, profile.target_tier, profile.target_school_ids.join(',')])
 
   const definitionFor = (plan: PlanType) =>
     glossary.find((g) => g.term.startsWith(glossaryPrefix[plan]))?.definition_ko ?? null
@@ -112,7 +119,13 @@ export default function DeadlinesPage({ profile }: DeadlinesPageProps) {
 
   if (schools === null) return <p className="mt-20 text-center text-gray-400">불러오는 중…</p>
 
-  const all = schools.flatMap(entriesForSchool)
+  // 보드에서 라운드를 배정한 학교는 그 라운드 마감만
+  const byAssignedRound = (e: DeadlineEntry) => {
+    const app = rounds.find((r) => r.school_id === e.school.id)
+    if (!app?.round) return true
+    return e.plan === roundToPlan[app.round]
+  }
+  const all = schools.flatMap(entriesForSchool).filter(byAssignedRound)
   const fall = sortEntries(all.filter((e) => e.plan === 'ED' || e.plan === 'EA' || e.plan === 'REA'))
   const winter = sortEntries(all.filter((e) => e.plan === 'ED II' || e.plan === 'RD'))
   // 마감 정보가 아직 없는 목표 학교 (미조사 or 미공개)

@@ -1,6 +1,6 @@
 import { supabase } from './supabase'
 
-export type AnalyticsEvent = 'signup' | 'login' | 'check' | 'report_view'
+export type AnalyticsEvent = 'signup' | 'login' | 'check' | 'report_view' | 'board_view' | 'round_assigned'
 
 // 간단한 사용 로그 — 실패해도 앱 동작에 영향 없게 fire-and-forget
 export function logEvent(userId: string, event: AnalyticsEvent): void {

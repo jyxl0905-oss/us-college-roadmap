@@ -113,6 +113,9 @@ export interface School {
   rd_timing?: string | null
   deadlines_source_url?: string | null
   deadlines_verified_at?: string | null
+  // F4: CDS C7에서 Very Important로 공시된 요소 슬러그 (null = 미확인/미공시)
+  c7_very_important?: string[] | null
+  c7_source_url?: string | null
 }
 
 export interface ChecklistItem {
