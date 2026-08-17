@@ -1,0 +1,108 @@
+import { useState } from 'react'
+import { axisOrder, axisKo, type Axis, type AxisScores } from '../lib/score'
+
+// 시즌별 성장 그래프 — reports 스냅샷(6축 점수·완료율)을 시즌 순으로 선 그래프. SVG 직접 렌더(라이브러리 없음)
+export interface SeasonPoint {
+  season_label: string // '2026-fall'
+  scores: Partial<AxisScores>
+  done: number
+  total: number
+}
+
+const seasonOrder: Record<string, number> = { spring: 1, summer: 2, fall: 3 }
+const seasonShort: Record<string, string> = { spring: '봄', summer: '여름', fall: '가을' }
+
+export function sortSeasons(points: SeasonPoint[]): SeasonPoint[] {
+  return [...points].sort((a, b) => {
+    const [ya, sa] = a.season_label.split('-')
+    const [yb, sb] = b.season_label.split('-')
+    return Number(ya) - Number(yb) || (seasonOrder[sa] ?? 0) - (seasonOrder[sb] ?? 0)
+  })
+}
+
+function shortLabel(label: string): string {
+  const [y, s] = label.split('-')
+  return `${y.slice(2)}' ${seasonShort[s] ?? s}`
+}
+
+const AXIS_COLORS: Record<Axis, string> = {
+  rigor: '#2563eb', testing: '#7c3aed', spike: '#db2777', leadership: '#ea580c', validation: '#16a34a', story: '#0891b2',
+}
+
+const W = 320, H = 170, PAD_L = 28, PAD_R = 24, PAD_T = 14, PAD_B = 26
+
+export default function GrowthChart({ points }: { points: SeasonPoint[] }) {
+  const sorted = sortSeasons(points).filter((p) => p.scores && Object.keys(p.scores).length > 0)
+  const [active, setActive] = useState<Axis | 'done'>('done')
+
+  if (sorted.length < 2) {
+    return (
+      <p className="rounded-lg bg-gray-50 px-3 py-2.5 text-xs text-gray-500">
+        {sorted.length === 0
+          ? '첫 시즌 기록이 쌓이는 중이에요.'
+          : '다음 시즌에 돌아오면 이번 시즌과 비교한 성장선이 여기 그려져요.'}
+      </p>
+    )
+  }
+
+  const n = sorted.length
+  const x = (i: number) => PAD_L + ((W - PAD_L - PAD_R) * i) / Math.max(1, n - 1)
+  const y = (v: number) => PAD_T + (H - PAD_T - PAD_B) * (1 - Math.max(0, Math.min(100, v)) / 100)
+  const seriesFor = (key: Axis | 'done') =>
+    sorted.map((p) =>
+      key === 'done' ? (p.total > 0 ? Math.round((p.done / p.total) * 100) : 0) : (p.scores[key] ?? 0),
+    )
+  const values = seriesFor(active)
+  const color = active === 'done' ? '#111827' : AXIS_COLORS[active]
+  const first = values[0], last = values[values.length - 1]
+  const delta = last - first
+
+  const chip = (key: Axis | 'done', label: string, c: string) => (
+    <button
+      key={key}
+      onClick={() => setActive(key)}
+      className={`rounded-full border-2 px-2 py-0.5 text-[11px] font-medium ${
+        active === key ? 'text-white' : 'bg-white text-gray-500'
+      }`}
+      style={active === key ? { backgroundColor: c, borderColor: c } : { borderColor: '#e5e7eb' }}
+    >
+      {label}
+    </button>
+  )
+
+  return (
+    <div>
+      <div className="flex flex-wrap gap-1.5">
+        {chip('done', '완료율', '#111827')}
+        {axisOrder.map((a) => chip(a, axisKo[a], AXIS_COLORS[a]))}
+      </div>
+      <svg viewBox={`0 0 ${W} ${H}`} className="mt-2 w-full" role="img" aria-label="시즌별 성장 그래프">
+        {[0, 50, 100].map((g) => (
+          <g key={g}>
+            <line x1={PAD_L} x2={W - PAD_R} y1={y(g)} y2={y(g)} stroke="#e5e7eb" strokeWidth="1" />
+            <text x={PAD_L - 6} y={y(g) + 3} fontSize="9" fill="#9ca3af" textAnchor="end">{g}</text>
+          </g>
+        ))}
+        <polyline
+          points={values.map((v, i) => `${x(i)},${y(v)}`).join(' ')}
+          fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round"
+        />
+        {values.map((v, i) => (
+          <g key={i}>
+            <circle cx={x(i)} cy={y(v)} r="4" fill="#fff" stroke={color} strokeWidth="2.5" />
+            <text x={x(i)} y={y(v) - 8} fontSize="9" fill={color} textAnchor="middle" fontWeight="600">{v}</text>
+            <text x={x(i)} y={H - 8} fontSize="9" fill="#6b7280" textAnchor="middle">{shortLabel(sorted[i].season_label)}</text>
+          </g>
+        ))}
+      </svg>
+      <p className="mt-1 text-xs text-gray-500">
+        {active === 'done' ? '시즌 완료율' : `${axisKo[active]} 축`}: 첫 기록 {first} → 지금 {last}
+        {delta !== 0 && (
+          <span className={`ml-1 font-semibold ${delta > 0 ? 'text-green-600' : 'text-red-500'}`}>
+            ({delta > 0 ? '+' : ''}{delta})
+          </span>
+        )}
+      </p>
+    </div>
+  )
+}
