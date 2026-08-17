@@ -129,7 +129,8 @@ function AppRoutes() {
   }
   // F5: 내 원서 (가상 Common App) — 로그인 전용, 9학년부터
   if (path === '/app' || path.startsWith('/app/')) {
-    if (session && profile) return <AppRouter path={path} userId={session.user.id} profile={profile} />
+    if (session && profile)
+      return <AppRouter path={path} userId={session.user.id} profile={profile} onProfileChange={setProfile} />
     return (
       <Screen>
         <div className="py-16 text-center">
