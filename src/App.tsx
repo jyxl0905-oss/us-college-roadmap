@@ -259,6 +259,7 @@ function AppRoutes() {
               profile={profile}
               onLogout={() => supabase!.auth.signOut()}
               onOpenGuide={() => setShowGuide(true)}
+              onProfileChange={setProfile}
             />
           </Screen>
         )}

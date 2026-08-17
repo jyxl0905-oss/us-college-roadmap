@@ -31,6 +31,7 @@ export interface ProfileRow {
   quiz_answers: QuizAnswer[] | null
   info_sources: string[] | null
   research_consent: boolean
+  reminder_opt_out?: boolean // 시즌 시작 알림 이메일 끄기
 }
 
 export function answersToRow(

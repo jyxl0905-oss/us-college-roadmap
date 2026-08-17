@@ -16,6 +16,8 @@ import {
 import { downloadDocx } from '../lib/report-doc'
 import { logEvent } from '../lib/analytics'
 import { navigate } from '../lib/router'
+import { downloadIcs, nextCheckinDate } from '../lib/ics'
+import { saveProfile } from '../lib/profile'
 import { entriesForSchool, sortEntries } from '../deadlines/DeadlinesPage'
 import SchoolLogo from '../browse/SchoolLogo'
 import { recordOverrides, type RecordOverrides } from '../lib/recordScore'
@@ -51,10 +53,11 @@ interface ReportViewProps {
   profile: ProfileRow
   onLogout: () => void
   onOpenGuide: () => void
+  onProfileChange?: (p: ProfileRow) => void
 }
 
 // 로그인 후 메인 화면 — 시즌 리포트 (차트·학교·체크리스트·내보내기)
-export default function ReportView({ userId, profile, onLogout, onOpenGuide }: ReportViewProps) {
+export default function ReportView({ userId, profile, onLogout, onOpenGuide, onProfileChange }: ReportViewProps) {
   const [items, setItems] = useState<ChecklistItem[]>([])
   const [allItems, setAllItems] = useState<ChecklistItem[]>([])
   const [schools, setSchools] = useState<School[]>([])
@@ -71,7 +74,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
     () => localStorage.getItem(`hide_commonapp_banner_${userId}`) === '1',
   )
   // F4 연동: 보드 라운드 배정 → 다가오는 마감을 배정 라운드 기준으로
-  const [assignedRounds, setAssignedRounds] = useState<{ school_id: number; round: string | null }[]>([])
+  const [assignedRounds, setAssignedRounds] = useState<{ school_id: number; round: string | null; student_deadline?: string | null }[]>([])
   // F5 연동: 내 원서 활동·수상 기록 → spike/leadership/validation 기록 기반 점수
   const [overrides, setOverrides] = useState<RecordOverrides>({ spike: null, leadership: null, validation: null })
 
@@ -79,7 +82,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
     if (!supabase) return
     supabase
       .from('applications')
-      .select('school_id, round')
+      .select('school_id, round, student_deadline')
       .eq('user_id', userId)
       .then(({ data }) => setAssignedRounds(data ?? []))
     Promise.all([
@@ -556,6 +559,49 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
           className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
         >
           📚 입시 기본기 · 용어집 보기
+        </button>
+      </div>
+
+      {/* 리마인더: 캘린더 파일 + 시즌 시작 이메일 알림 스위치 */}
+      <div className="no-print mt-6 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+        <div className="flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-sm font-semibold text-gray-900">🔔 시즌 시작 알림 이메일</p>
+            <p className="text-xs text-gray-400">8월·1월·6월 시즌이 열리면 체크인하라고 한 통 보내드려요</p>
+          </div>
+          <button
+            role="switch"
+            aria-checked={!profile.reminder_opt_out}
+            onClick={async () => {
+              const next = { ...profile, reminder_opt_out: !profile.reminder_opt_out }
+              await saveProfile(userId, next)
+              onProfileChange?.(next)
+            }}
+            className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${profile.reminder_opt_out ? 'bg-gray-300' : 'bg-blue-600'}`}
+          >
+            <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${profile.reminder_opt_out ? 'left-0.5' : 'left-[22px]'}`} />
+          </button>
+        </div>
+        <button
+          onClick={() => {
+            const events = [
+              { title: '미국 대입 로드맵 — 시즌 체크인', date: nextCheckinDate(), description: '새 시즌 체크리스트 확인: https://us-college-roadmap.vercel.app' },
+              ...assignedRounds
+                .filter((a) => a.student_deadline)
+                .map((a) => {
+                  const s = schools.find((x) => x.id === a.school_id)
+                  return {
+                    title: `${s?.name ?? '학교'} ${a.round ? a.round.toUpperCase() : ''} 마감 (내가 입력한 날짜)`,
+                    date: a.student_deadline as string,
+                    description: '공식 페이지에서 최종 확인하세요' + (s?.deadlines_source_url ? `: ${s.deadlines_source_url}` : ''),
+                  }
+                }),
+            ]
+            downloadIcs('us-college-roadmap.ics', events)
+          }}
+          className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 active:bg-gray-50"
+        >
+          📅 폰 캘린더에 추가 (.ics) — 다음 체크인{assignedRounds.some((a) => a.student_deadline) ? ' + 내가 입력한 마감일' : ''}
         </button>
       </div>
 

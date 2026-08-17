@@ -288,3 +288,13 @@ create policy "own honors" on honors for all using (auth.uid() = user_id) with c
 create policy "own test_scores" on test_scores for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 create policy "own courses" on courses for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 create policy "own essays" on essays for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+-- 시즌 시작 리마인더 이메일 (Vercel cron → api/season-reminder.js, 서비스 롤로만 접근)
+alter table profiles add column reminder_opt_out boolean not null default false;
+create table reminder_log (
+  user_id uuid not null references auth.users(id) on delete cascade,
+  season_label text not null,
+  sent_at timestamptz not null default now(),
+  primary key (user_id, season_label)
+);
+alter table reminder_log enable row level security;
