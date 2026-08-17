@@ -17,7 +17,6 @@ import { downloadDocx } from '../lib/report-doc'
 import { logEvent } from '../lib/analytics'
 import { navigate } from '../lib/router'
 import { entriesForSchool, sortEntries } from '../deadlines/DeadlinesPage'
-import { boardVisible } from '../board/boardLogic'
 import SchoolLogo from '../browse/SchoolLogo'
 import { majorLabel } from '../data/majors'
 import { tierLabels } from '../onboarding/labels'
@@ -502,14 +501,6 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
         >
           📋 내 원서 — 가상 Common App
         </button>
-        {boardVisible(profile) && (
-          <button
-            onClick={() => navigate('/board')}
-            className="w-full rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-3.5 font-semibold text-blue-700 active:bg-blue-100"
-          >
-            🗂️ 지원 보드 — 라운드·상태·학교 맞춤 준비
-          </button>
-        )}
         <button
           onClick={() => navigate('/deadlines')}
           className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"

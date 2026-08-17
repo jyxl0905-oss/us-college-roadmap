@@ -19,7 +19,6 @@ const PreviewReport = lazy(() => import('./report/PreviewReport'))
 const CheckinFlow = lazy(() => import('./checkin/CheckinFlow'))
 const GuideView = lazy(() => import('./report/GuideView'))
 const DeadlinesPage = lazy(() => import('./deadlines/DeadlinesPage'))
-const BoardPage = lazy(() => import('./board/BoardPage'))
 const AppRouter = lazy(() => import('./app/AppRouter'))
 import { readPrefillSchoolIds } from './browse/prefill'
 import { logEvent } from './lib/analytics'
@@ -147,24 +146,10 @@ function AppRoutes() {
       </Screen>
     )
   }
-  // F4: 지원 보드 (로그인 전용, 11학년 여름부터)
+  // F4 → F5: 예전 /board 주소는 내 원서의 지원 학교 탭으로
   if (path === '/board' || path === '/board/') {
-    if (session && profile) return <BoardPage userId={session.user.id} profile={profile} />
-    return (
-      <Screen>
-        <div className="py-16 text-center">
-          <p className="text-4xl">🗂️</p>
-          <h1 className="mt-4 text-xl font-bold text-gray-900">지원 보드</h1>
-          <p className="mt-3 text-sm text-gray-500">지원 보드는 리포트를 받은 뒤 사용할 수 있어요.</p>
-          <button
-            onClick={() => navigate('/')}
-            className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
-          >
-            내 리포트 받기
-          </button>
-        </div>
-      </Screen>
-    )
+    navigate('/app/colleges')
+    return loadingScreen
   }
   // F3: 마감 캘린더 (로그인 전용)
   if (path === '/deadlines' || path === '/deadlines/') {

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { School } from '../lib/types'
 import { supabase } from '../lib/supabase'
 import { navigate } from '../lib/router'
@@ -6,8 +6,12 @@ import { logEvent } from '../lib/analytics'
 import type { ProfileRow } from '../lib/profile'
 import { timingSortKey } from '../deadlines/DeadlinesPage'
 import SchoolLogo from '../browse/SchoolLogo'
+import AppShell from '../app/AppShell'
+import { loadAppRecords, bestSat, type AppRecords } from '../app/appData'
+import { profileGrade } from '../lib/profile'
+import { currentSeason } from '../lib/academics'
 import {
-  boardVisible, boardWarnings, offeredRounds, roundTiming, roundLabels, statusLabels,
+  boardWarnings, offeredRounds, roundTiming, roundLabels, statusLabels, roundSlots, dDay,
   autoItems, c7Actions, c7Checkable, isFirstChoice, SUPP_ESSAY_TIP,
   type ApplicationRow, type CustomTask, type Round, type AppStatus,
 } from './boardLogic'
@@ -17,13 +21,16 @@ interface BoardPageProps {
   profile: ProfileRow
 }
 
-// F4 지원 보드 — 라운드 배정·상태 추적·학교 맞춤 준비. 추천 없음: 사실 고지·규칙 검증·정리·추적까지만
+// F4→F5 지원 학교(My Colleges) — 라운드 칸 배치·상태 추적·학교 맞춤 준비 + 내 원서 연동.
+// 추천 없음: 사실 고지·규칙 검증·정리·추적까지만
 export default function BoardPage({ userId, profile }: BoardPageProps) {
   const [schools, setSchools] = useState<School[] | null>(null)
   const [apps, setApps] = useState<ApplicationRow[]>([])
   const [tasks, setTasks] = useState<CustomTask[]>([])
+  const [records, setRecords] = useState<AppRecords | null>(null)
   const [openId, setOpenId] = useState<number | null>(null) // 상세 열린 학교
   const [newTask, setNewTask] = useState('')
+  const [slotPicker, setSlotPicker] = useState<number | null>(null) // 라운드 선택 시트 열린 학교
 
   const hasTarget =
     (profile.target_mode === 'schools' && profile.target_school_ids.length > 0) ||
@@ -44,12 +51,14 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
         : supabase.from('schools').select('*').eq('tier', profile.target_tier)
     Promise.all([
       schoolsQuery,
-      supabase.from('applications').select('school_id, round, status, updated_at').eq('user_id', userId),
+      supabase.from('applications').select('school_id, round, status, updated_at, student_deadline').eq('user_id', userId),
       supabase.from('custom_tasks').select('id, school_id, title, done').eq('user_id', userId),
-    ]).then(([sc, ap, ct]) => {
+      loadAppRecords(userId),
+    ]).then(([sc, ap, ct, rec]) => {
       setSchools((sc.data ?? []) as School[])
       setApps((ap.data ?? []) as ApplicationRow[])
       setTasks((ct.data ?? []) as CustomTask[])
+      setRecords(rec)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, profile.target_mode, profile.target_tier, profile.target_school_ids.join(',')])
@@ -67,6 +76,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
       school_id: schoolId,
       round: patch.round !== undefined ? patch.round : (prev?.round ?? null),
       status: patch.status ?? prev?.status ?? 'preparing',
+      student_deadline: patch.student_deadline !== undefined ? patch.student_deadline : (prev?.student_deadline ?? null),
       updated_at: new Date().toISOString(),
     }
     setApps((list) => [...list.filter((a) => a.school_id !== schoolId), row])
@@ -109,51 +119,36 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
     if (supabase) await supabase.from('custom_tasks').delete().eq('id', id)
   }
 
-  // 카드 목록: ED/ED2 최상단 고정, 나머지 마감 시기순
-  const ordered = useMemo(() => {
-    if (!schools) return []
-    return [...schools].sort((a, b) => {
-      const fa = isFirstChoice(appFor(a.id)) ? 0 : 1
-      const fb = isFirstChoice(appFor(b.id)) ? 0 : 1
-      if (fa !== fb) return fa - fb
-      return (
+  // 칸 안 정렬: 마감 시기순
+  const byTiming = (list: School[]) =>
+    [...list].sort(
+      (a, b) =>
         timingSortKey(roundTiming(a, appFor(a.id)?.round ?? null) ?? a.rd_timing ?? null) -
-        timingSortKey(roundTiming(b, appFor(b.id)?.round ?? null) ?? b.rd_timing ?? null)
-      )
-    })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [schools, apps])
-
-  if (!boardVisible(profile))
-    return (
-      <div className="mx-auto max-w-md px-5 py-16 text-center">
-        <p className="text-4xl">🗂️</p>
-        <h1 className="mt-4 text-xl font-bold text-gray-900">지원 보드</h1>
-        <p className="mt-3 text-sm text-gray-500">
-          지원 보드는 11학년 여름부터 열려요. 지금은 시즌 체크리스트에 집중하면 돼요.
-        </p>
-        <button onClick={() => navigate('/')} className="mt-6 text-blue-600 underline">
-          리포트로 돌아가기
-        </button>
-      </div>
+        timingSortKey(roundTiming(b, appFor(b.id)?.round ?? null) ?? b.rd_timing ?? null),
     )
+
+  // 11학년 여름 전: "미리 그려보는 단계" 안내
+  const grade = profileGrade(profile)
+  const isEarly = grade < 11 || (grade === 11 && currentSeason() !== 'summer')
 
   if (!hasTarget)
     return (
-      <div className="mx-auto max-w-md px-5 py-16 text-center">
-        <p className="text-4xl">🗂️</p>
-        <h1 className="mt-4 text-xl font-bold text-gray-900">지원 보드</h1>
-        <p className="mt-3 text-sm text-gray-500">목표 학교를 설정하면 보드가 생성돼요.</p>
-        <button
-          onClick={() => navigate('/schools')}
-          className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
-        >
-          대학 둘러보기에서 목표 정하기
-        </button>
-      </div>
+      <AppShell tab="colleges" title="지원 학교">
+        <div className="py-12 text-center">
+          <p className="text-4xl">🎯</p>
+          <p className="mt-3 text-sm text-gray-500">목표 학교를 설정하면 라운드 칸이 생성돼요.</p>
+          <button
+            onClick={() => navigate('/schools')}
+            className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
+          >
+            대학 둘러보기에서 목표 정하기
+          </button>
+        </div>
+      </AppShell>
     )
 
-  if (schools === null) return <p className="mt-20 text-center text-gray-400">불러오는 중…</p>
+  if (schools === null)
+    return <AppShell tab="colleges" title="지원 학교"><p className="mt-10 text-center text-gray-400">불러오는 중…</p></AppShell>
 
   // 상단 요약: "ED 1 · EA 3 · RD 4 | 제출 2/8"
   const roundCounts = (['ed', 'ed2', 'ea', 'rea', 'rd'] as Round[])
@@ -234,20 +229,71 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
       </div>
     )
 
-    return (
-      <div className="min-h-dvh bg-gray-50">
-        <div className="mx-auto max-w-md px-5 py-6 pb-16">
-          <div className="flex items-center gap-3">
-            <button onClick={() => setOpenId(null)} aria-label="보드로" className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
-              ←
-            </button>
-            <SchoolLogo schoolId={open.id} name={open.name} size={36} />
-            <div className="min-w-0">
-              <h1 className="truncate text-lg font-bold text-gray-900">{open.name}</h1>
-              <p className="truncate text-xs text-gray-500">{open.name_ko}</p>
-            </div>
-          </div>
+    // 내 원서 연동 블록 — 사실 배치만 (판단 문구 없음)
+    const best = records ? bestSat(records.tests) : null
+    const satPos =
+      best && best.total !== null && open.sat_mid50_low !== null && open.sat_mid50_high !== null
+        ? Math.max(0, Math.min(1, (Number(best.total) - open.sat_mid50_low) / (open.sat_mid50_high - open.sat_mid50_low)))
+        : null
+    const c7Slugs = open.c7_very_important ?? []
+    const activityCount = records?.activities.length ?? 0
+    const honorTop = records?.honors.reduce<string | null>((acc, h) => {
+      const order = ['school', 'regional', 'national', 'international']
+      return h.level && (!acc || order.indexOf(h.level) > order.indexOf(acc)) ? h.level : acc
+    }, null)
+    const dd = dDay(app?.student_deadline)
 
+    const recordBlock = records && (
+      <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
+        <p className="font-semibold text-gray-900">내 원서와 이 학교</p>
+        <div className="mt-2 flex flex-col gap-2 text-sm text-gray-700">
+          <div>
+            <span className="text-gray-500">내 SAT 최고점: </span>
+            {best && best.total !== null ? (
+              <>
+                <span className="font-semibold">{best.total}</span>
+                {open.test_policy === 'test-free' ? (
+                  <span className="text-gray-500"> · 이 학교는 시험 미반영</span>
+                ) : open.sat_mid50_low !== null && open.sat_mid50_high !== null ? (
+                  <span className="text-gray-500"> · 합격자 중간 50% {open.sat_mid50_low}–{open.sat_mid50_high}</span>
+                ) : (
+                  <span className="text-gray-500"> · 학교 범위 미공개</span>
+                )}
+                {satPos !== null && (
+                  <div className="relative mt-1.5 h-2 rounded-full bg-gray-100">
+                    <div className="absolute inset-y-0 left-[25%] right-[25%] rounded-full bg-blue-200" />
+                    <div className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-blue-600 shadow" style={{ left: `${Math.round(25 + satPos * 50)}%` }} />
+                  </div>
+                )}
+              </>
+            ) : (
+              <button onClick={() => navigate('/app/testing')} className="text-blue-600 underline">시험 탭에서 점수 기록</button>
+            )}
+          </div>
+          <div>
+            <span className="text-gray-500">내 활동 {activityCount}/10 · 수상 최고 범위 </span>
+            <span className="font-semibold">{honorTop ? { school: '교내', regional: '지역·주', national: '전국', international: '국제' }[honorTop] : '없음'}</span>
+            {c7Slugs.length > 0 && (
+              <p className="mt-1 text-xs text-gray-500">
+                이 학교 CDS Very Important: {c7Slugs.map((s) => ({ rigor: '교과난이도', class_rank: '석차', gpa: 'GPA', standardized_tests: '시험', essay: '에세이', recommendations: '추천서', interview: '인터뷰', extracurricular: '활동', talent: '재능', character: '인성', first_generation: '1세대', alumni_relation: '동문', geographical_residence: '거주지', state_residency: '주 거주', religious_affiliation: '종교', volunteer_work: '봉사', work_experience: '직업경험', demonstrated_interest: '관심 표현' }[s] ?? s)).join(' · ')}
+                {(c7Slugs.includes('extracurricular') || c7Slugs.includes('talent')) && activityCount === 0 && (
+                  <> — <button onClick={() => navigate('/app/activities')} className="text-blue-600 underline">활동 탭에서 기록</button></>
+                )}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    )
+
+    return (
+      <AppShell
+        tab="colleges"
+        title={open.name}
+        onBack={() => setOpenId(null)}
+        headerExtra={<SchoolLogo schoolId={open.id} name={open.name} size={36} />}
+      >
+        <div>
           {/* ED/ED2 배정 시 맞춤 준비 최상단 */}
           {first && <div className="mt-4">{fitBlock}</div>}
 
@@ -276,7 +322,27 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
                 공식 마감 페이지 확인 ↗
               </a>
             )}
+            {/* 학생 입력 마감일 — 툴은 날짜를 제공하지 않음 */}
+            <div className="mt-3 border-t border-gray-100 pt-3">
+              <label className="text-xs font-medium text-gray-500">공식 페이지에서 확인한 마감일 (직접 입력)</label>
+              <div className="mt-1 flex items-center gap-2">
+                <input
+                  type="date"
+                  value={app?.student_deadline ?? ''}
+                  onChange={(e) => upsertApp(open.id, { student_deadline: e.target.value || null })}
+                  className="flex-1 rounded-lg border-2 border-gray-200 px-3 py-2 text-sm focus:border-blue-600 focus:outline-none"
+                />
+                {dd !== null && (
+                  <span className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${dd < 0 ? 'bg-gray-100 text-gray-500' : dd <= 14 ? 'bg-red-50 text-red-700' : 'bg-blue-50 text-blue-700'}`}>
+                    {dd < 0 ? `D+${-dd}` : dd === 0 ? 'D-Day' : `D-${dd}`}
+                  </span>
+                )}
+              </div>
+            </div>
           </div>
+
+          {/* 내 원서 연동 */}
+          {recordBlock}
 
           {/* 상태 */}
           <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
@@ -347,94 +413,143 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
             </div>
           </div>
         </div>
+      </AppShell>
+    )
+  }
+
+  // ─── 지원 학교 메인: 라운드 칸 ───
+  const unassigned = byTiming(schools.filter((s) => !appFor(s.id)?.round))
+  const rowsFor = (r: Round) => byTiming(schools.filter((s) => appFor(s.id)?.round === r))
+
+  const card = (s: School) => {
+    const app = appFor(s.id)
+    const first = isFirstChoice(app)
+    const timing = roundTiming(s, app?.round ?? null) ?? s.rd_timing ?? null
+    const { done, total } = completion(s)
+    const dd = dDay(app?.student_deadline)
+    return (
+      <div
+        key={s.id}
+        className={`rounded-xl border-2 bg-white px-3.5 py-3 ${first ? 'border-blue-600 ring-1 ring-blue-600' : 'border-gray-200'}`}
+      >
+        <button onClick={() => setOpenId(s.id)} className="w-full text-left">
+          <div className="flex items-center gap-2.5">
+            <SchoolLogo schoolId={s.id} name={s.name} size={30} />
+            <div className="min-w-0 flex-1">
+              <p className="truncate font-semibold text-gray-900">{s.name}</p>
+              <p className="flex flex-wrap items-center gap-x-2 text-xs text-gray-500">
+                <span>{statusLabels[app?.status ?? 'preparing']}</span>
+                {timing && <span>마감 {timing}</span>}
+                {dd !== null && dd >= 0 && <span className={dd <= 14 ? 'font-semibold text-red-600' : 'text-blue-700'}>D-{dd}</span>}
+              </p>
+            </div>
+            {first && <span className="shrink-0 rounded-full bg-blue-600 px-2 py-0.5 text-[11px] font-medium text-white">1지망</span>}
+          </div>
+          {total > 0 && (
+            <div className="mt-2 flex items-center gap-2">
+              <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-gray-100">
+                <div className="h-full rounded-full bg-blue-600" style={{ width: `${Math.round((done / total) * 100)}%` }} />
+              </div>
+              <span className="text-[11px] text-gray-400">{done}/{total}</span>
+            </div>
+          )}
+        </button>
+        <button
+          onClick={() => setSlotPicker(slotPicker === s.id ? null : s.id)}
+          className="mt-2 w-full rounded-lg border-2 border-dashed border-gray-200 py-1.5 text-xs font-medium text-gray-500 active:bg-gray-50"
+        >
+          {app?.round ? '라운드 바꾸기' : '라운드 칸에 넣기'}
+        </button>
+        {slotPicker === s.id && (
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {offeredRounds(s).map(({ round, timing }) => (
+              <button
+                key={round}
+                onClick={() => {
+                  upsertApp(s.id, { round: app?.round === round ? null : round })
+                  setSlotPicker(null)
+                }}
+                className={`rounded-full border-2 px-2.5 py-1 text-xs font-medium ${
+                  app?.round === round ? 'border-blue-600 bg-blue-600 text-white' : 'border-blue-200 bg-blue-50 text-blue-700'
+                }`}
+              >
+                {roundLabels[round]}{timing && <span className="ml-1 font-normal opacity-80">{timing}</span>}
+              </button>
+            ))}
+            {app?.round && (
+              <button onClick={() => { upsertApp(s.id, { round: null }); setSlotPicker(null) }} className="rounded-full border-2 border-gray-200 px-2.5 py-1 text-xs text-gray-500">
+                미배정으로
+              </button>
+            )}
+          </div>
+        )}
       </div>
     )
   }
 
-  // ─── 보드 메인 ───
   return (
-    <div className="min-h-dvh bg-gray-50">
-      <div className="mx-auto max-w-md px-5 py-6 pb-16">
-        <div className="flex items-center gap-3">
-          <button onClick={() => navigate('/')} aria-label="리포트로" className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
-            ←
-          </button>
-          <h1 className="text-xl font-bold text-gray-900">지원 보드</h1>
-        </div>
-
-        {/* 상단 요약 */}
-        <p className="mt-3 text-sm text-gray-600">
-          {roundCounts.length > 0
-            ? roundCounts.map((x) => `${roundLabels[x.r]} ${x.n}`).join(' · ')
-            : '라운드 미배정'}
-          {' | '}제출 {submittedCount}/{schools.length}
+    <AppShell tab="colleges" title="지원 학교">
+      <p className="mt-3 text-sm text-gray-600">
+        {roundCounts.length > 0 ? roundCounts.map((x) => `${roundLabels[x.r]} ${x.n}`).join(' · ') : '라운드 미배정'}
+        {' | '}제출 {submittedCount}/{schools.length}
+      </p>
+      {isEarly && (
+        <p className="mt-2 rounded-xl bg-gray-100 px-3.5 py-2 text-xs text-gray-600">
+          지원 라운드·목표는 매년 바뀔 수 있어요 — 지금은 미리 그려보는 단계예요. 11학년 여름부터 본격 확정.
         </p>
+      )}
 
-        {/* 경고 3종 (표시, 차단 아님) */}
-        {warnings.length > 0 && (
-          <div className="mt-3 flex flex-col gap-2">
-            {warnings.map((w) => (
-              <p key={w.key} className="rounded-xl border-2 border-amber-300 bg-amber-50 px-4 py-2.5 text-sm text-amber-900">
-                ⚠️ {w.text}
-              </p>
-            ))}
+      {/* 경고 3종 (표시, 차단 아님) */}
+      {warnings.length > 0 && (
+        <div className="mt-3 flex flex-col gap-2">
+          {warnings.map((w) => (
+            <p key={w.key} className="rounded-xl border-2 border-amber-300 bg-amber-50 px-4 py-2.5 text-sm text-amber-900">
+              ⚠️ {w.text}
+            </p>
+          ))}
+        </div>
+      )}
+
+      {/* 라운드 칸 */}
+      {roundSlots.map(({ round, label, rule }) => {
+        const list = rowsFor(round)
+        const timing = list[0] ? roundTiming(list[0], round) : null
+        return (
+          <div key={round} className="mt-5">
+            <div className="flex items-baseline justify-between">
+              <h2 className="font-semibold text-gray-900">
+                {label} <span className="ml-1 text-xs font-normal text-gray-400">{list.length}곳</span>
+              </h2>
+              {timing && <span className="text-xs text-gray-500">대개 {timing}</span>}
+            </div>
+            <p className="text-[11px] text-gray-400">{rule}</p>
+            <div className="mt-2 flex flex-col gap-2">
+              {list.length === 0 ? (
+                <div className="rounded-xl border-2 border-dashed border-gray-200 px-3 py-3 text-center text-xs text-gray-400">
+                  비어 있음
+                </div>
+              ) : (
+                list.map(card)
+              )}
+            </div>
           </div>
-        )}
+        )
+      })}
 
-        <div className="mt-4 flex flex-col gap-2.5">
-          {ordered.map((s) => {
-            const app = appFor(s.id)
-            const first = isFirstChoice(app)
-            const timing = roundTiming(s, app?.round ?? null)
-            const { done, total } = completion(s)
-            return (
-              <button
-                key={s.id}
-                onClick={() => setOpenId(s.id)}
-                className={`w-full rounded-xl border-2 bg-white px-4 py-3.5 text-left active:bg-gray-50 ${
-                  first ? 'border-blue-600 ring-1 ring-blue-600' : 'border-gray-200'
-                }`}
-              >
-                <div className="flex items-center justify-between gap-2">
-                  <span className="flex min-w-0 items-center gap-2.5">
-                    <SchoolLogo schoolId={s.id} name={s.name} size={28} />
-                    <p className="min-w-0 truncate font-semibold text-gray-900">{s.name}</p>
-                  </span>
-                  {first && (
-                    <span className="shrink-0 rounded-full bg-blue-600 px-2 py-0.5 text-xs font-medium text-white">
-                      1지망 준비
-                    </span>
-                  )}
-                </div>
-                <div className="mt-1.5 flex flex-wrap items-center gap-1.5 text-xs">
-                  <span
-                    className={`rounded-full px-2 py-0.5 font-medium ${
-                      app?.round ? 'bg-blue-50 text-blue-700' : 'bg-gray-100 text-gray-400'
-                    }`}
-                  >
-                    {app?.round ? roundLabels[app.round] : '라운드 미배정'}
-                  </span>
-                  <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
-                    {statusLabels[app?.status ?? 'preparing']}
-                  </span>
-                  {timing && <span className="text-gray-500">마감 {timing}</span>}
-                </div>
-                {total > 0 && (
-                  <div className="mt-2 flex items-center gap-2">
-                    <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-gray-100">
-                      <div
-                        className="h-full rounded-full bg-blue-600"
-                        style={{ width: `${Math.round((done / total) * 100)}%` }}
-                      />
-                    </div>
-                    <span className="text-xs text-gray-400">{done}/{total}</span>
-                  </div>
-                )}
-              </button>
-            )
-          })}
+      {/* 미배정 */}
+      <div className="mt-6">
+        <h2 className="font-semibold text-gray-900">
+          미배정 <span className="ml-1 text-xs font-normal text-gray-400">{unassigned.length}곳</span>
+        </h2>
+        <p className="text-[11px] text-gray-400">카드의 [라운드 칸에 넣기]로 위 칸에 배치해요. 그 학교가 제공하는 라운드만 보여요.</p>
+        <div className="mt-2 flex flex-col gap-2">
+          {unassigned.length === 0 ? (
+            <p className="text-xs text-gray-400">전부 배정됐어요 🎉</p>
+          ) : (
+            unassigned.map(card)
+          )}
         </div>
       </div>
-    </div>
+    </AppShell>
   )
 }

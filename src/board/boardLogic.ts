@@ -14,6 +14,24 @@ export interface ApplicationRow {
   round: Round | null
   status: AppStatus
   updated_at: string
+  student_deadline?: string | null // 학생이 공식 페이지 확인 후 직접 입력한 마감일 (툴은 날짜를 제공하지 않음)
+}
+
+// 라운드 칸 표시 순서 (F5 지원 학교 탭)
+export const roundSlots: { round: Round; label: string; rule: string }[] = [
+  { round: 'ed', label: 'ED I', rule: '합격 시 등록 의무 · 1곳만' },
+  { round: 'rea', label: 'REA / SCEA', rule: '비구속이지만 타 사립 조기지원 제한 · 1곳' },
+  { round: 'ea', label: 'EA', rule: '비구속 · 여러 곳 가능' },
+  { round: 'ed2', label: 'ED II', rule: '합격 시 등록 의무 · ED I 불합격 후 1곳' },
+  { round: 'rd', label: 'RD', rule: '정시 · 여러 곳 가능' },
+]
+
+export function dDay(dateStr: string | null | undefined): number | null {
+  if (!dateStr) return null
+  const target = new Date(dateStr + 'T00:00:00')
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  return Math.round((target.getTime() - today.getTime()) / 86400000)
 }
 
 export interface CustomTask {

@@ -15,17 +15,20 @@ interface AppShellProps {
   tab: AppTab
   title: string
   children: React.ReactNode
+  onBack?: () => void // 기본: 리포트로
+  headerExtra?: React.ReactNode // 제목 왼쪽(로고 등)
 }
 
 // F5 내 원서(가상 Common App) 공통 레이아웃 — 상단 뒤로가기·"실제 제출 아님" 배지·하단 탭
-export default function AppShell({ tab, title, children }: AppShellProps) {
+export default function AppShell({ tab, title, children, onBack, headerExtra }: AppShellProps) {
   return (
     <div className="min-h-dvh bg-gray-50">
       <div className="mx-auto max-w-md px-5 py-6 pb-28">
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate('/')} aria-label="리포트로" className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
+          <button onClick={onBack ?? (() => navigate('/'))} aria-label="뒤로" className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
             ←
           </button>
+          {headerExtra}
           <div className="min-w-0 flex-1">
             <h1 className="truncate text-xl font-bold text-gray-900">{title}</h1>
           </div>
