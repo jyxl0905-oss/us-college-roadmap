@@ -26,6 +26,7 @@ import { majorLabel } from '../data/majors'
 import { tierLabels } from '../onboarding/labels'
 import RadarChart from './RadarChart'
 import GrowthChart, { type SeasonPoint } from './GrowthChart'
+import InstallPrompt from './InstallPrompt'
 import type { AxisScores } from '../lib/score'
 import AoBox from './AoBox'
 import SchoolCards from './SchoolCards'
@@ -321,6 +322,9 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           Word(docx)로 저장
         </button>
       </div>
+
+      {/* PWA 설치 안내 */}
+      <InstallPrompt />
 
       {/* F5: 가상 Common App 추천 배너 (항상 표시) */}
       {(
