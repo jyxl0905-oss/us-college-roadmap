@@ -1,5 +1,6 @@
 import type { ProfileRow } from '../lib/profile'
 import AppHome from './AppHome'
+import ActivitiesTab from './ActivitiesTab'
 
 interface AppRouterProps {
   path: string
@@ -11,6 +12,8 @@ interface AppRouterProps {
 export default function AppRouter({ path, userId, profile }: AppRouterProps) {
   const sub = path.replace(/^\/app\/?/, '').replace(/\/+$/, '')
   switch (sub) {
+    case 'activities':
+      return <ActivitiesTab userId={userId} />
     default:
       return <AppHome userId={userId} profile={profile} />
   }
