@@ -79,7 +79,12 @@ export async function loadProfile(userId: string): Promise<ProfileRow | null> {
     .eq('user_id', userId)
     .maybeSingle()
   if (error) throw error
-  return data
+  if (!data) return null
+  // bigint[]는 PostgREST에서 문자열 배열로 내려옴 → 숫자로 정규화 (id 비교 오류 방지)
+  return {
+    ...data,
+    target_school_ids: ((data.target_school_ids ?? []) as (number | string)[]).map(Number),
+  } as ProfileRow
 }
 
 // 프로필의 현재 학년 (9~12 범위로 클램프)

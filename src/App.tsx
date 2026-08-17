@@ -186,6 +186,44 @@ function AppRoutes() {
   // .env 미설정 → 로컬 전용 모드 (온보딩 체험만)
   if (!isSupabaseConfigured) return <OnboardingFlow />
 
+  // 로그인 완료 + 프로필 있음인데 새 온보딩 답변이 남아 있음 → 덮어쓸지 물어봄 (묵살하면 새 목표 학교가 반영 안 되는 버그)
+  if (session && profile && pendingAnswers) {
+    const pending = pendingAnswers
+    return (
+      <Screen>
+        <div className="py-12 text-center">
+          <p className="text-4xl">🔄</p>
+          <h1 className="mt-4 text-xl font-bold text-gray-900">방금 입력한 답변으로 업데이트할까요?</h1>
+          <p className="mt-3 text-sm leading-relaxed text-gray-500">
+            이미 저장된 프로필({profile.nickname}님)이 있어요. 새 답변으로 바꾸면 목표 학교·전공·성적 정보가
+            갱신되고, 체크 기록·내 원서 기록은 그대로 유지돼요.
+          </p>
+          <button
+            onClick={async () => {
+              const row = answersToRow(pending, profile.nickname ?? '', profile.research_consent)
+              await saveProfile(session.user.id, row)
+              localStorage.removeItem(PENDING_KEY)
+              setPendingAnswers(null)
+              setProfile({ ...row, user_id: session.user.id })
+            }}
+            className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
+          >
+            새 답변으로 업데이트
+          </button>
+          <button
+            onClick={() => {
+              localStorage.removeItem(PENDING_KEY)
+              setPendingAnswers(null)
+            }}
+            className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
+          >
+            기존 프로필 유지
+          </button>
+        </div>
+      </Screen>
+    )
+  }
+
   // 로그인 완료 + 프로필 있음 → (새 시즌이면 체크인 먼저) 시즌 리포트
   if (session && profile) {
     const needsCheckin =
