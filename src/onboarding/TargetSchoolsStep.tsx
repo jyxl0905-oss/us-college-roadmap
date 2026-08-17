@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { School } from '../lib/types'
 import schoolsData from '../data/schools.index.json' // 경량 인덱스(id·이름·티어) — 전체 시드는 schoolsCache에서만
+import SchoolLogo from '../browse/SchoolLogo'
 
 const schools = schoolsData as School[]
 
@@ -49,14 +50,17 @@ export default function TargetSchoolsStep({ selectedIds, onChange, onNext }: Tar
                 isSelected ? 'border-blue-600 bg-blue-50' : 'border-gray-200 bg-white active:bg-gray-50'
               }`}
             >
-              <span className="flex items-center justify-between">
-                <span>
-                  <span className="block font-medium text-gray-900">{s.name}</span>
-                  <span className="block text-sm text-gray-500">
-                    {s.name_ko} · US News #{s.usnews_rank}
+              <span className="flex items-center justify-between gap-3">
+                <span className="flex min-w-0 items-center gap-3">
+                  <SchoolLogo schoolId={s.id} name={s.name} size={32} />
+                  <span className="min-w-0">
+                    <span className="block font-medium text-gray-900">{s.name}</span>
+                    <span className="block text-sm text-gray-500">
+                      {s.name_ko} · US News #{s.usnews_rank}
+                    </span>
                   </span>
                 </span>
-                {isSelected && <span className="text-blue-600">✓</span>}
+                {isSelected && <span className="shrink-0 text-blue-600">✓</span>}
               </span>
             </button>
           )

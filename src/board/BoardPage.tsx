@@ -241,6 +241,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
             <button onClick={() => setOpenId(null)} aria-label="보드로" className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
               ←
             </button>
+            <SchoolLogo schoolId={open.id} name={open.name} size={36} />
             <div className="min-w-0">
               <h1 className="truncate text-lg font-bold text-gray-900">{open.name}</h1>
               <p className="truncate text-xs text-gray-500">{open.name_ko}</p>

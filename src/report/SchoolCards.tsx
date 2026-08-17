@@ -1,5 +1,6 @@
 import type { School } from '../lib/types'
 import { satBandMid } from '../lib/score'
+import SchoolLogo from '../browse/SchoolLogo'
 
 interface SchoolCardsProps {
   schools: School[]
@@ -28,11 +29,16 @@ export default function SchoolCards({ schools, satBand, majorPrimary }: SchoolCa
             id={`school-${s.id}`} // F1: 상세 페이지 CTA에서 /#school-{id}로 이동해 옴
             className="scroll-mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5"
           >
-            <div className="flex items-baseline justify-between gap-2">
-              <p className="font-semibold text-gray-900">{s.name}</p>
+            <div className="flex items-center justify-between gap-2">
+              <span className="flex min-w-0 items-center gap-3">
+                <SchoolLogo schoolId={s.id} name={s.name} size={36} />
+                <span className="min-w-0">
+                  <p className="font-semibold text-gray-900">{s.name}</p>
+                  <p className="text-sm text-gray-500">{s.name_ko}</p>
+                </span>
+              </span>
               <p className="shrink-0 text-xs text-gray-400">#{s.usnews_rank}</p>
             </div>
-            <p className="text-sm text-gray-500">{s.name_ko}</p>
 
             {s.test_policy === 'test-free' ? (
               <p className="mt-3 rounded-lg bg-blue-50 px-3 py-2 text-xs text-blue-900">

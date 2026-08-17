@@ -18,6 +18,7 @@ import { logEvent } from '../lib/analytics'
 import { navigate } from '../lib/router'
 import { entriesForSchool, sortEntries } from '../deadlines/DeadlinesPage'
 import { boardVisible } from '../board/boardLogic'
+import SchoolLogo from '../browse/SchoolLogo'
 import { majorLabel } from '../data/majors'
 import { tierLabels } from '../onboarding/labels'
 import RadarChart from './RadarChart'
@@ -315,9 +316,12 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
           </div>
           <div className="mt-2 flex flex-col gap-1">
             {upcomingDeadlines.map((e, i) => (
-              <p key={i} className="text-sm text-red-900">
-                <span className="font-medium">{e.school.name}</span> — {e.plan} ·{' '}
-                {e.timing ?? '시기 미공개'}
+              <p key={i} className="flex items-center gap-2 text-sm text-red-900">
+                <SchoolLogo schoolId={e.school.id} name={e.school.name} size={20} />
+                <span>
+                  <span className="font-medium">{e.school.name}</span> — {e.plan} ·{' '}
+                  {e.timing ?? '시기 미공개'}
+                </span>
               </p>
             ))}
           </div>
