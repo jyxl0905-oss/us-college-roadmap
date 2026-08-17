@@ -20,6 +20,7 @@ const CheckinFlow = lazy(() => import('./checkin/CheckinFlow'))
 const GuideView = lazy(() => import('./report/GuideView'))
 const DeadlinesPage = lazy(() => import('./deadlines/DeadlinesPage'))
 const BoardPage = lazy(() => import('./board/BoardPage'))
+const AppRouter = lazy(() => import('./app/AppRouter'))
 import { readPrefillSchoolIds } from './browse/prefill'
 import { logEvent } from './lib/analytics'
 
@@ -125,6 +126,25 @@ function AppRoutes() {
   // F2: 학교 비교 (?ids=1,2,3)
   if (path === '/compare' || path === '/compare/') {
     return <ComparePage profile={profile} />
+  }
+  // F5: 내 원서 (가상 Common App) — 로그인 전용, 9학년부터
+  if (path === '/app' || path.startsWith('/app/')) {
+    if (session && profile) return <AppRouter path={path} userId={session.user.id} profile={profile} />
+    return (
+      <Screen>
+        <div className="py-16 text-center">
+          <p className="text-4xl">📋</p>
+          <h1 className="mt-4 text-xl font-bold text-gray-900">내 원서</h1>
+          <p className="mt-3 text-sm text-gray-500">가상 Common App은 리포트를 받은 뒤 사용할 수 있어요.</p>
+          <button
+            onClick={() => navigate('/')}
+            className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
+          >
+            내 리포트 받기
+          </button>
+        </div>
+      </Screen>
+    )
   }
   // F4: 지원 보드 (로그인 전용, 11학년 여름부터)
   if (path === '/board' || path === '/board/') {

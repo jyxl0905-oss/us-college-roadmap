@@ -63,6 +63,9 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
   const [appeals, setAppeals] = useState<Appeal[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [bannerHidden, setBannerHidden] = useState(
+    () => localStorage.getItem(`hide_commonapp_banner_${userId}`) === '1',
+  )
   // F4 연동: 보드 라운드 배정 → 다가오는 마감을 배정 라운드 기준으로
   const [assignedRounds, setAssignedRounds] = useState<{ school_id: number; round: string | null }[]>([])
 
@@ -305,6 +308,34 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
         </button>
       </div>
 
+      {/* F5: 가상 Common App 추천 배너 (다시 보지 않기 → 기기 저장) */}
+      {!bannerHidden && (
+        <div className="no-print mt-4 rounded-xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white px-4 py-4">
+          <p className="text-xs font-semibold text-blue-600">추천</p>
+          <p className="mt-1 font-semibold text-gray-900">🎓 가상 Common App으로 더 전략적으로 준비하기</p>
+          <p className="mt-1 text-sm text-gray-600">
+            실제 원서 형식 그대로 4년 동안 미리 채워요 — 활동·점수·지원 학교가 한 곳에.
+          </p>
+          <div className="mt-3 flex items-center gap-3">
+            <button
+              onClick={() => navigate('/app')}
+              className="flex-1 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white active:bg-blue-700"
+            >
+              내 원서 열기
+            </button>
+            <button
+              onClick={() => {
+                localStorage.setItem(`hide_commonapp_banner_${userId}`, '1')
+                setBannerHidden(true)
+              }}
+              className="shrink-0 text-xs text-gray-400 underline"
+            >
+              다시 보지 않기
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* F3: 12학년 Fall — 다가오는 마감 3줄 */}
       {grade === 12 && currentSeason() === 'fall' && upcomingDeadlines.length > 0 && (
         <div className="mt-5 rounded-xl border-2 border-red-200 bg-red-50 px-4 py-3.5">
@@ -463,8 +494,14 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
         </div>
       )}
 
-      {/* 지원 보드·마감 캘린더·입시 기본기 링크 */}
+      {/* 내 원서·지원 보드·마감 캘린더·입시 기본기 링크 */}
       <div className="no-print mt-8 flex flex-col gap-2">
+        <button
+          onClick={() => navigate('/app')}
+          className="w-full rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-3.5 font-semibold text-blue-700 active:bg-blue-100"
+        >
+          📋 내 원서 — 가상 Common App
+        </button>
         {boardVisible(profile) && (
           <button
             onClick={() => navigate('/board')}

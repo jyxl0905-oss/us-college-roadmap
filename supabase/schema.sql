@@ -222,3 +222,69 @@ create table custom_tasks (
 );
 alter table custom_tasks enable row level security;
 create policy "own custom_tasks" on custom_tasks for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+-- F5 가상 Common App — 학생 본인 기록 (전부 RLS 본인만)
+create table activities (
+  id bigint generated always as identity primary key,
+  user_id uuid not null references auth.users(id) on delete cascade,
+  sort_order int not null default 0,
+  category text not null default 'other',
+  position text not null default '' check (char_length(position) <= 50),      -- Common App 직책 50자
+  organization text not null default '' check (char_length(organization) <= 100), -- 단체명 100자
+  description text not null default '' check (char_length(description) <= 150),  -- 설명 150자
+  grades smallint[] not null default '{}',
+  timing text check (timing in ('school_year','break','year_round')),
+  hours_per_week numeric,
+  weeks_per_year int,
+  continue_in_college boolean,
+  updated_at timestamptz not null default now()
+);
+create table honors (
+  id bigint generated always as identity primary key,
+  user_id uuid not null references auth.users(id) on delete cascade,
+  sort_order int not null default 0,
+  title text not null default '' check (char_length(title) <= 100),
+  grade smallint,
+  level text check (level in ('school','regional','national','international')),
+  activity_id bigint references activities(id) on delete set null,
+  updated_at timestamptz not null default now()
+);
+create table test_scores (
+  id bigint generated always as identity primary key,
+  user_id uuid not null references auth.users(id) on delete cascade,
+  kind text not null check (kind in ('sat','toefl','ielts','ap')),
+  taken_on date,
+  total numeric,
+  section_scores jsonb,
+  subject text, -- AP 과목명
+  updated_at timestamptz not null default now()
+);
+create table courses (
+  id bigint generated always as identity primary key,
+  user_id uuid not null references auth.users(id) on delete cascade,
+  grade smallint not null,
+  name text not null,
+  level text not null default 'regular' check (level in ('regular','honors','ap','ib')),
+  updated_at timestamptz not null default now()
+);
+create table essays (
+  id bigint generated always as identity primary key,
+  user_id uuid not null references auth.users(id) on delete cascade,
+  school_id bigint references schools(id), -- null = 개인 에세이
+  prompt text not null default '',
+  status text not null default 'not_started' check (status in ('not_started','brainstorm','draft','revising','done')),
+  word_limit int,
+  notes text, -- 본문은 저장하지 않음 (메모·상태만)
+  updated_at timestamptz not null default now()
+);
+alter table applications add column student_deadline date; -- 학생이 공식 페이지 확인 후 직접 입력한 마감일
+alter table activities enable row level security;
+alter table honors enable row level security;
+alter table test_scores enable row level security;
+alter table courses enable row level security;
+alter table essays enable row level security;
+create policy "own activities" on activities for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create policy "own honors" on honors for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create policy "own test_scores" on test_scores for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create policy "own courses" on courses for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create policy "own essays" on essays for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
