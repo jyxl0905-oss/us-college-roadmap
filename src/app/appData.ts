@@ -104,20 +104,29 @@ export async function loadAppRecords(userId: string): Promise<AppRecords> {
 
 type Table = 'activities' | 'honors' | 'test_scores' | 'courses' | 'essays'
 
+// 저장 실패를 조용히 삼키지 않음 — 실패 시 사용자에게 알리고 throw (호출부는 낙관적 갱신을 하지 않도록)
+function fail(action: string, message: string): never {
+  alert(`${action}에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.\n(${message})`)
+  throw new Error(message)
+}
+
 export async function insertRow<T extends { id: number }>(table: Table, userId: string, row: Omit<T, 'id'>): Promise<T | null> {
   if (!supabase) return null
-  const { data } = await supabase.from(table).insert({ user_id: userId, ...row }).select('*').single()
+  const { data, error } = await supabase.from(table).insert({ user_id: userId, ...row }).select('*').single()
+  if (error) fail('저장', error.message)
   return (data as T) ?? null
 }
 
 export async function updateRow<T extends { id: number }>(table: Table, id: number, patch: Partial<T>): Promise<void> {
   if (!supabase) return
-  await supabase.from(table).update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
+  const { error } = await supabase.from(table).update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
+  if (error) fail('저장', error.message)
 }
 
 export async function deleteRow(table: Table, id: number): Promise<void> {
   if (!supabase) return
-  await supabase.from(table).delete().eq('id', id)
+  const { error } = await supabase.from(table).delete().eq('id', id)
+  if (error) fail('삭제', error.message)
 }
 
 // SAT 최고 총점 (회차별 총점 중 최고 — superscore 아님)

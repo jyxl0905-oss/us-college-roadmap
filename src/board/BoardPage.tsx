@@ -79,9 +79,15 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
       student_deadline: patch.student_deadline !== undefined ? patch.student_deadline : (prev?.student_deadline ?? null),
       updated_at: new Date().toISOString(),
     }
+    const before = apps
     setApps((list) => [...list.filter((a) => a.school_id !== schoolId), row])
     if (supabase) {
-      await supabase.from('applications').upsert({ user_id: userId, ...row })
+      const { error } = await supabase.from('applications').upsert({ user_id: userId, ...row })
+      if (error) {
+        setApps(before) // 실패 시 되돌림
+        alert(`저장에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.\n(${error.message})`)
+        return
+      }
       if (patch.round) logEvent(userId, 'round_assigned')
     }
   }
