@@ -51,10 +51,12 @@ const selfPts: Record<number, number> = { 1: 20, 2: 45, 3: 70 }
 
 // storyStats: 스토리 준비 점수용 — done(전 시즌 누적 완료 수) / exposed(현재 학년·시즌까지 노출된 항목 수).
 // 저학년이 아직 보지도 못한 항목 때문에 낮게 진단되는 것을 방지 (§0-2)
+// overrides: F5 내 원서 기록 기반 점수 (null이면 자가진단 사용). 기록 기반일 때도 해당 축 체크 가산은 유지
 export function computeScores(
   p: ProfileRow,
   checkedItems: ChecklistItem[],
   storyStats?: { done: number; exposed: number },
+  overrides?: { spike: number | null; leadership: number | null; validation: number | null },
 ): AxisScores {
   const checks = (axis: Axis) => checkedItems.filter((i) => i.axis === axis).length
 
@@ -82,9 +84,9 @@ export function computeScores(
   return {
     rigor: cap(rigor),
     testing: cap(sat + toefl),
-    spike: cap(selfPts[p.activity_spike ?? 1] + checks('spike') * 10),
-    leadership: cap(selfPts[p.activity_leadership ?? 1] + checks('leadership') * 10),
-    validation: cap(selfPts[p.activity_validation ?? 1] + checks('validation') * 10),
+    spike: cap((overrides?.spike ?? selfPts[p.activity_spike ?? 1]) + checks('spike') * 10),
+    leadership: cap((overrides?.leadership ?? selfPts[p.activity_leadership ?? 1]) + checks('leadership') * 10),
+    validation: cap((overrides?.validation ?? selfPts[p.activity_validation ?? 1]) + checks('validation') * 10),
     story: storyStats
       ? cap((storyStats.done / Math.max(1, storyStats.exposed)) * 100)
       : cap(10 + checks('story') * 15),

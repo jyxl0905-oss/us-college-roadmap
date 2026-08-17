@@ -18,6 +18,8 @@ import { logEvent } from '../lib/analytics'
 import { navigate } from '../lib/router'
 import { entriesForSchool, sortEntries } from '../deadlines/DeadlinesPage'
 import SchoolLogo from '../browse/SchoolLogo'
+import { recordOverrides, type RecordOverrides } from '../lib/recordScore'
+import type { Activity, Honor } from '../app/appData'
 import { majorLabel } from '../data/majors'
 import { tierLabels } from '../onboarding/labels'
 import RadarChart from './RadarChart'
@@ -67,6 +69,8 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
   )
   // F4 연동: 보드 라운드 배정 → 다가오는 마감을 배정 라운드 기준으로
   const [assignedRounds, setAssignedRounds] = useState<{ school_id: number; round: string | null }[]>([])
+  // F5 연동: 내 원서 활동·수상 기록 → spike/leadership/validation 기록 기반 점수
+  const [overrides, setOverrides] = useState<RecordOverrides>({ spike: null, leadership: null, validation: null })
 
   useEffect(() => {
     if (!supabase) return
@@ -75,6 +79,10 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
       .select('school_id, round')
       .eq('user_id', userId)
       .then(({ data }) => setAssignedRounds(data ?? []))
+    Promise.all([
+      supabase.from('activities').select('*').eq('user_id', userId),
+      supabase.from('honors').select('*').eq('user_id', userId),
+    ]).then(([a, h]) => setOverrides(recordOverrides((a.data ?? []) as Activity[], (h.data ?? []) as Honor[])))
   }, [userId])
 
   const seasonLabel = currentSeasonLabel()
@@ -154,7 +162,8 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
   const storyItemIds = new Set(allItems.filter((i) => i.axis === 'story').map((i) => i.id))
   const storyDone = [...allDoneIds].filter((id) => storyItemIds.has(id)).length
   const storyStats = { done: storyDone, exposed: countStoryExposure(allItems, profile) }
-  const scores = computeScores(profile, checkedItems, storyStats)
+  const scores = computeScores(profile, checkedItems, storyStats, overrides)
+  const recordBased = overrides.spike !== null || overrides.leadership !== null || overrides.validation !== null
   const weakest = weakestAxis(scores)
   // 약한 축 처방(§4 prescriptions): 축+등급+학년대 매칭, 없으면 기본 문구
   const weakLevel = scoreLevel(scores[weakest])
@@ -392,10 +401,25 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide }: R
 
       {/* 4. 6축 밸런스 + 약한 축 진단 */}
       <div className="print-flat mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
-        <p className="font-semibold text-gray-900">6축 밸런스</p>
+        <div className="flex items-center justify-between">
+          <p className="font-semibold text-gray-900">6축 밸런스</p>
+          {recordBased && (
+            <span
+              className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-medium text-green-700"
+              title="자가진단 대신 내 원서(활동·수상) 기록으로 계산됨"
+            >
+              📋 기록 기반
+            </span>
+          )}
+        </div>
         <div className="mt-2">
           <RadarChart scores={scores} />
         </div>
+        {recordBased && (
+          <p className="mt-1 text-[11px] text-gray-400">
+            대표 활동·리더십·교외 인정 축은 자가진단 대신 내 원서 기록으로 계산됐어요.
+          </p>
+        )}
         <p className="mt-2 rounded-lg bg-blue-50 px-3 py-2.5 text-sm text-blue-900">
           <strong>{axisKo[weakest]}</strong>{' '}
           {weakest === 'story' ? '축은 아직 채워지는 중이에요.' : '축이 가장 약해요.'} {prescription}
