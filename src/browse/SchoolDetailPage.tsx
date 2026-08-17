@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import type { School, Tier } from '../lib/types'
-import { supabase } from '../lib/supabase'
+import { loadSchools } from '../lib/schoolsCache'
 import { navigate, slugify } from '../lib/router'
 import { majorLabel } from '../data/majors'
 import { saveProfile, type ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
 import SchoolLogo from './SchoolLogo'
-import schoolsSeed from '../data/schools.seed.json'
+import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
 
 const tierTitles: Record<Tier, string> = { 1: 'Top 20', 2: '21–40위', 3: '41–60위' }
 
@@ -21,17 +21,10 @@ interface SchoolDetailPageProps {
 export default function SchoolDetailPage({ slug, userId, profile, onProfileChange }: SchoolDetailPageProps) {
   const [school, setSchool] = useState<School | null | 'loading'>('loading')
   const [togglePending, setTogglePending] = useState(false)
+  const [compareIds, setCompareIds] = useState<number[]>(readCompareIds) // F2: 상세에서도 비교 담기
 
   useEffect(() => {
-    const pick = (list: School[]) => list.find((s) => slugify(s.name) === slug) ?? null
-    if (!supabase) {
-      setSchool(pick(schoolsSeed as School[]))
-      return
-    }
-    supabase
-      .from('schools')
-      .select('*')
-      .then(({ data }) => setSchool(pick((data ?? schoolsSeed) as School[])))
+    loadSchools().then((list) => setSchool(list.find((s) => slugify(s.name) === slug) ?? null))
   }, [slug])
 
   if (school === 'loading')
@@ -186,6 +179,33 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
             </p>
           </div>
         )}
+
+        {/* F2: 비교 담기 (비로그인 포함) */}
+        <div className="mt-5 flex items-center gap-2">
+          <button
+            onClick={() => {
+              const next = toggleCompareId(compareIds, s.id)
+              writeCompareIds(next)
+              setCompareIds(next)
+            }}
+            className={`flex-1 rounded-xl border-2 px-4 py-3 text-sm font-semibold ${
+              compareIds.includes(s.id)
+                ? 'border-blue-600 bg-blue-600 text-white'
+                : 'border-blue-200 bg-blue-50 text-blue-700 active:bg-blue-100'
+            }`}
+          >
+            {compareIds.includes(s.id) ? '✓ 비교에 담김' : '＋ 비교에 담기'}
+            <span className="ml-1 font-normal opacity-80">({compareIds.length}/3)</span>
+          </button>
+          {compareIds.length >= 2 && (
+            <button
+              onClick={() => navigate(`/compare?ids=${compareIds.join(',')}`)}
+              className="shrink-0 rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 active:bg-gray-50"
+            >
+              비교하기 →
+            </button>
+          )}
+        </div>
 
         {/* 로그인: 목표 토글 */}
         {profile && (

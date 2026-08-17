@@ -3,7 +3,7 @@ import type { OnboardingAnswers, School, Tier } from '../lib/types'
 import { emptyAnswers } from '../lib/types'
 import { readPrefillSchoolIds, clearPrefill } from '../browse/prefill'
 import { majorsByTrack } from '../data/majors'
-import schoolsData from '../data/schools.seed.json'
+import schoolsData from '../data/schools.index.json' // 경량 인덱스(id·이름·티어) — 전체 시드는 schoolsCache에서만
 import { tierLabels } from './labels'
 import ChoiceStep from './ChoiceStep'
 import GradYearStep from './GradYearStep'

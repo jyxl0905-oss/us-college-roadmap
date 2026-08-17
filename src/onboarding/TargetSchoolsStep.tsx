@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { School } from '../lib/types'
-import schoolsData from '../data/schools.seed.json'
+import schoolsData from '../data/schools.index.json' // 경량 인덱스(id·이름·티어) — 전체 시드는 schoolsCache에서만
 
 const schools = schoolsData as School[]
 

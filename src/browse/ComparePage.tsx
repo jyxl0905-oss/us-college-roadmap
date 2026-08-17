@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
 import type { School, Tier } from '../lib/types'
-import { supabase } from '../lib/supabase'
+import { loadSchools } from '../lib/schoolsCache'
 import { navigate, slugify } from '../lib/router'
 import { satBandMid } from '../lib/score'
 import { majorLabel } from '../data/majors'
 import type { ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
 import SchoolLogo from './SchoolLogo'
-import schoolsSeed from '../data/schools.seed.json'
 
 const tierTitles: Record<Tier, string> = { 1: 'Top 20', 2: '21–40위', 3: '41–60위' }
 
@@ -27,17 +26,9 @@ export default function ComparePage({ profile }: ComparePageProps) {
   const ids = compareIdsFromUrl()
 
   useEffect(() => {
-    const pick = (list: School[]) =>
-      ids.map((id) => list.find((s) => s.id === id)).filter(Boolean) as School[]
-    if (!supabase) {
-      setSchools(pick(schoolsSeed as School[]))
-      return
-    }
-    supabase
-      .from('schools')
-      .select('*')
-      .in('id', ids)
-      .then(({ data }) => setSchools(pick((data ?? schoolsSeed) as School[])))
+    loadSchools().then((list) =>
+      setSchools(ids.map((id) => list.find((s) => s.id === id)).filter(Boolean) as School[]),
+    )
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ids.join(',')])
 

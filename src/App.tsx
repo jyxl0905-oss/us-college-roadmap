@@ -1,23 +1,25 @@
-import { useEffect, useState } from 'react'
+import { Suspense, lazy, useEffect, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
 import type { OnboardingAnswers } from './lib/types'
 import { supabase, isSupabaseConfigured } from './lib/supabase'
 import { answersToRow, loadProfile, saveProfile, type ProfileRow } from './lib/profile'
 import { currentSeasonLabel } from './lib/academics'
-import OnboardingFlow from './onboarding/OnboardingFlow'
 import EmailStep, { RESEARCH_CONSENT_KEY } from './auth/EmailStep'
 import NicknameStep from './auth/NicknameStep'
-import ReportView from './report/ReportView'
-import PreviewReport from './report/PreviewReport'
-import CheckinFlow from './checkin/CheckinFlow'
 import RolloverGate from './RolloverGate'
-import GuideView from './report/GuideView'
 import SchoolsListPage from './browse/SchoolsListPage'
 import SchoolDetailPage from './browse/SchoolDetailPage'
 import ComparePage from './browse/ComparePage'
-import DeadlinesPage from './deadlines/DeadlinesPage'
-import BoardPage from './board/BoardPage'
 import { usePath, navigate } from './lib/router'
+
+// 무거운 화면(차트·리포트·보드·온보딩)은 필요할 때만 내려받음 — 둘러보기 첫 로딩을 가볍게
+const OnboardingFlow = lazy(() => import('./onboarding/OnboardingFlow'))
+const ReportView = lazy(() => import('./report/ReportView'))
+const PreviewReport = lazy(() => import('./report/PreviewReport'))
+const CheckinFlow = lazy(() => import('./checkin/CheckinFlow'))
+const GuideView = lazy(() => import('./report/GuideView'))
+const DeadlinesPage = lazy(() => import('./deadlines/DeadlinesPage'))
+const BoardPage = lazy(() => import('./board/BoardPage'))
 import { readPrefillSchoolIds } from './browse/prefill'
 import { logEvent } from './lib/analytics'
 
@@ -38,7 +40,21 @@ function Screen({ children }: { children: React.ReactNode }) {
 
 type GuestPhase = 'home' | 'onboarding' | 'preview' | 'email'
 
+const loadingScreen = (
+  <Screen>
+    <p className="mt-20 text-center text-gray-400">불러오는 중…</p>
+  </Screen>
+)
+
 export default function App() {
+  return (
+    <Suspense fallback={loadingScreen}>
+      <AppRoutes />
+    </Suspense>
+  )
+}
+
+function AppRoutes() {
   const [session, setSession] = useState<Session | null>(null)
   const [sessionLoading, setSessionLoading] = useState(isSupabaseConfigured)
   const [profile, setProfile] = useState<ProfileRow | null>(null)

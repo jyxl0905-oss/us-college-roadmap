@@ -1,0 +1,710 @@
+[
+ {
+  "id": 1,
+  "name": "Princeton University",
+  "name_ko": "프린스턴 대학교",
+  "usnews_rank": 1,
+  "tier": 1,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 2,
+  "name": "Massachusetts Institute of Technology",
+  "name_ko": "매사추세츠 공과대학교 (MIT)",
+  "usnews_rank": 2,
+  "tier": 1,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 3,
+  "name": "Harvard University",
+  "name_ko": "하버드 대학교",
+  "usnews_rank": 3,
+  "tier": 1,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 4,
+  "name": "Stanford University",
+  "name_ko": "스탠퍼드 대학교",
+  "usnews_rank": 4,
+  "tier": 1,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 5,
+  "name": "Yale University",
+  "name_ko": "예일 대학교",
+  "usnews_rank": 4,
+  "tier": 1,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 6,
+  "name": "University of Chicago",
+  "name_ko": "시카고대학교",
+  "usnews_rank": 6,
+  "tier": 1,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 7,
+  "name": "Duke University",
+  "name_ko": "듀크 대학교",
+  "usnews_rank": 7,
+  "tier": 1,
+  "direct_admit_majors": [
+   "engineering"
+  ]
+ },
+ {
+  "id": 8,
+  "name": "Johns Hopkins University",
+  "name_ko": "존스 홉킨스 대학교",
+  "usnews_rank": 7,
+  "tier": 1,
+  "direct_admit_majors": [
+   "engineering"
+  ]
+ },
+ {
+  "id": 9,
+  "name": "Northwestern University",
+  "name_ko": "노스웨스턴 대학교",
+  "usnews_rank": 7,
+  "tier": 1,
+  "direct_admit_majors": [
+   "engineering",
+   "arts",
+   "social_sci"
+  ]
+ },
+ {
+  "id": 10,
+  "name": "University of Pennsylvania",
+  "name_ko": "펜실베이니아 대학교(유펜)",
+  "usnews_rank": 7,
+  "tier": 1,
+  "direct_admit_majors": [
+   "engineering",
+   "business"
+  ]
+ },
+ {
+  "id": 11,
+  "name": "California Institute of Technology (Caltech)",
+  "name_ko": "캘리포니아 공과대학교(칼텍)",
+  "usnews_rank": 11,
+  "tier": 1,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 12,
+  "name": "Cornell University",
+  "name_ko": "코넬대학교",
+  "usnews_rank": 12,
+  "tier": 1,
+  "direct_admit_majors": [
+   "cs",
+   "engineering",
+   "business",
+   "math_data",
+   "natural_sci",
+   "social_sci",
+   "humanities",
+   "arts"
+  ]
+ },
+ {
+  "id": 13,
+  "name": "Brown University",
+  "name_ko": "브라운대학교",
+  "usnews_rank": 13,
+  "tier": 1,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 14,
+  "name": "Dartmouth College",
+  "name_ko": "다트머스칼리지",
+  "usnews_rank": 13,
+  "tier": 1,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 15,
+  "name": "Columbia University",
+  "name_ko": "컬럼비아대학교",
+  "usnews_rank": 15,
+  "tier": 1,
+  "direct_admit_majors": [
+   "engineering"
+  ]
+ },
+ {
+  "id": 16,
+  "name": "University of California, Berkeley",
+  "name_ko": "UC 버클리(캘리포니아대학교 버클리)",
+  "usnews_rank": 15,
+  "tier": 1,
+  "direct_admit_majors": [
+   "engineering",
+   "cs",
+   "math_data",
+   "business"
+  ]
+ },
+ {
+  "id": 17,
+  "name": "Rice University",
+  "name_ko": "라이스 대학교",
+  "usnews_rank": 17,
+  "tier": 1,
+  "direct_admit_majors": [
+   "arts"
+  ]
+ },
+ {
+  "id": 18,
+  "name": "University of California, Los Angeles (UCLA)",
+  "name_ko": "UCLA(캘리포니아대학교 로스앤젤레스)",
+  "usnews_rank": 17,
+  "tier": 1,
+  "direct_admit_majors": [
+   "engineering",
+   "cs",
+   "arts",
+   "premed"
+  ]
+ },
+ {
+  "id": 19,
+  "name": "Vanderbilt University",
+  "name_ko": "밴더빌트 대학교",
+  "usnews_rank": 17,
+  "tier": 1,
+  "direct_admit_majors": [
+   "engineering",
+   "arts"
+  ]
+ },
+ {
+  "id": 20,
+  "name": "Carnegie Mellon University",
+  "name_ko": "카네기멜런대학교",
+  "usnews_rank": 20,
+  "tier": 1,
+  "direct_admit_majors": [
+   "cs",
+   "engineering",
+   "business",
+   "math_data",
+   "natural_sci",
+   "social_sci",
+   "humanities",
+   "arts"
+  ]
+ },
+ {
+  "id": 21,
+  "name": "University of Michigan--Ann Arbor",
+  "name_ko": "미시간대학교 앤아버",
+  "usnews_rank": 20,
+  "tier": 1,
+  "direct_admit_majors": [
+   "engineering",
+   "business",
+   "arts"
+  ]
+ },
+ {
+  "id": 22,
+  "name": "University of Notre Dame",
+  "name_ko": "노트르담 대학교",
+  "usnews_rank": 20,
+  "tier": 1,
+  "direct_admit_majors": [
+   "business"
+  ]
+ },
+ {
+  "id": 23,
+  "name": "Washington University in St. Louis",
+  "name_ko": "세인트루이스 워싱턴대학교",
+  "usnews_rank": 20,
+  "tier": 1,
+  "direct_admit_majors": [
+   "engineering",
+   "business",
+   "arts"
+  ]
+ },
+ {
+  "id": 24,
+  "name": "Emory University",
+  "name_ko": "에모리 대학교",
+  "usnews_rank": 24,
+  "tier": 2,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 25,
+  "name": "Georgetown University",
+  "name_ko": "조지타운 대학교",
+  "usnews_rank": 24,
+  "tier": 2,
+  "direct_admit_majors": [
+   "business",
+   "social_sci",
+   "premed"
+  ]
+ },
+ {
+  "id": 26,
+  "name": "University of North Carolina at Chapel Hill",
+  "name_ko": "노스캐롤라이나 대학교 채플힐",
+  "usnews_rank": 26,
+  "tier": 2,
+  "direct_admit_majors": [
+   "business"
+  ]
+ },
+ {
+  "id": 27,
+  "name": "University of Virginia",
+  "name_ko": "버지니아 대학교",
+  "usnews_rank": 26,
+  "tier": 2,
+  "direct_admit_majors": [
+   "engineering",
+   "cs",
+   "premed",
+   "arts"
+  ]
+ },
+ {
+  "id": 28,
+  "name": "University of Southern California",
+  "name_ko": "서던캘리포니아 대학교 (USC)",
+  "usnews_rank": 28,
+  "tier": 2,
+  "direct_admit_majors": [
+   "cs",
+   "engineering",
+   "business",
+   "arts"
+  ]
+ },
+ {
+  "id": 29,
+  "name": "University of California, San Diego",
+  "name_ko": "캘리포니아대학교 샌디에이고 (UC 샌디에이고)",
+  "usnews_rank": 29,
+  "tier": 2,
+  "direct_admit_majors": [
+   "cs",
+   "engineering",
+   "math_data",
+   "premed"
+  ]
+ },
+ {
+  "id": 30,
+  "name": "University of Florida",
+  "name_ko": "플로리다대학교",
+  "usnews_rank": 30,
+  "tier": 2,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 31,
+  "name": "University of Texas at Austin",
+  "name_ko": "텍사스대학교 오스틴",
+  "usnews_rank": 30,
+  "tier": 2,
+  "direct_admit_majors": [
+   "cs",
+   "engineering",
+   "business",
+   "math_data",
+   "natural_sci",
+   "premed",
+   "social_sci",
+   "humanities",
+   "arts"
+  ]
+ },
+ {
+  "id": 32,
+  "name": "Georgia Institute of Technology",
+  "name_ko": "조지아공과대학교 (조지아텍)",
+  "usnews_rank": 32,
+  "tier": 2,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 33,
+  "name": "New York University",
+  "name_ko": "뉴욕대학교 (NYU)",
+  "usnews_rank": 32,
+  "tier": 2,
+  "direct_admit_majors": [
+   "business",
+   "engineering",
+   "arts"
+  ]
+ },
+ {
+  "id": 34,
+  "name": "University of California, Davis",
+  "name_ko": "캘리포니아대학교 데이비스 (UC 데이비스)",
+  "usnews_rank": 32,
+  "tier": 2,
+  "direct_admit_majors": [
+   "cs",
+   "engineering",
+   "math_data",
+   "natural_sci",
+   "social_sci",
+   "humanities",
+   "arts"
+  ]
+ },
+ {
+  "id": 35,
+  "name": "University of California, Irvine",
+  "name_ko": "캘리포니아대학교 어바인 (UC 어바인)",
+  "usnews_rank": 32,
+  "tier": 2,
+  "direct_admit_majors": [
+   "cs",
+   "engineering",
+   "business",
+   "math_data",
+   "natural_sci",
+   "premed",
+   "social_sci",
+   "humanities",
+   "arts"
+  ]
+ },
+ {
+  "id": 36,
+  "name": "Boston College",
+  "name_ko": "보스턴 칼리지",
+  "usnews_rank": 36,
+  "tier": 2,
+  "direct_admit_majors": [
+   "business",
+   "premed"
+  ]
+ },
+ {
+  "id": 37,
+  "name": "Tufts University",
+  "name_ko": "터프츠 대학교",
+  "usnews_rank": 36,
+  "tier": 2,
+  "direct_admit_majors": [
+   "engineering",
+   "arts"
+  ]
+ },
+ {
+  "id": 38,
+  "name": "University of Illinois Urbana-Champaign",
+  "name_ko": "일리노이대학교 어바나-샴페인 (UIUC)",
+  "usnews_rank": 36,
+  "tier": 2,
+  "direct_admit_majors": [
+   "cs",
+   "engineering",
+   "business",
+   "math_data",
+   "natural_sci",
+   "social_sci",
+   "humanities",
+   "arts"
+  ]
+ },
+ {
+  "id": 39,
+  "name": "University of Wisconsin--Madison",
+  "name_ko": "위스콘신 대학교 매디슨",
+  "usnews_rank": 36,
+  "tier": 2,
+  "direct_admit_majors": [
+   "engineering",
+   "business"
+  ]
+ },
+ {
+  "id": 40,
+  "name": "University of California, Santa Barbara",
+  "name_ko": "캘리포니아 대학교 샌타바버라 (UC 샌타바버라)",
+  "usnews_rank": 40,
+  "tier": 2,
+  "direct_admit_majors": [
+   "cs",
+   "engineering"
+  ]
+ },
+ {
+  "id": 41,
+  "name": "Ohio State University",
+  "name_ko": "오하이오 주립 대학교",
+  "usnews_rank": 41,
+  "tier": 3,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 42,
+  "name": "Boston University",
+  "name_ko": "보스턴 대학교",
+  "usnews_rank": 42,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business",
+   "engineering",
+   "arts",
+   "cs",
+   "math_data"
+  ]
+ },
+ {
+  "id": 43,
+  "name": "Rutgers University--New Brunswick",
+  "name_ko": "럿거스 대학교 뉴브런즈윅",
+  "usnews_rank": 42,
+  "tier": 3,
+  "direct_admit_majors": [
+   "engineering",
+   "business",
+   "arts",
+   "premed",
+   "natural_sci"
+  ]
+ },
+ {
+  "id": 44,
+  "name": "University of Maryland, College Park",
+  "name_ko": "메릴랜드 대학교 칼리지파크",
+  "usnews_rank": 42,
+  "tier": 3,
+  "direct_admit_majors": [
+   "cs",
+   "engineering",
+   "business",
+   "natural_sci",
+   "social_sci",
+   "arts"
+  ]
+ },
+ {
+  "id": 45,
+  "name": "University of Washington (Seattle)",
+  "name_ko": "워싱턴 대학교 시애틀",
+  "usnews_rank": 42,
+  "tier": 3,
+  "direct_admit_majors": [
+   "cs",
+   "engineering",
+   "business",
+   "math_data",
+   "natural_sci",
+   "arts"
+  ]
+ },
+ {
+  "id": 46,
+  "name": "Lehigh University",
+  "name_ko": "리하이 대학교",
+  "usnews_rank": 46,
+  "tier": 3,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 47,
+  "name": "Northeastern University",
+  "name_ko": "노스이스턴 대학교",
+  "usnews_rank": 46,
+  "tier": 3,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 48,
+  "name": "Purdue University--Main Campus",
+  "name_ko": "퍼듀 대학교",
+  "usnews_rank": 46,
+  "tier": 3,
+  "direct_admit_majors": [
+   "cs",
+   "engineering",
+   "business",
+   "math_data",
+   "natural_sci",
+   "premed",
+   "social_sci",
+   "humanities",
+   "arts"
+  ]
+ },
+ {
+  "id": 49,
+  "name": "University of Georgia",
+  "name_ko": "조지아 대학교",
+  "usnews_rank": 46,
+  "tier": 3,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 50,
+  "name": "University of Rochester",
+  "name_ko": "로체스터 대학교",
+  "usnews_rank": 46,
+  "tier": 3,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 51,
+  "name": "Case Western Reserve University",
+  "name_ko": "케이스 웨스턴 리저브 대학교",
+  "usnews_rank": 51,
+  "tier": 3,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 52,
+  "name": "Florida State University",
+  "name_ko": "플로리다 주립 대학교",
+  "usnews_rank": 51,
+  "tier": 3,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 53,
+  "name": "Texas A&M University",
+  "name_ko": "텍사스 A&M 대학교",
+  "usnews_rank": 51,
+  "tier": 3,
+  "direct_admit_majors": [
+   "engineering",
+   "cs"
+  ]
+ },
+ {
+  "id": 54,
+  "name": "Virginia Tech",
+  "name_ko": "버지니아 공과대학교(버지니아텍)",
+  "usnews_rank": 51,
+  "tier": 3,
+  "direct_admit_majors": [
+   "cs",
+   "engineering",
+   "business",
+   "math_data",
+   "natural_sci",
+   "premed",
+   "social_sci",
+   "humanities",
+   "arts"
+  ]
+ },
+ {
+  "id": 55,
+  "name": "Wake Forest University",
+  "name_ko": "웨이크 포레스트 대학교",
+  "usnews_rank": 51,
+  "tier": 3,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 56,
+  "name": "William & Mary",
+  "name_ko": "윌리엄 앤 메리 대학교",
+  "usnews_rank": 51,
+  "tier": 3,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 57,
+  "name": "University of California, Merced",
+  "name_ko": "캘리포니아 대학교 머세드(UC 머세드)",
+  "usnews_rank": 57,
+  "tier": 3,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 58,
+  "name": "Villanova University",
+  "name_ko": "빌라노바 대학교",
+  "usnews_rank": 57,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business",
+   "engineering",
+   "premed"
+  ]
+ },
+ {
+  "id": 59,
+  "name": "George Washington University",
+  "name_ko": "조지워싱턴 대학교",
+  "usnews_rank": 59,
+  "tier": 3,
+  "direct_admit_majors": [
+   "cs",
+   "engineering",
+   "business",
+   "social_sci",
+   "arts",
+   "premed"
+  ]
+ },
+ {
+  "id": 60,
+  "name": "Pennsylvania State University--University Park",
+  "name_ko": "펜실베이니아 주립대학교 유니버시티 파크",
+  "usnews_rank": 59,
+  "tier": 3,
+  "direct_admit_majors": []
+ },
+ {
+  "id": 61,
+  "name": "Santa Clara University",
+  "name_ko": "산타클라라 대학교",
+  "usnews_rank": 59,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business",
+   "engineering"
+  ]
+ },
+ {
+  "id": 62,
+  "name": "Stony Brook University (SUNY)",
+  "name_ko": "스토니브룩 대학교 (뉴욕주립대)",
+  "usnews_rank": 59,
+  "tier": 3,
+  "direct_admit_majors": [
+   "cs",
+   "engineering"
+  ]
+ },
+ {
+  "id": 63,
+  "name": "University of Minnesota, Twin Cities",
+  "name_ko": "미네소타 대학교 트윈시티",
+  "usnews_rank": 59,
+  "tier": 3,
+  "direct_admit_majors": [
+   "cs",
+   "engineering",
+   "math_data",
+   "business",
+   "natural_sci",
+   "premed",
+   "arts"
+  ]
+ }
+]

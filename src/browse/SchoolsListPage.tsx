@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { School, Tier } from '../lib/types'
-import { supabase } from '../lib/supabase'
+import { loadSchools } from '../lib/schoolsCache'
 import { navigate, slugify } from '../lib/router'
 import { regionLabels, schoolRegion, type Region } from './region'
 import SchoolLogo from './SchoolLogo'
+import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
 import type { ProfileRow } from '../lib/profile'
-import schoolsSeed from '../data/schools.seed.json'
 
 const tierTitles: Record<Tier, string> = { 1: 'Top 20', 2: '21–40위', 3: '41–60위' }
 
@@ -22,22 +22,15 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
   const [testPolicy, setTestPolicy] = useState<'all' | 'test-required' | 'test-optional' | 'test-free'>('all')
   const [region, setRegion] = useState<'all' | Region>('all')
   const [directAdmitMine, setDirectAdmitMine] = useState(false)
-  const [compareIds, setCompareIds] = useState<number[]>([]) // F2: 최대 3개
-
-  const toggleCompare = (id: number) =>
-    setCompareIds((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : prev.length >= 3 ? prev : [...prev, id],
-    )
+  const [compareIds, setCompareIdsState] = useState<number[]>(readCompareIds) // F2: 최대 3개, 세션 유지
+  const setCompareIds = (ids: number[]) => {
+    writeCompareIds(ids)
+    setCompareIdsState(ids)
+  }
+  const toggleCompare = (id: number) => setCompareIds(toggleCompareId(compareIds, id))
 
   useEffect(() => {
-    if (!supabase) {
-      setSchools(schoolsSeed as School[])
-      return
-    }
-    supabase
-      .from('schools')
-      .select('*')
-      .then(({ data }) => setSchools((data ?? schoolsSeed) as School[]))
+    loadSchools().then(setSchools)
   }, [])
 
   const myMajor = profile?.major_primary && profile.major_primary !== 'undecided' ? profile.major_primary : null
@@ -124,6 +117,13 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
           </select>
         </div>
 
+        {/* F2 안내: 비교 진입점 */}
+        {schools.length > 0 && compareIds.length === 0 && (
+          <p className="mt-3 rounded-xl bg-blue-50 px-3.5 py-2.5 text-xs text-blue-800">
+            ⚖️ 카드의 <span className="font-semibold">[＋ 비교]</span>를 눌러 2~3개 학교를 나란히 비교할 수 있어요.
+          </p>
+        )}
+
         {schools.length === 0 && <p className="mt-10 text-center text-gray-400">불러오는 중…</p>}
 
         {groups.map((tier) => {
@@ -148,13 +148,13 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
                         e.stopPropagation()
                         toggleCompare(s.id)
                       }}
-                      className={`absolute right-3 top-3 rounded-full border-2 px-2.5 py-1 text-xs font-medium ${
+                      className={`absolute right-3 top-3 rounded-full border-2 px-3 py-1.5 text-xs font-semibold ${
                         compareIds.includes(s.id)
                           ? 'border-blue-600 bg-blue-600 text-white'
-                          : 'border-gray-200 bg-white text-gray-400'
+                          : 'border-blue-200 bg-blue-50 text-blue-700'
                       }`}
                     >
-                      {compareIds.includes(s.id) ? '✓ 비교' : '비교'}
+                      {compareIds.includes(s.id) ? '✓ 비교 담김' : '＋ 비교'}
                     </span>
                     <span className="flex items-center gap-3 pr-16">
                       <SchoolLogo schoolId={s.id} name={s.name} size={36} />
