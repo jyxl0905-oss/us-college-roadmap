@@ -243,6 +243,7 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
             { value: 'none', label: '아직 안 봤어요' },
             { value: 'studying', label: '공부 중이에요' },
             { value: 'scored', label: '점수가 있어요' },
+            { value: 'exempt', label: '면제 대상일 수 있어요', description: '학교별 면제 기준 확인 필요' },
           ]}
           selected={draft.toefl_status}
           onSelect={(v) => {

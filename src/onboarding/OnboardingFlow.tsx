@@ -421,11 +421,16 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
         return (
           <ChoiceStep
             title="TOEFL/IELTS는 어떤 상태인가요?"
-            subtitle="국제학생은 대부분 영어 공인 점수가 필요해요."
+            subtitle="국제학생은 대부분 영어 공인 점수가 필요하지만, 면제해 주는 학교도 있어요."
             options={[
               { value: 'none', label: '아직 안 봤어요' },
               { value: 'studying', label: '공부 중이에요' },
               { value: 'scored', label: '점수가 있어요' },
+              {
+                value: 'exempt',
+                label: '면제 대상일 수 있어요',
+                description: '영어로 수업하는 학교를 여러 해 다녔거나 SAT 영어 점수가 높으면 면제해 주는 학교가 있어요 — 기준은 학교마다 달라 확인이 필요해요',
+              },
             ]}
             selected={answers.toeflStatus}
             onSelect={(v) => answer({ toeflStatus: v })}

@@ -9,7 +9,7 @@ export type GpaBand = '3.9+' | '3.7-3.9' | '3.5-3.7' | 'below3.5' | 'none' | 'ni
 export type MathCourse = 'algebra2_or_below' | 'precalc' | 'calc' | 'post_calc'
 export type SatStatus = 'none' | 'studying' | 'taken'
 export type SatBand = '1500+' | '1400-1490' | '1300-1390' | 'below1300'
-export type ToeflStatus = 'none' | 'studying' | 'scored'
+export type ToeflStatus = 'none' | 'studying' | 'scored' | 'exempt' // exempt = 면제 대상일 수 있음(학교별 확인 필요)
 
 export type MajorTrackChoice = 'stem' | 'liberal' | 'undecided'
 

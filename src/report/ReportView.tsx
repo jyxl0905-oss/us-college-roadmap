@@ -478,8 +478,16 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       )}
 
       {/* 확인 필요 안내 */}
-      {(profile.school_accredited === 'unknown' || profile.applicant_status === 'unknown') && (
+      {(profile.school_accredited === 'unknown' || profile.applicant_status === 'unknown' || (isIntl && profile.toefl_status === 'exempt')) && (
         <div className="mt-5 flex flex-col gap-2">
+          {isIntl && profile.toefl_status === 'exempt' && (
+            <div className="rounded-xl border-2 border-amber-300 bg-amber-50 px-4 py-3">
+              <p className="font-medium text-amber-900">TOEFL 면제 — 목표 학교별 기준 확인하기</p>
+              <p className="mt-0.5 text-sm text-amber-700">
+                면제 기준(영어 수업 학교 재학 연수·SAT 영어 점수 등)은 학교마다 달라요. 목표 학교 공식 입학처 페이지에서 내가 해당되는지 확인하고, 아니면 응시 계획을 세우세요.
+              </p>
+            </div>
+          )}
           {profile.school_accredited === 'unknown' && (
             <div className="rounded-xl border-2 border-amber-300 bg-amber-50 px-4 py-3">
               <p className="font-medium text-amber-900">학교 국제 인증(WASC·Cognia) 확인하기</p>

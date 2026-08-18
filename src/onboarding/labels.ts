@@ -36,6 +36,7 @@ export const toeflStatusLabels: Record<string, string> = {
   none: '미응시',
   studying: '공부 중',
   scored: '점수 있음',
+  exempt: '면제 대상일 수 있음 (학교별 확인)',
 }
 
 export const activityLevelLabels: Record<number, string> = {

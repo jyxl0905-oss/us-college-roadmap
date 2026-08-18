@@ -73,7 +73,7 @@ export function computeScores(
   const toefl =
     p.applicant_status === 'domestic'
       ? 30
-      : p.toefl_status === 'scored'
+      : p.toefl_status === 'scored' || p.toefl_status === 'exempt'
         ? 30
         : p.toefl_status === 'studying'
           ? 15

@@ -126,7 +126,8 @@ export function autoItems(s: School, profile: ProfileRow, app: ApplicationRow | 
   const isIntl = profile.applicant_status !== 'domestic'
   const items: string[] = []
   if (s.test_policy === 'test-optional') items.push('SAT 제출 여부 결정')
-  if (isIntl) items.push('TOEFL 발송·면제 확인')
+  if (isIntl)
+    items.push(profile.toefl_status === 'exempt' ? '이 학교의 TOEFL 면제 기준(재학 연수·SAT 영어 등) 공식 확인' : 'TOEFL 발송·면제 확인')
   if (isIntl && s.need_blind_intl === false) items.push('재정지원 신청 여부 결정')
   if (profile.major_primary && s.direct_admit_majors.includes(profile.major_primary))
     items.push('지원 전공 확정')
