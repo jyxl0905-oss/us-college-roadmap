@@ -15,8 +15,10 @@ function polygonPoints(ratios: number[]): string {
   return ratios.map((r, i) => point(i, r).join(',')).join(' ')
 }
 
-export default function RadarChart({ scores }: { scores: AxisScores }) {
+// planned: 계획 반영 시 예상 점수 — 있으면 점선 폴리곤으로 겹쳐 그림
+export default function RadarChart({ scores, planned }: { scores: AxisScores; planned?: AxisScores }) {
   const ratios = axisOrder.map((a) => scores[a] / 100)
+  const plannedRatios = planned ? axisOrder.map((a) => planned[a] / 100) : null
 
   return (
     <svg viewBox={`0 0 ${SIZE} ${SIZE}`} className="mx-auto w-full max-w-xs" role="img" aria-label="6축 밸런스 차트">
@@ -35,6 +37,17 @@ export default function RadarChart({ scores }: { scores: AxisScores }) {
         const [x, y] = point(i, 1)
         return <line key={i} x1={CX} y1={CY} x2={x} y2={y} stroke="#e5e7eb" strokeWidth="1" />
       })}
+      {/* 계획 반영 시 (점선) */}
+      {plannedRatios && (
+        <polygon
+          points={polygonPoints(plannedRatios)}
+          fill="rgba(37, 99, 235, 0.06)"
+          stroke="#2563eb"
+          strokeWidth="1.5"
+          strokeDasharray="5 4"
+          strokeLinejoin="round"
+        />
+      )}
       {/* 점수 폴리곤 */}
       <polygon
         points={polygonPoints(ratios)}

@@ -298,3 +298,18 @@ create table reminder_log (
   primary key (user_id, season_label)
 );
 alter table reminder_log enable row level security;
+
+-- F6 내 계획 — 시즌별 계획 항목(축 태그) → 리포트 6축에 "계획 반영 시" 점선으로 표시
+create table plans (
+  id bigint generated always as identity primary key,
+  user_id uuid not null references auth.users(id) on delete cascade,
+  title text not null,
+  axis text not null check (axis in ('rigor','testing','spike','leadership','validation','story')),
+  season_label text not null, -- 예: '2026-fall'
+  status text not null default 'planned' check (status in ('planned','doing','done')),
+  notes text,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+alter table plans enable row level security;
+create policy "own plans" on plans for all using (auth.uid() = user_id) with check (auth.uid() = user_id);

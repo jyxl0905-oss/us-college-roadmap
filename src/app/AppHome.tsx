@@ -5,6 +5,7 @@ import { navigate } from '../lib/router'
 import { supabase } from '../lib/supabase'
 import AppShell from './AppShell'
 import { loadAppRecords, ACTIVITY_MAX, HONOR_MAX, essayStatusKo, type AppRecords } from './appData'
+import { loadPlans, cycleSeasons, type Plan } from './plans'
 
 const GUIDE_KEY = 'commonapp_guide_collapsed'
 
@@ -26,11 +27,13 @@ interface AppHomeProps {
 // F5 내 원서 홈 — 5개 섹션 채움 정도 + 짧은 작성 가이드
 export default function AppHome({ userId, profile }: AppHomeProps) {
   const [rec, setRec] = useState<AppRecords | null>(null)
+  const [plans, setPlans] = useState<Plan[]>([])
   const [appCount, setAppCount] = useState<{ total: number; assigned: number }>({ total: 0, assigned: 0 })
   const [guideOpen, setGuideOpen] = useState(() => localStorage.getItem(GUIDE_KEY) !== '1')
 
   useEffect(() => {
     loadAppRecords(userId).then(setRec)
+    loadPlans(userId).then(setPlans)
     if (supabase) {
       supabase
         .from('applications')
@@ -48,6 +51,12 @@ export default function AppHome({ userId, profile }: AppHomeProps) {
 
   const sections = rec
     ? [
+        (() => {
+          const cyc = cycleSeasons().map((s) => s.label)
+          const mine = plans.filter((p) => cyc.includes(p.season_label))
+          const done = mine.filter((p) => p.status === 'done').length
+          return { path: '/app/plans', emoji: '🗓️', title: '내 계획', sub: mine.length > 0 ? `이번 학년도 ${mine.length}개 · 완료 ${done}` : '계획을 적으면 6축에 점선으로', pct: mine.length > 0 ? done / mine.length : 0 }
+        })(),
         { path: '/app/activities', emoji: '🏃', title: '활동 · 수상', sub: `활동 ${rec.activities.length}/${ACTIVITY_MAX} · 수상 ${rec.honors.length}/${HONOR_MAX}`, pct: Math.min(1, (rec.activities.length / ACTIVITY_MAX + rec.honors.length / HONOR_MAX) / 2) },
         { path: '/app/testing', emoji: '✏️', title: '시험', sub: rec.tests.length > 0 ? `기록 ${rec.tests.length}건` : '아직 기록 없음', pct: rec.tests.length > 0 ? 1 : 0 },
         { path: '/app/education', emoji: '📚', title: '학업', sub: `${grade}학년 · GPA ${profile.gpa_band ?? '미입력'} · 과목 ${rec.courses.length}개`, pct: profile.gpa_band ? (rec.courses.length > 0 ? 1 : 0.5) : 0 },

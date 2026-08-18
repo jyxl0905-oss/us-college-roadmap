@@ -27,6 +27,7 @@ import { tierLabels } from '../onboarding/labels'
 import RadarChart from './RadarChart'
 import GrowthChart, { type SeasonPoint } from './GrowthChart'
 import InstallPrompt from './InstallPrompt'
+import { loadPlans, plannedScores, type Plan } from '../app/plans'
 import type { AxisScores } from '../lib/score'
 import AoBox from './AoBox'
 import SchoolCards from './SchoolCards'
@@ -75,6 +76,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   const [assignedRounds, setAssignedRounds] = useState<{ school_id: number; round: string | null; student_deadline?: string | null }[]>([])
   // F5 연동: 내 원서 활동·수상 기록 → spike/leadership/validation 기록 기반 점수
   const [overrides, setOverrides] = useState<RecordOverrides>({ spike: null, leadership: null, validation: null })
+  const [plans, setPlans] = useState<Plan[]>([]) // F6 내 계획 → 6축 점선
 
   useEffect(() => {
     if (!supabase) return
@@ -87,6 +89,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       supabase.from('activities').select('*').eq('user_id', userId),
       supabase.from('honors').select('*').eq('user_id', userId),
     ]).then(([a, h]) => setOverrides(recordOverrides((a.data ?? []) as Activity[], (h.data ?? []) as Honor[])))
+    loadPlans(userId).then(setPlans)
   }, [userId])
 
   const seasonLabel = currentSeasonLabel()
@@ -171,6 +174,9 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   const storyStats = { done: storyDone, exposed: countStoryExposure(allItems, profile) }
   const scores = computeScores(profile, checkedItems, storyStats, overrides)
   const recordBased = overrides.spike !== null || overrides.leadership !== null || overrides.validation !== null
+  // F6: 계획 반영 시 점수(점선) + 숫자 진단 한 줄
+  const activePlans = plans.filter((p) => p.status !== 'done')
+  const planned = activePlans.length > 0 ? plannedScores(scores, activePlans) : null
   const weakest = weakestAxis(scores)
   // 약한 축 처방(§4 prescriptions): 축+등급+학년대 매칭, 없으면 기본 문구
   const weakLevel = scoreLevel(scores[weakest])
@@ -412,8 +418,22 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           )}
         </div>
         <div className="mt-2">
-          <RadarChart scores={scores} />
+          <RadarChart scores={scores} planned={planned ?? undefined} />
         </div>
+        {planned ? (
+          <p className="mt-1 text-xs text-gray-500">
+            <span className="text-blue-600">- - -</span> 계획 {activePlans.length}개 반영 시 ·{' '}
+            {(() => {
+              const w = weakestAxis(planned)
+              return `${axisKo[w]} ${scores[w]}→${planned[w]}${w === weakest ? ' (여전히 가장 약함)' : ''}`
+            })()}{' '}
+            <button onClick={() => navigate('/app/plans')} className="text-blue-600 underline">계획 수정</button>
+          </p>
+        ) : (
+          <p className="mt-1 text-xs text-gray-400">
+            <button onClick={() => navigate('/app/plans')} className="text-blue-600 underline">계획</button>을 적으면 실행 시 모양이 점선으로 보여요
+          </p>
+        )}
         {recordBased && (
           <p className="mt-1 text-[11px] text-gray-400">
             대표 활동·리더십·교외 인정 축은 자가진단 대신 내 원서 기록으로 계산됐어요.

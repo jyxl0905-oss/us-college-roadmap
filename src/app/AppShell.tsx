@@ -1,13 +1,14 @@
 import { navigate } from '../lib/router'
 
-export type AppTab = 'home' | 'activities' | 'testing' | 'education' | 'colleges' | 'writing'
+export type AppTab = 'home' | 'plans' | 'activities' | 'testing' | 'education' | 'colleges' | 'writing'
 
 export const appTabs: { key: AppTab; label: string; path: string; emoji: string }[] = [
   { key: 'home', label: '홈', path: '/app', emoji: '📋' },
+  { key: 'plans', label: '계획', path: '/app/plans', emoji: '🗓️' },
   { key: 'activities', label: '활동', path: '/app/activities', emoji: '🏃' },
   { key: 'testing', label: '시험', path: '/app/testing', emoji: '✏️' },
   { key: 'education', label: '학업', path: '/app/education', emoji: '📚' },
-  { key: 'colleges', label: '지원 학교', path: '/app/colleges', emoji: '🎯' },
+  { key: 'colleges', label: '지원', path: '/app/colleges', emoji: '🎯' },
   { key: 'writing', label: '에세이', path: '/app/writing', emoji: '📝' },
 ]
 

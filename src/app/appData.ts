@@ -102,7 +102,7 @@ export async function loadAppRecords(userId: string): Promise<AppRecords> {
   }
 }
 
-type Table = 'activities' | 'honors' | 'test_scores' | 'courses' | 'essays'
+type Table = 'activities' | 'honors' | 'test_scores' | 'courses' | 'essays' | 'plans'
 
 // 저장 실패를 조용히 삼키지 않음 — 실패 시 사용자에게 알리고 throw (호출부는 낙관적 갱신을 하지 않도록)
 function fail(action: string, message: string): never {

@@ -5,6 +5,7 @@ import TestingTab from './TestingTab'
 import EducationTab from './EducationTab'
 import BoardPage from '../board/BoardPage'
 import WritingTab from './WritingTab'
+import PlansTab from './PlansTab'
 
 interface AppRouterProps {
   path: string
@@ -17,6 +18,8 @@ interface AppRouterProps {
 export default function AppRouter({ path, userId, profile, onProfileChange }: AppRouterProps) {
   const sub = path.replace(/^\/app\/?/, '').replace(/\/+$/, '')
   switch (sub) {
+    case 'plans':
+      return <PlansTab userId={userId} />
     case 'activities':
       return <ActivitiesTab userId={userId} />
     case 'testing':
