@@ -1,3 +1,4 @@
+import { bilingual, t } from '../i18n'
 import type { Season } from './types'
 
 // 학년도 롤오버 기준: 매년 8월 1일
@@ -28,13 +29,12 @@ export function currentSeasonLabel(now: Date = new Date()): string {
 export function nextCheckinKo(now: Date = new Date()): string {
   const season = currentSeason(now)
   const y = now.getFullYear()
-  if (season === 'fall') return `${y + 1}년 1월 (Spring 체크인)`
-  if (season === 'spring') return `${y}년 6월 (Summer 체크인)`
-  return `${y}년 8월 (Fall 체크인)`
+  if (season === 'fall') return t(`${y + 1}년 1월 (Spring 체크인)`, `January ${y + 1} (Spring check-in)`)
+  if (season === 'spring') return t(`${y}년 6월 (Summer 체크인)`, `June ${y} (Summer check-in)`)
+  return t(`${y}년 8월 (Fall 체크인)`, `August ${y} (Fall check-in)`)
 }
 
-export const seasonLabelKo: Record<Season, string> = {
-  fall: 'Fall (가을)',
-  spring: 'Spring (봄)',
-  summer: 'Summer (여름)',
-}
+export const seasonLabelKo: Record<Season, string> = bilingual<Season>(
+  { fall: 'Fall (가을)', spring: 'Spring (봄)', summer: 'Summer (여름)' },
+  { fall: 'Fall', spring: 'Spring', summer: 'Summer' },
+)

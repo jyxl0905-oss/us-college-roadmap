@@ -7,8 +7,12 @@ import { saveProfile, type ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
 import SchoolLogo from './SchoolLogo'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
+import { t, bilingual } from '../i18n'
 
-const tierTitles: Record<Tier, string> = { 1: 'Top 20', 2: '21–40위', 3: '41–60위' }
+const tierTitles: Record<Tier, string> = bilingual(
+  { 1: 'Top 20', 2: '21–40위', 3: '41–60위' },
+  { 1: 'Top 20', 2: 'Ranked 21–40', 3: 'Ranked 41–60' },
+)
 
 interface SchoolDetailPageProps {
   slug: string
@@ -28,13 +32,13 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
   }, [slug])
 
   if (school === 'loading')
-    return <p className="mt-20 text-center text-gray-400">불러오는 중…</p>
+    return <p className="mt-20 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
   if (!school)
     return (
       <div className="mx-auto max-w-md px-5 py-16 text-center">
-        <p className="text-gray-500">학교를 찾을 수 없어요.</p>
+        <p className="text-gray-500">{t('학교를 찾을 수 없어요.', 'School not found.')}</p>
         <button onClick={() => navigate('/schools')} className="mt-4 text-blue-600 underline">
-          둘러보기로 돌아가기
+          {t('둘러보기로 돌아가기', 'Back to browse')}
         </button>
       </div>
     )
@@ -42,7 +46,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
   const s = school
   const isTargeted = profile?.target_school_ids.includes(s.id) ?? false
   const dash = (v: string | number | null | undefined, suffix = '') =>
-    v === null || v === undefined ? '미공개' : `${v}${suffix}`
+    v === null || v === undefined ? t('미공개', 'Not disclosed') : `${v}${suffix}`
 
   // 로그인 사용자: 내 목표에 추가/제거 (학교 선택 모드가 아니면 학교 모드로 전환하며 추가)
   const toggleTarget = async () => {
@@ -74,7 +78,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
     <div className="min-h-dvh bg-gray-50">
       <div className="mx-auto max-w-md px-5 py-6 pb-32">
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate('/schools')} aria-label="목록으로" className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
+          <button onClick={() => navigate('/schools')} aria-label={t('목록으로', 'Back to list')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
             ←
           </button>
           <span className="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-600">
@@ -93,7 +97,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         {/* 지도 — 지연 로딩 임베드 */}
         <div className="mt-4 overflow-hidden rounded-xl border-2 border-gray-200">
           <iframe
-            title={`${s.name} 지도`}
+            title={t(`${s.name} 지도`, `${s.name} map`)}
             src={`https://www.google.com/maps?q=${encodeURIComponent(s.name)}&output=embed`}
             className="h-44 w-full"
             loading="lazy"
@@ -112,7 +116,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         {s.what_they_value && s.what_they_value !== 'PLACEHOLDER' && (
           <div className="mt-5 rounded-xl bg-blue-600 px-4 py-4 text-white">
             <p className="text-xs font-semibold uppercase tracking-wide text-blue-200">
-              이 학교가 공식적으로 보는 것
+              {t('이 학교가 공식적으로 보는 것', 'What this school officially looks for')}
             </p>
             <p className="mt-2 text-sm leading-relaxed">{s.what_they_value}</p>
             {s.source_url && (
@@ -122,7 +126,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
                 rel="noreferrer"
                 className="mt-2 inline-block text-xs text-blue-200 underline"
               >
-                공식 출처 보기 ↗
+                {t('공식 출처 보기 ↗', 'View official source ↗')}
               </a>
             )}
           </div>
@@ -132,31 +136,39 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         <div className="mt-5 divide-y divide-gray-100 rounded-xl border-2 border-gray-200 bg-white">
           {[
             [
-              'SAT 중간 50%',
+              t('SAT 중간 50%', 'SAT middle 50%'),
               s.test_policy === 'test-free'
-                ? '시험 미반영 (test-free)'
+                ? t('시험 미반영 (test-free)', 'Test-free')
                 : s.sat_mid50_low && s.sat_mid50_high
                   ? `${s.sat_mid50_low} – ${s.sat_mid50_high}`
-                  : '미공개',
+                  : t('미공개', 'Not disclosed'),
             ],
-            ['국제학생 합격률', dash(s.intl_accept_rate, '%')],
+            [t('국제학생 합격률', 'Intl. student accept rate'), dash(s.intl_accept_rate, '%')],
             [
-              'Need-blind (국제학생)',
-              s.need_blind_intl === true ? '네 — 재정 상황이 심사에 영향 없음' : s.need_blind_intl === false ? '아니요 (need-aware)' : '미공개',
+              t('Need-blind (국제학생)', 'Need-blind (intl. students)'),
+              s.need_blind_intl === true
+                ? t('네 — 재정 상황이 심사에 영향 없음', 'Yes — finances do not affect admission')
+                : s.need_blind_intl === false
+                  ? t('아니요 (need-aware)', 'No (need-aware)')
+                  : t('미공개', 'Not disclosed'),
             ],
             [
-              '관심 표현(Demonstrated Interest)',
-              s.demonstrated_interest === true ? '반영함' : s.demonstrated_interest === false ? '반영 안 함' : '미공개',
+              t('관심 표현(Demonstrated Interest)', 'Demonstrated interest'),
+              s.demonstrated_interest === true
+                ? t('반영함', 'Considered')
+                : s.demonstrated_interest === false
+                  ? t('반영 안 함', 'Not considered')
+                  : t('미공개', 'Not disclosed'),
             ],
             [
-              '시험 정책',
+              t('시험 정책', 'Test policy'),
               s.test_policy === 'test-required'
-                ? 'SAT/ACT 필수'
+                ? t('SAT/ACT 필수', 'SAT/ACT required')
                 : s.test_policy === 'test-optional'
-                  ? 'Test-optional (선택 제출)'
+                  ? t('Test-optional (선택 제출)', 'Test-optional')
                   : s.test_policy === 'test-free'
-                    ? '시험 미반영'
-                    : '미공개',
+                    ? t('시험 미반영', 'Test-free')
+                    : t('미공개', 'Not disclosed'),
             ],
           ].map(([label, value]) => (
             <div key={label} className="flex items-start justify-between gap-4 px-4 py-3">
@@ -169,10 +181,12 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         {/* direct-admit 경고 */}
         {s.direct_admit_majors.length > 0 && (
           <div className="mt-4 rounded-xl border-2 border-amber-300 bg-amber-50 px-4 py-3">
-            <p className="font-medium text-amber-900">⚠️ 전공 직접 선발(direct admit) 주의</p>
+            <p className="font-medium text-amber-900">{t('⚠️ 전공 직접 선발(direct admit) 주의', '⚠️ Direct-admit majors — heads up')}</p>
             <p className="mt-1 text-sm text-amber-800">
-              이 학교는 다음 계열을 지원 시점에 전공·단과대 단위로 선발해요 — 해당 전공은 경쟁률이 따로
-              움직이고 입학 후 전과도 어려울 수 있어요:
+              {t(
+                '이 학교는 다음 계열을 지원 시점에 전공·단과대 단위로 선발해요 — 해당 전공은 경쟁률이 따로 움직이고 입학 후 전과도 어려울 수 있어요:',
+                'This school admits the following fields by major/college at application time — these majors have their own competition, and switching in later can be hard:',
+              )}
             </p>
             <p className="mt-1.5 text-sm font-medium text-amber-900">
               {s.direct_admit_majors.map((m) => majorLabel(m)).join(', ')}
@@ -194,7 +208,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
                 : 'border-blue-200 bg-blue-50 text-blue-700 active:bg-blue-100'
             }`}
           >
-            {compareIds.includes(s.id) ? '✓ 비교에 담김' : '＋ 비교에 담기'}
+            {compareIds.includes(s.id) ? t('✓ 비교에 담김', '✓ Added to compare') : t('＋ 비교에 담기', '＋ Add to compare')}
             <span className="ml-1 font-normal opacity-80">({compareIds.length}/3)</span>
           </button>
           {compareIds.length >= 2 && (
@@ -202,7 +216,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
               onClick={() => navigate(`/compare?ids=${compareIds.join(',')}`)}
               className="shrink-0 rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 active:bg-gray-50"
             >
-              비교하기 →
+              {t('비교하기 →', 'Compare →')}
             </button>
           )}
         </div>
@@ -218,7 +232,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
                 : 'border-gray-200 bg-white text-gray-700 active:bg-gray-50'
             } disabled:opacity-50`}
           >
-            {isTargeted ? '✓ 내 목표 학교예요 — 탭해서 제거' : '＋ 내 목표에 추가'}
+            {isTargeted ? t('✓ 내 목표 학교예요 — 탭해서 제거', '✓ In my targets — tap to remove') : t('＋ 내 목표에 추가', '＋ Add to my targets')}
           </button>
         )}
       </div>
@@ -229,7 +243,9 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
           onClick={cta}
           className="mx-auto block w-full max-w-md rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
         >
-          {profile ? '내 리포트에서 이 학교 보기' : '이 학교 합격자 범위에서 내 위치 확인하기 → 리포트 받기'}
+          {profile
+            ? t('내 리포트에서 이 학교 보기', 'See this school in my report')
+            : t('이 학교 합격자 범위에서 내 위치 확인하기 → 리포트 받기', 'See where you stand vs. admitted students → Get my report')}
         </button>
       </div>
     </div>

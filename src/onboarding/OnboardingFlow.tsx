@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 import type { OnboardingAnswers, School, Tier } from '../lib/types'
 import { emptyAnswers } from '../lib/types'
 import { readPrefillSchoolIds, clearPrefill } from '../browse/prefill'
-import { majorsByTrack } from '../data/majors'
+import { majorsByTrack, majorDisplay } from '../data/majors'
 import schoolsData from '../data/schools.index.json' // 경량 인덱스(id·이름·티어) — 전체 시드는 schoolsCache에서만
 import { tierLabels } from './labels'
+import { t } from '../i18n'
 import ChoiceStep from './ChoiceStep'
 import GradYearStep from './GradYearStep'
 import TargetSchoolsStep from './TargetSchoolsStep'
@@ -58,11 +59,11 @@ function stepList(a: OnboardingAnswers): StepId[] {
 }
 
 // R1-C-3: 그룹 전환 브릿지 문구 (해당 스텝 위에 한 줄 표시)
-const bridgeText: Partial<Record<StepId, string>> = {
-  majorTrack: '기본 정보는 끝! 이제 목표를 물어볼게요 🎯',
-  gpa: '이제 지금 상태를 확인할게요 📋',
-  actSpike: '마지막 구간 — 활동 이야기예요 🏃',
-}
+const bridgeText = (): Partial<Record<StepId, string>> => ({
+  majorTrack: t('기본 정보는 끝! 이제 목표를 물어볼게요 🎯', 'Basics done! Now your goals 🎯'),
+  gpa: t('이제 지금 상태를 확인할게요 📋', "Now let's check where you are 📋"),
+  actSpike: t('마지막 구간 — 활동 이야기예요 🏃', 'Last stretch — activities 🏃'),
+})
 
 interface OnboardingFlowProps {
   onComplete?: (answers: OnboardingAnswers) => void
@@ -132,8 +133,8 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       <div className="min-h-dvh bg-gray-50">
         <div className="mx-auto max-w-md px-5 py-16 text-center">
           <p className="text-4xl">👋</p>
-          <h1 className="mt-4 text-xl font-bold text-gray-900">진행하던 온보딩이 있어요</h1>
-          <p className="mt-2 text-sm text-gray-500">답변은 저장돼 있으니 이어서 하면 돼요.</p>
+          <h1 className="mt-4 text-xl font-bold text-gray-900">{t('진행하던 온보딩이 있어요', 'You have an onboarding in progress')}</h1>
+          <p className="mt-2 text-sm text-gray-500">{t('답변은 저장돼 있으니 이어서 하면 돼요.', 'Your answers are saved — pick up where you left off.')}</p>
           <button
             onClick={() => {
               setAnswers(resumeDraft.answers)
@@ -142,7 +143,7 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
             }}
             className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
           >
-            이어서 하기 ({resumeDraft.stepIndex + 1}번째 질문부터)
+            {t(`이어서 하기 (${resumeDraft.stepIndex + 1}번째 질문부터)`, `Continue (from question ${resumeDraft.stepIndex + 1})`)}
           </button>
           <button
             onClick={() => {
@@ -151,7 +152,7 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
             }}
             className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
           >
-            처음부터 하기
+            {t('처음부터 하기', 'Start over')}
           </button>
         </div>
       </div>
@@ -178,12 +179,12 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
           </div>
           {/* R1-C-1: 남은 시간 안내 → 중반부터 문구 전환 */}
           <span className="shrink-0 text-xs text-gray-400">
-            {progress < 0.5 ? '약 3분' : '거의 다 왔어요'}
+            {progress < 0.5 ? t('약 3분', '~3 min') : t('거의 다 왔어요', 'Almost there')}
           </span>
         </header>
         <main className="pt-2">
-          {bridgeText[step] && (
-            <p className="mb-3 text-sm font-medium text-blue-600">{bridgeText[step]}</p>
+          {bridgeText()[step] && (
+            <p className="mb-3 text-sm font-medium text-blue-600">{bridgeText()[step]}</p>
           )}
           {renderStep()}
         </main>
@@ -204,11 +205,11 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'status':
         return (
           <ChoiceStep
-            title="미국 대학에 어떤 신분으로 지원하나요?"
+            title={t('미국 대학에 어떤 신분으로 지원하나요?', 'What is your applicant status?')}
             options={[
-              { value: 'intl', label: '국제학생 (International)', description: 'F-1 등 유학 비자로 지원' },
-              { value: 'domestic', label: '미국 시민권·영주권', description: 'U.S. Citizen / Green Card' },
-              { value: 'unknown', label: '잘 모르겠어요', description: '국제학생 기준으로 안내하고, 확인 항목을 추가해 드려요' },
+              { value: 'intl', label: t('국제학생 (International)', 'International student'), description: t('F-1 등 유학 비자로 지원', 'Applying on an F-1 or other student visa') },
+              { value: 'domestic', label: t('미국 시민권·영주권', 'U.S. citizen / permanent resident'), description: 'U.S. Citizen / Green Card' },
+              { value: 'unknown', label: t('잘 모르겠어요', 'Not sure'), description: t('국제학생 기준으로 안내하고, 확인 항목을 추가해 드려요', "We'll treat you as international and add a check item") },
             ]}
             selected={answers.applicantStatus}
             onSelect={(v) => answer({ applicantStatus: v, ...(v === 'domestic' ? { toeflStatus: null } : {}) })}
@@ -217,12 +218,12 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'counselor':
         return (
           <ChoiceStep
-            title="입시를 전담해 주는 카운슬러가 있나요?"
-            subtitle="학교 카운슬러든 외부 컨설턴트든 정기적으로 관리해 주는 사람 기준이에요."
+            title={t('입시를 전담해 주는 카운슬러가 있나요?', 'Do you have a dedicated college counselor?')}
+            subtitle={t('학교 카운슬러든 외부 컨설턴트든 정기적으로 관리해 주는 사람 기준이에요.', 'School counselor or private consultant — someone who checks in regularly.')}
             options={[
-              { value: 'yes', label: '예, 있어요' },
-              { value: 'no', label: '아니요, 없어요' },
-              { value: 'unknown', label: '잘 모르겠어요' },
+              { value: 'yes', label: t('예, 있어요', 'Yes') },
+              { value: 'no', label: t('아니요, 없어요', 'No') },
+              { value: 'unknown', label: t('잘 모르겠어요', 'Not sure') },
             ]}
             selected={answers.hasCounselor}
             onSelect={(v) => answer({ hasCounselor: v })}
@@ -231,13 +232,13 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'accredited':
         return (
           <ChoiceStep
-            title="다니는 학교가 국제 인증을 받았나요?"
-            subtitle="WASC, Cognia 같은 인증이요. 성적표 인정에 중요해요."
+            title={t('다니는 학교가 국제 인증을 받았나요?', 'Is your school internationally accredited?')}
+            subtitle={t('WASC, Cognia 같은 인증이요. 성적표 인정에 중요해요.', 'e.g., WASC or Cognia — it matters for how your transcript is read.')}
             options={[
-              { value: 'yes', label: '예, 인증받았어요' },
-              { value: 'no', label: '아니요' },
-              { value: 'unknown', label: '잘 모르겠어요', description: '확인 방법을 체크리스트 맨 위에 넣어드려요' },
-              { value: 'us', label: '미국 현지 학교에 다녀요', description: '미국 내 고등학교(공립·사립·보딩)면 국제 인증은 해당 없어요' },
+              { value: 'yes', label: t('예, 인증받았어요', 'Yes, accredited') },
+              { value: 'no', label: t('아니요', 'No') },
+              { value: 'unknown', label: t('잘 모르겠어요', 'Not sure'), description: t('확인 방법을 체크리스트 맨 위에 넣어드려요', "We'll put a how-to-check item at the top of your list") },
+              { value: 'us', label: t('미국 현지 학교에 다녀요', 'I attend a school in the U.S.'), description: t('미국 내 고등학교(공립·사립·보딩)면 국제 인증은 해당 없어요', 'Public, private or boarding school in the U.S. — this question does not apply') },
             ]}
             selected={answers.schoolInUs ? 'us' : answers.schoolAccredited}
             onSelect={(v) =>
@@ -250,12 +251,12 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'majorTrack':
         return (
           <ChoiceStep
-            title="문과·이과 중 어느 쪽인가요?"
-            subtitle="관심 있는 계열을 골라주세요. 다음 질문에서 그 계열 전공만 보여드려요."
+            title={t('문과·이과 중 어느 쪽인가요?', 'STEM or humanities/social?')}
+            subtitle={t('관심 있는 계열을 골라주세요. 다음 질문에서 그 계열 전공만 보여드려요.', "Pick a track — we'll show only those majors next.")}
             options={[
-              { value: 'stem', label: '이과 (STEM)', description: 'CS, 공학, 수학, 자연과학, 프리메드' },
-              { value: 'liberal', label: '문과 (Humanities·Social)', description: '비즈니스·경제, 사회과학, 인문, 예술' },
-              { value: 'undecided', label: '아직 미정이에요', description: '전공 질문은 건너뛰어요' },
+              { value: 'stem', label: t('이과 (STEM)', 'STEM'), description: t('CS, 공학, 수학, 자연과학, 프리메드', 'CS, engineering, math, sciences, pre-med') },
+              { value: 'liberal', label: t('문과 (Humanities·Social)', 'Humanities / Social'), description: t('비즈니스·경제, 사회과학, 인문, 예술', 'Business, social sciences, humanities, arts') },
+              { value: 'undecided', label: t('아직 미정이에요', 'Undecided'), description: t('전공 질문은 건너뛰어요', 'Skips the major questions') },
             ]}
             selected={answers.majorTrack}
             onSelect={(v) =>
@@ -270,13 +271,13 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'majorPrimary':
         return (
           <ChoiceStep
-            title="희망 전공 1순위를 골라주세요"
+            title={t('희망 전공 1순위를 골라주세요', 'Pick your first-choice major')}
             options={[
               ...majorsByTrack(answers.majorTrack === 'liberal' ? 'liberal' : 'stem').map((m) => ({
                 value: m.value,
-                label: m.label,
+                label: majorDisplay(m),
               })),
-              { value: 'undecided', label: '이 중에선 아직 미정이에요' },
+              { value: 'undecided', label: t('이 중에선 아직 미정이에요', 'Undecided among these') },
             ]}
             selected={answers.majorPrimary}
             onSelect={(v) => answer({ majorPrimary: v })}
@@ -285,12 +286,12 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'majorSecondary':
         return (
           <ChoiceStep
-            title="2순위 전공도 있나요? (선택)"
+            title={t('2순위 전공도 있나요? (선택)', 'A second-choice major? (optional)')}
             options={[
-              { value: '', label: '없어요 / 건너뛰기' },
+              { value: '', label: t('없어요 / 건너뛰기', 'None / skip') },
               ...majorsByTrack(answers.majorTrack === 'liberal' ? 'liberal' : 'stem')
                 .filter((m) => m.value !== answers.majorPrimary)
-                .map((m) => ({ value: m.value, label: m.label })),
+                .map((m) => ({ value: m.value, label: majorDisplay(m) })),
             ]}
             selected={answers.majorSecondary ?? ''}
             onSelect={(v) => answer({ majorSecondary: v === '' ? null : v })}
@@ -299,11 +300,11 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'targetMode':
         return (
           <ChoiceStep
-            title="목표 학교가 정해져 있나요?"
+            title={t('목표 학교가 정해져 있나요?', 'Do you have target schools?')}
             options={[
-              { value: 'schools', label: '구체적인 학교가 있어요', description: '톱60에서 검색해서 골라요' },
-              { value: 'tier', label: '대략적인 순위대만 있어요', description: 'Top 20 / 21-40위 / 41-60위' },
-              { value: 'undecided', label: '아직 미정이에요' },
+              { value: 'schools', label: t('구체적인 학교가 있어요', 'Yes, specific schools'), description: t('톱60에서 검색해서 골라요', 'Search and pick from the top 60') },
+              { value: 'tier', label: t('대략적인 순위대만 있어요', 'Just a rank range'), description: t('Top 20 / 21-40위 / 41-60위', 'Top 20 / 21–40 / 41–60') },
+              { value: 'undecided', label: t('아직 미정이에요', 'Undecided') },
             ]}
             selected={answers.targetMode}
             onSelect={(v) =>
@@ -327,11 +328,11 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'targetTier':
         return (
           <ChoiceStep
-            title="목표 순위대를 골라주세요"
+            title={t('목표 순위대를 골라주세요', 'Pick a target rank range')}
             options={[
               { value: 1, label: 'Top 20' },
-              { value: 2, label: '21-40위' },
-              { value: 3, label: '41-60위' },
+              { value: 2, label: t('21-40위', 'Ranks 21–40') },
+              { value: 3, label: t('41-60위', 'Ranks 41–60') },
             ]}
             selected={answers.targetTier}
             onSelect={(v) => answer({ targetTier: v as Tier })}
@@ -345,10 +346,10 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
                 const first = seedSchools.find((s) => s.id === answers.targetSchoolIds[0])
                 const n = answers.targetSchoolIds.length
                 return first
-                  ? `${first.name_ko.split('(')[0].trim()} 포함 ${n}개 학교 기준으로 리포트를 만들고 있어요`
-                  : `선택한 ${n}개 학교 기준으로 리포트를 만들고 있어요`
+                  ? t(`${first.name_ko.split('(')[0].trim()} 포함 ${n}개 학교 기준으로 리포트를 만들고 있어요`, `Building your report around ${n} school${n > 1 ? 's' : ''} including ${first.name}`)
+                  : t(`선택한 ${n}개 학교 기준으로 리포트를 만들고 있어요`, `Building your report around your ${n} school${n > 1 ? 's' : ''}`)
               })()
-            : `${answers.targetTier ? tierLabels[answers.targetTier] : '목표'} 기준으로 리포트를 만들고 있어요`
+            : t(`${answers.targetTier ? tierLabels[answers.targetTier] : '목표'} 기준으로 리포트를 만들고 있어요`, 'Building your report around your target range')
         return <TeaserInterstitial text={teaserText} onNext={goNext} />
       }
       case 'quiz':
@@ -358,15 +359,15 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'gpa':
         return (
           <ChoiceStep
-            title="지금 GPA는 어느 정도인가요?"
-            subtitle="4.0 만점(unweighted) 기준이에요."
+            title={t('지금 GPA는 어느 정도인가요?', 'What is your GPA right now?')}
+            subtitle={t('4.0 만점(unweighted) 기준이에요.', 'Unweighted, 4.0 scale.')}
             options={[
-              { value: '3.9+', label: '3.9 이상' },
+              { value: '3.9+', label: t('3.9 이상', '3.9 or above') },
               { value: '3.7-3.9', label: '3.7 ~ 3.9' },
               { value: '3.5-3.7', label: '3.5 ~ 3.7' },
-              { value: 'below3.5', label: '3.5 미만' },
-              { value: 'none', label: 'GPA가 없는 학교예요', description: 'IB 점수제 등' },
-              { value: 'ninth', label: '9학년이라 아직 없어요' },
+              { value: 'below3.5', label: t('3.5 미만', 'Below 3.5') },
+              { value: 'none', label: t('GPA가 없는 학교예요', 'My school has no GPA'), description: t('IB 점수제 등', 'e.g., IB points') },
+              { value: 'ninth', label: t('9학년이라 아직 없어요', 'Not yet — 9th grade') },
             ]}
             selected={answers.gpaBand}
             onSelect={(v) => answer({ gpaBand: v })}
@@ -375,12 +376,12 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'math':
         return (
           <ChoiceStep
-            title="지금 듣고 있는 수학 과목은요?"
+            title={t('지금 듣고 있는 수학 과목은요?', 'Which math course are you in?')}
             options={[
-              { value: 'algebra2_or_below', label: 'Algebra 2 이하' },
+              { value: 'algebra2_or_below', label: t('Algebra 2 이하', 'Algebra 2 or below') },
               { value: 'precalc', label: 'Precalculus' },
               { value: 'calc', label: 'Calculus (AB·BC)' },
-              { value: 'post_calc', label: 'Calculus 이후 과정', description: 'Multivariable, Linear Algebra 등' },
+              { value: 'post_calc', label: t('Calculus 이후 과정', 'Beyond Calculus'), description: t('Multivariable, Linear Algebra 등', 'Multivariable, Linear Algebra, etc.') },
             ]}
             selected={answers.mathCourse}
             onSelect={(v) => answer({ mathCourse: v })}
@@ -389,11 +390,11 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'sat':
         return (
           <ChoiceStep
-            title="SAT는 어떤 상태인가요?"
+            title={t('SAT는 어떤 상태인가요?', 'Where are you with the SAT?')}
             options={[
-              { value: 'none', label: '아직 계획 없어요' },
-              { value: 'studying', label: '공부 중이에요' },
-              { value: 'taken', label: '응시했어요', description: '점수대를 이어서 물어볼게요' },
+              { value: 'none', label: t('아직 계획 없어요', 'No plans yet') },
+              { value: 'studying', label: t('공부 중이에요', 'Studying') },
+              { value: 'taken', label: t('응시했어요', 'Taken it'), description: t('점수대를 이어서 물어볼게요', "We'll ask your score range next") },
             ]}
             selected={answers.satStatus}
             onSelect={(v) => answer({ satStatus: v, ...(v !== 'taken' ? { satBand: null } : {}) })}
@@ -402,12 +403,12 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'satBand':
         return (
           <ChoiceStep
-            title="SAT 점수대를 골라주세요"
+            title={t('SAT 점수대를 골라주세요', 'Pick your SAT score range')}
             options={[
-              { value: '1500+', label: '1500 이상' },
+              { value: '1500+', label: t('1500 이상', '1500 or above') },
               { value: '1400-1490', label: '1400 ~ 1490' },
               { value: '1300-1390', label: '1300 ~ 1390' },
-              { value: 'below1300', label: '1300 미만' },
+              { value: 'below1300', label: t('1300 미만', 'Below 1300') },
             ]}
             selected={answers.satBand}
             onSelect={(v) => answer({ satBand: v })}
@@ -425,16 +426,16 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'toefl':
         return (
           <ChoiceStep
-            title="TOEFL/IELTS는 어떤 상태인가요?"
-            subtitle={answers.schoolInUs ? "미국 학교를 여러 해 다녔으면 면제해 주는 대학이 많아요 — 학교별 기준 확인" : "국제학생은 대부분 영어 공인 점수가 필요하지만, 면제해 주는 학교도 있어요."}
+            title={t('TOEFL/IELTS는 어떤 상태인가요?', 'Where are you with TOEFL/IELTS?')}
+            subtitle={answers.schoolInUs ? t('미국 학교를 여러 해 다녔으면 면제해 주는 대학이 많아요 — 학교별 기준 확인', 'Many colleges waive it after several years at a U.S. school — check each school') : t('국제학생은 대부분 영어 공인 점수가 필요하지만, 면제해 주는 학교도 있어요.', 'Most international applicants need it, but some schools waive it.')}
             options={[
-              { value: 'none', label: '아직 안 봤어요' },
-              { value: 'studying', label: '공부 중이에요' },
-              { value: 'scored', label: '점수가 있어요' },
+              { value: 'none', label: t('아직 안 봤어요', 'Not yet') },
+              { value: 'studying', label: t('공부 중이에요', 'Studying') },
+              { value: 'scored', label: t('점수가 있어요', 'Have a score') },
               {
                 value: 'exempt',
-                label: '면제 대상일 수 있어요',
-                description: '영어로 수업하는 학교를 여러 해 다녔거나 SAT 영어 점수가 높으면 면제해 주는 학교가 있어요 — 기준은 학교마다 달라 확인이 필요해요',
+                label: t('면제 대상일 수 있어요', 'I may be exempt'),
+                description: t('영어로 수업하는 학교를 여러 해 다녔거나 SAT 영어 점수가 높으면 면제해 주는 학교가 있어요 — 기준은 학교마다 달라 확인이 필요해요', 'Some schools waive it after years at an English-medium school or with a high SAT EBRW — rules vary, verify per school'),
               },
             ]}
             selected={answers.toeflStatus}
@@ -444,12 +445,12 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'actSpike':
         return (
           <ChoiceStep
-            title="나를 대표하는 활동이 있나요?"
-            subtitle="활동 자가진단 1/3 — 대표 활동 (Spike)"
+            title={t('나를 대표하는 활동이 있나요?', 'Do you have a signature activity?')}
+            subtitle={t('활동 자가진단 1/3 — 대표 활동 (Spike)', 'Self-check 1/3 — Spike')}
             options={[
-              { value: 1, label: '아직 없어요' },
-              { value: 2, label: '꾸준히 하는 활동은 있어요' },
-              { value: 3, label: '성과·결과물이 있는 대표 활동이 있어요' },
+              { value: 1, label: t('아직 없어요', 'Not yet') },
+              { value: 2, label: t('꾸준히 하는 활동은 있어요', 'I have a consistent activity') },
+              { value: 3, label: t('성과·결과물이 있는 대표 활동이 있어요', 'I have one with real results') },
             ]}
             selected={answers.activitySpike}
             onSelect={(v) => answer({ activitySpike: v as 1 | 2 | 3 })}
@@ -458,12 +459,12 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'actLeadership':
         return (
           <ChoiceStep
-            title="리더 역할을 해본 적 있나요?"
-            subtitle="활동 자가진단 2/3 — 리더십 (Leadership)"
+            title={t('리더 역할을 해본 적 있나요?', 'Have you held a leadership role?')}
+            subtitle={t('활동 자가진단 2/3 — 리더십 (Leadership)', 'Self-check 2/3 — Leadership')}
             options={[
-              { value: 1, label: '아직 없어요' },
-              { value: 2, label: '팀·동아리에서 맡은 역할이 있어요' },
-              { value: 3, label: '회장·창립 등 주도한 경험이 있어요' },
+              { value: 1, label: t('아직 없어요', 'Not yet') },
+              { value: 2, label: t('팀·동아리에서 맡은 역할이 있어요', 'I hold a role in a team/club') },
+              { value: 3, label: t('회장·창립 등 주도한 경험이 있어요', "I've led — president, founder, captain") },
             ]}
             selected={answers.activityLeadership}
             onSelect={(v) => answer({ activityLeadership: v as 1 | 2 | 3 })}
@@ -472,12 +473,12 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
       case 'actValidation':
         return (
           <ChoiceStep
-            title="학교 밖에서 인정받은 적 있나요?"
-            subtitle="활동 자가진단 3/3 — 교외 인정 (External Validation)"
+            title={t('학교 밖에서 인정받은 적 있나요?', 'Any recognition outside school?')}
+            subtitle={t('활동 자가진단 3/3 — 교외 인정 (External Validation)', 'Self-check 3/3 — External validation')}
             options={[
-              { value: 1, label: '아직 없어요' },
-              { value: 2, label: '지역·소규모 대회 수상이 있어요' },
-              { value: 3, label: '전국·국제 수준 수상이 있어요' },
+              { value: 1, label: t('아직 없어요', 'Not yet') },
+              { value: 2, label: t('지역·소규모 대회 수상이 있어요', 'Regional / small competition awards') },
+              { value: 3, label: t('전국·국제 수준 수상이 있어요', 'National / international awards') },
             ]}
             selected={answers.activityValidation}
             onSelect={(v) => answer({ activityValidation: v as 1 | 2 | 3 })}
@@ -505,7 +506,7 @@ function TeaserInterstitial({ text, onNext }: { text: string; onNext: () => void
     <button onClick={onNext} className="mt-16 w-full text-center">
       <p className="text-4xl">✨</p>
       <p className="mt-4 text-lg font-semibold leading-relaxed text-gray-900">{text}</p>
-      <p className="mt-3 text-xs text-gray-400">잠시 후 계속 — 탭하면 바로 넘어가요</p>
+      <p className="mt-3 text-xs text-gray-400">{t('잠시 후 계속 — 탭하면 바로 넘어가요', 'Continuing shortly — tap to skip ahead')}</p>
     </button>
   )
 }

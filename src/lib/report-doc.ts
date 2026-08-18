@@ -4,6 +4,7 @@ import { profileGrade } from './profile'
 import { currentSeason, seasonLabelKo, nextCheckinKo } from './academics'
 import { axisOrder, axisKo, type AxisScores } from './score'
 import { majorLabel } from '../data/majors'
+import { t } from '../i18n'
 
 // Word(docx) 내보내기 — docx 라이브러리는 무거워서 버튼 클릭 시에만 동적 로드
 export async function downloadDocx(
@@ -26,33 +27,33 @@ export async function downloadDocx(
   const children: InstanceType<typeof Paragraph>[] = [
     new Paragraph({
       heading: HeadingLevel.HEADING_1,
-      children: [new TextRun(`${profile.nickname}님의 시즌 리포트`)],
+      children: [new TextRun(t(`${profile.nickname}님의 시즌 리포트`, `${profile.nickname}’s Season Report`))],
     }),
-    p(`${grade}학년 · ${majorLabel(profile.major_primary)} · ${seasonLabelKo[currentSeason()]}`),
+    p(`${t(`${grade}학년`, `Grade ${grade}`)} · ${majorLabel(profile.major_primary)} · ${seasonLabelKo[currentSeason()]}`),
 
-    h('6축 밸런스'),
+    h(t('6축 밸런스', '6-Axis Balance')),
     ...axisOrder.map((a) => p(`${axisKo[a]}: ${scores[a]} / 100`)),
 
-    h(`이번 시즌 진행률: ${doneCount} / ${items.length}`),
+    h(`${t('이번 시즌 진행률', 'This season’s progress')}: ${doneCount} / ${items.length}`),
 
-    h('이번 시즌 체크리스트'),
+    h(t('이번 시즌 체크리스트', 'This Season’s Checklist')),
     ...items.map((i) => p(`${checkedIds.has(i.id) ? '☑' : '☐'} ${i.title}${i.why_how ? ` — ${i.why_how}` : ''}`)),
   ]
 
   if (schools.length > 0) {
-    children.push(h('목표 학교'))
+    children.push(h(t('목표 학교', 'Target Schools')))
     for (const s of schools) {
       children.push(p(`${s.name} (${s.name_ko}) · US News #${s.usnews_rank}`, true))
       const parts = []
-      if (s.sat_mid50_low && s.sat_mid50_high) parts.push(`SAT 중간 50%: ${s.sat_mid50_low}-${s.sat_mid50_high}`)
-      parts.push(s.need_blind_intl ? 'Need-blind(국제학생)' : 'Need-aware(국제학생)')
-      if (s.demonstrated_interest) parts.push('Demonstrated Interest 반영')
+      if (s.sat_mid50_low && s.sat_mid50_high) parts.push(`${t('SAT 중간 50%', 'SAT middle 50%')}: ${s.sat_mid50_low}-${s.sat_mid50_high}`)
+      parts.push(s.need_blind_intl ? t('Need-blind(국제학생)', 'Need-blind (intl.)') : t('Need-aware(국제학생)', 'Need-aware (intl.)'))
+      if (s.demonstrated_interest) parts.push(t('Demonstrated Interest 반영', 'Considers demonstrated interest'))
       children.push(p(parts.join(' · ')))
     }
   }
 
   children.push(
-    new Paragraph({ spacing: { before: 360 }, children: [new TextRun({ text: `미국 대입 로드맵 · 다음 체크인: ${nextCheckinKo()}`, italics: true })] }),
+    new Paragraph({ spacing: { before: 360 }, children: [new TextRun({ text: `${t('미국 대입 로드맵', 'US College Roadmap')} · ${t('다음 체크인', 'Next check-in')}: ${nextCheckinKo()}`, italics: true })] }),
   )
 
   const doc = new Document({ sections: [{ children }] })
@@ -60,7 +61,7 @@ export async function downloadDocx(
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
-  a.download = `시즌리포트_${profile.nickname ?? ''}_${new Date().toISOString().slice(0, 10)}.docx`
+  a.download = `${t('시즌리포트', 'season-report')}_${profile.nickname ?? ''}_${new Date().toISOString().slice(0, 10)}.docx`
   a.click()
   URL.revokeObjectURL(url)
 }

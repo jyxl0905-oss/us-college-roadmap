@@ -1,3 +1,5 @@
+import { t } from '../i18n'
+
 // 학년별 "AO(입학사정관)가 지금 보는 것" — §4 승인 콘텐츠
 const aoCopy: Record<number, string[]> = {
   9: [
@@ -27,7 +29,7 @@ export default function AoBox({ grade }: { grade: number }) {
   return (
     <div className="rounded-xl bg-blue-600 px-4 py-4 text-white">
       <p className="text-xs font-semibold uppercase tracking-wide text-blue-200">
-        AO가 지금 보는 것 · {grade}학년
+        {t(`AO가 지금 보는 것 · ${grade}학년`, `What AOs look at now · Grade ${grade}`)}
       </p>
       <div className="mt-2 space-y-1">
         {lines.map((line) => (

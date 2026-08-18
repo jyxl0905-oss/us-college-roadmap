@@ -7,12 +7,13 @@ import type { ProfileRow } from '../lib/profile'
 import { timingSortKey } from '../deadlines/DeadlinesPage'
 import SchoolLogo from '../browse/SchoolLogo'
 import AppShell from '../app/AppShell'
+import { t } from '../i18n'
 import { loadAppRecords, bestSat, type AppRecords } from '../app/appData'
 import { profileGrade } from '../lib/profile'
 import { currentSeason } from '../lib/academics'
 import {
   boardWarnings, offeredRounds, roundTiming, roundLabels, statusLabels, roundSlots, dDay,
-  autoItems, c7Actions, c7Checkable, isFirstChoice, SUPP_ESSAY_TIP,
+  autoItems, c7Actions, c7Checkable, isFirstChoice, suppEssayTip,
   type ApplicationRow, type CustomTask, type Round, type AppStatus,
 } from './boardLogic'
 
@@ -85,7 +86,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
       const { error } = await supabase.from('applications').upsert({ user_id: userId, ...row })
       if (error) {
         setApps(before) // 실패 시 되돌림
-        alert(`저장에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.\n(${error.message})`)
+        alert(t(`저장에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.\n(${error.message})`, `Save failed. Check your connection and try again.\n(${error.message})`))
         return
       }
       if (patch.round) logEvent(userId, 'round_assigned')
@@ -139,22 +140,22 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
 
   if (!hasTarget)
     return (
-      <AppShell tab="colleges" title="지원 학교">
+      <AppShell tab="colleges" title={t('지원 학교', 'My colleges')}>
         <div className="py-12 text-center">
           <p className="text-4xl">🎯</p>
-          <p className="mt-3 text-sm text-gray-500">목표 학교를 설정하면 라운드 칸이 생성돼요.</p>
+          <p className="mt-3 text-sm text-gray-500">{t('목표 학교를 설정하면 라운드 칸이 생성돼요.', 'Set your target schools to create round slots.')}</p>
           <button
             onClick={() => navigate('/schools')}
             className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
           >
-            대학 둘러보기에서 목표 정하기
+            {t('대학 둘러보기에서 목표 정하기', 'Pick targets in Browse colleges')}
           </button>
         </div>
       </AppShell>
     )
 
   if (schools === null)
-    return <AppShell tab="colleges" title="지원 학교"><p className="mt-10 text-center text-gray-400">불러오는 중…</p></AppShell>
+    return <AppShell tab="colleges" title={t('지원 학교', 'My colleges')}><p className="mt-10 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p></AppShell>
 
   // 상단 요약: "ED 1 · EA 3 · RD 4 | 제출 2/8"
   const roundCounts = (['ed', 'ed2', 'ea', 'rea', 'rd'] as Round[])
@@ -193,14 +194,14 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
     const fitBlock = (
       <div className={`rounded-xl border-2 px-4 py-4 ${first ? 'border-blue-600 bg-blue-50' : 'border-gray-200 bg-white'}`}>
         <p className="font-semibold text-gray-900">
-          이 학교에 맞춘 준비 {first && <span className="ml-1 rounded-full bg-blue-600 px-2 py-0.5 text-xs text-white">1지망 준비</span>}
+          {t('이 학교에 맞춘 준비', 'Prep tailored to this school')} {first && <span className="ml-1 rounded-full bg-blue-600 px-2 py-0.5 text-xs text-white">{t('1지망 준비', 'First-choice prep')}</span>}
         </p>
         {open.what_they_value && open.what_they_value !== 'PLACEHOLDER' && (
           <div className="mt-2">
             <p className="text-sm leading-relaxed text-gray-600">{open.what_they_value}</p>
             {open.source_url && (
               <a href={open.source_url} target="_blank" rel="noreferrer" className="text-xs text-blue-600 underline">
-                공식 출처 보기 ↗
+                {t('공식 출처 보기 ↗', 'View official source ↗')}
               </a>
             )}
           </div>
@@ -224,13 +225,13 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
             ))}
             {open.c7_source_url && (
               <a href={open.c7_source_url} target="_blank" rel="noreferrer" className="text-xs text-blue-600 underline">
-                CDS C7 공시 원문 ↗
+                {t('CDS C7 공시 원문 ↗', 'CDS C7 source ↗')}
               </a>
             )}
           </div>
         )}
         <p className="mt-3 rounded-lg bg-gray-50 px-3 py-2 text-xs leading-relaxed text-gray-500">
-          {SUPP_ESSAY_TIP}
+          {suppEssayTip()}
         </p>
       </div>
     )
@@ -251,19 +252,19 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
 
     const recordBlock = records && (
       <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
-        <p className="font-semibold text-gray-900">내 원서와 이 학교</p>
+        <p className="font-semibold text-gray-900">{t('내 원서와 이 학교', 'My application vs. this school')}</p>
         <div className="mt-2 flex flex-col gap-2 text-sm text-gray-700">
           <div>
-            <span className="text-gray-500">내 SAT 최고점: </span>
+            <span className="text-gray-500">{t('내 SAT 최고점: ', 'My best SAT: ')}</span>
             {best && best.total !== null ? (
               <>
                 <span className="font-semibold">{best.total}</span>
                 {open.test_policy === 'test-free' ? (
-                  <span className="text-gray-500"> · 이 학교는 시험 미반영</span>
+                  <span className="text-gray-500">{t(' · 이 학교는 시험 미반영', ' · this school does not consider tests')}</span>
                 ) : open.sat_mid50_low !== null && open.sat_mid50_high !== null ? (
-                  <span className="text-gray-500"> · 합격자 중간 50% {open.sat_mid50_low}–{open.sat_mid50_high}</span>
+                  <span className="text-gray-500">{t(' · 합격자 중간 50% ', ' · admitted mid-50% ')}{open.sat_mid50_low}–{open.sat_mid50_high}</span>
                 ) : (
-                  <span className="text-gray-500"> · 학교 범위 미공개</span>
+                  <span className="text-gray-500">{t(' · 학교 범위 미공개', ' · range not published')}</span>
                 )}
                 {satPos !== null && (
                   <div className="relative mt-1.5 h-2 rounded-full bg-gray-100">
@@ -273,17 +274,17 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
                 )}
               </>
             ) : (
-              <button onClick={() => navigate('/app/testing')} className="text-blue-600 underline">시험 탭에서 점수 기록</button>
+              <button onClick={() => navigate('/app/testing')} className="text-blue-600 underline">{t('시험 탭에서 점수 기록', 'Record a score in the Testing tab')}</button>
             )}
           </div>
           <div>
-            <span className="text-gray-500">내 활동 {activityCount}/10 · 수상 최고 범위 </span>
-            <span className="font-semibold">{honorTop ? { school: '교내', regional: '지역·주', national: '전국', international: '국제' }[honorTop] : '없음'}</span>
+            <span className="text-gray-500">{t(`내 활동 ${activityCount}/10 · 수상 최고 범위 `, `My activities ${activityCount}/10 · highest honor level `)}</span>
+            <span className="font-semibold">{honorTop ? { school: t('교내', 'School'), regional: t('지역·주', 'Regional / State'), national: t('전국', 'National'), international: t('국제', 'International') }[honorTop] : t('없음', 'None')}</span>
             {c7Slugs.length > 0 && (
               <p className="mt-1 text-xs text-gray-500">
-                이 학교 CDS Very Important: {c7Slugs.map((s) => ({ rigor: '교과난이도', class_rank: '석차', gpa: 'GPA', standardized_tests: '시험', essay: '에세이', recommendations: '추천서', interview: '인터뷰', extracurricular: '활동', talent: '재능', character: '인성', first_generation: '1세대', alumni_relation: '동문', geographical_residence: '거주지', state_residency: '주 거주', religious_affiliation: '종교', volunteer_work: '봉사', work_experience: '직업경험', demonstrated_interest: '관심 표현' }[s] ?? s)).join(' · ')}
+                {t('이 학교 CDS Very Important: ', 'This school’s CDS Very Important: ')}{c7Slugs.map((s) => ({ rigor: t('교과난이도', 'Rigor'), class_rank: t('석차', 'Class rank'), gpa: 'GPA', standardized_tests: t('시험', 'Tests'), essay: t('에세이', 'Essay'), recommendations: t('추천서', 'Recommendations'), interview: t('인터뷰', 'Interview'), extracurricular: t('활동', 'Activities'), talent: t('재능', 'Talent'), character: t('인성', 'Character'), first_generation: t('1세대', 'First-gen'), alumni_relation: t('동문', 'Legacy'), geographical_residence: t('거주지', 'Geography'), state_residency: t('주 거주', 'State residency'), religious_affiliation: t('종교', 'Religion'), volunteer_work: t('봉사', 'Volunteering'), work_experience: t('직업경험', 'Work experience'), demonstrated_interest: t('관심 표현', 'Demonstrated interest') }[s] ?? s)).join(' · ')}
                 {(c7Slugs.includes('extracurricular') || c7Slugs.includes('talent')) && activityCount === 0 && (
-                  <> — <button onClick={() => navigate('/app/activities')} className="text-blue-600 underline">활동 탭에서 기록</button></>
+                  <> — <button onClick={() => navigate('/app/activities')} className="text-blue-600 underline">{t('활동 탭에서 기록', 'Record in the Activities tab')}</button></>
                 )}
               </p>
             )}
@@ -305,8 +306,8 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
 
           {/* 라운드 배정 */}
           <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
-            <p className="font-semibold text-gray-900">지원 라운드</p>
-            <p className="mt-0.5 text-xs text-gray-400">이 학교가 제공하는 라운드만 보여요. 선택은 언제든 바꿀 수 있어요.</p>
+            <p className="font-semibold text-gray-900">{t('지원 라운드', 'Application round')}</p>
+            <p className="mt-0.5 text-xs text-gray-400">{t('이 학교가 제공하는 라운드만 보여요. 선택은 언제든 바꿀 수 있어요.', 'Only rounds this school offers are shown. You can change your choice anytime.')}</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {rounds.map(({ round, timing }) => (
                 <button
@@ -325,12 +326,12 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
             </div>
             {open.deadlines_source_url && (
               <a href={open.deadlines_source_url} target="_blank" rel="noreferrer" className="mt-2 inline-block text-xs text-blue-600 underline">
-                공식 마감 페이지 확인 ↗
+                {t('공식 마감 페이지 확인 ↗', 'Check official deadline page ↗')}
               </a>
             )}
             {/* 학생 입력 마감일 — 툴은 날짜를 제공하지 않음 */}
             <div className="mt-3 border-t border-gray-100 pt-3">
-              <label className="text-xs font-medium text-gray-500">공식 페이지에서 확인한 마감일 (직접 입력)</label>
+              <label className="text-xs font-medium text-gray-500">{t('공식 페이지에서 확인한 마감일 (직접 입력)', 'Deadline confirmed on the official page (enter yourself)')}</label>
               <div className="mt-1 flex items-center gap-2">
                 <input
                   type="date"
@@ -352,7 +353,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
 
           {/* 상태 */}
           <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
-            <p className="font-semibold text-gray-900">진행 상태</p>
+            <p className="font-semibold text-gray-900">{t('진행 상태', 'Status')}</p>
             <select
               value={app?.status ?? 'preparing'}
               onChange={(e) => upsertApp(open.id, { status: e.target.value as AppStatus })}
@@ -364,7 +365,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
             </select>
             {app && (
               <p className="mt-1.5 text-xs text-gray-400">
-                마지막 변경: {new Date(app.updated_at).toLocaleDateString('ko-KR')}
+                {t('마지막 변경: ', 'Last updated: ')}{new Date(app.updated_at).toLocaleDateString(t('ko-KR', 'en-US'))}
               </p>
             )}
           </div>
@@ -374,7 +375,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
 
           {/* 체크리스트: 자동 + 커스텀 통합 */}
           <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
-            <p className="font-semibold text-gray-900">준비 체크리스트</p>
+            <p className="font-semibold text-gray-900">{t('준비 체크리스트', 'Prep checklist')}</p>
             <div className="mt-3 flex flex-col gap-2">
               {auto.map((title) => (
                 <label key={title} className="flex items-start gap-2 text-sm text-gray-700">
@@ -387,16 +388,16 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
                   <span>{title}</span>
                 </label>
               ))}
-              {customs.map((t) => (
-                <div key={t.id} className="flex items-start gap-2 text-sm text-gray-700">
+              {customs.map((task) => (
+                <div key={task.id} className="flex items-start gap-2 text-sm text-gray-700">
                   <input
                     type="checkbox"
-                    checked={t.done}
-                    onChange={() => toggleDerivedItem(open.id, t.title)}
+                    checked={task.done}
+                    onChange={() => toggleDerivedItem(open.id, task.title)}
                     className="mt-0.5 h-4 w-4 shrink-0 accent-blue-600"
                   />
-                  <span className="flex-1">{t.title}</span>
-                  <button onClick={() => deleteTask(t.id)} aria-label="삭제" className="text-gray-300 active:text-red-500">
+                  <span className="flex-1">{task.title}</span>
+                  <button onClick={() => deleteTask(task.id)} aria-label={t('삭제', 'Delete')} className="text-gray-300 active:text-red-500">
                     ✕
                   </button>
                 </div>
@@ -407,14 +408,14 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
                 value={newTask}
                 onChange={(e) => setNewTask(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && addCustomTask(open.id)}
-                placeholder="항목 추가 (예: 보충 에세이 1번 초안)"
+                placeholder={t('항목 추가 (예: 보충 에세이 1번 초안)', 'Add an item (e.g. Draft supplement #1)')}
                 className="min-w-0 flex-1 rounded-xl border-2 border-gray-200 px-3 py-2 text-sm focus:border-blue-600 focus:outline-none"
               />
               <button
                 onClick={() => addCustomTask(open.id)}
                 className="shrink-0 rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white active:bg-blue-700"
               >
-                추가
+                {t('추가', 'Add')}
               </button>
             </div>
           </div>
@@ -445,11 +446,11 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
               <p className="truncate font-semibold text-gray-900">{s.name}</p>
               <p className="flex flex-wrap items-center gap-x-2 text-xs text-gray-500">
                 <span>{statusLabels[app?.status ?? 'preparing']}</span>
-                {timing && <span>마감 {timing}</span>}
+                {timing && <span>{t('마감 ', 'Due ')}{timing}</span>}
                 {dd !== null && dd >= 0 && <span className={dd <= 14 ? 'font-semibold text-red-600' : 'text-blue-700'}>D-{dd}</span>}
               </p>
             </div>
-            {first && <span className="shrink-0 rounded-full bg-blue-600 px-2 py-0.5 text-[11px] font-medium text-white">1지망</span>}
+            {first && <span className="shrink-0 rounded-full bg-blue-600 px-2 py-0.5 text-[11px] font-medium text-white">{t('1지망', 'First choice')}</span>}
           </div>
           {total > 0 && (
             <div className="mt-2 flex items-center gap-2">
@@ -464,7 +465,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
           onClick={() => setSlotPicker(slotPicker === s.id ? null : s.id)}
           className="mt-2 w-full rounded-lg border-2 border-dashed border-gray-200 py-1.5 text-xs font-medium text-gray-500 active:bg-gray-50"
         >
-          {app?.round ? '라운드 바꾸기' : '라운드 칸에 넣기'}
+          {app?.round ? t('라운드 바꾸기', 'Change round') : t('라운드 칸에 넣기', 'Put in a round slot')}
         </button>
         {slotPicker === s.id && (
           <div className="mt-2 flex flex-wrap gap-1.5">
@@ -484,7 +485,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
             ))}
             {app?.round && (
               <button onClick={() => { upsertApp(s.id, { round: null }); setSlotPicker(null) }} className="rounded-full border-2 border-gray-200 px-2.5 py-1 text-xs text-gray-500">
-                미배정으로
+                {t('미배정으로', 'Unassign')}
               </button>
             )}
           </div>
@@ -494,14 +495,14 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
   }
 
   return (
-    <AppShell tab="colleges" title="지원 학교">
+    <AppShell tab="colleges" title={t('지원 학교', 'My colleges')}>
       <p className="mt-3 text-sm text-gray-600">
-        {roundCounts.length > 0 ? roundCounts.map((x) => `${roundLabels[x.r]} ${x.n}`).join(' · ') : '라운드 미배정'}
-        {' | '}제출 {submittedCount}/{schools.length}
+        {roundCounts.length > 0 ? roundCounts.map((x) => `${roundLabels[x.r]} ${x.n}`).join(' · ') : t('라운드 미배정', 'No rounds assigned')}
+        {' | '}{t('제출', 'Submitted')} {submittedCount}/{schools.length}
       </p>
       {isEarly && (
         <p className="mt-2 rounded-xl bg-gray-100 px-3.5 py-2 text-xs text-gray-600">
-          지원 라운드·목표는 매년 바뀔 수 있어요 — 지금은 미리 그려보는 단계예요. 11학년 여름부터 본격 확정.
+          {t('지원 라운드·목표는 매년 바뀔 수 있어요 — 지금은 미리 그려보는 단계예요. 11학년 여름부터 본격 확정.', 'Rounds and targets can change every year — this is a sketching stage for now. Things firm up from the summer of 11th grade.')}
         </p>
       )}
 
@@ -524,15 +525,15 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
           <div key={round} className="mt-5">
             <div className="flex items-baseline justify-between">
               <h2 className="font-semibold text-gray-900">
-                {label} <span className="ml-1 text-xs font-normal text-gray-400">{list.length}곳</span>
+                {label} <span className="ml-1 text-xs font-normal text-gray-400">{t(`${list.length}곳`, `${list.length}`)}</span>
               </h2>
-              {timing && <span className="text-xs text-gray-500">대개 {timing}</span>}
+              {timing && <span className="text-xs text-gray-500">{t('대개 ', 'Usually ')}{timing}</span>}
             </div>
             <p className="text-[11px] text-gray-400">{rule}</p>
             <div className="mt-2 flex flex-col gap-2">
               {list.length === 0 ? (
                 <div className="rounded-xl border-2 border-dashed border-gray-200 px-3 py-3 text-center text-xs text-gray-400">
-                  비어 있음
+                  {t('비어 있음', 'Empty')}
                 </div>
               ) : (
                 list.map(card)
@@ -545,12 +546,12 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
       {/* 미배정 */}
       <div className="mt-6">
         <h2 className="font-semibold text-gray-900">
-          미배정 <span className="ml-1 text-xs font-normal text-gray-400">{unassigned.length}곳</span>
+          {t('미배정', 'Unassigned')} <span className="ml-1 text-xs font-normal text-gray-400">{t(`${unassigned.length}곳`, `${unassigned.length}`)}</span>
         </h2>
-        <p className="text-[11px] text-gray-400">카드의 [라운드 칸에 넣기]로 위 칸에 배치해요. 그 학교가 제공하는 라운드만 보여요.</p>
+        <p className="text-[11px] text-gray-400">{t('카드의 [라운드 칸에 넣기]로 위 칸에 배치해요. 그 학교가 제공하는 라운드만 보여요.', 'Use [Put in a round slot] on a card to place it above. Only rounds that school offers are shown.')}</p>
         <div className="mt-2 flex flex-col gap-2">
           {unassigned.length === 0 ? (
-            <p className="text-xs text-gray-400">전부 배정됐어요 🎉</p>
+            <p className="text-xs text-gray-400">{t('전부 배정됐어요 🎉', 'All assigned 🎉')}</p>
           ) : (
             unassigned.map(card)
           )}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { ProfileRow } from './lib/profile'
 import { gradeFromGradYear, currentSchoolYearEnd } from './lib/academics'
+import { t } from './i18n'
 
 interface RolloverGateProps {
   userId: string
@@ -39,7 +40,7 @@ export default function RolloverGate({ userId, profile, onUpdateGradYear, childr
       <div className="mx-auto max-w-md px-5 py-8">
         {editing ? (
           <div>
-            <h1 className="text-xl font-bold text-gray-900">졸업연도를 다시 골라주세요</h1>
+            <h1 className="text-xl font-bold text-gray-900">{t('졸업연도를 다시 골라주세요', 'Pick your graduation year again')}</h1>
             <div className="mt-5 flex flex-col gap-3">
               {gradYearOptions.map((year) => (
                 <button
@@ -61,11 +62,11 @@ export default function RolloverGate({ userId, profile, onUpdateGradYear, childr
         ) : (
           <div className="mt-16 rounded-2xl border-2 border-blue-200 bg-white px-5 py-6 text-center">
             <p className="text-3xl">🎒</p>
-            <h1 className="mt-3 text-xl font-bold text-gray-900">새 학년이 시작됐어요!</h1>
+            <h1 className="mt-3 text-xl font-bold text-gray-900">{t('새 학년이 시작됐어요!', 'A new school year has started!')}</h1>
             <p className="mt-2 text-sm text-gray-500">
               {rawGrade !== null && rawGrade <= 12
-                ? `Class of ${profile.grad_year} 기준으로 이제 ${rawGrade}학년이에요. 맞나요?`
-                : '기록된 졸업연도로는 이미 졸업 학년이 지났어요. 확인해 주세요.'}
+                ? t(`Class of ${profile.grad_year} 기준으로 이제 ${rawGrade}학년이에요. 맞나요?`, `Based on Class of ${profile.grad_year}, you’re now in grade ${rawGrade}. Is that right?`)
+                : t('기록된 졸업연도로는 이미 졸업 학년이 지났어요. 확인해 주세요.', 'Based on your saved graduation year, you’ve already passed senior year. Please check.')}
             </p>
             <div className="mt-5 flex flex-col gap-2">
               {rawGrade !== null && rawGrade <= 12 && (
@@ -73,14 +74,14 @@ export default function RolloverGate({ userId, profile, onUpdateGradYear, childr
                   onClick={confirm}
                   className="w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
                 >
-                  맞아요, 계속하기
+                  {t('맞아요, 계속하기', 'Yes, continue')}
                 </button>
               )}
               <button
                 onClick={() => setEditing(true)}
                 className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
               >
-                아니요, 졸업연도 수정할게요
+                {t('아니요, 졸업연도 수정할게요', 'No, let me fix the graduation year')}
               </button>
             </div>
           </div>

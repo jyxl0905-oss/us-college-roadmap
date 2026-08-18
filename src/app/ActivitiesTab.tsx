@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import AppShell from './AppShell'
+import { t } from '../i18n'
 import {
   ACTIVITY_MAX, HONOR_MAX, LIMITS, activityCategoryKo, timingKo, honorLevelKo,
   insertRow, updateRow, deleteRow, loadAppRecords,
@@ -36,7 +37,7 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
     })
   }, [userId])
 
-  if (!activities) return <AppShell tab="activities" title="활동 · 수상"><p className="mt-10 text-center text-gray-400">불러오는 중…</p></AppShell>
+  if (!activities) return <AppShell tab="activities" title={t('활동 · 수상', 'Activities · Honors')}><p className="mt-10 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p></AppShell>
 
   // ─── 활동 CRUD ───
   const saveActivity = async (draft: Omit<Activity, 'id' | 'sort_order'>, id: number | 'new') => {
@@ -90,13 +91,13 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
   }
 
   return (
-    <AppShell tab="activities" title="활동 · 수상">
+    <AppShell tab="activities" title={t('활동 · 수상', 'Activities · Honors')}>
       {/* 활동 */}
       <div className="mt-4 flex items-baseline justify-between">
-        <h2 className="font-semibold text-gray-900">활동 (Activities)</h2>
+        <h2 className="font-semibold text-gray-900">{t('활동 (Activities)', 'Activities')}</h2>
         <span className="text-sm text-gray-400">{activities.length}/{ACTIVITY_MAX}</span>
       </div>
-      <p className="mt-0.5 text-xs text-gray-400">실제 원서도 이 순서로 읽혀요 — 중요한 활동을 위로 (▲▼)</p>
+      <p className="mt-0.5 text-xs text-gray-400">{t('실제 원서도 이 순서로 읽혀요 — 중요한 활동을 위로 (▲▼)', 'The real application is read in this order — move important activities up (▲▼)')}</p>
 
       <div className="mt-3 flex flex-col gap-2.5">
         {activities.map((a, i) =>
@@ -106,8 +107,8 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
             <div key={a.id} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3">
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
-                  <p className="text-xs text-gray-400">{i + 1}. {activityCategoryKo[a.category]} · {a.grades.length ? a.grades.join('·') + '학년' : '학년 미입력'}</p>
-                  <p className="mt-0.5 font-semibold text-gray-900">{a.position || <span className="text-gray-300">직책 미입력</span>}</p>
+                  <p className="text-xs text-gray-400">{i + 1}. {activityCategoryKo[a.category]} · {a.grades.length ? t(a.grades.join('·') + '학년', 'Grade ' + a.grades.join('·')) : t('학년 미입력', 'No grade set')}</p>
+                  <p className="mt-0.5 font-semibold text-gray-900">{a.position || <span className="text-gray-300">{t('직책 미입력', 'No position set')}</span>}</p>
                   <p className="text-sm text-gray-600">{a.organization}</p>
                   <p className="mt-1 text-sm leading-relaxed text-gray-500">{a.description}</p>
                 </div>
@@ -117,9 +118,9 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
                 </div>
               </div>
               <div className="mt-2 flex gap-3 text-xs">
-                <button onClick={() => setEditing(a.id)} className="text-blue-600 underline">편집</button>
+                <button onClick={() => setEditing(a.id)} className="text-blue-600 underline">{t('편집', 'Edit')}</button>
                 <button onClick={() => copyForApp(a)} className="text-gray-500 underline">
-                  {copied === a.id ? '복사됨 ✓' : '원서용 복사'}
+                  {copied === a.id ? t('복사됨 ✓', 'Copied ✓') : t('원서용 복사', 'Copy for application')}
                 </button>
               </div>
             </div>
@@ -133,7 +134,7 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
               onClick={() => setEditing('new')}
               className="rounded-xl border-2 border-dashed border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-500 active:bg-gray-50"
             >
-              ＋ 활동 추가
+              {t('＋ 활동 추가', '＋ Add activity')}
             </button>
           )
         )}
@@ -141,7 +142,7 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
 
       {/* 수상 */}
       <div className="mt-8 flex items-baseline justify-between">
-        <h2 className="font-semibold text-gray-900">수상 (Honors)</h2>
+        <h2 className="font-semibold text-gray-900">{t('수상 (Honors)', 'Honors')}</h2>
         <span className="text-sm text-gray-400">{honors.length}/{HONOR_MAX}</span>
       </div>
       <div className="mt-3 flex flex-col gap-2.5">
@@ -150,9 +151,9 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
             <HonorForm key={h.id} initial={h} activities={activities} onSave={(d) => saveHonor(d, h.id)} onCancel={() => setEditingHonor(null)} onDelete={() => removeHonor(h.id)} />
           ) : (
             <button key={h.id} onClick={() => setEditingHonor(h.id)} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-left active:bg-gray-50">
-              <p className="font-semibold text-gray-900">{h.title || <span className="text-gray-300">제목 미입력</span>}</p>
+              <p className="font-semibold text-gray-900">{h.title || <span className="text-gray-300">{t('제목 미입력', 'No title set')}</span>}</p>
               <p className="text-xs text-gray-500">
-                {h.level ? honorLevelKo[h.level] : '범위 미입력'} · {h.grade ? `${h.grade}학년` : '학년 미입력'}
+                {h.level ? honorLevelKo[h.level] : t('범위 미입력', 'No level set')} · {h.grade ? t(`${h.grade}학년`, `Grade ${h.grade}`) : t('학년 미입력', 'No grade set')}
               </p>
             </button>
           ),
@@ -165,7 +166,7 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
               onClick={() => setEditingHonor('new')}
               className="rounded-xl border-2 border-dashed border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-500 active:bg-gray-50"
             >
-              ＋ 수상 추가
+              {t('＋ 수상 추가', '＋ Add honor')}
             </button>
           )
         )}
@@ -200,21 +201,21 @@ function ActivityForm({
 
   return (
     <div className="rounded-xl border-2 border-blue-600 bg-white px-4 py-4">
-      <label className={label}>유형</label>
+      <label className={label}>{t('유형', 'Type')}</label>
       <select value={d.category} onChange={(e) => setD({ ...d, category: e.target.value as ActivityCategory })} className={field}>
         {(Object.keys(activityCategoryKo) as ActivityCategory[]).map((c) => <option key={c} value={c}>{activityCategoryKo[c]}</option>)}
       </select>
 
-      <label className={`${label} mt-3`}>직책·리더십 <Counter len={d.position.length} max={LIMITS.position} /></label>
-      <input value={d.position} onChange={(e) => setD({ ...d, position: e.target.value })} placeholder="예: 부회장 / Founder / 1st Violin" className={field} />
+      <label className={`${label} mt-3`}>{t('직책·리더십', 'Position / Leadership')} <Counter len={d.position.length} max={LIMITS.position} /></label>
+      <input value={d.position} onChange={(e) => setD({ ...d, position: e.target.value })} placeholder={t('예: 부회장 / Founder / 1st Violin', 'e.g. Vice President / Founder / 1st Violin')} className={field} />
 
-      <label className={`${label} mt-3`}>단체·프로그램명 <Counter len={d.organization.length} max={LIMITS.organization} /></label>
-      <input value={d.organization} onChange={(e) => setD({ ...d, organization: e.target.value })} placeholder="예: 학교 로봇공학 동아리" className={field} />
+      <label className={`${label} mt-3`}>{t('단체·프로그램명', 'Organization / Program')} <Counter len={d.organization.length} max={LIMITS.organization} /></label>
+      <input value={d.organization} onChange={(e) => setD({ ...d, organization: e.target.value })} placeholder={t('예: 학교 로봇공학 동아리', 'e.g. School Robotics Club')} className={field} />
 
-      <label className={`${label} mt-3`}>설명 <Counter len={d.description.length} max={LIMITS.description} /></label>
-      <textarea value={d.description} onChange={(e) => setD({ ...d, description: e.target.value })} rows={3} placeholder="무엇을·어떻게·결과 — 숫자가 있으면 숫자로" className={field} />
+      <label className={`${label} mt-3`}>{t('설명', 'Description')} <Counter len={d.description.length} max={LIMITS.description} /></label>
+      <textarea value={d.description} onChange={(e) => setD({ ...d, description: e.target.value })} rows={3} placeholder={t('무엇을·어떻게·결과 — 숫자가 있으면 숫자로', 'What, how, and the result — use numbers when you have them')} className={field} />
 
-      <label className={`${label} mt-3`}>참여 학년</label>
+      <label className={`${label} mt-3`}>{t('참여 학년', 'Grades participated')}</label>
       <div className="mt-1 flex gap-2">
         {GRADES.map((g) => {
           const on = d.grades.includes(g)
@@ -229,33 +230,33 @@ function ActivityForm({
 
       <div className="mt-3 grid grid-cols-3 gap-2">
         <div>
-          <label className={label}>시기</label>
+          <label className={label}>{t('시기', 'Timing')}</label>
           <select value={d.timing ?? ''} onChange={(e) => setD({ ...d, timing: (e.target.value || null) as ActivityTiming | null })} className={field}>
             <option value="">—</option>
-            {(Object.keys(timingKo) as ActivityTiming[]).map((t) => <option key={t} value={t}>{timingKo[t]}</option>)}
+            {(Object.keys(timingKo) as ActivityTiming[]).map((tm) => <option key={tm} value={tm}>{timingKo[tm]}</option>)}
           </select>
         </div>
         <div>
-          <label className={label}>주당 시간</label>
+          <label className={label}>{t('주당 시간', 'Hours / week')}</label>
           <input type="number" inputMode="decimal" value={d.hours_per_week ?? ''} onChange={(e) => setD({ ...d, hours_per_week: e.target.value === '' ? null : Number(e.target.value) })} className={field} />
         </div>
         <div>
-          <label className={label}>연간 주 수</label>
+          <label className={label}>{t('연간 주 수', 'Weeks / year')}</label>
           <input type="number" inputMode="numeric" value={d.weeks_per_year ?? ''} onChange={(e) => setD({ ...d, weeks_per_year: e.target.value === '' ? null : Number(e.target.value) })} className={field} />
         </div>
       </div>
 
       <label className="mt-3 flex items-center gap-2 text-sm text-gray-600">
         <input type="checkbox" checked={d.continue_in_college === true} onChange={(e) => setD({ ...d, continue_in_college: e.target.checked })} className="h-4 w-4 accent-blue-600" />
-        대학에서도 계속할 생각이에요
+        {t('대학에서도 계속할 생각이에요', 'I plan to continue this in college')}
       </label>
 
       <div className="mt-4 flex items-center gap-2">
-        <button onClick={() => onSave(d)} disabled={over} className="flex-1 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white disabled:bg-gray-300">저장</button>
-        <button onClick={onCancel} className="rounded-xl border-2 border-gray-200 px-4 py-2.5 text-sm text-gray-600">취소</button>
-        {onDelete && <button onClick={onDelete} className="ml-auto text-xs text-red-500 underline">삭제</button>}
+        <button onClick={() => onSave(d)} disabled={over} className="flex-1 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white disabled:bg-gray-300">{t('저장', 'Save')}</button>
+        <button onClick={onCancel} className="rounded-xl border-2 border-gray-200 px-4 py-2.5 text-sm text-gray-600">{t('취소', 'Cancel')}</button>
+        {onDelete && <button onClick={onDelete} className="ml-auto text-xs text-red-500 underline">{t('삭제', 'Delete')}</button>}
       </div>
-      {over && <p className="mt-2 text-xs text-red-600">글자 수를 넘었어요 — 실제 원서에 그대로 못 들어가요.</p>}
+      {over && <p className="mt-2 text-xs text-red-600">{t('글자 수를 넘었어요 — 실제 원서에 그대로 못 들어가요.', 'Over the character limit — this won’t fit in the real application as is.')}</p>}
     </div>
   )
 }
@@ -280,18 +281,18 @@ function HonorForm({
   const label = 'flex items-center justify-between text-xs font-medium text-gray-500'
   return (
     <div className="rounded-xl border-2 border-blue-600 bg-white px-4 py-4">
-      <label className={label}>수상·인정 제목 <Counter len={d.title.length} max={LIMITS.honorTitle} /></label>
-      <input value={d.title} onChange={(e) => setD({ ...d, title: e.target.value })} placeholder="예: AMC 10 Distinguished Honor Roll" className={field} />
+      <label className={label}>{t('수상·인정 제목', 'Honor / Award title')} <Counter len={d.title.length} max={LIMITS.honorTitle} /></label>
+      <input value={d.title} onChange={(e) => setD({ ...d, title: e.target.value })} placeholder={t('예: AMC 10 Distinguished Honor Roll', 'e.g. AMC 10 Distinguished Honor Roll')} className={field} />
       <div className="mt-3 grid grid-cols-2 gap-2">
         <div>
-          <label className={label}>학년</label>
+          <label className={label}>{t('학년', 'Grade')}</label>
           <select value={d.grade ?? ''} onChange={(e) => setD({ ...d, grade: e.target.value ? Number(e.target.value) : null })} className={field}>
             <option value="">—</option>
-            {GRADES.map((g) => <option key={g} value={g}>{g}학년</option>)}
+            {GRADES.map((g) => <option key={g} value={g}>{t(`${g}학년`, `Grade ${g}`)}</option>)}
           </select>
         </div>
         <div>
-          <label className={label}>인정 범위</label>
+          <label className={label}>{t('인정 범위', 'Level of recognition')}</label>
           <select value={d.level ?? ''} onChange={(e) => setD({ ...d, level: (e.target.value || null) as HonorLevel | null })} className={field}>
             <option value="">—</option>
             {(Object.keys(honorLevelKo) as HonorLevel[]).map((l) => <option key={l} value={l}>{honorLevelKo[l]}</option>)}
@@ -300,17 +301,17 @@ function HonorForm({
       </div>
       {activities.length > 0 && (
         <>
-          <label className={`${label} mt-3`}>연결된 활동 (선택)</label>
+          <label className={`${label} mt-3`}>{t('연결된 활동 (선택)', 'Linked activity (optional)')}</label>
           <select value={d.activity_id ?? ''} onChange={(e) => setD({ ...d, activity_id: e.target.value ? Number(e.target.value) : null })} className={field}>
             <option value="">—</option>
-            {activities.map((a) => <option key={a.id} value={a.id}>{a.position || a.organization || `활동 ${a.id}`}</option>)}
+            {activities.map((a) => <option key={a.id} value={a.id}>{a.position || a.organization || t(`활동 ${a.id}`, `Activity ${a.id}`)}</option>)}
           </select>
         </>
       )}
       <div className="mt-4 flex items-center gap-2">
-        <button onClick={() => onSave(d)} disabled={d.title.length > LIMITS.honorTitle} className="flex-1 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white disabled:bg-gray-300">저장</button>
-        <button onClick={onCancel} className="rounded-xl border-2 border-gray-200 px-4 py-2.5 text-sm text-gray-600">취소</button>
-        {onDelete && <button onClick={onDelete} className="ml-auto text-xs text-red-500 underline">삭제</button>}
+        <button onClick={() => onSave(d)} disabled={d.title.length > LIMITS.honorTitle} className="flex-1 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white disabled:bg-gray-300">{t('저장', 'Save')}</button>
+        <button onClick={onCancel} className="rounded-xl border-2 border-gray-200 px-4 py-2.5 text-sm text-gray-600">{t('취소', 'Cancel')}</button>
+        {onDelete && <button onClick={onDelete} className="ml-auto text-xs text-red-500 underline">{t('삭제', 'Delete')}</button>}
       </div>
     </div>
   )

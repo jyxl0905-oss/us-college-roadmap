@@ -11,6 +11,8 @@ import SchoolsListPage from './browse/SchoolsListPage'
 import SchoolDetailPage from './browse/SchoolDetailPage'
 import ComparePage from './browse/ComparePage'
 import { usePath, navigate } from './lib/router'
+import { getLang, t } from './i18n'
+import LangToggle from './i18n/LangToggle'
 
 // 무거운 화면(차트·리포트·보드·온보딩)은 필요할 때만 내려받음 — 둘러보기 첫 로딩을 가볍게
 const OnboardingFlow = lazy(() => import('./onboarding/OnboardingFlow'))
@@ -41,16 +43,25 @@ function Screen({ children }: { children: React.ReactNode }) {
 
 type GuestPhase = 'home' | 'onboarding' | 'preview' | 'email'
 
-const loadingScreen = (
-  <Screen>
-    <p className="mt-20 text-center text-gray-400">불러오는 중…</p>
-  </Screen>
-)
+function LoadingScreen() {
+  return (
+    <Screen>
+      <p className="mt-20 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
+    </Screen>
+  )
+}
 
 export default function App() {
+  // 언어 전환 시 전체 리마운트 (t()가 모듈 변수 기반이라 key로 갱신)
+  const [langKey, setLangKey] = useState(getLang())
+  useEffect(() => {
+    const on = () => setLangKey(getLang())
+    window.addEventListener('app:lang', on)
+    return () => window.removeEventListener('app:lang', on)
+  }, [])
   return (
-    <Suspense fallback={loadingScreen}>
-      <AppRoutes />
+    <Suspense fallback={<LoadingScreen />}>
+      <AppRoutes key={langKey} />
     </Suspense>
   )
 }
@@ -114,7 +125,7 @@ function AppRoutes() {
   if (sessionLoading || profileLoading || (session && profile && lastSeason === undefined)) {
     return (
       <Screen>
-        <p className="mt-20 text-center text-gray-400">불러오는 중…</p>
+        <p className="mt-20 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
       </Screen>
     )
   }
@@ -135,13 +146,13 @@ function AppRoutes() {
       <Screen>
         <div className="py-16 text-center">
           <p className="text-4xl">📋</p>
-          <h1 className="mt-4 text-xl font-bold text-gray-900">내 원서</h1>
-          <p className="mt-3 text-sm text-gray-500">가상 Common App은 리포트를 받은 뒤 사용할 수 있어요.</p>
+          <h1 className="mt-4 text-xl font-bold text-gray-900">{t('내 원서', 'My Application')}</h1>
+          <p className="mt-3 text-sm text-gray-500">{t('가상 Common App은 리포트를 받은 뒤 사용할 수 있어요.', 'The virtual Common App opens after you get your report.')}</p>
           <button
             onClick={() => navigate('/')}
             className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
           >
-            내 리포트 받기
+            {t('내 리포트 받기', 'Get my report')}
           </button>
         </div>
       </Screen>
@@ -160,7 +171,7 @@ function AppRoutes() {
   // F4 → F5: 예전 /board 주소는 내 원서의 지원 학교 탭으로
   if (path === '/board' || path === '/board/') {
     navigate('/app/colleges')
-    return loadingScreen
+    return <LoadingScreen />
   }
   // F3: 마감 캘린더 (로그인 전용)
   if (path === '/deadlines' || path === '/deadlines/') {
@@ -169,15 +180,15 @@ function AppRoutes() {
       <Screen>
         <div className="py-16 text-center">
           <p className="text-4xl">🗓️</p>
-          <h1 className="mt-4 text-xl font-bold text-gray-900">마감 캘린더</h1>
+          <h1 className="mt-4 text-xl font-bold text-gray-900">{t('마감 캘린더', 'Deadline Calendar')}</h1>
           <p className="mt-3 text-sm text-gray-500">
-            내 목표 학교 기준 캘린더는 리포트를 받은 뒤 볼 수 있어요.
+            {t('내 목표 학교 기준 캘린더는 리포트를 받은 뒤 볼 수 있어요.', 'Your target-school calendar opens after you get your report.')}
           </p>
           <button
             onClick={() => navigate('/')}
             className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
           >
-            내 리포트 받기
+            {t('내 리포트 받기', 'Get my report')}
           </button>
         </div>
       </Screen>
@@ -204,10 +215,10 @@ function AppRoutes() {
       <Screen>
         <div className="py-12 text-center">
           <p className="text-4xl">🔄</p>
-          <h1 className="mt-4 text-xl font-bold text-gray-900">방금 입력한 답변으로 업데이트할까요?</h1>
+          <h1 className="mt-4 text-xl font-bold text-gray-900">{t('방금 입력한 답변으로 업데이트할까요?', 'Update your profile with the new answers?')}</h1>
           <p className="mt-3 text-sm leading-relaxed text-gray-500">
-            이미 저장된 프로필({profile.nickname}님)이 있어요. 새 답변으로 바꾸면 목표 학교·전공·성적 정보가
-            갱신되고, 체크 기록·내 원서 기록은 그대로 유지돼요.
+            {t(`이미 저장된 프로필(${profile.nickname}님)이 있어요. 새 답변으로 바꾸면 목표 학교·전공·성적 정보가 갱신되고, 체크 기록·내 원서 기록은 그대로 유지돼요.`,
+               `You already have a saved profile (${profile.nickname}). Updating replaces target schools, major and academics; your checks and application records are kept.`)}
           </p>
           <button
             onClick={async () => {
@@ -219,7 +230,7 @@ function AppRoutes() {
             }}
             className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
           >
-            새 답변으로 업데이트
+            {t('새 답변으로 업데이트', 'Update with new answers')}
           </button>
           <button
             onClick={() => {
@@ -228,7 +239,7 @@ function AppRoutes() {
             }}
             className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
           >
-            기존 프로필 유지
+            {t('기존 프로필 유지', 'Keep current profile')}
           </button>
         </div>
       </Screen>
@@ -336,24 +347,25 @@ function AppRoutes() {
     return (
       <Screen>
         <div className="py-10 text-center">
+          <div className="flex justify-end"><LangToggle /></div>
           <p className="text-5xl">🎓</p>
-          <h1 className="mt-5 text-2xl font-bold text-gray-900">미국 대학 입시 로드맵</h1>
+          <h1 className="mt-5 text-2xl font-bold text-gray-900">{t('미국 대학 입시 로드맵', 'US College Roadmap')}</h1>
           <p className="mt-3 text-sm leading-relaxed text-gray-500">
-            학년·전공·목표 학교에 맞는 시즌별 체크리스트로
+            {t('학년·전공·목표 학교에 맞는 시즌별 체크리스트로', 'Season-by-season checklists tailored to your grade, major and target schools —')}
             <br />
-            4년을 관리하는 툴이에요.
+            {t('4년을 관리하는 툴이에요.', 'manage all four years in one place.')}
           </p>
           {pendingAnswers ? (
             <>
               {/* 미인증 답변이 남은 경우: 이어서 인증 유도 */}
               <p className="mt-6 rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-900">
-                ✍️ 작성해 둔 답변이 있어요 — 이메일 인증만 하면 리포트가 나와요.
+                {t('✍️ 작성해 둔 답변이 있어요 — 이메일 인증만 하면 리포트가 나와요.', '✍️ You have saved answers — verify your email to get the report.')}
               </p>
               <button
                 onClick={() => setPhase('email')}
                 className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-4 font-semibold text-white active:bg-blue-700"
               >
-                이어서 이메일 인증하기
+                {t('이어서 이메일 인증하기', 'Continue to email verification')}
               </button>
               <button
                 onClick={() => {
@@ -363,7 +375,7 @@ function AppRoutes() {
                 }}
                 className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 text-sm font-semibold text-gray-500 active:bg-gray-50"
               >
-                답변 버리고 처음부터 하기
+                {t('답변 버리고 처음부터 하기', 'Discard and start over')}
               </button>
             </>
           ) : (
@@ -371,18 +383,18 @@ function AppRoutes() {
               onClick={() => setPhase('onboarding')}
               className="mt-8 w-full rounded-xl bg-blue-600 px-4 py-4 font-semibold text-white active:bg-blue-700"
             >
-              내 리포트 받기
+              {t('내 리포트 받기', 'Get my report')}
             </button>
           )}
           <button
             onClick={() => navigate('/schools')}
             className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-4 font-semibold text-gray-700 active:bg-gray-50"
           >
-            대학 둘러보기
+            {t('대학 둘러보기', 'Browse colleges')}
           </button>
           {!pendingAnswers && (
             <button onClick={() => setPhase('email')} className="mt-6 text-sm text-gray-400 underline">
-              이미 가입했어요 — 이메일로 로그인
+              {t('이미 가입했어요 — 이메일로 로그인', 'Already signed up — log in by email')}
             </button>
           )}
         </div>

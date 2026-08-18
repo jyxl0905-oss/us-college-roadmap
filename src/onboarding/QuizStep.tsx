@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { t } from '../i18n'
 import type { QuizAnswer, QuizItem } from '../lib/types'
 import { supabase } from '../lib/supabase'
 
@@ -36,7 +37,7 @@ export default function QuizStep({ onDone }: QuizStepProps) {
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (!items) return <p className="mt-16 text-center text-gray-400">불러오는 중…</p>
+  if (!items) return <p className="mt-16 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
 
   const item = items[index]
   const correctCount = answers.filter((a) => a.correct).length
@@ -61,15 +62,15 @@ export default function QuizStep({ onDone }: QuizStepProps) {
     return (
       <div className="mt-8 text-center">
         <p className="text-4xl">🎯</p>
-        <h1 className="mt-4 text-xl font-bold text-gray-900">잠깐 퀴즈 — 몇 개 맞출 수 있을까요?</h1>
+        <h1 className="mt-4 text-xl font-bold text-gray-900">{t('잠깐 퀴즈 — 몇 개 맞출 수 있을까요?', 'Quick quiz — how many can you get?')}</h1>
         <p className="mt-2 text-sm text-gray-500">
-          미국 입시 상식 OX {items.length}문제. 부담 없이 찍어도 돼요 — 바로 정답과 이유를 알려드려요.
+          {t(`미국 입시 상식 OX ${items.length}문제. 부담 없이 찍어도 돼요 — 바로 정답과 이유를 알려드려요.`, `${items.length} true/false questions on US admissions. Guessing is fine — you get the answer and why right away.`)}
         </p>
         <button
           onClick={() => setPhase('question')}
           className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
         >
-          시작하기
+          {t('시작하기', 'Start')}
         </button>
       </div>
     )
@@ -79,22 +80,22 @@ export default function QuizStep({ onDone }: QuizStepProps) {
     // §1-A 확정 코멘트 (사용자 제공 — 수정 금지)
     const comment =
       correctCount >= 4
-        ? '이미 기본기가 탄탄함 — 이제 실행이 관건'
+        ? t('이미 기본기가 탄탄함 — 이제 실행이 관건', 'Solid fundamentals — now it comes down to execution')
         : correctCount >= 2
-          ? '감은 있음 — 헷갈린 개념은 용어집에서 바로 확인 가능'
-          : '지금 몰라도 됨 — 이 툴이 알려주는 게 바로 이런 것들이니까'
+          ? t('감은 있음 — 헷갈린 개념은 용어집에서 바로 확인 가능', 'You have a feel for it — check the fuzzy ones in the glossary')
+          : t('지금 몰라도 됨 — 이 툴이 알려주는 게 바로 이런 것들이니까', "Fine not to know yet — that's exactly what this tool teaches")
     return (
       <div className="mt-8 text-center">
         <p className="text-4xl">{correctCount >= 4 ? '🏆' : correctCount >= 2 ? '👍' : '🌱'}</p>
         <h1 className="mt-4 text-2xl font-bold text-gray-900">
-          {items.length}개 중 {correctCount}개!
+          {t(`${items.length}개 중 ${correctCount}개!`, `${correctCount} of ${items.length}!`)}
         </h1>
         <p className="mt-2 text-sm text-gray-500">{comment}</p>
         <button
           onClick={() => onDone(answers)}
           className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
         >
-          다음
+          {t('다음', 'Next')}
         </button>
       </div>
     )
@@ -106,7 +107,7 @@ export default function QuizStep({ onDone }: QuizStepProps) {
   return (
     <div onClick={revealed ? next : undefined}>
       <p className="text-sm font-medium text-blue-600">
-        퀴즈 {index + 1} / {items.length}
+        {t('퀴즈', 'Quiz')} {index + 1} / {items.length}
       </p>
       <h1 className="mt-2 text-xl font-bold leading-relaxed text-gray-900">{item.question}</h1>
 
@@ -142,7 +143,7 @@ export default function QuizStep({ onDone }: QuizStepProps) {
       {revealed && (
         <div className="mt-5 rounded-xl bg-blue-50 px-4 py-3.5">
           <p className="font-semibold text-blue-900">
-            {wasCorrect ? '정답이에요! 🎉' : `정답은 ${item.answer ? 'O' : 'X'}예요`}
+            {wasCorrect ? t('정답이에요! 🎉', 'Correct! 🎉') : t(`정답은 ${item.answer ? 'O' : 'X'}예요`, `The answer is ${item.answer ? 'O' : 'X'}`)}
           </p>
           <div className="mt-1 space-y-0.5">
             {item.explanation_2lines.split('\n').map((line, i) => (
@@ -151,7 +152,7 @@ export default function QuizStep({ onDone }: QuizStepProps) {
               </p>
             ))}
           </div>
-          <p className="mt-2 text-xs text-blue-400">잠시 후 다음 문제로 — 탭하면 바로 넘어가요</p>
+          <p className="mt-2 text-xs text-blue-400">{t('잠시 후 다음 문제로 — 탭하면 바로 넘어가요', 'Next question shortly — tap to skip ahead')}</p>
         </div>
       )}
     </div>

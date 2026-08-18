@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
+import { t } from '../i18n'
 
 interface GlossaryItem {
   id: number
@@ -36,13 +37,13 @@ export default function GuideView({ onBack }: { onBack: () => void }) {
   return (
     <div className="pb-10">
       <div className="flex items-center gap-3">
-        <button onClick={onBack} aria-label="리포트로 돌아가기" className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
+        <button onClick={onBack} aria-label={t('리포트로 돌아가기', 'Back to report')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
           ←
         </button>
-        <h1 className="text-xl font-bold text-gray-900">입시 기본기 · 용어집</h1>
+        <h1 className="text-xl font-bold text-gray-900">{t('입시 기본기 · 용어집', 'Admissions Basics · Glossary')}</h1>
       </div>
 
-      {loading && <p className="mt-10 text-center text-gray-400">불러오는 중…</p>}
+      {loading && <p className="mt-10 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>}
 
       {basics.length > 0 && (
         <div className="mt-5 flex flex-col gap-3">
@@ -65,7 +66,7 @@ export default function GuideView({ onBack }: { onBack: () => void }) {
 
       {glossary.length > 0 && (
         <div className="mt-8">
-          <h2 className="font-semibold text-gray-900">용어집 (Glossary)</h2>
+          <h2 className="font-semibold text-gray-900">{t('용어집 (Glossary)', 'Glossary')}</h2>
           <div className="mt-3 divide-y divide-gray-100 rounded-xl border-2 border-gray-200 bg-white">
             {glossary.map((g) => (
               <div key={g.id} className="px-4 py-3">

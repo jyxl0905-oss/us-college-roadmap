@@ -3,10 +3,11 @@ import type { ChecklistItem, ClarityItem, Tier } from '../lib/types'
 import { supabase } from '../lib/supabase'
 import { filterChecklist, saveProfile, type ProfileRow } from '../lib/profile'
 import { gradeFromGradYear, currentSeasonLabel, seasonLabelKo, currentSeason } from '../lib/academics'
-import { majorsByTrack } from '../data/majors'
+import { majorsByTrack, majorDisplay } from '../data/majors'
 import ChoiceStep from '../onboarding/ChoiceStep'
 import TargetSchoolsStep from '../onboarding/TargetSchoolsStep'
 import { axisShort, type Plan } from '../app/plans'
+import { t } from '../i18n'
 
 // 시즌 라벨('2026-spring')의 학년 계산용 대표 날짜
 function seasonDate(label: string): Date {
@@ -139,16 +140,18 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
   )
 
   if (loading || saving)
-    return wrap(<p className="mt-20 text-center text-gray-400">{saving ? '저장 중…' : '불러오는 중…'}</p>)
+    return wrap(<p className="mt-20 text-center text-gray-400">{saving ? t('저장 중…', 'Saving…') : t('불러오는 중…', 'Loading…')}</p>)
 
   // ① 지난 시즌 미완료 항목
   if (screen === 'carryover') {
     return wrap(
       <div>
-        <h1 className="text-xl font-bold text-gray-900">오랜만이에요! 👋</h1>
+        <h1 className="text-xl font-bold text-gray-900">{t('오랜만이에요! 👋', 'Welcome back! 👋')}</h1>
         <p className="mt-2 text-sm text-gray-500">
-          지난 {seasonKoFromLabel(prevSeasonLabel)} 시즌에 완료하지 못한 항목이 있어요. 이번
-          시즌으로 가져갈까요?
+          {t(
+            `지난 ${seasonKoFromLabel(prevSeasonLabel)} 시즌에 완료하지 못한 항목이 있어요. 이번 시즌으로 가져갈까요?`,
+            `You have items left unfinished from last ${seasonKoFromLabel(prevSeasonLabel)}. Carry them into this season?`,
+          )}
         </p>
         <div className="mt-5 flex flex-col gap-3">
           {incomplete.map((item) => (
@@ -160,13 +163,13 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
                   onClick={() => decide(item, true)}
                   className="flex-1 rounded-lg bg-blue-600 px-3 py-2 text-sm font-semibold text-white active:bg-blue-700"
                 >
-                  이번 시즌으로 이월
+                  {t('이번 시즌으로 이월', 'Carry over')}
                 </button>
                 <button
                   onClick={() => decide(item, false)}
                   className="flex-1 rounded-lg border-2 border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-600 active:bg-gray-50"
                 >
-                  건너뛰기
+                  {t('건너뛰기', 'Skip')}
                 </button>
               </div>
             </div>
@@ -191,17 +194,17 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
   if (screen === 'plans') {
     return wrap(
       <div>
-        <h1 className="text-xl font-bold text-gray-900">지난 시즌 계획은 어떻게 됐어요?</h1>
-        <p className="mt-2 text-sm text-gray-500">완료한 건 6축 실선에 반영돼요.</p>
+        <h1 className="text-xl font-bold text-gray-900">{t('지난 시즌 계획은 어떻게 됐어요?', 'How did last season’s plans go?')}</h1>
+        <p className="mt-2 text-sm text-gray-500">{t('완료한 건 6축 실선에 반영돼요.', 'Completed plans count toward your 6-axis score.')}</p>
         <div className="mt-5 flex flex-col gap-3">
           {openPlans.map((p) => (
             <div key={p.id} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
               <p className="font-medium text-gray-900">{p.title}</p>
               <p className="text-xs text-gray-400">{axisShort[p.axis]}</p>
               <div className="mt-3 flex gap-2">
-                <button onClick={() => decidePlan(p, 'done')} className="flex-1 rounded-lg bg-green-600 px-3 py-2 text-sm font-semibold text-white active:bg-green-700">완료했어요</button>
-                <button onClick={() => decidePlan(p, 'carry')} className="flex-1 rounded-lg bg-blue-600 px-3 py-2 text-sm font-semibold text-white active:bg-blue-700">이번 시즌으로</button>
-                <button onClick={() => decidePlan(p, 'delete')} className="rounded-lg border-2 border-gray-200 bg-white px-3 py-2 text-sm text-gray-500 active:bg-gray-50">삭제</button>
+                <button onClick={() => decidePlan(p, 'done')} className="flex-1 rounded-lg bg-green-600 px-3 py-2 text-sm font-semibold text-white active:bg-green-700">{t('완료했어요', 'Done')}</button>
+                <button onClick={() => decidePlan(p, 'carry')} className="flex-1 rounded-lg bg-blue-600 px-3 py-2 text-sm font-semibold text-white active:bg-blue-700">{t('이번 시즌으로', 'Move to this season')}</button>
+                <button onClick={() => decidePlan(p, 'delete')} className="rounded-lg border-2 border-gray-200 bg-white px-3 py-2 text-sm text-gray-500 active:bg-gray-50">{t('삭제', 'Delete')}</button>
               </div>
             </div>
           ))}
@@ -215,13 +218,13 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
     if (changeForm === 'gpa') {
       return wrap(
         <ChoiceStep
-          title="바뀐 GPA 밴드를 골라주세요"
+          title={t('바뀐 GPA 밴드를 골라주세요', 'Pick your new GPA band')}
           options={[
-            { value: '3.9+', label: '3.9 이상' },
+            { value: '3.9+', label: t('3.9 이상', '3.9 or higher') },
             { value: '3.7-3.9', label: '3.7 ~ 3.9' },
             { value: '3.5-3.7', label: '3.5 ~ 3.7' },
-            { value: 'below3.5', label: '3.5 미만' },
-            { value: 'none', label: 'GPA가 없는 학교예요' },
+            { value: 'below3.5', label: t('3.5 미만', 'Below 3.5') },
+            { value: 'none', label: t('GPA가 없는 학교예요', 'My school doesn’t give GPAs') },
           ]}
           selected={draft.gpa_band}
           onSelect={(v) => {
@@ -236,11 +239,11 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
       if (formStep === 0)
         return wrap(
           <ChoiceStep
-            title="SAT는 지금 어떤 상태인가요?"
+            title={t('SAT는 지금 어떤 상태인가요?', 'Where are you with the SAT?')}
             options={[
-              { value: 'none', label: '아직 계획 없어요' },
-              { value: 'studying', label: '공부 중이에요' },
-              { value: 'taken', label: '응시했어요' },
+              { value: 'none', label: t('아직 계획 없어요', 'No plans yet') },
+              { value: 'studying', label: t('공부 중이에요', 'Studying') },
+              { value: 'taken', label: t('응시했어요', 'Taken it') },
             ]}
             selected={draft.sat_status}
             onSelect={(v) => {
@@ -257,12 +260,12 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
       if (formStep === 1)
         return wrap(
           <ChoiceStep
-            title="SAT 점수대를 골라주세요"
+            title={t('SAT 점수대를 골라주세요', 'Pick your SAT score range')}
             options={[
-              { value: '1500+', label: '1500 이상' },
+              { value: '1500+', label: t('1500 이상', '1500 or higher') },
               { value: '1400-1490', label: '1400 ~ 1490' },
               { value: '1300-1390', label: '1300 ~ 1390' },
-              { value: 'below1300', label: '1300 미만' },
+              { value: 'below1300', label: t('1300 미만', 'Below 1300') },
             ]}
             selected={draft.sat_band}
             onSelect={(v) => {
@@ -277,12 +280,12 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
         )
       return wrap(
         <ChoiceStep
-          title="TOEFL/IELTS는 어떤 상태인가요?"
+          title={t('TOEFL/IELTS는 어떤 상태인가요?', 'Where are you with TOEFL/IELTS?')}
           options={[
-            { value: 'none', label: '아직 안 봤어요' },
-            { value: 'studying', label: '공부 중이에요' },
-            { value: 'scored', label: '점수가 있어요' },
-            { value: 'exempt', label: '면제 대상일 수 있어요', description: '학교별 면제 기준 확인 필요' },
+            { value: 'none', label: t('아직 안 봤어요', 'Not taken yet') },
+            { value: 'studying', label: t('공부 중이에요', 'Studying') },
+            { value: 'scored', label: t('점수가 있어요', 'I have a score') },
+            { value: 'exempt', label: t('면제 대상일 수 있어요', 'I may be exempt'), description: t('학교별 면제 기준 확인 필요', 'Check each school’s waiver policy') },
           ]}
           selected={draft.toefl_status}
           onSelect={(v) => {
@@ -296,30 +299,30 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
     if (changeForm === 'activities') {
       const steps = [
         {
-          title: '나를 대표하는 활동이 있나요?',
+          title: t('나를 대표하는 활동이 있나요?', 'Do you have a signature activity?'),
           field: 'activity_spike' as const,
           options: [
-            { value: 1, label: '아직 없어요' },
-            { value: 2, label: '꾸준히 하는 활동은 있어요' },
-            { value: 3, label: '성과·결과물이 있는 대표 활동이 있어요' },
+            { value: 1, label: t('아직 없어요', 'Not yet') },
+            { value: 2, label: t('꾸준히 하는 활동은 있어요', 'I have activities I do consistently') },
+            { value: 3, label: t('성과·결과물이 있는 대표 활동이 있어요', 'I have a signature activity with results') },
           ],
         },
         {
-          title: '리더 역할을 해본 적 있나요?',
+          title: t('리더 역할을 해본 적 있나요?', 'Have you held a leadership role?'),
           field: 'activity_leadership' as const,
           options: [
-            { value: 1, label: '아직 없어요' },
-            { value: 2, label: '팀·동아리에서 맡은 역할이 있어요' },
-            { value: 3, label: '회장·창립 등 주도한 경험이 있어요' },
+            { value: 1, label: t('아직 없어요', 'Not yet') },
+            { value: 2, label: t('팀·동아리에서 맡은 역할이 있어요', 'I have a role in a team or club') },
+            { value: 3, label: t('회장·창립 등 주도한 경험이 있어요', 'I have led something (president, founder, etc.)') },
           ],
         },
         {
-          title: '학교 밖에서 인정받은 적 있나요?',
+          title: t('학교 밖에서 인정받은 적 있나요?', 'Any recognition outside school?'),
           field: 'activity_validation' as const,
           options: [
-            { value: 1, label: '아직 없어요' },
-            { value: 2, label: '지역·소규모 대회 수상이 있어요' },
-            { value: 3, label: '전국·국제 수준 수상이 있어요' },
+            { value: 1, label: t('아직 없어요', 'Not yet') },
+            { value: 2, label: t('지역·소규모 대회 수상이 있어요', 'Regional or small competition awards') },
+            { value: 3, label: t('전국·국제 수준 수상이 있어요', 'National or international awards') },
           ],
         },
       ]
@@ -327,7 +330,7 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
       return wrap(
         <ChoiceStep
           title={s.title}
-          subtitle={`활동 업데이트 ${formStep + 1}/3`}
+          subtitle={`${t('활동 업데이트', 'Activity update')} ${formStep + 1}/3`}
           options={s.options}
           selected={draft[s.field]}
           onSelect={(v) => {
@@ -345,8 +348,8 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
     const mark = (key: string) => (changed.has(key) ? ' ✓' : '')
     return wrap(
       <div>
-        <h1 className="text-xl font-bold text-gray-900">그동안 달라진 게 있나요?</h1>
-        <p className="mt-2 text-sm text-gray-500">해당하는 것을 눌러 업데이트해 주세요.</p>
+        <h1 className="text-xl font-bold text-gray-900">{t('그동안 달라진 게 있나요?', 'Anything changed since last time?')}</h1>
+        <p className="mt-2 text-sm text-gray-500">{t('해당하는 것을 눌러 업데이트해 주세요.', 'Tap whatever applies to update it.')}</p>
         <div className="mt-5 flex flex-col gap-3">
           <button
             onClick={() => {
@@ -355,7 +358,7 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
             }}
             className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 text-left font-medium text-gray-900 active:bg-gray-50"
           >
-            새 시험 점수가 있어요 (SAT/TOEFL){mark('scores')}
+            {t('새 시험 점수가 있어요 (SAT/TOEFL)', 'New test scores (SAT/TOEFL)')}{mark('scores')}
           </button>
           <button
             onClick={() => {
@@ -364,20 +367,20 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
             }}
             className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 text-left font-medium text-gray-900 active:bg-gray-50"
           >
-            새 수상·활동이 생겼어요{mark('activities')}
+            {t('새 수상·활동이 생겼어요', 'New awards or activities')}{mark('activities')}
           </button>
           <button
             onClick={() => setChangeForm('gpa')}
             className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 text-left font-medium text-gray-900 active:bg-gray-50"
           >
-            GPA가 바뀌었어요{mark('gpa')}
+            {t('GPA가 바뀌었어요', 'My GPA changed')}{mark('gpa')}
           </button>
         </div>
         <button
           onClick={() => setScreen('targets')}
           className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
         >
-          {changed.size > 0 ? '업데이트 끝, 다음' : '변동 없어요, 다음'}
+          {changed.size > 0 ? t('업데이트 끝, 다음', 'Done updating, next') : t('변동 없어요, 다음', 'Nothing changed, next')}
         </button>
       </div>,
     )
@@ -388,8 +391,8 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
     const allAnswered = clarityItems.every((item) => clarityScores[item.id] !== undefined)
     return wrap(
       <div>
-        <p className="text-xs text-gray-400">10초면 끝 — 연구 동의자의 응답만 익명 통계로 사용</p>
-        <h1 className="mt-2 text-xl font-bold text-gray-900">요즘 진로에 대한 느낌은 어때요?</h1>
+        <p className="text-xs text-gray-400">{t('10초면 끝 — 연구 동의자의 응답만 익명 통계로 사용', 'Takes 10 seconds — only research-consenting responses are used, anonymously')}</p>
+        <h1 className="mt-2 text-xl font-bold text-gray-900">{t('요즘 진로에 대한 느낌은 어때요?', 'How are you feeling about your path these days?')}</h1>
         <div className="mt-5 flex flex-col gap-4">
           {clarityItems.map((item) => (
             <div key={item.id} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
@@ -402,7 +405,7 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
                     <button
                       key={score}
                       onClick={() => setClarityScores((prev) => ({ ...prev, [item.id]: score }))}
-                      aria-label={`${score}점`}
+                      aria-label={t(`${score}점`, `${score} of 5`)}
                       className={`h-12 w-12 rounded-full text-2xl transition-transform ${
                         on ? 'scale-110 bg-blue-100 ring-2 ring-blue-500' : 'bg-gray-50 active:bg-gray-100'
                       }`}
@@ -420,7 +423,7 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
           disabled={!allAnswered}
           className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700 disabled:bg-gray-200 disabled:text-gray-400"
         >
-          완료 — 새 리포트 받기
+          {t('완료 — 새 리포트 받기', 'Done — get my new report')}
         </button>
       </div>,
     )
@@ -431,11 +434,11 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
     if (formStep === 0)
       return wrap(
         <ChoiceStep
-          title="희망 전공 1순위를 골라주세요"
+          title={t('희망 전공 1순위를 골라주세요', 'Pick your first-choice major')}
           options={[
-            ...majorsByTrack('stem').map((m) => ({ value: m.value, label: m.label })),
-            ...majorsByTrack('liberal').map((m) => ({ value: m.value, label: m.label })),
-            { value: 'undecided', label: '미정 (Undecided)' },
+            ...majorsByTrack('stem').map((m) => ({ value: m.value, label: majorDisplay(m) })),
+            ...majorsByTrack('liberal').map((m) => ({ value: m.value, label: majorDisplay(m) })),
+            { value: 'undecided', label: t('미정 (Undecided)', 'Undecided') },
           ]}
           selected={draft.major_primary}
           onSelect={(v) => {
@@ -447,11 +450,11 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
     if (formStep === 1)
       return wrap(
         <ChoiceStep
-          title="목표 학교는 어떻게 할까요?"
+          title={t('목표 학교는 어떻게 할까요?', 'How do you want to set target schools?')}
           options={[
-            { value: 'schools', label: '구체적인 학교를 고를래요' },
-            { value: 'tier', label: '순위대만 정할래요' },
-            { value: 'undecided', label: '아직 미정이에요' },
+            { value: 'schools', label: t('구체적인 학교를 고를래요', 'Pick specific schools') },
+            { value: 'tier', label: t('순위대만 정할래요', 'Just a ranking tier') },
+            { value: 'undecided', label: t('아직 미정이에요', 'Undecided for now') },
           ]}
           selected={draft.target_mode}
           onSelect={(v) => {
@@ -472,11 +475,11 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
       )
     return wrap(
       <ChoiceStep
-        title="목표 순위대를 골라주세요"
+        title={t('목표 순위대를 골라주세요', 'Pick your target tier')}
         options={[
           { value: 1, label: 'Top 20' },
-          { value: 2, label: '21-40위' },
-          { value: 3, label: '41-60위' },
+          { value: 2, label: t('21-40위', 'Ranked 21-40') },
+          { value: 3, label: t('41-60위', 'Ranked 41-60') },
         ]}
         selected={draft.target_tier}
         onSelect={(v) => finish({ ...draft, target_tier: v as Tier })}
@@ -486,16 +489,16 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
 
   return wrap(
     <div>
-      <h1 className="text-xl font-bold text-gray-900">전공과 목표 학교는 그대로인가요?</h1>
+      <h1 className="text-xl font-bold text-gray-900">{t('전공과 목표 학교는 그대로인가요?', 'Same major and target schools?')}</h1>
       <p className="mt-2 text-sm text-gray-500">
-        확인하면 {seasonLabelKo[currentSeason()]} 시즌 새 리포트를 만들어 드려요.
+        {t(`확인하면 ${seasonLabelKo[currentSeason()]} 시즌 새 리포트를 만들어 드려요.`, `Confirm and we’ll build your new ${seasonLabelKo[currentSeason()]} report.`)}
       </p>
       <div className="mt-5 flex flex-col gap-3">
         <button
           onClick={() => finish(draft)}
           className="w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
         >
-          네, 그대로예요 — 새 리포트 받기
+          {t('네, 그대로예요 — 새 리포트 받기', 'Yes, same — get my new report')}
         </button>
         <button
           onClick={() => {
@@ -504,7 +507,7 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
           }}
           className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
         >
-          바꾸고 싶어요
+          {t('바꾸고 싶어요', 'I want to change them')}
         </button>
       </div>
     </div>,

@@ -16,6 +16,8 @@ import {
 import { downloadDocx } from '../lib/report-doc'
 import { logEvent } from '../lib/analytics'
 import { navigate } from '../lib/router'
+import { t } from '../i18n'
+import LangToggle from '../i18n/LangToggle'
 import { downloadIcs, nextCheckinDate } from '../lib/ics'
 import { saveProfile } from '../lib/profile'
 import { entriesForSchool, sortEntries } from '../deadlines/DeadlinesPage'
@@ -277,7 +279,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       ? schools.map((s) => s.name).join(' · ')
       : profile.target_mode === 'tier' && profile.target_tier
         ? tierLabels[profile.target_tier]
-        : '목표 미정'
+        : t('목표 미정', 'No target yet')
 
   const prevPct =
     prevReport && prevReport.snapshot.total > 0
@@ -297,30 +299,33 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
     ...sortEntries(allDeadlines.filter((e) => e.plan === 'ED II' || e.plan === 'RD')),
   ].slice(0, 3)
 
-  if (loading) return <p className="mt-20 text-center text-gray-400">리포트 만드는 중…</p>
-  if (error) return <p className="mt-20 text-center text-sm text-red-600">불러오기 실패: {error}</p>
+  if (loading) return <p className="mt-20 text-center text-gray-400">{t('리포트 만드는 중…', 'Building your report…')}</p>
+  if (error) return <p className="mt-20 text-center text-sm text-red-600">{t('불러오기 실패', 'Load failed')}: {error}</p>
 
   return (
     <div className="pb-10">
       {/* 1. 프로필 헤더 */}
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-xl font-bold text-gray-900">{profile.nickname}님의 시즌 리포트</h1>
+          <h1 className="text-xl font-bold text-gray-900">{t(`${profile.nickname}님의 시즌 리포트`, `${profile.nickname}'s season report`)}</h1>
           <p className="mt-1 text-sm text-gray-500">
-            {grade}학년 · {majorLabel(profile.major_primary)} · {seasonLabelKo[currentSeason()]}
-            {profile.school_in_us && <span className="ml-1 rounded-full bg-gray-100 px-1.5 py-0.5 text-[11px] text-gray-500">🇺🇸 미국 학교</span>}
+            {t(`${grade}학년`, `Grade ${grade}`)} · {majorLabel(profile.major_primary)} · {t(seasonLabelKo[currentSeason()], currentSeason())}
+            {profile.school_in_us && <span className="ml-1 rounded-full bg-gray-100 px-1.5 py-0.5 text-[11px] text-gray-500">🇺🇸 {t('미국 학교', 'US school')}</span>}
           </p>
           <button
             onClick={() => navigate(`/major/${profile.major_primary ?? 'undecided'}`)}
             className="no-print mt-1.5 rounded-full border-2 border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 active:bg-blue-100"
           >
-            🗺️ 전공 가이드 맵 보기
+            {t('🗺️ 전공 가이드 맵 보기', '🗺️ Major guide map')}
           </button>
           <p className="mt-0.5 text-xs text-gray-400">{targetText}</p>
         </div>
-        <button onClick={onLogout} className="no-print shrink-0 text-sm text-gray-400 underline">
-          로그아웃
-        </button>
+        <div className="no-print flex shrink-0 flex-col items-end gap-2">
+          <LangToggle />
+          <button onClick={onLogout} className="text-sm text-gray-400 underline">
+            {t('로그아웃', 'Log out')}
+          </button>
+        </div>
       </div>
 
       {/* 내보내기 */}
@@ -329,13 +334,13 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           onClick={() => window.print()}
           className="flex-1 rounded-xl border-2 border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-700 active:bg-gray-50"
         >
-          PDF로 저장
+          {t('PDF로 저장', 'Save as PDF')}
         </button>
         <button
           onClick={() => downloadDocx(profile, scores, trackedItems, checkedIds, schools)}
           className="flex-1 rounded-xl border-2 border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-700 active:bg-gray-50"
         >
-          Word(docx)로 저장
+          {t('Word(docx)로 저장', 'Save as Word (docx)')}
         </button>
       </div>
 
@@ -345,16 +350,16 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       {/* F5: 가상 Common App 추천 배너 (항상 표시) */}
       {(
         <div className="no-print mt-4 rounded-xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white px-4 py-4">
-          <p className="text-xs font-semibold text-blue-600">추천</p>
-          <p className="mt-1 font-semibold text-gray-900">🎓 가상 Common App으로 더 전략적으로 준비하기</p>
+          <p className="text-xs font-semibold text-blue-600">{t('추천', 'Recommended')}</p>
+          <p className="mt-1 font-semibold text-gray-900">{t('🎓 가상 Common App으로 더 전략적으로 준비하기', '🎓 Prepare strategically with a virtual Common App')}</p>
           <p className="mt-1 text-sm text-gray-600">
-            실제 원서 형식 그대로 4년 동안 미리 채워요 — 활동·점수·지원 학교가 한 곳에.
+            {t('실제 원서 형식 그대로 4년 동안 미리 채워요 — 활동·점수·지원 학교가 한 곳에.', 'Fill it in over four years in the real application format — activities, scores and colleges in one place.')}
           </p>
           <button
             onClick={() => navigate('/app')}
             className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white active:bg-blue-700"
           >
-            내 원서 열기
+            {t('내 원서 열기', 'Open my application')}
           </button>
         </div>
       )}
@@ -363,9 +368,9 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       {grade === 12 && currentSeason() === 'fall' && upcomingDeadlines.length > 0 && (
         <div className="mt-5 rounded-xl border-2 border-red-200 bg-red-50 px-4 py-3.5">
           <div className="flex items-baseline justify-between">
-            <p className="font-semibold text-red-900">🗓️ 다가오는 마감</p>
+            <p className="font-semibold text-red-900">{t('🗓️ 다가오는 마감', '🗓️ Upcoming deadlines')}</p>
             <button onClick={() => navigate('/deadlines')} className="no-print text-sm text-red-700 underline">
-              전체 보기
+              {t('전체 보기', 'See all')}
             </button>
           </div>
           <div className="mt-2 flex flex-col gap-1">
@@ -374,13 +379,13 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
                 <SchoolLogo schoolId={e.school.id} name={e.school.name} size={20} />
                 <span>
                   <span className="font-medium">{e.school.name}</span> — {e.plan} ·{' '}
-                  {e.timing ?? '시기 미공개'}
+                  {e.timing ?? t('시기 미공개', 'timing not published')}
                 </span>
               </p>
             ))}
           </div>
           <p className="mt-2 text-xs text-red-700">
-            마감일은 매년 변동될 수 있어요 — 지원 전 공식 페이지에서 최종 확인하세요.
+            {t('마감일은 매년 변동될 수 있어요 — 지원 전 공식 페이지에서 최종 확인하세요.', 'Deadlines can change each year — confirm on the official page before applying.')}
           </p>
         </div>
       )}
@@ -394,7 +399,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       {totalCount > 0 && (
         <div className="print-flat mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
           <div className="flex items-baseline justify-between">
-            <p className="font-semibold text-gray-900">이번 시즌 진행률</p>
+            <p className="font-semibold text-gray-900">{t('이번 시즌 진행률', 'This season’s progress')}</p>
             <p className="text-sm font-medium text-blue-700">
               {doneCount} / {totalCount}
             </p>
@@ -407,8 +412,8 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           </div>
           {prevPct !== null && (
             <p className="mt-2 text-xs text-gray-500">
-              지난 시즌 {prevPct}% → 이번 시즌 {nowPct}%{' '}
-              {nowPct >= prevPct ? '📈' : '— 다시 속도를 내볼까요?'}
+              {t('지난 시즌', 'Last season')} {prevPct}% → {t('이번 시즌', 'this season')} {nowPct}%{' '}
+              {nowPct >= prevPct ? '📈' : t('— 다시 속도를 내볼까요?', '— time to pick up the pace?')}
             </p>
           )}
         </div>
@@ -417,13 +422,13 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       {/* 4. 6축 밸런스 + 약한 축 진단 */}
       <div className="print-flat mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
         <div className="flex items-center justify-between">
-          <p className="font-semibold text-gray-900">6축 밸런스</p>
+          <p className="font-semibold text-gray-900">{t('6축 밸런스', '6-axis balance')}</p>
           {recordBased && (
             <span
               className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-medium text-green-700"
-              title="자가진단 대신 내 원서(활동·수상) 기록으로 계산됨"
+              title={t('자가진단 대신 내 원서(활동·수상) 기록으로 계산됨', 'Computed from your application records instead of self-assessment')}
             >
-              📋 기록 기반
+              {t('📋 기록 기반', '📋 From records')}
             </span>
           )}
         </div>
@@ -432,42 +437,42 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         </div>
         {planned ? (
           <p className="mt-1 text-xs text-gray-500">
-            <span className="text-blue-600">- - -</span> 계획 {activePlans.length}개 반영 시 ·{' '}
+            <span className="text-blue-600">- - -</span> {t(`계획 ${activePlans.length}개 반영 시`, `with ${activePlans.length} plan${activePlans.length > 1 ? 's' : ''} done`)} ·{' '}
             {(() => {
               const w = weakestAxis(planned)
-              return `${axisKo[w]} ${scores[w]}→${planned[w]}${w === weakest ? ' (여전히 가장 약함)' : ''}`
+              return `${axisKo[w]} ${scores[w]}→${planned[w]}${w === weakest ? t(' (여전히 가장 약함)', ' (still weakest)') : ''}`
             })()}{' '}
-            <button onClick={() => navigate('/app/plans')} className="text-blue-600 underline">계획 수정</button>
+            <button onClick={() => navigate('/app/plans')} className="text-blue-600 underline">{t('계획 수정', 'Edit plans')}</button>
           </p>
         ) : (
           <p className="mt-1 text-xs text-gray-400">
-            <button onClick={() => navigate('/app/plans')} className="text-blue-600 underline">계획</button>을 적으면 실행 시 모양이 점선으로 보여요
+            {t('', 'Add ')}<button onClick={() => navigate('/app/plans')} className="text-blue-600 underline">{t('계획', 'plans')}</button>{t('을 적으면 실행 시 모양이 점선으로 보여요', ' to see the shape you’d reach as a dashed line')}
           </p>
         )}
         {recordBased && (
           <p className="mt-1 text-[11px] text-gray-400">
-            대표 활동·리더십·교외 인정 축은 자가진단 대신 내 원서 기록으로 계산됐어요.
+            {t('대표 활동·리더십·교외 인정 축은 자가진단 대신 내 원서 기록으로 계산됐어요.', 'Spike, leadership and validation are computed from your records instead of self-assessment.')}
           </p>
         )}
         <p className="mt-2 rounded-lg bg-blue-50 px-3 py-2.5 text-sm text-blue-900">
           <strong>{axisKo[weakest]}</strong>{' '}
-          {weakest === 'story' ? '축은 아직 채워지는 중이에요.' : '축이 가장 약해요.'} {prescription}
+          {weakest === 'story' ? t('축은 아직 채워지는 중이에요.', 'axis is still filling in.') : t('축이 가장 약해요.', 'axis is your weakest.')} {prescription}
         </p>
         <details className="mt-2 text-xs text-gray-400">
-          <summary className="cursor-pointer select-none">ⓘ '스토리 준비' 축이란?</summary>
-          <p className="mt-1 leading-relaxed text-gray-500">{storyAxisTooltip}</p>
+          <summary className="cursor-pointer select-none">{t("ⓘ '스토리 준비' 축이란?", 'ⓘ What is the “Story” axis?')}</summary>
+          <p className="mt-1 leading-relaxed text-gray-500">{storyAxisTooltip()}</p>
         </details>
         {appealText && (
           <p className="mt-2 rounded-lg bg-green-50 px-3 py-2.5 text-sm text-green-900">
-            <strong>어필 전략</strong> — {appealText}
+            <strong>{t('어필 전략', 'Appeal strategy')}</strong> — {appealText}
           </p>
         )}
       </div>
 
       {/* 시즌별 성장 그래프 — 현재 시즌은 실시간 점수로 대체 */}
       <div className="print-flat mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
-        <p className="font-semibold text-gray-900">📈 시즌별 성장</p>
-        <p className="mt-0.5 text-xs text-gray-400">시즌마다 돌아와 체크하면 여기 선이 자라요.</p>
+        <p className="font-semibold text-gray-900">{t('📈 시즌별 성장', '📈 Growth by season')}</p>
+        <p className="mt-0.5 text-xs text-gray-400">{t('시즌마다 돌아와 체크하면 여기 선이 자라요.', 'Come back each season and this line grows.')}</p>
         <div className="mt-3">
           <GrowthChart
             points={[
@@ -485,18 +490,18 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       {schools.length > 0 && (
         <div className="mt-5">
           <div className="flex items-baseline justify-between gap-3">
-            <h2 className="font-semibold text-gray-900">목표 학교</h2>
+            <h2 className="font-semibold text-gray-900">{t('목표 학교', 'Target schools')}</h2>
             <div className="no-print flex gap-3 text-sm">
               {schools.length >= 2 && (
                 <button
                   onClick={() => navigate(`/compare?ids=${schools.slice(0, 3).map((s) => s.id).join(',')}`)}
                   className="text-blue-600"
                 >
-                  비교하기
+                  {t('비교하기', 'Compare')}
                 </button>
               )}
               <button onClick={() => navigate('/schools')} className="text-blue-600">
-                둘러보기 →
+                {t('둘러보기 →', 'Browse →')}
               </button>
             </div>
           </div>
@@ -515,25 +520,25 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         <div className="mt-5 flex flex-col gap-2">
           {isIntl && profile.toefl_status === 'exempt' && (
             <div className="rounded-xl border-2 border-amber-300 bg-amber-50 px-4 py-3">
-              <p className="font-medium text-amber-900">TOEFL 면제 — 목표 학교별 기준 확인하기</p>
+              <p className="font-medium text-amber-900">{t('TOEFL 면제 — 목표 학교별 기준 확인하기', 'TOEFL waiver — check each target school’s rule')}</p>
               <p className="mt-0.5 text-sm text-amber-700">
-                면제 기준(영어 수업 학교 재학 연수·SAT 영어 점수 등)은 학교마다 달라요. 목표 학교 공식 입학처 페이지에서 내가 해당되는지 확인하고, 아니면 응시 계획을 세우세요.
+                {t('면제 기준(영어 수업 학교 재학 연수·SAT 영어 점수 등)은 학교마다 달라요. 목표 학교 공식 입학처 페이지에서 내가 해당되는지 확인하고, 아니면 응시 계획을 세우세요.', 'Waiver rules (years at an English-medium school, SAT EBRW, etc.) differ by school. Check each target school’s official admissions page; if you don’t qualify, plan to take the test.')}
               </p>
             </div>
           )}
           {profile.school_accredited === 'unknown' && (
             <div className="rounded-xl border-2 border-amber-300 bg-amber-50 px-4 py-3">
-              <p className="font-medium text-amber-900">학교 국제 인증(WASC·Cognia) 확인하기</p>
+              <p className="font-medium text-amber-900">{t('학교 국제 인증(WASC·Cognia) 확인하기', 'Check your school’s accreditation (WASC/Cognia)')}</p>
               <p className="mt-0.5 text-sm text-amber-700">
-                성적표 인정에 중요해요. 학교 행정실이나 홈페이지에서 확인해 보세요.
+                {t('성적표 인정에 중요해요. 학교 행정실이나 홈페이지에서 확인해 보세요.', 'It affects how your transcript is read. Ask the school office or check its website.')}
               </p>
             </div>
           )}
           {profile.applicant_status === 'unknown' && (
             <div className="rounded-xl border-2 border-amber-300 bg-amber-50 px-4 py-3">
-              <p className="font-medium text-amber-900">지원 신분(국제학생 여부) 확인하기</p>
+              <p className="font-medium text-amber-900">{t('지원 신분(국제학생 여부) 확인하기', 'Confirm your applicant status')}</p>
               <p className="mt-0.5 text-sm text-amber-700">
-                시민권·영주권 여부에 따라 준비 항목이 달라져요. 지금은 국제학생 기준이에요.
+                {t('시민권·영주권 여부에 따라 준비 항목이 달라져요. 지금은 국제학생 기준이에요.', 'Citizenship/residency changes what you prepare. We’re assuming international for now.')}
               </p>
             </div>
           )}
@@ -543,7 +548,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       {/* 이월된 항목 */}
       {carriedItems.length > 0 && (
         <div className="mt-5">
-          <h2 className="font-semibold text-gray-900">지난 시즌에서 이월된 항목</h2>
+          <h2 className="font-semibold text-gray-900">{t('지난 시즌에서 이월된 항목', 'Carried over from last season')}</h2>
           <div className="mt-3">
             <ChecklistSection items={carriedItems} checkedIds={checkedIds} onToggle={toggle} />
           </div>
@@ -552,9 +557,9 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
 
       {/* 6. 이번 시즌 체크리스트 */}
       <div className="mt-5">
-        <h2 className="font-semibold text-gray-900">이번 시즌 체크리스트</h2>
+        <h2 className="font-semibold text-gray-900">{t('이번 시즌 체크리스트', 'This season’s checklist')}</h2>
         {commonItems.length === 0 && (
-          <p className="mt-3 text-sm text-gray-400">이번 시즌 공통 항목이 아직 없어요.</p>
+          <p className="mt-3 text-sm text-gray-400">{t('이번 시즌 공통 항목이 아직 없어요.', 'No common items this season yet.')}</p>
         )}
         <div className="mt-3">
           <ChecklistSection items={commonItems} checkedIds={checkedIds} onToggle={toggle} />
@@ -564,7 +569,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       {/* 7. 국제학생 섹션 */}
       {isIntl && intlItems.length > 0 && (
         <div className="mt-5">
-          <h2 className="font-semibold text-gray-900">국제학생 체크 (International)</h2>
+          <h2 className="font-semibold text-gray-900">{t('국제학생 체크 (International)', 'International student checks')}</h2>
           <div className="mt-3">
             <ChecklistSection items={intlItems} checkedIds={checkedIds} onToggle={toggle} />
           </div>
@@ -577,19 +582,19 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           onClick={() => navigate('/app')}
           className="w-full rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-3.5 font-semibold text-blue-700 active:bg-blue-100"
         >
-          📋 내 원서 — 가상 Common App
+          {t('📋 내 원서 — 가상 Common App', '📋 My application — virtual Common App')}
         </button>
         <button
           onClick={() => navigate('/deadlines')}
           className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
         >
-          🗓️ 마감 캘린더 보기
+          {t('🗓️ 마감 캘린더 보기', '🗓️ Deadline calendar')}
         </button>
         <button
           onClick={onOpenGuide}
           className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
         >
-          📚 입시 기본기 · 용어집 보기
+          {t('📚 입시 기본기 · 용어집 보기', '📚 Basics · glossary')}
         </button>
       </div>
 
@@ -597,8 +602,8 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       <div className="no-print mt-6 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <p className="text-sm font-semibold text-gray-900">🔔 시즌 시작 알림 이메일</p>
-            <p className="text-xs text-gray-400">8월·1월·6월 시즌이 열리면 체크인하라고 한 통 보내드려요</p>
+            <p className="text-sm font-semibold text-gray-900">{t('🔔 시즌 시작 알림 이메일', '🔔 Season-start reminder email')}</p>
+            <p className="text-xs text-gray-400">{t('8월·1월·6월 시즌이 열리면 체크인하라고 한 통 보내드려요', 'One email when the Aug/Jan/Jun season opens, reminding you to check in')}</p>
           </div>
           <button
             role="switch"
@@ -616,15 +621,15 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         <button
           onClick={() => {
             const events = [
-              { title: '미국 대입 로드맵 — 시즌 체크인', date: nextCheckinDate(), description: '새 시즌 체크리스트 확인: https://us-college-roadmap.vercel.app' },
+              { title: t('미국 대입 로드맵 — 시즌 체크인', 'US College Roadmap — season check-in'), date: nextCheckinDate(), description: t('새 시즌 체크리스트 확인', 'Check your new season checklist') + ': https://us-college-roadmap.vercel.app' },
               ...assignedRounds
                 .filter((a) => a.student_deadline)
                 .map((a) => {
                   const s = schools.find((x) => x.id === a.school_id)
                   return {
-                    title: `${s?.name ?? '학교'} ${a.round ? a.round.toUpperCase() : ''} 마감 (내가 입력한 날짜)`,
+                    title: t(`${s?.name ?? '학교'} ${a.round ? a.round.toUpperCase() : ''} 마감 (내가 입력한 날짜)`, `${s?.name ?? 'School'} ${a.round ? a.round.toUpperCase() : ''} deadline (entered by me)`),
                     date: a.student_deadline as string,
-                    description: '공식 페이지에서 최종 확인하세요' + (s?.deadlines_source_url ? `: ${s.deadlines_source_url}` : ''),
+                    description: t('공식 페이지에서 최종 확인하세요', 'Confirm on the official page') + (s?.deadlines_source_url ? `: ${s.deadlines_source_url}` : ''),
                   }
                 }),
             ]
@@ -632,15 +637,15 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           }}
           className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 active:bg-gray-50"
         >
-          📅 폰 캘린더에 추가 (.ics) — 다음 체크인{assignedRounds.some((a) => a.student_deadline) ? ' + 내가 입력한 마감일' : ''}
+          {t('📅 폰 캘린더에 추가 (.ics) — 다음 체크인', '📅 Add to calendar (.ics) — next check-in')}{assignedRounds.some((a) => a.student_deadline) ? t(' + 내가 입력한 마감일', ' + my entered deadlines') : ''}
         </button>
       </div>
 
       {/* 8. 푸터 */}
       <div className="mt-8 border-t border-gray-200 pt-4 text-center text-xs text-gray-400">
-        <p>미국 대입 로드맵 · us-college-roadmap.vercel.app</p>
+        <p>{t('미국 대입 로드맵', 'US College Roadmap')} · us-college-roadmap.vercel.app</p>
         <p className="mt-1">
-          다음 체크인: <strong className="text-gray-500">{nextCheckinKo()}</strong>
+          {t('다음 체크인', 'Next check-in')}: <strong className="text-gray-500">{nextCheckinKo()}</strong>
         </p>
       </div>
     </div>

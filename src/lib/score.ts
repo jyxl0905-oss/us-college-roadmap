@@ -1,5 +1,6 @@
 import type { ChecklistItem } from './types'
 import type { ProfileRow } from './profile'
+import { bilingual, t } from '../i18n'
 
 // 6축 밸런스 점수 (0~100)
 // - rigor·testing: 프로필 값(GPA 밴드, 수학 트랙, AP 수, SAT/TOEFL)에서 자동 계산
@@ -9,18 +10,14 @@ export type Axis = 'rigor' | 'testing' | 'spike' | 'leadership' | 'validation' |
 
 export const axisOrder: Axis[] = ['rigor', 'testing', 'spike', 'leadership', 'validation', 'story']
 
-export const axisKo: Record<Axis, string> = {
-  rigor: '학업 강도',
-  testing: '시험',
-  spike: '대표 활동',
-  leadership: '리더십',
-  validation: '교외 인정',
-  story: '스토리 준비',
-}
+export const axisKo: Record<Axis, string> = bilingual<Axis>(
+  { rigor: '학업 강도', testing: '시험', spike: '대표 활동', leadership: '리더십', validation: '교외 인정', story: '스토리 준비' },
+  { rigor: 'Rigor', testing: 'Testing', spike: 'Spike', leadership: 'Leadership', validation: 'Validation', story: 'Story' },
+)
 
 // 스토리 준비 축 설명 (ⓘ 툴팁 공용 문구)
-export const storyAxisTooltip =
-  '에세이·원서에 쓸 재료가 준비되고 있는지를 봄 — 이야기의 좋고 나쁨을 평가하는 것이 아님'
+export const storyAxisTooltip = () =>
+  t('에세이·원서에 쓸 재료가 준비되고 있는지를 봄 — 이야기의 좋고 나쁨을 평가하는 것이 아님', 'Tracks whether you are gathering material for essays and the application — not a judgment of how good your story is')
 
 export type AxisScores = Record<Axis, number>
 
@@ -120,14 +117,24 @@ export function gradeBandMatches(band: string, grade: number): boolean {
   return Number(band) === grade
 }
 
-export const axisDiagnosis: Record<Axis, string> = {
-  rigor: '수업 난이도·성적 흐름이 상대적으로 약해요. 다음 학기 과목 선택에서 도전성을 한 단계 올려보세요.',
-  testing: '표준시험 준비가 뒤처져 있어요. SAT/TOEFL 일정을 이번 시즌 안에 구체화해 보세요.',
-  spike: '나를 대표하는 활동이 아직 흐릿해요. 하나를 골라 눈에 보이는 결과물을 만들어 보세요.',
-  leadership: "역할이 '참여'에 머물러 있어요. 작은 팀에서라도 주도하는 경험을 만들어 보세요.",
-  validation: '교외에서 검증받은 기록이 부족해요. 대회·외부 프로그램 등 외부 평가에 도전해 보세요.',
-  story: '스토리 준비 항목을 하나씩 채워보세요 — 시즌마다 남긴 기록이 곧 에세이 재료가 돼요.',
-}
+export const axisDiagnosis: Record<Axis, string> = bilingual<Axis>(
+  {
+    rigor: '수업 난이도·성적 흐름이 상대적으로 약해요. 다음 학기 과목 선택에서 도전성을 한 단계 올려보세요.',
+    testing: '표준시험 준비가 뒤처져 있어요. SAT/TOEFL 일정을 이번 시즌 안에 구체화해 보세요.',
+    spike: '나를 대표하는 활동이 아직 흐릿해요. 하나를 골라 눈에 보이는 결과물을 만들어 보세요.',
+    leadership: "역할이 '참여'에 머물러 있어요. 작은 팀에서라도 주도하는 경험을 만들어 보세요.",
+    validation: '교외에서 검증받은 기록이 부족해요. 대회·외부 프로그램 등 외부 평가에 도전해 보세요.',
+    story: '스토리 준비 항목을 하나씩 채워보세요 — 시즌마다 남긴 기록이 곧 에세이 재료가 돼요.',
+  },
+  {
+    rigor: 'Course rigor and grade trend are relatively weak. Step up the challenge in next semester’s course choices.',
+    testing: 'Standardized test prep is behind. Pin down an SAT/TOEFL schedule this season.',
+    spike: 'Your signature activity is still fuzzy. Pick one and produce a visible result.',
+    leadership: 'Your roles are still at the “participant” level. Find something to lead, even in a small team.',
+    validation: 'You lack outside recognition. Try competitions or external programs that evaluate your work.',
+    story: 'Fill in the story-prep items one at a time — what you record each season becomes essay material.',
+  },
+)
 
 // SAT 밴드의 대표값 — 학교 중간 50% 범위 위 내 위치 표시용
 export const satBandMid: Record<string, number> = {

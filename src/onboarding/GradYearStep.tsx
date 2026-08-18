@@ -1,4 +1,5 @@
 import { gradeFromGradYear, currentSeason, seasonLabelKo } from '../lib/academics'
+import { t } from '../i18n'
 
 const gradYears = [2027, 2028, 2029, 2030, 2031]
 
@@ -14,8 +15,8 @@ export default function GradYearStep({ selected, onSelect, onNext }: GradYearSte
 
   return (
     <div>
-      <h1 className="text-xl font-bold text-gray-900">몇 년도에 졸업 예정인가요?</h1>
-      <p className="mt-2 text-sm text-gray-500">Class of 기준으로 골라주세요.</p>
+      <h1 className="text-xl font-bold text-gray-900">{t('몇 년도에 졸업 예정인가요?', 'What year will you graduate?')}</h1>
+      <p className="mt-2 text-sm text-gray-500">{t('Class of 기준으로 골라주세요.', 'Pick your Class of year.')}</p>
       <div className="mt-6 flex flex-col gap-3">
         {gradYears.map((year) => (
           <button
@@ -36,14 +37,14 @@ export default function GradYearStep({ selected, onSelect, onNext }: GradYearSte
           <div className="rounded-xl bg-blue-50 px-4 py-3 text-sm text-blue-900">
             {grade >= 9 && grade <= 12 ? (
               <>
-                지금은 <strong>{grade}학년</strong>, {seasonLabelKo[currentSeason()]} 시즌이에요. 맞나요?
+                {t('지금은 ', 'Right now you are in ')}<strong>{t(`${grade}학년`, `grade ${grade}`)}</strong>{t(`, ${seasonLabelKo[currentSeason()]} 시즌이에요. 맞나요?`, `, ${currentSeason()} season. Correct?`)}
               </>
             ) : grade < 9 ? (
               <>
-                아직 9학년 전이네요. <strong>예비 9학년</strong> 기준으로 시작할게요.
+                {t('아직 9학년 전이네요. ', 'Not in 9th grade yet. ')}<strong>{t('예비 9학년', 'rising 9th')}</strong>{t(' 기준으로 시작할게요.', " — we'll start there.")}
               </>
             ) : (
-              <>이미 졸업 학년이 지났어요. 졸업연도를 다시 확인해 주세요.</>
+              <>{t('이미 졸업 학년이 지났어요. 졸업연도를 다시 확인해 주세요.', 'That graduation year has passed — please check it.')}</>
             )}
           </div>
           {grade <= 12 && (
@@ -51,7 +52,7 @@ export default function GradYearStep({ selected, onSelect, onNext }: GradYearSte
               onClick={onNext}
               className="mt-4 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
             >
-              다음
+              {t('다음', 'Next')}
             </button>
           )}
         </div>

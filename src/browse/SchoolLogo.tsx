@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { schoolLogoSources } from './logos'
+import { t } from '../i18n'
 
 interface SchoolLogoProps {
   schoolId: number
@@ -15,7 +16,7 @@ export default function SchoolLogo({ schoolId, name, size = 32 }: SchoolLogoProp
   return (
     <img
       src={sources[srcIndex]}
-      alt={`${name} 로고`}
+      alt={t(`${name} 로고`, `${name} logo`)}
       width={size}
       height={size}
       loading="lazy"

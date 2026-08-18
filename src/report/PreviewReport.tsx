@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { t } from '../i18n'
 import type { ChecklistItem, OnboardingAnswers, School } from '../lib/types'
 import { supabase } from '../lib/supabase'
 import { answersToRow, countStoryExposure, filterChecklist, profileGrade } from '../lib/profile'
@@ -58,9 +59,9 @@ export default function PreviewReport({ answers, onContinue }: PreviewReportProp
 
   return (
     <div className="pb-10">
-      <h1 className="text-xl font-bold text-gray-900">리포트가 준비됐어요! 🎯</h1>
+      <h1 className="text-xl font-bold text-gray-900">{t('리포트가 준비됐어요! 🎯', 'Your report is ready! 🎯')}</h1>
       <p className="mt-1 text-sm text-gray-500">
-        {grade < 9 ? '예비 9' : grade}학년 · {seasonLabelKo[currentSeason()]} 시즌 기준
+        {t(`${grade < 9 ? '예비 9' : grade}학년 · ${seasonLabelKo[currentSeason()]} 시즌 기준`, `Grade ${grade < 9 ? 'rising 9' : grade} · ${currentSeason()} season`)}
       </p>
 
       <div className="mt-5">
@@ -68,23 +69,23 @@ export default function PreviewReport({ answers, onContinue }: PreviewReportProp
       </div>
 
       <div className="mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
-        <p className="font-semibold text-gray-900">내 6축 밸런스</p>
+        <p className="font-semibold text-gray-900">{t('내 6축 밸런스', 'My 6-axis balance')}</p>
         <div className="mt-2">
           <RadarChart scores={scores} />
         </div>
         <p className="mt-2 rounded-lg bg-blue-50 px-3 py-2.5 text-sm text-blue-900">
           <strong>{axisKo[weakest]}</strong>{' '}
-          {weakest === 'story' ? '축은 아직 채워지는 중이에요.' : '축이 가장 약해요.'}{' '}
+          {weakest === 'story' ? t('축은 아직 채워지는 중이에요.', 'axis is still filling in.') : t('축이 가장 약해요.', 'axis is your weakest.')}{' '}
           {axisDiagnosis[weakest]}
         </p>
         <details className="mt-2 text-xs text-gray-400">
-          <summary className="cursor-pointer select-none">ⓘ '스토리 준비' 축이란?</summary>
-          <p className="mt-1 leading-relaxed text-gray-500">{storyAxisTooltip}</p>
+          <summary className="cursor-pointer select-none">{t("ⓘ '스토리 준비' 축이란?", 'ⓘ What is the “Story” axis?')}</summary>
+          <p className="mt-1 leading-relaxed text-gray-500">{storyAxisTooltip()}</p>
         </details>
       </div>
 
       <div className="mt-5">
-        <h2 className="font-semibold text-gray-900">이번 시즌 체크리스트</h2>
+        <h2 className="font-semibold text-gray-900">{t('이번 시즌 체크리스트', 'This season’s checklist')}</h2>
         <div className="mt-3">
           <ChecklistSection items={visibleItems} checkedIds={emptyChecked} />
         </div>
@@ -96,7 +97,7 @@ export default function PreviewReport({ answers, onContinue }: PreviewReportProp
           <ChecklistSection items={blurredItems.slice(0, 3)} checkedIds={emptyChecked} />
           {schools.length > 0 && (
             <div className="mt-5">
-              <h2 className="font-semibold text-gray-900">목표 학교 분석</h2>
+              <h2 className="font-semibold text-gray-900">{t('목표 학교 분석', 'Target school analysis')}</h2>
               <div className="mt-3">
                 <SchoolCards
                   schools={schools.slice(0, 2)}
@@ -110,16 +111,16 @@ export default function PreviewReport({ answers, onContinue }: PreviewReportProp
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-transparent via-gray-50/80 to-gray-50 px-4">
           <div className="w-full max-w-xs rounded-2xl border border-gray-200 bg-white px-5 py-5 shadow-lg">
             <p className="text-center font-semibold text-gray-900">
-              나머지 체크리스트와 학교 분석이 기다리고 있어요
+              {t('나머지 체크리스트와 학교 분석이 기다리고 있어요', 'The rest of your checklist and school analysis are waiting')}
             </p>
             <p className="mt-1 text-center text-sm text-gray-500">
-              이메일 하나면 전체 리포트를 무료로 받을 수 있어요
+              {t('이메일 하나면 전체 리포트를 무료로 받을 수 있어요', 'Just an email gets you the full report — free')}
             </p>
             <button
               onClick={onContinue}
               className="mt-4 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
             >
-              이메일로 전체 리포트 받기
+              {t('이메일로 전체 리포트 받기', 'Get the full report by email')}
             </button>
           </div>
         </div>

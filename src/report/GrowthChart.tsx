@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { axisOrder, axisKo, type Axis, type AxisScores } from '../lib/score'
+import { t, bilingual } from '../i18n'
 
 // 시즌별 성장 그래프 — reports 스냅샷(6축 점수·완료율)을 시즌 순으로 선 그래프. SVG 직접 렌더(라이브러리 없음)
 export interface SeasonPoint {
@@ -11,7 +12,10 @@ export interface SeasonPoint {
 }
 
 const seasonOrder: Record<string, number> = { spring: 1, summer: 2, fall: 3 }
-const seasonShort: Record<string, string> = { spring: '봄', summer: '여름', fall: '가을' }
+const seasonShort: Record<string, string> = bilingual(
+  { spring: '봄', summer: '여름', fall: '가을' },
+  { spring: 'Spr', summer: 'Sum', fall: 'Fall' },
+)
 
 export function sortSeasons(points: SeasonPoint[]): SeasonPoint[] {
   return [...points].sort((a, b) => {
@@ -41,8 +45,8 @@ export default function GrowthChart({ points }: { points: SeasonPoint[] }) {
     return (
       <p className="rounded-lg bg-gray-50 px-3 py-2.5 text-xs text-gray-500">
         {sorted.length === 0
-          ? '첫 시즌 기록이 쌓이는 중이에요.'
-          : '다음 시즌에 돌아오면 이번 시즌과 비교한 성장선이 여기 그려져요.'}
+          ? t('첫 시즌 기록이 쌓이는 중이에요.', 'Your first season record is being built.')
+          : t('다음 시즌에 돌아오면 이번 시즌과 비교한 성장선이 여기 그려져요.', 'Come back next season and your growth line vs. this season will appear here.')}
       </p>
     )
   }
@@ -79,11 +83,11 @@ export default function GrowthChart({ points }: { points: SeasonPoint[] }) {
   return (
     <div>
       <div className="flex flex-wrap gap-1.5">
-        {chip('done', '완료율', '#111827')}
-        {hasPlans && chip('plans', '계획 달성', '#4b5563')}
+        {chip('done', t('완료율', 'Completion'), '#111827')}
+        {hasPlans && chip('plans', t('계획 달성', 'Plans done'), '#4b5563')}
         {axisOrder.map((a) => chip(a, axisKo[a], AXIS_COLORS[a]))}
       </div>
-      <svg viewBox={`0 0 ${W} ${H}`} className="mt-2 w-full" role="img" aria-label="시즌별 성장 그래프">
+      <svg viewBox={`0 0 ${W} ${H}`} className="mt-2 w-full" role="img" aria-label={t('시즌별 성장 그래프', 'Growth by season')}>
         {[0, 50, 100].map((g) => (
           <g key={g}>
             <line x1={PAD_L} x2={W - PAD_R} y1={y(g)} y2={y(g)} stroke="#e5e7eb" strokeWidth="1" />
@@ -103,7 +107,7 @@ export default function GrowthChart({ points }: { points: SeasonPoint[] }) {
         ))}
       </svg>
       <p className="mt-1 text-xs text-gray-500">
-        {active === 'done' ? '시즌 완료율' : active === 'plans' ? '계획 달성률' : `${axisKo[active]} 축`}: 첫 기록 {first} → 지금 {last}
+        {active === 'done' ? t('시즌 완료율', 'Season completion') : active === 'plans' ? t('계획 달성률', 'Plan completion') : t(`${axisKo[active]} 축`, `${axisKo[active]} axis`)}: {t('첫 기록', 'First')} {first} → {t('지금', 'Now')} {last}
         {delta !== 0 && (
           <span className={`ml-1 font-semibold ${delta > 0 ? 'text-green-600' : 'text-red-500'}`}>
             ({delta > 0 ? '+' : ''}{delta})

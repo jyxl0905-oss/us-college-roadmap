@@ -7,6 +7,7 @@ import { currentSeasonLabel } from '../lib/academics'
 import { insertRow } from '../app/appData'
 import { loadPlans, cycleSeasons, type Plan } from '../app/plans'
 import type { Axis } from '../lib/score'
+import { t } from '../i18n'
 
 interface RoadmapCell { academic: string[]; activity: string[] }
 interface MajorData {
@@ -40,8 +41,8 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
   if (!data)
     return (
       <div className="mx-auto max-w-md px-5 py-16 text-center">
-        <p className="text-gray-500">전공 정보를 찾을 수 없어요.</p>
-        <button onClick={() => navigate('/')} className="mt-4 text-blue-600 underline">돌아가기</button>
+        <p className="text-gray-500">{t('전공 정보를 찾을 수 없어요.', 'Major not found.')}</p>
+        <button onClick={() => navigate('/')} className="mt-4 text-blue-600 underline">{t('돌아가기', 'Go back')}</button>
       </div>
     )
 
@@ -69,10 +70,10 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
     <div className="min-h-dvh bg-gray-50">
       <div className="mx-auto max-w-md px-5 py-6 pb-16">
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate('/')} aria-label="뒤로" className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
+          <button onClick={() => navigate('/')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
           <div className="min-w-0 flex-1">
             <h1 className="truncate text-xl font-bold text-gray-900">{majorLabel(majorKey)}</h1>
-            <p className="text-xs text-gray-400">전공 가이드 맵 · 4년 로드맵 (편집 가이드)</p>
+            <p className="text-xs text-gray-400">{t('전공 가이드 맵 · 4년 로드맵 (편집 가이드)', 'Major guide map · 4-year roadmap (editorial guide)')}</p>
           </div>
         </div>
 
@@ -86,7 +87,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
               <div key={g} className={`rounded-xl border-2 bg-white ${mine ? 'border-blue-600' : 'border-gray-200'}`}>
                 <button onClick={() => setOpenGrade(open ? 0 : g)} className="flex w-full items-center justify-between px-4 py-3 text-left">
                   <span className="font-semibold text-gray-900">
-                    {g}학년 {mine && <span className="ml-1 rounded-full bg-blue-600 px-2 py-0.5 text-[11px] font-medium text-white">지금</span>}
+                    {t(`${g}학년`, `Grade ${g}`)} {mine && <span className="ml-1 rounded-full bg-blue-600 px-2 py-0.5 text-[11px] font-medium text-white">{t('지금', 'Now')}</span>}
                   </span>
                   <span className="text-gray-400">{open ? '▾' : '▸'}</span>
                 </button>
@@ -94,7 +95,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
                   <div className="border-t border-gray-100 px-4 py-3">
                     {(['academic', 'activity'] as const).map((track) => (
                       <div key={track} className={track === 'activity' ? 'mt-3' : ''}>
-                        <p className="text-[11px] font-semibold text-gray-400">{track === 'academic' ? '📚 학업' : '🏃 활동'}</p>
+                        <p className="text-[11px] font-semibold text-gray-400">{track === 'academic' ? t('📚 학업', '📚 Academics') : t('🏃 활동', '🏃 Activities')}</p>
                         <div className="mt-1 flex flex-col gap-1.5">
                           {cell[track].map((item) => {
                             const planned = isPlanned(item)
@@ -107,7 +108,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
                                     planned ? 'border-green-200 bg-green-50 text-green-700' : 'border-blue-200 bg-blue-50 text-blue-700 active:bg-blue-100'
                                   }`}
                                 >
-                                  {planned ? (added === item ? '담김 ✓' : '계획에 있음') : '＋ 계획'}
+                                  {planned ? (added === item ? t('담김 ✓', 'Added ✓') : t('계획에 있음', 'In my plan')) : t('＋ 계획', '＋ Plan')}
                                 </button>
                               </div>
                             )
@@ -125,21 +126,21 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
         {/* 과목·AP */}
         {data.ap.length > 0 && (
           <div className="mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
-            <p className="font-semibold text-gray-900">추천 AP <span className="ml-1 text-xs font-normal text-gray-400">우선순위 순</span></p>
+            <p className="font-semibold text-gray-900">{t('추천 AP', 'Recommended APs')} <span className="ml-1 text-xs font-normal text-gray-400">{t('우선순위 순', 'by priority')}</span></p>
             <ol className="mt-2 flex flex-col gap-1.5 text-sm text-gray-700">
               {data.ap.map((a, i) => (
                 <li key={i} className="flex gap-2"><span className="shrink-0 font-semibold text-blue-600">{i + 1}</span><span>{a}</span></li>
               ))}
             </ol>
-            {data.strong && <p className="mt-2 text-xs text-gray-500">강해야 하는 과목: {data.strong}</p>}
+            {data.strong && <p className="mt-2 text-xs text-gray-500">{t('강해야 하는 과목: ', 'Must be strong in: ')}{data.strong}</p>}
           </div>
         )}
 
         {/* 활동 가이드 — 접힘 기본 */}
         <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
           <button onClick={() => setGuideOpen(!guideOpen)} className="flex w-full items-center justify-between text-left">
-            <span className="font-semibold text-gray-900">이 전공은 활동을 이렇게 만들어요</span>
-            <span className="text-sm text-gray-400">{guideOpen ? '접기' : '펼치기'}</span>
+            <span className="font-semibold text-gray-900">{t('이 전공은 활동을 이렇게 만들어요', 'How to build activities for this major')}</span>
+            <span className="text-sm text-gray-400">{guideOpen ? t('접기', 'Collapse') : t('펼치기', 'Expand')}</span>
           </button>
           {guideOpen && (
             <div className="mt-3 flex flex-col gap-2.5">
@@ -152,14 +153,14 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
                   </div>
                 )
               })}
-              <p className="text-[11px] text-gray-400">편집 가이드 — 대학 공식 데이터가 아니에요.</p>
+              <p className="text-[11px] text-gray-400">{t('편집 가이드 — 대학 공식 데이터가 아니에요.', 'Editorial guide — not official college data.')}</p>
             </div>
           )}
         </div>
 
         {/* 다른 전공 */}
         <div className="mt-6">
-          <p className="text-xs font-semibold text-gray-400">다른 전공 보기</p>
+          <p className="text-xs font-semibold text-gray-400">{t('다른 전공 보기', 'Other majors')}</p>
           <div className="mt-2 flex flex-wrap gap-1.5">
             {otherMajors.map((m) => (
               <button key={m.value} onClick={() => navigate(`/major/${m.value}`)} className="rounded-full border-2 border-gray-200 bg-white px-2.5 py-1 text-xs text-gray-600">
@@ -167,7 +168,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
               </button>
             ))}
             {majorKey !== 'undecided' && (
-              <button onClick={() => navigate('/major/undecided')} className="rounded-full border-2 border-gray-200 bg-white px-2.5 py-1 text-xs text-gray-600">미정</button>
+              <button onClick={() => navigate('/major/undecided')} className="rounded-full border-2 border-gray-200 bg-white px-2.5 py-1 text-xs text-gray-600">{t('미정', 'Undecided')}</button>
             )}
           </div>
         </div>

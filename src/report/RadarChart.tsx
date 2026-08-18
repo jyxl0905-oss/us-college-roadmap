@@ -1,4 +1,5 @@
 import { axisOrder, axisKo, type AxisScores } from '../lib/score'
+import { t } from '../i18n'
 
 // 6축 레이더 차트 — 외부 라이브러리 없이 SVG로 직접 그림 (print/PDF에도 그대로 쓰임)
 const SIZE = 300
@@ -21,7 +22,7 @@ export default function RadarChart({ scores, planned }: { scores: AxisScores; pl
   const plannedRatios = planned ? axisOrder.map((a) => planned[a] / 100) : null
 
   return (
-    <svg viewBox={`0 0 ${SIZE} ${SIZE}`} className="mx-auto w-full max-w-xs" role="img" aria-label="6축 밸런스 차트">
+    <svg viewBox={`0 0 ${SIZE} ${SIZE}`} className="mx-auto w-full max-w-xs" role="img" aria-label={t('6축 밸런스 차트', '6-axis balance chart')}>
       {/* 배경 그리드 (25/50/75/100%) */}
       {[0.25, 0.5, 0.75, 1].map((g) => (
         <polygon

@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase'
 import { navigate } from '../lib/router'
 import type { ProfileRow } from '../lib/profile'
 import SchoolLogo from '../browse/SchoolLogo'
+import { t } from '../i18n'
 
 // 시기 라벨("11월 초") → 정렬 키. 입시 사이클 기준 8월이 가장 이름
 export function timingSortKey(label: string | null): number {
@@ -103,22 +104,22 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
       <div className="min-h-dvh bg-gray-50">
         <div className="mx-auto max-w-md px-5 py-16 text-center">
           <p className="text-4xl">🗓️</p>
-          <h1 className="mt-4 text-xl font-bold text-gray-900">마감 캘린더</h1>
-          <p className="mt-3 text-sm text-gray-500">목표 학교를 설정하면 캘린더가 생성됩니다.</p>
+          <h1 className="mt-4 text-xl font-bold text-gray-900">{t('마감 캘린더', 'Deadline Calendar')}</h1>
+          <p className="mt-3 text-sm text-gray-500">{t('목표 학교를 설정하면 캘린더가 생성됩니다.', 'Set your target schools to build your calendar.')}</p>
           <button
             onClick={() => navigate('/schools')}
             className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
           >
-            대학 둘러보기에서 목표 정하기
+            {t('대학 둘러보기에서 목표 정하기', 'Pick targets in Browse Colleges')}
           </button>
           <button onClick={() => navigate('/')} className="mt-4 text-sm text-gray-400 underline">
-            리포트로 돌아가기
+            {t('리포트로 돌아가기', 'Back to report')}
           </button>
         </div>
       </div>
     )
 
-  if (schools === null) return <p className="mt-20 text-center text-gray-400">불러오는 중…</p>
+  if (schools === null) return <p className="mt-20 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
 
   // 보드에서 라운드를 배정한 학교는 그 라운드 마감만
   const byAssignedRound = (e: DeadlineEntry) => {
@@ -154,13 +155,13 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
                     <span className={`rounded-full px-2 py-1 text-xs font-medium ${planBadge[e.plan]}`}>
                       {e.plan}
                     </span>
-                    <p className="mt-1 text-sm font-semibold text-gray-900">{e.timing ?? '미공개'}</p>
+                    <p className="mt-1 text-sm font-semibold text-gray-900">{e.timing ?? t('미공개', 'Not disclosed')}</p>
                   </div>
                 </div>
                 <div className="mt-2 flex items-center justify-between gap-3">
                   {def ? (
                     <details className="min-w-0 text-xs text-gray-400">
-                      <summary className="cursor-pointer select-none">ⓘ {e.plan}란?</summary>
+                      <summary className="cursor-pointer select-none">{t(`ⓘ ${e.plan}란?`, `ⓘ What is ${e.plan}?`)}</summary>
                       <p className="mt-1 leading-relaxed text-gray-500">{def}</p>
                     </details>
                   ) : (
@@ -173,7 +174,7 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
                       rel="noreferrer"
                       className="shrink-0 text-xs text-blue-600 underline"
                     >
-                      공식 페이지 확인 ↗
+                      {t('공식 페이지 확인 ↗', 'Check official page ↗')}
                     </a>
                   )}
                 </div>
@@ -188,31 +189,37 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
     <div className="min-h-dvh bg-gray-50">
       <div className="mx-auto max-w-md px-5 py-6 pb-16">
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate('/')} aria-label="리포트로" className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
+          <button onClick={() => navigate('/')} aria-label={t('리포트로', 'Back to report')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
             ←
           </button>
-          <h1 className="text-xl font-bold text-gray-900">마감 캘린더</h1>
+          <h1 className="text-xl font-bold text-gray-900">{t('마감 캘린더', 'Deadline Calendar')}</h1>
         </div>
 
         {/* 고정 고지 */}
         <p className="mt-4 rounded-xl border-2 border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-          ⚠️ 마감일은 매년 변동될 수 있어요 — 지원 전 반드시 각 학교 공식 페이지에서 최종 확인하세요.
+          {t(
+            '⚠️ 마감일은 매년 변동될 수 있어요 — 지원 전 반드시 각 학교 공식 페이지에서 최종 확인하세요.',
+            '⚠️ Deadlines can change every year — always confirm on each school\'s official page before applying.',
+          )}
         </p>
 
         {all.length === 0 && (
           <p className="mt-10 text-center text-sm text-gray-400">
-            목표 학교의 마감 정보가 아직 준비되지 않았어요. 학교 공식 페이지를 직접 확인해 주세요.
+            {t(
+              '목표 학교의 마감 정보가 아직 준비되지 않았어요. 학교 공식 페이지를 직접 확인해 주세요.',
+              'Deadline info for your target schools is not ready yet. Please check each school\'s official page.',
+            )}
           </p>
         )}
 
-        {renderGroup('가을 — 조기 지원', 'ED · EA · REA (대개 10~11월 마감)', fall)}
-        {renderGroup('겨울 — 정시·2차', 'ED II · RD (대개 1월 마감)', winter)}
+        {renderGroup(t('가을 — 조기 지원', 'Fall — Early applications'), t('ED · EA · REA (대개 10~11월 마감)', 'ED · EA · REA (usually due Oct–Nov)'), fall)}
+        {renderGroup(t('겨울 — 정시·2차', 'Winter — Regular & round 2'), t('ED II · RD (대개 1월 마감)', 'ED II · RD (usually due January)'), winter)}
 
         {noData.length > 0 && all.length > 0 && (
           <div className="mt-6">
-            <h2 className="text-sm font-medium text-gray-500">마감 정보 미확인 학교</h2>
+            <h2 className="text-sm font-medium text-gray-500">{t('마감 정보 미확인 학교', 'Schools without deadline info')}</h2>
             <p className="mt-1 text-xs text-gray-400">
-              {noData.map((s) => s.name).join(', ')} — 공식 페이지에서 직접 확인해 주세요.
+              {noData.map((s) => s.name).join(', ')}{t(' — 공식 페이지에서 직접 확인해 주세요.', ' — please check their official pages.')}
             </p>
           </div>
         )}

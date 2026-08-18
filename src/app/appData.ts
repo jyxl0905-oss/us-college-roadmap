@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabase'
+import { t, bilingual } from '../i18n'
 
 // F5 가상 Common App — 학생 본인 기록 타입·CRUD (전부 본인 행만, RLS)
 
@@ -8,14 +9,21 @@ export const LIMITS = { position: 50, organization: 100, description: 150, honor
 
 export type ActivityCategory =
   | 'academic' | 'arts' | 'athletics' | 'community' | 'work' | 'research' | 'club' | 'other'
-export const activityCategoryKo: Record<ActivityCategory, string> = {
-  academic: '학술', arts: '예술', athletics: '운동', community: '봉사', work: '직업·인턴',
-  research: '리서치', club: '동아리', other: '기타',
-}
+export const activityCategoryKo: Record<ActivityCategory, string> = bilingual(
+  {
+    academic: '학술', arts: '예술', athletics: '운동', community: '봉사', work: '직업·인턴',
+    research: '리서치', club: '동아리', other: '기타',
+  },
+  {
+    academic: 'Academic', arts: 'Arts', athletics: 'Athletics', community: 'Community service', work: 'Work / Internship',
+    research: 'Research', club: 'Club', other: 'Other',
+  },
+)
 export type ActivityTiming = 'school_year' | 'break' | 'year_round'
-export const timingKo: Record<ActivityTiming, string> = {
-  school_year: '학기 중', break: '방학', year_round: '연중',
-}
+export const timingKo: Record<ActivityTiming, string> = bilingual(
+  { school_year: '학기 중', break: '방학', year_round: '연중' },
+  { school_year: 'School year', break: 'Break', year_round: 'Year-round' },
+)
 
 export interface Activity {
   id: number
@@ -32,9 +40,10 @@ export interface Activity {
 }
 
 export type HonorLevel = 'school' | 'regional' | 'national' | 'international'
-export const honorLevelKo: Record<HonorLevel, string> = {
-  school: '교내', regional: '지역·주', national: '전국', international: '국제',
-}
+export const honorLevelKo: Record<HonorLevel, string> = bilingual(
+  { school: '교내', regional: '지역·주', national: '전국', international: '국제' },
+  { school: 'School', regional: 'Regional / State', national: 'National', international: 'International' },
+)
 export interface Honor {
   id: number
   sort_order: number
@@ -55,7 +64,10 @@ export interface TestScore {
 }
 
 export type CourseLevel = 'regular' | 'honors' | 'ap' | 'ib'
-export const courseLevelKo: Record<CourseLevel, string> = { regular: '일반', honors: 'Honors', ap: 'AP', ib: 'IB' }
+export const courseLevelKo: Record<CourseLevel, string> = bilingual(
+  { regular: '일반', honors: 'Honors', ap: 'AP', ib: 'IB' },
+  { regular: 'Regular', honors: 'Honors', ap: 'AP', ib: 'IB' },
+)
 export interface Course {
   id: number
   grade: number
@@ -64,9 +76,10 @@ export interface Course {
 }
 
 export type EssayStatus = 'not_started' | 'brainstorm' | 'draft' | 'revising' | 'done'
-export const essayStatusKo: Record<EssayStatus, string> = {
-  not_started: '미시작', brainstorm: '브레인스토밍', draft: '초안', revising: '퇴고 중', done: '완료',
-}
+export const essayStatusKo: Record<EssayStatus, string> = bilingual(
+  { not_started: '미시작', brainstorm: '브레인스토밍', draft: '초안', revising: '퇴고 중', done: '완료' },
+  { not_started: 'Not started', brainstorm: 'Brainstorming', draft: 'Draft', revising: 'Revising', done: 'Done' },
+)
 export interface Essay {
   id: number
   school_id: number | null // null = 개인 에세이
@@ -106,27 +119,27 @@ type Table = 'activities' | 'honors' | 'test_scores' | 'courses' | 'essays' | 'p
 
 // 저장 실패를 조용히 삼키지 않음 — 실패 시 사용자에게 알리고 throw (호출부는 낙관적 갱신을 하지 않도록)
 function fail(action: string, message: string): never {
-  alert(`${action}에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.\n(${message})`)
+  alert(t(`${action}에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.\n(${message})`, `${action} failed. Check your connection and try again.\n(${message})`))
   throw new Error(message)
 }
 
 export async function insertRow<T extends { id: number }>(table: Table, userId: string, row: Omit<T, 'id'>): Promise<T | null> {
   if (!supabase) return null
   const { data, error } = await supabase.from(table).insert({ user_id: userId, ...row }).select('*').single()
-  if (error) fail('저장', error.message)
+  if (error) fail(t('저장', 'Save'), error.message)
   return (data as T) ?? null
 }
 
 export async function updateRow<T extends { id: number }>(table: Table, id: number, patch: Partial<T>): Promise<void> {
   if (!supabase) return
   const { error } = await supabase.from(table).update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
-  if (error) fail('저장', error.message)
+  if (error) fail(t('저장', 'Save'), error.message)
 }
 
 export async function deleteRow(table: Table, id: number): Promise<void> {
   if (!supabase) return
   const { error } = await supabase.from(table).delete().eq('id', id)
-  if (error) fail('삭제', error.message)
+  if (error) fail(t('삭제', 'Delete'), error.message)
 }
 
 // SAT 최고 총점 (회차별 총점 중 최고 — superscore 아님)

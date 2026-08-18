@@ -1,14 +1,13 @@
 import type { School } from '../lib/types'
+import { bilingual } from '../i18n'
 
 // 지역 필터용 — intro_ko/location_note의 주(州) 표기에서 미국 표준 4대 지역을 유도 (사실 기반 지리 분류)
 export type Region = 'northeast' | 'south' | 'midwest' | 'west'
 
-export const regionLabels: Record<Region, string> = {
-  northeast: '동부',
-  south: '남부',
-  midwest: '중서부',
-  west: '서부',
-}
+export const regionLabels: Record<Region, string> = bilingual(
+  { northeast: '동부', south: '남부', midwest: '중서부', west: '서부' },
+  { northeast: 'Northeast', south: 'South', midwest: 'Midwest', west: 'West' },
+)
 
 const KEYWORD_REGION: [string, Region][] = [
   // 동부 (Northeast)

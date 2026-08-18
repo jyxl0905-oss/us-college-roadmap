@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { t } from '../i18n'
 import type { School } from '../lib/types'
 import schoolsData from '../data/schools.index.json' // 경량 인덱스(id·이름·티어) — 전체 시드는 schoolsCache에서만
 import SchoolLogo from '../browse/SchoolLogo'
@@ -30,13 +31,13 @@ export default function TargetSchoolsStep({ selectedIds, onChange, onNext }: Tar
 
   return (
     <div>
-      <h1 className="text-xl font-bold text-gray-900">목표 학교를 골라주세요</h1>
-      <p className="mt-2 text-sm text-gray-500">여러 개 선택할 수 있어요.</p>
+      <h1 className="text-xl font-bold text-gray-900">{t('목표 학교를 골라주세요', 'Pick your target schools')}</h1>
+      <p className="mt-2 text-sm text-gray-500">{t('여러 개 선택할 수 있어요.', 'You can pick several.')}</p>
       <input
         type="search"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="학교 이름 검색 (예: NYU, 하버드)"
+        placeholder={t('학교 이름 검색 (예: NYU, 하버드)', 'Search schools (e.g., NYU, Harvard)')}
         className="mt-4 w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-base focus:border-blue-600 focus:outline-none"
       />
       <div className="mt-4 flex flex-col gap-2">
@@ -66,7 +67,7 @@ export default function TargetSchoolsStep({ selectedIds, onChange, onNext }: Tar
           )
         })}
         {filtered.length === 0 && (
-          <p className="py-6 text-center text-sm text-gray-400">검색 결과가 없어요.</p>
+          <p className="py-6 text-center text-sm text-gray-400">{t('검색 결과가 없어요.', 'No results.')}</p>
         )}
       </div>
       <button
@@ -74,7 +75,7 @@ export default function TargetSchoolsStep({ selectedIds, onChange, onNext }: Tar
         disabled={selectedIds.length === 0}
         className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700 disabled:bg-gray-200 disabled:text-gray-400"
       >
-        {selectedIds.length > 0 ? `${selectedIds.length}개 학교 선택 완료` : '학교를 선택해 주세요'}
+        {selectedIds.length > 0 ? t(`${selectedIds.length}개 학교 선택 완료`, `${selectedIds.length} school${selectedIds.length > 1 ? 's' : ''} selected — continue`) : t('학교를 선택해 주세요', 'Select at least one school')}
       </button>
     </div>
   )

@@ -2,6 +2,7 @@ import type { School } from '../lib/types'
 import type { ProfileRow } from '../lib/profile'
 import { profileGrade } from '../lib/profile'
 import { currentSeason } from '../lib/academics'
+import { t, bilingual } from '../i18n'
 
 // F4 지원 보드 — 원칙: 라운드 추천 금지(사실 고지·규칙 검증·정리·추적까지만), 활동 선호 창작 금지
 
@@ -19,11 +20,11 @@ export interface ApplicationRow {
 
 // 라운드 칸 표시 순서 (F5 지원 학교 탭)
 export const roundSlots: { round: Round; label: string; rule: string }[] = [
-  { round: 'ed', label: 'ED I', rule: '합격 시 등록 의무 · 1곳만' },
-  { round: 'rea', label: 'REA / SCEA', rule: '비구속이지만 타 사립 조기지원 제한 · 1곳' },
-  { round: 'ea', label: 'EA', rule: '비구속 · 여러 곳 가능' },
-  { round: 'ed2', label: 'ED II', rule: '합격 시 등록 의무 · ED I 불합격 후 1곳' },
-  { round: 'rd', label: 'RD', rule: '정시 · 여러 곳 가능' },
+  { round: 'ed', label: 'ED I', get rule() { return t('합격 시 등록 의무 · 1곳만', 'Binding if admitted · one school only') } },
+  { round: 'rea', label: 'REA / SCEA', get rule() { return t('비구속이지만 타 사립 조기지원 제한 · 1곳', 'Non-binding, but restricts early apps to other private schools · one school') } },
+  { round: 'ea', label: 'EA', get rule() { return t('비구속 · 여러 곳 가능', 'Non-binding · multiple schools allowed') } },
+  { round: 'ed2', label: 'ED II', get rule() { return t('합격 시 등록 의무 · ED I 불합격 후 1곳', 'Binding if admitted · one school, after an ED I denial') } },
+  { round: 'rd', label: 'RD', get rule() { return t('정시 · 여러 곳 가능', 'Regular Decision · multiple schools allowed') } },
 ]
 
 export function dDay(dateStr: string | null | undefined): number | null {
@@ -45,10 +46,16 @@ export const roundLabels: Record<Round, string> = {
   ed: 'ED', ed2: 'ED II', ea: 'EA', rea: 'REA', rd: 'RD',
 }
 
-export const statusLabels: Record<AppStatus, string> = {
-  preparing: '준비 중', submitted: '제출함', waiting: '결과 대기',
-  accepted: '합격', rejected: '불합격', waitlisted: '대기자', deferred: '유예(defer)',
-}
+export const statusLabels: Record<AppStatus, string> = bilingual(
+  {
+    preparing: '준비 중', submitted: '제출함', waiting: '결과 대기',
+    accepted: '합격', rejected: '불합격', waitlisted: '대기자', deferred: '유예(defer)',
+  },
+  {
+    preparing: 'Preparing', submitted: 'Submitted', waiting: 'Awaiting decision',
+    accepted: 'Accepted', rejected: 'Rejected', waitlisted: 'Waitlisted', deferred: 'Deferred',
+  },
+)
 
 // 보드 노출: 11학년 Summer부터
 export function boardVisible(profile: ProfileRow): boolean {
@@ -84,19 +91,19 @@ export function boardWarnings(apps: ApplicationRow[], profile: ProfileRow): Boar
   const edCount = rounds.filter((r) => r === 'ed').length
   const ed2Count = rounds.filter((r) => r === 'ed2').length
   if (edCount >= 2 || ed2Count >= 2)
-    warnings.push({ key: 'double_ed', text: 'ED는 합격 시 등록 의무 — 동시에 1곳만 가능' })
+    warnings.push({ key: 'double_ed', text: t('ED는 합격 시 등록 의무 — 동시에 1곳만 가능', 'ED is binding if admitted — only one school at a time') })
   const hasRea = rounds.includes('rea')
   const otherEarly = rounds.filter((r) => r !== 'rd').length
   if (hasRea && otherEarly >= 2)
     warnings.push({
       key: 'rea_conflict',
-      text: 'REA는 타 사립 조기지원을 제한하는 경우가 많음 — 두 학교 공식 정책 확인',
+      text: t('REA는 타 사립 조기지원을 제한하는 경우가 많음 — 두 학교 공식 정책 확인', 'REA often restricts early applications to other private schools — check both schools’ official policies'),
     })
   const isIntl = profile.applicant_status !== 'domestic'
   if (isIntl && (edCount > 0 || ed2Count > 0))
     warnings.push({
       key: 'ed_intl_aid',
-      text: 'ED 합격 시 타교 재정지원 오퍼와 비교 불가 — 지원금이 중요하면 고려',
+      text: t('ED 합격 시 타교 재정지원 오퍼와 비교 불가 — 지원금이 중요하면 고려', 'If admitted ED you can’t compare aid offers from other schools — keep this in mind if aid matters'),
     })
   return warnings
 }
@@ -118,8 +125,8 @@ export function c7Actions(s: School): string[] {
   return list.map((slug) => C7_ACTION_MAP[slug]).filter(Boolean) as string[]
 }
 
-export const SUPP_ESSAY_TIP =
-  '이 학교의 보충 에세이가 묻는 것 = 이 학교가 보는 것 — 문항을 확인해 커스텀 항목으로 추가할 것'
+export const suppEssayTip = () =>
+  t('이 학교의 보충 에세이가 묻는 것 = 이 학교가 보는 것 — 문항을 확인해 커스텀 항목으로 추가할 것', 'What this school’s supplement asks = what this school looks for — check the prompts and add them as custom items')
 
 // §3-E 조건 조합 자동 체크리스트
 export function autoItems(s: School, profile: ProfileRow, app: ApplicationRow | undefined): string[] {

@@ -1,13 +1,24 @@
 import type { ChecklistItem } from '../lib/types'
+import { t, bilingual } from '../i18n'
 
-const axisLabels: Record<ChecklistItem['axis'], string> = {
-  rigor: '학업 강도',
-  testing: '시험',
-  spike: '대표 활동',
-  leadership: '리더십',
-  validation: '교외 인정',
-  story: '스토리 준비',
-}
+const axisLabels: Record<ChecklistItem['axis'], string> = bilingual(
+  {
+    rigor: '학업 강도',
+    testing: '시험',
+    spike: '대표 활동',
+    leadership: '리더십',
+    validation: '교외 인정',
+    story: '스토리 준비',
+  },
+  {
+    rigor: 'Rigor',
+    testing: 'Testing',
+    spike: 'Spike',
+    leadership: 'Leadership',
+    validation: 'Validation',
+    story: 'Story',
+  },
+)
 
 interface ChecklistSectionProps {
   items: ChecklistItem[]
@@ -51,7 +62,7 @@ export default function ChecklistSection({ items, checkedIds, onToggle }: Checkl
                   </span>
                   {item.is_guide && (
                     <span className="rounded-full bg-indigo-50 px-2 py-0.5 text-xs text-indigo-600">
-                      가이드
+                      {t('가이드', 'Guide')}
                     </span>
                   )}
                 </span>

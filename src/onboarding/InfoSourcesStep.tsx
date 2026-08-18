@@ -1,14 +1,15 @@
 import { useState } from 'react'
+import { t } from '../i18n'
 
 // R1-A②: 대입 정보원 문항 (복수 선택)
 const OPTIONS: { value: string; label: string }[] = [
-  { value: 'agency', label: '유학원' },
-  { value: 'youtube', label: '유튜브' },
-  { value: 'community', label: '인터넷 커뮤니티' },
-  { value: 'ai_chatbot', label: 'AI 챗봇' },
-  { value: 'family', label: '부모님·지인' },
-  { value: 'teacher', label: '학교 선생님' },
-  { value: 'none', label: '특별히 없음' },
+  { value: 'agency', label: t('유학원', 'Admissions consultancy') },
+  { value: 'youtube', label: t('유튜브', 'YouTube') },
+  { value: 'community', label: t('인터넷 커뮤니티', 'Online communities') },
+  { value: 'ai_chatbot', label: t('AI 챗봇', 'AI chatbot') },
+  { value: 'family', label: t('부모님·지인', 'Parents / friends') },
+  { value: 'teacher', label: t('학교 선생님', 'School teachers') },
+  { value: 'none', label: t('특별히 없음', 'None in particular') },
 ]
 
 interface InfoSourcesStepProps {
@@ -31,8 +32,8 @@ export default function InfoSourcesStep({ onDone }: InfoSourcesStepProps) {
 
   return (
     <div>
-      <h1 className="text-xl font-bold text-gray-900">대입 정보를 주로 어디서 얻나요?</h1>
-      <p className="mt-2 text-sm text-gray-500">해당하는 것을 모두 골라주세요.</p>
+      <h1 className="text-xl font-bold text-gray-900">{t('대입 정보를 주로 어디서 얻나요?', 'Where do you get admissions info?')}</h1>
+      <p className="mt-2 text-sm text-gray-500">{t('해당하는 것을 모두 골라주세요.', 'Select all that apply.')}</p>
       <div className="mt-6 flex flex-col gap-2.5">
         {OPTIONS.map((opt) => {
           const on = selected.has(opt.value)
@@ -57,7 +58,7 @@ export default function InfoSourcesStep({ onDone }: InfoSourcesStepProps) {
         disabled={selected.size === 0}
         className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700 disabled:bg-gray-200 disabled:text-gray-400"
       >
-        다음
+        {t('다음', 'Next')}
       </button>
     </div>
   )
