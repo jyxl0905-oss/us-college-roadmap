@@ -6,6 +6,7 @@ import { gradeFromGradYear, currentSeasonLabel, seasonLabelKo, currentSeason } f
 import { majorsByTrack } from '../data/majors'
 import ChoiceStep from '../onboarding/ChoiceStep'
 import TargetSchoolsStep from '../onboarding/TargetSchoolsStep'
+import { axisShort, type Plan } from '../app/plans'
 
 // 시즌 라벨('2026-spring')의 학년 계산용 대표 날짜
 function seasonDate(label: string): Date {
@@ -26,7 +27,7 @@ interface CheckinFlowProps {
   onDone: (updated: ProfileRow) => void
 }
 
-type Screen = 'carryover' | 'changes' | 'targets' | 'clarity'
+type Screen = 'carryover' | 'plans' | 'changes' | 'targets' | 'clarity'
 type ChangeForm = 'scores' | 'activities' | 'gpa' | null
 
 const CLARITY_EMOJIS = ['😟', '😕', '😐', '🙂', '😄'] // 1~5점
@@ -35,6 +36,7 @@ const CLARITY_EMOJIS = ['😟', '😕', '😐', '🙂', '😄'] // 1~5점
 export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }: CheckinFlowProps) {
   const [screen, setScreen] = useState<Screen>('carryover')
   const [incomplete, setIncomplete] = useState<ChecklistItem[]>([])
+  const [openPlans, setOpenPlans] = useState<Plan[]>([]) // 지난 시즌 미완료 계획 (F6)
   const [loading, setLoading] = useState(true)
   const [draft, setDraft] = useState<ProfileRow>(profile)
   const [changed, setChanged] = useState<Set<string>>(new Set())
@@ -61,8 +63,11 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
       supabase.from('user_checks').select('item_id').eq('user_id', userId).eq('season_label', prevSeasonLabel),
       supabase.from('user_checks').select('item_id').eq('user_id', userId).eq('season_label', currentLabel).eq('status', 'carried'),
       supabase.from('clarity_items').select('*').order('sort_order'),
-    ]).then(([itemsRes, prevChecks, carriedChecks, clarityRes]) => {
+      supabase.from('plans').select('id,title,axis,season_label,status,notes').eq('user_id', userId).eq('season_label', prevSeasonLabel).neq('status', 'done'),
+    ]).then(([itemsRes, prevChecks, carriedChecks, clarityRes, plansRes]) => {
       if (clarityRes.data) setClarityItems(clarityRes.data as ClarityItem[])
+      const openP = (plansRes.data ?? []) as Plan[]
+      setOpenPlans(openP)
       const decided = new Set([
         ...(prevChecks.data ?? []).map((c) => c.item_id),
         ...(carriedChecks.data ?? []).map((c) => c.item_id),
@@ -74,7 +79,7 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
       const pending = prevItems.filter((i) => !decided.has(i.id))
       setIncomplete(pending)
       setLoading(false)
-      if (pending.length === 0) setScreen('changes')
+      if (pending.length === 0) setScreen(openP.length > 0 ? 'plans' : 'changes')
     })
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -82,7 +87,7 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
     if (!supabase) return
     setIncomplete((prev) => {
       const next = prev.filter((i) => i.id !== item.id)
-      if (next.length === 0) setScreen('changes')
+      if (next.length === 0) setScreen(openPlans.length > 0 ? 'plans' : 'changes')
       return next
     })
     await supabase.from('user_checks').upsert(
@@ -163,6 +168,40 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
                 >
                   건너뛰기
                 </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>,
+    )
+  }
+
+  // ①-b 지난 시즌 계획 정리 (F6) — 완료 / 이번 시즌으로 / 삭제
+  const decidePlan = async (p: Plan, action: 'done' | 'carry' | 'delete') => {
+    if (!supabase) return
+    setOpenPlans((prev) => {
+      const next = prev.filter((x) => x.id !== p.id)
+      if (next.length === 0) setScreen('changes')
+      return next
+    })
+    if (action === 'delete') await supabase.from('plans').delete().eq('id', p.id)
+    else if (action === 'done') await supabase.from('plans').update({ status: 'done', updated_at: new Date().toISOString() }).eq('id', p.id)
+    else await supabase.from('plans').update({ season_label: currentLabel, updated_at: new Date().toISOString() }).eq('id', p.id)
+  }
+  if (screen === 'plans') {
+    return wrap(
+      <div>
+        <h1 className="text-xl font-bold text-gray-900">지난 시즌 계획은 어떻게 됐어요?</h1>
+        <p className="mt-2 text-sm text-gray-500">완료한 건 6축 실선에 반영돼요.</p>
+        <div className="mt-5 flex flex-col gap-3">
+          {openPlans.map((p) => (
+            <div key={p.id} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+              <p className="font-medium text-gray-900">{p.title}</p>
+              <p className="text-xs text-gray-400">{axisShort[p.axis]}</p>
+              <div className="mt-3 flex gap-2">
+                <button onClick={() => decidePlan(p, 'done')} className="flex-1 rounded-lg bg-green-600 px-3 py-2 text-sm font-semibold text-white active:bg-green-700">완료했어요</button>
+                <button onClick={() => decidePlan(p, 'carry')} className="flex-1 rounded-lg bg-blue-600 px-3 py-2 text-sm font-semibold text-white active:bg-blue-700">이번 시즌으로</button>
+                <button onClick={() => decidePlan(p, 'delete')} className="rounded-lg border-2 border-gray-200 bg-white px-3 py-2 text-sm text-gray-500 active:bg-gray-50">삭제</button>
               </div>
             </div>
           ))}

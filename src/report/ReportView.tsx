@@ -152,7 +152,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         const all = prevRes.data as (PrevReport & { snapshot: { scores?: Partial<AxisScores> } })[]
         const past = all.filter((r) => r.season_label !== seasonLabel)
         if (past.length > 0) setPrevReport(past[past.length - 1])
-        setHistory(all.map((r) => ({ season_label: r.season_label, scores: r.snapshot.scores ?? {}, done: r.snapshot.done, total: r.snapshot.total })))
+        setHistory(all.map((r) => ({ season_label: r.season_label, scores: r.snapshot.scores ?? {}, done: r.snapshot.done, total: r.snapshot.total, plans: (r.snapshot as { plans?: { done: number; total: number } }).plans })))
       }
       if (presRes.data) setPrescriptions(presRes.data as Prescription[])
       if (appealRes.data) setAppeals(appealRes.data as Appeal[])
@@ -194,7 +194,11 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   // 시즌 스냅샷 저장 (reports) — 리포트를 볼 때마다 최신으로 갱신
   useEffect(() => {
     if (!supabase || loading || error) return
-    const snapshot = { done: doneCount, total: totalCount, scores }
+    const seasonPlans = plans.filter((p) => p.season_label === seasonLabel)
+    const snapshot = {
+      done: doneCount, total: totalCount, scores,
+      plans: { done: seasonPlans.filter((p) => p.status === 'done').length, total: seasonPlans.length },
+    }
     supabase
       .from('reports')
       .select('id')
@@ -209,7 +213,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
             .insert({ user_id: userId, season_label: seasonLabel, snapshot })
             .then(() => {})
       })
-  }, [loading, doneCount, totalCount]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [loading, doneCount, totalCount, plans]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const toggle = async (itemId: number) => {
     if (!supabase) return
@@ -467,7 +471,10 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           <GrowthChart
             points={[
               ...history.filter((h) => h.season_label !== seasonLabel),
-              { season_label: seasonLabel, scores, done: doneCount, total: totalCount },
+              {
+                season_label: seasonLabel, scores, done: doneCount, total: totalCount,
+                plans: { done: plans.filter((p) => p.season_label === seasonLabel && p.status === 'done').length, total: plans.filter((p) => p.season_label === seasonLabel).length },
+              },
             ]}
           />
         </div>

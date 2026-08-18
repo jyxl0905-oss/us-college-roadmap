@@ -7,6 +7,7 @@ export interface SeasonPoint {
   scores: Partial<AxisScores>
   done: number
   total: number
+  plans?: { done: number; total: number } // F6 계획 달성률 (있는 시즌만)
 }
 
 const seasonOrder: Record<string, number> = { spring: 1, summer: 2, fall: 3 }
@@ -33,7 +34,8 @@ const W = 320, H = 170, PAD_L = 28, PAD_R = 24, PAD_T = 14, PAD_B = 26
 
 export default function GrowthChart({ points }: { points: SeasonPoint[] }) {
   const sorted = sortSeasons(points).filter((p) => p.scores && Object.keys(p.scores).length > 0)
-  const [active, setActive] = useState<Axis | 'done'>('done')
+  const [active, setActive] = useState<Axis | 'done' | 'plans'>('done')
+  const hasPlans = sorted.some((p) => p.plans && p.plans.total > 0)
 
   if (sorted.length < 2) {
     return (
@@ -48,16 +50,20 @@ export default function GrowthChart({ points }: { points: SeasonPoint[] }) {
   const n = sorted.length
   const x = (i: number) => PAD_L + ((W - PAD_L - PAD_R) * i) / Math.max(1, n - 1)
   const y = (v: number) => PAD_T + (H - PAD_T - PAD_B) * (1 - Math.max(0, Math.min(100, v)) / 100)
-  const seriesFor = (key: Axis | 'done') =>
+  const seriesFor = (key: Axis | 'done' | 'plans') =>
     sorted.map((p) =>
-      key === 'done' ? (p.total > 0 ? Math.round((p.done / p.total) * 100) : 0) : (p.scores[key] ?? 0),
+      key === 'done'
+        ? (p.total > 0 ? Math.round((p.done / p.total) * 100) : 0)
+        : key === 'plans'
+          ? (p.plans && p.plans.total > 0 ? Math.round((p.plans.done / p.plans.total) * 100) : 0)
+          : (p.scores[key] ?? 0),
     )
   const values = seriesFor(active)
-  const color = active === 'done' ? '#111827' : AXIS_COLORS[active]
+  const color = active === 'done' ? '#111827' : active === 'plans' ? '#4b5563' : AXIS_COLORS[active]
   const first = values[0], last = values[values.length - 1]
   const delta = last - first
 
-  const chip = (key: Axis | 'done', label: string, c: string) => (
+  const chip = (key: Axis | 'done' | 'plans', label: string, c: string) => (
     <button
       key={key}
       onClick={() => setActive(key)}
@@ -74,6 +80,7 @@ export default function GrowthChart({ points }: { points: SeasonPoint[] }) {
     <div>
       <div className="flex flex-wrap gap-1.5">
         {chip('done', '완료율', '#111827')}
+        {hasPlans && chip('plans', '계획 달성', '#4b5563')}
         {axisOrder.map((a) => chip(a, axisKo[a], AXIS_COLORS[a]))}
       </div>
       <svg viewBox={`0 0 ${W} ${H}`} className="mt-2 w-full" role="img" aria-label="시즌별 성장 그래프">
@@ -96,7 +103,7 @@ export default function GrowthChart({ points }: { points: SeasonPoint[] }) {
         ))}
       </svg>
       <p className="mt-1 text-xs text-gray-500">
-        {active === 'done' ? '시즌 완료율' : `${axisKo[active]} 축`}: 첫 기록 {first} → 지금 {last}
+        {active === 'done' ? '시즌 완료율' : active === 'plans' ? '계획 달성률' : `${axisKo[active]} 축`}: 첫 기록 {first} → 지금 {last}
         {delta !== 0 && (
           <span className={`ml-1 font-semibold ${delta > 0 ? 'text-green-600' : 'text-red-500'}`}>
             ({delta > 0 ? '+' : ''}{delta})
