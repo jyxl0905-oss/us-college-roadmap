@@ -86,8 +86,9 @@
   "usnews_rank": 7,
   "tier": 1,
   "direct_admit_majors": [
+   "business",
    "engineering",
-   "business"
+   "nursing"
   ]
  },
  {
@@ -105,14 +106,15 @@
   "usnews_rank": 12,
   "tier": 1,
   "direct_admit_majors": [
+   "architecture",
+   "arts",
+   "business",
    "cs",
    "engineering",
-   "business",
+   "humanities",
    "math_data",
    "natural_sci",
-   "social_sci",
-   "humanities",
-   "arts"
+   "social_sci"
   ]
  },
  {
@@ -148,10 +150,11 @@
   "usnews_rank": 15,
   "tier": 1,
   "direct_admit_majors": [
-   "engineering",
+   "architecture",
+   "business",
    "cs",
-   "math_data",
-   "business"
+   "engineering",
+   "math_data"
   ]
  },
  {
@@ -161,6 +164,7 @@
   "usnews_rank": 17,
   "tier": 1,
   "direct_admit_majors": [
+   "architecture",
    "arts"
   ]
  },
@@ -171,9 +175,10 @@
   "usnews_rank": 17,
   "tier": 1,
   "direct_admit_majors": [
-   "engineering",
-   "cs",
    "arts",
+   "cs",
+   "engineering",
+   "nursing",
    "premed"
   ]
  },
@@ -195,14 +200,15 @@
   "usnews_rank": 20,
   "tier": 1,
   "direct_admit_majors": [
+   "architecture",
+   "arts",
+   "business",
    "cs",
    "engineering",
-   "business",
+   "humanities",
    "math_data",
    "natural_sci",
-   "social_sci",
-   "humanities",
-   "arts"
+   "social_sci"
   ]
  },
  {
@@ -212,9 +218,11 @@
   "usnews_rank": 20,
   "tier": 1,
   "direct_admit_majors": [
-   "engineering",
+   "architecture",
+   "arts",
    "business",
-   "arts"
+   "engineering",
+   "nursing"
   ]
  },
  {
@@ -234,9 +242,10 @@
   "usnews_rank": 20,
   "tier": 1,
   "direct_admit_majors": [
-   "engineering",
+   "architecture",
+   "arts",
    "business",
-   "arts"
+   "engineering"
   ]
  },
  {
@@ -255,8 +264,9 @@
   "tier": 2,
   "direct_admit_majors": [
    "business",
-   "social_sci",
-   "premed"
+   "nursing",
+   "premed",
+   "social_sci"
   ]
  },
  {
@@ -276,10 +286,12 @@
   "usnews_rank": 26,
   "tier": 2,
   "direct_admit_majors": [
-   "engineering",
+   "architecture",
+   "arts",
    "cs",
-   "premed",
-   "arts"
+   "engineering",
+   "nursing",
+   "premed"
   ]
  },
  {
@@ -289,10 +301,11 @@
   "usnews_rank": 28,
   "tier": 2,
   "direct_admit_majors": [
-   "cs",
-   "engineering",
+   "architecture",
+   "arts",
    "business",
-   "arts"
+   "cs",
+   "engineering"
   ]
  },
  {
@@ -323,15 +336,17 @@
   "usnews_rank": 30,
   "tier": 2,
   "direct_admit_majors": [
+   "architecture",
+   "arts",
+   "business",
    "cs",
    "engineering",
-   "business",
+   "humanities",
    "math_data",
    "natural_sci",
+   "nursing",
    "premed",
-   "social_sci",
-   "humanities",
-   "arts"
+   "social_sci"
   ]
  },
  {
@@ -349,9 +364,10 @@
   "usnews_rank": 32,
   "tier": 2,
   "direct_admit_majors": [
+   "arts",
    "business",
    "engineering",
-   "arts"
+   "nursing"
   ]
  },
  {
@@ -377,15 +393,16 @@
   "usnews_rank": 32,
   "tier": 2,
   "direct_admit_majors": [
+   "arts",
+   "business",
    "cs",
    "engineering",
-   "business",
+   "humanities",
    "math_data",
    "natural_sci",
+   "nursing",
    "premed",
-   "social_sci",
-   "humanities",
-   "arts"
+   "social_sci"
   ]
  },
  {
@@ -396,6 +413,7 @@
   "tier": 2,
   "direct_admit_majors": [
    "business",
+   "nursing",
    "premed"
   ]
  },
@@ -417,14 +435,15 @@
   "usnews_rank": 36,
   "tier": 2,
   "direct_admit_majors": [
+   "architecture",
+   "arts",
+   "business",
    "cs",
    "engineering",
-   "business",
+   "humanities",
    "math_data",
    "natural_sci",
-   "social_sci",
-   "humanities",
-   "arts"
+   "social_sci"
   ]
  },
  {
@@ -455,7 +474,10 @@
   "name_ko": "오하이오 주립 대학교",
   "usnews_rank": 41,
   "tier": 3,
-  "direct_admit_majors": []
+  "direct_admit_majors": [
+   "architecture",
+   "nursing"
+  ]
  },
  {
   "id": 42,
@@ -478,11 +500,12 @@
   "usnews_rank": 42,
   "tier": 3,
   "direct_admit_majors": [
-   "engineering",
-   "business",
    "arts",
-   "premed",
-   "natural_sci"
+   "business",
+   "engineering",
+   "natural_sci",
+   "nursing",
+   "premed"
   ]
  },
  {
@@ -492,12 +515,13 @@
   "usnews_rank": 42,
   "tier": 3,
   "direct_admit_majors": [
+   "architecture",
+   "arts",
+   "business",
    "cs",
    "engineering",
-   "business",
    "natural_sci",
-   "social_sci",
-   "arts"
+   "social_sci"
   ]
  },
  {
@@ -507,12 +531,13 @@
   "usnews_rank": 42,
   "tier": 3,
   "direct_admit_majors": [
+   "architecture",
+   "arts",
+   "business",
    "cs",
    "engineering",
-   "business",
    "math_data",
-   "natural_sci",
-   "arts"
+   "natural_sci"
   ]
  },
  {
@@ -529,7 +554,10 @@
   "name_ko": "노스이스턴 대학교",
   "usnews_rank": 46,
   "tier": 3,
-  "direct_admit_majors": []
+  "direct_admit_majors": [
+   "architecture",
+   "nursing"
+  ]
  },
  {
   "id": 48,
@@ -538,15 +566,16 @@
   "usnews_rank": 46,
   "tier": 3,
   "direct_admit_majors": [
+   "arts",
+   "business",
    "cs",
    "engineering",
-   "business",
+   "humanities",
    "math_data",
    "natural_sci",
+   "nursing",
    "premed",
-   "social_sci",
-   "humanities",
-   "arts"
+   "social_sci"
   ]
  },
  {
@@ -571,7 +600,9 @@
   "name_ko": "케이스 웨스턴 리저브 대학교",
   "usnews_rank": 51,
   "tier": 3,
-  "direct_admit_majors": []
+  "direct_admit_majors": [
+   "nursing"
+  ]
  },
  {
   "id": 52,
@@ -588,8 +619,9 @@
   "usnews_rank": 51,
   "tier": 3,
   "direct_admit_majors": [
-   "engineering",
-   "cs"
+   "architecture",
+   "cs",
+   "engineering"
   ]
  },
  {
@@ -599,15 +631,16 @@
   "usnews_rank": 51,
   "tier": 3,
   "direct_admit_majors": [
+   "architecture",
+   "arts",
+   "business",
    "cs",
    "engineering",
-   "business",
+   "humanities",
    "math_data",
    "natural_sci",
    "premed",
-   "social_sci",
-   "humanities",
-   "arts"
+   "social_sci"
   ]
  },
  {
@@ -643,6 +676,7 @@
   "direct_admit_majors": [
    "business",
    "engineering",
+   "nursing",
    "premed"
   ]
  },
@@ -667,7 +701,10 @@
   "name_ko": "펜실베이니아 주립대학교 유니버시티 파크",
   "usnews_rank": 59,
   "tier": 3,
-  "direct_admit_majors": []
+  "direct_admit_majors": [
+   "architecture",
+   "nursing"
+  ]
  },
  {
   "id": 61,
@@ -698,13 +735,14 @@
   "usnews_rank": 59,
   "tier": 3,
   "direct_admit_majors": [
+   "arts",
+   "business",
    "cs",
    "engineering",
    "math_data",
-   "business",
    "natural_sci",
-   "premed",
-   "arts"
+   "nursing",
+   "premed"
   ]
  }
 ]

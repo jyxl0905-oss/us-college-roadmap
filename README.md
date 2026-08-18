@@ -61,9 +61,10 @@ npm run dev
 | 데이터 | 규모 | 출처·원칙 |
 |---|---|---|
 | schools 기본 데이터 | 63개교 (US News 2026 1~59위) | 공식 CDS·입학처, `source_url` 100% |
+| direct-admit 전공 (12계열) | 63/63 — 건축·간호 포함 | 공식 입학처·학과 페이지, `docs/direct-admit-nursing-arch.md` |
 | 마감 구조 (ED/ED2/EA/REA/RD + 시기 라벨) | 63/63 | 공식 입학처 페이지만, `deadlines_source_url` 100%, 검증일 기록 |
 | CDS C7 Very Important 요소 | 60/63 (Brown·FSU·Virginia Tech은 공식 원문 확인 불가로 null) | 각 대학 공식 CDS 문서만, `c7_source_url` 기록 |
-| 체크리스트 | 123개 (공통 51 + 전공별 72) | 편집 콘텐츠는 `is_guide`로 구분 |
+| 체크리스트 | 144개 (공통 51 + 전공별 93, 12계열) | 편집 콘텐츠는 `is_guide`로 구분 |
 | 용어집·기본기·처방·어필 | 30 · 5 · 47 · 7 | 편집 콘텐츠 |
 
 확인 불가 항목은 그럴듯한 추정으로 채우지 않고 null("미공개")로 표기합니다.

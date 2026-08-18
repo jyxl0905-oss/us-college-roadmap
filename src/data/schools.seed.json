@@ -360,8 +360,9 @@
     "need_blind_intl": false,
     "demonstrated_interest": false,
     "direct_admit_majors": [
+      "business",
       "engineering",
-      "business"
+      "nursing"
     ],
     "what_they_value": "공식 'What Penn Looks For' 페이지는 전인적 검토(whole-person review)를 통해 벤저민 프랭클린의 정신 — 개방적이고 호기심 많으며 창의적이고 실용적이며 분야를 넘나드는 연결 — 과 사회에 대한 기여(service to society)를 지향하는 학생을 찾는다고 밝힌다. CDS 2024-25 C7 기준 Very Important는 교과 이수 난이도, GPA, 에세이, 추천서, 인성/개인 자질이다. (출처: admissions.upenn.edu What Penn Looks For + CDS C7)",
     "source_url": "https://admissions.upenn.edu/how-to-apply/resources-programs/incoming-class-profile",
@@ -437,14 +438,15 @@
     "need_blind_intl": false,
     "demonstrated_interest": false,
     "direct_admit_majors": [
+      "architecture",
+      "arts",
+      "business",
       "cs",
       "engineering",
-      "business",
+      "humanities",
       "math_data",
       "natural_sci",
-      "social_sci",
-      "humanities",
-      "arts"
+      "social_sci"
     ],
     "what_they_value": "CDS 2024-25 C7에서 'Very Important'로 공식 표기한 항목은 교과 난이도(rigor), 에세이, 추천서, 교외 활동(extracurricular activities), 재능(talent/ability), 인성(character/personal qualities)입니다. 석차·GPA는 Important, 시험 점수는 Considered입니다. 입학처는 시험 점수를 GPA·교과 난이도·활동·에세이·추천서 등 다른 자료와 함께 맥락 속에서 본다고 공식 명시하며, 8개 칼리지 중 하나에 직접 지원하는 구조라 지원 칼리지별 에세이와 요건이 다릅니다.",
     "source_url": "https://irp.dpb.cornell.edu/wp-content/uploads/2025/07/CDS-2024-2025-v6-print.pdf",
@@ -596,10 +598,11 @@
     "need_blind_intl": null,
     "demonstrated_interest": false,
     "direct_admit_majors": [
-      "engineering",
+      "architecture",
+      "business",
       "cs",
-      "math_data",
-      "business"
+      "engineering",
+      "math_data"
     ],
     "what_they_value": "UC 공통 종합심사(comprehensive review) 13개 기준으로 평가하며, A-G 교과 GPA, 우등·AP·IB 과목 이수와 성적, 고교 여건 대비 성취, 특별한 재능·성취·리더십, 개인 환경을 고려한 학업 성취를 봅니다. CDS 2025-26 기준 '매우 중요' 요소는 교과 난이도·GPA·에세이(PIQ)이며, 특별활동·인성·봉사·직업 경험은 'Important'입니다. (출처: UC 'How applications are reviewed' 공식 페이지 및 UC Berkeley CDS 2025-26 C7)",
     "source_url": "https://admission.universityofcalifornia.edu/counselors/preparing-freshman-students/freshman-requirements.html",
@@ -636,6 +639,7 @@
     "need_blind_intl": false,
     "demonstrated_interest": true,
     "direct_admit_majors": [
+      "architecture",
       "arts"
     ],
     "what_they_value": "CDS 2025-26 기준 '매우 중요' 요소는 교과 난이도·석차·GPA·표준화 시험 점수·에세이·추천서·특별활동·재능·인성으로 폭넓습니다. 지원자의 관심도(Level of applicant's interest)도 'Considered'로 반영됩니다. 라이스는 시험 점수를 홀리스틱 리뷰의 여러 요소 중 하나로 본다고 공식적으로 밝히고 있습니다. (출처: Rice CDS 2025-26 C7·C8F, admission.rice.edu)",
@@ -679,9 +683,10 @@
     "need_blind_intl": null,
     "demonstrated_interest": false,
     "direct_admit_majors": [
-      "engineering",
-      "cs",
       "arts",
+      "cs",
+      "engineering",
+      "nursing",
       "premed"
     ],
     "what_they_value": "UC 공통 종합심사(comprehensive review) 13개 기준으로 평가하며, A-G 교과 GPA, AP·IB 등 심화 과목 이수와 성적, 재학 고교의 여건 대비 성취도, 특별한 재능·수상·리더십 경험, 삶의 환경을 고려한 학업 성취 등을 봅니다. CDS 2025-26 기준 '매우 중요(Very Important)' 요소는 교과 난이도(rigor)·GPA·지원 에세이(PIQ)입니다. (출처: UC 'How applications are reviewed' 공식 페이지 및 UCLA CDS 2025-26 C7)",
@@ -760,14 +765,15 @@
     "need_blind_intl": false,
     "demonstrated_interest": false,
     "direct_admit_majors": [
+      "architecture",
+      "arts",
+      "business",
       "cs",
       "engineering",
-      "business",
+      "humanities",
       "math_data",
       "natural_sci",
-      "social_sci",
-      "humanities",
-      "arts"
+      "social_sci"
     ],
     "what_they_value": "최신 CDS(2025-26) C7 기준으로 교육과정의 엄격함(rigor), 석차, GPA, 교외활동(extracurricular), 인성·개인 자질, 봉사활동을 'Very Important'로 평가합니다. 에세이·추천서·재능·First generation 여부는 'Important'이며, 표준화 시험 점수는 'Considered'입니다. 전형 요소의 비중은 단과대(프로그램)별로 다르다고 공식 명시하고 있습니다.",
     "source_url": "https://www.cmu.edu/ira/CDS/pdf/cds_2025_26/cds-2025-c-first-time-first-year-admission.pdf",
@@ -807,9 +813,11 @@
     "need_blind_intl": false,
     "demonstrated_interest": true,
     "direct_admit_majors": [
-      "engineering",
+      "architecture",
+      "arts",
       "business",
-      "arts"
+      "engineering",
+      "nursing"
     ],
     "what_they_value": "CDS 2025-26 C7 기준 교육과정의 엄격함(rigor)과 GPA가 'Very Important'이고, 시험 점수·에세이·추천서·인성·First generation 여부는 'Important'입니다. 공식 Selection Process 페이지는 단일 기준이 아닌 전체적 검토(holistic review)를 명시하며, 엄격한 커리큘럼에서의 성취와 교실 밖 리더십·수상·봉사를 중요 평가 요소로 제시하고, 레거시(동문 자녀)는 고려하지 않는다고 밝힙니다.",
     "source_url": "https://obp.umich.edu/wp-content/uploads/pubdata/cds/cds_2025-26_umaa.pdf",
@@ -888,9 +896,10 @@
     "need_blind_intl": false,
     "demonstrated_interest": true,
     "direct_admit_majors": [
-      "engineering",
+      "architecture",
+      "arts",
       "business",
-      "arts"
+      "engineering"
     ],
     "what_they_value": "CDS 2024-25 C7 기준 교육과정의 엄격함(rigor), 석차, GPA, 표준화 시험 점수, 에세이, 추천서, 재능(talent/ability), 인성·개인 자질이 모두 'Very Important'로 표시되어 있습니다. 교외활동·First generation·봉사·직업 경험은 'Important', 지원자의 관심도(demonstrated interest)는 'Considered'입니다. 출처는 WashU 공식 Common Data Set 2024-25 C7입니다.",
     "source_url": "https://washu.edu/app/uploads/2025/06/2024-2025-WashU-CDS.pdf",
@@ -971,8 +980,9 @@
     "demonstrated_interest": false,
     "direct_admit_majors": [
       "business",
-      "social_sci",
-      "premed"
+      "nursing",
+      "premed",
+      "social_sci"
     ],
     "what_they_value": "CDS 2025-26 C7 기준 교과 rigor, 석차, GPA, 표준화 시험 점수, 에세이, 추천서, 재능/특기, 인성을 모두 '매우 중요(Very Important)'로 평가 — 학업 요소 전반을 최상위로 보는 구조. 인터뷰와 과외활동은 '중요(Important)' 등급이며, SAT/ACT 제출이 여전히 필수인 소수 대학 중 하나.",
     "source_url": "https://georgetown.box.com/s/0r8akn4cbm52zjkll6i7uttlb9k36px2",
@@ -1055,10 +1065,12 @@
     "need_blind_intl": false,
     "demonstrated_interest": false,
     "direct_admit_majors": [
-      "engineering",
+      "architecture",
+      "arts",
       "cs",
-      "premed",
-      "arts"
+      "engineering",
+      "nursing",
+      "premed"
     ],
     "what_they_value": "CDS 2024-25 C7 기준 교과 rigor, 고교 석차, GPA, 인성·개인적 자질, 주(州) 거주 여부를 '매우 중요(Very Important)'로 평가 — 공립대로서 버지니아 주민 우대가 공식 명시됨. 에세이·추천서·과외활동·재능은 '중요(Important)', 시험 점수는 '고려(Considered)' 등급.",
     "source_url": "https://ira.virginia.edu/sites/ira/files/2025-03/CDS_2024-2025_508.pdf",
@@ -1097,10 +1109,11 @@
     "need_blind_intl": null,
     "demonstrated_interest": false,
     "direct_admit_majors": [
-      "cs",
-      "engineering",
+      "architecture",
+      "arts",
       "business",
-      "arts"
+      "cs",
+      "engineering"
     ],
     "what_they_value": "CDS 2025-26 C7 기준 교과 rigor, 내신 GPA, 에세이, 추천서, 인성·개인적 자질을 '매우 중요(Very Important)'로 평가. 과외활동과 재능/특기는 '중요(Important)' 등급이며, 석차·인터뷰·지원자 관심도는 반영하지 않는다고 공식 보고.",
     "source_url": "https://oir.usc.edu/common-data-set-archive/common-data-set-2025-2026/",
@@ -1215,15 +1228,17 @@
     "need_blind_intl": null,
     "demonstrated_interest": false,
     "direct_admit_majors": [
+      "architecture",
+      "arts",
+      "business",
       "cs",
       "engineering",
-      "business",
+      "humanities",
       "math_data",
       "natural_sci",
+      "nursing",
       "premed",
-      "social_sci",
-      "humanities",
-      "arts"
+      "social_sci"
     ],
     "what_they_value": "공식 입학처 심사 안내 기준으로 석차(class rank), 교과 이수 강도, 시험 점수, 수상·성취 기록, 활동·봉사, 에세이를 종합 심사(holistic review)하며, 지원 전공의 경쟁률도 함께 본다. CDS 2025-2026 C7에서는 특정 요소를 '매우 중요'로 지정하지 않고 학업·비학업 요소 대부분을 'Considered'로 표시했다.",
     "source_url": "https://admissions.utexas.edu/apply/review-decision-process/",
@@ -1292,9 +1307,10 @@
     "need_blind_intl": null,
     "demonstrated_interest": true,
     "direct_admit_majors": [
+      "arts",
       "business",
       "engineering",
-      "arts"
+      "nursing"
     ],
     "what_they_value": "CDS 2025-2026 C7 기준 '매우 중요(Very Important)' 요소는 교과 이수 강도(rigor), 학업 GPA, 에세이, 추천서, 인성/개인 자질이다. 시험 점수는 'Important'이며, 지원자의 관심도(demonstrated interest)와 과외활동·재능은 'Considered'로 반영된다.",
     "source_url": "https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL%20(no%20G).pdf",
@@ -1375,15 +1391,16 @@
     "need_blind_intl": null,
     "demonstrated_interest": false,
     "direct_admit_majors": [
+      "arts",
+      "business",
       "cs",
       "engineering",
-      "business",
+      "humanities",
       "math_data",
       "natural_sci",
+      "nursing",
       "premed",
-      "social_sci",
-      "humanities",
-      "arts"
+      "social_sci"
     ],
     "what_they_value": "UC 공식 종합평가(comprehensive review) 13개 기준으로 A-G 과목 GPA, 이수 과목의 난이도, 학교 여건 대비 성취, 특별한 재능과 성과, 성적 상승 추세 등을 맥락과 함께 평가한다. CDS 2024-2025 C7 기준 Very Important는 교육과정의 엄정성, 학업 GPA, 에세이, 교외 활동, 재능/능력, 봉사활동, 직업 경험으로 활동 영역의 비중이 큰 편이다.",
     "source_url": "https://bpb-us-e2.wpmucdn.com/sites.uci.edu/dist/2/5478/files/2026/05/2025-26-CDS-PDF-Upload.pdf",
@@ -1425,6 +1442,7 @@
     "demonstrated_interest": false,
     "direct_admit_majors": [
       "business",
+      "nursing",
       "premed"
     ],
     "what_they_value": "CDS 2024-2025 C7 기준 Very Important는 교육과정의 엄정성(rigor)과 학업 GPA 두 가지다. 공식 test-optional 페이지는 성적, 교육과정 난이도, 글쓰기, 교내외 활동, 추천서를 함께 보는 홀리스틱 리뷰를 명시하며 '점수는 여러 요소 중 하나일 뿐 단독 결정 요인이 아니다'라고 밝힌다.",
@@ -1502,14 +1520,15 @@
     "need_blind_intl": null,
     "demonstrated_interest": false,
     "direct_admit_majors": [
+      "architecture",
+      "arts",
+      "business",
       "cs",
       "engineering",
-      "business",
+      "humanities",
       "math_data",
       "natural_sci",
-      "social_sci",
-      "humanities",
-      "arts"
+      "social_sci"
     ],
     "what_they_value": "CDS 2025-2026 C7 기준 Very Important는 교육과정의 엄정성(rigor)과 학업 GPA다. 에세이는 Important, 시험 점수·교외 활동·재능은 Considered이며, 전공 단위 선발이므로 지원 전공과 관련된 준비가 사실상 핵심 평가 맥락이 된다.",
     "source_url": "https://www.dmi.illinois.edu/stuenr/misc/cds_2025_2026.xlsx",
@@ -1622,7 +1641,10 @@
     "intl_accept_rate": null,
     "need_blind_intl": false,
     "demonstrated_interest": false,
-    "direct_admit_majors": [],
+    "direct_admit_majors": [
+      "architecture",
+      "nursing"
+    ],
     "what_they_value": "CDS 2024-2025 C7 기준 Very Important는 교과 난이도(rigor)·석차·GPA·표준화시험 점수 4가지로, 학업 지표 중심의 평가다. 공식 입학처 페이지(Who Gets In)는 리더십과 활동 참여, 다양한 캠퍼스 공동체에 대한 기여 가능성, 협업·회복탄력성 같은 개인 자질도 검토한다고 명시한다.",
     "source_url": "https://irp.osu.edu/sites/default/files/documents/2025/11/CDS-2024-2025-The-Ohio-State-University-Columbus.pdf",
     "test_policy": "test-required",
@@ -1699,11 +1721,12 @@
     "need_blind_intl": null,
     "demonstrated_interest": false,
     "direct_admit_majors": [
-      "engineering",
-      "business",
       "arts",
-      "premed",
-      "natural_sci"
+      "business",
+      "engineering",
+      "natural_sci",
+      "nursing",
+      "premed"
     ],
     "what_they_value": "CDS 2023-2024 C7 기준 Very Important는 교과 난이도(rigor)와 학업 GPA이며, 추천서·인터뷰·지원자 관심도는 고려하지 않는다. 공식 입시 프로필(Fall 2025)은 학업 성취와 성적, 에세이, 과외활동, 지원 학교 선택 등을 종합 검토(holistic review)한다고 명시한다.",
     "source_url": "https://admissions.rutgers.edu/sites/default/files/2025-07/2025%20Desk%20Reference%20Card%20FINAL%20QR.pdf",
@@ -1739,12 +1762,13 @@
     "need_blind_intl": null,
     "demonstrated_interest": false,
     "direct_admit_majors": [
+      "architecture",
+      "arts",
+      "business",
       "cs",
       "engineering",
-      "business",
       "natural_sci",
-      "social_sci",
-      "arts"
+      "social_sci"
     ],
     "what_they_value": "CDS 2025-26 C7에서 Very Important는 고교 교과 과정의 엄격성(rigor) 하나뿐이다. 공식 입학처 페이지는 23개 이상의 요소를 보는 홀리스틱 리뷰를 명시하며, 성적·커리큘럼 수준 외에 에세이, 리더십, 지역사회 활동, 가정·환경적 맥락까지 함께 평가한다고 밝힌다.",
     "source_url": "https://www.irpa.umd.edu/InstitutionalData/CommonDataSet/CDS_2025-2026.xlsx",
@@ -1779,12 +1803,13 @@
     "need_blind_intl": null,
     "demonstrated_interest": null,
     "direct_admit_majors": [
+      "architecture",
+      "arts",
+      "business",
       "cs",
       "engineering",
-      "business",
       "math_data",
-      "natural_sci",
-      "arts"
+      "natural_sci"
     ],
     "what_they_value": "UW 입학처 공식 페이지는 표준화 시험 대신 교과 과정의 질(curriculum quality)과 과목 성적을 학업 평가의 중심에 둔다고 명시한다. 에세이와 과외활동을 포함한 지원서 전체를 개별 검토하는 홀리스틱 리뷰를 하며, 학업 외 성취와 지원자의 환경적 맥락도 함께 본다.",
     "source_url": "https://uw-s3-cdn.s3.us-west-2.amazonaws.com/wp-content/uploads/sites/162/2026/02/27111247/CDS_2025-2026_Seattle.pdf",
@@ -1855,7 +1880,10 @@
     "intl_accept_rate": null,
     "need_blind_intl": null,
     "demonstrated_interest": true,
-    "direct_admit_majors": [],
+    "direct_admit_majors": [
+      "architecture",
+      "nursing"
+    ],
     "what_they_value": "CDS 2024-25 C7 기준 Very Important는 교과 과정의 엄격성(rigor), GPA, 표준화 시험 점수, 추천서 4가지다. 과외활동·재능·인성은 Important, 지원자의 관심도(demonstrated interest)와 에세이는 Considered로 반영된다.",
     "source_url": "http://uds.northeastern.edu/wp-content/uploads/2026/03/CDS-2024-25.pdf",
     "test_policy": "test-optional",
@@ -1892,15 +1920,16 @@
     "need_blind_intl": null,
     "demonstrated_interest": true,
     "direct_admit_majors": [
+      "arts",
+      "business",
       "cs",
       "engineering",
-      "business",
+      "humanities",
       "math_data",
       "natural_sci",
+      "nursing",
       "premed",
-      "social_sci",
-      "humanities",
-      "arts"
+      "social_sci"
     ],
     "what_they_value": "CDS 2025-26 C7 기준 Very Important는 교과 과정의 엄격성(rigor), GPA, 에세이 3가지다. 공식 신입생 심사 기준 페이지는 '지원 전공에서 성공할 수 있는 능력'과 해당 프로그램의 정원 상황을 심사 요소로 명시해, 전공 적합성이 합격에 직접 영향을 준다.",
     "source_url": "https://www.purdue.edu/idata/wp-content/uploads/2026/04/CDS-2025-2026.xlsx",
@@ -2006,7 +2035,9 @@
     "intl_accept_rate": null,
     "need_blind_intl": null,
     "demonstrated_interest": true,
-    "direct_admit_majors": [],
+    "direct_admit_majors": [
+      "nursing"
+    ],
     "what_they_value": "CDS 2025-26 C7 기준 Very Important 항목은 교과 rigor, 학급 석차(class rank), 학업 GPA, 교외 활동 네 가지입니다. 에세이·추천서·인터뷰·재능·인성·봉사활동은 Important이고, 지원자의 관심 표현은 Considered로 반영됩니다.",
     "source_url": "https://case.edu/ir/sites/default/files/2026-02/CDS%202025-26%20Adjusted%20Final.pdf",
     "test_policy": "test-optional",
@@ -2074,8 +2105,9 @@
     "need_blind_intl": null,
     "demonstrated_interest": null,
     "direct_admit_majors": [
-      "engineering",
-      "cs"
+      "architecture",
+      "cs",
+      "engineering"
     ],
     "what_they_value": "CDS 2025-26 C7 기준 Very Important 항목은 교과 rigor, 학급 석차, 학업 GPA, 교외 활동, 재능(talent/ability)입니다. 공식 신입생 지원 페이지는 텍사스 거주자 상위 10% 자동입학 외 지원자를 홀리스틱 심사하며, 학업 요소(수강 과목·성적·rigor·GPA·석차)와 비학업 요소(교외 활동·봉사·리더십·근로 경험)를 함께 본다고 명시합니다.",
     "source_url": "https://abpa.tamu.edu/_files/_documents/common-data/cds-pdf-2025-2026.pdf",
@@ -2114,15 +2146,16 @@
     "need_blind_intl": null,
     "demonstrated_interest": false,
     "direct_admit_majors": [
+      "architecture",
+      "arts",
+      "business",
       "cs",
       "engineering",
-      "business",
+      "humanities",
       "math_data",
       "natural_sci",
       "premed",
-      "social_sci",
-      "humanities",
-      "arts"
+      "social_sci"
     ],
     "what_they_value": "CDS 2023-24 C7 기준 Very Important 항목은 교과 이수 강도(rigor)·GPA·에세이·1세대 여부·거주지역/주 거주 여부다. 공식 입학요강은 학교 맥락 안에서의 교과 난이도, 성적 추이와 함께 '지원 전공'을 명시적 평가 요소로 들며, 버지니아텍은 전공 단위로 심사한다.",
     "source_url": "https://www.vt.edu/admissions/undergraduate/apply/freshman-requirements.html",
@@ -2272,6 +2305,7 @@
     "direct_admit_majors": [
       "business",
       "engineering",
+      "nursing",
       "premed"
     ],
     "what_they_value": "CDS 2025-26 C7 기준 Very Important 항목은 교과 이수 강도(rigor)·GPA·에세이 세 가지다. 추천서·활동·재능·인성·봉사는 Important이고, 지원 관심도(demonstrated interest)와 인터뷰는 반영하지 않는다. 학업 기록과 에세이 중심의 심사다.",
@@ -2349,7 +2383,10 @@
     "intl_accept_rate": 64.4,
     "need_blind_intl": false,
     "demonstrated_interest": false,
-    "direct_admit_majors": [],
+    "direct_admit_majors": [
+      "architecture",
+      "nursing"
+    ],
     "what_they_value": "2024-25 CDS C7 기준 Academic GPA가 유일한 Very Important 요소이고 교과 엄격성은 Important, 에세이·추천서·과외활동은 Not Considered다. CDS C6에는 '펜스테이트 입학은 학업 성취(academic credentials) 기반의 경쟁 선발'이라고 명시돼 있다. 시험 미제출자는 지망 전공 관련 교과 성적을 중점 평가한다고 공식 발표에서 밝혔다.",
     "source_url": "https://opair.psu.edu/files/2025/04/CDS_2024_2025_University_Park1.pdf",
     "test_policy": "test-optional",
@@ -2465,13 +2502,14 @@
     "need_blind_intl": null,
     "demonstrated_interest": false,
     "direct_admit_majors": [
+      "arts",
+      "business",
       "cs",
       "engineering",
       "math_data",
-      "business",
       "natural_sci",
-      "premed",
-      "arts"
+      "nursing",
+      "premed"
     ],
     "what_they_value": "공식 입학처는 자동 컷오프 없는 holistic review를 하되 '대학 성공의 가장 큰 예측 요인은 학업 준비도'라며 고교 성적 기록에 가장 강한 비중을 둔다고 명시한다. 2024-25 CDS C7 기준 교과 엄격성·석차·GPA가 Very Important다. 학업 외 요소(재능·봉사·극복 경험 등)는 맥락(context) 요소로 함께 고려된다.",
     "source_url": "https://idr.umn.edu/sites/idr.umn.edu/files/cds_2024_2025_tc_1.pdf",
