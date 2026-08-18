@@ -308,6 +308,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           <h1 className="text-xl font-bold text-gray-900">{profile.nickname}님의 시즌 리포트</h1>
           <p className="mt-1 text-sm text-gray-500">
             {grade}학년 · {majorLabel(profile.major_primary)} · {seasonLabelKo[currentSeason()]}
+            {profile.school_in_us && <span className="ml-1 rounded-full bg-gray-100 px-1.5 py-0.5 text-[11px] text-gray-500">🇺🇸 미국 학교</span>}
           </p>
           <button
             onClick={() => navigate(`/major/${profile.major_primary ?? 'undecided'}`)}

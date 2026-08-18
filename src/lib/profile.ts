@@ -32,6 +32,7 @@ export interface ProfileRow {
   info_sources: string[] | null
   research_consent: boolean
   reminder_opt_out?: boolean // 시즌 시작 알림 이메일 끄기
+  school_in_us?: boolean // 미국 현지 학교 재학
 }
 
 export function answersToRow(
@@ -45,6 +46,7 @@ export function answersToRow(
     applicant_status: a.applicantStatus,
     has_counselor: a.hasCounselor,
     school_accredited: a.schoolAccredited,
+    school_in_us: a.schoolInUs,
     major_primary: a.majorPrimary,
     major_secondary: a.majorSecondary,
     target_mode: a.targetMode,
@@ -152,6 +154,7 @@ export function filterChecklist(
       )
         return false
       if (item.tier_condition !== null && !tiers.has(item.tier_condition)) return false
+      if (p.school_in_us && item.id === 4) return false // 미국 현지 학교: 국제 인증(WASC 등) 확인 항목 해당 없음
       if (item.intl_only && !isIntl) return false
       if (item.no_counselor_only && !noCounselor) return false
       return true

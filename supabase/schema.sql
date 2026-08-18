@@ -77,7 +77,8 @@ create table profiles (
   activity_validation smallint check (activity_validation in (1, 2, 3)),
   quiz_answers jsonb, -- 온보딩 OX 퀴즈 응답 [{id, answer, correct}]
   info_sources text[], -- 대입 정보원 (복수)
-  research_consent boolean not null default false -- 연구 목적 익명 통계 활용 동의
+  research_consent boolean not null default false, -- 연구 목적 익명 통계 활용 동의
+  school_in_us boolean not null default false -- 미국 현지 학교 재학 (국제 인증 질문 해당 없음, TOEFL 면제 가능성)
 );
 
 -- 연구 모듈 (R1)

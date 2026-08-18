@@ -237,9 +237,14 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
               { value: 'yes', label: '예, 인증받았어요' },
               { value: 'no', label: '아니요' },
               { value: 'unknown', label: '잘 모르겠어요', description: '확인 방법을 체크리스트 맨 위에 넣어드려요' },
+              { value: 'us', label: '미국 현지 학교에 다녀요', description: '미국 내 고등학교(공립·사립·보딩)면 국제 인증은 해당 없어요' },
             ]}
-            selected={answers.schoolAccredited}
-            onSelect={(v) => answer({ schoolAccredited: v })}
+            selected={answers.schoolInUs ? 'us' : answers.schoolAccredited}
+            onSelect={(v) =>
+              v === 'us'
+                ? answer({ schoolAccredited: 'yes', schoolInUs: true })
+                : answer({ schoolAccredited: v as 'yes' | 'no' | 'unknown', schoolInUs: false })
+            }
           />
         )
       case 'majorTrack':
@@ -421,7 +426,7 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
         return (
           <ChoiceStep
             title="TOEFL/IELTS는 어떤 상태인가요?"
-            subtitle="국제학생은 대부분 영어 공인 점수가 필요하지만, 면제해 주는 학교도 있어요."
+            subtitle={answers.schoolInUs ? "미국 학교를 여러 해 다녔으면 면제해 주는 대학이 많아요 — 학교별 기준 확인" : "국제학생은 대부분 영어 공인 점수가 필요하지만, 면제해 주는 학교도 있어요."}
             options={[
               { value: 'none', label: '아직 안 봤어요' },
               { value: 'studying', label: '공부 중이에요' },
