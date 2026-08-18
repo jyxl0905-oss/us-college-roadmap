@@ -628,5 +628,191 @@
     ]
    }
   }
+ },
+ "architecture": {
+  "title": "건축 (Architecture)",
+  "ap": [
+   "AP Calculus (AB 또는 BC) — 건축학사(B.Arch)·건축공학 다수가 수학 이수를 요구, 구조 과목 대비",
+   "AP Physics 1 (또는 C) — 구조·역학의 기반",
+   "AP Studio Art: Drawing 또는 2-D — 포트폴리오 제작과 직결",
+   "AP Art History — 건축사·비평 언어"
+  ],
+  "strong": "수학과 미술 둘 다 — B.Arch(5년제)는 포트폴리오가 필수, 공대 소속 건축공학은 수학·물리 비중이 큼",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "포트폴리오 — 관찰 드로잉·모형·공간 스케치. 소프트웨어 렌더링보다 손 드로잉과 사고 과정이 보이는 작업을 요구하는 학교가 많음 (각 학교 포트폴리오 요건 확인)"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "대학 공식 여름 건축 프로그램(예: Cornell Summer College Architecture, Carnegie Mellon Pre-College Architecture — 각 대학 공식 페이지 확인) / Scholastic Art & Writing Awards의 Architecture & Industrial Design 카테고리"
+   },
+   {
+    "label": "함정",
+    "text": "렌더링 이미지만 잔뜩 모으기, 포트폴리오 요건(장수·형식·마감)을 12학년 가을에 처음 확인하는 것"
+   },
+   {
+    "label": "direct-admit 경고",
+    "text": "B.Arch는 대부분 학과 단위 직접 선발 + 포트폴리오 심사(일부 인터뷰) — 일반 전형과 마감·요건이 다름. 목표 학교가 B.Arch(5년)인지 BS/BA in Architecture(4년, 포트폴리오 선택)인지부터 확인"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "fall"
+    ],
+    "activity": [
+     "spike | T | 스케치북 시작 — 주변 건물·공간 관찰 드로잉 | 건축 포트폴리오는 \"볼 줄 아는가\"부터 — 손 드로잉이 첫 재료"
+    ]
+   },
+   "10": {
+    "academic": [
+     "summer"
+    ],
+    "activity": [
+     "validation | T | 대학 여름 건축 프로그램 조사·지원 준비 | Cornell·CMU 등 대학 공식 프로그램 — 11학년 여름 참가가 일반적, 지원은 봄"
+    ]
+   },
+   "11": {
+    "academic": [
+     "summer"
+    ],
+    "activity": [
+     "spike | T | 포트폴리오 핵심 작업 5점 완성 | 여름이 유일한 긴 제작 시간"
+    ]
+   },
+   "12": {
+    "academic": [
+     "fall"
+    ],
+    "activity": [
+     "story | F | 포트폴리오 학교별 편집 + 별도 마감 확인 | 원서 마감과 포트폴리오 마감이 다른 학교가 있음"
+    ]
+   }
+  }
+ },
+ "nursing": {
+  "title": "간호 (Nursing)",
+  "ap": [
+   "AP Biology — 간호 직접 입학(BSN) 프로그램 다수가 고교 생물 이수 요구",
+   "AP Chemistry — 동일하게 화학 요구가 흔함",
+   "AP Statistics — 간호 통계 과목 대비",
+   "AP Psychology — 일부 프로그램 선수 과목"
+  ],
+  "strong": "생물·화학 — direct-entry BSN 다수가 고교 생물·화학·수학 이수를 요건으로 명시 (학교별 확인)",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "환자 접점이 있는 지속 봉사 — 병원·요양시설·지역 보건. 국제학교에선 보건 동아리·적십자 활동으로 대체 가능. 시간 수보다 지속성"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "HOSA–Future Health Professionals 대회(국제 지부 운영) / CPR·응급처치 자격 / 대학 공식 간호 여름 프로그램"
+   },
+   {
+    "label": "함정",
+    "text": "프리메드 준비와 혼동 — 간호는 4년제 BSN 직접 입학이 핵심이라 지원 시점에 전공 확정 필요. 봉사 시간 숫자만 쌓기"
+   },
+   {
+    "label": "direct-admit 경고",
+    "text": "다수 BSN이 direct-entry(입학 시 선발)이며 정원이 작아 학교 전체 합격률보다 훨씬 낮음, 입학 후 진입도 어려움. 목표 학교가 direct-entry BSN인지 2+2(입학 후 지원)인지 확인"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "fall"
+    ],
+    "activity": [
+     "spike | T | 보건 동아리·봉사 첫 경험 | 간호는 \"사람을 돌본 기록\"이 스파이크 — 일찍 시작할수록 지속성이 생김"
+    ]
+   },
+   "10": {
+    "academic": [
+     "spring"
+    ],
+    "activity": [
+     "rigor | F | 11학년 AP Biology·Chemistry 신청 확정 | direct-entry BSN 요건의 핵심 두 과목"
+    ]
+   },
+   "11": {
+    "academic": [
+     "summer"
+    ],
+    "activity": [
+     "leadership | T | 봉사 역할 성장 — 참여자→기획·교육 | 프리메드와 같은 원칙: 2년 주말 봉사 > 2주 이벤트"
+    ]
+   },
+   "12": {
+    "academic": [
+     "fall"
+    ],
+    "activity": [
+     "story | F | 봉사 누적 기록·과학 교사 추천서 준비 | 숫자와 서사 둘 다 — \"왜 간호인가\"를 기록에서"
+    ]
+   }
+  }
+ },
+ "media": {
+  "title": "커뮤니케이션·미디어 (Communication·Media·Journalism)",
+  "ap": [
+   "AP English Language and Composition — 논증·글쓰기의 기본",
+   "AP English Literature — 텍스트 분석",
+   "AP U.S. Government 또는 Comparative Government — 시사·정치 맥락",
+   "AP Psychology — 커뮤니케이션 이론의 기반 (개설 시)"
+  ],
+  "strong": "영어(쓰기) — 포트폴리오와 에세이가 곧 증거",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "꾸준한 발행 — 학교 신문·잡지·팟캐스트·영상 채널을 정기적으로 운영, 취재·편집 역할. \"정기성\"이 급을 나눔"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "Scholastic Art & Writing Awards(저널리즘·에세이 카테고리) / 학생 언론 대회(NSPA·CSPA 등, 학교 매체 소속 시) / 대학 공식 여름 저널리즘 프로그램(예: Northwestern Medill Cherubs — 각 대학 공식 확인)"
+   },
+   {
+    "label": "함정",
+    "text": "조회수·팔로워 숫자만 좇기, 취재·편집 과정 기록 없이 결과물만"
+   },
+   {
+    "label": "direct-admit 경고",
+    "text": "저널리즘·커뮤니케이션 스쿨이 별도 선발인 학교가 있음 — 목표 학교의 소속·지원 방식 확인"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "fall"
+    ],
+    "activity": [
+     "spike | T | 학교 매체(신문·방송·잡지) 참여 시작 | 미디어 전공의 스파이크는 \"정기적으로 발행한 기록\""
+    ]
+   },
+   "10": {
+    "academic": [
+     "spring"
+    ],
+    "activity": [
+     "validation | T | Scholastic Art & Writing 첫 출품 (저널리즘·에세이) | 국제학생 응시 가능, 매년 가을~겨울 마감"
+    ]
+   },
+   "11": {
+    "academic": [
+     "summer"
+    ],
+    "activity": [
+     "spike | T | 개인 매체 프로젝트 또는 대표작 5편 정리 | 링크로 보여줄 수 있는 결과물이 활동란을 살림"
+    ]
+   },
+   "12": {
+    "academic": [
+     "fall"
+    ],
+    "activity": [
+     "story | F | 대표작 3~5편 편집 + 원서용 링크 준비 | 원서 Additional Info·포트폴리오 링크에 바로 쓰이는 형태로"
+    ]
+   }
+  }
  }
 }
