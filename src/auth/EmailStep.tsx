@@ -27,7 +27,8 @@ export default function EmailStep() {
     setError(null)
     const { error } = await supabase.auth.signInWithOtp({
       email: email.trim(),
-      options: { emailRedirectTo: window.location.origin },
+      // 메일 링크는 항상 실제 사이트로 돌아오게 고정 — 개발용 localhost에서 요청해도 꺼진 서버로 돌아가는 일 방지
+      options: { emailRedirectTo: 'https://us-college-roadmap.vercel.app' },
     })
     setSending(false)
     if (error)
