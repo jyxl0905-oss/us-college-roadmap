@@ -74,3 +74,8 @@ npm run dev
 
 - 매직 링크 이메일 한도(시간당 2통) — 사용자가 늘면 커스텀 SMTP(Resend 등 무료 티어) 연결 필요
 - 연 1회(여름) 데이터 갱신: 학교·마감·C7 (특히 FSU 사이트 복구 시 C7 재시도, Minnesota 2025-26판 갱신)
+
+## 언어 (i18n)
+- UI: 한국어/영어 토글 (`src/i18n`, `t()`·`bilingual()`), localStorage `lang`
+- DB 콘텐츠: 한국어 원문 + `*_en` 컬럼 (checklist_items·prescriptions·appeal_strategies·glossary·basics·quiz_items·clarity_items·schools). 영어값이 없으면 한국어 표시. 시드: `supabase/seed-i18n-en.sql`, 검토 문서: `docs/i18n-review/`
+- 전공 가이드 맵: `src/data/major-roadmaps.json` / `.en.json`
