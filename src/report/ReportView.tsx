@@ -303,16 +303,14 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         <div>
           <h1 className="text-xl font-bold text-gray-900">{profile.nickname}님의 시즌 리포트</h1>
           <p className="mt-1 text-sm text-gray-500">
-            {grade}학년 ·{' '}
-            <button
-              onClick={() => navigate(`/major/${profile.major_primary ?? 'undecided'}`)}
-              className="text-blue-600 underline decoration-blue-300 underline-offset-2"
-              title="전공 로드맵 보기"
-            >
-              {majorLabel(profile.major_primary)}
-            </button>{' '}
-            · {seasonLabelKo[currentSeason()]}
+            {grade}학년 · {majorLabel(profile.major_primary)} · {seasonLabelKo[currentSeason()]}
           </p>
+          <button
+            onClick={() => navigate(`/major/${profile.major_primary ?? 'undecided'}`)}
+            className="no-print mt-1.5 rounded-full border-2 border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 active:bg-blue-100"
+          >
+            🗺️ 전공 가이드 맵 보기
+          </button>
           <p className="mt-0.5 text-xs text-gray-400">{targetText}</p>
         </div>
         <button onClick={onLogout} className="no-print shrink-0 text-sm text-gray-400 underline">

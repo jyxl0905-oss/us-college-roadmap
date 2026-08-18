@@ -72,7 +72,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
           <button onClick={() => navigate('/')} aria-label="뒤로" className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
           <div className="min-w-0 flex-1">
             <h1 className="truncate text-xl font-bold text-gray-900">{majorLabel(majorKey)}</h1>
-            <p className="text-xs text-gray-400">4년 로드맵 · 편집 가이드</p>
+            <p className="text-xs text-gray-400">전공 가이드 맵 · 4년 로드맵 (편집 가이드)</p>
           </div>
         </div>
 
