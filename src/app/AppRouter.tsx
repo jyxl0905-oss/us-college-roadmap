@@ -19,7 +19,7 @@ export default function AppRouter({ path, userId, profile, onProfileChange }: Ap
   const sub = path.replace(/^\/app\/?/, '').replace(/\/+$/, '')
   switch (sub) {
     case 'plans':
-      return <PlansTab userId={userId} />
+      return <PlansTab userId={userId} majorKey={profile.major_primary} />
     case 'activities':
       return <ActivitiesTab userId={userId} />
     case 'testing':

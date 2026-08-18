@@ -4,13 +4,15 @@ import { insertRow, updateRow, deleteRow } from './appData'
 import { loadPlans, cycleSeasons, axisShort, planStatusKo, nextStatus, PLAN_BONUS, type Plan } from './plans'
 import { axisOrder, type Axis } from '../lib/score'
 import { currentSeasonLabel } from '../lib/academics'
+import { navigate } from '../lib/router'
 
 interface PlansTabProps {
   userId: string
+  majorKey?: string | null
 }
 
 // F6 내 계획 — 텍스트 최소: 한 줄 입력 + 축 칩 + 시즌 칩. 리포트 6축에 점선으로 반영
-export default function PlansTab({ userId }: PlansTabProps) {
+export default function PlansTab({ userId, majorKey }: PlansTabProps) {
   const [plans, setPlans] = useState<Plan[] | null>(null)
   const seasons = cycleSeasons()
   const [title, setTitle] = useState('')
@@ -52,6 +54,12 @@ export default function PlansTab({ userId }: PlansTabProps) {
       <p className="mt-2 text-xs text-gray-500">
         적은 계획은 리포트 6축에 <span className="font-semibold text-blue-700">점선</span>으로 표시돼요 (항목당 +{PLAN_BONUS}). 완료로 바꾸면 실선으로.
       </p>
+      <button
+        onClick={() => navigate(`/major/${majorKey ?? 'undecided'}`)}
+        className="mt-2 w-full rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-2.5 text-sm font-semibold text-blue-700 active:bg-blue-100"
+      >
+        🗺️ 내 전공 로드맵에서 골라 담기
+      </button>
 
       {/* 입력 */}
       <div className="mt-3 rounded-xl border-2 border-gray-200 bg-white px-3.5 py-3">

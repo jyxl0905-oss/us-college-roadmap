@@ -20,6 +20,7 @@ const CheckinFlow = lazy(() => import('./checkin/CheckinFlow'))
 const GuideView = lazy(() => import('./report/GuideView'))
 const DeadlinesPage = lazy(() => import('./deadlines/DeadlinesPage'))
 const AppRouter = lazy(() => import('./app/AppRouter'))
+const MajorRoadmapPage = lazy(() => import('./major/MajorRoadmapPage'))
 import { readPrefillSchoolIds } from './browse/prefill'
 import { logEvent } from './lib/analytics'
 
@@ -144,6 +145,16 @@ function AppRoutes() {
           </button>
         </div>
       </Screen>
+    )
+  }
+  // 전공 로드맵 (비로그인도 열람 가능, 계획 담기는 로그인 필요)
+  if (path.startsWith('/major/')) {
+    return (
+      <MajorRoadmapPage
+        majorKey={path.slice('/major/'.length).replace(/\/+$/, '')}
+        userId={session?.user.id ?? null}
+        profile={profile}
+      />
     )
   }
   // F4 → F5: 예전 /board 주소는 내 원서의 지원 학교 탭으로
