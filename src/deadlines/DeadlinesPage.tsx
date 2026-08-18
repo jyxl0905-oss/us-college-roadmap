@@ -4,7 +4,7 @@ import { supabase } from '../lib/supabase'
 import { navigate } from '../lib/router'
 import type { ProfileRow } from '../lib/profile'
 import SchoolLogo from '../browse/SchoolLogo'
-import { t } from '../i18n'
+import { t, localizeRows } from '../i18n'
 
 // 시기 라벨("11월 초") → 정렬 키. 입시 사이클 기준 8월이 가장 이름
 export function timingSortKey(label: string | null): number {
@@ -86,11 +86,11 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
         : supabase.from('schools').select('*').eq('tier', profile.target_tier)
     Promise.all([
       query,
-      supabase.from('glossary').select('term, definition_ko'),
+      supabase.from('glossary').select('term, definition_ko, term_en, definition_en'),
       supabase.from('applications').select('school_id, round').eq('user_id', userId),
     ]).then(([sc, gl, ap]) => {
-      setSchools((sc.data ?? []) as School[])
-      setGlossary(gl.data ?? [])
+      setSchools(localizeRows((sc.data ?? []) as School[]))
+      setGlossary(localizeRows(gl.data ?? []))
       setRounds(ap.data ?? [])
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps

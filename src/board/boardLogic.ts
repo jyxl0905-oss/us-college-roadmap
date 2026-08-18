@@ -109,37 +109,45 @@ export function boardWarnings(apps: ApplicationRow[], profile: ProfileRow): Boar
 }
 
 // §3-D C7 행동 변환 — 고정 매핑 (이 표만 사용, 임의 추가 금지)
-const C7_ACTION_MAP: Record<string, string> = {
-  essay: '이 학교는 에세이를 very important로 공시 — 보충 에세이에 시간을 최우선 배분할 것',
-  character: '성격·개인 자질을 very important로 공시 — 추천서와 에세이에서 일관된 모습이 드러나는지 점검',
-  interview: '인터뷰를 very important로 공시 — 인터뷰 제공 여부 확인 후 신청할 것',
-  demonstrated_interest: '지원 관심도를 평가에 반영 — 온라인 설명회 참석·메일링 등록을 기록으로 남길 것',
-  rigor: '과목 난이도를 very important로 공시 — 12학년 시간표의 리거를 유지할 것',
-  talent: '특기·재능을 very important로 공시 — 대표 활동의 결과물을 원서에서 보여줄 준비',
-  extracurricular: '활동을 very important로 공시 — 활동란 10칸의 문구 완성도를 점검할 것',
+// key = 한국어 원문(저장 키, custom_tasks.title로 저장됨 — 변경 금지), text = 표시 문구(언어별)
+export interface DerivedItem { key: string; text: string }
+const di = (ko: string, en: string): DerivedItem => ({ key: ko, text: t(ko, en) })
+
+const C7_ACTION_MAP: Record<string, DerivedItem> = {
+  essay: di('이 학교는 에세이를 very important로 공시 — 보충 에세이에 시간을 최우선 배분할 것', 'This school lists essays as very important — put supplemental essays first in your time budget'),
+  character: di('성격·개인 자질을 very important로 공시 — 추천서와 에세이에서 일관된 모습이 드러나는지 점검', 'Character/personal qualities listed as very important — check that recommendations and essays show a consistent picture'),
+  interview: di('인터뷰를 very important로 공시 — 인터뷰 제공 여부 확인 후 신청할 것', 'Interview listed as very important — check whether interviews are offered and request one'),
+  demonstrated_interest: di('지원 관심도를 평가에 반영 — 온라인 설명회 참석·메일링 등록을 기록으로 남길 것', 'Demonstrated interest is considered — leave a record: attend online sessions, join the mailing list'),
+  rigor: di('과목 난이도를 very important로 공시 — 12학년 시간표의 리거를 유지할 것', 'Course rigor listed as very important — keep your 12th-grade schedule rigorous'),
+  talent: di('특기·재능을 very important로 공시 — 대표 활동의 결과물을 원서에서 보여줄 준비', 'Talent/ability listed as very important — be ready to show the output of your main activity in the application'),
+  extracurricular: di('활동을 very important로 공시 — 활동란 10칸의 문구 완성도를 점검할 것', 'Extracurriculars listed as very important — polish the wording of all 10 activity slots'),
 }
 
-export function c7Actions(s: School): string[] {
+export function c7Actions(s: School): DerivedItem[] {
   const list = s.c7_very_important
   if (!list || list.length === 0) return [] // null이면 블록 생략 (일반론 채우기 금지)
-  return list.map((slug) => C7_ACTION_MAP[slug]).filter(Boolean) as string[]
+  return list.map((slug) => C7_ACTION_MAP[slug]).filter(Boolean)
 }
 
 export const suppEssayTip = () =>
   t('이 학교의 보충 에세이가 묻는 것 = 이 학교가 보는 것 — 문항을 확인해 커스텀 항목으로 추가할 것', 'What this school’s supplement asks = what this school looks for — check the prompts and add them as custom items')
 
 // §3-E 조건 조합 자동 체크리스트
-export function autoItems(s: School, profile: ProfileRow, app: ApplicationRow | undefined): string[] {
+export function autoItems(s: School, profile: ProfileRow, app: ApplicationRow | undefined): DerivedItem[] {
   const isIntl = profile.applicant_status !== 'domestic'
-  const items: string[] = []
-  if (s.test_policy === 'test-optional') items.push('SAT 제출 여부 결정')
+  const items: DerivedItem[] = []
+  if (s.test_policy === 'test-optional') items.push(di('SAT 제출 여부 결정', 'Decide whether to submit SAT'))
   if (isIntl)
-    items.push(profile.toefl_status === 'exempt' ? '이 학교의 TOEFL 면제 기준(재학 연수·SAT 영어 등) 공식 확인' : 'TOEFL 발송·면제 확인')
-  if (isIntl && s.need_blind_intl === false) items.push('재정지원 신청 여부 결정')
+    items.push(
+      profile.toefl_status === 'exempt'
+        ? di('이 학교의 TOEFL 면제 기준(재학 연수·SAT 영어 등) 공식 확인', 'Officially confirm this school’s TOEFL waiver rule (years enrolled, SAT EBRW, etc.)')
+        : di('TOEFL 발송·면제 확인', 'Send TOEFL / confirm waiver'),
+    )
+  if (isIntl && s.need_blind_intl === false) items.push(di('재정지원 신청 여부 결정', 'Decide whether to apply for financial aid'))
   if (profile.major_primary && s.direct_admit_majors.includes(profile.major_primary))
-    items.push('지원 전공 확정')
-  if (app?.round) items.push('마감 역산 일정 확인')
-  items.push('보충 에세이 문항 확인·목록화')
+    items.push(di('지원 전공 확정', 'Finalize the major you apply to'))
+  if (app?.round) items.push(di('마감 역산 일정 확인', 'Check the countdown schedule from the deadline'))
+  items.push(di('보충 에세이 문항 확인·목록화', 'Find and list the supplemental essay prompts'))
   return items
 }
 

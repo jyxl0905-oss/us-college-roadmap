@@ -1,4 +1,4 @@
-import { t } from '../i18n'
+import { getLang, t } from '../i18n'
 
 // 학년별 "AO(입학사정관)가 지금 보는 것" — §4 승인 콘텐츠
 const aoCopy: Record<number, string[]> = {
@@ -24,8 +24,31 @@ const aoCopy: Record<number, string[]> = {
   ],
 }
 
+const aoCopyEn: Record<number, string[]> = {
+  9: [
+    "US admissions is holistic review — it looks at your whole 4-year record, not one number.",
+    "9th-grade grades go straight into your GPA, and the study habits you build now are the starting point of your trend.",
+    "Think of this as the year you plot the first point on the graph AOs will see later.",
+  ],
+  10: [
+    "Starting in 10th grade, AOs begin looking at whether your course choices step up each year (rising rigor).",
+    "The broadening phase for activities is over — it's time to narrow to 1–2 and start building depth.",
+    "This year's choices (your 11th-grade AP lineup, which activities to keep) decide the load you'll carry in 11th grade.",
+  ],
+  11: [
+    "11th grade is the year most of the record that goes into your application gets made.",
+    "AOs focus on your grades in the most demanding courses, your test scores, and whether your activities were validated externally.",
+    "This year's harvest becomes the body of your application — next year is the time to organize it.",
+  ],
+  12: [
+    "It's the year you apply, but AOs look at 12th-grade grades too — if the trend dips, it can be a problem even after admission.",
+    "Now it's less about building new things and more about showing 4 years of record as one story through essays and recommendations.",
+    "This is the year deadline management is the skill — the more a document depends on someone else (recommendations, transcripts), the earlier you should chase it.",
+  ],
+}
+
 export default function AoBox({ grade }: { grade: number }) {
-  const lines = aoCopy[Math.min(12, Math.max(9, grade))]
+  const lines = (getLang() === 'en' ? aoCopyEn : aoCopy)[Math.min(12, Math.max(9, grade))]
   return (
     <div className="rounded-xl bg-blue-600 px-4 py-4 text-white">
       <p className="text-xs font-semibold uppercase tracking-wide text-blue-200">

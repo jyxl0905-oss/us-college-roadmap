@@ -7,7 +7,7 @@ import { majorsByTrack, majorDisplay } from '../data/majors'
 import ChoiceStep from '../onboarding/ChoiceStep'
 import TargetSchoolsStep from '../onboarding/TargetSchoolsStep'
 import { axisShort, type Plan } from '../app/plans'
-import { t } from '../i18n'
+import { t, localizeRows } from '../i18n'
 
 // 시즌 라벨('2026-spring')의 학년 계산용 대표 날짜
 function seasonDate(label: string): Date {
@@ -66,14 +66,14 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
       supabase.from('clarity_items').select('*').order('sort_order'),
       supabase.from('plans').select('id,title,axis,season_label,status,notes').eq('user_id', userId).eq('season_label', prevSeasonLabel).neq('status', 'done'),
     ]).then(([itemsRes, prevChecks, carriedChecks, clarityRes, plansRes]) => {
-      if (clarityRes.data) setClarityItems(clarityRes.data as ClarityItem[])
+      if (clarityRes.data) setClarityItems(localizeRows(clarityRes.data as ClarityItem[]))
       const openP = (plansRes.data ?? []) as Plan[]
       setOpenPlans(openP)
       const decided = new Set([
         ...(prevChecks.data ?? []).map((c) => c.item_id),
         ...(carriedChecks.data ?? []).map((c) => c.item_id),
       ])
-      const prevItems = filterChecklist((itemsRes.data ?? []) as ChecklistItem[], profile, {
+      const prevItems = filterChecklist(localizeRows((itemsRes.data ?? []) as ChecklistItem[]), profile, {
         grade: prevGrade,
         season: prevSeason,
       })

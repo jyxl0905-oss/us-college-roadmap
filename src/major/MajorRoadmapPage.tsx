@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import roadmaps from '../data/major-roadmaps.json'
+import roadmapsEn from '../data/major-roadmaps.en.json'
 import { majorLabel, majorCategories } from '../data/majors'
 import { profileGrade, type ProfileRow } from '../lib/profile'
 import { navigate } from '../lib/router'
@@ -7,7 +8,7 @@ import { currentSeasonLabel } from '../lib/academics'
 import { insertRow } from '../app/appData'
 import { loadPlans, cycleSeasons, type Plan } from '../app/plans'
 import type { Axis } from '../lib/score'
-import { t } from '../i18n'
+import { t, getLang } from '../i18n'
 
 interface RoadmapCell { academic: string[]; activity: string[] }
 interface MajorData {
@@ -17,7 +18,9 @@ interface MajorData {
   guide: { label: string; text: string }[]
   roadmap: Record<string, RoadmapCell>
 }
-const DATA = roadmaps as Record<string, MajorData>
+const DATA_KO = roadmaps as Record<string, MajorData>
+const DATA_EN = roadmapsEn as Record<string, MajorData>
+const DATA = new Proxy(DATA_KO, { get: (_, k) => (getLang() === 'en' ? DATA_EN : DATA_KO)[k as string], ownKeys: () => Reflect.ownKeys(DATA_KO), getOwnPropertyDescriptor: (_, k) => Reflect.getOwnPropertyDescriptor(DATA_KO, k) }) as Record<string, MajorData>
 
 interface MajorRoadmapPageProps {
   majorKey: string
@@ -145,7 +148,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
           {guideOpen && (
             <div className="mt-3 flex flex-col gap-2.5">
               {data.guide.map((g) => {
-                const warn = g.label.includes('함정') || g.label.includes('경고')
+                const warn = /함정|경고|Pitfall|Warning/.test(g.label)
                 return (
                   <div key={g.label} className={`rounded-lg px-3 py-2.5 ${warn ? 'bg-amber-50' : 'bg-gray-50'}`}>
                     <p className={`text-xs font-semibold ${warn ? 'text-amber-800' : 'text-gray-500'}`}>{warn ? '⚠️ ' : ''}{g.label}</p>

@@ -7,7 +7,7 @@ import type { ProfileRow } from '../lib/profile'
 import { timingSortKey } from '../deadlines/DeadlinesPage'
 import SchoolLogo from '../browse/SchoolLogo'
 import AppShell from '../app/AppShell'
-import { t } from '../i18n'
+import { t, localizeRows } from '../i18n'
 import { loadAppRecords, bestSat, type AppRecords } from '../app/appData'
 import { profileGrade } from '../lib/profile'
 import { currentSeason } from '../lib/academics'
@@ -56,7 +56,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
       supabase.from('custom_tasks').select('id, school_id, title, done').eq('user_id', userId),
       loadAppRecords(userId),
     ]).then(([sc, ap, ct, rec]) => {
-      setSchools((sc.data ?? []) as School[])
+      setSchools(localizeRows((sc.data ?? []) as School[]))
       setApps((ap.data ?? []) as ApplicationRow[])
       setTasks((ct.data ?? []) as CustomTask[])
       setRecords(rec)
@@ -170,11 +170,11 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
     const app = appFor(s.id)
     const auto = autoItems(s, profile, app)
     const c7 = c7Checkable(app) ? c7Actions(s) : []
-    const customs = tasksFor(s.id).filter((t) => !auto.includes(t.title) && !c7.includes(t.title))
+    const customs = tasksFor(s.id).filter((t) => !auto.some((a) => a.key === t.title) && !c7.some((c) => c.key === t.title))
     const total = auto.length + c7.length + customs.length
     const done =
-      auto.filter((t) => isItemDone(s.id, t)).length +
-      c7.filter((t) => isItemDone(s.id, t)).length +
+      auto.filter((a) => isItemDone(s.id, a.key)).length +
+      c7.filter((c) => isItemDone(s.id, c.key)).length +
       customs.filter((t) => t.done).length
     return { done, total }
   }
@@ -188,7 +188,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
     const auto = autoItems(open, profile, app)
     const c7 = c7Actions(open)
     const checkable = c7Checkable(app)
-    const customs = tasksFor(open.id).filter((t) => !auto.includes(t.title) && !c7.includes(t.title))
+    const customs = tasksFor(open.id).filter((t) => !auto.some((a) => a.key === t.title) && !c7.some((c) => c.key === t.title))
     const first = isFirstChoice(app)
 
     const fitBlock = (
@@ -208,13 +208,13 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
         )}
         {c7.length > 0 && (
           <div className="mt-3 flex flex-col gap-1.5">
-            {c7.map((text) => (
-              <label key={text} className="flex items-start gap-2 text-sm text-gray-700">
+            {c7.map(({ key, text }) => (
+              <label key={key} className="flex items-start gap-2 text-sm text-gray-700">
                 {checkable ? (
                   <input
                     type="checkbox"
-                    checked={isItemDone(open.id, text)}
-                    onChange={() => toggleDerivedItem(open.id, text)}
+                    checked={isItemDone(open.id, key)}
+                    onChange={() => toggleDerivedItem(open.id, key)}
                     className="mt-0.5 h-4 w-4 shrink-0 accent-blue-600"
                   />
                 ) : (
@@ -377,12 +377,12 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
           <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
             <p className="font-semibold text-gray-900">{t('준비 체크리스트', 'Prep checklist')}</p>
             <div className="mt-3 flex flex-col gap-2">
-              {auto.map((title) => (
-                <label key={title} className="flex items-start gap-2 text-sm text-gray-700">
+              {auto.map(({ key, text: title }) => (
+                <label key={key} className="flex items-start gap-2 text-sm text-gray-700">
                   <input
                     type="checkbox"
-                    checked={isItemDone(open.id, title)}
-                    onChange={() => toggleDerivedItem(open.id, title)}
+                    checked={isItemDone(open.id, key)}
+                    onChange={() => toggleDerivedItem(open.id, key)}
                     className="mt-0.5 h-4 w-4 shrink-0 accent-blue-600"
                   />
                   <span>{title}</span>

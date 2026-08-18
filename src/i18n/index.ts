@@ -31,3 +31,26 @@ export function bilingual<K extends string | number>(ko: Record<K, string>, en: 
     get: (target, key) => (current === 'ko' ? (target as Record<string, string>)[key as string] : (en as Record<string, string>)[key as string]),
   }) as Record<K, string>
 }
+
+// DB 콘텐츠 현지화 — 행에 `xxx_en` 컬럼이 있고 값이 있으면(영어 모드) `xxx_ko` 또는 `xxx` 필드를 덮어씀.
+// 예: title_en→title, text_en→text_ko, intro_en→intro_ko. 영어값이 비어 있으면 한국어 원문 유지.
+export function localizeRow<T extends object>(row: T): T {
+  if (current === 'ko' || !row) return row
+  const r = row as Record<string, unknown>
+  let out: Record<string, unknown> | null = null
+  for (const key of Object.keys(r)) {
+    if (!key.endsWith('_en')) continue
+    const en = r[key]
+    if (typeof en !== 'string' || en.trim() === '') continue
+    const base = key.slice(0, -3)
+    const target = `${base}_ko` in r ? `${base}_ko` : base in r ? base : null
+    if (!target) continue
+    if (!out) out = { ...r }
+    out[target] = en
+  }
+  return (out ?? r) as T
+}
+
+export function localizeRows<T extends object>(rows: T[] | null | undefined): T[] {
+  return (rows ?? []).map(localizeRow)
+}

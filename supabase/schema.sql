@@ -314,3 +314,13 @@ create table plans (
 );
 alter table plans enable row level security;
 create policy "own plans" on plans for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+-- i18n Phase B: 영어 콘텐츠 컬럼 (null이면 한국어 원문 표시)
+alter table checklist_items add column if not exists title_en text, add column if not exists why_how_en text;
+alter table prescriptions add column if not exists text_en text;
+alter table appeal_strategies add column if not exists text_en text;
+alter table glossary add column if not exists term_en text, add column if not exists definition_en text;
+alter table basics add column if not exists title_en text, add column if not exists body_en text;
+alter table quiz_items add column if not exists question_en text, add column if not exists explanation_2lines_en text;
+alter table clarity_items add column if not exists question_en text;
+alter table schools add column if not exists intro_en text, add column if not exists what_they_value_en text, add column if not exists location_note_en text, add column if not exists gpa_note_en text;

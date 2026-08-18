@@ -16,7 +16,7 @@ import {
 import { downloadDocx } from '../lib/report-doc'
 import { logEvent } from '../lib/analytics'
 import { navigate } from '../lib/router'
-import { t } from '../i18n'
+import { t, localizeRows } from '../i18n'
 import LangToggle from '../i18n/LangToggle'
 import { downloadIcs, nextCheckinDate } from '../lib/ics'
 import { saveProfile } from '../lib/profile'
@@ -139,7 +139,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
     ]).then(([itemsRes, checksRes, schoolsRes, prevRes, presRes, appealRes, allDoneRes]) => {
       if (itemsRes.error) setError(itemsRes.error.message)
       else {
-        const all = itemsRes.data as ChecklistItem[]
+        const all = localizeRows(itemsRes.data as ChecklistItem[])
         setAllItems(all)
         setItems(filterChecklist(all, profile))
       }
@@ -148,7 +148,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         setCarriedIds(new Set(checksRes.data.filter((c) => c.status === 'carried').map((c) => c.item_id)))
       }
       if (schoolsRes.data) {
-        setSchools(([...schoolsRes.data] as School[]).sort((a, b) => a.usnews_rank - b.usnews_rank))
+        setSchools(localizeRows(schoolsRes.data as School[]).sort((a, b) => a.usnews_rank - b.usnews_rank))
       }
       if (prevRes.data) {
         const all = prevRes.data as (PrevReport & { snapshot: { scores?: Partial<AxisScores> } })[]
@@ -156,8 +156,8 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         if (past.length > 0) setPrevReport(past[past.length - 1])
         setHistory(all.map((r) => ({ season_label: r.season_label, scores: r.snapshot.scores ?? {}, done: r.snapshot.done, total: r.snapshot.total, plans: (r.snapshot as { plans?: { done: number; total: number } }).plans })))
       }
-      if (presRes.data) setPrescriptions(presRes.data as Prescription[])
-      if (appealRes.data) setAppeals(appealRes.data as Appeal[])
+      if (presRes.data) setPrescriptions(localizeRows(presRes.data as Prescription[]))
+      if (appealRes.data) setAppeals(localizeRows(appealRes.data as Appeal[]))
       if (allDoneRes.data) setAllDoneIds(new Set(allDoneRes.data.map((c) => c.item_id)))
       setLoading(false)
     })

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
-import { t } from '../i18n'
+import { t, localizeRows } from '../i18n'
 
 interface GlossaryItem {
   id: number
@@ -28,8 +28,8 @@ export default function GuideView({ onBack }: { onBack: () => void }) {
       supabase.from('basics').select('*').order('sort_order'),
       supabase.from('glossary').select('*').order('sort_order'),
     ]).then(([b, g]) => {
-      if (b.data) setBasics(b.data as BasicItem[])
-      if (g.data) setGlossary(g.data as GlossaryItem[])
+      if (b.data) setBasics(localizeRows(b.data as BasicItem[]))
+      if (g.data) setGlossary(localizeRows(g.data as GlossaryItem[]))
       setLoading(false)
     })
   }, [])

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { t } from '../i18n'
+import { t, localizeRows } from '../i18n'
 import type { QuizAnswer, QuizItem } from '../lib/types'
 import { supabase } from '../lib/supabase'
 
@@ -28,7 +28,7 @@ export default function QuizStep({ onDone }: QuizStepProps) {
       .select('*')
       .order('sort_order')
       .then(({ data }) => {
-        const list = (data ?? []) as QuizItem[]
+        const list = localizeRows((data ?? []) as QuizItem[])
         if (list.length === 0) onDone([])
         else setItems(list)
       })

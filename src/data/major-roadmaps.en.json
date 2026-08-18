@@ -1,0 +1,818 @@
+{
+ "cs": {
+  "title": "CS / Software",
+  "ap": [
+   "AP Calculus BC — the de facto standard for top CS applicants. If only AB is offered, take AB and consider self-studying BC",
+   "AP Computer Science A — directly tied to the major. Even if not offered, self-study is relatively easy, so it's the #1 candidate for a self-study exam",
+   "AP Physics 1 (or C) — strengthens engineering-side credibility",
+   "AP Statistics — more valuable if you're heading toward AI/data"
+  ],
+  "strong": "Math is 80% of it. Reaching Calculus by 12th grade is effectively the required line, then physics",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Personal projects that leave a deliverable — a deployed app/website, a GitHub portfolio. \"Does it have users?\" separates project tiers"
+   },
+   {
+    "label": "External validation type",
+    "text": "USACO (free, online, open to international students) / hackathons / submission-based contests like the Congressional App Challenge"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Piling up unfinished projects, mistaking a paid coding bootcamp certificate for an achievement"
+   },
+   {
+    "label": "direct-admit Warning",
+    "text": "Many schools admit CS by major, and competition is far tougher than the school's overall acceptance rate. Internal transfer is also hard — checking how your target schools select is a must-do item"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Check your math track — confirm the path to Calc by 12th grade (fix the track with summer acceleration if needed)"
+    ],
+    "activity": [
+     "Python basics + first mini project (goal: graduate from following tutorials)"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Take AP CS A or start self-studying",
+     "Lock in 11th-grade Calc (BC preferred) registration"
+    ],
+    "activity": [
+     "Open a GitHub portfolio, get 1 project to deployed state",
+     "First USACO Bronze attempt (no pressure — gauge your level)"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Calc BC + Physics (if you have room)",
+     "Check direct-admit status for every target school"
+    ],
+    "activity": [
+     "Get real users for your flagship project",
+     "Try to move up in USACO, or 1 hackathon/submission-based contest",
+     "Lead a team or club"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Take a post-Calc course if offered (otherwise maintain)",
+     "Keep 12th-grade grades up"
+    ],
+    "activity": [
+     "Tidy up portfolio links (README, demo video)",
+     "Prepare a tech-stack summary for the application's Additional Info"
+    ]
+   }
+  }
+ },
+ "engineering": {
+  "title": "Engineering (Mechanical, Electrical, Chemical, Aerospace, etc.)",
+  "ap": [
+   "AP Calculus BC",
+   "AP Physics C: Mechanics (mechanical/aerospace) or AP Chemistry (chemical) — pick 1 to match your sub-field",
+   "AP Physics C: E&M (electrical direction)",
+   "AP CS A — a plus across modern engineering"
+  ],
+  "strong": "Math and physics are the top two. Only for ChemE is chemistry on par with physics",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Build-and-break projects — robots, drones, 3D printing, Arduino. Recording the process (build log) matters as much as the result"
+   },
+   {
+    "label": "External validation type",
+    "text": "Robotics competitions (FTC/VEX, etc. — if your school has no team, founding one is itself a leadership story), F=ma and physics olympiads, Science Olympiad"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Unclear role in a team competition (\"team member 1\"). You need to be able to say what part you owned"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Check your math track (same as CS — reaching Calc is a must)",
+     "Build physics fundamentals"
+    ],
+    "activity": [
+     "Intro to making — Arduino, 3D printing, assembly projects; get in the habit of keeping a build log"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in the 11th-grade AP Physics (C or 1, matching your direction) + Calc lineup",
+     "If ChemE, prioritize Chemistry"
+    ],
+    "activity": [
+     "Join a robotics team — if there isn't one, prepare to found it (founding is the bigger story)",
+     "Take part in Science Olympiad-type events"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Calc BC + AP Physics C (or Chem) at the same time — the heaviest year for this major"
+    ],
+    "activity": [
+     "Secure a clearly defined part on the team (design/coding/drive, etc.)",
+     "Sit competitions like F=ma",
+     "Finish 1 personal build"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Maintain physics and math rigor"
+    ],
+    "activity": [
+     "Organize a portfolio of your builds (photos, build log, results)",
+     "Reflect competition results in your application"
+    ]
+   }
+  }
+ },
+ "business": {
+  "title": "Business / Economics",
+  "ap": [
+   "AP Micro + Macro Economics — the set directly tied to the major, and relatively easy to self-study",
+   "AP Calculus AB or higher — top colleges see economics as close to a math major. BC is even better",
+   "AP Statistics",
+   "AP English Language — the major leans heavily on case analysis and essays"
+  ],
+  "strong": "Math (especially for the economics direction), English writing",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Hands-on operating experience — even something small with real money, customers, and results (running a school store, selling merch, handling social media marketing for a local shop)"
+   },
+   {
+    "label": "External validation type",
+    "text": "DECA/FBLA (found a chapter if your school has none), Wharton Global High School Investment Competition (free, online, team-based), economics divisions of essay contests"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Titles with no execution, like \"member of the entrepreneurship club.\" An activity with real numbers — even 10,000 won in revenue — wins"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Keep up your math track (view econ as a math major)",
+     "Build an English writing foundation"
+    ],
+    "activity": [
+     "Small hands-on experience — school sales, joining a fundraiser to get a feel for it"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Take AP Econ (Micro/Macro) or plan to self-study",
+     "Lock in 11th-grade Calc registration"
+    ],
+    "activity": [
+     "Check for a DECA/FBLA chapter — if none, push to found one",
+     "Plan a hands-on project (one with real money and customers)"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Calc AB/BC + Statistics",
+     "English Language"
+    ],
+    "activity": [
+     "Enter a team competition like the Wharton investment competition",
+     "Produce numbers for the project you're running (revenue, users, growth rate)"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Maintain math rigor"
+    ],
+    "activity": [
+     "Quantify project results for your application (\"X won in revenue, Y customers\")",
+     "Name a successor to prove continuity"
+    ]
+   }
+  }
+ },
+ "math_data": {
+  "title": "Math / Statistics / Data Science",
+  "ap": [
+   "AP Calculus BC — stopping at AB in this major is close to a negative signal",
+   "AP Statistics",
+   "AP CS A — near-essential for the data direction",
+   "If your school offers post-Calc courses (multivariable, etc.), top priority; if not, keep a record of online coursework"
+  ],
+  "strong": "Staying on the top math track is everything. If you've exhausted your school's math courses, continuing on your own from there is the spike",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Math/data projects — real-data analysis reports, simulations, math tutoring and educational content"
+   },
+   {
+    "label": "External validation type",
+    "text": "The AMC → AIME line (open to international students; secure a testing site in advance), Kaggle-type data competitions, submitting to student journals"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Giving up on this major because your AMC score isn't there — competitions are just one path of many; the project/research path is equally valid"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Stay on the top math track — in this major, the track itself is the credential"
+    ],
+    "activity": [
+     "First AMC 8/10 attempt (to gauge your level)",
+     "Start math club activities"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in 11th-grade Calc BC registration",
+     "Consider AP Statistics alongside"
+    ],
+    "activity": [
+     "Retake AMC 10/12 — go for the AIME cutoff",
+     "First data project (1 real-data analysis)"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Calc BC + Statistics + CS A combination",
+     "If you've exhausted school math, take further courses online"
+    ],
+    "activity": [
+     "Attempt AIME, or Kaggle/data competitions",
+     "Cover the leadership axis with math tutoring/educational content"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Continue post-Calc courses (multivariable, linear algebra, etc.)"
+    ],
+    "activity": [
+     "Organize project and competition results",
+     "If you have research, wrap up a student journal submission"
+    ]
+   }
+  }
+ },
+ "natural_sci": {
+  "title": "Natural Sciences (Physics, Chemistry, Biology)",
+  "ap": [
+   "The science AP for your direction (Physics C / Chemistry / Biology) — the 1 for your own direction is a must",
+   "1 more adjacent science AP (e.g., chemistry if you're a biology major)",
+   "AP Calculus (BC recommended for physics/chemistry; AB + Statistics is also valid for biology)"
+  ],
+  "strong": "That science + math. Physics and chemistry depend on math far more than biology does",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Research experience — it doesn't have to be a fancy lab. Self-designed experiments, data collection projects, and literature reviews are all valid starting points"
+   },
+   {
+    "label": "External validation type",
+    "text": "The science fair line (school → regional → international), Science Olympiad, submitting to high school journals (JEI, etc.) — submission costs almost nothing and leaves a deliverable, the best value path"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Listing \"completed a research program\" itself as an achievement. Without what you discovered/built, completion isn't a credential"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Work diligently on the 3 core sciences — you don't need to pick a direction yet",
+     "Check your math track"
+    ],
+    "activity": [
+     "Explore areas of interest — science club, in-school lab activities, find your direction through documentaries and books"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Settle your major direction, then register for that AP science in 11th grade",
+     "Lock in your Calc path"
+    ],
+    "activity": [
+     "Start a self-designed experiment/data collection project",
+     "Take part in Science Olympiad and the school science fair"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP science for your direction + Calc — BC for physics/chem; AB + Stat combination possible for biology"
+    ],
+    "activity": [
+     "Deepen research → enter a regional science fair or submit to a student journal (JEI, etc.)",
+     "Consider adding an adjacent science AP"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Adjacent science AP, or maintain rigor"
+    ],
+    "activity": [
+     "Wrap up research deliverables (reflect publication/entry results in your application)",
+     "Hand down your lab know-how to younger students"
+    ]
+   }
+  }
+ },
+ "premed": {
+  "title": "Health / Pre-med Track",
+  "ap": [
+   "AP Biology",
+   "AP Chemistry — the dual must-have axis for pre-med",
+   "AP Psychology — relevant to health fields + light load",
+   "AP Statistics — foundation for medical research"
+  ],
+  "strong": "Biology, chemistry, and GPA itself (the pre-med track is a fight over college grades, so AOs look at grade consistency too)",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Sustained activity caring for people — hospital clinical volunteering is hard for high schoolers to access in Korea, so regular volunteering at nursing homes or disability welfare centers, organizing blood drives, and creating health education content are realistic alternatives"
+   },
+   {
+    "label": "External validation type",
+    "text": "HOSA (you can found a school chapter), the biology olympiad line, health-topic research and journal submissions"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Using a one-off medical mission trip as your spike. AOs rate 2 years of weekend volunteering above 2 weeks of overseas service"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Solid biology and chemistry fundamentals",
+     "GPA habits — on this track, grade consistency is life"
+    ],
+    "activity": [
+     "Secure a regular volunteering site (a sustainable one like a nursing home or welfare center) — design a 2-year routine, not a 2-week event"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in 11th-grade AP Bio or Chem registration"
+    ],
+    "activity": [
+     "Keep volunteering + grow your role (participant → organizer)",
+     "Check for a HOSA chapter / consider founding one"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Whichever of AP Bio + Chem you haven't taken + reinforce with Psychology/Statistics"
+    ],
+    "activity": [
+     "Health-topic research or organize a campaign (blood drive, health education content)",
+     "Organize your cumulative volunteer hour records"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Maintain science rigor + defend GPA"
+    ],
+    "activity": [
+     "Shape your volunteering narrative — not the hour count but \"why did you keep going\" as essay material",
+     "Hand off your ongoing activity"
+    ]
+   }
+  }
+ },
+ "social_sci": {
+  "title": "Social Sciences (Politics, Psychology, International Relations)",
+  "ap": [
+   "AP Psychology (psychology direction) / AP US Gov or Comparative Gov (politics/international direction)",
+   "AP World History or AP European History",
+   "AP Statistics — a choice that shows you see social science as a data discipline",
+   "AP English Language"
+  ],
+  "strong": "History and social studies, English reading and writing",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Evidence of digging into a question — survey-based original research, running a current-affairs blog/newsletter long-term, community campaigns"
+   },
+   {
+    "label": "External validation type",
+    "text": "MUN (chairing or founding is a different tier from just participating), debate tournaments, essay competitions (John Locke, etc.), student journalism"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Listing how many MUNs you attended. Growth in role (delegate → chair → organizer) is the narrative, not the count"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Foundation in history and social studies + build up English reading volume"
+    ],
+    "activity": [
+     "First MUN/debate participation (gauge your level)",
+     "Pick an issue you care about"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in 11th-grade AP registration for your direction (Psych/Gov/History)",
+     "Consider Statistics"
+    ],
+    "activity": [
+     "Start growing your role in MUN/debate",
+     "Launch content on your issue (blog, newsletter)"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP for your direction + AP Statistics (signals social science = data discipline) + English Lang"
+    ],
+    "activity": [
+     "Go for chair/organizing roles, or run your own survey study",
+     "Enter essay competitions (John Locke, etc.)"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Maintain rigor"
+    ],
+    "activity": [
+     "Organize research and campaign results",
+     "Reflect the cumulative record of your long-running content (issue count, subscribers) in your application"
+    ]
+   }
+  }
+ },
+ "humanities": {
+  "title": "Humanities (Literature, History, Philosophy)",
+  "ap": [
+   "AP English Literature + AP English Language — the top two for humanities applicants",
+   "AP World/European History",
+   "A foreign language AP (if your school offers one) — strengthens humanities credibility",
+   "Don't drop math either — top colleges look at math rigor even for humanities applicants (at least AB recommended)"
+  ],
+  "strong": "English, history, and — surprisingly — keeping up math rigor",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "A body of writing — a long-term writing project (fiction, nonfiction, criticism), founding/running a literary magazine or school paper, independent publishing"
+   },
+   {
+    "label": "External validation type",
+    "text": "Scholastic Art & Writing Awards (check in advance whether international students may enter), John Locke essay, The Concord Review (history papers — highest difficulty), literary journal submissions"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "\"I read a lot\" is not an activity. You need proof that what you read turned into what you wrote"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Foundation in English and history + the habit of turning reading into records (reviews, notes)"
+    ],
+    "activity": [
+     "Start with the school paper or literary magazine — if there isn't one, founding it is the best story"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in 11th-grade AP English Lang + History registration",
+     "Keep math on the AB line too"
+    ],
+    "activity": [
+     "Start a long-term writing project (serialized fiction, nonfiction, criticism)",
+     "Enter your first writing competition"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP English Lang + History for your direction (+ foreign language AP if possible)"
+    ],
+    "activity": [
+     "Enter competitions in earnest — Scholastic, John Locke, etc.",
+     "Finish your writing project or become editor-in-chief of the literary magazine"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Wrap up AP English Lit"
+    ],
+    "activity": [
+     "Finish your flagship piece — the source for application supplements and essays",
+     "If history is your direction, consider attempting the Concord Review"
+    ]
+   }
+  }
+ },
+ "arts": {
+  "title": "Art / Design",
+  "ap": [
+   "AP Art & Design (2-D / 3-D / Drawing to match your direction) — it's structured around a portfolio submission, so it's itself a process of building up work",
+   "AP Art History",
+   "1-2 core academic APs — art programs at comprehensive universities look at academics too (less weight if you're applying only to art schools)"
+  ],
+  "strong": "Studio art + defending core GPA when applying to comprehensive universities",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "The portfolio matters more than the activity list — unique to this major. Start building up work from 10th grade, start editing from the summer of 11th. Submitting 15-20 pieces at application time is standard"
+   },
+   {
+    "label": "External validation type",
+    "text": "Scholastic Art & Writing, open competitions, exhibitions (organizing a school exhibition has the double effect of leadership + exposure for your work)"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "A portfolio rushed together hagwon-style right before applications — US art programs look at consistency of perspective more than technical polish"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Set a core GPA defense line (in case you apply to comprehensive universities)",
+     "Keep taking art classes"
+    ],
+    "activity": [
+     "The year to make \"a lot\" of work — style experiments, a sketchbook habit"
+    ]
+   },
+   "10": {
+    "academic": [
+     "AP Art History or 1 core AP"
+    ],
+    "activity": [
+     "Officially start building up portfolio work",
+     "First competition entry, e.g., Scholastic"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Start AP Art & Design (tied to your submission portfolio)"
+    ],
+    "activity": [
+     "Narrow your artistic world — produce a series on a consistent theme",
+     "Organize a school exhibition (double effect: leadership + exposure)"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Complete the AP Art & Design portfolio"
+    ],
+    "activity": [
+     "Edit 15-20 pieces for your application portfolio (from summer)",
+     "Check every target school's portfolio requirements — they differ by school"
+    ]
+   }
+  }
+ },
+ "undecided": {
+  "title": "Undecided",
+  "ap": [],
+  "strong": "Math and English — the two axes that are a foundation whichever major you pick",
+  "guide": [
+   {
+    "label": "A balanced combination across the 4 core subjects that keeps the door open to any major",
+    "text": "AP Calculus (starting with AB) + AP English Language + 1 science + 1 history/social studies"
+   },
+   {
+    "label": "Principle",
+    "text": "The more undecided you are, the more it's about balanced core rigor over going all-in on one field. But \"undecided\" doesn't mean \"slack\" — take the highest difficulty your school offers in each core"
+   },
+   {
+    "label": "Exploration strategy",
+    "text": "In grades 9-10, try 2-3 activities of different kinds (making / people / writing) → narrow to 1-2 by the end of 10th grade. \"Exploring\" isn't a weakness if it's a planned process"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Still spreading wide into 11th grade — miss the moment to narrow and there's no time left to build a spike. The tool's grade rollover is the device that flags this timing"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Balance across the 4 cores + invest first in math and English"
+    ],
+    "activity": [
+     "Try 2-3 activities of different kinds (1 each: making / people / writing)"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Take the highest difficulty your school offers in the cores",
+     "Make 11th-grade APs the \"combination that works for any major\" (Calc + Eng Lang + 1 science + 1 history)"
+    ],
+    "activity": [
+     "The narrowing year — compress to 1-2 by the end of 10th grade (the tool prompts you to reset your major at this point)"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Reorganize APs around your compressed direction — from here on, follow that major's table"
+    ],
+    "activity": [
+     "Go deeper in the activities you kept — this is where you build the spike (apply that major's 11th-grade track)"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Apply that major's table"
+    ],
+    "activity": [
+     "Apply that major's table",
+     "The \"exploration → choice process\" itself can be a narrative in your essays"
+    ]
+   }
+  }
+ },
+ "architecture": {
+  "title": "Architecture",
+  "ap": [
+   "AP Calculus (AB or BC) — many B.Arch and architectural engineering programs require math, and it prepares you for structures courses",
+   "AP Physics 1 (or C) — foundation for structures and mechanics",
+   "AP Studio Art: Drawing or 2-D — directly tied to portfolio building",
+   "AP Art History — the language of architectural history and criticism"
+  ],
+  "strong": "Both math and art — B.Arch (5-year) requires a portfolio; architectural engineering within an engineering school weighs math and physics heavily",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Portfolio — observational drawings, models, spatial sketches. Many schools ask for work that shows hand drawing and your thought process rather than software renderings (check each school's portfolio requirements)"
+   },
+   {
+    "label": "External validation type",
+    "text": "Official university summer architecture programs (e.g., Cornell Summer College Architecture, Carnegie Mellon Pre-College Architecture — check each university's official page) / the Architecture & Industrial Design category of the Scholastic Art & Writing Awards"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Collecting nothing but rendering images; checking portfolio requirements (page count, format, deadline) for the first time in the fall of 12th grade"
+   },
+   {
+    "label": "direct-admit Warning",
+    "text": "Most B.Arch programs admit directly at the department level + portfolio review (some interview) — deadlines and requirements differ from the general application. First confirm whether your target school is B.Arch (5-year) or BS/BA in Architecture (4-year, portfolio optional)"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "fall"
+    ],
+    "activity": [
+     "spike | T | Start a sketchbook — observational drawings of nearby buildings and spaces | An architecture portfolio starts with \"can you see?\" — hand drawing is the first material"
+    ]
+   },
+   "10": {
+    "academic": [
+     "summer"
+    ],
+    "activity": [
+     "validation | T | Research university summer architecture programs and prepare applications | Official university programs like Cornell and CMU — attending the summer of 11th grade is typical; applications are in spring"
+    ]
+   },
+   "11": {
+    "academic": [
+     "summer"
+    ],
+    "activity": [
+     "spike | T | Complete 5 core portfolio pieces | Summer is the only long stretch of production time"
+    ]
+   },
+   "12": {
+    "academic": [
+     "fall"
+    ],
+    "activity": [
+     "story | F | Edit the portfolio per school + check separate deadlines | Some schools have a portfolio deadline that differs from the application deadline"
+    ]
+   }
+  }
+ },
+ "nursing": {
+  "title": "Nursing",
+  "ap": [
+   "AP Biology — many direct-entry nursing (BSN) programs require high school biology",
+   "AP Chemistry — likewise, a chemistry requirement is common",
+   "AP Statistics — preparation for nursing statistics courses",
+   "AP Psychology — a prerequisite at some programs"
+  ],
+  "strong": "Biology and chemistry — many direct-entry BSN programs explicitly require high school biology, chemistry, and math (check each school)",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Sustained volunteering with patient contact — hospitals, nursing homes, community health. At an international school, health clubs and Red Cross activities can substitute. Continuity over hour count"
+   },
+   {
+    "label": "External validation type",
+    "text": "HOSA–Future Health Professionals competitions (international chapters operate) / CPR and first-aid certification / official university nursing summer programs"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Confusing this with pre-med prep — nursing centers on direct entry to a 4-year BSN, so you need to commit to the major at application time. Just piling up volunteer hour numbers"
+   },
+   {
+    "label": "direct-admit Warning",
+    "text": "Many BSN programs are direct-entry (selected at admission) with small cohorts, so acceptance is far lower than the school's overall rate, and entering after enrollment is also hard. Confirm whether your target school is direct-entry BSN or 2+2 (apply after enrollment)"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "fall"
+    ],
+    "activity": [
+     "spike | T | First experience with a health club or volunteering | In nursing, the spike is a \"record of caring for people\" — the earlier you start, the more continuity you build"
+    ]
+   },
+   "10": {
+    "academic": [
+     "spring"
+    ],
+    "activity": [
+     "rigor | F | Lock in 11th-grade AP Biology and Chemistry registration | The two core courses for direct-entry BSN requirements"
+    ]
+   },
+   "11": {
+    "academic": [
+     "summer"
+    ],
+    "activity": [
+     "leadership | T | Grow your volunteering role — participant → planning/teaching | Same principle as pre-med: 2 years of weekend volunteering > a 2-week event"
+    ]
+   },
+   "12": {
+    "academic": [
+     "fall"
+    ],
+    "activity": [
+     "story | F | Prepare cumulative volunteering records and a science teacher recommendation | Both numbers and narrative — \"why nursing\" from your records"
+    ]
+   }
+  }
+ },
+ "media": {
+  "title": "Communication / Media (Communication, Media, Journalism)",
+  "ap": [
+   "AP English Language and Composition — the basics of argument and writing",
+   "AP English Literature — text analysis",
+   "AP U.S. Government or Comparative Government — current-affairs and political context",
+   "AP Psychology — foundation for communication theory (if offered)"
+  ],
+  "strong": "English (writing) — your portfolio and essays are the evidence",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Consistent publishing — regularly running a school newspaper, magazine, podcast, or video channel; reporting and editing roles. \"Regularity\" separates the tiers"
+   },
+   {
+    "label": "External validation type",
+    "text": "Scholastic Art & Writing Awards (journalism/essay categories) / student press competitions (NSPA, CSPA, etc., if you're on a school publication) / official university summer journalism programs (e.g., Northwestern Medill Cherubs — check each university's official page)"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Chasing only view and follower counts; deliverables with no record of the reporting and editing process"
+   },
+   {
+    "label": "direct-admit Warning",
+    "text": "At some schools the journalism/communication school admits separately — check how your target school's program is housed and how you apply"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "fall"
+    ],
+    "activity": [
+     "spike | T | Start participating in school media (newspaper, broadcast, magazine) | The media major's spike is a \"record of publishing regularly\""
+    ]
+   },
+   "10": {
+    "academic": [
+     "spring"
+    ],
+    "activity": [
+     "validation | T | First Scholastic Art & Writing entry (journalism/essay) | Open to international students; deadlines every fall-winter"
+    ]
+   },
+   "11": {
+    "academic": [
+     "summer"
+    ],
+    "activity": [
+     "spike | T | Personal media project, or organize 5 flagship pieces | Deliverables you can show via a link bring the activities section to life"
+    ]
+   },
+   "12": {
+    "academic": [
+     "fall"
+    ],
+    "activity": [
+     "story | F | Edit 3-5 flagship pieces + prepare links for the application | In a form that can go straight into the application's Additional Info and portfolio links"
+    ]
+   }
+  }
+ }
+}

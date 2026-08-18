@@ -1,3 +1,4 @@
+import { localizeRows } from '../i18n'
 import type { School } from './types'
 import { supabase } from './supabase'
 
@@ -17,7 +18,7 @@ export function loadSchools(): Promise<School[]> {
       cache = null // 실패 시 다음 호출에서 재시도
       return loadSeed()
     }
-    return data as School[]
+    return localizeRows(data as School[])
   })()
   cache = p
   return p
