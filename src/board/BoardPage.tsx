@@ -359,7 +359,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
             )}
             {/* 학생 입력 마감일 — 툴은 날짜를 제공하지 않음 */}
             <div className="mt-3 border-t border-gray-100 pt-3">
-              <label className="text-xs font-medium text-gray-500">{t('공식 페이지에서 확인한 마감일 (직접 입력)', 'Deadline confirmed on the official page (enter yourself)')}</label>
+              <label className="text-xs font-medium text-gray-500">{t('공식 페이지에서 확인한 마감일 (직접 입력) — 이틀 전 이메일 알림', 'Deadline confirmed on the official page (enter yourself) — email reminder 2 days before')}</label>
               <div className="mt-1 flex items-center gap-2">
                 <input
                   type="date"

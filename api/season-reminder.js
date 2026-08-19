@@ -34,6 +34,84 @@ async function loadEmailMap(sb) {
   return map
 }
 
+// 마감 D-2 리마인더 — 학생이 지원 학교 탭에 직접 입력한 마감일 기준 (공식 마감일 데이터가 아님).
+// 중복 방지: reminder_log.season_label = 'deadline:<school_id>:<date>'
+async function sendDeadlineReminders(sb, transporter, gmailUser) {
+  const kst = new Date(Date.now() + 9 * 3600 * 1000)
+  const target = new Date(Date.UTC(kst.getUTCFullYear(), kst.getUTCMonth(), kst.getUTCDate() + 2))
+  const targetStr = target.toISOString().slice(0, 10)
+  const { data: apps, error } = await sb
+    .from('applications')
+    .select('user_id, school_id, round, status, student_deadline')
+    .eq('student_deadline', targetStr)
+    .in('status', ['preparing'])
+  if (error) return { error: error.message }
+  if (!apps || apps.length === 0) return { date: targetStr, sent: 0 }
+
+  const userIds = [...new Set(apps.map((a) => a.user_id))]
+  const { data: profiles } = await sb.from('profiles').select('user_id, nickname, reminder_opt_out, graduated, lang').in('user_id', userIds)
+  const profById = new Map((profiles ?? []).map((p) => [p.user_id, p]))
+  const schoolIds = [...new Set(apps.map((a) => a.school_id))]
+  const { data: schools } = await sb.from('schools').select('id, name').in('id', schoolIds)
+  const schoolName = new Map((schools ?? []).map((s) => [s.id, s.name]))
+  const { data: logs, error: logErr } = await sb.from('reminder_log').select('user_id, season_label').like('season_label', 'deadline:%')
+  if (logErr) return { error: `reminder_log: ${logErr.message}` }
+  const done = new Set((logs ?? []).map((l) => `${l.user_id}|${l.season_label}`))
+  const emailById = await loadEmailMap(sb)
+  const roundLabel = { ed: 'ED', ed2: 'ED II', ea: 'EA', rea: 'REA', rd: 'RD' }
+
+  // 사용자별로 묶어서 1통
+  const byUser = new Map()
+  for (const a of apps) {
+    const p = profById.get(a.user_id)
+    if (!p || p.reminder_opt_out || p.graduated) continue
+    const key = `deadline:${a.school_id}:${a.student_deadline}`
+    if (done.has(`${a.user_id}|${key}`)) continue
+    if (!byUser.has(a.user_id)) byUser.set(a.user_id, [])
+    byUser.get(a.user_id).push({ ...a, key })
+  }
+  let sent = 0
+  const failures = []
+  for (const [uid, list] of byUser) {
+    const to = emailById.get(uid)
+    const p = profById.get(uid)
+    if (!to) continue
+    const en = p.lang === 'en'
+    const lines = list.map((a) => `• ${schoolName.get(a.school_id) ?? 'School'}${a.round ? ` (${roundLabel[a.round] ?? a.round})` : ''} — ${a.student_deadline}`)
+    const name = en ? (p.nickname ? `Hi ${p.nickname}` : 'Hi') : (p.nickname ? `${p.nickname}님` : '안녕하세요')
+    const text = (en
+      ? [
+          `${name}, a deadline you entered is in 2 days:`,
+          '', ...lines, '',
+          'Double-check the official date on the school’s admissions page — this reminder is based on the date you entered.',
+          `Open your college list: ${SITE}/app/colleges`,
+          '', '— US College Roadmap',
+        ]
+      : [
+          `${name}, 입력해 둔 지원 마감이 이틀 남았어요:`,
+          '', ...lines, '',
+          '이 알림은 내가 입력한 날짜 기준이에요 — 학교 공식 입학처 페이지에서 정확한 마감을 한 번 더 확인하세요.',
+          `지원 학교 탭 열기: ${SITE}/app/colleges`,
+          '', '— 미국 대입 로드맵',
+        ]).join('\n')
+    try {
+      await transporter.sendMail({
+        from: `"${en ? 'US College Roadmap' : '미국 대입 로드맵'}" <${gmailUser}>`,
+        to,
+        subject: en ? `[US College Roadmap] D-2: ${list.length} application deadline${list.length > 1 ? 's' : ''}` : `[미국 대입 로드맵] D-2 지원 마감 ${list.length}건`,
+        text,
+      })
+      sent++
+      const rows = list.map((a) => ({ user_id: uid, season_label: a.key }))
+      const { error: insErr } = await sb.from('reminder_log').insert(rows)
+      if (insErr) failures.push({ user: uid, error: `log: ${insErr.message}`.slice(0, 120) })
+    } catch (e) {
+      failures.push({ user: uid, error: String(e).slice(0, 120) })
+    }
+  }
+  return { date: targetStr, sent, failures }
+}
+
 export default async function handler(req, res) {
   const url = process.env.VITE_SUPABASE_URL
   const service = process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -60,13 +138,23 @@ export default async function handler(req, res) {
     return
   }
   const { label, season, withinStart } = seasonInfo(new Date())
-  if (!withinStart && !force) {
-    res.status(200).json({ ok: true, skipped: 'not season start', season: label })
-    return
-  }
+  const doSeason = withinStart || force
 
   try {
     const sb = createClient(url, service, { auth: { persistSession: false } })
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com', port: 465, secure: true,
+      auth: { user: gmailUser, pass: gmailPass },
+    })
+
+    // ── (A) 지원 마감 D-2 리마인더: 학생이 직접 입력한 마감일(applications.student_deadline) 이틀 전, 미제출 건만 ──
+    const deadlineResult = await sendDeadlineReminders(sb, transporter, gmailUser)
+
+    if (!doSeason) {
+      res.status(200).json({ ok: true, skipped: 'not season start', season: label, deadlines: deadlineResult })
+      return
+    }
+
     const { data: profiles, error } = await sb
       .from('profiles')
       .select('user_id, nickname, grad_year, reminder_opt_out, lang')
@@ -85,17 +173,12 @@ export default async function handler(req, res) {
     const already = new Set((sent ?? []).map((r) => r.user_id))
     const targets = (profiles ?? []).filter((p) => !already.has(p.user_id))
     if (targets.length === 0) {
-      res.status(200).json({ ok: true, sent: 0, season: label })
+      res.status(200).json({ ok: true, sent: 0, season: label, deadlines: deadlineResult })
       return
     }
 
     // 이메일 주소는 auth.users에서 (서비스 롤)
     const emailById = await loadEmailMap(sb)
-
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com', port: 465, secure: true,
-      auth: { user: gmailUser, pass: gmailPass },
-    })
 
     let count = 0
     const failures = []
@@ -139,7 +222,7 @@ export default async function handler(req, res) {
         failures.push({ user: p.user_id, error: String(e).slice(0, 120) })
       }
     }
-    res.status(200).json({ ok: true, sent: count, failures, season: label })
+    res.status(200).json({ ok: true, sent: count, failures, season: label, deadlines: deadlineResult })
   } catch (e) {
     res.status(500).json({ ok: false, error: String(e).slice(0, 300) })
   }

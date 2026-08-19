@@ -628,8 +628,8 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       <div className="no-print mt-6 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <p className="text-sm font-semibold text-gray-900">{t('🔔 시즌 시작 알림 이메일', '🔔 Season-start reminder email')}</p>
-            <p className="text-xs text-gray-400">{t('8월·1월·6월 시즌이 열리면 체크인하라고 한 통 보내드려요', 'One email when the Aug/Jan/Jun season opens, reminding you to check in')}</p>
+            <p className="text-sm font-semibold text-gray-900">{t('🔔 알림 이메일 (시즌 시작 · 마감 D-2)', '🔔 Reminder emails (season start · deadline D-2)')}</p>
+            <p className="text-xs text-gray-400">{t('8월·1월·6월 시즌이 열릴 때 한 통, 그리고 지원 학교 탭에 입력한 마감일 이틀 전에 한 통', 'One email when the Aug/Jan/Jun season opens, and one two days before each deadline you enter in your college list')}</p>
           </div>
           <button
             role="switch"
