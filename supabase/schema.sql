@@ -324,3 +324,6 @@ alter table basics add column if not exists title_en text, add column if not exi
 alter table quiz_items add column if not exists question_en text, add column if not exists explanation_2lines_en text;
 alter table clarity_items add column if not exists question_en text;
 alter table schools add column if not exists intro_en text, add column if not exists what_they_value_en text, add column if not exists location_note_en text, add column if not exists gpa_note_en text;
+
+-- 리포트는 사용자·시즌당 1행 (중복 insert 방지)
+create unique index if not exists reports_user_season_uidx on reports (user_id, season_label);

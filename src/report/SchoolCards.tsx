@@ -11,12 +11,12 @@ interface SchoolCardsProps {
 
 // 목표 학교 카드 (모바일 우선이라 테이블 대신 카드 목록)
 export default function SchoolCards({ schools, satBand, majorPrimary }: SchoolCardsProps) {
-  const mySat = satBand ? satBandMid[satBand] : null
+  const mySat = satBand ? (satBandMid[satBand] ?? null) : null
 
   return (
     <div className="flex flex-col gap-3">
       {schools.map((s) => {
-        const hasRange = s.sat_mid50_low !== null && s.sat_mid50_high !== null
+        const hasRange = s.sat_mid50_low !== null && s.sat_mid50_high !== null && s.sat_mid50_high > s.sat_mid50_low
         const markerPct =
           mySat !== null && hasRange
             ? Math.max(0, Math.min(1, (mySat - s.sat_mid50_low!) / (s.sat_mid50_high! - s.sat_mid50_low!)))

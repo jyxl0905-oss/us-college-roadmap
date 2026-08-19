@@ -12,7 +12,11 @@ export function readCompareIds(): number[] {
 }
 
 export function writeCompareIds(ids: number[]): void {
-  sessionStorage.setItem(KEY, JSON.stringify(ids.slice(0, COMPARE_MAX)))
+  try {
+    sessionStorage.setItem(KEY, JSON.stringify(ids.slice(0, COMPARE_MAX)))
+  } catch {
+    // 스토리지 차단(프라이빗 모드 등) — 화면 상태만으로 동작
+  }
 }
 
 export function toggleCompareId(ids: number[], id: number): number[] {

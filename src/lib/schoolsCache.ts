@@ -6,10 +6,11 @@ import { supabase } from './supabase'
 const loadSeed = () => import('../data/schools.seed.json').then((m) => m.default as School[])
 
 // 63개교 전체 목록 — 둘러보기·상세·비교가 페이지 이동마다 다시 받지 않도록 세션 내 1회만 조회
+// 캐시에는 원본(한국어+_en 컬럼) 행을 두고, 반환 시점의 언어로 현지화 — 언어 토글 후에도 옛 언어가 남지 않음
 let cache: Promise<School[]> | null = null
 
 export function loadSchools(): Promise<School[]> {
-  if (cache) return cache
+  if (cache) return cache.then(localizeRows)
   const client = supabase
   const p: Promise<School[]> = (async () => {
     if (!client) return loadSeed()
@@ -18,8 +19,8 @@ export function loadSchools(): Promise<School[]> {
       cache = null // 실패 시 다음 호출에서 재시도
       return loadSeed()
     }
-    return localizeRows(data as School[])
+    return data as School[]
   })()
   cache = p
-  return p
+  return p.then(localizeRows)
 }

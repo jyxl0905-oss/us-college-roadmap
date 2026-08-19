@@ -10,9 +10,16 @@ interface RolloverGateProps {
   children: React.ReactNode
 }
 
+const seenKey = (userId: string) => `seen_grade_${userId}`
+
+// 사용자가 직접 졸업연도를 바꾼 직후(온보딩 답변으로 프로필 업데이트 등)에는 '새 학년' 팝업이 뜨지 않도록 기준 학년을 갱신
+export function markSeenGrade(userId: string, gradYear: number | null): void {
+  if (gradYear) localStorage.setItem(seenKey(userId), String(gradeFromGradYear(gradYear)))
+}
+
 // 매년 8월 1일 학년 롤오버 — 마지막으로 본 학년과 달라지면 확인 팝업을 먼저 보여줌
 export default function RolloverGate({ userId, profile, onUpdateGradYear, children }: RolloverGateProps) {
-  const key = `seen_grade_${userId}`
+  const key = seenKey(userId)
   const rawGrade = profile.grad_year ? gradeFromGradYear(profile.grad_year) : null
   const [seenGrade] = useState(() => Number(localStorage.getItem(key) ?? '0'))
   const [acked, setAcked] = useState(false)

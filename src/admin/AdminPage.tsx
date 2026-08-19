@@ -4,6 +4,7 @@ import { navigate } from '../lib/router'
 import { majorLabel } from '../data/majors'
 import { gpaBandLabels, mathCourseLabels, satStatusLabels, toeflStatusLabels, tierLabels } from '../onboarding/labels'
 import { axisKo, axisOrder, type Axis } from '../lib/score'
+import { gradeFromGradYear } from '../lib/academics'
 
 // 운영자 통계 대시보드 — DB 함수 admin_stats()(SECURITY DEFINER, 이메일 화이트리스트)가 집계만 반환.
 // 개인 식별 정보(이메일·닉네임·개별 기록)는 조회하지 않음.
@@ -138,18 +139,49 @@ const infoKo: Record<string, string> = { youtube: '유튜브', blog_cafe: '블�
 const eventKo: Record<string, string> = { signup: '가입', login: '로그인', check: '체크', report_view: '리포트 열람', board_view: '지원 보드 열람', round_assigned: '라운드 배정' }
 const appKo: Record<string, string> = { activities: '활동', honors: '수상', test_scores: '시험 점수', courses: '과목', essays: '에세이', plans: '계획', applications: '지원 학교', custom_tasks: '커스텀 항목' }
 const roundKo: Record<string, string> = { ed: 'ED', ed2: 'ED II', ea: 'EA', rea: 'REA', rd: 'RD', unassigned: '미배정' }
-const gradeOf = (gy: string) => { const g = 12 - (Number(gy) - 2026) - (new Date().getMonth() >= 7 ? 0 : 1); return Number.isFinite(g) ? `Class of ${gy} (${Math.min(12, Math.max(9, g))}학년)` : gy }
+// 학년 계산은 앱 공통 규칙(8월 1일 롤오버, academics.ts)과 동일하게
+const gradeOf = (gy: string) => { const g = gradeFromGradYear(Number(gy)); return Number.isFinite(g) ? `Class of ${gy} (${Math.min(12, Math.max(9, g))}학년)` : gy }
+
+// SQL 집계가 빈 결과에서 null(json_agg 등)을 돌려줘도 화면이 깨지지 않도록 기본값 채움
+function normalize(raw: Stats): Stats {
+  const r = raw as Partial<Stats>
+  const dist = (d: Dist | null | undefined): Dist => d ?? {}
+  return {
+    ...raw,
+    totals: { ...(r.totals ?? ({} as Stats['totals'])) },
+    signups_by_week: r.signups_by_week ?? [],
+    events_by_day: r.events_by_day ?? [],
+    events_by_type_30d: dist(r.events_by_type_30d),
+    grad_year: dist(r.grad_year), major: dist(r.major), applicant_status: dist(r.applicant_status),
+    has_counselor: dist(r.has_counselor), school_accredited: dist(r.school_accredited),
+    target_mode: dist(r.target_mode), target_tier: dist(r.target_tier), gpa_band: dist(r.gpa_band),
+    sat_status: dist(r.sat_status), sat_band: dist(r.sat_band), toefl_status: dist(r.toefl_status), math_course: dist(r.math_course),
+    info_sources: dist(r.info_sources),
+    top_schools: r.top_schools ?? [],
+    activity_self: { spike: dist(r.activity_self?.spike), leadership: dist(r.activity_self?.leadership), validation: dist(r.activity_self?.validation) },
+    quiz: { respondents: r.quiz?.respondents ?? 0, avg_correct: r.quiz?.avg_correct ?? null, per_item: r.quiz?.per_item ?? [] },
+    clarity: r.clarity ?? [],
+    checklist_progress: { avg_done_rate: r.checklist_progress?.avg_done_rate ?? null, by_season: r.checklist_progress?.by_season ?? [] },
+    axis_avg: r.axis_avg ?? {},
+    most_checked: r.most_checked ?? [],
+    least_checked: r.least_checked ?? [],
+    app_usage: r.app_usage ?? {},
+    rounds: dist(r.rounds),
+    reminders_sent: r.reminders_sent ?? 0,
+  }
+}
 
 export default function AdminPage({ email, demo }: { email: string | null; demo?: Stats }) {
-  const [stats, setStats] = useState<Stats | null>(demo ?? null)
+  const [stats, setStats] = useState<Stats | null>(demo ? normalize(demo) : null)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     if (!supabase || demo) return
     supabase.rpc('admin_stats').then(({ data, error }) => {
       if (error) setError(error.message.includes('forbidden') || error.code === '42501' ? '권한이 없어요 (운영자 계정으로 로그인해야 해요)' : error.message)
-      else setStats(data as Stats)
-    })
+      else if (!data) setError('통계 데이터가 비어 있어요')
+      else setStats(normalize(data as Stats))
+    }, (e: unknown) => setError(e instanceof Error ? e.message : String(e)))
   }, [demo])
 
   if (error) return (

@@ -41,7 +41,7 @@ const levelPts: Record<HonorLevel, number> = { school: 30, regional: 60, nationa
 export function validationFromRecords(honors: Honor[]): number | null {
   const leveled = honors.filter((h) => h.level)
   if (leveled.length === 0) return null
-  const best = Math.max(...leveled.map((h) => levelPts[h.level as HonorLevel]))
+  const best = Math.max(...leveled.map((h) => levelPts[h.level as HonorLevel] ?? 0))
   return cap(best + (leveled.length >= 2 ? 10 : 0))
 }
 

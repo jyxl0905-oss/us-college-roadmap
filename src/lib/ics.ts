@@ -16,24 +16,30 @@ export function nextCheckinDate(now: Date = new Date()): string {
 }
 
 function fmt(date: string): string {
-  return date.replace(/-/g, '')
+  return date.slice(0, 10).replace(/-/g, '')
 }
 function nextDay(date: string): string {
-  const d = new Date(date + 'T00:00:00Z')
+  const d = new Date(date.slice(0, 10) + 'T00:00:00Z')
   d.setUTCDate(d.getUTCDate() + 1)
   return d.toISOString().slice(0, 10)
 }
 function esc(s: string): string {
-  return s.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n')
+  return s.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n')
+}
+// 같은 이벤트를 다시 내려받아도 캘린더에 중복 생성되지 않도록 날짜+제목 기반의 안정적 UID
+function stableId(s: string): string {
+  let h = 0
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0
+  return h.toString(36)
 }
 
 export function buildIcs(events: IcsEvent[]): string {
   const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}Z$/, 'Z')
   const lines = [
     'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//us-college-roadmap//KR', 'CALSCALE:GREGORIAN',
-    ...events.flatMap((e, i) => [
+    ...events.flatMap((e) => [
       'BEGIN:VEVENT',
-      `UID:${stamp}-${i}@us-college-roadmap`,
+      `UID:${fmt(e.date)}-${stableId(e.title)}@us-college-roadmap`,
       `DTSTAMP:${stamp}`,
       `DTSTART;VALUE=DATE:${fmt(e.date)}`,
       `DTEND;VALUE=DATE:${fmt(nextDay(e.date))}`,

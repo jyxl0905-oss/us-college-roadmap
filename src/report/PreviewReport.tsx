@@ -61,7 +61,7 @@ export default function PreviewReport({ answers, onContinue }: PreviewReportProp
     <div className="pb-10">
       <h1 className="text-xl font-bold text-gray-900">{t('리포트가 준비됐어요! 🎯', 'Your report is ready! 🎯')}</h1>
       <p className="mt-1 text-sm text-gray-500">
-        {t(`${grade < 9 ? '예비 9' : grade}학년 · ${seasonLabelKo[currentSeason()]} 시즌 기준`, `Grade ${grade < 9 ? 'rising 9' : grade} · ${currentSeason()} season`)}
+        {t(`${grade < 9 ? '예비 9' : grade}학년 · ${seasonLabelKo[currentSeason()]} 시즌 기준`, `Grade ${grade < 9 ? 'rising 9' : grade} · ${seasonLabelKo[currentSeason()]} season`)}
       </p>
 
       <div className="mt-5">

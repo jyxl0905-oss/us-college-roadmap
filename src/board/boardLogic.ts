@@ -1,7 +1,8 @@
 import type { School } from '../lib/types'
 import type { ProfileRow } from '../lib/profile'
 import { profileGrade } from '../lib/profile'
-import { currentSeason } from '../lib/academics'
+import { currentSeason, timingLabel } from '../lib/academics'
+export { timingLabel }
 import { t, bilingual } from '../i18n'
 
 // F4 지원 보드 — 원칙: 라운드 추천 금지(사실 고지·규칙 검증·정리·추적까지만), 활동 선호 창작 금지
@@ -27,14 +28,19 @@ export const roundSlots: { round: Round; label: string; rule: string }[] = [
   { round: 'rd', label: 'RD', get rule() { return t('정시 · 여러 곳 가능', 'Regular Decision · multiple schools allowed') } },
 ]
 
+// D-day: 학생이 입력한 'YYYY-MM-DD'를 기기 로컬 자정으로 해석 (마감 당일 = D-Day, 지난 날은 음수)
 export function dDay(dateStr: string | null | undefined): number | null {
   if (!dateStr) return null
-  const target = new Date(dateStr + 'T00:00:00')
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(dateStr)
+  if (!m) return null
+  const target = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]))
+  if (Number.isNaN(target.getTime())) return null
   const today = new Date()
   today.setHours(0, 0, 0, 0)
   return Math.round((target.getTime() - today.getTime()) / 86400000)
 }
 
+// 마감 시기 라벨 현지화 — 시드는 한국어('11월 초')만 있음 → 영어 모드에서 'early Nov'로 표시 (정렬은 원문 기준 유지)
 export interface CustomTask {
   id: number
   school_id: number
@@ -81,7 +87,7 @@ export function roundTiming(s: School, round: Round | null): string | null {
 
 // 경고 3종 — 차단이 아닌 표시 (규칙 검증, 추천 아님)
 export interface BoardWarning {
-  key: 'double_ed' | 'rea_conflict' | 'ed_intl_aid'
+  key: 'double_ed' | 'double_rea' | 'rea_conflict' | 'ed_intl_aid'
   text: string
 }
 
@@ -92,7 +98,10 @@ export function boardWarnings(apps: ApplicationRow[], profile: ProfileRow): Boar
   const ed2Count = rounds.filter((r) => r === 'ed2').length
   if (edCount >= 2 || ed2Count >= 2)
     warnings.push({ key: 'double_ed', text: t('ED는 합격 시 등록 의무 — 동시에 1곳만 가능', 'ED is binding if admitted — only one school at a time') })
-  const hasRea = rounds.includes('rea')
+  const reaCount = rounds.filter((r) => r === 'rea').length
+  if (reaCount >= 2)
+    warnings.push({ key: 'double_rea', text: t('REA/SCEA는 1곳만 가능 — 다른 학교의 조기지원 제한 규칙과 충돌', 'REA/SCEA is single-choice — only one school; this conflicts with the other school’s early-application rule') })
+  const hasRea = reaCount > 0
   const otherEarly = rounds.filter((r) => r !== 'rd').length
   if (hasRea && otherEarly >= 2)
     warnings.push({

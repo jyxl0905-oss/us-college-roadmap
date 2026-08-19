@@ -60,9 +60,15 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
       target_tier: null,
       target_school_ids: nextIds,
     }
-    await saveProfile(userId, updated)
-    onProfileChange(updated)
-    setTogglePending(false)
+    try {
+      await saveProfile(userId, updated)
+      onProfileChange(updated)
+    } catch (e) {
+      console.error(e)
+      alert(t('저장에 실패했어요. 네트워크를 확인하고 다시 시도해주세요.', 'Could not save. Check your connection and try again.'))
+    } finally {
+      setTogglePending(false)
+    }
   }
 
   const cta = () => {

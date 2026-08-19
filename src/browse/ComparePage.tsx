@@ -8,6 +8,7 @@ import type { ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
 import SchoolLogo from './SchoolLogo'
 import { t, bilingual } from '../i18n'
+import { timingLabel } from '../lib/academics'
 
 const tierTitles: Record<Tier, string> = bilingual(
   { 1: 'Top 20', 2: '21–40위', 3: '41–60위' },
@@ -57,9 +58,12 @@ export default function ComparePage({ profile }: ComparePageProps) {
     if (s.test_policy === 'test-free') return <span className="text-gray-500">{t('시험 미반영', 'Test-free')}</span>
     if (s.sat_mid50_low === null || s.sat_mid50_high === null)
       return <span className="text-gray-400">{t('미공개', 'Not disclosed')}</span>
+    const span = s.sat_mid50_high - s.sat_mid50_low
     const pct =
       mySat !== null
-        ? Math.max(0, Math.min(1, (mySat - s.sat_mid50_low) / (s.sat_mid50_high - s.sat_mid50_low)))
+        ? span > 0
+          ? Math.max(0, Math.min(1, (mySat - s.sat_mid50_low) / span))
+          : mySat >= s.sat_mid50_high ? 1 : 0
         : null
     return (
       <div>
@@ -120,11 +124,11 @@ export default function ComparePage({ profile }: ComparePageProps) {
       label: t('지원 마감', 'Deadlines'),
       render: (s) => {
         const parts = [
-          s.ed_offered && `ED ${s.ed_timing ?? '?'}`,
-          s.rea_offered && `REA ${s.ea_timing ?? '?'}`,
-          s.ea_offered && `EA ${s.ea_timing ?? '?'}`,
-          s.ed2_offered && `ED II ${s.ed2_timing ?? '?'}`,
-          s.rd_timing && `RD ${s.rd_timing}`,
+          s.ed_offered && `ED ${timingLabel(s.ed_timing) ?? '?'}`,
+          s.rea_offered && `REA ${timingLabel(s.ea_timing) ?? '?'}`,
+          s.ea_offered && `EA ${timingLabel(s.ea_timing) ?? '?'}`,
+          s.ed2_offered && `ED II ${timingLabel(s.ed2_timing) ?? '?'}`,
+          s.rd_timing && `RD ${timingLabel(s.rd_timing)}`,
         ].filter(Boolean)
         return parts.length > 0 ? (
           <span className="block max-w-40 whitespace-normal text-xs leading-relaxed">

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import roadmaps from '../data/major-roadmaps.json'
 import roadmapsEn from '../data/major-roadmaps.en.json'
-import { majorLabel, majorCategories } from '../data/majors'
+import { majorLabel, majorCategories, majorDisplay } from '../data/majors'
 import { profileGrade, type ProfileRow } from '../lib/profile'
 import { navigate } from '../lib/router'
 import { currentSeasonLabel } from '../lib/academics'
@@ -36,6 +36,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
   const [guideOpen, setGuideOpen] = useState(false)
   const [plans, setPlans] = useState<Plan[]>([])
   const [added, setAdded] = useState<string | null>(null)
+  const [adding, setAdding] = useState<string | null>(null) // 연타로 같은 항목이 두 번 담기지 않도록
 
   useEffect(() => {
     if (userId) loadPlans(userId).then(setPlans)
@@ -56,14 +57,20 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
       navigate('/')
       return
     }
-    const cur = currentSeasonLabel()
-    const seasons = cycleSeasons()
-    const season = seasons.some((s) => s.label === cur) ? cur : seasons[0].label
-    const row = await insertRow<Plan>('plans', userId, { title, axis, season_label: season, status: 'planned', notes: null })
-    if (row) {
-      setPlans([...plans, row])
-      setAdded(title)
-      setTimeout(() => setAdded(null), 1200)
+    if (adding === title || isPlanned(title)) return
+    setAdding(title)
+    try {
+      const cur = currentSeasonLabel()
+      const seasons = cycleSeasons()
+      const season = seasons.some((s) => s.label === cur) ? cur : seasons[0].label
+      const row = await insertRow<Plan>('plans', userId, { title, axis, season_label: season, status: 'planned', notes: null })
+      if (row) {
+        setPlans((prev) => [...prev, row])
+        setAdded(title)
+        setTimeout(() => setAdded(null), 1200)
+      }
+    } finally {
+      setAdding(null)
     }
   }
 
@@ -167,7 +174,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
           <div className="mt-2 flex flex-wrap gap-1.5">
             {otherMajors.map((m) => (
               <button key={m.value} onClick={() => navigate(`/major/${m.value}`)} className="rounded-full border-2 border-gray-200 bg-white px-2.5 py-1 text-xs text-gray-600">
-                {m.label.split(' (')[0]}
+                {getLang() === 'ko' ? m.label.split(' (')[0] : majorDisplay(m)}
               </button>
             ))}
             {majorKey !== 'undecided' && (

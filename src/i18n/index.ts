@@ -9,6 +9,8 @@ let current: Lang = (() => {
   const nav = typeof navigator !== 'undefined' ? navigator.language : 'ko'
   return nav.toLowerCase().startsWith('ko') ? 'ko' : 'en'
 })()
+// index.html은 lang="ko" 고정 — 저장된/감지된 언어가 영어면 첫 로딩부터 맞춰줌 (스크린리더·번역 확장 기준)
+if (typeof document !== 'undefined') document.documentElement.lang = current
 
 export function getLang(): Lang {
   return current

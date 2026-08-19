@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import AppShell from './AppShell'
 import { t } from '../i18n'
 import { saveProfile, type ProfileRow } from '../lib/profile'
@@ -19,6 +19,7 @@ const kindKo: Record<TestKind, string> = { sat: 'SAT', toefl: 'TOEFL', ielts: 'I
 export default function TestingTab({ userId, profile, onProfileChange }: TestingTabProps) {
   const [tests, setTests] = useState<TestScore[] | null>(null)
   const [adding, setAdding] = useState<TestKind | null>(null)
+  const busyRef = useRef(false) // 저장·삭제 중복 요청 방지 (더블탭)
 
   useEffect(() => {
     loadAppRecords(userId).then((r) => setTests(r.tests))
@@ -37,25 +38,47 @@ export default function TestingTab({ userId, profile, onProfileChange }: Testing
       ap_completed: apCount > 0 ? Math.max(apCount, profile.ap_completed ?? 0) : profile.ap_completed,
     }
     if (JSON.stringify(next) !== JSON.stringify(profile)) {
-      await saveProfile(userId, next)
-      onProfileChange(next)
+      try {
+        await saveProfile(userId, next)
+        onProfileChange(next)
+      } catch (e) {
+        // 점수 기록은 저장됐고 프로필 파생만 실패 — 다음 저장 때 다시 시도됨
+        alert(t(`프로필 반영에 실패했어요. 네트워크를 확인해 주세요.\n(${(e as Error).message})`, `Failed to update your profile. Check your connection.\n(${(e as Error).message})`))
+      }
     }
   }
 
   if (!tests) return <AppShell tab="testing" title={t('시험', 'Testing')}><p className="mt-10 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p></AppShell>
 
+  // 응시일 내림차순 (loadAppRecords와 같은 순서, 미입력은 뒤로)
+  const sortTests = (list: TestScore[]) =>
+    [...list].sort((a, b) => (b.taken_on ?? '').localeCompare(a.taken_on ?? '') || b.id - a.id)
+
   const add = async (row: Omit<TestScore, 'id'>) => {
-    const saved = await insertRow<TestScore>('test_scores', userId, row)
-    if (saved) {
-      const list = [saved, ...tests]
-      setTests(list)
-      await syncProfile(list)
-    }
-    setAdding(null)
+    if (busyRef.current) return
+    busyRef.current = true
+    try {
+      const saved = await insertRow<TestScore>('test_scores', userId, row)
+      if (saved) {
+        const list = sortTests([saved, ...tests])
+        setTests(list)
+        setAdding(null)
+        await syncProfile(list)
+      } else {
+        setAdding(null)
+      }
+    } catch { /* insertRow가 이미 alert — 폼 유지 */ } finally { busyRef.current = false }
   }
   const remove = async (id: number) => {
-    await deleteRow('test_scores', id)
-    setTests(tests.filter((t) => t.id !== id))
+    if (busyRef.current) return
+    if (!confirm(t('이 기록을 삭제할까요?', 'Delete this score?'))) return
+    busyRef.current = true
+    try {
+      await deleteRow('test_scores', id)
+      const list = tests.filter((t) => t.id !== id)
+      setTests(list)
+      await syncProfile(list) // 남은 기록 기준으로 밴드 다시 파생 (기록 없으면 기존 값 유지)
+    } catch { /* deleteRow가 이미 alert */ } finally { busyRef.current = false }
   }
 
   const best = bestSat(tests)
@@ -110,20 +133,28 @@ export default function TestingTab({ userId, profile, onProfileChange }: Testing
   )
 }
 
-function ScoreForm({ kind, onSave, onCancel }: { kind: TestKind; onSave: (r: Omit<TestScore, 'id'>) => void; onCancel: () => void }) {
+function ScoreForm({ kind, onSave, onCancel }: { kind: TestKind; onSave: (r: Omit<TestScore, 'id'>) => Promise<void>; onCancel: () => void }) {
   const [date, setDate] = useState('')
   const [total, setTotal] = useState('')
   const [ebrw, setEbrw] = useState('')
   const [math, setMath] = useState('')
   const [subject, setSubject] = useState('')
+  const [saving, setSaving] = useState(false)
   const field = 'mt-1 w-full rounded-lg border-2 border-gray-200 px-3 py-2 text-sm focus:border-blue-600 focus:outline-none'
   const label = 'text-xs font-medium text-gray-500'
   const totalNum = total === '' ? null : Number(total)
+  const ebrwNum = ebrw === '' ? null : Number(ebrw)
+  const mathNum = math === '' ? null : Number(math)
+  const sectionOk =
+    (ebrwNum === null || (Number.isInteger(ebrwNum) && ebrwNum >= 200 && ebrwNum <= 800)) &&
+    (mathNum === null || (Number.isInteger(mathNum) && mathNum >= 200 && mathNum <= 800)) &&
+    // 영역 점수를 둘 다 적었으면 합계가 총점과 같아야 함
+    (ebrwNum === null || mathNum === null || totalNum === null || ebrwNum + mathNum === totalNum)
   const valid =
-    kind === 'sat' ? totalNum !== null && totalNum >= 400 && totalNum <= 1600
-    : kind === 'toefl' ? totalNum !== null && totalNum >= 0 && totalNum <= 120
-    : kind === 'ielts' ? totalNum !== null && totalNum >= 0 && totalNum <= 9
-    : totalNum !== null && totalNum >= 1 && totalNum <= 5 && subject.trim() !== ''
+    kind === 'sat' ? totalNum !== null && Number.isInteger(totalNum) && totalNum >= 400 && totalNum <= 1600 && sectionOk
+    : kind === 'toefl' ? totalNum !== null && Number.isInteger(totalNum) && totalNum >= 0 && totalNum <= 120
+    : kind === 'ielts' ? totalNum !== null && totalNum >= 0 && totalNum <= 9 && Number.isInteger(totalNum * 2) // 0.5 단위
+    : totalNum !== null && Number.isInteger(totalNum) && totalNum >= 1 && totalNum <= 5 && subject.trim() !== ''
 
   return (
     <div className="mt-2 rounded-xl border-2 border-blue-600 bg-white px-4 py-3">
@@ -141,26 +172,37 @@ function ScoreForm({ kind, onSave, onCancel }: { kind: TestKind; onSave: (r: Omi
         </div>
         <div>
           <label className={label}>{t('응시일', 'Test date')}</label>
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className={field} />
+          <input type="date" value={date} max={new Date().toISOString().slice(0, 10)} onChange={(e) => setDate(e.target.value)} className={field} />
         </div>
       </div>
       {kind === 'sat' && (
         <div className="mt-2 grid grid-cols-2 gap-2">
-          <div><label className={label}>{t('영어 (EBRW)', 'EBRW')}</label><input type="number" value={ebrw} onChange={(e) => setEbrw(e.target.value)} className={field} /></div>
-          <div><label className={label}>{t('수학', 'Math')}</label><input type="number" value={math} onChange={(e) => setMath(e.target.value)} className={field} /></div>
+          <div><label className={label}>{t('영어 (EBRW)', 'EBRW')}</label><input type="number" inputMode="numeric" min={200} max={800} step={10} value={ebrw} onChange={(e) => setEbrw(e.target.value)} className={field} /></div>
+          <div><label className={label}>{t('수학', 'Math')}</label><input type="number" inputMode="numeric" min={200} max={800} step={10} value={math} onChange={(e) => setMath(e.target.value)} className={field} /></div>
         </div>
+      )}
+      {kind === 'sat' && total !== '' && !sectionOk && (
+        <p className="mt-1 text-xs text-red-600">{t('영역 점수는 200~800, 두 영역 합이 총점과 같아야 해요.', 'Section scores must be 200–800 and add up to the total.')}</p>
       )}
       <div className="mt-3 flex gap-2">
         <button
-          disabled={!valid}
-          onClick={() => onSave({
-            kind, taken_on: date || null, total: totalNum,
-            section_scores: kind === 'sat' && (ebrw || math) ? { ebrw: Number(ebrw) || 0, math: Number(math) || 0 } : null,
-            subject: kind === 'ap' ? subject.trim() : null,
-          })}
+          disabled={!valid || saving}
+          onClick={async () => {
+            if (saving) return
+            setSaving(true)
+            try {
+              await onSave({
+                kind, taken_on: date || null, total: totalNum,
+                section_scores: kind === 'sat' && (ebrwNum !== null || mathNum !== null)
+                  ? { ...(ebrwNum !== null ? { ebrw: ebrwNum } : {}), ...(mathNum !== null ? { math: mathNum } : {}) }
+                  : null,
+                subject: kind === 'ap' ? subject.trim() : null,
+              })
+            } finally { setSaving(false) }
+          }}
           className="flex-1 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white disabled:bg-gray-300"
         >
-          {t('저장', 'Save')}
+          {saving ? t('저장 중…', 'Saving…') : t('저장', 'Save')}
         </button>
         <button onClick={onCancel} className="rounded-xl border-2 border-gray-200 px-4 py-2.5 text-sm text-gray-600">{t('취소', 'Cancel')}</button>
       </div>

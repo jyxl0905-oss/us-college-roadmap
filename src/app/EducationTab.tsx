@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import AppShell from './AppShell'
 import { t } from '../i18n'
 import { saveProfile, profileGrade, type ProfileRow } from '../lib/profile'
@@ -19,6 +19,7 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
   const [newCourse, setNewCourse] = useState<{ grade: number; name: string; level: CourseLevel }>({
     grade: Math.min(12, Math.max(9, profileGrade(profile))), name: '', level: 'regular',
   })
+  const busyRef = useRef(false) // Enter 연타·더블탭 중복 추가 방지
 
   useEffect(() => {
     loadAppRecords(userId).then((r) => setCourses(r.courses))
@@ -26,20 +27,29 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
 
   const patchProfile = async (patch: Partial<ProfileRow>) => {
     const next = { ...profile, ...patch }
-    await saveProfile(userId, next)
-    onProfileChange(next)
+    try {
+      await saveProfile(userId, next)
+      onProfileChange(next)
+    } catch (e) {
+      alert(t(`저장에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.\n(${(e as Error).message})`, `Save failed. Check your connection and try again.\n(${(e as Error).message})`))
+    }
   }
 
   const addCourse = async () => {
     const name = newCourse.name.trim()
-    if (!name || !courses) return
-    const row = await insertRow<Course>('courses', userId, { ...newCourse, name })
-    if (row) setCourses([...courses, row])
-    setNewCourse({ ...newCourse, name: '' })
+    if (!name || !courses || busyRef.current) return
+    busyRef.current = true
+    try {
+      const row = await insertRow<Course>('courses', userId, { ...newCourse, name })
+      if (row) setCourses([...courses, row])
+      setNewCourse({ ...newCourse, name: '' })
+    } catch { /* insertRow가 이미 alert — 입력값 유지 */ } finally { busyRef.current = false }
   }
   const removeCourse = async (id: number) => {
-    await deleteRow('courses', id)
-    setCourses((courses ?? []).filter((c) => c.id !== id))
+    try {
+      await deleteRow('courses', id)
+      setCourses((courses ?? []).filter((c) => c.id !== id))
+    } catch { /* deleteRow가 이미 alert */ }
   }
 
   const field = 'mt-1 w-full rounded-lg border-2 border-gray-200 bg-white px-3 py-2.5 text-sm focus:border-blue-600 focus:outline-none'
@@ -91,7 +101,7 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
           <select value={newCourse.grade} onChange={(e) => setNewCourse({ ...newCourse, grade: Number(e.target.value) })} className={field}>
             {GRADES.map((g) => <option key={g} value={g}>{t(`${g}학년`, `Grade ${g}`)}</option>)}
           </select>
-          <input value={newCourse.name} onChange={(e) => setNewCourse({ ...newCourse, name: e.target.value })} onKeyDown={(e) => e.key === 'Enter' && addCourse()} placeholder={t('과목명 (예: Chemistry)', 'Course name (e.g. Chemistry)')} className={field} />
+          <input value={newCourse.name} onChange={(e) => setNewCourse({ ...newCourse, name: e.target.value })} onKeyDown={(e) => { if (e.key === 'Enter' && !e.nativeEvent.isComposing) addCourse() }} placeholder={t('과목명 (예: Chemistry)', 'Course name (e.g. Chemistry)')} className={field} />
           <select value={newCourse.level} onChange={(e) => setNewCourse({ ...newCourse, level: e.target.value as CourseLevel })} className={field}>
             {(Object.keys(courseLevelKo) as CourseLevel[]).map((l) => <option key={l} value={l}>{courseLevelKo[l]}</option>)}
           </select>
@@ -110,11 +120,11 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
             <div className="mt-1.5 flex flex-col gap-1.5">
               {list.map((c) => (
                 <div key={c.id} className="flex items-center justify-between rounded-lg border-2 border-gray-200 bg-white px-3 py-2 text-sm">
-                  <span className="text-gray-900">
+                  <span className="min-w-0 break-words text-gray-900">
                     {c.name}
                     {c.level !== 'regular' && <span className="ml-2 rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700">{courseLevelKo[c.level]}</span>}
                   </span>
-                  <button onClick={() => removeCourse(c.id)} aria-label={t('삭제', 'Delete')} className="text-gray-300 active:text-red-500">✕</button>
+                  <button onClick={() => removeCourse(c.id)} aria-label={t('삭제', 'Delete')} className="ml-2 shrink-0 text-gray-300 active:text-red-500">✕</button>
                 </div>
               ))}
             </div>

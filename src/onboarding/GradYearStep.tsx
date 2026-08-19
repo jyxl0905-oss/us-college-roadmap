@@ -1,7 +1,8 @@
-import { gradeFromGradYear, currentSeason, seasonLabelKo } from '../lib/academics'
+import { gradeFromGradYear, currentSeason, currentSchoolYearEnd, seasonLabelKo } from '../lib/academics'
 import { t } from '../i18n'
 
-const gradYears = [2027, 2028, 2029, 2030, 2031]
+// 현재 학년도의 12학년(올해 졸업)부터 5개 — 8월 1일 롤오버에 맞춰 자동으로 한 해씩 밀림 (예: 2026-27 학년도 → 2027~2031)
+const gradYears = Array.from({ length: 5 }, (_, i) => currentSchoolYearEnd() + i)
 
 interface GradYearStepProps {
   selected: number | null
@@ -37,7 +38,7 @@ export default function GradYearStep({ selected, onSelect, onNext }: GradYearSte
           <div className="rounded-xl bg-blue-50 px-4 py-3 text-sm text-blue-900">
             {grade >= 9 && grade <= 12 ? (
               <>
-                {t('지금은 ', 'Right now you are in ')}<strong>{t(`${grade}학년`, `grade ${grade}`)}</strong>{t(`, ${seasonLabelKo[currentSeason()]} 시즌이에요. 맞나요?`, `, ${currentSeason()} season. Correct?`)}
+                {t('지금은 ', 'Right now you are in ')}<strong>{t(`${grade}학년`, `grade ${grade}`)}</strong>{t(`, ${seasonLabelKo[currentSeason()]} 시즌이에요. 맞나요?`, `, ${seasonLabelKo[currentSeason()]} season. Correct?`)}
               </>
             ) : grade < 9 ? (
               <>

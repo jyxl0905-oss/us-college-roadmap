@@ -61,7 +61,7 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
     const prevSeason = prevSeasonLabel.split('-')[1]
     Promise.all([
       supabase.from('checklist_items').select('*'),
-      supabase.from('user_checks').select('item_id').eq('user_id', userId).eq('season_label', prevSeasonLabel),
+      supabase.from('user_checks').select('item_id,status').eq('user_id', userId).eq('season_label', prevSeasonLabel),
       supabase.from('user_checks').select('item_id').eq('user_id', userId).eq('season_label', currentLabel).eq('status', 'carried'),
       supabase.from('clarity_items').select('*').order('sort_order'),
       supabase.from('plans').select('id,title,axis,season_label,status,notes').eq('user_id', userId).eq('season_label', prevSeasonLabel).neq('status', 'done'),
@@ -69,15 +69,20 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
       if (clarityRes.data) setClarityItems(localizeRows(clarityRes.data as ClarityItem[]))
       const openP = (plansRes.data ?? []) as Plan[]
       setOpenPlans(openP)
+      const prevRows = (prevChecks.data ?? []) as { item_id: number; status: string }[]
+      // 지난 시즌에 완료·건너뛰기 처리됐거나, 이미 이번 시즌으로 이월된 항목은 다시 묻지 않음
       const decided = new Set([
-        ...(prevChecks.data ?? []).map((c) => c.item_id),
+        ...prevRows.filter((c) => c.status !== 'carried').map((c) => c.item_id),
         ...(carriedChecks.data ?? []).map((c) => c.item_id),
       ])
-      const prevItems = filterChecklist(localizeRows((itemsRes.data ?? []) as ChecklistItem[]), profile, {
-        grade: prevGrade,
-        season: prevSeason,
-      })
-      const pending = prevItems.filter((i) => !decided.has(i.id))
+      const allItems = localizeRows((itemsRes.data ?? []) as ChecklistItem[])
+      const prevItems = filterChecklist(allItems, profile, { grade: prevGrade, season: prevSeason })
+      // 지난 시즌으로 이월됐지만 여전히 미완료인 항목(status='carried')도 다시 이월/건너뛰기 대상
+      const stillCarried = prevRows
+        .filter((c) => c.status === 'carried' && !decided.has(c.item_id))
+        .map((c) => allItems.find((i) => i.id === c.item_id))
+        .filter((i): i is ChecklistItem => !!i && !prevItems.some((p) => p.id === i.id))
+      const pending = [...prevItems.filter((i) => !decided.has(i.id)), ...stillCarried]
       setIncomplete(pending)
       setLoading(false)
       if (pending.length === 0) setScreen(openP.length > 0 ? 'plans' : 'changes')

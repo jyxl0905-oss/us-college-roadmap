@@ -5,6 +5,7 @@ import { navigate } from '../lib/router'
 import { supabase } from '../lib/supabase'
 import AppShell from './AppShell'
 import { t } from '../i18n'
+import { gpaBandLabels } from '../onboarding/labels'
 import { loadAppRecords, ACTIVITY_MAX, HONOR_MAX, essayStatusKo, type AppRecords } from './appData'
 import { loadPlans, cycleSeasons, type Plan } from './plans'
 
@@ -41,14 +42,19 @@ export default function AppHome({ userId, profile }: AppHomeProps) {
         .select('school_id, round')
         .eq('user_id', userId)
         .then(({ data }) => {
-          const rows = data ?? []
+          // 목표 학교 모드면 현재 목표 목록에 있는 학교만 집계 (예전 목표의 배정 행 제외)
+          const rows = (data ?? []).filter(
+            (r) => profile.target_mode !== 'schools' || profile.target_school_ids.includes(Number(r.school_id)),
+          )
           setAppCount({ total: rows.length, assigned: rows.filter((r) => r.round).length })
         })
     }
-  }, [userId])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId, profile.target_mode, profile.target_school_ids.join(',')])
 
   const grade = profileGrade(profile)
   const targetCount = profile.target_mode === 'schools' ? profile.target_school_ids.length : 0
+  const tierMode = profile.target_mode === 'tier' && profile.target_tier !== null // 티어 목표도 지원 학교 탭이 열림
 
   const sections = rec
     ? [
@@ -60,8 +66,8 @@ export default function AppHome({ userId, profile }: AppHomeProps) {
         })(),
         { path: '/app/activities', emoji: '🏃', title: t('활동 · 수상', 'Activities · Honors'), sub: t(`활동 ${rec.activities.length}/${ACTIVITY_MAX} · 수상 ${rec.honors.length}/${HONOR_MAX}`, `Activities ${rec.activities.length}/${ACTIVITY_MAX} · Honors ${rec.honors.length}/${HONOR_MAX}`), pct: Math.min(1, (rec.activities.length / ACTIVITY_MAX + rec.honors.length / HONOR_MAX) / 2) },
         { path: '/app/testing', emoji: '✏️', title: t('시험', 'Testing'), sub: rec.tests.length > 0 ? t(`기록 ${rec.tests.length}건`, `${rec.tests.length} score${rec.tests.length === 1 ? '' : 's'} recorded`) : t('아직 기록 없음', 'No scores yet'), pct: rec.tests.length > 0 ? 1 : 0 },
-        { path: '/app/education', emoji: '📚', title: t('학업', 'Education'), sub: t(`${grade}학년 · GPA ${profile.gpa_band ?? '미입력'} · 과목 ${rec.courses.length}개`, `Grade ${grade} · GPA ${profile.gpa_band ?? 'not set'} · ${rec.courses.length} course${rec.courses.length === 1 ? '' : 's'}`), pct: profile.gpa_band ? (rec.courses.length > 0 ? 1 : 0.5) : 0 },
-        { path: '/app/colleges', emoji: '🎯', title: t('지원 학교', 'My colleges'), sub: targetCount > 0 ? t(`목표 ${targetCount}곳 · 라운드 배정 ${appCount.assigned}곳`, `${targetCount} target${targetCount === 1 ? '' : 's'} · ${appCount.assigned} assigned a round`) : t('목표 학교를 먼저 정해요', 'Pick your target schools first'), pct: targetCount > 0 ? appCount.assigned / targetCount : 0 },
+        { path: '/app/education', emoji: '📚', title: t('학업', 'Education'), sub: t(`${grade}학년 · GPA ${profile.gpa_band ? gpaBandLabels[profile.gpa_band] ?? profile.gpa_band : '미입력'} · 과목 ${rec.courses.length}개`, `Grade ${grade} · GPA ${profile.gpa_band ? gpaBandLabels[profile.gpa_band] ?? profile.gpa_band : 'not set'} · ${rec.courses.length} course${rec.courses.length === 1 ? '' : 's'}`), pct: profile.gpa_band ? (rec.courses.length > 0 ? 1 : 0.5) : 0 },
+        { path: '/app/colleges', emoji: '🎯', title: t('지원 학교', 'My colleges'), sub: targetCount > 0 ? t(`목표 ${targetCount}곳 · 라운드 배정 ${appCount.assigned}곳`, `${targetCount} target${targetCount === 1 ? '' : 's'} · ${appCount.assigned} assigned a round`) : tierMode ? t(`티어 목표 · 라운드 배정 ${appCount.assigned}곳`, `Tier target · ${appCount.assigned} assigned a round`) : t('목표 학교를 먼저 정해요', 'Pick your target schools first'), pct: targetCount > 0 ? Math.min(1, appCount.assigned / targetCount) : tierMode && appCount.assigned > 0 ? 1 : 0 },
         { path: '/app/writing', emoji: '📝', title: t('에세이', 'Essays'), sub: rec.essays.length > 0 ? rec.essays.map((e) => essayStatusKo[e.status]).slice(0, 3).join(' · ') : t('아직 없음', 'None yet'), pct: rec.essays.length > 0 ? rec.essays.filter((e) => e.status === 'done').length / rec.essays.length : 0 },
       ]
     : []

@@ -2,11 +2,20 @@
 const PREFILL_KEY = 'prefill_school_id'
 
 export function setPrefillSchoolIds(ids: number[]): void {
-  localStorage.setItem(PREFILL_KEY, ids.join(','))
+  try {
+    localStorage.setItem(PREFILL_KEY, ids.join(','))
+  } catch {
+    // 스토리지 차단 시 프리필 생략
+  }
 }
 
 export function readPrefillSchoolIds(): number[] {
-  const raw = localStorage.getItem(PREFILL_KEY)
+  let raw: string | null = null
+  try {
+    raw = localStorage.getItem(PREFILL_KEY)
+  } catch {
+    raw = null
+  }
   if (!raw) return []
   return raw
     .split(',')
@@ -15,5 +24,9 @@ export function readPrefillSchoolIds(): number[] {
 }
 
 export function clearPrefill(): void {
-  localStorage.removeItem(PREFILL_KEY)
+  try {
+    localStorage.removeItem(PREFILL_KEY)
+  } catch {
+    // ignore
+  }
 }

@@ -1,3 +1,4 @@
+import { timingLabel } from '../lib/academics'
 import { useEffect, useState } from 'react'
 import type { School } from '../lib/types'
 import { supabase } from '../lib/supabase'
@@ -17,6 +18,7 @@ export function timingSortKey(label: string | null): number {
   return cycleMonth * 10 + part
 }
 
+// 시기 라벨 현지화 — DB 원문은 "11월 초" 형식(한국어). 영어 모드에서는 "early Nov"로 변환, 형식이 다르면 원문 유지
 type PlanType = 'ED' | 'EA' | 'REA' | 'ED II' | 'RD'
 
 export interface DeadlineEntry {
@@ -155,7 +157,7 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
                     <span className={`rounded-full px-2 py-1 text-xs font-medium ${planBadge[e.plan]}`}>
                       {e.plan}
                     </span>
-                    <p className="mt-1 text-sm font-semibold text-gray-900">{e.timing ?? t('미공개', 'Not disclosed')}</p>
+                    <p className="mt-1 text-sm font-semibold text-gray-900">{timingLabel(e.timing) ?? t('미공개', 'Not disclosed')}</p>
                   </div>
                 </div>
                 <div className="mt-2 flex items-center justify-between gap-3">

@@ -12,7 +12,7 @@ import { loadAppRecords, bestSat, type AppRecords } from '../app/appData'
 import { profileGrade } from '../lib/profile'
 import { currentSeason } from '../lib/academics'
 import {
-  boardWarnings, offeredRounds, roundTiming, roundLabels, statusLabels, roundSlots, dDay,
+  boardWarnings, offeredRounds, roundTiming, roundLabels, statusLabels, roundSlots, dDay, timingLabel,
   autoItems, c7Actions, c7Checkable, isFirstChoice, suppEssayTip,
   type ApplicationRow, type CustomTask, type Round, type AppStatus,
 } from './boardLogic'
@@ -32,6 +32,10 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
   const [openId, setOpenId] = useState<number | null>(null) // 상세 열린 학교
   const [newTask, setNewTask] = useState('')
   const [slotPicker, setSlotPicker] = useState<number | null>(null) // 라운드 선택 시트 열린 학교
+  const [taskBusy, setTaskBusy] = useState(false) // 커스텀 항목 추가 중복 방지 (Enter 연타·더블탭)
+
+  const saveFailed = (message: string) =>
+    alert(t(`저장에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.\n(${message})`, `Save failed. Check your connection and try again.\n(${message})`))
 
   const hasTarget =
     (profile.target_mode === 'schools' && profile.target_school_ids.length > 0) ||
@@ -86,44 +90,68 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
       const { error } = await supabase.from('applications').upsert({ user_id: userId, ...row })
       if (error) {
         setApps(before) // 실패 시 되돌림
-        alert(t(`저장에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.\n(${error.message})`, `Save failed. Check your connection and try again.\n(${error.message})`))
+        saveFailed(error.message)
         return
       }
       if (patch.round) logEvent(userId, 'round_assigned')
     }
   }
 
+  // 커스텀 항목 1건 토글 (id 기준 — 같은 제목이 여러 개여도 정확히 그 행만)
+  const toggleTask = async (task: CustomTask) => {
+    const done = !task.done
+    setTasks((l) => l.map((t) => (t.id === task.id ? { ...t, done } : t)))
+    if (!supabase) return
+    const { error } = await supabase.from('custom_tasks').update({ done }).eq('id', task.id)
+    if (error) {
+      setTasks((l) => l.map((t) => (t.id === task.id ? { ...t, done: task.done } : t))) // 실패 시 되돌림
+      saveFailed(error.message)
+    }
+  }
+
+  // 자동/C7 항목 토글: custom_tasks에 같은 제목(한국어 원문 key) 행이 있으면 토글, 없으면 done=true로 생성
   const toggleDerivedItem = async (schoolId: number, title: string) => {
     const existing = tasksFor(schoolId).find((t) => t.title === title)
     if (existing) {
-      setTasks((l) => l.map((t) => (t.id === existing.id ? { ...t, done: !t.done } : t)))
-      if (supabase) await supabase.from('custom_tasks').update({ done: !existing.done }).eq('id', existing.id)
+      await toggleTask(existing)
     } else {
-      if (!supabase) return
-      const { data } = await supabase
+      if (!supabase || taskBusy) return
+      setTaskBusy(true)
+      const { data, error } = await supabase
         .from('custom_tasks')
         .insert({ user_id: userId, school_id: schoolId, title, done: true })
         .select('id, school_id, title, done')
         .single()
+      setTaskBusy(false)
+      if (error) { saveFailed(error.message); return }
       if (data) setTasks((l) => [...l, data as CustomTask])
     }
   }
 
   const addCustomTask = async (schoolId: number) => {
     const title = newTask.trim()
-    if (!title || !supabase) return
-    setNewTask('')
-    const { data } = await supabase
+    if (!title || !supabase || taskBusy) return
+    setTaskBusy(true)
+    const { data, error } = await supabase
       .from('custom_tasks')
       .insert({ user_id: userId, school_id: schoolId, title, done: false })
       .select('id, school_id, title, done')
       .single()
+    setTaskBusy(false)
+    if (error) { saveFailed(error.message); return } // 입력값 유지
+    setNewTask('')
     if (data) setTasks((l) => [...l, data as CustomTask])
   }
 
   const deleteTask = async (id: number) => {
+    const before = tasks
     setTasks((l) => l.filter((t) => t.id !== id))
-    if (supabase) await supabase.from('custom_tasks').delete().eq('id', id)
+    if (!supabase) return
+    const { error } = await supabase.from('custom_tasks').delete().eq('id', id)
+    if (error) {
+      setTasks(before) // 실패 시 되돌림
+      alert(t(`삭제에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.\n(${error.message})`, `Delete failed. Check your connection and try again.\n(${error.message})`))
+    }
   }
 
   // 칸 안 정렬: 마감 시기순
@@ -320,7 +348,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
                   }`}
                 >
                   {roundLabels[round]}
-                  {timing && <span className="ml-1 text-xs font-normal">{timing}</span>}
+                  {timing && <span className="ml-1 text-xs font-normal">{timingLabel(timing)}</span>}
                 </button>
               ))}
             </div>
@@ -385,7 +413,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
                     onChange={() => toggleDerivedItem(open.id, key)}
                     className="mt-0.5 h-4 w-4 shrink-0 accent-blue-600"
                   />
-                  <span>{title}</span>
+                  <span className="min-w-0 break-words">{title}</span>
                 </label>
               ))}
               {customs.map((task) => (
@@ -393,10 +421,10 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
                   <input
                     type="checkbox"
                     checked={task.done}
-                    onChange={() => toggleDerivedItem(open.id, task.title)}
+                    onChange={() => toggleTask(task)}
                     className="mt-0.5 h-4 w-4 shrink-0 accent-blue-600"
                   />
-                  <span className="flex-1">{task.title}</span>
+                  <span className="min-w-0 flex-1 break-words">{task.title}</span>
                   <button onClick={() => deleteTask(task.id)} aria-label={t('삭제', 'Delete')} className="text-gray-300 active:text-red-500">
                     ✕
                   </button>
@@ -407,13 +435,14 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
               <input
                 value={newTask}
                 onChange={(e) => setNewTask(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && addCustomTask(open.id)}
+                onKeyDown={(e) => { if (e.key === 'Enter' && !e.nativeEvent.isComposing) addCustomTask(open.id) }}
                 placeholder={t('항목 추가 (예: 보충 에세이 1번 초안)', 'Add an item (e.g. Draft supplement #1)')}
                 className="min-w-0 flex-1 rounded-xl border-2 border-gray-200 px-3 py-2 text-sm focus:border-blue-600 focus:outline-none"
               />
               <button
                 onClick={() => addCustomTask(open.id)}
-                className="shrink-0 rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white active:bg-blue-700"
+                disabled={taskBusy || !newTask.trim()}
+                className="shrink-0 rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white active:bg-blue-700 disabled:bg-gray-300"
               >
                 {t('추가', 'Add')}
               </button>
@@ -446,7 +475,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
               <p className="truncate font-semibold text-gray-900">{s.name}</p>
               <p className="flex flex-wrap items-center gap-x-2 text-xs text-gray-500">
                 <span>{statusLabels[app?.status ?? 'preparing']}</span>
-                {timing && <span>{t('마감 ', 'Due ')}{timing}</span>}
+                {timing && <span>{t('마감 ', 'Due ')}{timingLabel(timing)}</span>}
                 {dd !== null && dd >= 0 && <span className={dd <= 14 ? 'font-semibold text-red-600' : 'text-blue-700'}>D-{dd}</span>}
               </p>
             </div>
@@ -480,7 +509,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
                   app?.round === round ? 'border-blue-600 bg-blue-600 text-white' : 'border-blue-200 bg-blue-50 text-blue-700'
                 }`}
               >
-                {roundLabels[round]}{timing && <span className="ml-1 font-normal opacity-80">{timing}</span>}
+                {roundLabels[round]}{timing && <span className="ml-1 font-normal opacity-80">{timingLabel(timing)}</span>}
               </button>
             ))}
             {app?.round && (
@@ -527,7 +556,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
               <h2 className="font-semibold text-gray-900">
                 {label} <span className="ml-1 text-xs font-normal text-gray-400">{t(`${list.length}곳`, `${list.length}`)}</span>
               </h2>
-              {timing && <span className="text-xs text-gray-500">{t('대개 ', 'Usually ')}{timing}</span>}
+              {timing && <span className="text-xs text-gray-500">{t('대개 ', 'Usually ')}{timingLabel(timing)}</span>}
             </div>
             <p className="text-[11px] text-gray-400">{rule}</p>
             <div className="mt-2 flex flex-col gap-2">

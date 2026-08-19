@@ -1,12 +1,12 @@
 import { Suspense, lazy, useEffect, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
-import type { OnboardingAnswers } from './lib/types'
+import { emptyAnswers, type OnboardingAnswers } from './lib/types'
 import { supabase, isSupabaseConfigured } from './lib/supabase'
 import { answersToRow, loadProfile, saveProfile, type ProfileRow } from './lib/profile'
 import { currentSeasonLabel } from './lib/academics'
 import EmailStep, { RESEARCH_CONSENT_KEY } from './auth/EmailStep'
 import NicknameStep from './auth/NicknameStep'
-import RolloverGate from './RolloverGate'
+import RolloverGate, { markSeenGrade } from './RolloverGate'
 import SchoolsListPage from './browse/SchoolsListPage'
 import SchoolDetailPage from './browse/SchoolDetailPage'
 import ComparePage from './browse/ComparePage'
@@ -35,9 +35,21 @@ import { logEvent } from './lib/analytics'
 const PENDING_KEY = 'pending_answers' // 매직 링크로 나갔다 돌아와도 온보딩 답변 유지
 
 function loadPending(): OnboardingAnswers | null {
-  const raw = localStorage.getItem(PENDING_KEY)
-  return raw ? (JSON.parse(raw) as OnboardingAnswers) : null
+  try {
+    const raw = localStorage.getItem(PENDING_KEY)
+    if (!raw) return null
+    const parsed = JSON.parse(raw)
+    if (!parsed || typeof parsed !== 'object') return null
+    // 예전 버전에서 저장된 답변에 새 필드(infoSources 등)가 없을 수 있음 → 기본값과 병합
+    return { ...emptyAnswers, ...(parsed as Partial<OnboardingAnswers>) }
+  } catch {
+    localStorage.removeItem(PENDING_KEY)
+    return null
+  }
 }
+
+// 만료·사용된 매직 링크로 돌아온 경우 URL 해시에 에러가 담겨 옴 → 홈 대신 이메일 화면(안내 문구 포함)부터
+const cameFromAuthError = window.location.hash.includes('error')
 
 function Screen({ children }: { children: React.ReactNode }) {
   return (
@@ -48,6 +60,12 @@ function Screen({ children }: { children: React.ReactNode }) {
 }
 
 type GuestPhase = 'home' | 'onboarding' | 'preview' | 'email'
+
+// 렌더 중 navigate 호출 대신 effect에서 이동 (StrictMode 이중 push 방지)
+function Redirect({ to }: { to: string }) {
+  useEffect(() => { navigate(to) }, [to])
+  return <LoadingScreen />
+}
 
 function LoadingScreen() {
   return (
@@ -76,10 +94,13 @@ function AppRoutes() {
   const [session, setSession] = useState<Session | null>(null)
   const [sessionLoading, setSessionLoading] = useState(isSupabaseConfigured)
   const [profile, setProfile] = useState<ProfileRow | null>(null)
-  const [profileLoading, setProfileLoading] = useState(false)
+  const [profileLoadedFor, setProfileLoadedFor] = useState<string | null>(null) // 프로필 조회를 마친 user id
+  const [profileError, setProfileError] = useState<string | null>(null)
+  const [profileRetry, setProfileRetry] = useState(0)
   const [pendingAnswers, setPendingAnswers] = useState<OnboardingAnswers | null>(loadPending)
   // 항상 홈에서 시작 — 미인증 답변이 남아 있으면 홈에 '이어서 인증하기' 배너를 보여줌
-  const [phase, setPhase] = useState<GuestPhase>('home')
+  // (만료 링크로 돌아온 경우만 이메일 화면부터)
+  const [phase, setPhase] = useState<GuestPhase>(cameFromAuthError ? 'email' : 'home')
   const path = usePath() // F1: /schools 라우팅
   // 마지막 리포트 시즌 — 현재 시즌과 다르면 체크인 플로우부터
   // undefined = 아직 조회 전 (조회가 끝나기 전에 리포트를 먼저 그리면 안 됨)
@@ -94,39 +115,61 @@ function AppRoutes() {
       setSessionLoading(false)
     })
     const { data: sub } = supabase.auth.onAuthStateChange((event, s) => {
-      setSession(s)
-      if (event === 'SIGNED_IN' && s) logEvent(s.user.id, 'login')
+      setSession((prev) => {
+        // 콜백 안에서 다른 Supabase 호출을 바로 하면 auth 락 교착 가능 → 다음 틱으로 미룸.
+        // SIGNED_IN은 탭 복귀·토큰 갱신 때도 재발행되므로 '세션 없음 → 있음' 전환일 때만 로그인으로 기록
+        if (event === 'SIGNED_IN' && s && prev?.user.id !== s.user.id) setTimeout(() => logEvent(s.user.id, 'login'), 0)
+        return s
+      })
     })
     return () => sub.subscription.unsubscribe()
   }, [])
 
+  // 세션 객체는 토큰 갱신(약 1시간마다·탭 복귀 시)마다 새로 생기므로 user id 기준으로만 프로필을 다시 불러옴
+  // (세션 객체 기준이면 갱신 때마다 로딩 화면으로 바뀌며 리포트·원서 화면 상태가 날아감)
+  const userId = session?.user.id ?? null
   useEffect(() => {
-    if (!session) {
+    if (!userId) {
       setProfile(null)
+      setProfileError(null)
+      setProfileLoadedFor(null)
       return
     }
-    setProfileLoading(true)
-    loadProfile(session.user.id)
-      .then(setProfile)
-      .finally(() => setProfileLoading(false))
-  }, [session])
+    let cancelled = false
+    setProfileError(null)
+    loadProfile(userId)
+      .then((p) => {
+        if (cancelled) return
+        setProfile(p)
+        setProfileLoadedFor(userId)
+      })
+      .catch((e: unknown) => {
+        // 조회 실패를 '프로필 없음'으로 오인하면 기존 사용자에게 온보딩을 다시 시키고 덮어쓰게 됨 → 에러 화면으로
+        if (!cancelled) setProfileError(e instanceof Error ? e.message : String(e))
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [userId, profileRetry])
+  // 세션은 있는데 그 사용자의 프로필 조회가 아직 안 끝남 (effect 실행 전 첫 렌더 포함 — 온보딩 화면이 잠깐 비치는 일 방지)
+  const profileLoading = userId !== null && profileLoadedFor !== userId && !profileError
 
   // 마지막 리포트 시즌 확인 (시즌 체크인 판단용)
   useEffect(() => {
-    if (!session || !profile || !supabase) {
+    if (!userId || !profile || !supabase) {
       setLastSeason(undefined)
       return
     }
     supabase
       .from('reports')
       .select('season_label')
-      .eq('user_id', session.user.id)
+      .eq('user_id', userId)
       .order('created_at', { ascending: false })
       .limit(1)
       .then(({ data }) => {
         setLastSeason(data && data.length > 0 ? data[0].season_label : null)
       })
-  }, [session, profile])
+  }, [userId, profile])
 
   if (sessionLoading || profileLoading || (session && profile && lastSeason === undefined)) {
     return (
@@ -135,6 +178,31 @@ function AppRoutes() {
       </Screen>
     )
   }
+
+  // 프로필 조회 실패 화면 — 프로필이 필요한 화면(/app·/deadlines·리포트)에서만 사용, 둘러보기 계열은 profile=null로 그대로 열림
+  const profileErrorScreen =
+    session && profileError ? (
+      <Screen>
+        <div className="py-16 text-center">
+          <p className="text-4xl">⚠️</p>
+          <h1 className="mt-4 text-xl font-bold text-gray-900">{t('프로필을 불러오지 못했어요', "Couldn't load your profile")}</h1>
+          <p className="mt-3 text-sm text-gray-500">{t('네트워크 상태를 확인하고 다시 시도해 주세요.', 'Check your connection and try again.')}</p>
+          <p className="mt-2 text-xs text-gray-400">{profileError}</p>
+          <button
+            onClick={() => setProfileRetry((n) => n + 1)}
+            className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
+          >
+            {t('다시 시도', 'Retry')}
+          </button>
+          <button
+            onClick={() => supabase!.auth.signOut()}
+            className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
+          >
+            {t('로그아웃', 'Log out')}
+          </button>
+        </div>
+      </Screen>
+    ) : null
 
   // 운영자 통계 (서버 함수가 이메일 화이트리스트로 권한 검사)
   if (path === '/admin' || path === '/admin/') {
@@ -153,6 +221,7 @@ function AppRoutes() {
   }
   // F5: 내 원서 (가상 Common App) — 로그인 전용, 9학년부터
   if (path === '/app' || path.startsWith('/app/')) {
+    if (profileErrorScreen) return profileErrorScreen
     if (session && profile)
       return <AppRouter path={path} userId={session.user.id} profile={profile} onProfileChange={setProfile} />
     return (
@@ -183,11 +252,11 @@ function AppRoutes() {
   }
   // F4 → F5: 예전 /board 주소는 내 원서의 지원 학교 탭으로
   if (path === '/board' || path === '/board/') {
-    navigate('/app/colleges')
-    return <LoadingScreen />
+    return <Redirect to="/app/colleges" />
   }
   // F3: 마감 캘린더 (로그인 전용)
   if (path === '/deadlines' || path === '/deadlines/') {
+    if (profileErrorScreen) return profileErrorScreen
     if (session && profile) return <DeadlinesPage userId={session.user.id} profile={profile} />
     return (
       <Screen>
@@ -221,6 +290,8 @@ function AppRoutes() {
   // .env 미설정 → 로컬 전용 모드 (온보딩 체험만)
   if (!isSupabaseConfigured) return <OnboardingFlow />
 
+  if (profileErrorScreen) return profileErrorScreen
+
   // 로그인 완료 + 프로필 있음인데 새 온보딩 답변이 남아 있음 → 덮어쓸지 물어봄 (묵살하면 새 목표 학교가 반영 안 되는 버그)
   if (session && profile && pendingAnswers) {
     const pending = pendingAnswers
@@ -237,9 +308,11 @@ function AppRoutes() {
             onClick={async () => {
               const row = answersToRow(pending, profile.nickname ?? '', profile.research_consent)
               await saveProfile(session.user.id, row)
+              markSeenGrade(session.user.id, row.grad_year)
               localStorage.removeItem(PENDING_KEY)
               setPendingAnswers(null)
-              setProfile({ ...row, user_id: session.user.id })
+              // reminder_opt_out 등 온보딩 답변에 없는 컬럼은 DB에서 유지되므로 로컬 상태도 기존 값 위에 덮어씀
+              setProfile({ ...profile, ...row, user_id: session.user.id })
             }}
             className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
           >
@@ -326,6 +399,8 @@ function AppRoutes() {
             logEvent(session.user.id, 'signup')
             localStorage.removeItem(PENDING_KEY)
             localStorage.removeItem(RESEARCH_CONSENT_KEY)
+            // 마운트 시 읽어둔 pendingAnswers 상태도 비워야 저장 직후 '새 답변으로 업데이트할까요?' 화면이 뜨지 않음
+            setPendingAnswers(null)
             setProfile({ ...row, user_id: session.user.id })
           }}
         />
@@ -339,7 +414,7 @@ function AppRoutes() {
       <Screen>
         <button
           onClick={() => setPhase('home')}
-          aria-label="홈으로"
+          aria-label={t('홈으로', 'Back to home')}
           className="mb-2 rounded-lg p-2 text-gray-500 active:bg-gray-100"
         >
           ←

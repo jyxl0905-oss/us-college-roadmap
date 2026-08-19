@@ -112,7 +112,13 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
     if (autoNext) setStepIndex((i) => i + 1)
   }
 
-  const goBack = () => setStepIndex((i) => Math.max(0, i - 1))
+  // 티저(자동 진행 화면)로는 되돌아가지 않음 — 뒤로 갔다가 2초 뒤 다시 앞으로 튕기는 문제 방지
+  const goBack = () =>
+    setStepIndex((i) => {
+      let n = Math.max(0, i - 1)
+      if (steps[n] === 'teaser') n = Math.max(0, n - 1)
+      return n
+    })
   const goNext = () => setStepIndex((i) => i + 1)
   const restart = () => {
     localStorage.removeItem(DRAFT_KEY)
@@ -166,7 +172,7 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
           <button
             onClick={goBack}
             disabled={stepIndex === 0}
-            aria-label="이전 질문으로"
+            aria-label={t('이전 질문으로', 'Previous question')}
             className="rounded-lg p-2 text-gray-500 active:bg-gray-100 disabled:invisible"
           >
             ←

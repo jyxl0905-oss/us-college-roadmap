@@ -17,7 +17,7 @@ export default function SummaryStep({ answers, onRestart, onComplete }: SummaryS
     <div>
       <h1 className="text-xl font-bold text-gray-900">{t('입력이 끝났어요! 🎉', 'All done! 🎉')}</h1>
       <p className="mt-2 text-sm text-gray-500">
-        {grade !== null && t(`${grade < 9 ? '예비 9' : grade}학년 · ${seasonLabelKo[currentSeason()]} 시즌 기준으로 정리했어요.`, `Summarized for grade ${grade < 9 ? 'rising 9' : grade} · ${currentSeason()} season.`)}
+        {grade !== null && t(`${grade < 9 ? '예비 9' : grade}학년 · ${seasonLabelKo[currentSeason()]} 시즌 기준으로 정리했어요.`, `Summarized for grade ${grade < 9 ? 'rising 9' : grade} · ${seasonLabelKo[currentSeason()]} season.`)}
       </p>
       <div className="mt-6 divide-y divide-gray-100 rounded-xl border-2 border-gray-200 bg-white">
         {summaryRows(answers).map(([label, value]) => (

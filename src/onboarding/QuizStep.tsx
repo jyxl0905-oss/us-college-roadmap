@@ -23,16 +23,25 @@ export default function QuizStep({ onDone }: QuizStepProps) {
       onDone([])
       return
     }
+    // 언마운트(뒤로가기) 뒤에 응답이 와서 onDone → 엉뚱한 스텝이 넘어가는 일 방지 + 응답이 안 오면 퀴즈 건너뜀
+    let cancelled = false
+    const fallback = window.setTimeout(() => {
+      if (!cancelled) onDone([])
+    }, 8000)
     supabase
       .from('quiz_items')
       .select('*')
       .order('sort_order')
       .then(({ data }) => {
+        if (cancelled) return
+        window.clearTimeout(fallback)
         const list = localizeRows((data ?? []) as QuizItem[])
         if (list.length === 0) onDone([])
         else setItems(list)
       })
     return () => {
+      cancelled = true
+      window.clearTimeout(fallback)
       if (timerRef.current) window.clearTimeout(timerRef.current)
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps

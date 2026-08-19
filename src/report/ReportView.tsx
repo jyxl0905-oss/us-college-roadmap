@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { ChecklistItem, School } from '../lib/types'
 import { supabase } from '../lib/supabase'
 import { countStoryExposure, filterChecklist, profileGrade, type ProfileRow } from '../lib/profile'
-import { currentSeason, currentSeasonLabel, seasonLabelKo, nextCheckinKo } from '../lib/academics'
+import { currentSeason, currentSeasonLabel, seasonLabelKo, nextCheckinKo, timingLabel } from '../lib/academics'
 import {
   computeScores,
   weakestAxis,
@@ -151,10 +151,13 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         setSchools(localizeRows(schoolsRes.data as School[]).sort((a, b) => a.usnews_rank - b.usnews_rank))
       }
       if (prevRes.data) {
-        const all = prevRes.data as (PrevReport & { snapshot: { scores?: Partial<AxisScores> } })[]
+        // 같은 시즌 행이 중복 저장된 경우(과거 경쟁 조건) 시즌당 1개(가장 최근)만 사용
+        const bySeason = new Map<string, PrevReport & { snapshot: { scores?: Partial<AxisScores> } }>()
+        for (const r of prevRes.data as (PrevReport & { snapshot: { scores?: Partial<AxisScores> } })[]) bySeason.set(r.season_label, r)
+        const all = [...bySeason.values()]
         const past = all.filter((r) => r.season_label !== seasonLabel)
         if (past.length > 0) setPrevReport(past[past.length - 1])
-        setHistory(all.map((r) => ({ season_label: r.season_label, scores: r.snapshot.scores ?? {}, done: r.snapshot.done, total: r.snapshot.total, plans: (r.snapshot as { plans?: { done: number; total: number } }).plans })))
+        setHistory(all.map((r) => ({ season_label: r.season_label, scores: r.snapshot?.scores ?? {}, done: r.snapshot?.done ?? 0, total: r.snapshot?.total ?? 0, plans: (r.snapshot as { plans?: { done: number; total: number } })?.plans })))
       }
       if (presRes.data) setPrescriptions(localizeRows(presRes.data as Prescription[]))
       if (appealRes.data) setAppeals(localizeRows(appealRes.data as Appeal[]))
@@ -194,6 +197,9 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   const totalCount = trackedItems.length
 
   // 시즌 스냅샷 저장 (reports) — 리포트를 볼 때마다 최신으로 갱신
+  // reports에 (user_id, season_label) 유니크 제약이 없어 select→insert가 동시에 돌면 중복 행이 생김.
+  // 저장을 직렬화(chain)하고, 이미 여러 행이 있어도 첫 행을 갱신하도록 limit(1) 사용
+  const snapshotChain = useRef<Promise<void>>(Promise.resolve())
   useEffect(() => {
     if (!supabase || loading || error) return
     const seasonPlans = plans.filter((p) => p.season_label === seasonLabel)
@@ -201,21 +207,21 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       done: doneCount, total: totalCount, scores,
       plans: { done: seasonPlans.filter((p) => p.status === 'done').length, total: seasonPlans.length },
     }
-    supabase
-      .from('reports')
-      .select('id')
-      .eq('user_id', userId)
-      .eq('season_label', seasonLabel)
-      .maybeSingle()
-      .then(({ data }) => {
-        if (data) supabase!.from('reports').update({ snapshot }).eq('id', data.id).then(() => {})
-        else
-          supabase!
-            .from('reports')
-            .insert({ user_id: userId, season_label: seasonLabel, snapshot })
-            .then(() => {})
+    snapshotChain.current = snapshotChain.current
+      .then(async () => {
+        const { data } = await supabase!
+          .from('reports')
+          .select('id')
+          .eq('user_id', userId)
+          .eq('season_label', seasonLabel)
+          .order('created_at', { ascending: true })
+          .limit(1)
+        const id = data?.[0]?.id
+        if (id) await supabase!.from('reports').update({ snapshot }).eq('id', id)
+        else await supabase!.from('reports').insert({ user_id: userId, season_label: seasonLabel, snapshot })
       })
-  }, [loading, doneCount, totalCount, plans]) // eslint-disable-line react-hooks/exhaustive-deps
+      .catch(() => {})
+  }, [loading, doneCount, totalCount, plans, overrides]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const toggle = async (itemId: number) => {
     if (!supabase) return
@@ -309,7 +315,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         <div>
           <h1 className="text-xl font-bold text-gray-900">{t(`${profile.nickname}님의 시즌 리포트`, `${profile.nickname}'s season report`)}</h1>
           <p className="mt-1 text-sm text-gray-500">
-            {t(`${grade}학년`, `Grade ${grade}`)} · {majorLabel(profile.major_primary)} · {t(seasonLabelKo[currentSeason()], currentSeason())}
+            {t(`${grade}학년`, `Grade ${grade}`)} · {majorLabel(profile.major_primary)} · {seasonLabelKo[currentSeason()]}
             {profile.school_in_us && <span className="ml-1 rounded-full bg-gray-100 px-1.5 py-0.5 text-[11px] text-gray-500">🇺🇸 {t('미국 학교', 'US school')}</span>}
           </p>
           <button
@@ -379,7 +385,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
                 <SchoolLogo schoolId={e.school.id} name={e.school.name} size={20} />
                 <span>
                   <span className="font-medium">{e.school.name}</span> — {e.plan} ·{' '}
-                  {e.timing ?? t('시기 미공개', 'timing not published')}
+                  {timingLabel(e.timing) ?? t('시기 미공개', 'timing not published')}
                 </span>
               </p>
             ))}
@@ -626,8 +632,9 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
                 .filter((a) => a.student_deadline)
                 .map((a) => {
                   const s = schools.find((x) => x.id === a.school_id)
+                  const roundLabel = a.round ? (roundToPlan[a.round] ?? a.round.toUpperCase()) : ''
                   return {
-                    title: t(`${s?.name ?? '학교'} ${a.round ? a.round.toUpperCase() : ''} 마감 (내가 입력한 날짜)`, `${s?.name ?? 'School'} ${a.round ? a.round.toUpperCase() : ''} deadline (entered by me)`),
+                    title: t(`${s?.name ?? '학교'} ${roundLabel} 마감 (내가 입력한 날짜)`, `${s?.name ?? 'School'} ${roundLabel} deadline (entered by me)`),
                     date: a.student_deadline as string,
                     description: t('공식 페이지에서 최종 확인하세요', 'Confirm on the official page') + (s?.deadlines_source_url ? `: ${s.deadlines_source_url}` : ''),
                   }

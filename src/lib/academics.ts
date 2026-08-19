@@ -38,3 +38,15 @@ export const seasonLabelKo: Record<Season, string> = bilingual<Season>(
   { fall: 'Fall (가을)', spring: 'Spring (봄)', summer: 'Summer (여름)' },
   { fall: 'Fall', spring: 'Spring', summer: 'Summer' },
 )
+
+// 마감 시기 문자열('11월 초') → 언어별 표시 ('early Nov'). 형식이 다르면 원문 그대로
+const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+export function timingLabel(raw: string | null | undefined): string | null {
+  if (!raw) return null
+  const m = raw.match(/^(\d{1,2})월\s*(초|중순|말)?$/)
+  if (!m) return raw
+  const month = MONTHS_EN[Number(m[1]) - 1]
+  if (!month) return raw
+  const part = m[2] === '초' ? 'early ' : m[2] === '중순' ? 'mid-' : m[2] === '말' ? 'late ' : ''
+  return t(raw, `${part}${month}`)
+}

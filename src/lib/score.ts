@@ -76,14 +76,16 @@ export function computeScores(
           ? 15
           : 0
 
-  const cap = (n: number) => Math.max(0, Math.min(100, Math.round(n)))
+  const cap = (n: number) => (Number.isFinite(n) ? Math.max(0, Math.min(100, Math.round(n))) : 0)
+  // 자가진단 값이 1~3 밖(구버전 데이터·null)이면 1단계로 처리해 NaN 방지
+  const self = (level: number | null | undefined) => selfPts[level ?? 1] ?? selfPts[1]
 
   return {
     rigor: cap(rigor),
     testing: cap(sat + toefl),
-    spike: cap((overrides?.spike ?? selfPts[p.activity_spike ?? 1]) + checks('spike') * 10),
-    leadership: cap((overrides?.leadership ?? selfPts[p.activity_leadership ?? 1]) + checks('leadership') * 10),
-    validation: cap((overrides?.validation ?? selfPts[p.activity_validation ?? 1]) + checks('validation') * 10),
+    spike: cap((overrides?.spike ?? self(p.activity_spike)) + checks('spike') * 10),
+    leadership: cap((overrides?.leadership ?? self(p.activity_leadership)) + checks('leadership') * 10),
+    validation: cap((overrides?.validation ?? self(p.activity_validation)) + checks('validation') * 10),
     story: storyStats
       ? cap((storyStats.done / Math.max(1, storyStats.exposed)) * 100)
       : cap(10 + checks('story') * 15),

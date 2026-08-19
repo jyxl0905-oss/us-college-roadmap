@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import AppShell from './AppShell'
 import { t } from '../i18n'
 import { insertRow, updateRow, deleteRow } from './appData'
@@ -18,6 +18,7 @@ export default function PlansTab({ userId, majorKey }: PlansTabProps) {
   const seasons = cycleSeasons()
   const [title, setTitle] = useState('')
   const [axis, setAxis] = useState<Axis>('spike')
+  const busyRef = useRef(false) // Enter 연타·더블탭 중복 추가 방지
   const [season, setSeason] = useState(() => {
     const cur = currentSeasonLabel()
     return seasons.some((s) => s.label === cur) ? cur : seasons[0].label
@@ -31,19 +32,29 @@ export default function PlansTab({ userId, majorKey }: PlansTabProps) {
 
   const add = async () => {
     const text = title.trim()
-    if (!text) return
-    const row = await insertRow<Plan>('plans', userId, { title: text, axis, season_label: season, status: 'planned', notes: null })
-    if (row) setPlans([...plans, row])
-    setTitle('')
+    if (!text || busyRef.current) return
+    busyRef.current = true
+    try {
+      const row = await insertRow<Plan>('plans', userId, { title: text, axis, season_label: season, status: 'planned', notes: null })
+      if (row) setPlans([...plans, row])
+      setTitle('')
+    } catch { /* insertRow가 이미 alert — 입력값 유지 */ } finally { busyRef.current = false }
   }
   const cycle = async (p: Plan) => {
     const status = nextStatus[p.status]
-    setPlans(plans.map((x) => (x.id === p.id ? { ...x, status } : x)))
-    await updateRow<Plan>('plans', p.id, { status })
+    const before = plans
+    setPlans(plans.map((x) => (x.id === p.id ? { ...x, status } : x))) // 낙관적 갱신
+    try {
+      await updateRow<Plan>('plans', p.id, { status })
+    } catch {
+      setPlans(before) // 실패 시 되돌림 (updateRow가 이미 alert)
+    }
   }
   const remove = async (id: number) => {
-    await deleteRow('plans', id)
-    setPlans(plans.filter((x) => x.id !== id))
+    try {
+      await deleteRow('plans', id)
+      setPlans(plans.filter((x) => x.id !== id))
+    } catch { /* deleteRow가 이미 alert */ }
   }
 
   const active = plans.filter((p) => p.status !== 'done')
@@ -67,7 +78,7 @@ export default function PlansTab({ userId, majorKey }: PlansTabProps) {
         <input
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && add()}
+          onKeyDown={(e) => { if (e.key === 'Enter' && !e.nativeEvent.isComposing) add() }}
           placeholder={t('예: USACO Bronze 응시', 'e.g. Take USACO Bronze')}
           className="w-full rounded-lg border-2 border-gray-200 px-3 py-2 text-sm focus:border-blue-600 focus:outline-none"
         />

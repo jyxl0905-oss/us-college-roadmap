@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import AppShell from './AppShell'
 import { t } from '../i18n'
 import type { ProfileRow } from '../lib/profile'
@@ -23,6 +23,7 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
   const [schools, setSchools] = useState<School[]>([])
   const [adding, setAdding] = useState<'personal' | number | null>(null) // number = school_id
   const [editing, setEditing] = useState<number | null>(null)
+  const busyRef = useRef(false) // 저장·삭제 중복 요청 방지 (더블탭)
 
   useEffect(() => {
     loadAppRecords(userId).then((r) => setEssays(r.essays))
@@ -42,7 +43,12 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
   const personal = essays.filter((e) => e.school_id === null)
   const forSchool = (id: number) => essays.filter((e) => e.school_id === id)
 
-  const save = async (draft: Omit<Essay, 'id'>, id: number | null) => {
+  const guarded = async (fn: () => Promise<void>) => {
+    if (busyRef.current) return
+    busyRef.current = true
+    try { await fn() } catch { /* insertRow/updateRow/deleteRow가 이미 alert */ } finally { busyRef.current = false }
+  }
+  const save = (draft: Omit<Essay, 'id'>, id: number | null) => guarded(async () => {
     if (id === null) {
       const row = await insertRow<Essay>('essays', userId, draft)
       if (row) setEssays([...essays, row])
@@ -52,15 +58,21 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
     }
     setAdding(null)
     setEditing(null)
-  }
-  const remove = async (id: number) => {
+  })
+  const remove = (id: number) => guarded(async () => {
+    if (!confirm(t('이 에세이 항목을 삭제할까요? 되돌릴 수 없어요.', 'Delete this essay entry? This cannot be undone.'))) return
     await deleteRow('essays', id)
     setEssays(essays.filter((e) => e.id !== id))
     setEditing(null)
-  }
+  })
   const setStatus = async (e: Essay, status: EssayStatus) => {
-    await updateRow<Essay>('essays', e.id, { status })
-    setEssays(essays.map((x) => (x.id === e.id ? { ...x, status } : x)))
+    const before = essays
+    setEssays(essays.map((x) => (x.id === e.id ? { ...x, status } : x))) // 낙관적 갱신
+    try {
+      await updateRow<Essay>('essays', e.id, { status })
+    } catch {
+      setEssays(before) // 실패 시 되돌림 (updateRow가 이미 alert)
+    }
   }
 
   const statusPill = (e: Essay) => (
@@ -82,13 +94,13 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
     ) : (
       <div key={e.id} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3">
         <div className="flex items-start justify-between gap-2">
-          <p className="min-w-0 flex-1 text-sm leading-relaxed text-gray-800">{e.prompt || <span className="text-gray-300">{t('문항 미입력', 'No prompt set')}</span>}</p>
+          <p className="min-w-0 flex-1 break-words text-sm leading-relaxed text-gray-800">{e.prompt || <span className="text-gray-300">{t('문항 미입력', 'No prompt set')}</span>}</p>
           {statusPill(e)}
         </div>
         <div className="mt-2 flex items-center gap-3 text-xs text-gray-400">
-          {e.word_limit && <span>{t(`${e.word_limit}단어`, `${e.word_limit} words`)}</span>}
-          {e.notes && <span className="truncate">{t('메모: ', 'Note: ')}{e.notes}</span>}
-          <button onClick={() => setEditing(e.id)} className="ml-auto text-blue-600 underline">{t('편집', 'Edit')}</button>
+          {e.word_limit ? <span className="shrink-0">{t(`${e.word_limit}단어`, `${e.word_limit} words`)}</span> : null}
+          {e.notes && <span className="min-w-0 truncate">{t('메모: ', 'Note: ')}{e.notes}</span>}
+          <button onClick={() => setEditing(e.id)} className="ml-auto shrink-0 text-blue-600 underline">{t('편집', 'Edit')}</button>
         </div>
       </div>
     )
@@ -150,7 +162,7 @@ function EssayForm({
   initial?: Essay
   schoolId: number | null
   defaultLimit?: number
-  onSave: (d: Omit<Essay, 'id'>) => void
+  onSave: (d: Omit<Essay, 'id'>) => Promise<void>
   onCancel: () => void
   onDelete?: () => void
 }) {
@@ -158,6 +170,9 @@ function EssayForm({
   const [status, setStatus] = useState<EssayStatus>(initial?.status ?? 'not_started')
   const [limit, setLimit] = useState<string>(initial?.word_limit?.toString() ?? defaultLimit?.toString() ?? '')
   const [notes, setNotes] = useState(initial?.notes ?? '')
+  const [saving, setSaving] = useState(false)
+  const limitNum = limit.trim() === '' ? null : Number(limit)
+  const limitBad = limitNum !== null && (!Number.isInteger(limitNum) || limitNum <= 0)
   const field = 'mt-1 w-full rounded-lg border-2 border-gray-200 px-3 py-2 text-sm focus:border-blue-600 focus:outline-none'
   const label = 'text-xs font-medium text-gray-500'
   return (
@@ -174,14 +189,22 @@ function EssayForm({
         </div>
         <div>
           <label className={label}>{t('단어 제한', 'Word limit')}</label>
-          <input type="number" inputMode="numeric" value={limit} onChange={(e) => setLimit(e.target.value)} className={field} />
+          <input type="number" inputMode="numeric" min={1} value={limit} onChange={(e) => setLimit(e.target.value)} className={`${field} ${limitBad ? 'border-red-400' : ''}`} />
         </div>
       </div>
       <label className={`${label} mt-2 block`}>{t('메모 (짧게)', 'Note (short)')}</label>
       <input value={notes} onChange={(e) => setNotes(e.target.value)} className={field} placeholder={t('예: 초안 구글독스 링크 / 3번째 문단 다시', 'e.g. Google Docs link / redo paragraph 3')} />
       <div className="mt-3 flex items-center gap-2">
-        <button onClick={() => onSave({ school_id: schoolId, prompt: prompt.trim(), status, word_limit: limit ? Number(limit) : null, notes: notes.trim() || null })}
-          className="flex-1 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white">{t('저장', 'Save')}</button>
+        <button
+          disabled={saving || limitBad}
+          onClick={async () => {
+            if (saving) return
+            setSaving(true)
+            try {
+              await onSave({ school_id: schoolId, prompt: prompt.trim(), status, word_limit: limitNum, notes: notes.trim() || null })
+            } finally { setSaving(false) }
+          }}
+          className="flex-1 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white disabled:bg-gray-300">{saving ? t('저장 중…', 'Saving…') : t('저장', 'Save')}</button>
         <button onClick={onCancel} className="rounded-xl border-2 border-gray-200 px-4 py-2.5 text-sm text-gray-600">{t('취소', 'Cancel')}</button>
         {onDelete && <button onClick={onDelete} className="ml-auto text-xs text-red-500 underline">{t('삭제', 'Delete')}</button>}
       </div>
