@@ -357,3 +357,6 @@ create table if not exists milestones (
 );
 alter table milestones enable row level security;
 create policy "own milestones" on milestones for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+-- 학생이 직접 정하는 리스트 분류 (reach/match/safety) — 툴은 판단하지 않고 학생 라벨만 저장
+alter table applications add column if not exists fit text check (fit in ('reach','match','safety'));

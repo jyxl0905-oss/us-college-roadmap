@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { School } from '../lib/types'
 import { supabase } from '../lib/supabase'
-import { navigate } from '../lib/router'
+import { navigate, slugify } from '../lib/router'
 import { logEvent } from '../lib/analytics'
 import type { ProfileRow } from '../lib/profile'
 import { timingSortKey } from '../deadlines/DeadlinesPage'
@@ -12,7 +12,7 @@ import { loadAppRecords, bestSat, type AppRecords } from '../app/appData'
 import { profileGrade } from '../lib/profile'
 import { currentSeason } from '../lib/academics'
 import {
-  boardWarnings, offeredRounds, roundTiming, roundLabels, statusLabels, roundSlots, dDay, timingLabel,
+  boardWarnings, offeredRounds, roundTiming, roundLabels, statusLabels, roundSlots, dDay, timingLabel, fitOrder, fitLabels, fitHint,
   autoItems, c7Actions, c7Checkable, isFirstChoice, suppEssayTip,
   type ApplicationRow, type CustomTask, type Round, type AppStatus,
 } from './boardLogic'
@@ -24,6 +24,9 @@ interface BoardPageProps {
 
 // F4→F5 지원 학교(My Colleges) — 라운드 칸 배치·상태 추적·학교 맞춤 준비 + 내 원서 연동.
 // 추천 없음: 사실 고지·규칙 검증·정리·추적까지만
+const fitActive: Record<string, string> = { reach: 'border-purple-500 bg-purple-50 text-purple-700', match: 'border-blue-600 bg-blue-50 text-blue-700', safety: 'border-green-600 bg-green-50 text-green-700' }
+const fitBadge: Record<string, string> = { reach: 'bg-purple-100 text-purple-700', match: 'bg-blue-100 text-blue-700', safety: 'bg-green-100 text-green-700' }
+
 export default function BoardPage({ userId, profile }: BoardPageProps) {
   const [schools, setSchools] = useState<School[] | null>(null)
   const [apps, setApps] = useState<ApplicationRow[]>([])
@@ -56,7 +59,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
         : supabase.from('schools').select('*').eq('tier', profile.target_tier)
     Promise.all([
       schoolsQuery,
-      supabase.from('applications').select('school_id, round, status, updated_at, student_deadline').eq('user_id', userId),
+      supabase.from('applications').select('school_id, round, status, updated_at, student_deadline, fit').eq('user_id', userId),
       supabase.from('custom_tasks').select('id, school_id, title, done').eq('user_id', userId),
       loadAppRecords(userId),
     ]).then(([sc, ap, ct, rec]) => {
@@ -82,6 +85,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
       round: patch.round !== undefined ? patch.round : (prev?.round ?? null),
       status: patch.status ?? prev?.status ?? 'preparing',
       student_deadline: patch.student_deadline !== undefined ? patch.student_deadline : (prev?.student_deadline ?? null),
+      fit: patch.fit !== undefined ? patch.fit : (prev?.fit ?? null),
       updated_at: new Date().toISOString(),
     }
     const before = apps
@@ -332,6 +336,29 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
           {/* ED/ED2 배정 시 맞춤 준비 최상단 */}
           {first && <div className="mt-4">{fitBlock}</div>}
 
+          {/* 학생이 직접 정하는 reach/match/safety */}
+          <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
+            <p className="font-semibold text-gray-900">{t('내 리스트에서 이 학교는?', 'Where does this school sit on my list?')}</p>
+            <p className="mt-0.5 text-xs text-gray-400">{fitHint()}</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {fitOrder.map((f) => (
+                <button
+                  key={f}
+                  onClick={() => upsertApp(open.id, { fit: app?.fit === f ? null : f })}
+                  className={`rounded-full border-2 px-3 py-1.5 text-sm font-medium ${app?.fit === f ? fitActive[f] : 'border-gray-200 bg-white text-gray-600'}`}
+                >
+                  {fitLabels[f]}
+                </button>
+              ))}
+            </div>
+            <p className="mt-2 text-xs text-gray-500">
+              {t('참고: SAT 중간 50% ', 'For reference: SAT middle 50% ')}
+              {open.sat_mid50_low && open.sat_mid50_high ? `${open.sat_mid50_low}–${open.sat_mid50_high}` : t('미공개', 'not disclosed')}
+              {' · '}{t('국제학생 합격률 ', 'intl. accept rate ')}{open.intl_accept_rate != null ? `${open.intl_accept_rate}%` : t('미공개', 'not disclosed')}
+              {' · '}<button onClick={() => navigate(`/schools/${slugify(open.name)}`)} className="text-blue-600 underline">{t('학교 카드 보기', 'See school card')}</button>
+            </p>
+          </div>
+
           {/* 라운드 배정 */}
           <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
             <p className="font-semibold text-gray-900">{t('지원 라운드', 'Application round')}</p>
@@ -474,6 +501,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
             <div className="min-w-0 flex-1">
               <p className="truncate font-semibold text-gray-900">{s.name}</p>
               <p className="flex flex-wrap items-center gap-x-2 text-xs text-gray-500">
+                {app?.fit && <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-semibold ${fitBadge[app.fit]}`}>{fitLabels[app.fit]}</span>}
                 <span>{statusLabels[app?.status ?? 'preparing']}</span>
                 {timing && <span>{t('마감 ', 'Due ')}{timingLabel(timing)}</span>}
                 {dd !== null && dd >= 0 && <span className={dd <= 14 ? 'font-semibold text-red-600' : 'text-blue-700'}>D-{dd}</span>}
@@ -545,6 +573,26 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
           ))}
         </div>
       )}
+
+      {/* reach/match/safety 요약 — 학생 라벨 기준 */}
+      {schools.length > 0 && (() => {
+        const counts = fitOrder.map((f) => [f, schools.filter((s) => appFor(s.id)?.fit === f).length] as const)
+        const labeled = counts.reduce((a, [, n]) => a + n, 0)
+        const missing = fitOrder.filter((f) => counts.find(([k]) => k === f)![1] === 0)
+        return (
+          <div className="mt-4 rounded-xl bg-gray-100 px-4 py-3 text-sm">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span className="font-semibold text-gray-800">{t('내 리스트 균형', 'List balance')}</span>
+              {counts.map(([f, n]) => <span key={f} className="text-gray-600">{fitLabels[f]} <strong>{n}</strong></span>)}
+              <span className="text-xs text-gray-400">{t(`(${schools.length}개 중 ${labeled}개 분류)`, `(${labeled} of ${schools.length} labeled)`)}</span>
+            </div>
+            {labeled > 0 && missing.length > 0 && (
+              <p className="mt-1 text-xs text-gray-500">{t(`아직 없는 그룹: ${missing.map((f) => fitLabels[f]).join(', ')} — 학교 카드에서 정해 붙여보세요.`, `Not yet on your list: ${missing.map((f) => fitLabels[f]).join(', ')} — label them from each school card.`)}</p>
+            )}
+            {labeled === 0 && <p className="mt-1 text-xs text-gray-500">{t('학교를 열어 Reach/Match/Safety를 직접 정해보세요 — 툴은 판단하지 않고 학생 라벨만 저장해요.', 'Open a school and set Reach/Match/Safety yourself — the tool only stores your label.')}</p>}
+          </div>
+        )
+      })()}
 
       {/* 라운드 칸 */}
       {roundSlots.map(({ round, label, rule }) => {
