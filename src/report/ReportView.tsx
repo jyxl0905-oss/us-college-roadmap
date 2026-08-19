@@ -17,6 +17,7 @@ import { downloadDocx } from '../lib/report-doc'
 import { logEvent } from '../lib/analytics'
 import { navigate } from '../lib/router'
 import OutcomeSurvey from './OutcomeSurvey'
+import MustDoCard from './MustDoCard'
 import { isAdminEmail } from '../lib/admin'
 import { t, localizeRows } from '../i18n'
 import LangToggle from '../i18n/LangToggle'
@@ -360,6 +361,9 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
 
       {/* PWA 설치 안내 */}
       <InstallPrompt />
+
+      {/* 11학년 봄~12학년 '꼭 체크' 마일스톤 */}
+      {!graduated && (grade === 12 || (grade === 11 && currentSeason() !== 'fall')) && <MustDoCard userId={userId} grade={grade} />}
 
       {/* 졸업 후 결과 설문 (12학년 봄 이후·졸업 모드) */}
       {showSurvey && (

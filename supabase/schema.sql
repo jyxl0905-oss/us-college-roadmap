@@ -347,3 +347,13 @@ create policy "own outcome_surveys" on outcome_surveys for all using (auth.uid()
 
 -- 재학교 이름 (학교별 통계용, 온보딩 선택 입력)
 alter table profiles add column if not exists school_name text;
+
+-- 11·12학년 '꼭 체크' 마일스톤 완료 기록 (key = 코드의 MUST_DO 항목 키)
+create table if not exists milestones (
+  user_id uuid not null references auth.users (id) on delete cascade,
+  key text not null,
+  done_at timestamptz not null default now(),
+  primary key (user_id, key)
+);
+alter table milestones enable row level security;
+create policy "own milestones" on milestones for all using (auth.uid() = user_id) with check (auth.uid() = user_id);

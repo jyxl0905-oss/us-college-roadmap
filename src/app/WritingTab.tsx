@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import AppShell from './AppShell'
 import { t } from '../i18n'
+import { COMMON_APP_PROMPTS, COMMON_APP_PROMPTS_SOURCE, COMMON_APP_PROMPTS_YEAR, COMMON_APP_WORD_RANGE } from '../data/commonAppPrompts'
 import type { ProfileRow } from '../lib/profile'
 import { loadSchools } from '../lib/schoolsCache'
 import type { School } from '../lib/types'
@@ -23,6 +24,8 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
   const [schools, setSchools] = useState<School[]>([])
   const [adding, setAdding] = useState<'personal' | number | null>(null) // number = school_id
   const [editing, setEditing] = useState<number | null>(null)
+  const [showPrompts, setShowPrompts] = useState(false)
+  const [seedPrompt, setSeedPrompt] = useState<string | undefined>(undefined)
   const busyRef = useRef(false) // 저장·삭제 중복 요청 방지 (더블탭)
 
   useEffect(() => {
@@ -116,10 +119,46 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
         <h2 className="font-semibold text-gray-900">{t('개인 에세이 (Personal Essay)', 'Personal Essay')}</h2>
         <span className="text-xs text-gray-400">{t(`${PERSONAL_WORD_LIMIT}단어 이내`, `up to ${PERSONAL_WORD_LIMIT} words`)}</span>
       </div>
+      {/* Common App 공통 문항 7개 — 공식 문구 + 한국어 요약. 학교별 보충 에세이는 각 학교 공식 페이지에서 */}
+      <div className="mt-2 rounded-xl border border-gray-200 bg-white">
+        <button onClick={() => setShowPrompts((v) => !v)} className="flex w-full items-center justify-between px-3.5 py-2.5 text-left text-sm font-medium text-gray-800">
+          <span>📝 {t(`Common App 공통 문항 7개 보기 (${COMMON_APP_PROMPTS_YEAR})`, `See the 7 Common App prompts (${COMMON_APP_PROMPTS_YEAR})`)}</span>
+          <span className="text-gray-400">{showPrompts ? '▴' : '▾'}</span>
+        </button>
+        {showPrompts && (
+          <div className="border-t border-gray-100 px-3.5 pb-3.5 pt-2">
+            <p className="text-xs text-gray-500">
+              {t(`7개 중 하나를 골라 ${COMMON_APP_WORD_RANGE}단어. 문항은 대부분 해마다 같지만 여름에 공식 페이지에서 확인하세요. 학교별 보충 에세이는 각 학교 입학처 페이지에서 직접 찾아 아래 학교 칸에 붙여넣어요.`, `Pick one of the 7 and write ${COMMON_APP_WORD_RANGE} words. Prompts usually stay the same year to year, but confirm on the official page each summer. Find each school's supplements on its admissions page and paste them into the school sections below.`)}
+              {' '}<a href={COMMON_APP_PROMPTS_SOURCE} target="_blank" rel="noreferrer" className="text-blue-600 underline">{t('공식 문항 페이지 ↗', 'Official prompts ↗')}</a>
+            </p>
+            <ol className="mt-2 flex flex-col gap-2">
+              {COMMON_APP_PROMPTS.map((pr) => (
+                <li key={pr.n} className="rounded-lg bg-gray-50 px-3 py-2">
+                  <p className="text-xs font-semibold text-gray-500">#{pr.n} · {pr.ko}</p>
+                  <p className="mt-0.5 text-xs leading-relaxed text-gray-700">{pr.en}</p>
+                  {personal.length === 0 && (
+                    <button onClick={() => { setSeedPrompt(`Common App #${pr.n}: ${pr.en}`); setAdding('personal'); setShowPrompts(false) }} className="mt-1 text-xs font-semibold text-blue-600 underline">
+                      {t('이 문항으로 메모 시작', 'Start a note with this prompt')}
+                    </button>
+                  )}
+                </li>
+              ))}
+            </ol>
+            <div className="mt-3 rounded-lg bg-blue-50 px-3 py-2 text-xs text-blue-900">
+              <p className="font-semibold">{t('소재 고르는 팁', 'Picking a topic')}</p>
+              <ul className="mt-1 list-disc space-y-0.5 pl-4">
+                <li>{t('"대단한 사건"보다 "나만 아는 작은 순간" — AO는 성취 목록이 아니라 생각하는 방식을 보고 싶어 해요.', 'A small moment only you know beats a big event — AOs want to see how you think, not a list of achievements.')}</li>
+                <li>{t('활동란에 이미 있는 내용을 반복하지 않기 — 에세이는 원서의 빈칸을 채우는 곳.', 'Don’t repeat what is already in your activities list — the essay fills the gaps in your application.')}</li>
+                <li>{t('11학년 봄에 소재 3개만 적어두고, 여름에 하나를 골라 초안.', 'Note 3 ideas in 11th-grade spring, pick one and draft in summer.')}</li>
+              </ul>
+            </div>
+          </div>
+        )}
+      </div>
       <div className="mt-2 flex flex-col gap-2">
         {personal.map(essayCard)}
         {adding === 'personal' ? (
-          <EssayForm schoolId={null} defaultLimit={PERSONAL_WORD_LIMIT} onSave={(d) => save(d, null)} onCancel={() => setAdding(null)} />
+          <EssayForm schoolId={null} defaultLimit={PERSONAL_WORD_LIMIT} defaultPrompt={seedPrompt} onSave={(d) => save(d, null)} onCancel={() => { setAdding(null); setSeedPrompt(undefined) }} />
         ) : (
           personal.length === 0 && (
             <button onClick={() => setAdding('personal')} className="rounded-xl border-2 border-dashed border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-500 active:bg-gray-50">
@@ -157,16 +196,17 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
 }
 
 function EssayForm({
-  initial, schoolId, defaultLimit, onSave, onCancel, onDelete,
+  initial, schoolId, defaultLimit, defaultPrompt, onSave, onCancel, onDelete,
 }: {
   initial?: Essay
   schoolId: number | null
   defaultLimit?: number
+  defaultPrompt?: string
   onSave: (d: Omit<Essay, 'id'>) => Promise<void>
   onCancel: () => void
   onDelete?: () => void
 }) {
-  const [prompt, setPrompt] = useState(initial?.prompt ?? '')
+  const [prompt, setPrompt] = useState(initial?.prompt ?? defaultPrompt ?? '')
   const [status, setStatus] = useState<EssayStatus>(initial?.status ?? 'not_started')
   const [limit, setLimit] = useState<string>(initial?.word_limit?.toString() ?? defaultLimit?.toString() ?? '')
   const [notes, setNotes] = useState(initial?.notes ?? '')
