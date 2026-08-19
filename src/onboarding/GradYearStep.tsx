@@ -16,8 +16,8 @@ export default function GradYearStep({ selected, onSelect, onNext }: GradYearSte
 
   return (
     <div>
-      <h1 className="text-xl font-bold text-gray-900">{t('몇 년도에 졸업 예정인가요?', 'What year will you graduate?')}</h1>
-      <p className="mt-2 text-sm text-gray-500">{t('Class of 기준으로 골라주세요.', 'Pick your Class of year.')}</p>
+      <h1 className="text-xl font-bold text-gray-900">{t('지금 몇 학년이에요?', 'What grade are you in?')}</h1>
+      <p className="mt-2 text-sm text-gray-500">{t('미국식 학년(9~12학년) 또는 졸업연도(Class of)로 골라주세요.', 'Pick by US grade (9–12) or graduation year (Class of).')}</p>
       <div className="mt-6 flex flex-col gap-3">
         {gradYears.map((year) => (
           <button
@@ -29,7 +29,16 @@ export default function GradYearStep({ selected, onSelect, onNext }: GradYearSte
                 : 'border-gray-200 bg-white active:bg-gray-50'
             }`}
           >
-            Class of {year}
+            {(() => {
+              const g = gradeFromGradYear(year)
+              const gradeText = g >= 9 && g <= 12 ? t(`${g}학년`, `Grade ${g}`) : g < 9 ? t('예비 9학년 (중3)', 'Rising 9th (8th grade)') : t('졸업', 'Graduated')
+              return (
+                <span className="flex items-baseline justify-between gap-3">
+                  <span className="text-gray-900">{gradeText}</span>
+                  <span className="text-sm text-gray-500">Class of {year}</span>
+                </span>
+              )
+            })()}
           </button>
         ))}
       </div>
