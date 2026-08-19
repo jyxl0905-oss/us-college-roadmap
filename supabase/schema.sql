@@ -360,3 +360,13 @@ create policy "own milestones" on milestones for all using (auth.uid() = user_id
 
 -- 학생이 직접 정하는 리스트 분류 (reach/match/safety) — 툴은 판단하지 않고 학생 라벨만 저장
 alter table applications add column if not exists fit text check (fit in ('reach','match','safety'));
+
+-- 온보딩 답변 임시 보관 (다른 브라우저에서 매직 링크 열어도 이어지게). 함수로만 접근: stash_onboarding(email, answers, research) / take_onboarding()
+create table if not exists pending_onboarding (
+  email text primary key,
+  answers jsonb not null,
+  research_consent boolean not null default false,
+  created_at timestamptz not null default now()
+);
+alter table pending_onboarding enable row level security;
+-- 함수 정의는 Supabase 마이그레이션 pending_onboarding_stash 참고

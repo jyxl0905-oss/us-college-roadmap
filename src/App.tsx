@@ -61,6 +61,23 @@ function Screen({ children }: { children: React.ReactNode }) {
 
 type GuestPhase = 'home' | 'onboarding' | 'preview' | 'email'
 
+// 다른 브라우저에서 매직 링크를 연 경우: 서버에 보관된 온보딩 답변(take_onboarding)을 한 번 가져옴
+function StashFetcher({ userId, onDone }: { userId: string; onDone: (r: { answers: OnboardingAnswers; research_consent: boolean } | null) => void }) {
+  useEffect(() => {
+    let cancelled = false
+    const finish = (r: { answers: OnboardingAnswers; research_consent: boolean } | null) => { if (!cancelled) onDone(r) }
+    if (!supabase) { finish(null); return }
+    const timer = window.setTimeout(() => finish(null), 6000)
+    supabase.rpc('take_onboarding').then(({ data }) => {
+      window.clearTimeout(timer)
+      const d = data as { answers?: Partial<OnboardingAnswers>; research_consent?: boolean } | null
+      finish(d?.answers ? { answers: { ...emptyAnswers, ...d.answers }, research_consent: !!d.research_consent } : null)
+    }, () => { window.clearTimeout(timer); finish(null) })
+    return () => { cancelled = true; window.clearTimeout(timer) }
+  }, [userId]) // eslint-disable-line react-hooks/exhaustive-deps
+  return <LoadingScreen />
+}
+
 // 렌더 중 navigate 호출 대신 effect에서 이동 (StrictMode 이중 push 방지)
 function Redirect({ to }: { to: string }) {
   useEffect(() => { navigate(to) }, [to])
@@ -113,6 +130,7 @@ function AppRoutes() {
   const [profileError, setProfileError] = useState<string | null>(null)
   const [profileRetry, setProfileRetry] = useState(0)
   const [pendingAnswers, setPendingAnswers] = useState<OnboardingAnswers | null>(loadPending)
+  const [stashChecked, setStashChecked] = useState<string | null>(null) // 서버 보관 답변 확인한 user id
   // 항상 홈에서 시작 — 미인증 답변이 남아 있으면 홈에 '이어서 인증하기' 배너를 보여줌
   // (만료 링크로 돌아온 경우만 이메일 화면부터)
   const [phase, setPhase] = useState<GuestPhase>(cameFromAuthError ? 'email' : 'home')
@@ -401,9 +419,19 @@ function AppRoutes() {
     )
   }
 
-  // 로그인 완료 + 프로필 없음 → 닉네임 입력 후 저장 (온보딩 답변은 localStorage에)
+  // 로그인 완료 + 프로필 없음 → 닉네임 입력 후 저장 (온보딩 답변은 localStorage에, 없으면 서버 보관분을 가져옴)
   if (session) {
     const pending = loadPending()
+    if (!pending && stashChecked !== session.user.id) {
+      return <StashFetcher userId={session.user.id} onDone={(answers) => {
+        if (answers) {
+          localStorage.setItem(PENDING_KEY, JSON.stringify(answers.answers))
+          if (answers.research_consent) localStorage.setItem(RESEARCH_CONSENT_KEY, '1')
+          setPendingAnswers(answers.answers)
+        }
+        setStashChecked(session.user.id)
+      }} />
+    }
     if (!pending) {
       // 답변이 없으면 온보딩부터 (로그인 상태라 이메일 단계는 건너뜀)
       return (
