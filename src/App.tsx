@@ -23,6 +23,12 @@ const GuideView = lazy(() => import('./report/GuideView'))
 const DeadlinesPage = lazy(() => import('./deadlines/DeadlinesPage'))
 const AppRouter = lazy(() => import('./app/AppRouter'))
 const MajorRoadmapPage = lazy(() => import('./major/MajorRoadmapPage'))
+const AdminPage = lazy(() => import('./admin/AdminPage'))
+// 개발용: /admin?demo=1 → 샘플 데이터로 레이아웃 확인 (프로덕션 빌드에서 제거됨)
+const AdminDemo = lazy(async () => {
+  const [{ default: Page }, { default: demo }] = await Promise.all([import('./admin/AdminPage'), import('./admin/demo-stats.json')])
+  return { default: () => <Page email="demo" demo={demo as unknown as Parameters<typeof Page>[0]['demo']} /> }
+})
 import { readPrefillSchoolIds } from './browse/prefill'
 import { logEvent } from './lib/analytics'
 
@@ -130,6 +136,13 @@ function AppRoutes() {
     )
   }
 
+  // 운영자 통계 (서버 함수가 이메일 화이트리스트로 권한 검사)
+  if (path === '/admin' || path === '/admin/') {
+    if (import.meta.env.DEV && new URLSearchParams(window.location.search).has('demo'))
+      return <AdminDemo />
+    if (!session) return <p className="mt-20 text-center text-sm text-gray-500">{t('운영자 계정으로 로그인 후 /admin 을 열어주세요.', 'Log in with the admin account, then open /admin.')}</p>
+    return <AdminPage email={session.user.email ?? null} />
+  }
   // F1: 대학 둘러보기 — 로그인 여부와 무관하게 고유 URL로 접근 가능
   if (path === '/schools' || path === '/schools/') {
     return <SchoolsListPage profile={profile} />
