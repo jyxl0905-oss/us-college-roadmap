@@ -40,6 +40,7 @@ export interface OnboardingAnswers {
   hasCounselor: YesNoUnknown | null
   schoolAccredited: YesNoUnknown | null
   schoolInUs: boolean // 미국 현지 학교 재학
+  schoolName: string | null // 다니는 학교 이름 (선택, 통계용)
   majorTrack: MajorTrackChoice | null
   majorPrimary: string | null
   majorSecondary: string | null
@@ -66,6 +67,7 @@ export const emptyAnswers: OnboardingAnswers = {
   hasCounselor: null,
   schoolAccredited: null,
   schoolInUs: false,
+  schoolName: null,
   majorTrack: null,
   majorPrimary: null,
   majorSecondary: null,

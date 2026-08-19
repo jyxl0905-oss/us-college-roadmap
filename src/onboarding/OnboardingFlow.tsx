@@ -3,6 +3,7 @@ import type { OnboardingAnswers, School, Tier } from '../lib/types'
 import { emptyAnswers } from '../lib/types'
 import { readPrefillSchoolIds, clearPrefill } from '../browse/prefill'
 import { majorsByTrack, majorDisplay } from '../data/majors'
+import SchoolNameStep from './SchoolNameStep'
 import schoolsData from '../data/schools.index.json' // 경량 인덱스(id·이름·티어) — 전체 시드는 schoolsCache에서만
 import { tierLabels } from './labels'
 import { t } from '../i18n'
@@ -22,6 +23,7 @@ type StepId =
   | 'status'
   | 'counselor'
   | 'accredited'
+  | 'schoolName'
   | 'majorTrack'
   | 'majorPrimary'
   | 'majorSecondary'
@@ -44,7 +46,7 @@ type StepId =
 
 // 답변에 따라 조건부 질문(전공 상세, 목표 학교 상세, SAT 밴드, TOEFL)이 끼어드는 전체 스텝 목록
 function stepList(a: OnboardingAnswers): StepId[] {
-  const steps: StepId[] = ['gradYear', 'status', 'counselor', 'accredited', 'majorTrack']
+  const steps: StepId[] = ['gradYear', 'status', 'counselor', 'accredited', 'schoolName', 'majorTrack']
   if (a.majorTrack !== 'undecided') steps.push('majorPrimary', 'majorSecondary')
   steps.push('targetMode')
   if (a.targetMode === 'schools') steps.push('targetSchools')
@@ -265,6 +267,8 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
             }
           />
         )
+      case 'schoolName':
+        return <SchoolNameStep value={answers.schoolName} onSelect={(name) => answer({ schoolName: name })} />
       case 'majorTrack':
         return (
           <ChoiceStep

@@ -107,7 +107,7 @@ export function summaryRows(a: OnboardingAnswers): [string, string][] {
     [t('졸업연도', 'Graduation year'), a.gradYear ? `Class of ${a.gradYear}` : '-'],
     [t('지원 신분', 'Applicant status'), statusText],
     [t('전담 카운슬러', 'Dedicated counselor'), a.hasCounselor === 'yes' ? t('있음', 'Yes') : a.hasCounselor === 'no' ? t('없음', 'No') : t('모름', 'Not sure')],
-    [t('학교', 'School'), a.schoolInUs ? t('미국 현지 학교', 'School in the US') : a.schoolAccredited === 'yes' ? t('국제 인증 있음', 'Internationally accredited') : a.schoolAccredited === 'no' ? t('국제 인증 없음', 'Not accredited') : t('인증 모름 → 확인 필요', 'Accreditation unknown → check')],
+    [t('학교', 'School'), (a.schoolName ? a.schoolName + ' · ' : '') + (a.schoolInUs ? t('미국 현지 학교', 'School in the US') : a.schoolAccredited === 'yes' ? t('국제 인증 있음', 'Internationally accredited') : a.schoolAccredited === 'no' ? t('국제 인증 없음', 'Not accredited') : t('인증 모름 → 확인 필요', 'Accreditation unknown → check'))],
     [t('계열', 'Track'), a.majorTrack === 'stem' ? t('이과 (STEM)', 'STEM') : a.majorTrack === 'liberal' ? t('문과 (Humanities·Social)', 'Humanities / Social') : t('미정', 'Undecided')],
     [t('희망 전공 1순위', 'First-choice major'), majorLabel(a.majorPrimary)],
     [t('희망 전공 2순위', 'Second-choice major'), a.majorSecondary ? majorLabel(a.majorSecondary) : t('없음', 'None')],

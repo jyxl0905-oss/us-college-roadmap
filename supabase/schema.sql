@@ -344,3 +344,6 @@ create table if not exists outcome_surveys (
 );
 alter table outcome_surveys enable row level security;
 create policy "own outcome_surveys" on outcome_surveys for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+-- 재학교 이름 (학교별 통계용, 온보딩 선택 입력)
+alter table profiles add column if not exists school_name text;

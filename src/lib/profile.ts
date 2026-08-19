@@ -34,6 +34,7 @@ export interface ProfileRow {
   research_consent: boolean
   reminder_opt_out?: boolean // 시즌 시작 알림 이메일 끄기
   school_in_us?: boolean // 미국 현지 학교 재학
+  school_name?: string | null // 다니는 학교 (통계용)
   lang?: 'ko' | 'en' | null // 알림 메일 언어 (UI 토글과 동기화)
   graduated?: boolean // 졸업 처리됨 (롤오버 팝업 없음, 리포트는 보관 모드)
 }
@@ -50,6 +51,7 @@ export function answersToRow(
     has_counselor: a.hasCounselor,
     school_accredited: a.schoolAccredited,
     school_in_us: a.schoolInUs,
+    school_name: a.schoolName,
     major_primary: a.majorPrimary,
     major_secondary: a.majorSecondary,
     target_mode: a.targetMode,

@@ -12,6 +12,8 @@ import { gradeFromGradYear } from '../lib/academics'
 type Dist = Record<string, number>
 interface Stats {
   generated_at: string
+  filter?: string | null
+  hs_schools?: { name: string; n: number }[]
   totals: {
     auth_users: number; profiles: number; nicknamed: number; reports_total: number; reports_users: number
     checks_total: number; checks_users: number; active_7d: number; active_30d: number; new_7d: number; new_30d: number
@@ -187,17 +189,21 @@ function normalize(raw: Stats): Stats {
 export default function AdminPage({ email, demo }: { email: string | null; demo?: Stats }) {
   const [stats, setStats] = useState<Stats | null>(demo ? normalize(demo) : null)
   const [extra, setExtra] = useState<Extra | null>(null)
+  const [school, setSchool] = useState<string | null>(null) // null=전체, '__none__'=미입력
+  const [loadingStats, setLoadingStats] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     if (!supabase || demo) return
-    supabase.rpc('admin_stats').then(({ data, error }) => {
+    setLoadingStats(true)
+    supabase.rpc('admin_stats', { p_school: school }).then(({ data, error }) => {
+      setLoadingStats(false)
       if (error) setError(error.message.includes('forbidden') || error.code === '42501' ? '권한이 없어요 (운영자 계정으로 로그인해야 해요)' : error.message)
       else if (!data) setError('통계 데이터가 비어 있어요')
       else setStats(normalize(data as Stats))
-    }, (e: unknown) => setError(e instanceof Error ? e.message : String(e)))
-    supabase.rpc('admin_stats_extra').then(({ data }) => { if (data) setExtra(data as Extra) }, () => {})
-  }, [demo])
+    }, (e: unknown) => { setLoadingStats(false); setError(e instanceof Error ? e.message : String(e)) })
+    if (!extra) supabase.rpc('admin_stats_extra').then(({ data }) => { if (data) setExtra(data as Extra) }, () => {})
+  }, [demo, school]) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (error) return (
     <div className="mx-auto max-w-md px-5 py-16 text-center">
@@ -228,6 +234,22 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
         </div>
         <button onClick={() => navigate('/')} className="text-sm text-gray-400 underline">← 홈</button>
       </div>
+
+      {/* 학교 필터 — 학교별로 나눠 보기 */}
+      {(stats.hs_schools ?? []).length > 0 && (
+        <div className="mb-4 rounded-2xl border border-gray-100 bg-white p-3">
+          <p className="mb-2 text-xs font-medium text-gray-500">학교별로 보기 {loadingStats && <span className="text-gray-400">· 불러오는 중…</span>}</p>
+          <div className="flex flex-wrap gap-1.5">
+            <button onClick={() => setSchool(null)} className={`rounded-full border px-3 py-1 text-xs ${school === null ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 text-gray-600'}`}>전체</button>
+            {(stats.hs_schools ?? []).map((h) => (
+              <button key={h.name} onClick={() => setSchool(h.name)} className={`rounded-full border px-3 py-1 text-xs ${school === h.name ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 text-gray-600'}`}>
+                {h.name === '__none__' ? '학교 미입력' : h.name} <span className="text-gray-400">{h.n}</span>
+              </button>
+            ))}
+          </div>
+          {school && <p className="mt-2 text-xs text-blue-700">아래 모든 숫자는 <strong>{school === '__none__' ? '학교 미입력' : school}</strong> 사용자 기준이에요.</p>}
+        </div>
+      )}
 
       {/* 핵심 지표 */}
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
