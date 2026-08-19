@@ -48,6 +48,7 @@ interface Extra {
     research_ok: number
   }
 }
+interface SchoolRow { name: string; users: number; no_counselor: number; intl: number; active_30d: number; returning_users: number; report_users: number; check_users: number; avg_done_rate: number | null; app_users: number; research_consent: number }
 const admittedKo: Record<string, string> = { first_choice: '1지망 합격', target: '목표 학교 중 합격', other: '목표 밖 합격', waiting: '결과 대기', no: '아직 합격 없음' }
 const featureKo: Record<string, string> = { checklist: '시즌 체크리스트', axes: '6축·처방', schools: '학교 카드·둘러보기', app: '내 원서', board: '지원 학교·라운드', major: '전공 가이드 맵', deadlines: '마감·알림', guide: '기본기·용어집' }
 
@@ -190,6 +191,7 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
   const [stats, setStats] = useState<Stats | null>(demo ? normalize(demo) : null)
   const [extra, setExtra] = useState<Extra | null>(null)
   const [school, setSchool] = useState<string | null>(null) // null=전체, '__none__'=미입력
+  const [bySchool, setBySchool] = useState<SchoolRow[] | null>(null)
   const [loadingStats, setLoadingStats] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -203,6 +205,7 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
       else setStats(normalize(data as Stats))
     }, (e: unknown) => { setLoadingStats(false); setError(e instanceof Error ? e.message : String(e)) })
     if (!extra) supabase.rpc('admin_stats_extra').then(({ data }) => { if (data) setExtra(data as Extra) }, () => {})
+    if (!bySchool) supabase.rpc('admin_stats_schools').then(({ data }) => { if (data) setBySchool(data as SchoolRow[]) }, () => {})
   }, [demo, school]) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (error) return (
@@ -234,6 +237,42 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
         </div>
         <button onClick={() => navigate('/')} className="text-sm text-gray-400 underline">← 홈</button>
       </div>
+
+      {/* 학교별 비교 표 — 전체 기준, 필터와 무관 */}
+      {bySchool && bySchool.length > 0 && (
+        <div className="mb-4 rounded-2xl border border-gray-100 bg-white p-4">
+          <h2 className="font-semibold text-gray-900">🏫 학교별 현황</h2>
+          <p className="mb-2 text-xs text-gray-400">학교 이름은 온보딩에서 학생이 직접 입력 · 행을 누르면 아래 전체 통계가 그 학교 기준으로 바뀌어요</p>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[640px] text-sm">
+              <thead>
+                <tr className="text-left text-xs text-gray-400">
+                  <th className="py-1 pr-2">학교</th><th className="pr-2">가입</th><th className="pr-2">30일 활성</th><th className="pr-2">재방문</th><th className="pr-2">리포트</th><th className="pr-2">체크</th><th className="pr-2">평균 완료율</th><th className="pr-2">내 원서</th><th className="pr-2">카운슬러 없음</th><th className="pr-2">국제학생</th>
+                </tr>
+              </thead>
+              <tbody>
+                {bySchool.map((r) => {
+                  const active = school === r.name || (school === '__none__' && r.name === '__none__')
+                  return (
+                    <tr key={r.name} onClick={() => setSchool(active ? null : r.name)} className={`cursor-pointer border-t border-gray-50 ${active ? 'bg-blue-50' : 'hover:bg-gray-50'}`}>
+                      <td className="max-w-[220px] truncate py-1.5 pr-2 font-medium text-gray-800">{r.name === '__none__' ? <span className="text-gray-400">학교 미입력</span> : r.name}</td>
+                      <td className="pr-2 tabular-nums text-gray-700">{r.users}</td>
+                      <td className="pr-2 tabular-nums text-gray-500">{r.active_30d}</td>
+                      <td className="pr-2 tabular-nums text-gray-500">{r.returning_users} <span className="text-gray-400">({pct(r.returning_users, r.users)})</span></td>
+                      <td className="pr-2 tabular-nums text-gray-500">{r.report_users}</td>
+                      <td className="pr-2 tabular-nums text-gray-500">{r.check_users}</td>
+                      <td className="pr-2 tabular-nums text-gray-500">{r.avg_done_rate != null ? Math.round(r.avg_done_rate * 100) + '%' : '–'}</td>
+                      <td className="pr-2 tabular-nums text-gray-500">{r.app_users}</td>
+                      <td className="pr-2 tabular-nums text-gray-500">{r.no_counselor} <span className="text-gray-400">({pct(r.no_counselor, r.users)})</span></td>
+                      <td className="pr-2 tabular-nums text-gray-500">{r.intl} <span className="text-gray-400">({pct(r.intl, r.users)})</span></td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
 
       {/* 학교 필터 — 학교별로 나눠 보기 */}
       {(stats.hs_schools ?? []).length > 0 && (
