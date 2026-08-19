@@ -69,8 +69,9 @@ export default async function handler(req, res) {
     const sb = createClient(url, service, { auth: { persistSession: false } })
     const { data: profiles, error } = await sb
       .from('profiles')
-      .select('user_id, nickname, grad_year, reminder_opt_out')
+      .select('user_id, nickname, grad_year, reminder_opt_out, lang')
       .eq('reminder_opt_out', false)
+      .eq('graduated', false)
     if (error) {
       res.status(500).json({ ok: false, error: error.message })
       return
@@ -101,21 +102,33 @@ export default async function handler(req, res) {
     for (const p of targets) {
       const to = emailById.get(p.user_id)
       if (!to) continue
-      const name = p.nickname ? `${p.nickname}님` : '안녕하세요'
-      const text = [
-        `${name}, 새 시즌이 시작됐어요 — ${seasonKo[season]} 시즌 체크리스트가 준비됐습니다.`,
-        '',
-        '지난 시즌 미완료 항목 정리 → 변경사항 반영 → 새 리포트 발급, 3화면이면 끝나요.',
-        `지금 체크인하기: ${SITE}`,
-        '',
-        '— 미국 대입 로드맵',
-        '알림을 끄려면 리포트 하단의 "시즌 시작 알림" 스위치를 꺼 주세요.',
-      ].join('\n')
+      const en = p.lang === 'en'
+      const seasonEn = { fall: 'Fall', spring: 'Spring', summer: 'Summer' }[season]
+      const name = en ? (p.nickname ? `Hi ${p.nickname}` : 'Hi') : (p.nickname ? `${p.nickname}님` : '안녕하세요')
+      const text = (en
+        ? [
+            `${name}, a new season has started — your ${seasonEn} checklist is ready.`,
+            '',
+            'Wrap up last season’s items → note what changed → get your new report. Three screens and you’re done.',
+            `Check in now: ${SITE}`,
+            '',
+            '— US College Roadmap',
+            'To stop these emails, turn off the "Season-start reminder" switch at the bottom of your report.',
+          ]
+        : [
+            `${name}, 새 시즌이 시작됐어요 — ${seasonKo[season]} 시즌 체크리스트가 준비됐습니다.`,
+            '',
+            '지난 시즌 미완료 항목 정리 → 변경사항 반영 → 새 리포트 발급, 3화면이면 끝나요.',
+            `지금 체크인하기: ${SITE}`,
+            '',
+            '— 미국 대입 로드맵',
+            '알림을 끄려면 리포트 하단의 "시즌 시작 알림" 스위치를 꺼 주세요.',
+          ]).join('\n')
       try {
         await transporter.sendMail({
-          from: `"미국 대입 로드맵" <${gmailUser}>`,
+          from: `"${en ? 'US College Roadmap' : '미국 대입 로드맵'}" <${gmailUser}>`,
           to,
-          subject: `[미국 대입 로드맵] ${seasonKo[season]} 시즌 체크인 시간이에요`,
+          subject: en ? `[US College Roadmap] Time for your ${seasonEn} check-in` : `[미국 대입 로드맵] ${seasonKo[season]} 시즌 체크인 시간이에요`,
           text,
         })
         count++

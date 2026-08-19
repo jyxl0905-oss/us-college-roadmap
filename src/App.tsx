@@ -29,7 +29,7 @@ const AdminDemo = lazy(async () => {
   const [{ default: Page }, { default: demo }] = await Promise.all([import('./admin/AdminPage'), import('./admin/demo-stats.json')])
   return { default: () => <Page email="demo" demo={demo as unknown as Parameters<typeof Page>[0]['demo']} /> }
 })
-import { readPrefillSchoolIds } from './browse/prefill'
+import { readPrefillSchoolIds, clearPrefill } from './browse/prefill'
 import { logEvent } from './lib/analytics'
 
 const PENDING_KEY = 'pending_answers' // 매직 링크로 나갔다 돌아와도 온보딩 답변 유지
@@ -79,7 +79,14 @@ export default function App() {
   // 언어 전환 시 전체 리마운트 (t()가 모듈 변수 기반이라 key로 갱신)
   const [langKey, setLangKey] = useState(getLang())
   useEffect(() => {
-    const on = () => setLangKey(getLang())
+    const on = () => {
+      setLangKey(getLang())
+      // 로그인 상태면 프로필에도 언어 저장 (알림 메일 언어) — 실패해도 무시
+      supabase?.auth.getSession().then(({ data }) => {
+        const uid = data.session?.user.id
+        if (uid) supabase!.from('profiles').update({ lang: getLang() }).eq('user_id', uid).then(() => {})
+      })
+    }
     window.addEventListener('app:lang', on)
     return () => window.removeEventListener('app:lang', on)
   }, [])
@@ -335,13 +342,18 @@ function AppRoutes() {
   // 로그인 완료 + 프로필 있음 → (새 시즌이면 체크인 먼저) 시즌 리포트
   if (session && profile) {
     const needsCheckin =
-      !checkinDone && typeof lastSeason === 'string' && lastSeason !== currentSeasonLabel()
+      !profile.graduated && !checkinDone && typeof lastSeason === 'string' && lastSeason !== currentSeasonLabel()
     return (
       <RolloverGate
         userId={session.user.id}
         profile={profile}
         onUpdateGradYear={async (gradYear) => {
-          const updated = { ...profile, grad_year: gradYear }
+          const updated = { ...profile, grad_year: gradYear, graduated: false }
+          await saveProfile(session.user.id, updated)
+          setProfile(updated)
+        }}
+        onGraduate={async () => {
+          const updated = { ...profile, graduated: true }
           await saveProfile(session.user.id, updated)
           setProfile(updated)
         }}
@@ -495,6 +507,10 @@ function AppRoutes() {
         localStorage.setItem(PENDING_KEY, JSON.stringify(answers))
         setPendingAnswers(answers)
         setPhase('preview')
+      }}
+      onExit={() => {
+        clearPrefill()
+        setPhase('home')
       }}
     />
   )

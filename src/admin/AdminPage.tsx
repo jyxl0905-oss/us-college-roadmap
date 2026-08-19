@@ -36,6 +36,19 @@ interface Stats {
   reminders_sent: number
 }
 
+interface Extra {
+  lang: Dist
+  graduated: number
+  survey: {
+    n: number; avg_helpful: number | null; helpful_dist: Dist; admitted: Dist; features: Dist
+    enrolled_top: { name: string; n: number }[]
+    comments: { helpful: number; admitted: string; comment: string }[]
+    research_ok: number
+  }
+}
+const admittedKo: Record<string, string> = { first_choice: '1지망 합격', target: '목표 학교 중 합격', other: '목표 밖 합격', waiting: '결과 대기', no: '아직 합격 없음' }
+const featureKo: Record<string, string> = { checklist: '시즌 체크리스트', axes: '6축·처방', schools: '학교 카드·둘러보기', app: '내 원서', board: '지원 학교·라운드', major: '전공 가이드 맵', deadlines: '마감·알림', guide: '기본기·용어집' }
+
 const pct = (a: number, b: number) => (b > 0 ? `${Math.round((a / b) * 100)}%` : '–')
 
 // ── 작은 차트 컴포넌트 (SVG 직접 렌더, 단일 색조) ──
@@ -173,6 +186,7 @@ function normalize(raw: Stats): Stats {
 
 export default function AdminPage({ email, demo }: { email: string | null; demo?: Stats }) {
   const [stats, setStats] = useState<Stats | null>(demo ? normalize(demo) : null)
+  const [extra, setExtra] = useState<Extra | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -182,6 +196,7 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
       else if (!data) setError('통계 데이터가 비어 있어요')
       else setStats(normalize(data as Stats))
     }, (e: unknown) => setError(e instanceof Error ? e.message : String(e)))
+    supabase.rpc('admin_stats_extra').then(({ data }) => { if (data) setExtra(data as Extra) }, () => {})
   }, [demo])
 
   if (error) return (
@@ -352,6 +367,31 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
           </table>
           {Object.keys(stats.rounds).length > 0 && (<><p className="mb-1 mt-3 text-xs font-medium text-gray-500">지원 라운드 배정</p><BarList data={stats.rounds} labels={roundKo} /></>)}
         </Card>
+
+        <Card title="🎓 졸업 후 결과 설문" hint="12학년 봄~졸업 모드에서 1회 수집 — 도움 정도·합격 결과·가장 유용했던 기능">
+          {!extra ? <p className="text-sm text-gray-400">불러오는 중…</p> : extra.survey.n === 0 ? <p className="text-sm text-gray-400">아직 응답 없음 (첫 12학년 봄부터 쌓여요)</p> : (
+            <div>
+              <p className="text-sm text-gray-700">응답 {extra.survey.n}명 · 도움 정도 평균 <strong>{extra.survey.avg_helpful ?? '–'}</strong> / 5 · 연구 동의 {extra.survey.research_ok}명 · 졸업 모드 {extra.graduated}명</p>
+              <div className="mt-3 grid gap-4 sm:grid-cols-2">
+                <div><p className="mb-1 text-xs font-medium text-gray-500">도움 정도 (1-5)</p><BarList data={extra.survey.helpful_dist ?? {}} /></div>
+                <div><p className="mb-1 text-xs font-medium text-gray-500">합격 결과</p><BarList data={extra.survey.admitted ?? {}} labels={admittedKo} /></div>
+                <div><p className="mb-1 text-xs font-medium text-gray-500">가장 도움 된 기능 (복수)</p><BarList data={extra.survey.features ?? {}} labels={featureKo} total={extra.survey.n} /></div>
+                <div><p className="mb-1 text-xs font-medium text-gray-500">진학 학교</p>{(extra.survey.enrolled_top ?? []).length === 0 ? <p className="text-sm text-gray-400">없음</p> : <BarList data={Object.fromEntries(extra.survey.enrolled_top.map((e) => [e.name, e.n]))} total={extra.survey.n} />}</div>
+              </div>
+              {(extra.survey.comments ?? []).length > 0 && (
+                <div className="mt-4">
+                  <p className="mb-1 text-xs font-medium text-gray-500">한마디 (최근 50)</p>
+                  <ul className="space-y-1.5 text-sm text-gray-700">
+                    {extra.survey.comments.map((c, i) => <li key={i} className="rounded-lg bg-gray-50 px-3 py-2">"{c.comment}" <span className="text-xs text-gray-400">— 도움 {c.helpful}/5 · {admittedKo[c.admitted] ?? c.admitted}</span></li>)}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+        </Card>
+        {extra && Object.keys(extra.lang ?? {}).length > 0 && (
+          <Card title="언어 설정"><BarList data={extra.lang} labels={{ ko: '한국어', en: 'English', '?': '미설정' }} /></Card>
+        )}
       </div>
       <p className="mt-6 text-center text-xs text-gray-400">/admin · 운영자 전용</p>
     </div>

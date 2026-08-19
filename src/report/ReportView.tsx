@@ -16,6 +16,7 @@ import {
 import { downloadDocx } from '../lib/report-doc'
 import { logEvent } from '../lib/analytics'
 import { navigate } from '../lib/router'
+import OutcomeSurvey from './OutcomeSurvey'
 import { t, localizeRows } from '../i18n'
 import LangToggle from '../i18n/LangToggle'
 import { downloadIcs, nextCheckinDate } from '../lib/ics'
@@ -96,6 +97,10 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
 
   const seasonLabel = currentSeasonLabel()
   const grade = profileGrade(profile)
+  const graduated = !!profile.graduated
+  // 결과 설문: 졸업 모드이거나, 12학년 3~7월(결과 발표 이후)
+  const surveyMonth = new Date().getMonth() + 1
+  const showSurvey = graduated || (grade === 12 && surveyMonth >= 3 && surveyMonth <= 7)
   const isIntl = profile.applicant_status !== 'domestic'
 
   useEffect(() => {
@@ -315,7 +320,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         <div>
           <h1 className="text-xl font-bold text-gray-900">{t(`${profile.nickname}님의 시즌 리포트`, `${profile.nickname}'s season report`)}</h1>
           <p className="mt-1 text-sm text-gray-500">
-            {t(`${grade}학년`, `Grade ${grade}`)} · {majorLabel(profile.major_primary)} · {seasonLabelKo[currentSeason()]}
+            {graduated ? <span className="rounded-full bg-gray-900 px-2 py-0.5 text-[11px] font-semibold text-white">🎓 {t('졸업 · 기록 보관', 'Graduated · archive')}</span> : <>{t(`${grade}학년`, `Grade ${grade}`)} · {majorLabel(profile.major_primary)} · {seasonLabelKo[currentSeason()]}</>}
             {profile.school_in_us && <span className="ml-1 rounded-full bg-gray-100 px-1.5 py-0.5 text-[11px] text-gray-500">🇺🇸 {t('미국 학교', 'US school')}</span>}
           </p>
           <button
@@ -352,6 +357,18 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
 
       {/* PWA 설치 안내 */}
       <InstallPrompt />
+
+      {/* 졸업 후 결과 설문 (12학년 봄 이후·졸업 모드) */}
+      {showSurvey && (
+        <div className="no-print mt-4">
+          <OutcomeSurvey userId={userId} profile={profile} />
+        </div>
+      )}
+      {graduated && (
+        <p className="mt-3 rounded-xl bg-gray-100 px-4 py-3 text-sm text-gray-600">
+          {t('졸업 축하해요! 체크리스트는 닫혔고, 4년 기록(성장 그래프·내 원서)은 그대로 보관돼요.', 'Congratulations on graduating! The checklist is closed; your four-year record (growth chart, application) stays saved.')}
+        </p>
+      )}
 
       {/* F5: 가상 Common App 추천 배너 (항상 표시) */}
       {(
@@ -552,7 +569,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       )}
 
       {/* 이월된 항목 */}
-      {carriedItems.length > 0 && (
+      {!graduated && carriedItems.length > 0 && (
         <div className="mt-5">
           <h2 className="font-semibold text-gray-900">{t('지난 시즌에서 이월된 항목', 'Carried over from last season')}</h2>
           <div className="mt-3">
@@ -561,8 +578,8 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         </div>
       )}
 
-      {/* 6. 이번 시즌 체크리스트 */}
-      <div className="mt-5">
+      {/* 6. 이번 시즌 체크리스트 (졸업 모드에서는 숨김) */}
+      {!graduated && <div className="mt-5">
         <h2 className="font-semibold text-gray-900">{t('이번 시즌 체크리스트', 'This season’s checklist')}</h2>
         {commonItems.length === 0 && (
           <p className="mt-3 text-sm text-gray-400">{t('이번 시즌 공통 항목이 아직 없어요.', 'No common items this season yet.')}</p>
@@ -570,10 +587,10 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         <div className="mt-3">
           <ChecklistSection items={commonItems} checkedIds={checkedIds} onToggle={toggle} />
         </div>
-      </div>
+      </div>}
 
       {/* 7. 국제학생 섹션 */}
-      {isIntl && intlItems.length > 0 && (
+      {!graduated && isIntl && intlItems.length > 0 && (
         <div className="mt-5">
           <h2 className="font-semibold text-gray-900">{t('국제학생 체크 (International)', 'International student checks')}</h2>
           <div className="mt-3">

@@ -7,6 +7,7 @@ interface RolloverGateProps {
   userId: string
   profile: ProfileRow
   onUpdateGradYear: (gradYear: number) => Promise<void>
+  onGraduate?: () => Promise<void> // 졸업 처리 → 보관 모드
   children: React.ReactNode
 }
 
@@ -18,7 +19,7 @@ export function markSeenGrade(userId: string, gradYear: number | null): void {
 }
 
 // 매년 8월 1일 학년 롤오버 — 마지막으로 본 학년과 달라지면 확인 팝업을 먼저 보여줌
-export default function RolloverGate({ userId, profile, onUpdateGradYear, children }: RolloverGateProps) {
+export default function RolloverGate({ userId, profile, onUpdateGradYear, onGraduate, children }: RolloverGateProps) {
   const key = seenKey(userId)
   const rawGrade = profile.grad_year ? gradeFromGradYear(profile.grad_year) : null
   const [seenGrade] = useState(() => Number(localStorage.getItem(key) ?? '0'))
@@ -31,7 +32,7 @@ export default function RolloverGate({ userId, profile, onUpdateGradYear, childr
     if (rawGrade !== null && seenGrade === 0) localStorage.setItem(key, String(rawGrade))
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const needsConfirm = !acked && rawGrade !== null && seenGrade > 0 && rawGrade !== seenGrade
+  const needsConfirm = !profile.graduated && !acked && rawGrade !== null && seenGrade > 0 && rawGrade !== seenGrade
 
   if (!needsConfirm) return <>{children}</>
 
@@ -73,9 +74,23 @@ export default function RolloverGate({ userId, profile, onUpdateGradYear, childr
             <p className="mt-2 text-sm text-gray-500">
               {rawGrade !== null && rawGrade <= 12
                 ? t(`Class of ${profile.grad_year} 기준으로 이제 ${rawGrade}학년이에요. 맞나요?`, `Based on Class of ${profile.grad_year}, you’re now in grade ${rawGrade}. Is that right?`)
-                : t('기록된 졸업연도로는 이미 졸업 학년이 지났어요. 확인해 주세요.', 'Based on your saved graduation year, you’ve already passed senior year. Please check.')}
+                : t('기록된 졸업연도로는 이미 졸업했어요. 졸업했다면 기록 보관 모드로 바꾸고, 아니면 졸업연도를 수정해 주세요.', 'Based on your saved graduation year, you’ve graduated. Switch to archive mode, or fix the year if that’s wrong.')}
             </p>
             <div className="mt-5 flex flex-col gap-2">
+              {rawGrade !== null && rawGrade > 12 && onGraduate && (
+                <button
+                  disabled={saving}
+                  onClick={async () => {
+                    setSaving(true)
+                    await onGraduate()
+                    localStorage.setItem(key, String(rawGrade))
+                    setAcked(true)
+                  }}
+                  className="w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700 disabled:opacity-50"
+                >
+                  {t('🎓 졸업했어요 — 기록 보관 모드로', '🎓 I graduated — switch to archive mode')}
+                </button>
+              )}
               {rawGrade !== null && rawGrade <= 12 && (
                 <button
                   onClick={confirm}

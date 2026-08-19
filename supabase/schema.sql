@@ -327,3 +327,20 @@ alter table schools add column if not exists intro_en text, add column if not ex
 
 -- 리포트는 사용자·시즌당 1행 (중복 insert 방지)
 create unique index if not exists reports_user_season_uidx on reports (user_id, season_label);
+
+-- 언어 설정(알림 메일 언어) · 졸업 상태 · 졸업 후 결과 설문
+alter table profiles add column if not exists lang text check (lang in ('ko','en'));
+alter table profiles add column if not exists graduated boolean not null default false;
+create table if not exists outcome_surveys (
+  user_id uuid primary key references auth.users (id) on delete cascade,
+  helpful smallint not null check (helpful between 1 and 5),
+  admitted text not null check (admitted in ('first_choice','target','other','waiting','no')),
+  enrolled_school_id bigint references schools (id),
+  enrolled_school_name text,
+  best_features text[],
+  comment text,
+  research_ok boolean not null default false,
+  created_at timestamptz not null default now()
+);
+alter table outcome_surveys enable row level security;
+create policy "own outcome_surveys" on outcome_surveys for all using (auth.uid() = user_id) with check (auth.uid() = user_id);

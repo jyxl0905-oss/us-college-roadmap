@@ -67,6 +67,7 @@ const bridgeText = (): Partial<Record<StepId, string>> => ({
 
 interface OnboardingFlowProps {
   onComplete?: (answers: OnboardingAnswers) => void
+  onExit?: () => void // 첫 질문에서 ← → 홈으로 (게스트)
 }
 
 function loadDraft(): { answers: OnboardingAnswers; stepIndex: number } | null {
@@ -89,7 +90,7 @@ function initialAnswers(): OnboardingAnswers {
   return emptyAnswers
 }
 
-export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
+export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowProps) {
   const [answers, setAnswers] = useState<OnboardingAnswers>(initialAnswers)
   const [stepIndex, setStepIndex] = useState(0)
   // R1-C-6: 이탈 복구 — 진행하던 초안이 있으면 이어서 하기 제안
@@ -169,14 +170,24 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
     <div className="min-h-dvh bg-gray-50">
       <div className="mx-auto max-w-md px-5 pb-10">
         <header className="flex items-center gap-3 py-4">
-          <button
-            onClick={goBack}
-            disabled={stepIndex === 0}
-            aria-label={t('이전 질문으로', 'Previous question')}
-            className="rounded-lg p-2 text-gray-500 active:bg-gray-100 disabled:invisible"
-          >
-            ←
-          </button>
+          {stepIndex === 0 && onExit ? (
+            <button
+              onClick={onExit}
+              aria-label={t('홈으로', 'Home')}
+              className="rounded-lg p-2 text-gray-500 active:bg-gray-100"
+            >
+              ←
+            </button>
+          ) : (
+            <button
+              onClick={goBack}
+              disabled={stepIndex === 0}
+              aria-label={t('이전 질문으로', 'Previous question')}
+              className="rounded-lg p-2 text-gray-500 active:bg-gray-100 disabled:invisible"
+            >
+              ←
+            </button>
+          )}
           <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-gray-200">
             <div
               className="h-full rounded-full bg-blue-600 transition-all"
