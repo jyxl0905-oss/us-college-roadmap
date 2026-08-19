@@ -30,7 +30,7 @@ export default function NicknameStep({ onSubmit }: NicknameStepProps) {
         type="text"
         value={nickname}
         onChange={(e) => setNickname(e.target.value)}
-        placeholder={t('닉네임 (예: 지율)', 'Nickname (e.g., Jiyul)')}
+        placeholder={t('닉네임 (예: 로키쿠)', 'Nickname (e.g., Rokiku)')}
         maxLength={20}
         className="mt-6 w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-base focus:border-blue-600 focus:outline-none"
       />
