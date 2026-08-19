@@ -17,6 +17,7 @@ import { downloadDocx } from '../lib/report-doc'
 import { logEvent } from '../lib/analytics'
 import { navigate } from '../lib/router'
 import OutcomeSurvey from './OutcomeSurvey'
+import { isAdminEmail } from '../lib/admin'
 import { t, localizeRows } from '../i18n'
 import LangToggle from '../i18n/LangToggle'
 import { downloadIcs, nextCheckinDate } from '../lib/ics'
@@ -98,6 +99,8 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   const seasonLabel = currentSeasonLabel()
   const grade = profileGrade(profile)
   const graduated = !!profile.graduated
+  const [isAdmin, setIsAdmin] = useState(false)
+  useEffect(() => { supabase?.auth.getUser().then(({ data }) => setIsAdmin(isAdminEmail(data.user?.email))) }, [])
   // 결과 설문: 졸업 모드이거나, 12학년 3~7월(결과 발표 이후)
   const surveyMonth = new Date().getMonth() + 1
   const showSurvey = graduated || (grade === 12 && surveyMonth >= 3 && surveyMonth <= 7)
@@ -671,6 +674,11 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         <p className="mt-1">
           {t('다음 체크인', 'Next check-in')}: <strong className="text-gray-500">{nextCheckinKo()}</strong>
         </p>
+        {isAdmin && (
+          <button onClick={() => navigate('/admin')} className="no-print mt-3 rounded-full border border-gray-300 px-3 py-1 text-xs font-semibold text-gray-600 active:bg-gray-100">
+            📊 {t('운영 통계 보기', 'Admin stats')}
+          </button>
+        )}
       </div>
     </div>
   )

@@ -99,6 +99,14 @@ export default function App() {
 
 function AppRoutes() {
   const [session, setSession] = useState<Session | null>(null)
+  // 로그인 후 지정 경로로 이동 (예: /admin에서 로그인 요청한 경우)
+  useEffect(() => {
+    if (!session) return
+    try {
+      const to = localStorage.getItem('post_login_path')
+      if (to) { localStorage.removeItem('post_login_path'); if (window.location.pathname !== to) navigate(to) }
+    } catch { /* ignore */ }
+  }, [session])
   const [sessionLoading, setSessionLoading] = useState(isSupabaseConfigured)
   const [profile, setProfile] = useState<ProfileRow | null>(null)
   const [profileLoadedFor, setProfileLoadedFor] = useState<string | null>(null) // 프로필 조회를 마친 user id
@@ -215,7 +223,13 @@ function AppRoutes() {
   if (path === '/admin' || path === '/admin/') {
     if (import.meta.env.DEV && new URLSearchParams(window.location.search).has('demo'))
       return <AdminDemo />
-    if (!session) return <p className="mt-20 text-center text-sm text-gray-500">{t('운영자 계정으로 로그인 후 /admin 을 열어주세요.', 'Log in with the admin account, then open /admin.')}</p>
+    if (!session)
+      return (
+        <Screen>
+          <button onClick={() => navigate('/')} aria-label={t('홈으로', 'Back to home')} className="mb-2 rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
+          <EmailStep redirectPath="/admin" title={t('운영자 로그인', 'Admin login')} minimal />
+        </Screen>
+      )
     return <AdminPage email={session.user.email ?? null} />
   }
   // F1: 대학 둘러보기 — 로그인 여부와 무관하게 고유 URL로 접근 가능

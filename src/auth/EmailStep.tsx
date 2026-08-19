@@ -8,7 +8,7 @@ const cameFromExpiredLink = window.location.hash.includes('error')
 export const RESEARCH_CONSENT_KEY = 'research_consent' // R1-A③: 닉네임 저장 시 프로필로 옮겨짐
 
 // 온보딩 완료 후 매직 링크 로그인 — 메일의 링크를 누르면 이 앱으로 돌아와 세션이 생김
-export default function EmailStep() {
+export default function EmailStep({ redirectPath = '/', title, minimal = false }: { redirectPath?: string; title?: string; minimal?: boolean } = {}) {
   const [email, setEmail] = useState('')
   const [sent, setSent] = useState(false)
   const [sending, setSending] = useState(false)
@@ -26,6 +26,8 @@ export default function EmailStep() {
     if (!supabase) return
     setSending(true)
     setError(null)
+    // 로그인 후 돌아갈 경로 (같은 브라우저에서 링크를 열었을 때만 유효)
+    try { if (redirectPath !== '/') localStorage.setItem('post_login_path', redirectPath); else localStorage.removeItem('post_login_path') } catch { /* ignore */ }
     const { error } = await supabase.auth.signInWithOtp({
       email: email.trim(),
       // 메일 링크는 항상 실제 사이트로 돌아오게 고정 — 개발용 localhost에서 요청해도 꺼진 서버로 돌아가는 일 방지
@@ -63,9 +65,11 @@ export default function EmailStep() {
 
   return (
     <div>
-      <h1 className="text-xl font-bold text-gray-900">{t('이메일로 저장할게요', 'Save with your email')}</h1>
+      <h1 className="text-xl font-bold text-gray-900">{title ?? t('이메일로 저장할게요', 'Save with your email')}</h1>
       <p className="mt-2 text-sm text-gray-500">
-        {t('비밀번호 없이 메일로 오는 링크 하나로 로그인돼요. 시즌마다 돌아와서 체크리스트를 이어갈 수 있어요.', 'No password — you log in with a link we email you. Come back each season and pick up your checklist.')}
+        {minimal
+          ? t('운영자 이메일로 로그인 링크를 보내드려요.', 'We’ll email a login link to the admin address.')
+          : t('비밀번호 없이 메일로 오는 링크 하나로 로그인돼요. 시즌마다 돌아와서 체크리스트를 이어갈 수 있어요.', 'No password — you log in with a link we email you. Come back each season and pick up your checklist.')}
       </p>
       {cameFromExpiredLink && (
         <p className="mt-4 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">
@@ -83,7 +87,7 @@ export default function EmailStep() {
       {error && <p className="mt-2 text-sm text-red-600">{t('전송 실패', 'Send failed')}: {error}</p>}
 
       {/* R1-A③: 연구 동의 (선택, 기본 해제) */}
-      <label className="mt-4 flex items-start gap-2.5 text-sm text-gray-600">
+      {!minimal && <label className="mt-4 flex items-start gap-2.5 text-sm text-gray-600">
         <input
           type="checkbox"
           checked={consent}
@@ -100,7 +104,7 @@ export default function EmailStep() {
             {t('[자세히]', '[details]')}
           </button>
         </span>
-      </label>
+      </label>}
 
       <button
         onClick={sendLink}
