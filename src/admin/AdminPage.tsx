@@ -302,6 +302,36 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
         <Tile label="연구 동의" value={T.research_consent} sub={pct(T.research_consent, T.profiles)} />
       </div>
 
+      {/* 인기 순위 하이라이트 — 데이터 쌓이면 자동 계산 */}
+      {(() => {
+        const majors = Object.entries(stats.major).filter(([k]) => k !== '?').sort((a, b) => b[1] - a[1]).slice(0, 5)
+        const schools = stats.top_schools.slice(0, 5)
+        const total = T.profiles
+        if (majors.length === 0 && schools.length === 0) return null
+        return (
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-2xl border border-gray-100 bg-white p-4">
+              <p className="font-semibold text-gray-900">🏆 인기 전공 Top 5</p>
+              <ol className="mt-2 space-y-1 text-sm">
+                {majors.map(([k, v], i) => (
+                  <li key={k} className="flex items-center gap-2"><span className="w-4 text-gray-400">{i + 1}</span><span className="flex-1 truncate text-gray-800">{majorLabel(k)}</span><span className="tabular-nums text-gray-500">{v}명 <span className="text-gray-400">({pct(v, total)})</span></span></li>
+                ))}
+              </ol>
+            </div>
+            <div className="rounded-2xl border border-gray-100 bg-white p-4">
+              <p className="font-semibold text-gray-900">🎯 인기 목표 학교 Top 5</p>
+              {schools.length === 0 ? <p className="mt-2 text-sm text-gray-400">아직 구체 학교를 고른 사용자가 없어요</p> : (
+                <ol className="mt-2 space-y-1 text-sm">
+                  {schools.map((sch, i) => (
+                    <li key={sch.name} className="flex items-center gap-2"><span className="w-4 text-gray-400">{i + 1}</span><span className="flex-1 truncate text-gray-800">{sch.name}</span><span className="tabular-nums text-gray-500">{sch.n}명 <span className="text-gray-400">({pct(sch.n, total)})</span></span></li>
+                  ))}
+                </ol>
+              )}
+            </div>
+          </div>
+        )
+      })()}
+
       <div className="mt-4 grid gap-4">
         <Card title="사용자 퍼널" hint="가입 → 온보딩 → 리포트 → 체크 → 내 원서 → 재방문. 어디서 이탈하는지 보는 용도">
           <div className="flex flex-col gap-1.5">
