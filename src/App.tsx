@@ -552,6 +552,12 @@ function AppRoutes() {
           >
             {t('대학 둘러보기', 'Browse colleges')}
           </button>
+          <button
+            onClick={() => navigate('/majors')}
+            className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
+          >
+            {t('전공 알아보기', 'Explore majors')}
+          </button>
           {!pendingAnswers && (
             <button onClick={() => setPhase('email')} className="mt-6 text-sm text-gray-400 underline">
               {t('이미 가입했어요 — 이메일로 로그인', 'Already signed up — log in by email')}

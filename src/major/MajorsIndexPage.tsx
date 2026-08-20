@@ -68,19 +68,29 @@ export default function MajorsIndexPage() {
     majorsByTrack(track).filter(matches).length === 0 ? null : (
     <div className="mt-5">
       <h2 className="text-sm font-semibold text-gray-500">{title}</h2>
-      <div className="mt-2 grid grid-cols-2 gap-2">
-        {majorsByTrack(track).filter(matches).map((m) => (
-          <button
-            key={m.value}
-            onClick={() => navigate(`/major/${m.value}`)}
-            className="rounded-xl border-2 border-gray-200 bg-white px-3 py-3 text-left text-sm font-medium text-gray-900 active:bg-gray-50"
-          >
-            {majorDisplay(m)}
-            <span className="mt-0.5 line-clamp-2 block text-xs font-normal leading-relaxed text-gray-400">
-              {(getLang() === 'en' ? CAREERS[m.value]?.desc_en : CAREERS[m.value]?.desc_ko) ?? t('가이드 맵 →', 'Guide map →')}
-            </span>
-          </button>
-        ))}
+      <div className={q ? 'mt-2 flex flex-col gap-2' : 'mt-2 flex flex-wrap gap-1.5'}>
+        {majorsByTrack(track).filter(matches).map((m) =>
+          q ? (
+            <button
+              key={m.value}
+              onClick={() => navigate(`/major/${m.value}`)}
+              className="rounded-xl border-2 border-gray-200 bg-white px-3 py-3 text-left text-sm font-medium text-gray-900 active:bg-gray-50"
+            >
+              {majorDisplay(m)}
+              <span className="mt-0.5 line-clamp-2 block text-xs font-normal leading-relaxed text-gray-400">
+                {(getLang() === 'en' ? CAREERS[m.value]?.desc_en : CAREERS[m.value]?.desc_ko) ?? ''}
+              </span>
+            </button>
+          ) : (
+            <button
+              key={m.value}
+              onClick={() => navigate(`/major/${m.value}`)}
+              className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-800 active:bg-gray-50"
+            >
+              {majorDisplay(m)}
+            </button>
+          ),
+        )}
       </div>
     </div>
   )

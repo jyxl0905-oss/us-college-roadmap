@@ -153,15 +153,15 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
 
         {/* 과목·AP */}
         {data.ap.length > 0 && (
-          <div className="mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
-            <p className="font-semibold text-gray-900">{t('추천 AP', 'Recommended APs')} <span className="ml-1 text-xs font-normal text-gray-400">{t('우선순위 순', 'by priority')}</span></p>
+          <details className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+            <summary className="cursor-pointer select-none font-semibold text-gray-900">{t('📚 추천 AP', '📚 Recommended APs')} <span className="ml-1 text-xs font-normal text-gray-400">{t(`${data.ap.length}개 · 우선순위 순`, `${data.ap.length} · by priority`)}</span></summary>
             <ol className="mt-2 flex flex-col gap-1.5 text-sm text-gray-700">
               {data.ap.map((a, i) => (
                 <li key={i} className="flex gap-2"><span className="shrink-0 font-semibold text-blue-600">{i + 1}</span><span>{a}</span></li>
               ))}
             </ol>
             {data.strong && <p className="mt-2 text-xs text-gray-500">{t('강해야 하는 과목: ', 'Must be strong in: ')}{data.strong}</p>}
-          </div>
+          </details>
         )}
 
         {/* 활동 가이드 — 접힘 기본 */}
@@ -189,8 +189,13 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
         {/* 다른 전공 */}
         {/* 졸업 후 진로 — BLS 공식 데이터 */}
         {CAREERS[majorKey] && CAREERS[majorKey].occupations.length > 0 && (
-          <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
-            <p className="font-semibold text-gray-900">{t('💼 졸업 후 진로', '💼 After graduation')}</p>
+          <details className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+            <summary className="cursor-pointer select-none font-semibold text-gray-900">
+              {t('💼 졸업 후 진로', '💼 After graduation')}
+              <span className="ml-1 text-xs font-normal text-gray-400">
+                {CAREERS[majorKey].occupations[0]?.title}{CAREERS[majorKey].occupations[0]?.pay ? ` ${CAREERS[majorKey].occupations[0].pay}` : ''}{CAREERS[majorKey].occupations.length > 1 ? t(' 외', ' +more') : ''}
+              </span>
+            </summary>
             {CAREERS[majorKey].outlook_note_ko && getLang() === 'ko' && (
               <p className="mt-1 text-xs text-gray-500">{CAREERS[majorKey].outlook_note_ko}</p>
             )}
@@ -219,7 +224,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
             <p className="mt-2 text-[11px] text-gray-400">
               {t('연봉은 미국 전체 중간값(경력 전체 포함) 기준이며 지역·경력에 따라 크게 달라요. 출처: 미국 노동통계국(BLS) Occupational Outlook Handbook.', 'Pay figures are US-wide medians across all experience levels and vary widely by region and seniority. Source: US Bureau of Labor Statistics, Occupational Outlook Handbook.')}
             </p>
-          </div>
+          </details>
         )}
 
         {/* 이 전공을 전공 단위로 뽑는 학교 (direct-admit 조사 데이터) */}
@@ -228,8 +233,8 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
           const list = IDX.filter((sc) => (sc.direct_admit_majors ?? []).includes(parent ?? ''))
           if (list.length === 0) return null
           return (
-            <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
-              <p className="font-semibold text-gray-900">{t('🏛️ 이 계열을 전공 단위로 뽑는 학교', '🏛️ Schools that admit by this major group')}</p>
+            <details className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+              <summary className="cursor-pointer select-none font-semibold text-gray-900">{t('🏛️ 전공 단위로 뽑는 학교', '🏛️ Schools admitting by major')} <span className="ml-1 text-xs font-normal text-gray-400">{list.length}{t('곳', '')}</span></summary>
               <p className="mt-0.5 text-xs text-gray-500">{t('지원할 때 전공을 정해 내는 학교들 — 경쟁률이 학교 전체 합격률과 다르고 전과가 어려울 수 있어요. 각 학교 카드에서 확인하세요.', 'These schools admit into the major at application time — competitiveness differs from the overall rate and switching in can be hard. Check each school card.')}</p>
               <div className="mt-2 flex flex-wrap gap-1.5">
                 {list.map((sc) => (
@@ -238,7 +243,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
                   </button>
                 ))}
               </div>
-            </div>
+            </details>
           )
         })()}
 
