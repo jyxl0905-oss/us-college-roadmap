@@ -383,23 +383,6 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         </p>
       )}
 
-      {/* F5: 가상 Common App 추천 배너 (항상 표시) */}
-      {(
-        <div className="no-print mt-4 rounded-xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-white px-4 py-4">
-          <p className="text-xs font-semibold text-blue-600">{t('추천', 'Recommended')}</p>
-          <p className="mt-1 font-semibold text-gray-900">{t('🎓 가상 Common App으로 더 전략적으로 준비하기', '🎓 Prepare strategically with a virtual Common App')}</p>
-          <p className="mt-1 text-sm text-gray-600">
-            {t('실제 원서 형식 그대로 4년 동안 미리 채워요 — 활동·점수·지원 학교가 한 곳에.', 'Fill it in over four years in the real application format — activities, scores and colleges in one place.')}
-          </p>
-          <button
-            onClick={() => navigate('/app')}
-            className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white active:bg-blue-700"
-          >
-            {t('내 원서 열기', 'Open my application')}
-          </button>
-        </div>
-      )}
-
       {/* F3: 12학년 Fall — 다가오는 마감 3줄 */}
       {grade === 12 && currentSeason() === 'fall' && upcomingDeadlines.length > 0 && (
         <div className="mt-5 rounded-xl border-2 border-red-200 bg-red-50 px-4 py-3.5">
@@ -554,9 +537,9 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         </div>
       </div>
 
-      {/* 5. 목표 학교 */}
+      {/* 5. 목표 학교 — 화면에서는 상단 바 [목표 학교] 페이지로 이동, PDF 인쇄에만 포함 */}
       {schools.length > 0 && (
-        <div className="mt-5">
+        <div className="hidden print:block mt-5">
           <div className="flex items-baseline justify-between gap-3">
             <h2 className="font-semibold text-gray-900">{t('목표 학교', 'Target schools')}</h2>
             <div className="no-print flex gap-3 text-sm">
