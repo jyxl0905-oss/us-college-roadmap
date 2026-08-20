@@ -316,6 +316,25 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
 
       <HealthCard />
 
+      {/* 피드백은 바로 위에서 — 가장 자주 확인하는 카드 */}
+      <div className="mb-4">
+        <Card title="💬 사용자 피드백" hint="상단 바 💬 버튼으로 보낸 의견 (최근 100건) — 이름·이메일 없이 학년·학교만 표시">
+          {!feedback ? <p className="text-sm text-gray-400">불러오는 중…</p> : feedback.length === 0 ? <p className="text-sm text-gray-400">아직 피드백이 없어요</p> : (
+            <ul className="space-y-2">
+              {feedback.map((f, i) => (
+                <li key={i} className="rounded-xl bg-gray-50 px-3 py-2.5">
+                  <p className="whitespace-pre-wrap text-sm text-gray-800">{f.message}</p>
+                  <p className="mt-1 text-xs text-gray-400">
+                    {new Date(f.created_at).toLocaleString('ko-KR')}
+                    {f.grad_year && ` · Class of ${f.grad_year}`}{f.school && ` · ${f.school}`}{f.page && ` · ${f.page}`}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </Card>
+      </div>
+
       {/* 학교별 비교 표 — 전체 기준, 필터와 무관 */}
       {bySchool && bySchool.length > 0 && (
         <div className="mb-4 rounded-2xl border border-gray-100 bg-white p-4">
@@ -574,21 +593,6 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
                 </div>
               )}
             </div>
-          )}
-        </Card>
-        <Card title="💬 사용자 피드백" hint="상단 바 💬 버튼으로 보낸 의견 (최근 100건) — 이름·이메일 없이 학년·학교만 표시">
-          {!feedback ? <p className="text-sm text-gray-400">불러오는 중…</p> : feedback.length === 0 ? <p className="text-sm text-gray-400">아직 피드백이 없어요</p> : (
-            <ul className="space-y-2">
-              {feedback.map((f, i) => (
-                <li key={i} className="rounded-xl bg-gray-50 px-3 py-2.5">
-                  <p className="whitespace-pre-wrap text-sm text-gray-800">{f.message}</p>
-                  <p className="mt-1 text-xs text-gray-400">
-                    {new Date(f.created_at).toLocaleString('ko-KR')}
-                    {f.grad_year && ` · Class of ${f.grad_year}`}{f.school && ` · ${f.school}`}{f.page && ` · ${f.page}`}
-                  </p>
-                </li>
-              ))}
-            </ul>
           )}
         </Card>
         {extra && Object.keys(extra.ref_source ?? {}).length > 0 && (
