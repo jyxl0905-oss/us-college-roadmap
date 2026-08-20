@@ -271,10 +271,10 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
         )}
 
         {/* 전공별 대학 순위 — US News 학부 프로그램 랭킹 (공표된 전공만) */}
-        {[majorKey, ...(majorKey === 'engineering' ? ['engineering_mechanical', 'engineering_electrical'] : [])].filter((rk) => RANKINGS[rk]).map((rk) => (
+        {[majorKey].filter((rk) => RANKINGS[rk]).map((rk) => (
           <details key={rk} open={!full} className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
             <summary className="cursor-pointer select-none font-semibold text-gray-900">
-              {t('🏆 전공별 대학 순위', '🏆 Program rankings')}{rk !== majorKey && <span className="ml-1">— {rk === 'engineering_mechanical' ? t('기계', 'Mechanical') : t('전기·전자', 'Electrical')}</span>} <span className="ml-1 text-xs font-normal text-gray-400">US News {RANKINGS[rk].edition}</span>
+              {t('🏆 전공별 대학 순위', '🏆 Program rankings')} <span className="ml-1 text-xs font-normal text-gray-400">US News {RANKINGS[rk].edition}</span>
             </summary>
             <ol className="mt-2 flex flex-col gap-1 text-sm">
               {RANKINGS[rk].items.map((r, i) => (
