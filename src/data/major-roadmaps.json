@@ -1367,5 +1367,309 @@
     ]
    }
   }
+ },
+ "cognitive_science": {
+  "title": "인지과학 (Cognitive Science)",
+  "ap": [
+   "AP Psychology — 마음 축",
+   "AP Computer Science A — 계산 축",
+   "AP Statistics — 연구 방법의 공용어",
+   "AP Calculus AB(가능하면 BC)"
+  ],
+  "strong": "심리+CS 두 축을 동시에 — 한쪽만 강하면 그냥 심리학/CS 지원자와 구분이 안 됨",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "사람 데이터를 코드로 분석한 프로젝트(반응시간 실험 웹앱, 언어 데이터 분석), 심리 실험+프로그래밍이 결합된 결과물"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "과학전람회 행동과학·CS 부문 / 학생 저널 투고 / 해커톤(인지·헬스 주제)"
+   },
+   {
+    "label": "함정",
+    "text": "'뇌과학 신기해요' 수준의 독서 나열 — 두 축이 결합된 결과물 하나가 필요"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "수학 트랙 확인 + 파이썬 기초"
+    ],
+    "activity": [
+     "심리·뇌 관련 독서를 짧은 글로 기록",
+     "코딩 기초 프로젝트"
+    ]
+   },
+   "10": {
+    "academic": [
+     "11학년 AP Psych·CS A·Stats 설계"
+    ],
+    "activity": [
+     "첫 결합 프로젝트 — 간단한 실험을 코드로 구현·분석"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Psych + CS A + Statistics"
+    ],
+    "activity": [
+     "프로젝트 심화 — 전람회·저널 투고",
+     "연구 동아리·튜터링 운영"
+    ]
+   },
+   "12": {
+    "academic": [
+     "리거 유지"
+    ],
+    "activity": [
+     "두 축이 결합된 결과물 정리해 원서 반영"
+    ]
+   }
+  }
+ },
+ "environmental": {
+  "title": "환경과학 (Environmental Science)",
+  "ap": [
+   "AP Environmental Science — 전공 직결, 접근성 좋음",
+   "AP Biology 또는 Chemistry — 과학 깊이 증명",
+   "AP Statistics — 환경 데이터 분석",
+   "AP Calculus AB"
+  ],
+  "strong": "APES만으로는 가볍다는 평 — Bio/Chem 중 하나로 과학 깊이를 같이 보여줘야 함",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "지역 환경 데이터를 직접 측정·기록한 장기 프로젝트(수질·대기·쓰레기), 학교·지역 단위 지속가능성 캠페인 운영"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "과학전람회 환경 부문 / 학생 저널 투고 / 환경 데이터 공모전"
+   },
+   {
+    "label": "함정",
+    "text": "'환경 보호 동아리 가입' 수준의 참여 — 측정한 데이터와 바꾼 결과가 있어야 함"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "생물·화학 기초 + 수학 트랙"
+    ],
+    "activity": [
+     "주변 환경 지표 하나 정해 측정 시작(주 1회)",
+     "환경 동아리 참여"
+    ]
+   },
+   "10": {
+    "academic": [
+     "11학년 APES+Bio(또는 Chem) 신청 확정"
+    ],
+    "activity": [
+     "측정 데이터 1년치 분석·공개",
+     "캠페인 기획"
+    ]
+   },
+   "11": {
+    "academic": [
+     "APES + Bio/Chem + Statistics"
+    ],
+    "activity": [
+     "연구 심화 — 전람회 출품",
+     "캠페인 운영 결과(전후 수치) 기록"
+    ]
+   },
+   "12": {
+    "academic": [
+     "리거 유지"
+    ],
+    "activity": [
+     "누적 데이터·캠페인 결과 정리해 원서 반영"
+    ]
+   }
+  }
+ },
+ "actuarial": {
+  "title": "보험계리 (Actuarial Science)",
+  "ap": [
+   "AP Calculus BC — 필수 라인",
+   "AP Statistics — 전공 직결",
+   "AP Macro/Micro Economics",
+   "AP Computer Science A — 데이터 처리"
+  ],
+  "strong": "수학+통계가 전부의 핵심 — 대학 재학 중부터 SOA/CAS 자격시험을 치르는 전공이라, 고교 때 수학 라인이 곧 준비",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "확률·리스크를 다룬 데이터 프로젝트(보험료 모델 흉내, 스포츠·게임 확률 분석), 금융 데이터 분석 기록"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "AMC→AIME 라인 / 통계·데이터 대회 / 수학 모델링 대회(HiMCM류)"
+   },
+   {
+    "label": "함정",
+    "text": "전공 이름만 신기해서 고르는 것 — 시험(Exam P/FM)이 이어지는 트랙임을 알고 시작해야 함"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "수학 트랙 최우선 — 가장 빠른 라인"
+    ],
+    "activity": [
+     "수학 동아리 + AMC 첫 응시",
+     "확률 퍼즐·시뮬레이션 취미화"
+    ]
+   },
+   "10": {
+    "academic": [
+     "11학년 Calc BC·Statistics 확정"
+    ],
+    "activity": [
+     "확률·리스크 데이터 프로젝트 완주",
+     "AMC 재도전"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Calc BC + Statistics (+Econ)"
+    ],
+    "activity": [
+     "모델링 대회 출전",
+     "프로젝트 심화 — 리포트 공개"
+    ]
+   },
+   "12": {
+    "academic": [
+     "리거 유지"
+    ],
+    "activity": [
+     "대회·프로젝트 기록 정리, 대학의 보험계리 프로그램·시험 로드맵 조사"
+    ]
+   }
+  }
+ },
+ "public_health": {
+  "title": "공중보건 (Public Health)",
+  "ap": [
+   "AP Biology — 과학 축",
+   "AP Statistics — 역학(epidemiology)의 언어",
+   "AP Psychology — 행동·보건 연결",
+   "AP Environmental Science — 환경보건 방향이면"
+  ],
+  "strong": "생물+통계 조합 — 개인 진료가 아니라 '집단 데이터'를 다루는 전공이라 통계가 프리메드보다 더 중요",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "보건 캠페인 기획·운영(금연·수면·정신건강), 지역 보건 데이터를 분석한 리서치, 보건 교육 콘텐츠 제작"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "HOSA / 과학전람회 보건 부문 / 학생 저널 투고"
+   },
+   {
+    "label": "함정",
+    "text": "프리메드와 똑같이 준비하는 것 — 이 전공의 차별점은 정책·데이터·캠페인이라는 '집단' 관점"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "생물·수학 기초"
+    ],
+    "activity": [
+     "관심 보건 주제 정하기",
+     "봉사·캠페인 참여 시작"
+    ]
+   },
+   "10": {
+    "academic": [
+     "11학년 AP Bio·Statistics 확정"
+    ],
+    "activity": [
+     "첫 캠페인 기획·운영 — 전후 수치 기록",
+     "보건 데이터 분석 입문"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Bio + Statistics (+Psych)"
+    ],
+    "activity": [
+     "캠페인 확장 + 리서치 — 전람회·저널",
+     "HOSA 챕터 활동·창설"
+    ]
+   },
+   "12": {
+    "academic": [
+     "리거 유지"
+    ],
+    "activity": [
+     "캠페인·리서치 누적 결과 정리해 원서 반영"
+    ]
+   }
+  }
+ },
+ "linguistics": {
+  "title": "언어학 (Linguistics)",
+  "ap": [
+   "AP English Language — 언어 분석의 기초",
+   "외국어 AP (Chinese·Spanish·French 등) — 복수 언어 신호",
+   "AP Statistics — 계산언어학 방향",
+   "AP Computer Science A — AI·NLP 방향이면"
+  ],
+  "strong": "언어 '잘하기'가 아니라 언어를 '분석'하는 전공 — 이중언어 배경 자체가 자산이고, CS와 결합하면 AI 방향이 열림",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "이중언어 경험을 분석한 프로젝트(한국어-영어 비교 연구, 언어 학습 콘텐츠·앱), 언어 데이터 분석"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "언어학 올림피아드(NACLO — 국제학생 응시 가능 여부 확인) / 에세이 대회 / 학생 저널"
+   },
+   {
+    "label": "함정",
+    "text": "'영어 잘함'을 스파이크로 착각 — 분석한 결과물이 있어야 언어학 서사가 됨"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "영어 독해·글쓰기 + 제3외국어 시작 검토"
+    ],
+    "activity": [
+     "언어 현상 관찰 노트 시작(한·영 차이 등)",
+     "NACLO류 문제 맛보기"
+    ]
+   },
+   "10": {
+    "academic": [
+     "11학년 English Lang·외국어 AP 설계"
+    ],
+    "activity": [
+     "첫 분석 프로젝트 — 이중언어 데이터 비교",
+     "언어 교육 콘텐츠 제작"
+    ]
+   },
+   "11": {
+    "academic": [
+     "English Lang + 외국어 AP (+Stats·CS 방향 선택)"
+    ],
+    "activity": [
+     "올림피아드·에세이 대회 출품",
+     "프로젝트 심화 — 공개"
+    ]
+   },
+   "12": {
+    "academic": [
+     "리거 유지"
+    ],
+    "activity": [
+     "분석 결과물·콘텐츠 누적 기록 정리해 원서 반영"
+    ]
+   }
+  }
  }
 }

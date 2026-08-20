@@ -1,0 +1,732 @@
+{
+ "cs": {
+  "desc_ko": "코드로 문제를 푸는 법을 배워요 — 프로그래밍, 알고리즘, 인공지능, 시스템 설계까지. 졸업하면 앱·서비스를 만드는 개발자, 보안 전문가, AI 엔지니어 등이 돼요.",
+  "desc_en": "You learn to solve problems with code — programming, algorithms, AI, systems design. Graduates build apps and services as developers, security analysts, AI engineers.",
+  "occupations": [
+   {
+    "title": "Software Developers, Quality Assurance Analysts, and Testers",
+    "pay": "$131,450",
+    "pay_year": 2024,
+    "outlook": "+15%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+    "note": null
+   },
+   {
+    "title": "Information Security Analysts",
+    "pay": "$124,910",
+    "pay_year": 2024,
+    "outlook": "+29%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm",
+    "note": null
+   },
+   {
+    "title": "Computer Systems Analysts",
+    "pay": "$103,790",
+    "pay_year": 2024,
+    "outlook": "+9%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/computer-and-information-technology/computer-systems-analysts.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "세 직업 모두 평균보다 훨씬 빠른 성장 전망 (BLS)",
+  "grad_note_ko": null
+ },
+ "engineering": {
+  "desc_ko": "수학·물리로 실제 물건과 시스템(자동차, 로봇, 전력망, 다리)을 설계하고 만드는 법을 배워요. 기계·전기·토목 등 세부 분야로 나뉘어요.",
+  "desc_en": "You learn to design and build real things and systems — cars, robots, power grids, bridges — using math and physics. Splits into mechanical, electrical, civil and more.",
+  "occupations": [
+   {
+    "title": "Mechanical Engineers",
+    "pay": "$102,320",
+    "pay_year": 2024,
+    "outlook": "+9%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/architecture-and-engineering/mechanical-engineers.htm",
+    "note": null
+   },
+   {
+    "title": "Electrical and Electronics Engineers",
+    "pay": "$118,780",
+    "pay_year": 2024,
+    "outlook": "+7%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/architecture-and-engineering/electrical-and-electronics-engineers.htm",
+    "note": null
+   },
+   {
+    "title": "Civil Engineers",
+    "pay": "$99,590",
+    "pay_year": 2024,
+    "outlook": "+5%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/architecture-and-engineering/civil-engineers.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "기계·전기전자는 평균보다 훨씬 빠른, 토목은 평균보다 빠른 성장 전망 (BLS)",
+  "grad_note_ko": null
+ },
+ "industrial_eng": {
+  "desc_ko": "공장·병원·물류 같은 시스템을 데이터로 분석해서 '더 빠르고 낭비 없게' 만드는 법을 배워요. 공학과 경영이 만나는 지점이에요.",
+  "desc_en": "You learn to analyze systems — factories, hospitals, logistics — with data and make them faster and less wasteful. Where engineering meets management.",
+  "occupations": [
+   {
+    "title": "Industrial Engineers",
+    "pay": "$101,140",
+    "pay_year": 2024,
+    "outlook": "+11%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/architecture-and-engineering/industrial-engineers.htm",
+    "note": null
+   },
+   {
+    "title": "Logisticians",
+    "pay": "$80,880",
+    "pay_year": 2024,
+    "outlook": "+17%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/business-and-financial/logisticians.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "두 직업 모두 평균보다 훨씬 빠른 성장 전망 (BLS)",
+  "grad_note_ko": null
+ },
+ "math_data": {
+  "desc_ko": "증명 중심의 수학과 데이터를 다루는 통계를 배워요. 금융, 데이터 분석, 연구 등 숫자가 중요한 거의 모든 분야로 이어져요.",
+  "desc_en": "You study proof-based math and statistics for handling data. It leads to finance, data analysis, research — almost any field where numbers matter.",
+  "occupations": [
+   {
+    "title": "Mathematicians and Statisticians",
+    "pay": "$104,350",
+    "pay_year": 2024,
+    "outlook": "+8%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/math/mathematicians-and-statisticians.htm",
+    "note": "BLS 기준 일반적 입직 학력은 석사 (Typical Entry-Level Education: Master's degree)"
+   },
+   {
+    "title": "Actuaries",
+    "pay": "$125,770",
+    "pay_year": 2024,
+    "outlook": "+22%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/math/actuaries.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "두 직업 모두 평균보다 훨씬 빠른 성장 전망 (BLS)",
+  "grad_note_ko": null
+ },
+ "data_science": {
+  "desc_ko": "통계+코딩으로 데이터에서 답을 찾는 법을 배워요 — 수집, 분석, 머신러닝, 시각화. 기업의 의사결정을 데이터로 뒷받침하는 직업으로 이어져요.",
+  "desc_en": "You learn to find answers in data with statistics + coding — collection, analysis, machine learning, visualization. Leads to jobs backing decisions with data.",
+  "occupations": [
+   {
+    "title": "Data Scientists",
+    "pay": "$112,590",
+    "pay_year": 2024,
+    "outlook": "+34%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/math/data-scientists.htm",
+    "note": null
+   },
+   {
+    "title": "Operations Research Analysts",
+    "pay": "$91,290",
+    "pay_year": 2024,
+    "outlook": "+21%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/math/operations-research-analysts.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "두 직업 모두 평균보다 훨씬 빠른 성장 전망 (BLS)",
+  "grad_note_ko": null
+ },
+ "applied_math": {
+  "desc_ko": "순수 수학을 현실 문제(금융, 물리, 최적화)에 적용하는 법을 배워요. 모델링과 계산이 중심이고, 퀀트·연구·데이터 분야로 이어져요.",
+  "desc_en": "You learn to apply math to real problems — finance, physics, optimization. Modeling and computation are central; leads to quant, research, and data careers.",
+  "occupations": [
+   {
+    "title": "Actuaries",
+    "pay": "$125,770",
+    "pay_year": 2024,
+    "outlook": "+22%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/math/actuaries.htm",
+    "note": null
+   },
+   {
+    "title": "Operations Research Analysts",
+    "pay": "$91,290",
+    "pay_year": 2024,
+    "outlook": "+21%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/math/operations-research-analysts.htm",
+    "note": null
+   },
+   {
+    "title": "Mathematicians and Statisticians",
+    "pay": "$104,350",
+    "pay_year": 2024,
+    "outlook": "+8%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/math/mathematicians-and-statisticians.htm",
+    "note": "BLS 기준 일반적 입직 학력은 석사 (Typical Entry-Level Education: Master's degree)"
+   }
+  ],
+  "outlook_note_ko": "세 직업 모두 평균보다 훨씬 빠른 성장 전망 (BLS)",
+  "grad_note_ko": null
+ },
+ "natural_sci": {
+  "desc_ko": "물리·화학·생물·지구과학의 기초 위에서 자연 현상을 실험으로 탐구해요. 연구, 환경, 의약 등 과학 기반 진로의 출발점이에요.",
+  "desc_en": "You explore nature through experiments on a physics/chem/bio/earth-science base. The starting point for research, environment, and pharma careers.",
+  "occupations": [
+   {
+    "title": "Environmental Scientists and Specialists",
+    "pay": "$80,060",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/environmental-scientists-and-specialists.htm",
+    "note": null
+   },
+   {
+    "title": "Chemists and Materials Scientists",
+    "pay": "$86,620",
+    "pay_year": 2024,
+    "outlook": "+5%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/chemists-and-materials-scientists.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "평균 수준에서 평균보다 빠른 수준의 성장 전망 (BLS)",
+  "grad_note_ko": null
+ },
+ "biology": {
+  "desc_ko": "세포부터 생태계까지 생명이 어떻게 작동하는지 배우고, 실험실에서 직접 실험해요. 연구, 의약, 바이오 산업으로 이어져요.",
+  "desc_en": "You learn how life works, from cells to ecosystems, with real lab work. Leads to research, medicine-adjacent paths, and the bio industry.",
+  "occupations": [
+   {
+    "title": "Microbiologists",
+    "pay": "$87,330",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/microbiologists.htm",
+    "note": null
+   },
+   {
+    "title": "Zoologists and Wildlife Biologists",
+    "pay": "$72,860",
+    "pay_year": 2024,
+    "outlook": "+2%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/zoologists-and-wildlife-biologists.htm",
+    "note": null
+   },
+   {
+    "title": "Biological Technicians",
+    "pay": "$52,000",
+    "pay_year": 2024,
+    "outlook": "+3%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/biological-technicians.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "직업별로 평균 수준 또는 평균보다 느린 성장 전망 (BLS)",
+  "grad_note_ko": null
+ },
+ "chemistry": {
+  "desc_ko": "물질이 무엇으로 되어 있고 어떻게 반응하는지 배워요 — 실험과 정량 분석 중심. 신약, 소재, 화장품, 반도체 등 산업 폭이 넓어요.",
+  "desc_en": "You learn what matter is made of and how it reacts — heavy on lab work and quantitative analysis. Industry range is wide: pharma, materials, semiconductors.",
+  "occupations": [
+   {
+    "title": "Chemists and Materials Scientists",
+    "pay": "$86,620",
+    "pay_year": 2024,
+    "outlook": "+5%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/chemists-and-materials-scientists.htm",
+    "note": null
+   },
+   {
+    "title": "Forensic Science Technicians",
+    "pay": "$67,440",
+    "pay_year": 2024,
+    "outlook": "+13%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/forensic-science-technicians.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "화학자는 평균보다 빠른, 법과학 기술자는 평균보다 훨씬 빠른 성장 전망 (BLS)",
+  "grad_note_ko": null
+ },
+ "physics": {
+  "desc_ko": "우주와 물질의 근본 법칙을 수학으로 배워요. 문제 해결력이 극한으로 훈련돼서 연구뿐 아니라 공학·금융·데이터로도 많이 가요.",
+  "desc_en": "You learn the fundamental laws of matter and the universe through math. The problem-solving training carries into research, engineering, finance, and data.",
+  "occupations": [
+   {
+    "title": "Physicists and Astronomers",
+    "pay": "$166,290",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/physicists-and-astronomers.htm",
+    "note": "BLS 기준 일반적 입직 학력은 박사·전문학위 (Typical Entry-Level Education: Doctoral or professional degree)"
+   },
+   {
+    "title": "Aerospace Engineers",
+    "pay": "$134,830",
+    "pay_year": 2024,
+    "outlook": "+6%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/architecture-and-engineering/aerospace-engineers.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "평균 수준에서 평균보다 빠른 수준의 성장 전망 (BLS)",
+  "grad_note_ko": null
+ },
+ "premed": {
+  "desc_ko": "'프리메드'는 전공이 아니라 의대 준비 트랙이에요 — 보통 생물·화학을 전공하며 의대 필수 과목과 봉사·연구를 쌓아요. 의사는 대학원(의대)+레지던시를 거쳐야 해요.",
+  "desc_en": "Pre-med is a track, not a major — you usually major in bio/chem while completing med-school prerequisites, service and research. Becoming a physician requires med school + residency.",
+  "occupations": [
+   {
+    "title": "Physicians and Surgeons",
+    "pay": "$239,200 or more (BLS: 'equal to or greater than $239,200 per year')",
+    "pay_year": 2024,
+    "outlook": "+3%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/healthcare/physicians-and-surgeons.htm",
+    "note": "의사가 되려면 학부(프리메드) 이후 의학전문대학원(MD)과 레지던시 과정이 필요 (BLS: Doctoral or professional degree + Internship/residency)"
+   }
+  ],
+  "outlook_note_ko": "평균 수준의 성장 전망, 단 의대(MD)·레지던시 필수 (BLS)",
+  "grad_note_ko": null
+ },
+ "nursing": {
+  "desc_ko": "사람을 돌보는 과학이에요 — 해부학·약리학과 병원 실습을 함께 배워요. 졸업 후 국가시험(NCLEX)을 통과하면 간호사(RN)로 바로 일해요.",
+  "desc_en": "The science of caring for people — anatomy and pharmacology alongside hospital clinicals. Pass the NCLEX after graduation and you work as an RN.",
+  "occupations": [
+   {
+    "title": "Registered Nurses",
+    "pay": "$93,600",
+    "pay_year": 2024,
+    "outlook": "+5%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/healthcare/registered-nurses.htm",
+    "note": null
+   },
+   {
+    "title": "Nurse Anesthetists, Nurse Midwives, and Nurse Practitioners",
+    "pay": "$132,050",
+    "pay_year": 2024,
+    "outlook": "+35%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/healthcare/nurse-anesthetists-nurse-midwives-and-nurse-practitioners.htm",
+    "note": "BLS 기준 일반적 입직 학력은 석사 (Typical Entry-Level Education: Master's degree)"
+   }
+  ],
+  "outlook_note_ko": "RN은 평균보다 빠른, 상급 전문간호사(APRN)는 평균보다 훨씬 빠른 성장 전망 (BLS)",
+  "grad_note_ko": null
+ },
+ "architecture": {
+  "desc_ko": "공간을 설계하는 법을 배워요 — 디자인 스튜디오, 구조, 도시, 역사·이론까지. 포트폴리오와 스튜디오 작업이 대학 생활의 중심이에요.",
+  "desc_en": "You learn to design space — design studios, structures, cities, history and theory. Portfolio and studio work are the center of college life.",
+  "occupations": [
+   {
+    "title": "Architects",
+    "pay": "$96,690",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/architecture-and-engineering/architects.htm",
+    "note": null
+   },
+   {
+    "title": "Landscape Architects",
+    "pay": "$79,660",
+    "pay_year": 2024,
+    "outlook": "+3%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/architecture-and-engineering/landscape-architects.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "평균 수준의 성장 전망 (BLS)",
+  "grad_note_ko": null
+ },
+ "environmental": {
+  "desc_ko": "기후·오염·생태계를 과학으로 분석하고 해결책을 설계해요. 환경 컨설팅, 정책, 에너지 산업 등으로 이어지는 성장 분야예요.",
+  "desc_en": "You analyze climate, pollution and ecosystems scientifically and design solutions. A growing field leading to consulting, policy, and energy.",
+  "occupations": [
+   {
+    "title": "Environmental Scientists and Specialists",
+    "pay": "$80,060",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/environmental-scientists-and-specialists.htm",
+    "note": null
+   },
+   {
+    "title": "Environmental Engineers",
+    "pay": "$104,170",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/architecture-and-engineering/environmental-engineers.htm",
+    "note": null
+   },
+   {
+    "title": "Conservation Scientists and Foresters",
+    "pay": "$69,060",
+    "pay_year": 2024,
+    "outlook": "+3%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/conservation-scientists.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "평균 수준의 성장 전망 (BLS)",
+  "grad_note_ko": null
+ },
+ "business": {
+  "desc_ko": "기업이 어떻게 돌아가는지 배워요 — 경영, 마케팅, 회계, 전략. 케이스 분석과 팀 프로젝트가 많고, 거의 모든 산업으로 이어져요.",
+  "desc_en": "You learn how companies work — management, marketing, accounting, strategy. Lots of case analysis and team projects; leads to nearly every industry.",
+  "occupations": [
+   {
+    "title": "Management Analysts",
+    "pay": "$101,190",
+    "pay_year": 2024,
+    "outlook": "+9%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/business-and-financial/management-analysts.htm",
+    "note": null
+   },
+   {
+    "title": "Market Research Analysts",
+    "pay": "$76,950",
+    "pay_year": 2024,
+    "outlook": "+7%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/business-and-financial/market-research-analysts.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 경영 분석가(9%)와 시장조사 분석가(7%) 모두 2024-34년 전체 평균보다 훨씬 빠른(much faster than average) 성장 전망입니다.",
+  "grad_note_ko": null
+ },
+ "finance": {
+  "desc_ko": "돈이 어떻게 움직이는지 배워요 — 투자, 기업 재무, 리스크. 수학·통계가 생각보다 많고, 은행·자산운용·핀테크로 이어져요.",
+  "desc_en": "You learn how money moves — investing, corporate finance, risk. More math than you'd expect; leads to banking, asset management, fintech.",
+  "occupations": [
+   {
+    "title": "Financial Analysts",
+    "pay": "$101,910",
+    "pay_year": 2024,
+    "outlook": "+6%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/business-and-financial/financial-analysts.htm",
+    "note": null
+   },
+   {
+    "title": "Personal Financial Advisors",
+    "pay": "$102,140",
+    "pay_year": 2024,
+    "outlook": "+10%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/business-and-financial/personal-financial-advisors.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 금융 분석가는 평균보다 빠른(faster than average) 6%, 개인 재무 상담사는 훨씬 빠른(much faster than average) 10% 성장 전망입니다(2024-34).",
+  "grad_note_ko": null
+ },
+ "social_sci": {
+  "desc_ko": "사회가 왜 이렇게 움직이는지 데이터와 이론으로 배워요 — 정치, 경제, 국제관계. 정책, 리서치, 로스쿨 준비로 이어져요.",
+  "desc_en": "You study why societies work the way they do, with data and theory — politics, economics, international relations. Leads to policy, research, and law-school prep.",
+  "occupations": [
+   {
+    "title": "Political Scientists",
+    "pay": "$139,380",
+    "pay_year": 2024,
+    "outlook": "-3%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/political-scientists.htm",
+    "note": null
+   },
+   {
+    "title": "Economists",
+    "pay": "$115,440",
+    "pay_year": 2024,
+    "outlook": "+1%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/economists.htm",
+    "note": null
+   },
+   {
+    "title": "Market Research Analysts",
+    "pay": "$76,950",
+    "pay_year": 2024,
+    "outlook": "+7%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/business-and-financial/market-research-analysts.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 정치학자는 -3% 감소(decline), 경제학자는 평균보다 느린(slower than average) 1% 전망이며, 학부 졸업 후 많이 가는 시장조사 분석가는 7%로 훨씬 빠른 성장 전망입니다(2024-34).",
+  "grad_note_ko": "정치학자·경제학자로 일하려면 보통 석사 이상 학위가 필요합니다(BLS 기준 진입 학력: 석사)."
+ },
+ "prelaw": {
+  "desc_ko": "'법학과'가 아니라 로스쿨 준비 경로예요 — 보통 정치·철학·경제를 전공하며 논증과 글쓰기를 훈련해요. 변호사는 대학원(로스쿨, JD)을 거쳐야 해요.",
+  "desc_en": "Not a 'law major' — a law-school prep path. You usually major in politics/philosophy/econ while training argument and writing. Becoming a lawyer requires law school (JD).",
+  "occupations": [
+   {
+    "title": "Lawyers",
+    "pay": "$151,160",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/legal/lawyers.htm",
+    "note": null
+   },
+   {
+    "title": "Paralegals and Legal Assistants",
+    "pay": "$61,010",
+    "pay_year": 2024,
+    "outlook": "+0%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/legal/paralegals-and-legal-assistants.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 변호사는 전체 평균 수준(as fast as average)인 4%, 패러리걸은 거의 변화 없음(little or no change)인 0% 전망입니다(2024-34).",
+  "grad_note_ko": "변호사가 되려면 학부 졸업 후 로스쿨(JD)과 변호사 시험 합격이 필요합니다."
+ },
+ "psychology": {
+  "desc_ko": "사람의 마음과 행동을 과학으로 배워요 — 실험 설계와 통계가 절반이에요. 상담·임상은 대학원이 필요하고, 학사로는 HR·리서치·UX로도 가요.",
+  "desc_en": "You study mind and behavior scientifically — half of it is experiment design and statistics. Clinical work needs grad school; with a BA you also go into HR, research, UX.",
+  "occupations": [
+   {
+    "title": "Psychologists",
+    "pay": "$94,310",
+    "pay_year": 2024,
+    "outlook": "+6%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/psychologists.htm",
+    "note": null
+   },
+   {
+    "title": "Human Resources Specialists",
+    "pay": "$72,910",
+    "pay_year": 2024,
+    "outlook": "+6%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/business-and-financial/human-resources-specialists.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 심리학자와 HR 스페셜리스트 모두 평균보다 빠른(faster than average) 6% 성장 전망입니다(2024-34).",
+  "grad_note_ko": "임상·상담 심리학자가 되려면 학부 이후 대학원(박사 또는 석사)과 면허가 필요합니다. HR 등은 학사로 진입 가능합니다."
+ },
+ "humanities": {
+  "desc_ko": "문학·역사·철학을 깊이 읽고, 생각을 글로 정확하게 표현하는 법을 배워요. 글쓰기 힘은 언론, 출판, 교육, 로스쿨 등 어디서나 무기가 돼요.",
+  "desc_en": "You read literature, history and philosophy deeply and learn to write with precision. That writing power is a weapon anywhere — media, publishing, education, law school.",
+  "occupations": [
+   {
+    "title": "Writers and Authors",
+    "pay": "$72,270",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/media-and-communication/writers-and-authors.htm",
+    "note": null
+   },
+   {
+    "title": "Editors",
+    "pay": "$75,260",
+    "pay_year": 2024,
+    "outlook": "+1%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/media-and-communication/editors.htm",
+    "note": null
+   },
+   {
+    "title": "High School Teachers",
+    "pay": "$64,580",
+    "pay_year": 2024,
+    "outlook": "-2%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 작가는 평균 수준(4%), 에디터는 평균보다 느린 1%, 고등학교 교사는 -2% 감소(decline) 전망입니다(2024-34).",
+  "grad_note_ko": null
+ },
+ "arts": {
+  "desc_ko": "자기 시각을 작품으로 만드는 법을 배워요 — 스튜디오 실기와 비평이 중심. 디자인, 브랜딩, 영상, 게임 등 창작 산업으로 이어져요.",
+  "desc_en": "You learn to turn your perspective into work — studio practice and critique at the core. Leads to design, branding, film, games and other creative industries.",
+  "occupations": [
+   {
+    "title": "Graphic Designers",
+    "pay": "$61,300",
+    "pay_year": 2024,
+    "outlook": "+2%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/arts-and-design/graphic-designers.htm",
+    "note": null
+   },
+   {
+    "title": "Art Directors",
+    "pay": "$111,040",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/arts-and-design/art-directors.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 그래픽 디자이너는 평균보다 느린(slower than average) 2%, 아트 디렉터는 평균 수준(as fast as average)인 4% 성장 전망입니다(2024-34). 아트 디렉터는 보통 5년 이상 경력이 필요합니다.",
+  "grad_note_ko": null
+ },
+ "media": {
+  "desc_ko": "이야기를 찾아 취재하고, 글·영상으로 전달하는 법을 배워요. 저널리즘, PR, 콘텐츠 제작으로 이어져요 — 전통 언론은 축소 중이라 디지털 역량이 중요해요.",
+  "desc_en": "You learn to report stories and tell them in writing and video. Leads to journalism, PR, content — legacy news is shrinking, so digital skills matter.",
+  "occupations": [
+   {
+    "title": "News Analysts, Reporters, and Journalists",
+    "pay": "$60,280",
+    "pay_year": 2024,
+    "outlook": "-4%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/media-and-communication/reporters-correspondents-and-broadcast-news-analysts.htm",
+    "note": null
+   },
+   {
+    "title": "Public Relations Specialists",
+    "pay": "$69,780",
+    "pay_year": 2024,
+    "outlook": "+5%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/media-and-communication/public-relations-specialists.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 기자·저널리스트는 -4% 감소(decline) 전망이지만, PR 스페셜리스트는 평균보다 빠른(faster than average) 5% 성장 전망입니다(2024-34).",
+  "grad_note_ko": null
+ },
+ "cognitive_science": {
+  "desc_ko": "'생각'이 어떻게 작동하는지를 심리학+컴퓨터과학+뇌과학+언어학으로 함께 배우는 융합 전공이에요. AI, UX 리서치, 데이터 분야로 이어져요.",
+  "desc_en": "An interdisciplinary major studying how thinking works — psychology + CS + neuroscience + linguistics together. Leads to AI, UX research, and data.",
+  "occupations": [
+   {
+    "title": "Web Developers and Digital Designers",
+    "pay": "$95,380",
+    "pay_year": 2024,
+    "outlook": "+7%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm",
+    "note": null
+   },
+   {
+    "title": "Market Research Analysts",
+    "pay": "$76,950",
+    "pay_year": 2024,
+    "outlook": "+7%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/business-and-financial/market-research-analysts.htm",
+    "note": null
+   },
+   {
+    "title": "Computer and Information Research Scientists",
+    "pay": "$140,910",
+    "pay_year": 2024,
+    "outlook": "+20%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/computer-and-information-technology/computer-and-information-research-scientists.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 UX 인접 직군인 웹 개발자·디지털 디자이너(7%)와 시장조사 분석가(7%), 연구 직군인 컴퓨터·정보 연구과학자(20%) 모두 평균보다 훨씬 빠른(much faster than average) 성장 전망입니다(2024-34).",
+  "grad_note_ko": "컴퓨터·정보 연구과학자 등 연구 직군은 보통 석사 이상 학위가 필요합니다(BLS 기준 진입 학력: 석사)."
+ },
+ "actuarial": {
+  "desc_ko": "수학·통계로 미래의 위험(사고, 수명, 재해)에 가격을 매기는 법을 배워요. 보험·금융사의 보험계리사로 이어지는, 아는 사람만 아는 고연봉 트랙이에요.",
+  "desc_en": "You learn to price future risk — accidents, lifespans, disasters — with math and statistics. A under-the-radar, well-paid track to actuary roles in insurance and finance.",
+  "occupations": [
+   {
+    "title": "Actuaries",
+    "pay": "$125,770",
+    "pay_year": 2024,
+    "outlook": "+22%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/math/actuaries.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 보험계리사는 2024-34년 22%로 전체 평균보다 훨씬 빠른(much faster than average) 성장 전망입니다. 학사로 진입하되 자격시험(SOA/CAS) 통과가 장기간 이어집니다.",
+  "grad_note_ko": null
+ },
+ "public_health": {
+  "desc_ko": "개인이 아니라 '집단'의 건강을 다뤄요 — 감염병 추적, 보건 정책, 예방 캠페인. 프리메드의 대안 경로로도 좋고, 역학자는 대학원(MPH)이 일반적이에요.",
+  "desc_en": "You work on the health of populations, not individuals — outbreak tracking, health policy, prevention. A good pre-med alternative; epidemiology usually needs an MPH.",
+  "occupations": [
+   {
+    "title": "Epidemiologists",
+    "pay": "$83,980",
+    "pay_year": 2024,
+    "outlook": "+16%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/epidemiologists.htm",
+    "note": null
+   },
+   {
+    "title": "Health Education Specialists",
+    "pay": "$63,000",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/community-and-social-service/health-educators.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 역학조사관(epidemiologist)은 16%로 평균보다 훨씬 빠른(much faster than average) 성장, 보건교육 전문가는 평균 수준(as fast as average)인 4% 전망입니다(2024-34).",
+  "grad_note_ko": "역학조사관은 보통 석사(MPH 등) 학위가 필요합니다(BLS 기준 진입 학력: 석사). 보건교육 전문가는 학사로 진입 가능합니다."
+ },
+ "linguistics": {
+  "desc_ko": "언어가 어떻게 만들어지고 작동하는지 과학적으로 배워요 — 음성, 문법, 의미. 요즘은 AI 언어모델·번역 기술과 연결되며 주목받는 분야예요.",
+  "desc_en": "The science of how language works — sounds, grammar, meaning. Now increasingly connected to AI language models and translation tech.",
+  "occupations": [
+   {
+    "title": "Interpreters and Translators",
+    "pay": "$59,440",
+    "pay_year": 2024,
+    "outlook": "+2%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/media-and-communication/interpreters-and-translators.htm",
+    "note": null
+   },
+   {
+    "title": "Technical Writers",
+    "pay": "$91,670",
+    "pay_year": 2024,
+    "outlook": "+1%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/media-and-communication/technical-writers.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 통·번역사(2%)와 테크니컬 라이터(1%) 모두 평균보다 느린(slower than average) 성장 전망입니다(2024-34).",
+  "grad_note_ko": "언어학 연구자(대학·연구소)가 되려면 보통 대학원(석사·박사) 진학이 필요합니다. 통·번역 등 실무 직군은 학사로 진입 가능합니다."
+ }
+}

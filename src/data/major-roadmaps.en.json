@@ -1367,5 +1367,309 @@
     ]
    }
   }
+ },
+ "cognitive_science": {
+  "title": "Cognitive Science",
+  "ap": [
+   "AP Psychology — the mind axis",
+   "AP Computer Science A — the computation axis",
+   "AP Statistics — the lingua franca of research methods",
+   "AP Calculus AB (BC if possible)"
+  ],
+  "strong": "Both axes at once — psychology + CS. Strong in only one and you're indistinguishable from a psych or CS applicant",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Projects analyzing human data with code (a reaction-time experiment web app, language data analysis) — outputs combining experiments and programming"
+   },
+   {
+    "label": "External validation type",
+    "text": "Science fair behavioral/CS categories / student journal submissions / hackathons on cognition & health"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Listing 'brain books I read' — you need one output where the two axes combine"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Confirm math track + Python basics"
+    ],
+    "activity": [
+     "Log psych/brain reading in short write-ups",
+     "Basic coding projects"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Plan AP Psych, CS A, Stats for 11th"
+    ],
+    "activity": [
+     "First combined project — implement and analyze a simple experiment in code"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Psych + CS A + Statistics"
+    ],
+    "activity": [
+     "Deepen the project — fairs/journals",
+     "Run a research club or tutoring"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize the combined output for the application"
+    ]
+   }
+  }
+ },
+ "environmental": {
+  "title": "Environmental Science",
+  "ap": [
+   "AP Environmental Science — directly tied, accessible",
+   "AP Biology or Chemistry — proves scientific depth",
+   "AP Statistics — environmental data analysis",
+   "AP Calculus AB"
+  ],
+  "strong": "APES alone reads light — pair it with Bio or Chem to show depth",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Long-run projects measuring local environmental data yourself (water, air, waste), running school/community sustainability campaigns"
+   },
+   {
+    "label": "External validation type",
+    "text": "Science fair environmental category / student journals / environmental data competitions"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "'Joined the eco club' level participation — you need data you measured and results you changed"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Bio/chem foundations + math track"
+    ],
+    "activity": [
+     "Pick one local indicator and start weekly measurements",
+     "Join the environmental club"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in APES + Bio (or Chem) for 11th"
+    ],
+    "activity": [
+     "Analyze and publish a year of data",
+     "Design a campaign"
+    ]
+   },
+   "11": {
+    "academic": [
+     "APES + Bio/Chem + Statistics"
+    ],
+    "activity": [
+     "Deepen research — enter fairs",
+     "Record campaign before/after numbers"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize cumulative data and campaign results for the application"
+    ]
+   }
+  }
+ },
+ "actuarial": {
+  "title": "Actuarial Science",
+  "ap": [
+   "AP Calculus BC — the required line",
+   "AP Statistics — directly tied",
+   "AP Macro/Micro Economics",
+   "AP Computer Science A — data handling"
+  ],
+  "strong": "Math + statistics is the core — actuaries start SOA/CAS exams during college, so your high-school math line is the preparation",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Data projects on probability and risk (mock premium models, sports/game probability analysis), records of financial data analysis"
+   },
+   {
+    "label": "External validation type",
+    "text": "AMC → AIME line / statistics & data competitions / math modeling (HiMCM-style)"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Picking it because the name sounds exotic — know that a long exam track (Exam P/FM) follows"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Math track first — the fastest line"
+    ],
+    "activity": [
+     "Math club + first AMC",
+     "Make probability puzzles and simulations a hobby"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in Calc BC and Statistics for 11th"
+    ],
+    "activity": [
+     "Finish a probability/risk data project",
+     "Retake AMC"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Calc BC + Statistics (+ Econ)"
+    ],
+    "activity": [
+     "Enter a modeling competition",
+     "Deepen the project — publish a report"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize records; research college actuarial programs and the exam roadmap"
+    ]
+   }
+  }
+ },
+ "public_health": {
+  "title": "Public Health",
+  "ap": [
+   "AP Biology — the science axis",
+   "AP Statistics — the language of epidemiology",
+   "AP Psychology — behavior & health",
+   "AP Environmental Science — if heading toward environmental health"
+  ],
+  "strong": "Bio + statistics — this major works with population data, not individual care, so statistics matters even more than in pre-med",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Designing and running health campaigns (smoking, sleep, mental health), research analyzing local health data, health education content"
+   },
+   {
+    "label": "External validation type",
+    "text": "HOSA / science fair health categories / student journal submissions"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Preparing exactly like pre-med — this major's edge is the population view: policy, data, campaigns"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Bio and math foundations"
+    ],
+    "activity": [
+     "Pick a health topic you care about",
+     "Start service/campaign participation"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in AP Bio and Statistics for 11th"
+    ],
+    "activity": [
+     "Design and run a first campaign — record before/after numbers",
+     "Intro health-data analysis"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Bio + Statistics (+ Psych)"
+    ],
+    "activity": [
+     "Scale the campaign + research — fairs/journals",
+     "HOSA chapter work or founding"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize cumulative campaign and research results for the application"
+    ]
+   }
+  }
+ },
+ "linguistics": {
+  "title": "Linguistics",
+  "ap": [
+   "AP English Language — the base of language analysis",
+   "A foreign-language AP (Chinese, Spanish, French...) — a multilingual signal",
+   "AP Statistics — for computational linguistics",
+   "AP Computer Science A — if heading toward AI/NLP"
+  ],
+  "strong": "Not about speaking languages well but analyzing them — a bilingual background is itself an asset, and combined with CS it opens the AI direction",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Projects analyzing your bilingual experience (Korean-English comparative studies, language-learning content or apps), language data analysis"
+   },
+   {
+    "label": "External validation type",
+    "text": "Linguistics olympiad (NACLO — check international eligibility) / essay competitions / student journals"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Mistaking 'good at English' for a spike — you need an analyzed output for a linguistics narrative"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "English reading/writing + consider starting a third language"
+    ],
+    "activity": [
+     "Start a language-observation notebook (KO-EN differences...)",
+     "Sample NACLO-style problems"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Plan English Lang and a foreign-language AP for 11th"
+    ],
+    "activity": [
+     "First analysis project — compare bilingual data",
+     "Make language-learning content"
+    ]
+   },
+   "11": {
+    "academic": [
+     "English Lang + foreign-language AP (+ Stats/CS as fits)"
+    ],
+    "activity": [
+     "Enter the olympiad and essay competitions",
+     "Deepen and publish the project"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize analyzed outputs and content records for the application"
+    ]
+   }
+  }
  }
 }

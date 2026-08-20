@@ -9,6 +9,17 @@ import { insertRow } from '../app/appData'
 import { loadPlans, cycleSeasons, type Plan } from '../app/plans'
 import type { Axis } from '../lib/score'
 import { t, getLang } from '../i18n'
+import careersData from '../data/major-careers.json'
+import { majorParent } from '../data/majors'
+import schoolsIndex from '../data/schools.index.json'
+import SchoolLogo from '../browse/SchoolLogo'
+import { slugify } from '../lib/router'
+
+interface Occupation { title: string; pay: string | null; pay_year: number | null; outlook: string | null; window: string | null; url: string | null; note?: string | null }
+interface CareerInfo { desc_ko: string | null; desc_en: string | null; occupations: Occupation[]; outlook_note_ko: string | null; grad_note_ko?: string | null }
+const CAREERS = careersData as Record<string, CareerInfo>
+interface IdxSchool { id: number; name: string; direct_admit_majors?: string[] }
+const IDX = schoolsIndex as IdxSchool[]
 
 interface RoadmapCell { academic: string[]; activity: string[] }
 interface MajorData {
@@ -86,6 +97,13 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
             <p className="text-xs text-gray-400">{t('전공 가이드 맵 · 4년 로드맵 (편집 가이드)', 'Major guide map · 4-year roadmap (editorial guide)')}</p>
           </div>
         </div>
+
+        {/* 전공 소개 — 무엇을 배우고 무엇을 하게 되나 */}
+        {CAREERS[majorKey] && (CAREERS[majorKey].desc_ko || CAREERS[majorKey].desc_en) && (
+          <p className="mt-3 rounded-xl bg-blue-50 px-4 py-3 text-sm leading-relaxed text-blue-900">
+            {getLang() === 'en' ? (CAREERS[majorKey].desc_en ?? CAREERS[majorKey].desc_ko) : CAREERS[majorKey].desc_ko}
+          </p>
+        )}
 
         {/* 4년 로드맵 — 학년 아코디언, 내 학년 펼침 */}
         <div className="mt-4 flex flex-col gap-2">
@@ -169,6 +187,61 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
         </div>
 
         {/* 다른 전공 */}
+        {/* 졸업 후 진로 — BLS 공식 데이터 */}
+        {CAREERS[majorKey] && CAREERS[majorKey].occupations.length > 0 && (
+          <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+            <p className="font-semibold text-gray-900">{t('💼 졸업 후 진로', '💼 After graduation')}</p>
+            {CAREERS[majorKey].outlook_note_ko && getLang() === 'ko' && (
+              <p className="mt-1 text-xs text-gray-500">{CAREERS[majorKey].outlook_note_ko}</p>
+            )}
+            <div className="mt-2 flex flex-col gap-2">
+              {CAREERS[majorKey].occupations.map((o) => (
+                <div key={o.title} className="rounded-lg bg-gray-50 px-3 py-2.5">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <p className="min-w-0 flex-1 text-sm font-medium text-gray-900">{o.title}</p>
+                    {o.outlook && (
+                      <span className={`shrink-0 rounded-full px-1.5 py-0.5 text-[11px] font-semibold ${o.outlook.startsWith('-') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+                        {o.outlook} <span className="font-normal">({o.window})</span>
+                      </span>
+                    )}
+                  </div>
+                  <p className="mt-0.5 text-xs text-gray-500">
+                    {o.pay && <>{t('중간 연봉', 'Median pay')} <strong className="text-gray-700">{o.pay}</strong> ({o.pay_year})</>}
+                    {o.note && <span className="ml-1 text-amber-700">· {o.note}</span>}
+                    {o.url && <a href={o.url} target="_blank" rel="noreferrer" className="ml-1 text-blue-600 underline">BLS ↗</a>}
+                  </p>
+                </div>
+              ))}
+            </div>
+            {CAREERS[majorKey].grad_note_ko && getLang() === 'ko' && (
+              <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">🎓 {CAREERS[majorKey].grad_note_ko}</p>
+            )}
+            <p className="mt-2 text-[11px] text-gray-400">
+              {t('연봉은 미국 전체 중간값(경력 전체 포함) 기준이며 지역·경력에 따라 크게 달라요. 출처: 미국 노동통계국(BLS) Occupational Outlook Handbook.', 'Pay figures are US-wide medians across all experience levels and vary widely by region and seniority. Source: US Bureau of Labor Statistics, Occupational Outlook Handbook.')}
+            </p>
+          </div>
+        )}
+
+        {/* 이 전공을 전공 단위로 뽑는 학교 (direct-admit 조사 데이터) */}
+        {(() => {
+          const parent = majorParent(majorKey)
+          const list = IDX.filter((sc) => (sc.direct_admit_majors ?? []).includes(parent ?? ''))
+          if (list.length === 0) return null
+          return (
+            <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+              <p className="font-semibold text-gray-900">{t('🏛️ 이 계열을 전공 단위로 뽑는 학교', '🏛️ Schools that admit by this major group')}</p>
+              <p className="mt-0.5 text-xs text-gray-500">{t('지원할 때 전공을 정해 내는 학교들 — 경쟁률이 학교 전체 합격률과 다르고 전과가 어려울 수 있어요. 각 학교 카드에서 확인하세요.', 'These schools admit into the major at application time — competitiveness differs from the overall rate and switching in can be hard. Check each school card.')}</p>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {list.map((sc) => (
+                  <button key={sc.id} onClick={() => navigate(`/schools/${slugify(sc.name)}`)} className="flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-2.5 py-1 text-xs text-gray-700 active:bg-gray-50">
+                    <SchoolLogo schoolId={sc.id} name={sc.name} size={16} />{sc.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )
+        })()}
+
         <div className="mt-6">
           <p className="text-xs font-semibold text-gray-400">{t('다른 전공 보기', 'Other majors')}</p>
           <div className="mt-2 flex flex-wrap gap-1.5">
