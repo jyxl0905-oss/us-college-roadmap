@@ -97,7 +97,7 @@ export default function MajorsIndexPage() {
 
   return (
     <div className="min-h-dvh bg-gray-50">
-      <div className="mx-auto max-w-md px-5 py-6">
+      <div className="mx-auto max-w-md px-5 py-6 lg:max-w-4xl">
         <h1 className="text-xl font-bold text-gray-900">🗺️ {t('전공 알아보기', 'Explore majors')}</h1>
         <p className="mt-1 text-sm text-gray-500">
           {t('전공마다 추천 AP, 활동 방향, 4년 로드맵을 정리했어요. 편집 가이드 — 정답이 아니라 출발점이에요.', 'Recommended APs, activity directions and a 4-year roadmap for each major. An editorial guide — a starting point, not the answer.')}
@@ -114,8 +114,10 @@ export default function MajorsIndexPage() {
             {t('검색 결과가 없어요 — 다른 말로 찾아보거나, 비슷한 상위 계열(공학·자연과학·사회과학 등)을 눌러보세요.', 'No results — try another word, or open a nearby broader category (engineering, natural sciences, social sciences...).')}
           </p>
         )}
-        {section(t('이과 계열 (STEM)', 'STEM'), 'stem')}
-        {section(t('문과 계열 (Humanities & Social)', 'Humanities & Social'), 'liberal')}
+        <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6">
+          {section(t('이과 계열 (STEM)', 'STEM'), 'stem')}
+          {section(t('문과 계열 (Humanities & Social)', 'Humanities & Social'), 'liberal')}
+        </div>
       </div>
     </div>
   )
