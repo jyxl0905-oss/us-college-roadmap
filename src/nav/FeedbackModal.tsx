@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import { supabase } from '../lib/supabase'
 import { t } from '../i18n'
 
@@ -19,7 +20,8 @@ export default function FeedbackModal({ onClose }: { onClose: () => void }) {
     setState('done')
   }
 
-  return (
+  // 상단 바(backdrop-blur)가 fixed의 기준이 되어 모달이 헤더 안에 갇히는 문제 → body로 포털
+  return createPortal(
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 sm:items-center" onClick={onClose}>
       <div className="w-full max-w-md rounded-t-2xl bg-white px-5 pb-8 pt-5 sm:rounded-2xl sm:pb-5" onClick={(e) => e.stopPropagation()}>
         {state === 'done' ? (
@@ -51,6 +53,7 @@ export default function FeedbackModal({ onClose }: { onClose: () => void }) {
           </>
         )}
       </div>
-    </div>
+    </div>,
+    document.body,
   )
 }
