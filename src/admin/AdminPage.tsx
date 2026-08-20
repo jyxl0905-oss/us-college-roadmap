@@ -192,6 +192,23 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
   const [extra, setExtra] = useState<Extra | null>(null)
   const [school, setSchool] = useState<string | null>(null) // null=전체, '__none__'=미입력
   const [bySchool, setBySchool] = useState<SchoolRow[] | null>(null)
+  const [renaming, setRenaming] = useState(false)
+
+  // 학교 이름 정리 — 기존 학교 이름과 같게 바꾸면 두 그룹이 병합됨
+  const renameSchool = async (from: string) => {
+    if (!supabase || renaming) return
+    const to = window.prompt(`'${from}' 학교 이름을 무엇으로 바꿀까요?\n(기존 다른 학교와 같은 이름을 넣으면 병합돼요. 비우면 '학교 미입력' 처리)`, from)
+    if (to === null || to.trim() === from) return
+    setRenaming(true)
+    const { data, error } = await supabase.rpc('admin_rename_school', { p_from: from, p_to: to.trim() || null })
+    setRenaming(false)
+    if (error) { alert('변경 실패: ' + error.message); return }
+    alert(`${data ?? 0}명의 학교 이름이 바뀌었어요.`)
+    // 표·필터·전체 통계 새로고침
+    setBySchool(null)
+    supabase.rpc('admin_stats_schools').then(({ data: d }) => { if (d) setBySchool(d as SchoolRow[]) }, () => {})
+    setSchool(null)
+  }
   const [loadingStats, setLoadingStats] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -242,7 +259,7 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
       {bySchool && bySchool.length > 0 && (
         <div className="mb-4 rounded-2xl border border-gray-100 bg-white p-4">
           <h2 className="font-semibold text-gray-900">🏫 학교별 현황</h2>
-          <p className="mb-2 text-xs text-gray-400">학교 이름은 온보딩에서 학생이 직접 입력 · 행을 누르면 아래 전체 통계가 그 학교 기준으로 바뀌어요</p>
+          <p className="mb-2 text-xs text-gray-400">학교 이름은 온보딩에서 학생이 직접 입력 · 행 클릭 = 그 학교 기준으로 아래 통계 전환 · ✏️ = 이름 정리(같은 이름으로 바꾸면 병합)</p>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[900px] text-sm">
               <thead>
@@ -255,7 +272,19 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
                   const active = school === r.name || (school === '__none__' && r.name === '__none__')
                   return (
                     <tr key={r.name} onClick={() => setSchool(active ? null : r.name)} className={`cursor-pointer border-t border-gray-50 ${active ? 'bg-blue-50' : 'hover:bg-gray-50'}`}>
-                      <td className="max-w-[220px] truncate py-1.5 pr-2 font-medium text-gray-800">{r.name === '__none__' ? <span className="text-gray-400">학교 미입력</span> : r.name}</td>
+                      <td className="max-w-[220px] py-1.5 pr-2 font-medium text-gray-800">
+                        <span className="flex items-center gap-1">
+                          <span className="truncate">{r.name === '__none__' ? <span className="text-gray-400">학교 미입력</span> : r.name}</span>
+                          {r.name !== '__none__' && (
+                            <button
+                              onClick={(e) => { e.stopPropagation(); renameSchool(r.name) }}
+                              disabled={renaming}
+                              title="이름 바꾸기 (같은 이름 입력 시 병합)"
+                              className="shrink-0 rounded p-0.5 text-gray-300 hover:text-gray-600"
+                            >✏️</button>
+                          )}
+                        </span>
+                      </td>
                       <td className="pr-2 tabular-nums text-gray-700">{r.users}</td>
                       <td className="pr-2 tabular-nums text-gray-500">{r.active_30d}</td>
                       <td className="pr-2 tabular-nums text-gray-500">{r.returning_users} <span className="text-gray-400">({pct(r.returning_users, r.users)})</span></td>
