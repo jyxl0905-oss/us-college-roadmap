@@ -25,6 +25,7 @@ const AppRouter = lazy(() => import('./app/AppRouter'))
 const MajorRoadmapPage = lazy(() => import('./major/MajorRoadmapPage'))
 const AdminPage = lazy(() => import('./admin/AdminPage'))
 const TargetsPage = lazy(() => import('./report/TargetsPage'))
+const MajorsIndexPage = lazy(() => import('./major/MajorsIndexPage'))
 // 개발용: /admin?demo=1 → 샘플 데이터로 레이아웃 확인 (프로덕션 빌드에서 제거됨)
 const AdminDemo = lazy(async () => {
   const [{ default: Page }, { default: demo }] = await Promise.all([import('./admin/AdminPage'), import('./admin/demo-stats.json')])
@@ -291,6 +292,9 @@ function AppRoutes() {
     )
   }
   // 전공 로드맵 (비로그인도 열람 가능, 계획 담기는 로그인 필요)
+  if (path === '/majors' || path === '/majors/') {
+    return <MajorsIndexPage />
+  }
   if (path.startsWith('/major/')) {
     return (
       <MajorRoadmapPage

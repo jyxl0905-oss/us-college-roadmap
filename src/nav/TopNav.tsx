@@ -33,9 +33,13 @@ export default function TopNav() {
         { to: '/targets', label: t('목표 학교', 'Targets'), active: path.startsWith('/targets') },
         { to: '/app', label: t('내 원서', 'My App'), active: path.startsWith('/app') },
         { to: '/schools', label: t('둘러보기', 'Browse'), active: path.startsWith('/schools') || path.startsWith('/compare') },
+        { to: '/majors', label: t('전공', 'Majors'), active: path.startsWith('/major') },
         { to: '/deadlines', label: t('마감', 'Deadlines'), active: path.startsWith('/deadlines') },
       ]
-    : [{ to: '/schools', label: t('대학 둘러보기', 'Browse colleges'), active: path.startsWith('/schools') }]
+    : [
+        { to: '/schools', label: t('대학 둘러보기', 'Browse colleges'), active: path.startsWith('/schools') },
+        { to: '/majors', label: t('전공 알아보기', 'Explore majors'), active: path.startsWith('/major') },
+      ]
 
   return (
     <header className="no-print sticky top-0 z-40 border-b border-gray-200 bg-white/90 backdrop-blur">
