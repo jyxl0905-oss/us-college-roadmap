@@ -31,7 +31,6 @@ import type { Activity, Honor } from '../app/appData'
 import { majorLabel } from '../data/majors'
 import { tierLabels } from '../onboarding/labels'
 import RadarChart from './RadarChart'
-import GrowthChart, { type SeasonPoint } from './GrowthChart'
 import InstallPrompt from './InstallPrompt'
 import { loadPlans, plannedScores, type Plan } from '../app/plans'
 import type { AxisScores } from '../lib/score'
@@ -73,7 +72,6 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   const [carriedIds, setCarriedIds] = useState<Set<number>>(new Set())
   const [allDoneIds, setAllDoneIds] = useState<Set<number>>(new Set()) // 전 시즌 누적 완료 (스토리 준비 분자)
   const [prevReport, setPrevReport] = useState<PrevReport | null>(null)
-  const [history, setHistory] = useState<SeasonPoint[]>([]) // 성장 그래프용 전 시즌 스냅샷
   const [prescriptions, setPrescriptions] = useState<Prescription[]>([])
   const [appeals, setAppeals] = useState<Appeal[]>([])
   const [loading, setLoading] = useState(true)
@@ -167,7 +165,6 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         const all = [...bySeason.values()]
         const past = all.filter((r) => r.season_label !== seasonLabel)
         if (past.length > 0) setPrevReport(past[past.length - 1])
-        setHistory(all.map((r) => ({ season_label: r.season_label, scores: r.snapshot?.scores ?? {}, done: r.snapshot?.done ?? 0, total: r.snapshot?.total ?? 0, plans: (r.snapshot as { plans?: { done: number; total: number } })?.plans })))
       }
       if (presRes.data) setPrescriptions(localizeRows(presRes.data as Prescription[]))
       if (appealRes.data) setAppeals(localizeRows(appealRes.data as Appeal[]))
@@ -521,23 +518,6 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         </div>
       )}
 
-
-      {/* 시즌별 성장 그래프 — 현재 시즌은 실시간 점수로 대체 */}
-      <div className="print-flat mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
-        <p className="font-semibold text-gray-900">{t('📈 시즌별 성장', '📈 Growth by season')}</p>
-        <p className="mt-0.5 text-xs text-gray-400">{t('시즌마다 돌아와 체크하면 여기 선이 자라요.', 'Come back each season and this line grows.')}</p>
-        <div className="mt-3">
-          <GrowthChart
-            points={[
-              ...history.filter((h) => h.season_label !== seasonLabel),
-              {
-                season_label: seasonLabel, scores, done: doneCount, total: totalCount,
-                plans: { done: plans.filter((p) => p.season_label === seasonLabel && p.status === 'done').length, total: plans.filter((p) => p.season_label === seasonLabel).length },
-              },
-            ]}
-          />
-        </div>
-      </div>
 
       {/* 5. 목표 학교 — 화면에서는 상단 바 [목표 학교] 페이지로 이동, PDF 인쇄에만 포함 */}
       {schools.length > 0 && (
