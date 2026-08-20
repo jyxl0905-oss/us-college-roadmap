@@ -45,6 +45,9 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
   const myGrade = profile ? profileGrade(profile) : 9
   const [openGrade, setOpenGrade] = useState<number>(myGrade)
   const [guideOpen, setGuideOpen] = useState(false)
+  // 전공 알아보기 진입: 소개·진로 중심의 간단 보기. 준비 상세(로드맵·AP·활동)는 [전체 가이드 보기]로
+  const explore = typeof window !== 'undefined' && (new URLSearchParams(window.location.search).has('explore') || !userId)
+  const [full, setFull] = useState(!explore)
   const [plans, setPlans] = useState<Plan[]>([])
   const [added, setAdded] = useState<string | null>(null)
   const [adding, setAdding] = useState<string | null>(null) // 연타로 같은 항목이 두 번 담기지 않도록
@@ -106,7 +109,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
         )}
 
         {/* 4년 로드맵 — 학년 아코디언, 내 학년 펼침 */}
-        <div className="mt-4 flex flex-col gap-2">
+        {full && <div className="mt-4 flex flex-col gap-2">
           {[9, 10, 11, 12].map((g) => {
             const cell = data.roadmap[String(g)]
             const open = openGrade === g
@@ -149,10 +152,11 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
               </div>
             )
           })}
-        </div>
+        </div>}
 
         {/* 과목·AP */}
-        {data.ap.length > 0 && (
+
+        {full && data.ap.length > 0 && (
           <details className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
             <summary className="cursor-pointer select-none font-semibold text-gray-900">{t('📚 추천 AP', '📚 Recommended APs')} <span className="ml-1 text-xs font-normal text-gray-400">{t(`${data.ap.length}개 · 우선순위 순`, `${data.ap.length} · by priority`)}</span></summary>
             <ol className="mt-2 flex flex-col gap-1.5 text-sm text-gray-700">
@@ -165,7 +169,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
         )}
 
         {/* 활동 가이드 — 접힘 기본 */}
-        <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+        {full && <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
           <button onClick={() => setGuideOpen(!guideOpen)} className="flex w-full items-center justify-between text-left">
             <span className="font-semibold text-gray-900">{t('이 전공은 활동을 이렇게 만들어요', 'How to build activities for this major')}</span>
             <span className="text-sm text-gray-400">{guideOpen ? t('접기', 'Collapse') : t('펼치기', 'Expand')}</span>
@@ -184,12 +188,11 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
               <p className="text-[11px] text-gray-400">{t('편집 가이드 — 대학 공식 데이터가 아니에요.', 'Editorial guide — not official college data.')}</p>
             </div>
           )}
-        </div>
+        </div>}
 
-        {/* 다른 전공 */}
         {/* 졸업 후 진로 — BLS 공식 데이터 */}
         {CAREERS[majorKey] && CAREERS[majorKey].occupations.length > 0 && (
-          <details className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+          <details open={!full} className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
             <summary className="cursor-pointer select-none font-semibold text-gray-900">
               {t('💼 졸업 후 진로', '💼 After graduation')}
               <span className="ml-1 text-xs font-normal text-gray-400">
@@ -233,7 +236,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
           const list = IDX.filter((sc) => (sc.direct_admit_majors ?? []).includes(parent ?? ''))
           if (list.length === 0) return null
           return (
-            <details className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+            <details open={!full} className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
               <summary className="cursor-pointer select-none font-semibold text-gray-900">{t('🏛️ 전공 단위로 뽑는 학교', '🏛️ Schools admitting by major')} <span className="ml-1 text-xs font-normal text-gray-400">{list.length}{t('곳', '')}</span></summary>
               <p className="mt-0.5 text-xs text-gray-500">{t('지원할 때 전공을 정해 내는 학교들 — 경쟁률이 학교 전체 합격률과 다르고 전과가 어려울 수 있어요. 각 학교 카드에서 확인하세요.', 'These schools admit into the major at application time — competitiveness differs from the overall rate and switching in can be hard. Check each school card.')}</p>
               <div className="mt-2 flex flex-wrap gap-1.5">
@@ -246,6 +249,22 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
             </details>
           )
         })()}
+
+        {!full && (
+          <div className="mt-4 rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-4">
+            <p className="text-sm font-semibold text-blue-900">{t('이 전공, 나랑 맞을까?', 'Is this major right for me?')}</p>
+            <p className="mt-0.5 text-xs text-blue-800">{t('학년별 로드맵·추천 AP·활동 전략은 내 학년에 맞춘 리포트에서 볼 수 있어요.', 'The year-by-year roadmap, recommended APs and activity strategy live in your personalized report.')}</p>
+            {userId ? (
+              <button onClick={() => setFull(true)} className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white active:bg-blue-700">
+                {t('🗺️ 전체 가이드 보기 (로드맵·AP·활동)', '🗺️ See the full guide (roadmap · APs · activities)')}
+              </button>
+            ) : (
+              <button onClick={() => navigate('/')} className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white active:bg-blue-700">
+                {t('내 리포트 받기 (3분)', 'Get my report (3 min)')}
+              </button>
+            )}
+          </div>
+        )}
 
         <div className="mt-6">
           <p className="text-xs font-semibold text-gray-400">{t('다른 전공 보기', 'Other majors')}</p>
