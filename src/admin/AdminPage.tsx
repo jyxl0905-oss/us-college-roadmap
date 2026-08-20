@@ -48,7 +48,7 @@ interface Extra {
     research_ok: number
   }
 }
-interface SchoolRow { name: string; users: number; no_counselor: number; intl: number; active_30d: number; returning_users: number; report_users: number; check_users: number; avg_done_rate: number | null; app_users: number; research_consent: number }
+interface SchoolRow { name: string; users: number; no_counselor: number; intl: number; active_30d: number; returning_users: number; report_users: number; check_users: number; avg_done_rate: number | null; app_users: number; research_consent: number; top_majors?: { k: string; n: number }[]; top_targets?: { name: string; n: number }[] }
 const admittedKo: Record<string, string> = { first_choice: '1지망 합격', target: '목표 학교 중 합격', other: '목표 밖 합격', waiting: '결과 대기', no: '아직 합격 없음' }
 const featureKo: Record<string, string> = { checklist: '시즌 체크리스트', axes: '6축·처방', schools: '학교 카드·둘러보기', app: '내 원서', board: '지원 학교·라운드', major: '전공 가이드 맵', deadlines: '마감·알림', guide: '기본기·용어집' }
 
@@ -244,10 +244,10 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
           <h2 className="font-semibold text-gray-900">🏫 학교별 현황</h2>
           <p className="mb-2 text-xs text-gray-400">학교 이름은 온보딩에서 학생이 직접 입력 · 행을 누르면 아래 전체 통계가 그 학교 기준으로 바뀌어요</p>
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[640px] text-sm">
+            <table className="w-full min-w-[900px] text-sm">
               <thead>
                 <tr className="text-left text-xs text-gray-400">
-                  <th className="py-1 pr-2">학교</th><th className="pr-2">가입</th><th className="pr-2">30일 활성</th><th className="pr-2">재방문</th><th className="pr-2">리포트</th><th className="pr-2">체크</th><th className="pr-2">평균 완료율</th><th className="pr-2">내 원서</th><th className="pr-2">카운슬러 없음</th><th className="pr-2">국제학생</th>
+                  <th className="py-1 pr-2">학교</th><th className="pr-2">가입</th><th className="pr-2">30일 활성</th><th className="pr-2">재방문</th><th className="pr-2">리포트</th><th className="pr-2">체크</th><th className="pr-2">평균 완료율</th><th className="pr-2">내 원서</th><th className="pr-2">카운슬러 없음</th><th className="pr-2">국제학생</th><th className="pr-2">인기 전공</th><th className="pr-2">인기 목표 학교</th>
                 </tr>
               </thead>
               <tbody>
@@ -265,6 +265,12 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
                       <td className="pr-2 tabular-nums text-gray-500">{r.app_users}</td>
                       <td className="pr-2 tabular-nums text-gray-500">{r.no_counselor} <span className="text-gray-400">({pct(r.no_counselor, r.users)})</span></td>
                       <td className="pr-2 tabular-nums text-gray-500">{r.intl} <span className="text-gray-400">({pct(r.intl, r.users)})</span></td>
+                      <td className="max-w-[180px] truncate pr-2 text-xs text-gray-500" title={(r.top_majors ?? []).map((m) => `${majorLabel(m.k)} ${m.n}`).join(' · ')}>
+                        {(r.top_majors ?? []).length === 0 ? '–' : (r.top_majors ?? []).map((m) => `${majorLabel(m.k).split(' (')[0]} ${m.n}`).join(' · ')}
+                      </td>
+                      <td className="max-w-[220px] truncate pr-2 text-xs text-gray-500" title={(r.top_targets ?? []).map((tg) => `${tg.name} ${tg.n}`).join(' · ')}>
+                        {(r.top_targets ?? []).length === 0 ? '–' : (r.top_targets ?? []).map((tg) => `${tg.name.replace('University of ', 'U. ').replace(' University', '')} ${tg.n}`).join(' · ')}
+                      </td>
                     </tr>
                   )
                 })}
