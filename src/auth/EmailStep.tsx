@@ -22,6 +22,19 @@ export default function EmailStep({ redirectPath = '/', title, minimal = false }
     localStorage.setItem(RESEARCH_CONSENT_KEY, next ? '1' : '0')
   }
 
+  // Google OAuth — 같은 브라우저에서 왕복하므로 답변은 localStorage로 유지됨 (서버 보관 불필요)
+  const googleLogin = async () => {
+    if (!supabase || sending) return
+    setError(null)
+    try { if (redirectPath !== '/') localStorage.setItem('post_login_path', redirectPath); else localStorage.removeItem('post_login_path') } catch { /* ignore */ }
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: 'https://us-college-roadmap.vercel.app' },
+    })
+    if (error)
+      setError(t('구글 로그인이 지금은 안 돼요 — 아래 이메일 방식으로 로그인해 주세요.', 'Google sign-in is unavailable right now — please use the email option below.'))
+  }
+
   const sendLink = async () => {
     if (!supabase) return
     setSending(true)
@@ -76,6 +89,17 @@ export default function EmailStep({ redirectPath = '/', title, minimal = false }
           ? t('운영자 이메일로 로그인 링크를 보내드려요.', 'We’ll email a login link to the admin address.')
           : t('비밀번호 없이 메일로 오는 링크 하나로 로그인돼요. 시즌마다 돌아와서 체크리스트를 이어갈 수 있어요.', 'No password — you log in with a link we email you. Come back each season and pick up your checklist.')}
       </p>
+      <button
+        onClick={googleLogin}
+        className="mt-6 flex w-full items-center justify-center gap-2.5 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-800 active:bg-gray-50"
+      >
+        <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        {t('Google로 계속하기', 'Continue with Google')}
+      </button>
+      <div className="my-4 flex items-center gap-3 text-xs text-gray-400">
+        <span className="h-px flex-1 bg-gray-200" />{t('또는 이메일로', 'or with email')}<span className="h-px flex-1 bg-gray-200" />
+      </div>
+
       {cameFromExpiredLink && (
         <p className="mt-4 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">
           {t('이전 로그인 링크가 만료됐어요. 이메일을 다시 입력하고 새 링크를 받아주세요. (링크는 1회용이에요)', 'That login link expired. Enter your email again for a new one (links are single-use).')}
@@ -87,7 +111,7 @@ export default function EmailStep({ redirectPath = '/', title, minimal = false }
         onChange={(e) => setEmail(e.target.value)}
         placeholder={t('이메일 주소', 'Email address')}
         autoComplete="email"
-        className="mt-6 w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-base focus:border-blue-600 focus:outline-none"
+        className="mt-1 w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-base focus:border-blue-600 focus:outline-none"
       />
       {error && <p className="mt-2 text-sm text-red-600">{t('전송 실패', 'Send failed')}: {error}</p>}
 
