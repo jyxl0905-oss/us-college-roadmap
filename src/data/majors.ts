@@ -21,6 +21,9 @@ export const majorCategories: MajorCategory[] = [
   { value: 'actuarial', label: '보험계리 (Actuarial Science)', track: 'stem' },
   { value: 'natural_sci', label: '자연과학 (Natural Sciences)', track: 'stem' },
   { value: 'biology', label: '생명과학 (Biology)', track: 'stem' },
+  { value: 'genetics', label: '유전학 (Genetics)', track: 'stem' },
+  { value: 'molecular_bio', label: '분자생물학 (Molecular Biology)', track: 'stem' },
+  { value: 'microbiology', label: '미생물학 (Microbiology)', track: 'stem' },
   { value: 'neuroscience', label: '신경과학 (Neuroscience)', track: 'stem' },
   { value: 'chemistry', label: '화학 (Chemistry)', track: 'stem' },
   { value: 'physics', label: '물리학 (Physics)', track: 'stem' },
@@ -94,5 +97,29 @@ export const majorAlias: Record<string, string> = {
   kinesiology: 'premed',
   sport_management: 'business',
   sport_psychology: 'psychology',
+  genetics: 'biology',
+  molecular_bio: 'biology',
+  microbiology: 'biology',
 }
-export const majorParent = (value: string | null): string | null => (value ? (majorAlias[value] ?? value) : value)
+// 별칭 체인 재귀 해석 (예: genetics → biology → natural_sci)
+export const majorParent = (value: string | null): string | null => {
+  if (!value) return value
+  let v = value
+  for (let i = 0; i < 5 && majorAlias[v]; i++) v = majorAlias[v]
+  return v
+}
+
+// 목록 화면용 소그룹 — 트랙 안에서 비슷한 전공끼리 묶음 (모든 전공이 정확히 한 그룹에 속해야 함)
+export interface MajorCluster { track: MajorTrack; ko: string; en: string; values: string[] }
+export const majorClusters: MajorCluster[] = [
+  { track: 'stem', ko: '공학·건축', en: 'Engineering & Architecture', values: ['engineering', 'industrial_eng', 'biomedical_eng', 'chemical_eng', 'aerospace_eng', 'architecture'] },
+  { track: 'stem', ko: '컴퓨터·데이터', en: 'Computing & Data', values: ['cs', 'data_science', 'cognitive_science'] },
+  { track: 'stem', ko: '수학', en: 'Math', values: ['math_data', 'applied_math', 'actuarial'] },
+  { track: 'stem', ko: '자연과학', en: 'Natural Sciences', values: ['natural_sci', 'biology', 'genetics', 'molecular_bio', 'microbiology', 'neuroscience', 'chemistry', 'physics', 'environmental'] },
+  { track: 'stem', ko: '보건·의료', en: 'Health & Medicine', values: ['premed', 'nursing', 'public_health', 'kinesiology'] },
+  { track: 'liberal', ko: '비즈니스·경제', en: 'Business & Economics', values: ['business', 'finance', 'economics', 'accounting', 'sport_management'] },
+  { track: 'liberal', ko: '사회·법·교육', en: 'Society, Law & Education', values: ['social_sci', 'prelaw', 'education'] },
+  { track: 'liberal', ko: '심리', en: 'Psychology', values: ['psychology', 'sport_psychology'] },
+  { track: 'liberal', ko: '인문·언어', en: 'Humanities & Language', values: ['humanities', 'linguistics'] },
+  { track: 'liberal', ko: '예술·미디어', en: 'Arts & Media', values: ['arts', 'media', 'film', 'music'] },
+]

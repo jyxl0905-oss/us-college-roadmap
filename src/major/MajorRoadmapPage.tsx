@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import roadmaps from '../data/major-roadmaps.json'
 import roadmapsEn from '../data/major-roadmaps.en.json'
-import { majorLabel, majorCategories, majorDisplay } from '../data/majors'
+import { majorLabel, majorCategories, majorDisplay, majorAlias } from '../data/majors'
 import { profileGrade, type ProfileRow } from '../lib/profile'
 import { navigate } from '../lib/router'
 import { currentSeasonLabel } from '../lib/academics'
@@ -44,7 +44,11 @@ interface MajorRoadmapPageProps {
 
 // 전공 로드맵 — v1(가이드)·v2(4년 로드맵) 원문을 배치만 함. 글 최소: 내 학년만 펼침, 가이드는 접힘
 export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoadmapPageProps) {
-  const data = DATA[majorKey]
+  // 세부 전공(유전학 등)은 자체 로드맵이 없으면 상위 전공 로드맵을 사용
+  let roadmapKey = majorKey
+  for (let i = 0; i < 5 && !DATA[roadmapKey] && majorAlias[roadmapKey]; i++) roadmapKey = majorAlias[roadmapKey]
+  const data = DATA[roadmapKey]
+  const roadmapBorrowed = roadmapKey !== majorKey
   const myGrade = profile ? profileGrade(profile) : 9
   const [openGrade, setOpenGrade] = useState<number>(myGrade)
   const [guideOpen, setGuideOpen] = useState(false)
@@ -111,8 +115,39 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
           </p>
         )}
 
+        {roadmapBorrowed && full && (
+          <p className="mt-2 text-xs text-gray-400">
+            {t(`고등학교 준비는 ${majorLabel(roadmapKey)}와 같아요 — 아래 로드맵·AP는 ${majorLabel(roadmapKey)} 기준이에요.`, `High-school prep matches ${majorLabel(roadmapKey)} — the roadmap and APs below follow it.`)}
+          </p>
+        )}
+
         {/* 데스크톱: 카드 2열 배치 (스크롤 절감) — 모바일은 기존 세로 흐름 */}
         <div className="lg:columns-2 lg:gap-4 [&>*]:break-inside-avoid">
+        {majorKey === 'engineering' && (
+          <details open={!full} className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+            <summary className="cursor-pointer select-none font-semibold text-gray-900">{t('🔩 공학 세부 분야 한눈에', '🔩 Engineering fields at a glance')}</summary>
+            <div className="mt-2 flex flex-col gap-1.5 text-sm">
+              {[
+                { ko: '기계공학', en: 'Mechanical', d: t('움직이는 모든 것 — 자동차, 로봇, 기계 장치. 가장 범용적인 공학', 'Everything that moves — cars, robots, machines. The most versatile field') },
+                { ko: '전기·전자공학', en: 'Electrical', d: t('회로, 반도체, 전력, 통신 — 하드웨어의 핵심', 'Circuits, semiconductors, power, communications — the core of hardware') },
+                { ko: '토목·환경공학', en: 'Civil', d: t('다리, 건물, 도시 인프라 — 규모가 가장 큰 공학', 'Bridges, buildings, urban infrastructure — engineering at the largest scale') },
+                { ko: '컴퓨터공학', en: 'Computer Eng.', d: t('하드웨어+소프트웨어의 경계 — CS와 전자공학 사이', 'The hardware-software boundary — between CS and EE') },
+                { ko: '재료공학', en: 'Materials', d: t('더 가볍고 강한 소재 — 배터리, 반도체 소재', 'Lighter, stronger materials — batteries, semiconductor materials') },
+              ].map((f) => (
+                <p key={f.en} className="rounded-lg bg-gray-50 px-3 py-2"><span className="font-semibold text-gray-900">{t(f.ko, f.en)}</span> <span className="text-xs text-gray-400">{t(f.en, '')}</span><span className="block text-xs text-gray-600">{f.d}</span></p>
+              ))}
+            </div>
+            <p className="mt-2 rounded-lg bg-blue-50 px-3 py-2 text-xs text-blue-900">
+              💡 {t('고등학교 준비(Calc BC·Physics C·만들기 프로젝트)는 어느 분야든 같아요. 세부 분야는 대학 1~2학년에 정하는 경우가 많고, "Engineering Undecided"로 지원할 수 있는 학교도 많아요.', 'High-school prep (Calc BC, Physics C, build projects) is the same for every field. Many students choose a field in college, and many schools accept "Engineering Undecided" applicants.')}
+            </p>
+            <p className="mt-2 text-xs text-gray-500">
+              {t('별도 페이지가 있는 분야: ', 'Fields with their own page: ')}
+              {['biomedical_eng', 'chemical_eng', 'aerospace_eng', 'industrial_eng'].map((k, i) => (
+                <span key={k}>{i > 0 && ' · '}<button onClick={() => navigate(`/major/${k}${full ? '' : '?explore=1'}`)} className="text-blue-600 underline">{majorLabel(k)}</button></span>
+              ))}
+            </p>
+          </details>
+        )}
         {/* 4년 로드맵 — 학년 아코디언, 내 학년 펼침 */}
         {full && <div className="mt-4 flex flex-col gap-2">
           {[9, 10, 11, 12].map((g) => {
@@ -236,13 +271,13 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
         )}
 
         {/* 전공별 대학 순위 — US News 학부 프로그램 랭킹 (공표된 전공만) */}
-        {RANKINGS[majorKey] && (
-          <details open={!full} className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+        {[majorKey, ...(majorKey === 'engineering' ? ['engineering_mechanical', 'engineering_electrical'] : [])].filter((rk) => RANKINGS[rk]).map((rk) => (
+          <details key={rk} open={!full} className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
             <summary className="cursor-pointer select-none font-semibold text-gray-900">
-              {t('🏆 전공별 대학 순위', '🏆 Program rankings')} <span className="ml-1 text-xs font-normal text-gray-400">US News {RANKINGS[majorKey].edition}</span>
+              {t('🏆 전공별 대학 순위', '🏆 Program rankings')}{rk !== majorKey && <span className="ml-1">— {rk === 'engineering_mechanical' ? t('기계', 'Mechanical') : t('전기·전자', 'Electrical')}</span>} <span className="ml-1 text-xs font-normal text-gray-400">US News {RANKINGS[rk].edition}</span>
             </summary>
             <ol className="mt-2 flex flex-col gap-1 text-sm">
-              {RANKINGS[majorKey].items.map((r, i) => (
+              {RANKINGS[rk].items.map((r, i) => (
                 <li key={i} className="flex items-center gap-2">
                   <span className="w-7 shrink-0 text-right font-semibold tabular-nums text-gray-400">#{r.rank}</span>
                   {r.school_id ? (
@@ -256,11 +291,11 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
               ))}
             </ol>
             <p className="mt-2 text-[11px] text-gray-400">
-              {t(`출처: U.S. News 학부 프로그램 랭킹 (${RANKINGS[majorKey].edition}) — 공개된 상위권만 표시돼요. 랭킹은 참고용이고, 파란 학교는 카드로 연결돼요.`, `Source: U.S. News undergraduate program rankings (${RANKINGS[majorKey].edition}) — only the publicly listed top schools are shown. Rankings are a reference; blue schools link to their cards.`)}
-              {' '}<a href={RANKINGS[majorKey].url} target="_blank" rel="noreferrer" className="text-blue-600 underline">{t('원본 ↗', 'Original ↗')}</a>
+              {t(`출처: U.S. News 학부 프로그램 랭킹 (${RANKINGS[rk].edition}) — 공개된 상위권만 표시돼요. 랭킹은 참고용이고, 파란 학교는 카드로 연결돼요.`, `Source: U.S. News undergraduate program rankings (${RANKINGS[rk].edition}) — only the publicly listed top schools are shown. Rankings are a reference; blue schools link to their cards.`)}
+              {' '}<a href={RANKINGS[rk].url} target="_blank" rel="noreferrer" className="text-blue-600 underline">{t('원본 ↗', 'Original ↗')}</a>
             </p>
           </details>
-        )}
+        ))}
 
         {/* 이 전공을 전공 단위로 뽑는 학교 (direct-admit 조사 데이터) */}
         {(() => {

@@ -236,3 +236,43 @@
 | 8 | Cornell University |
 | 8 | Johns Hopkins University |
 | 8 | University of Illinois Urbana-Champaign |
+
+## Mechanical Engineering — Best Undergraduate Mechanical Engineering Programs (Doctorate)
+
+- URL: https://www.usnews.com/best-colleges/rankings/engineering-doctorate-mechanical
+- 연도: 2026 (2025-09-23 발표, 이후 정정 반영)
+
+| 순위 | 학교 |
+|---|---|
+| 1 | Massachusetts Institute of Technology |
+| 2 | Stanford University |
+| 2 | University of California, Berkeley |
+| 4 | Georgia Institute of Technology |
+| 4 | University of Illinois Urbana-Champaign |
+| 6 | University of Michigan--Ann Arbor |
+| 7 | California Institute of Technology |
+| 8 | Purdue University--Main Campus |
+| 9 | Carnegie Mellon University |
+| 10 | Cornell University |
+| 11 | The University of Texas--Austin |
+| 12 | Princeton University |
+
+## Electrical / Electronic / Communications Engineering — Best Undergraduate Electrical / Electronic Engineering Programs (Doctorate)
+
+- URL: https://www.usnews.com/best-colleges/rankings/engineering-doctorate-electrical-electronic-communications
+- 연도: 2026 (2025-09-23 발표, 이후 정정 반영)
+
+| 순위 | 학교 |
+|---|---|
+| 1 | University of California, Berkeley |
+| 2 | Massachusetts Institute of Technology |
+| 3 | Georgia Institute of Technology |
+| 4 | Stanford University |
+| 5 | University of Illinois Urbana-Champaign |
+| 6 | California Institute of Technology |
+| 7 | Carnegie Mellon University |
+| 8 | University of Michigan--Ann Arbor |
+| 9 | The University of Texas--Austin |
+| 10 | Purdue University--Main Campus |
+| 11 | Cornell University |
+| 12 | University of California, Los Angeles |
