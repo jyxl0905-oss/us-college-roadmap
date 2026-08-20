@@ -409,6 +409,57 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         </div>
       )}
 
+      {/* 4. 6축 밸런스 + 약한 축 진단 */}
+      <div className="print-flat mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
+        <div className="flex items-center justify-between">
+          <p className="font-semibold text-gray-900">{t('6축 밸런스', '6-axis balance')}</p>
+          {recordBased && (
+            <span
+              className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-medium text-green-700"
+              title={t('자가진단 대신 내 원서(활동·수상) 기록으로 계산됨', 'Computed from your application records instead of self-assessment')}
+            >
+              {t('📋 기록 기반', '📋 From records')}
+            </span>
+          )}
+        </div>
+        <div className="mt-2">
+          <RadarChart scores={scores} planned={planned ?? undefined} />
+        </div>
+        {planned ? (
+          <p className="mt-1 text-xs text-gray-500">
+            <span className="text-blue-600">- - -</span> {t(`계획 ${activePlans.length}개 반영 시`, `with ${activePlans.length} plan${activePlans.length > 1 ? 's' : ''} done`)} ·{' '}
+            {(() => {
+              const w = weakestAxis(planned)
+              return `${axisKo[w]} ${scores[w]}→${planned[w]}${w === weakest ? t(' (여전히 가장 약함)', ' (still weakest)') : ''}`
+            })()}{' '}
+            <button onClick={() => navigate('/app/plans')} className="text-blue-600 underline">{t('계획 수정', 'Edit plans')}</button>
+          </p>
+        ) : (
+          <p className="mt-1 text-xs text-gray-400">
+            {t('', 'Add ')}<button onClick={() => navigate('/app/plans')} className="text-blue-600 underline">{t('계획', 'plans')}</button>{t('을 적으면 실행 시 모양이 점선으로 보여요', ' to see the shape you’d reach as a dashed line')}
+          </p>
+        )}
+        {recordBased && (
+          <p className="mt-1 text-[11px] text-gray-400">
+            {t('대표 활동·리더십·교외 인정 축은 자가진단 대신 내 원서 기록으로 계산됐어요.', 'Spike, leadership and validation are computed from your records instead of self-assessment.')}
+          </p>
+        )}
+        <p className="mt-2 rounded-lg bg-blue-50 px-3 py-2.5 text-sm text-blue-900">
+          <strong>{axisKo[weakest]}</strong>{' '}
+          {weakest === 'story' ? t('축은 아직 채워지는 중이에요.', 'axis is still filling in.') : t('축이 가장 약해요.', 'axis is your weakest.')} {prescription}
+        </p>
+        <details className="mt-2 text-xs text-gray-400">
+          <summary className="cursor-pointer select-none">{t("ⓘ '스토리 준비' 축이란?", 'ⓘ What is the “Story” axis?')}</summary>
+          <p className="mt-1 leading-relaxed text-gray-500">{storyAxisTooltip()}</p>
+        </details>
+        {appealText && (
+          <p className="mt-2 rounded-lg bg-green-50 px-3 py-2.5 text-sm text-green-900">
+            <strong>{t('어필 전략', 'Appeal strategy')}</strong> — {appealText}
+          </p>
+        )}
+      </div>
+
+
       {/* 2. AO 박스 */}
       <div className="mt-5">
         <AoBox grade={grade} />
@@ -469,56 +520,6 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         </div>
       )}
 
-
-      {/* 4. 6축 밸런스 + 약한 축 진단 */}
-      <div className="print-flat mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
-        <div className="flex items-center justify-between">
-          <p className="font-semibold text-gray-900">{t('6축 밸런스', '6-axis balance')}</p>
-          {recordBased && (
-            <span
-              className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-medium text-green-700"
-              title={t('자가진단 대신 내 원서(활동·수상) 기록으로 계산됨', 'Computed from your application records instead of self-assessment')}
-            >
-              {t('📋 기록 기반', '📋 From records')}
-            </span>
-          )}
-        </div>
-        <div className="mt-2">
-          <RadarChart scores={scores} planned={planned ?? undefined} />
-        </div>
-        {planned ? (
-          <p className="mt-1 text-xs text-gray-500">
-            <span className="text-blue-600">- - -</span> {t(`계획 ${activePlans.length}개 반영 시`, `with ${activePlans.length} plan${activePlans.length > 1 ? 's' : ''} done`)} ·{' '}
-            {(() => {
-              const w = weakestAxis(planned)
-              return `${axisKo[w]} ${scores[w]}→${planned[w]}${w === weakest ? t(' (여전히 가장 약함)', ' (still weakest)') : ''}`
-            })()}{' '}
-            <button onClick={() => navigate('/app/plans')} className="text-blue-600 underline">{t('계획 수정', 'Edit plans')}</button>
-          </p>
-        ) : (
-          <p className="mt-1 text-xs text-gray-400">
-            {t('', 'Add ')}<button onClick={() => navigate('/app/plans')} className="text-blue-600 underline">{t('계획', 'plans')}</button>{t('을 적으면 실행 시 모양이 점선으로 보여요', ' to see the shape you’d reach as a dashed line')}
-          </p>
-        )}
-        {recordBased && (
-          <p className="mt-1 text-[11px] text-gray-400">
-            {t('대표 활동·리더십·교외 인정 축은 자가진단 대신 내 원서 기록으로 계산됐어요.', 'Spike, leadership and validation are computed from your records instead of self-assessment.')}
-          </p>
-        )}
-        <p className="mt-2 rounded-lg bg-blue-50 px-3 py-2.5 text-sm text-blue-900">
-          <strong>{axisKo[weakest]}</strong>{' '}
-          {weakest === 'story' ? t('축은 아직 채워지는 중이에요.', 'axis is still filling in.') : t('축이 가장 약해요.', 'axis is your weakest.')} {prescription}
-        </p>
-        <details className="mt-2 text-xs text-gray-400">
-          <summary className="cursor-pointer select-none">{t("ⓘ '스토리 준비' 축이란?", 'ⓘ What is the “Story” axis?')}</summary>
-          <p className="mt-1 leading-relaxed text-gray-500">{storyAxisTooltip()}</p>
-        </details>
-        {appealText && (
-          <p className="mt-2 rounded-lg bg-green-50 px-3 py-2.5 text-sm text-green-900">
-            <strong>{t('어필 전략', 'Appeal strategy')}</strong> — {appealText}
-          </p>
-        )}
-      </div>
 
       {/* 시즌별 성장 그래프 — 현재 시즌은 실시간 점수로 대체 */}
       <div className="print-flat mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
