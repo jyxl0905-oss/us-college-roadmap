@@ -41,6 +41,9 @@ interface Stats {
 interface Extra {
   lang: Dist
   graduated: number
+  ref_source?: Dist
+  invited_total?: number
+  top_inviters?: { code: string; n: number }[]
   survey: {
     n: number; avg_helpful: number | null; helpful_dist: Dist; admitted: Dist; features: Dist
     enrolled_top: { name: string; n: number }[]
@@ -515,6 +518,14 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
             </div>
           )}
         </Card>
+        {extra && Object.keys(extra.ref_source ?? {}).length > 0 && (
+          <Card title="📣 유입 경로" hint="가입 시 링크의 ?ref= 태그 기준 — direct=태그 없이 직접 방문, f-…=친구 초대 코드">
+            <BarList data={extra.ref_source ?? {}} labels={{ direct: '직접 방문 / 태그 없음' }} />
+            {(extra.invited_total ?? 0) > 0 && (
+              <p className="mt-2 text-xs text-gray-500">친구 초대로 가입: {extra.invited_total}명{(extra.top_inviters ?? []).length > 0 && <> · 최다 초대 코드 {(extra.top_inviters ?? []).slice(0, 3).map((i) => `${i.code} (${i.n})`).join(', ')}</>}</p>
+            )}
+          </Card>
+        )}
         {extra && Object.keys(extra.lang ?? {}).length > 0 && (
           <Card title="언어 설정"><BarList data={extra.lang} labels={{ ko: '한국어', en: 'English', '?': '미설정' }} /></Card>
         )}

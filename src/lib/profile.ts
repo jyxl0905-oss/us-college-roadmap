@@ -36,6 +36,7 @@ export interface ProfileRow {
   school_in_us?: boolean // 미국 현지 학교 재학
   school_name?: string | null // 다니는 학교 (통계용)
   lang?: 'ko' | 'en' | null // 알림 메일 언어 (UI 토글과 동기화)
+  ref_source?: string | null // 유입 경로 (?ref= 태그, 가입 시 1회)
   graduated?: boolean // 졸업 처리됨 (롤오버 팝업 없음, 리포트는 보관 모드)
 }
 
@@ -71,7 +72,18 @@ export function answersToRow(
     info_sources: a.infoSources.length > 0 ? a.infoSources : null,
     research_consent: researchConsent,
     lang: getLang(),
+    ref_source: readRefSource(a),
   }
+}
+
+// 유입 태그: 이 브라우저의 localStorage 우선, 없으면 (다른 브라우저에서 링크를 연 경우) 서버 보관 답변에 실려 온 값
+function readRefSource(a: OnboardingAnswers): string | null {
+  try {
+    const local = localStorage.getItem('ref_source')
+    if (local) return local
+  } catch { /* ignore */ }
+  const carried = (a as OnboardingAnswers & { refSource?: string }).refSource
+  return carried ?? null
 }
 
 export async function saveProfile(userId: string, row: ProfileRow): Promise<void> {

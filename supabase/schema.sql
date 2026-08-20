@@ -370,3 +370,6 @@ create table if not exists pending_onboarding (
 );
 alter table pending_onboarding enable row level security;
 -- 함수 정의는 Supabase 마이그레이션 pending_onboarding_stash 참고
+
+-- 유입 경로 (?ref= 링크 태그: 예 insta, f-<초대자코드>) — 가입 시 1회 기록
+alter table profiles add column if not exists ref_source text;

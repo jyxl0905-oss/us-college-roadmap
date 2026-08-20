@@ -19,6 +19,7 @@ import { navigate } from '../lib/router'
 import OutcomeSurvey from './OutcomeSurvey'
 import MustDoCard from './MustDoCard'
 import QuickAppPanel from './QuickAppPanel'
+import ShareInvite from './ShareInvite'
 import { isAdminEmail } from '../lib/admin'
 import { t, localizeRows } from '../i18n'
 import { downloadIcs, nextCheckinDate } from '../lib/ics'
@@ -617,6 +618,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         >
           {t('📚 입시 기본기 · 용어집 보기', '📚 Basics · glossary')}
         </button>
+        <ShareInvite userId={userId} className="w-full rounded-xl border-2 border-green-200 bg-green-50 px-4 py-3 text-left font-medium text-green-800 active:bg-green-100" />
       </div>
 
       {/* 리마인더: 캘린더 파일 + 시즌 시작 이메일 알림 스위치 */}
@@ -692,6 +694,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           <button onClick={() => navigate(`/major/${profile.major_primary ?? 'undecided'}`)} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">🗺️ {t('전공 가이드 맵', 'Major guide map')}</button>
           <button onClick={onOpenGuide} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">📚 {t('입시 기본기 · 용어집', 'Basics · glossary')}</button>
         </div>
+        <ShareInvite userId={userId} className="mt-2 w-full rounded-lg bg-green-50 px-2 py-1.5 text-left text-sm font-medium text-green-800 hover:bg-green-100" />
         <p className="mt-3 border-t border-gray-100 pt-2 text-xs text-gray-400">{t('다음 체크인', 'Next check-in')}: {nextCheckinKo()}</p>
       </div>
     </aside>

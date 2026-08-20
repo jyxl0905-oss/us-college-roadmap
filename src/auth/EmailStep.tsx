@@ -44,7 +44,7 @@ export default function EmailStep({ redirectPath = '/', title, minimal = false }
     // 온보딩 답변을 이메일 키로 서버에 잠깐 보관 — 링크를 다른 브라우저/앱에서 열어도 질문을 다시 안 해도 되게
     try {
       const raw = localStorage.getItem('pending_answers')
-      if (raw) await supabase.rpc('stash_onboarding', { p_email: email.trim(), p_answers: JSON.parse(raw), p_research: localStorage.getItem(RESEARCH_CONSENT_KEY) === '1' })
+      if (raw) await supabase.rpc('stash_onboarding', { p_email: email.trim(), p_answers: { ...JSON.parse(raw), refSource: localStorage.getItem('ref_source') ?? undefined }, p_research: localStorage.getItem(RESEARCH_CONSENT_KEY) === '1' })
     } catch { /* 보관 실패해도 로그인은 진행 (같은 브라우저면 localStorage로 이어짐) */ }
     const { error } = await supabase.auth.signInWithOtp({
       email: email.trim(),
