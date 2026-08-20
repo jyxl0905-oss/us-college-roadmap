@@ -598,26 +598,8 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         </div>
       )}
 
-      {/* 내 원서·지원 보드·마감 캘린더·입시 기본기 링크 */}
+      {/* 하단: 친구 공유만 — 내 원서·마감·기본기는 상단 바와 바로 가기로 이동 */}
       <div className="no-print mt-8 flex flex-col gap-2">
-        <button
-          onClick={() => navigate('/app')}
-          className="w-full rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-3.5 font-semibold text-blue-700 active:bg-blue-100"
-        >
-          {t('📋 내 원서 — 가상 Common App', '📋 My application — virtual Common App')}
-        </button>
-        <button
-          onClick={() => navigate('/deadlines')}
-          className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
-        >
-          {t('🗓️ 마감 캘린더 보기', '🗓️ Deadline calendar')}
-        </button>
-        <button
-          onClick={onOpenGuide}
-          className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
-        >
-          {t('📚 입시 기본기 · 용어집 보기', '📚 Basics · glossary')}
-        </button>
         <ShareInvite userId={userId} className="w-full rounded-xl border-2 border-green-200 bg-green-50 px-4 py-3 text-left font-medium text-green-800 active:bg-green-100" />
       </div>
 
@@ -667,7 +649,10 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
 
       {/* 8. 푸터 */}
       <div className="mt-8 border-t border-gray-200 pt-4 text-center text-xs text-gray-400">
-        <p>{t('미국 대입 로드맵', 'US College Roadmap')} · us-college-roadmap.vercel.app</p>
+        <p>
+          {t('미국 대입 로드맵', 'US College Roadmap')} · us-college-roadmap.vercel.app ·{' '}
+          <button onClick={onOpenGuide} className="no-print underline">{t('📚 기본기·용어집', '📚 Basics · glossary')}</button>
+        </p>
         <p className="mt-1">
           {t('다음 체크인', 'Next check-in')}: <strong className="text-gray-500">{nextCheckinKo()}</strong>
         </p>
