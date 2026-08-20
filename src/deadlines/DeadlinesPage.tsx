@@ -140,7 +140,7 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
       <div className="mt-6">
         <h2 className="font-semibold text-gray-900">{title}</h2>
         <p className="text-xs text-gray-400">{subtitle}</p>
-        <div className="mt-3 flex flex-col gap-2">
+        <div className="mt-3 flex flex-col gap-2 lg:grid lg:grid-cols-2 lg:gap-3">
           {entries.map((e, i) => {
             const def = definitionFor(e.plan)
             return (
@@ -189,7 +189,7 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
 
   return (
     <div className="min-h-dvh bg-gray-50">
-      <div className="mx-auto max-w-md px-5 py-6 pb-16">
+      <div className="mx-auto max-w-md px-5 py-6 pb-16 lg:max-w-4xl">
         <div className="flex items-center gap-3">
           <button onClick={() => navigate('/')} aria-label={t('리포트로', 'Back to report')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
             ←
