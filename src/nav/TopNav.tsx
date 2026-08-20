@@ -28,8 +28,9 @@ export default function TopNav() {
   const links = loggedIn
     ? [
         { to: '/', label: t('리포트', 'Report'), active: path === '/' },
+        { to: '/targets', label: t('목표 학교', 'Targets'), active: path.startsWith('/targets') },
         { to: '/app', label: t('내 원서', 'My App'), active: path.startsWith('/app') },
-        { to: '/schools', label: t('학교', 'Colleges'), active: path.startsWith('/schools') || path.startsWith('/compare') },
+        { to: '/schools', label: t('둘러보기', 'Browse'), active: path.startsWith('/schools') || path.startsWith('/compare') },
         { to: '/deadlines', label: t('마감', 'Deadlines'), active: path.startsWith('/deadlines') },
       ]
     : [{ to: '/schools', label: t('대학 둘러보기', 'Browse colleges'), active: path.startsWith('/schools') }]

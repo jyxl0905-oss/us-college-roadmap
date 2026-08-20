@@ -24,6 +24,7 @@ const DeadlinesPage = lazy(() => import('./deadlines/DeadlinesPage'))
 const AppRouter = lazy(() => import('./app/AppRouter'))
 const MajorRoadmapPage = lazy(() => import('./major/MajorRoadmapPage'))
 const AdminPage = lazy(() => import('./admin/AdminPage'))
+const TargetsPage = lazy(() => import('./report/TargetsPage'))
 // 개발용: /admin?demo=1 → 샘플 데이터로 레이아웃 확인 (프로덕션 빌드에서 제거됨)
 const AdminDemo = lazy(async () => {
   const [{ default: Page }, { default: demo }] = await Promise.all([import('./admin/AdminPage'), import('./admin/demo-stats.json')])
@@ -304,6 +305,10 @@ function AppRoutes() {
     return <Redirect to="/app/colleges" />
   }
   // F3: 마감 캘린더 (로그인 전용)
+  if (path === '/targets' || path === '/targets/') {
+    if (session && profile) return <TargetsPage profile={profile} />
+    return <Redirect to="/" />
+  }
   if (path === '/deadlines' || path === '/deadlines/') {
     if (profileErrorScreen) return profileErrorScreen
     if (session && profile) return <DeadlinesPage userId={session.user.id} profile={profile} />
