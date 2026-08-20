@@ -1,6 +1,5 @@
 import { navigate } from '../lib/router'
 import { t } from '../i18n'
-import LangToggle from '../i18n/LangToggle'
 
 export type AppTab = 'home' | 'plans' | 'activities' | 'testing' | 'education' | 'colleges' | 'writing'
 
@@ -38,7 +37,6 @@ export default function AppShell({ tab, title, children, onBack, headerExtra }: 
           <span className="shrink-0 rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800">
             {t('가상 원서 · 실제 제출 아님', 'Practice app · not a real submission')}
           </span>
-          <LangToggle className="shrink-0" />
         </div>
         {children}
       </div>

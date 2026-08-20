@@ -814,5 +814,66 @@
     ]
    }
   }
+ },
+ "psychology": {
+  "title": "Psychology",
+  "ap": [
+   "AP Psychology — directly tied to the major. Relatively easy to self-study, so a top candidate for a self-study exam even if not offered",
+   "AP Statistics — signals you know psychology runs on statistics",
+   "AP Biology — worth more if you're heading toward neuroscience or clinical",
+   "AP Calculus AB (BC if possible) — reinforces a BS/data-leaning direction"
+  ],
+  "strong": "Statistics and research experience are the core — 'interested in people' is only a starting point; evidence that you tested a question with data is what separates tiers",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "A survey or behavioral-observation study you designed yourself — however small, carried through collect → analyze → conclude. Or a long-running peer mental-health campaign or education content"
+   },
+   {
+    "label": "External validation type",
+    "text": "Student journal submissions (e.g., JEI) / science fair behavioral & social science category / psychology essay and research competitions"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Mistaking reading lots of psychology books for an activity, or imitating 'counseling' without qualifications (an ethics problem) — aim for research, education, and campaigns, not counseling"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Build your biology and math base + English reading volume"
+    ],
+    "activity": [
+     "Pick a question you care about (e.g., sleep and focus, social media and mood)",
+     "Explore with intro content and books — keep short notes on what you read"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in AP Psychology and Statistics for 11th grade"
+    ],
+    "activity": [
+     "First mini survey study — carry it through collect → analyze → short report",
+     "Start a mental-health campaign or peer education activity"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Psych + Statistics (+ Bio if heading toward neuroscience)"
+    ],
+    "activity": [
+     "Scale up the research — submit to a student journal or enter a science fair",
+     "Grow your role in the campaign/education work (participant → organizer)"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Wrap up research and campaign results — put cumulative numbers (sample size, issues published) on the application"
+    ]
+   }
+  }
  }
 }

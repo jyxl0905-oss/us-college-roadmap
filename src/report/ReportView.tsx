@@ -18,9 +18,9 @@ import { logEvent } from '../lib/analytics'
 import { navigate } from '../lib/router'
 import OutcomeSurvey from './OutcomeSurvey'
 import MustDoCard from './MustDoCard'
+import QuickAppPanel from './QuickAppPanel'
 import { isAdminEmail } from '../lib/admin'
 import { t, localizeRows } from '../i18n'
-import LangToggle from '../i18n/LangToggle'
 import { downloadIcs, nextCheckinDate } from '../lib/ics'
 import { saveProfile } from '../lib/profile'
 import { entriesForSchool, sortEntries } from '../deadlines/DeadlinesPage'
@@ -318,7 +318,8 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   if (error) return <p className="mt-20 text-center text-sm text-red-600">{t('불러오기 실패', 'Load failed')}: {error}</p>
 
   return (
-    <div className="pb-10">
+    <div className="pb-10 lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start lg:gap-8">
+    <div className="min-w-0">
       {/* 1. 프로필 헤더 */}
       <div className="flex items-start justify-between">
         <div>
@@ -335,12 +336,9 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           </button>
           <p className="mt-0.5 text-xs text-gray-400">{targetText}</p>
         </div>
-        <div className="no-print flex shrink-0 flex-col items-end gap-2">
-          <LangToggle />
-          <button onClick={onLogout} className="text-sm text-gray-400 underline">
-            {t('로그아웃', 'Log out')}
-          </button>
-        </div>
+        <button onClick={onLogout} className="no-print shrink-0 text-sm text-gray-400 underline">
+          {t('로그아웃', 'Log out')}
+        </button>
       </div>
 
       {/* 내보내기 */}
@@ -684,6 +682,21 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           </button>
         )}
       </div>
+    </div>
+
+    {/* 데스크톱 사이드 패널 — 리포트 옆에서 내 원서를 바로 (모바일은 기존 흐름 그대로) */}
+    <aside className="no-print hidden lg:sticky lg:top-16 lg:block">
+      <QuickAppPanel userId={userId} />
+      <div className="mt-3 rounded-2xl border border-gray-100 bg-white p-4 text-sm">
+        <p className="font-semibold text-gray-900">{t('바로 가기', 'Shortcuts')}</p>
+        <div className="mt-2 flex flex-col gap-1.5">
+          <button onClick={() => navigate('/deadlines')} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">🗓️ {t('마감 캘린더', 'Deadline calendar')}</button>
+          <button onClick={() => navigate(`/major/${profile.major_primary ?? 'undecided'}`)} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">🗺️ {t('전공 가이드 맵', 'Major guide map')}</button>
+          <button onClick={onOpenGuide} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">📚 {t('입시 기본기 · 용어집', 'Basics · glossary')}</button>
+        </div>
+        <p className="mt-3 border-t border-gray-100 pt-2 text-xs text-gray-400">{t('다음 체크인', 'Next check-in')}: {nextCheckinKo()}</p>
+      </div>
+    </aside>
     </div>
   )
 }

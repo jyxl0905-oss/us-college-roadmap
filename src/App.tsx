@@ -12,7 +12,7 @@ import SchoolDetailPage from './browse/SchoolDetailPage'
 import ComparePage from './browse/ComparePage'
 import { usePath, navigate } from './lib/router'
 import { getLang, t } from './i18n'
-import LangToggle from './i18n/LangToggle'
+import TopNav from './nav/TopNav'
 
 // 무거운 화면(차트·리포트·보드·온보딩)은 필요할 때만 내려받음 — 둘러보기 첫 로딩을 가볍게
 const OnboardingFlow = lazy(() => import('./onboarding/OnboardingFlow'))
@@ -50,6 +50,15 @@ function loadPending(): OnboardingAnswers | null {
 
 // 만료·사용된 매직 링크로 돌아온 경우 URL 해시에 에러가 담겨 옴 → 홈 대신 이메일 화면(안내 문구 포함)부터
 const cameFromAuthError = window.location.hash.includes('error')
+
+// 리포트 전용: 데스크톱에서 2열(본문+사이드 패널) 허용
+function WideScreen({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="min-h-dvh bg-gray-50">
+      <div className="mx-auto max-w-md px-5 py-8 lg:max-w-5xl">{children}</div>
+    </div>
+  )
+}
 
 function Screen({ children }: { children: React.ReactNode }) {
   return (
@@ -109,6 +118,7 @@ export default function App() {
   }, [])
   return (
     <Suspense fallback={<LoadingScreen />}>
+      <TopNav key={`nav-${langKey}`} />
       <AppRoutes key={langKey} />
     </Suspense>
   )
@@ -405,7 +415,7 @@ function AppRoutes() {
             <GuideView onBack={() => setShowGuide(false)} />
           </Screen>
         ) : (
-          <Screen>
+          <WideScreen>
             <ReportView
               userId={session.user.id}
               profile={profile}
@@ -413,7 +423,7 @@ function AppRoutes() {
               onOpenGuide={() => setShowGuide(true)}
               onProfileChange={setProfile}
             />
-          </Screen>
+          </WideScreen>
         )}
       </RolloverGate>
     )
@@ -489,7 +499,6 @@ function AppRoutes() {
     return (
       <Screen>
         <div className="py-10 text-center">
-          <div className="flex justify-end"><LangToggle /></div>
           <p className="text-5xl">🎓</p>
           <h1 className="mt-5 text-2xl font-bold text-gray-900">{t('미국 대학 입시 로드맵', 'US College Roadmap')}</h1>
           <p className="mt-3 text-sm leading-relaxed text-gray-500">

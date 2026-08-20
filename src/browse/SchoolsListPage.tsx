@@ -7,7 +7,6 @@ import SchoolLogo from './SchoolLogo'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
 import type { ProfileRow } from '../lib/profile'
 import { t, bilingual } from '../i18n'
-import LangToggle from '../i18n/LangToggle'
 
 const tierTitles: Record<Tier, string> = bilingual(
   { 1: 'Top 20', 2: '21–40위', 3: '41–60위' },
@@ -73,7 +72,6 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
             ←
           </button>
           <h1 className="text-xl font-bold text-gray-900">{t('대학 둘러보기', 'Browse Colleges')}</h1>
-          <LangToggle className="ml-auto" />
         </div>
 
         <input
