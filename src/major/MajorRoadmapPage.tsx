@@ -95,7 +95,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
 
   return (
     <div className="min-h-dvh bg-gray-50">
-      <div className="mx-auto max-w-md px-5 py-6 pb-16">
+      <div className="mx-auto max-w-md px-5 py-6 pb-16 lg:max-w-4xl">
         <div className="flex items-center gap-3">
           <button onClick={() => navigate('/')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
           <div className="min-w-0 flex-1">
@@ -111,6 +111,8 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
           </p>
         )}
 
+        {/* 데스크톱: 카드 2열 배치 (스크롤 절감) — 모바일은 기존 세로 흐름 */}
+        <div className="lg:columns-2 lg:gap-4 [&>*]:break-inside-avoid">
         {/* 4년 로드맵 — 학년 아코디언, 내 학년 펼침 */}
         {full && <div className="mt-4 flex flex-col gap-2">
           {[9, 10, 11, 12].map((g) => {
@@ -295,6 +297,8 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
             )}
           </div>
         )}
+
+        </div>
 
         <div className="mt-6">
           <p className="text-xs font-semibold text-gray-400">{t('다른 전공 보기', 'Other majors')}</p>
