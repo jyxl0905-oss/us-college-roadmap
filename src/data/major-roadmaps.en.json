@@ -2205,5 +2205,185 @@
     ]
    }
   }
+ },
+ "kinesiology": {
+  "title": "Kinesiology / Exercise Science",
+  "ap": [
+   "AP Biology — the base of anatomy & physiology",
+   "AP Chemistry",
+   "AP Psychology — movement behavior & motivation",
+   "AP Statistics — training data"
+  ],
+  "strong": "Biology combined with real training-field experience — records of 'studying the body scientifically' are the spike. PT/trainer paths continue into grad school (DPT)",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Exercise-data projects (team training logs, recovery data analysis), injury-prevention/rehab research, training-assistant roles with a team"
+   },
+   {
+    "label": "External validation type",
+    "text": "Science fair health/exercise-science categories / HOSA / student journals"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Listing 'loves sports' and athletic careers — you need the narrative of someone who studies the body, not just an athlete"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Bio foundations + math track"
+    ],
+    "activity": [
+     "Team sport + start logging training/condition data"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in AP Bio and Psych for 11th"
+    ],
+    "activity": [
+     "First exercise-data analysis project",
+     "CPR/first-aid certification"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Bio + Psych (+ Chem/Stats)"
+    ],
+    "activity": [
+     "Deepen research — fairs/journals",
+     "Training-assistant work; injury-prevention campaign"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize data and research results for the application"
+    ]
+   }
+  }
+ },
+ "sport_management": {
+  "title": "Sport Management",
+  "ap": [
+   "AP Macro/Micro Economics",
+   "AP Statistics — sports is a data industry",
+   "AP English Language",
+   "AP Calculus AB or above"
+  ],
+  "strong": "Experience treating sports as an industry — the spike is records as an operator/analyst, not a fan",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Tournaments/leagues you planned and ran (participant counts, budgets), a running sports-analytics content series, running a team's social/marketing"
+   },
+   {
+    "label": "External validation type",
+    "text": "DECA·FBLA (sports & entertainment marketing events) / data competitions / the operating record itself"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Listing fandom and games watched — you need something you built and ran"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Math and English base"
+    ],
+    "activity": [
+     "Help run school sports events",
+     "Sports data/article notes"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in Econ and Stats for 11th"
+    ],
+    "activity": [
+     "Plan and run a small tournament — record the numbers",
+     "DECA sports-marketing events"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Econ + Statistics (+ English Lang)"
+    ],
+    "activity": [
+     "Scale the league/events; run an analytics series",
+     "Push for finals"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize operating results (participants, budget, growth) for the application"
+    ]
+   }
+  }
+ },
+ "sport_psychology": {
+  "title": "Sport Psychology",
+  "ap": [
+   "AP Psychology — the core axis",
+   "AP Biology — the body/brain base",
+   "AP Statistics — research methods",
+   "AP English Language"
+  ],
+  "strong": "Key fact: undergrads usually major in psychology (or kinesiology); sport psychologists need grad school + licensure — the undergrad credential is combining psychology research with the sports field",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Psychology projects on athletes/teams (survey studies on routines, anxiety, motivation), mental-training content, a mental-support role within a team"
+   },
+   {
+    "label": "External validation type",
+    "text": "Science fair behavioral categories / student journals / psychology essay competitions"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Imitating 'mental coaching' without qualifications (an ethics problem) — aim for research, education, content. 'Former athlete' alone is not a narrative"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Bio and psych intro reading"
+    ],
+    "activity": [
+     "Team sport + pick a question (routines, nerves...)"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in AP Psych and Stats for 11th"
+    ],
+    "activity": [
+     "First survey study — collect and analyze with a team"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Psych + Statistics (+ Bio)"
+    ],
+    "activity": [
+     "Deepen research — fairs/journals",
+     "Create mental-training education content"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize research/content; finish the narrative tied to a psychology major plan"
+    ]
+   }
+  }
  }
 }

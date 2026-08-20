@@ -944,5 +944,83 @@
   ],
   "outlook_note_ko": "BLS 기준 Musicians and Singers 고용은 2024–34년 1% 성장(평균보다 느림), Music Directors and Composers는 거의 변동 없음(0%) 전망입니다. 두 직업 모두 파트타임 근무가 흔합니다.",
   "grad_note_ko": null
+ },
+ "kinesiology": {
+  "desc_ko": "몸과 움직임의 과학이에요 — 해부학, 생리학, 운동 데이터. 물리치료(대학원 DPT), 트레이너, 스포츠 과학 분야로 이어져요.",
+  "desc_en": "The science of the body and movement — anatomy, physiology, exercise data. Leads to physical therapy (DPT in grad school), training, and sport science.",
+  "occupations": [
+   {
+    "title": "Exercise Physiologists",
+    "pay": "$58,160 per year",
+    "pay_year": 2024,
+    "outlook": "+9%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/healthcare/exercise-physiologists.htm",
+    "note": "Typical entry-level education: Bachelor's degree"
+   },
+   {
+    "title": "Athletic Trainers",
+    "pay": "$60,250 per year",
+    "pay_year": 2024,
+    "outlook": "+11%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/healthcare/athletic-trainers.htm",
+    "note": "Typical entry-level education: Master's degree; nearly all states require a license or certification"
+   },
+   {
+    "title": "Physical Therapists",
+    "pay": "$101,020 per year",
+    "pay_year": 2024,
+    "outlook": "+11%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/healthcare/physical-therapists.htm",
+    "note": "Doctor of Physical Therapy (DPT) degree required; all states require a license"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Exercise Physiologists 고용은 2024–34년 9% 성장, Athletic Trainers와 Physical Therapists는 각각 11% 성장(모두 평균보다 훨씬 빠름) 전망입니다.",
+  "grad_note_ko": "BLS에 따르면 Athletic Trainers는 보통 석사(Master's) 학위로 진입하며, Physical Therapists는 DPT(Doctor of Physical Therapy) 박사급 학위와 주(州) 면허가 필요합니다."
+ },
+ "sport_management": {
+  "desc_ko": "스포츠를 산업으로 배워요 — 구단 운영, 마케팅, 이벤트, 스포츠 데이터. 구단·리그·에이전시·스포츠 브랜드로 이어져요.",
+  "desc_en": "You study sports as an industry — club operations, marketing, events, analytics. Leads to teams, leagues, agencies, and sports brands.",
+  "occupations": [
+   {
+    "title": "Coaches and Scouts",
+    "pay": "$45,920 per year",
+    "pay_year": 2024,
+    "outlook": "+6%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/entertainment-and-sports/coaches-and-scouts.htm",
+    "note": "Typical entry-level education: Bachelor's degree (requirements vary; extensive knowledge of the sport needed)"
+   },
+   {
+    "title": "Meeting, Convention, and Event Planners",
+    "pay": "$59,440 per year",
+    "pay_year": 2024,
+    "outlook": "+5%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/business-and-financial/meeting-convention-and-event-planners.htm",
+    "note": "Typical entry-level education: Bachelor's degree"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Coaches and Scouts 고용은 2024–34년 6% 성장(평균보다 빠름), Meeting, Convention, and Event Planners는 5% 성장(평균보다 빠름) 전망입니다.",
+  "grad_note_ko": null
+ },
+ "sport_psychology": {
+  "desc_ko": "선수의 마음을 다루는 심리학이에요 — 집중, 불안, 동기. 학부는 보통 심리학으로 가고, 스포츠 심리학자는 대학원+자격이 필요해요.",
+  "desc_en": "Psychology applied to athletes — focus, anxiety, motivation. Undergrads usually major in psychology; becoming a sport psychologist requires grad school and licensure.",
+  "occupations": [
+   {
+    "title": "Psychologists",
+    "pay": "$94,310 per year",
+    "pay_year": 2024,
+    "outlook": "+6%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/psychologists.htm",
+    "note": "Typically need an advanced degree (master's or doctoral) in psychology; licensing requirements vary by state and position"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Psychologists 전체 고용은 2024–34년 6% 성장(평균보다 빠름) 전망입니다.",
+  "grad_note_ko": "BLS에 따르면 Psychologists는 보통 석사 또는 박사 수준의 대학원 학위가 필요하며, 주(州)·직위별로 면허(자격) 요건이 있습니다. 스포츠 심리학자로 활동하려면 대학원 과정과 자격 취득이 사실상 필수입니다."
  }
 }
