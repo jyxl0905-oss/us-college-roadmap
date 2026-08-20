@@ -190,11 +190,66 @@ function normalize(raw: Stats): Stats {
   }
 }
 
+// 서버 상태 — DB·Auth 응답 속도 실측 + 최근 활동 시각. 느리면 Supabase 일시정지/장애 신호
+function HealthCard() {
+  const [db, setDb] = useState<number | 'fail' | null>(null)
+  const [auth, setAuth] = useState<number | 'fail' | null>(null)
+  const [meta, setMeta] = useState<{ last_reminder_at?: string; last_signup_at?: string; last_event_at?: string } | null>(null)
+  const [checkedAt, setCheckedAt] = useState<Date | null>(null)
+
+  const run = async () => {
+    if (!supabase) return
+    setDb(null); setAuth(null)
+    const t0 = performance.now()
+    try {
+      const { error } = await supabase.from('schools').select('id', { head: true, count: 'exact' })
+      setDb(error ? 'fail' : Math.round(performance.now() - t0))
+    } catch { setDb('fail') }
+    const t1 = performance.now()
+    try {
+      const r = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/auth/v1/settings`, { headers: { apikey: import.meta.env.VITE_SUPABASE_ANON_KEY } })
+      setAuth(r.ok ? Math.round(performance.now() - t1) : 'fail')
+    } catch { setAuth('fail') }
+    supabase.rpc('admin_health').then(({ data }) => { if (data) setMeta(data as typeof meta) }, () => {})
+    setCheckedAt(new Date())
+  }
+  useEffect(() => { run() }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const dot = (v: number | 'fail' | null) =>
+    v === null ? '⏳' : v === 'fail' ? '🔴' : v < 600 ? '🟢' : v < 2000 ? '🟡' : '🔴'
+  const label = (v: number | 'fail' | null) => (v === null ? '측정 중' : v === 'fail' ? '응답 없음' : `${v}ms`)
+  const ago = (iso?: string) => {
+    if (!iso) return '없음'
+    const m = Math.round((Date.now() - new Date(iso).getTime()) / 60000)
+    return m < 60 ? `${m}분 전` : m < 1440 ? `${Math.round(m / 60)}시간 전` : `${Math.round(m / 1440)}일 전`
+  }
+
+  return (
+    <div className="mb-4 rounded-2xl border border-gray-100 bg-white p-4">
+      <div className="flex items-baseline justify-between">
+        <h2 className="font-semibold text-gray-900">🩺 서버 상태</h2>
+        <button onClick={run} className="text-xs text-blue-600 underline">다시 확인</button>
+      </div>
+      <div className="mt-2 grid grid-cols-2 gap-2 text-sm sm:grid-cols-4">
+        <div className="rounded-lg bg-gray-50 px-3 py-2">{dot(db)} DB <span className="tabular-nums text-gray-500">{label(db)}</span></div>
+        <div className="rounded-lg bg-gray-50 px-3 py-2">{dot(auth)} 로그인 서버 <span className="tabular-nums text-gray-500">{label(auth)}</span></div>
+        <div className="rounded-lg bg-gray-50 px-3 py-2">🟢 사이트 <span className="text-gray-500">지금 열려 있음</span></div>
+        <div className="rounded-lg bg-gray-50 px-3 py-2">📨 알림 발송 <span className="text-gray-500">{ago(meta?.last_reminder_at)}</span></div>
+      </div>
+      <p className="mt-2 text-xs text-gray-400">
+        마지막 가입 {ago(meta?.last_signup_at)} · 마지막 사용 기록 {ago(meta?.last_event_at)}
+        {checkedAt && ` · 확인 ${checkedAt.toLocaleTimeString('ko-KR')}`} — 🟢 정상 · 🟡 느림 · 🔴 문제 (DB가 🔴면 Supabase 일시정지 가능성)
+      </p>
+    </div>
+  )
+}
+
 export default function AdminPage({ email, demo }: { email: string | null; demo?: Stats }) {
   const [stats, setStats] = useState<Stats | null>(demo ? normalize(demo) : null)
   const [extra, setExtra] = useState<Extra | null>(null)
   const [school, setSchool] = useState<string | null>(null) // null=전체, '__none__'=미입력
   const [bySchool, setBySchool] = useState<SchoolRow[] | null>(null)
+  const [feedback, setFeedback] = useState<{ message: string; page: string | null; created_at: string; grad_year: number | null; school: string | null }[] | null>(null)
   const [renaming, setRenaming] = useState(false)
 
   // 학교 이름 정리 — 기존 학교 이름과 같게 바꾸면 두 그룹이 병합됨
@@ -226,6 +281,7 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
     }, (e: unknown) => { setLoadingStats(false); setError(e instanceof Error ? e.message : String(e)) })
     if (!extra) supabase.rpc('admin_stats_extra').then(({ data }) => { if (data) setExtra(data as Extra) }, () => {})
     if (!bySchool) supabase.rpc('admin_stats_schools').then(({ data }) => { if (data) setBySchool(data as SchoolRow[]) }, () => {})
+    if (!feedback) supabase.rpc('admin_feedback').then(({ data }) => { if (data) setFeedback(data as typeof feedback) }, () => {})
   }, [demo, school]) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (error) return (
@@ -257,6 +313,8 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
         </div>
         <button onClick={() => navigate('/')} className="text-sm text-gray-400 underline">← 홈</button>
       </div>
+
+      <HealthCard />
 
       {/* 학교별 비교 표 — 전체 기준, 필터와 무관 */}
       {bySchool && bySchool.length > 0 && (
@@ -516,6 +574,21 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
                 </div>
               )}
             </div>
+          )}
+        </Card>
+        <Card title="💬 사용자 피드백" hint="상단 바 💬 버튼으로 보낸 의견 (최근 100건) — 이름·이메일 없이 학년·학교만 표시">
+          {!feedback ? <p className="text-sm text-gray-400">불러오는 중…</p> : feedback.length === 0 ? <p className="text-sm text-gray-400">아직 피드백이 없어요</p> : (
+            <ul className="space-y-2">
+              {feedback.map((f, i) => (
+                <li key={i} className="rounded-xl bg-gray-50 px-3 py-2.5">
+                  <p className="whitespace-pre-wrap text-sm text-gray-800">{f.message}</p>
+                  <p className="mt-1 text-xs text-gray-400">
+                    {new Date(f.created_at).toLocaleString('ko-KR')}
+                    {f.grad_year && ` · Class of ${f.grad_year}`}{f.school && ` · ${f.school}`}{f.page && ` · ${f.page}`}
+                  </p>
+                </li>
+              ))}
+            </ul>
           )}
         </Card>
         {extra && Object.keys(extra.ref_source ?? {}).length > 0 && (

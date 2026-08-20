@@ -373,3 +373,14 @@ alter table pending_onboarding enable row level security;
 
 -- 유입 경로 (?ref= 링크 태그: 예 insta, f-<초대자코드>) — 가입 시 1회 기록
 alter table profiles add column if not exists ref_source text;
+
+-- 사용자 피드백 (로그인 사용자 작성, 운영자는 admin_feedback()으로 열람)
+create table if not exists feedback (
+  id bigint generated always as identity primary key,
+  user_id uuid references auth.users (id) on delete set null,
+  message text not null check (char_length(message) between 1 and 2000),
+  page text,
+  created_at timestamptz not null default now()
+);
+alter table feedback enable row level security;
+create policy "insert own feedback" on feedback for insert to authenticated with check (auth.uid() = user_id);

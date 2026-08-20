@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase'
 import { t } from '../i18n'
 import LangToggle from '../i18n/LangToggle'
 import { isAdminEmail } from '../lib/admin'
+import FeedbackModal from './FeedbackModal'
 
 // 전역 상단 바 — 어느 화면에서든 주요 기능(리포트·내 원서·학교·마감)과 언어 토글이 항상 보이게.
 // "스크롤해야/눌러봐야 기능이 보인다"는 피드백에 대한 답: 내비게이션을 화면 상단에 상시 노출.
@@ -11,6 +12,7 @@ export default function TopNav() {
   const path = usePath()
   const [loggedIn, setLoggedIn] = useState(false)
   const [admin, setAdmin] = useState(false)
+  const [feedbackOpen, setFeedbackOpen] = useState(false)
 
   useEffect(() => {
     if (!supabase) return
@@ -55,8 +57,14 @@ export default function TopNav() {
             📊
           </button>
         )}
-        <div className="ml-auto shrink-0 pl-2"><LangToggle /></div>
+        <div className="ml-auto flex shrink-0 items-center gap-1 pl-2">
+          {loggedIn && (
+            <button onClick={() => setFeedbackOpen(true)} title={t('의견 보내기', 'Send feedback')} className="rounded-full px-2 py-1 text-sm text-gray-500 hover:bg-gray-100">💬</button>
+          )}
+          <LangToggle />
+        </div>
       </div>
+      {feedbackOpen && <FeedbackModal onClose={() => setFeedbackOpen(false)} />}
     </header>
   )
 }
