@@ -334,6 +334,14 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           >
             {t('🗺️ 전공 가이드 맵 보기', '🗺️ Major guide map')}
           </button>
+          {!graduated && (
+            <button
+              onClick={() => document.getElementById('checklist')?.scrollIntoView({ behavior: 'smooth' })}
+              className="no-print ml-1.5 mt-1.5 rounded-full border-2 border-green-200 bg-green-50 px-3 py-1 text-xs font-semibold text-green-700 active:bg-green-100"
+            >
+              ✅ {t(`체크리스트 ${commonItems.concat(intlItems).filter((i) => checkedIds.has(i.id)).length}/${commonItems.length + intlItems.length}`, `Checklist ${commonItems.concat(intlItems).filter((i) => checkedIds.has(i.id)).length}/${commonItems.length + intlItems.length}`)}
+            </button>
+          )}
           <p className="mt-0.5 text-xs text-gray-400">{targetText}</p>
         </div>
         <button onClick={onLogout} className="no-print shrink-0 text-sm text-gray-400 underline">
@@ -446,6 +454,38 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           )}
         </div>
       )}
+
+      {/* 이월된 항목 */}
+      {!graduated && carriedItems.length > 0 && (
+        <div className="mt-5">
+          <h2 className="font-semibold text-gray-900">{t('지난 시즌에서 이월된 항목', 'Carried over from last season')}</h2>
+          <div className="mt-3">
+            <ChecklistSection items={carriedItems} checkedIds={checkedIds} onToggle={toggle} />
+          </div>
+        </div>
+      )}
+
+      {/* 6. 이번 시즌 체크리스트 (졸업 모드에서는 숨김) */}
+      {!graduated && <div id="checklist" className="mt-5 scroll-mt-16">
+        <h2 className="font-semibold text-gray-900">{t('이번 시즌 체크리스트', 'This season’s checklist')}</h2>
+        {commonItems.length === 0 && (
+          <p className="mt-3 text-sm text-gray-400">{t('이번 시즌 공통 항목이 아직 없어요.', 'No common items this season yet.')}</p>
+        )}
+        <div className="mt-3">
+          <ChecklistSection items={commonItems} checkedIds={checkedIds} onToggle={toggle} />
+        </div>
+      </div>}
+
+      {/* 7. 국제학생 섹션 */}
+      {!graduated && isIntl && intlItems.length > 0 && (
+        <div className="mt-5">
+          <h2 className="font-semibold text-gray-900">{t('국제학생 체크 (International)', 'International student checks')}</h2>
+          <div className="mt-3">
+            <ChecklistSection items={intlItems} checkedIds={checkedIds} onToggle={toggle} />
+          </div>
+        </div>
+      )}
+
 
       {/* 4. 6축 밸런스 + 약한 축 진단 */}
       <div className="print-flat mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
@@ -570,37 +610,6 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
               </p>
             </div>
           )}
-        </div>
-      )}
-
-      {/* 이월된 항목 */}
-      {!graduated && carriedItems.length > 0 && (
-        <div className="mt-5">
-          <h2 className="font-semibold text-gray-900">{t('지난 시즌에서 이월된 항목', 'Carried over from last season')}</h2>
-          <div className="mt-3">
-            <ChecklistSection items={carriedItems} checkedIds={checkedIds} onToggle={toggle} />
-          </div>
-        </div>
-      )}
-
-      {/* 6. 이번 시즌 체크리스트 (졸업 모드에서는 숨김) */}
-      {!graduated && <div className="mt-5">
-        <h2 className="font-semibold text-gray-900">{t('이번 시즌 체크리스트', 'This season’s checklist')}</h2>
-        {commonItems.length === 0 && (
-          <p className="mt-3 text-sm text-gray-400">{t('이번 시즌 공통 항목이 아직 없어요.', 'No common items this season yet.')}</p>
-        )}
-        <div className="mt-3">
-          <ChecklistSection items={commonItems} checkedIds={checkedIds} onToggle={toggle} />
-        </div>
-      </div>}
-
-      {/* 7. 국제학생 섹션 */}
-      {!graduated && isIntl && intlItems.length > 0 && (
-        <div className="mt-5">
-          <h2 className="font-semibold text-gray-900">{t('국제학생 체크 (International)', 'International student checks')}</h2>
-          <div className="mt-3">
-            <ChecklistSection items={intlItems} checkedIds={checkedIds} onToggle={toggle} />
-          </div>
         </div>
       )}
 
