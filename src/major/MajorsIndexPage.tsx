@@ -114,13 +114,6 @@ export default function MajorsIndexPage() {
             {t('검색 결과가 없어요 — 다른 말로 찾아보거나, 비슷한 상위 계열(공학·자연과학·사회과학 등)을 눌러보세요.', 'No results — try another word, or open a nearby broader category (engineering, natural sciences, social sciences...).')}
           </p>
         )}
-        {q === '' && <button
-          onClick={() => navigate('/major/undecided')}
-          className="mt-4 w-full rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-3 text-left active:bg-blue-100"
-        >
-          <span className="font-semibold text-blue-800">🤔 {t('아직 못 정했어요', 'Still undecided')}</span>
-          <span className="mt-0.5 block text-xs text-blue-700">{t('미정인 채로 강하게 준비하는 법부터 보세요', 'Start with how to prepare strongly while undecided')}</span>
-        </button>}
         {section(t('이과 계열 (STEM)', 'STEM'), 'stem')}
         {section(t('문과 계열 (Humanities & Social)', 'Humanities & Social'), 'liberal')}
       </div>

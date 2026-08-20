@@ -10,6 +10,7 @@ import { loadPlans, cycleSeasons, type Plan } from '../app/plans'
 import type { Axis } from '../lib/score'
 import { t, getLang } from '../i18n'
 import careersData from '../data/major-careers.json'
+import rankingsData from '../data/major-rankings.json'
 import { majorParent } from '../data/majors'
 import schoolsIndex from '../data/schools.index.json'
 import SchoolLogo from '../browse/SchoolLogo'
@@ -20,6 +21,8 @@ interface CareerInfo { desc_ko: string | null; desc_en: string | null; occupatio
 const CAREERS = careersData as Record<string, CareerInfo>
 interface IdxSchool { id: number; name: string; direct_admit_majors?: string[] }
 const IDX = schoolsIndex as IdxSchool[]
+interface RankList { list_name: string | null; url: string; edition: string | null; items: { rank: number; name: string; school_id: number | null }[] }
+const RANKINGS = rankingsData as Record<string, RankList>
 
 interface RoadmapCell { academic: string[]; activity: string[] }
 interface MajorData {
@@ -226,6 +229,33 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
             )}
             <p className="mt-2 text-[11px] text-gray-400">
               {t('연봉은 미국 전체 중간값(경력 전체 포함) 기준이며 지역·경력에 따라 크게 달라요. 출처: 미국 노동통계국(BLS) Occupational Outlook Handbook.', 'Pay figures are US-wide medians across all experience levels and vary widely by region and seniority. Source: US Bureau of Labor Statistics, Occupational Outlook Handbook.')}
+            </p>
+          </details>
+        )}
+
+        {/* 전공별 대학 순위 — US News 학부 프로그램 랭킹 (공표된 전공만) */}
+        {RANKINGS[majorKey] && (
+          <details open={!full} className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+            <summary className="cursor-pointer select-none font-semibold text-gray-900">
+              {t('🏆 전공별 대학 순위', '🏆 Program rankings')} <span className="ml-1 text-xs font-normal text-gray-400">US News {RANKINGS[majorKey].edition}</span>
+            </summary>
+            <ol className="mt-2 flex flex-col gap-1 text-sm">
+              {RANKINGS[majorKey].items.map((r, i) => (
+                <li key={i} className="flex items-center gap-2">
+                  <span className="w-7 shrink-0 text-right font-semibold tabular-nums text-gray-400">#{r.rank}</span>
+                  {r.school_id ? (
+                    <button onClick={() => navigate(`/schools/${slugify(IDX.find((x) => x.id === r.school_id)?.name ?? r.name)}`)} className="flex min-w-0 items-center gap-1.5 text-left text-blue-700 underline-offset-2 hover:underline">
+                      <SchoolLogo schoolId={r.school_id} name={r.name} size={16} /><span className="truncate">{r.name}</span>
+                    </button>
+                  ) : (
+                    <span className="truncate text-gray-700">{r.name}</span>
+                  )}
+                </li>
+              ))}
+            </ol>
+            <p className="mt-2 text-[11px] text-gray-400">
+              {t(`출처: U.S. News 학부 프로그램 랭킹 (${RANKINGS[majorKey].edition}) — 공개된 상위권만 표시돼요. 랭킹은 참고용이고, 파란 학교는 카드로 연결돼요.`, `Source: U.S. News undergraduate program rankings (${RANKINGS[majorKey].edition}) — only the publicly listed top schools are shown. Rankings are a reference; blue schools link to their cards.`)}
+              {' '}<a href={RANKINGS[majorKey].url} target="_blank" rel="noreferrer" className="text-blue-600 underline">{t('원본 ↗', 'Original ↗')}</a>
             </p>
           </details>
         )}
