@@ -2,6 +2,7 @@ import type { OnboardingAnswers, ChecklistItem, School, Tier, QuizAnswer } from 
 import { supabase } from './supabase'
 import { gradeFromGradYear, currentSeason } from './academics'
 import { getLang } from '../i18n'
+import { majorParent } from '../data/majors'
 import schoolsData from '../data/schools.index.json' // 경량 인덱스(id·이름·티어) — 전체 시드는 schoolsCache에서만
 
 const schools = schoolsData as School[]
@@ -167,8 +168,8 @@ export function filterChecklist(
       if (item.grade !== grade || item.season !== season) return false
       if (
         item.major_category !== null &&
-        item.major_category !== p.major_primary &&
-        item.major_category !== p.major_secondary
+        item.major_category !== majorParent(p.major_primary) &&
+        item.major_category !== majorParent(p.major_secondary)
       )
         return false
       if (item.tier_condition !== null && !tiers.has(item.tier_condition)) return false

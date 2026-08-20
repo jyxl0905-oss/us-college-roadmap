@@ -1,3 +1,4 @@
+import { majorParent } from '../data/majors'
 import { useEffect, useMemo, useState } from 'react'
 import type { School, Tier } from '../lib/types'
 import { loadSchools } from '../lib/schoolsCache'
@@ -46,7 +47,7 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
       if (needBlindOnly && s.need_blind_intl !== true) return false
       if (testPolicy !== 'all' && s.test_policy !== testPolicy) return false
       if (region !== 'all' && schoolRegion(s) !== region) return false
-      if (directAdmitMine && myMajor && !s.direct_admit_majors.includes(myMajor)) return false
+      if (directAdmitMine && myMajor && !s.direct_admit_majors.includes(majorParent(myMajor) as string)) return false
       return true
     })
   }, [schools, query, needBlindOnly, testPolicy, region, directAdmitMine, myMajor])

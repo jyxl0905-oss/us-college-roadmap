@@ -875,5 +875,493 @@
     ]
    }
   }
+ },
+ "biology": {
+  "title": "Biology",
+  "ap": [
+   "AP Biology — the core course for the major",
+   "AP Chemistry — the de facto pairing for strong biology applicants",
+   "AP Calculus AB (BC if possible) — signals biology is quantitative too",
+   "AP Statistics — worth more if you're heading toward research/data"
+  ],
+  "strong": "Bio + Chem taken together is the key combination — on top of that, records of experiments you actually ran separate tiers",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Self-designed experiments or field-observation studies (however small, carried through design → run → record), projects that work outside a school lab (fermentation, plants, microbial culture)"
+   },
+   {
+    "label": "External validation type",
+    "text": "USABO (biology olympiad) / science fairs / student journal submissions (e.g., JEI)"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "The 'biology because med school' narrative — pre-med and biology research are different stories. Stacking camp certificates without experiments"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Bio and chem foundations + confirm your math track"
+    ],
+    "activity": [
+     "Science club + an at-home observation project",
+     "Pick an area (genetics, ecology, microbes...)"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in AP Bio and Chem for 11th grade"
+    ],
+    "activity": [
+     "Finish your first self-run experiment — build the lab-notebook habit",
+     "First USABO sitting to gauge your level"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Run AP Bio + Chem (+ Calc) together"
+    ],
+    "activity": [
+     "Deepen the research — science fair or journal submission",
+     "Retake USABO"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize outputs and lab notes for the application"
+    ]
+   }
+  }
+ },
+ "chemistry": {
+  "title": "Chemistry",
+  "ap": [
+   "AP Chemistry — the core course for the major",
+   "AP Calculus BC — the math that opens physical chemistry",
+   "AP Physics 1 (or C) — credibility of the chem + physics pairing",
+   "AP Biology — add if heading toward biochem/materials"
+  ],
+  "strong": "Chem + math is the skeleton — records of experiments you ran safely, with quantitative analysis, separate tiers",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Quantitative experiments possible even with household materials (titration, crystallization, electrolysis — within safe bounds), chemical analysis that leaves data"
+   },
+   {
+    "label": "External validation type",
+    "text": "USNCO (chemistry olympiad) / science fairs / student journal submissions"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Attempting dangerous experiments (safety and ethics), or stacking problem sets with nothing you've actually done"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Build chem and math foundations"
+    ],
+    "activity": [
+     "Start a safe home-lab project + record keeping",
+     "Join the chemistry/science club"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in AP Chem and Calc for 11th grade"
+    ],
+    "activity": [
+     "First USNCO local exam",
+     "Finish one experiment that leaves quantitative data"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Chem + Calc BC (+ Physics)"
+    ],
+    "activity": [
+     "Deepen research — science fair or journal submission",
+     "Retake USNCO"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize records and awards for the application"
+    ]
+   }
+  }
+ },
+ "physics": {
+  "title": "Physics",
+  "ap": [
+   "AP Physics C (Mechanics & E&M) — the calculus-based standard",
+   "AP Calculus BC — effectively required for physics applicants",
+   "AP Physics 1 — as the step before C",
+   "AP Computer Science A — reinforces simulation/computational physics"
+  ],
+  "strong": "Math is 80% of it — the Calc BC → Physics C line, plus an external exam that shows your problem-solving level",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Apparatus and measurement projects you build yourself (pendulum, optics, E&M), physics projects verified with Python simulations"
+   },
+   {
+    "label": "External validation type",
+    "text": "F=ma → USAPhO line / science fairs / astronomy & physics competitions"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Claiming a physics major while your math track falls short of Calc — it doesn't hold up. Stacking theory reading only"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Confirm your math track first — design the path to Calc by 12th"
+    ],
+    "activity": [
+     "Physics club · build a simple apparatus",
+     "Sample F=ma problems"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in Physics C (or 1) + Calc BC for 11th grade"
+    ],
+    "activity": [
+     "First F=ma sitting",
+     "Finish one measurement/simulation project"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Run Physics C + Calc BC together"
+    ],
+    "activity": [
+     "Push F=ma → USAPhO",
+     "Deepen the project — fair or journal submission"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize experiment/simulation outputs for the application"
+    ]
+   }
+  }
+ },
+ "industrial_eng": {
+  "title": "Industrial Engineering",
+  "ap": [
+   "AP Calculus BC — the engineering standard",
+   "AP Statistics — directly tied to IE's identity (optimization, data)",
+   "AP Physics 1 (or C)",
+   "AP Computer Science A — reinforces simulation/data handling"
+  ],
+  "strong": "Math + statistics is the skeleton — the spike for this major is 'experience making a system more efficient'",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Projects that improved a real process — event queues, store inventory, club operations analyzed with data and changed, with records"
+   },
+   {
+    "label": "External validation type",
+    "text": "Math/data competitions (AMC, statistics poster competitions, Kaggle-style) / science fair engineering category"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "The vague 'half business, half engineering' narrative — you need one concrete case where data changed a system"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Confirm math track + statistics basics"
+    ],
+    "activity": [
+     "Pick one inefficiency around you and start collecting data",
+     "Spreadsheet/Python basics"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in Calc BC and Statistics for 11th grade"
+    ],
+    "activity": [
+     "Finish a first improvement project — record before/after numbers",
+     "Take the AMC"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Calc BC + Statistics (+ CS A)"
+    ],
+    "activity": [
+     "Scale the improvement project to school/community level",
+     "Enter competitions/fairs"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize improvement cases with before/after numbers for the application"
+    ]
+   }
+  }
+ },
+ "finance": {
+  "title": "Finance",
+  "ap": [
+   "AP Calculus BC — the standard for strong finance/econ applicants",
+   "AP Macro/Micro Economics — directly tied, relatively easy to self-study",
+   "AP Statistics — a quant/data signal",
+   "AP English Language — case- and essay-heavy field"
+  ],
+  "strong": "Math is more of it than you'd think — top schools read finance as close to applied math. On top of that, records of handling real money and data",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "A long-running paper-trading portfolio with reasoning logs, a small project with real revenue, a running series of financial data analyses"
+   },
+   {
+    "label": "External validation type",
+    "text": "Team competitions like the Wharton Investment Competition / econ & math olympiads / DECA·FBLA finance events"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Mistaking 'liking stocks' for an activity — trades without records make no narrative. Leaning on paid camp certificates"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Confirm math track + intro econ reading"
+    ],
+    "activity": [
+     "Start paper trading — log your reasoning",
+     "Join the econ/investing club"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in Calc BC and Econ for 11th grade"
+    ],
+    "activity": [
+     "First Wharton-style team competition",
+     "Start a recurring analysis report/blog"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Calc BC + Econ (+ Statistics)"
+    ],
+    "activity": [
+     "Push for competition finals; grow the cumulative report record",
+     "Run a project with real numbers"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize cumulative numbers (returns, issues published) for the application"
+    ]
+   }
+  }
+ },
+ "data_science": {
+  "title": "Data Science",
+  "ap": [
+   "AP Calculus BC",
+   "AP Statistics — directly tied to the major",
+   "AP Computer Science A — the toolset",
+   "One AP science — a domain to apply data to"
+  ],
+  "strong": "You need all three axes — math, statistics, coding. The unit of your portfolio is 'a question answered with real data'",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Analysis projects completed on public data (question → collect → analyze → conclusion report), dashboards and write-ups you published"
+   },
+   {
+    "label": "External validation type",
+    "text": "Kaggle competitions / statistics poster & data competitions / science fairs"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Collecting course certificates — one finished analysis beats ten certificates. Copying other people's notebooks"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Confirm math track + Python basics"
+    ],
+    "activity": [
+     "Find public data on a topic you care about; first exploration",
+     "Move from spreadsheets to Python"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Plan Calc BC, Statistics, CS A for 11th grade"
+    ],
+    "activity": [
+     "Finish and publish a first analysis project",
+     "Enter an intro Kaggle competition"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Calc BC + Statistics + CS A"
+    ],
+    "activity": [
+     "Deepen domain analysis — competitions/fairs",
+     "Build a cumulative record with a series of write-ups"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize project links and reports for the application"
+    ]
+   }
+  }
+ },
+ "applied_math": {
+  "title": "Applied Math",
+  "ap": [
+   "AP Calculus BC — the required line",
+   "AP Statistics",
+   "AP Physics C — a flagship domain to apply math to",
+   "AP Computer Science A — numerics and simulation"
+  ],
+  "strong": "The math track itself is the credential — once you exhaust school math, continuing on your own (multivariable, etc.) is the spike",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Projects that model real problems with math (epidemic spread, optimal routes, game strategy), records of advanced math taken beyond school"
+   },
+   {
+    "label": "External validation type",
+    "text": "AMC → AIME line / math modeling competitions (HiMCM-style) / science fair math category"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Dropping the major because scores didn't come — competitions are one path of several; modeling and research are equal routes"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Math track first — design the fastest line"
+    ],
+    "activity": [
+     "Math club + first AMC",
+     "Make puzzles and modeling problems a hobby"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in Calc BC for 11th (+ consider Statistics)"
+    ],
+    "activity": [
+     "Enter a HiMCM-style modeling team competition",
+     "Push for the AMC → AIME cut"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Finish Calc BC — plan online multivariable if exhausted"
+    ],
+    "activity": [
+     "Deepen modeling projects · run math tutoring",
+     "Retake AIME/competitions"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor + continue advanced math"
+    ],
+    "activity": [
+     "Organize competition, project and coursework records for the application"
+    ]
+   }
+  }
+ },
+ "prelaw": {
+  "title": "Pre-Law",
+  "ap": [
+   "AP US Government (or Comparative) — directly tied",
+   "AP English Language — the foundation of argumentative writing",
+   "AP US/World History",
+   "AP Calculus AB or above — top schools check math rigor for humanities too"
+  ],
+  "strong": "Key fact: US undergrads rarely offer a 'law major' — you apply as politics, philosophy, econ, history, etc.; law school is graduate school. The undergrad-stage credential is argument and writing",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Role growth in debate and Mock Trial, a running series of research/essays digging into one social issue, a community rights campaign"
+   },
+   {
+    "label": "External validation type",
+    "text": "Debate tournaments / Mock Trial competitions / essay competitions (John Locke etc.) / MUN chairing"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "A narrative that is only 'I want to be a lawyer' — your undergraduate major plan (politics, philosophy, econ...) must be concrete. Listing participation counts"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "English reading/writing base + history courses"
+    ],
+    "activity": [
+     "First debate/MUN/Mock Trial",
+     "Pick an issue (rights, policy) you care about"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in Gov and English Lang for 11th grade"
+    ],
+    "activity": [
+     "Start growing your role in debate/mock trial",
+     "Begin a research write-up series on your issue"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Gov + English Lang + History (+ keep math rigor)"
+    ],
+    "activity": [
+     "Push for finals/chairing; enter essay competitions",
+     "Deepen the campaign/research"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Finish the narrative connecting 'why law' to your undergrad major plan"
+    ]
+   }
+  }
  }
 }

@@ -1,3 +1,4 @@
+import { majorParent } from '../data/majors'
 import type { School } from '../lib/types'
 import { satBandMid } from '../lib/score'
 import SchoolLogo from '../browse/SchoolLogo'
@@ -22,7 +23,7 @@ export default function SchoolCards({ schools, satBand, majorPrimary }: SchoolCa
             ? Math.max(0, Math.min(1, (mySat - s.sat_mid50_low!) / (s.sat_mid50_high! - s.sat_mid50_low!)))
             : null
         const directAdmitWarning =
-          majorPrimary !== null && s.direct_admit_majors.includes(majorPrimary)
+          majorPrimary !== null && s.direct_admit_majors.includes(majorParent(majorPrimary) as string)
 
         return (
           <div

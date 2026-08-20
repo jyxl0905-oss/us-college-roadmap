@@ -11,13 +11,21 @@ export interface MajorCategory {
 export const majorCategories: MajorCategory[] = [
   { value: 'cs', label: '컴퓨터과학 (CS)', track: 'stem' },
   { value: 'engineering', label: '공학 (Engineering)', track: 'stem' },
+  { value: 'industrial_eng', label: '산업공학 (Industrial Engineering)', track: 'stem' },
   { value: 'math_data', label: '수학·통계·데이터 (Math·Stats·Data)', track: 'stem' },
+  { value: 'data_science', label: '데이터 사이언스 (Data Science)', track: 'stem' },
+  { value: 'applied_math', label: '응용수학 (Applied Math)', track: 'stem' },
   { value: 'natural_sci', label: '자연과학 (Natural Sciences)', track: 'stem' },
+  { value: 'biology', label: '생명과학 (Biology)', track: 'stem' },
+  { value: 'chemistry', label: '화학 (Chemistry)', track: 'stem' },
+  { value: 'physics', label: '물리학 (Physics)', track: 'stem' },
   { value: 'premed', label: '보건·프리메드 (Health·Pre-med)', track: 'stem' },
   { value: 'nursing', label: '간호 (Nursing)', track: 'stem' },
   { value: 'architecture', label: '건축 (Architecture)', track: 'stem' },
   { value: 'business', label: '비즈니스·경제 (Business·Economics)', track: 'liberal' },
+  { value: 'finance', label: '금융 (Finance)', track: 'liberal' },
   { value: 'social_sci', label: '사회과학 (Social Sciences)', track: 'liberal' },
+  { value: 'prelaw', label: '법학·프리로 (Pre-Law)', track: 'liberal' },
   { value: 'psychology', label: '심리학 (Psychology)', track: 'liberal' },
   { value: 'humanities', label: '인문 (Humanities)', track: 'liberal' },
   { value: 'arts', label: '예술·디자인 (Art·Design)', track: 'liberal' },
@@ -41,3 +49,16 @@ export function majorLabel(value: string | null): string {
   const m = majorCategories.find((m) => m.value === value)
   return m ? majorDisplay(m) : value
 }
+
+// 세분 전공 → 체크리스트·direct-admit 판정용 상위 계열 (콘텐츠는 상위 계열 것을 그대로 사용)
+export const majorAlias: Record<string, string> = {
+  data_science: 'math_data',
+  applied_math: 'math_data',
+  biology: 'natural_sci',
+  chemistry: 'natural_sci',
+  physics: 'natural_sci',
+  industrial_eng: 'engineering',
+  finance: 'business',
+  prelaw: 'social_sci',
+}
+export const majorParent = (value: string | null): string | null => (value ? (majorAlias[value] ?? value) : value)
