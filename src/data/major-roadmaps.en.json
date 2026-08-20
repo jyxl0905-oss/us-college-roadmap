@@ -1671,5 +1671,539 @@
     ]
    }
   }
+ },
+ "economics": {
+  "title": "Economics",
+  "ap": [
+   "AP Calculus BC — top schools read econ like a math major",
+   "AP Macro/Micro Economics — directly tied, easy to self-study",
+   "AP Statistics — the language of econometrics",
+   "AP English Language"
+  ],
+  "strong": "Math is the core — evidence you worked a question with data and models, not 'I like econ news'",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Research analyzing real economic data (prices, FX, local commerce), long-running content explaining econ concepts simply"
+   },
+   {
+    "label": "External validation type",
+    "text": "Economics olympiads (IEO/NEC-style) / essay competitions (John Locke econ) / data competitions"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Treating it as 'basically business' — econ is the most mathematical social science"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Confirm math track + intro econ reading"
+    ],
+    "activity": [
+     "Econ club · start a current-events note"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in Calc BC and Econ for 11th"
+    ],
+    "activity": [
+     "Finish a first data research piece",
+     "First econ olympiad"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Calc BC + Econ (+ Statistics)"
+    ],
+    "activity": [
+     "Push essay competitions/olympiad finals",
+     "Accumulate research and content"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize research outputs for the application"
+    ]
+   }
+  }
+ },
+ "accounting": {
+  "title": "Accounting",
+  "ap": [
+   "AP Macro/Micro Economics",
+   "AP Statistics",
+   "AP Calculus AB or above",
+   "AP Computer Science Principles/A — data handling"
+  ],
+  "strong": "Records proving rigor with numbers — actually keeping books or budgets is the best spike",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Treasurer/budget roles for clubs, events, small projects — managing records of real money; financial analysis reports"
+   },
+   {
+    "label": "External validation type",
+    "text": "DECA·FBLA accounting events / math & data competitions"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "A narrative that is only 'it's stable' — you need why building trust with numbers appeals to you. CPA comes after college"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Math base + learn spreadsheets"
+    ],
+    "activity": [
+     "Volunteer as club treasurer/record keeper"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in Econ and Statistics for 11th"
+    ],
+    "activity": [
+     "Run an event budget — keep closing records",
+     "Enter FBLA/DECA accounting events"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Econ + Statistics (+ Calc)"
+    ],
+    "activity": [
+     "Expand treasurer scope (student council...)",
+     "Push for competition finals"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize budget sizes and closing records for the application"
+    ]
+   }
+  }
+ },
+ "neuroscience": {
+  "title": "Neuroscience",
+  "ap": [
+   "AP Biology — the core axis",
+   "AP Chemistry — the chemistry under neuroscience",
+   "AP Psychology — the behavior axis",
+   "AP Statistics — research methods"
+  ],
+  "strong": "The intersection of bio, psych and statistics — overlaps pre-med but with a stronger research identity",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Behavioral/cognitive experiment projects (reaction time, memory, sleep), long-running brain-science research or content"
+   },
+   {
+    "label": "External validation type",
+    "text": "Brain Bee (check regional eligibility) / science fairs / student journals"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Listing 'brains are cool' reading — you need one experiment that collected data, however small. Research careers usually need a PhD"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Bio/chem foundations + math track"
+    ],
+    "activity": [
+     "Brain-science reading notes + pick a question"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in AP Bio and Psych for 11th"
+    ],
+    "activity": [
+     "Finish a first behavioral experiment",
+     "Consider the Brain Bee"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Bio + Psych (+ Chem/Stats)"
+    ],
+    "activity": [
+     "Deepen experiments — fairs/journals",
+     "Run a research club"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize experiment outputs for the application"
+    ]
+   }
+  }
+ },
+ "biomedical_eng": {
+  "title": "Biomedical Engineering",
+  "ap": [
+   "AP Calculus BC",
+   "AP Physics 1 (or C)",
+   "AP Biology — the bio axis of BME",
+   "AP Chemistry"
+  ],
+  "strong": "Engineering math + biology at once — 'solved a medical problem with technology' is this major's language",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Assistive/health device prototypes (3D printing, Arduino), projects handling medical data"
+   },
+   {
+    "label": "External validation type",
+    "text": "Science fair engineering/BME categories / robotics competitions / health hackathons"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "The 'safer than pre-med' narrative — BME is engineering at its core. Applying with nothing built"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Math track + bio/physics foundations"
+    ],
+    "activity": [
+     "Arduino/3D-printing intro; start a build log"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Plan Calc BC, Physics, Bio for 11th"
+    ],
+    "activity": [
+     "Finish a first health-device prototype"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Calc BC + Physics (+ Bio/Chem)"
+    ],
+    "activity": [
+     "Deepen the prototype — fairs and competitions"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize build logs and outputs for the application"
+    ]
+   }
+  }
+ },
+ "chemical_eng": {
+  "title": "Chemical Engineering",
+  "ap": [
+   "AP Calculus BC",
+   "AP Chemistry — the core",
+   "AP Physics 1 (or C)",
+   "AP Biology — if heading bio-side"
+  ],
+  "strong": "The chem-math-physics triangle — the most science-heavy engineering; prove all three with grades",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Projects on processes, energy, materials (batteries, water purification, fermentation — safe experiments + quantitative analysis)"
+   },
+   {
+    "label": "External validation type",
+    "text": "USNCO / science fair chemistry & energy categories / student journals"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "A 'just likes chemistry' narrative — ChemE is half math and physics. Applying without Calc BC"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Math track + chemistry foundations"
+    ],
+    "activity": [
+     "Start a safe quantitative experiment project"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Plan Calc BC, Chem, Physics for 11th"
+    ],
+    "activity": [
+     "First USNCO",
+     "Finish an energy/materials project"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Calc BC + Chem + Physics"
+    ],
+    "activity": [
+     "Deepen the project — enter fairs"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize experiment records for the application"
+    ]
+   }
+  }
+ },
+ "aerospace_eng": {
+  "title": "Aerospace Engineering",
+  "ap": [
+   "AP Calculus BC",
+   "AP Physics C — mechanics is the core",
+   "AP Computer Science A — simulation",
+   "AP Chemistry"
+  ],
+  "strong": "The Physics C + Calc BC line is effectively standard — records of things you flew (rockets, drones, sims) are the spike",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Design-build-fly records for model rockets, drones, gliders; orbit/flight simulation projects"
+   },
+   {
+    "label": "External validation type",
+    "text": "TARC (check eligibility) / science fairs / robotics & drone competitions"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Only a 'loves space' narrative — without design-failure-improvement records it doesn't stand"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Math track + physics foundations"
+    ],
+    "activity": [
+     "Model rockets/gliders intro; start a flight log"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Plan Physics C and Calc BC for 11th"
+    ],
+    "activity": [
+     "Complete one design-build-fly cycle",
+     "Simulation intro"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Physics C + Calc BC (+ CS A)"
+    ],
+    "activity": [
+     "Enter competitions; deepen the project"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize flight logs and improvements for the application"
+    ]
+   }
+  }
+ },
+ "education": {
+  "title": "Education",
+  "ap": [
+   "AP Psychology — the science of learning & development",
+   "AP English Language",
+   "AP Statistics — education data",
+   "APs in the subject you want to teach"
+  ],
+  "strong": "Records of actually teaching are everything — cumulative tutoring, education content, camp-running is the spike",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Long-run tutoring of younger students or local kids (designing the curriculum yourself), education content, learning-gap projects"
+   },
+   {
+    "label": "External validation type",
+    "text": "Track record running education service programs / essay competitions on education / student journals"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "'I like kids' level — you need records of what you taught, how, and how learners changed"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "English and psych foundations"
+    ],
+    "activity": [
+     "First tutoring experience — start records"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in AP Psych and English Lang for 11th"
+    ],
+    "activity": [
+     "Make tutoring regular + design a curriculum"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Psych + English Lang (+ Stats)"
+    ],
+    "activity": [
+     "Scale into a program or camp",
+     "Record learner outcomes"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Organize hours, learner counts and outcomes for the application"
+    ]
+   }
+  }
+ },
+ "film": {
+  "title": "Film",
+  "ap": [
+   "AP English Language/Literature — the storytelling base",
+   "AP Art History — visual language",
+   "AP Psychology — character and narrative",
+   "Keep core rigor (university film schools read academics too)"
+  ],
+  "strong": "Finished works and consistency — a completed short matters more than gear; many schools require a portfolio",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Completed shorts and docs (a phone is fine), directing school event videos, screenwriting"
+   },
+   {
+    "label": "External validation type",
+    "text": "Youth film festivals (e.g., All American High School Film Festival — check eligibility) / Scholastic (film category)"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "Showing off gear and editing tricks — AOs and film schools ask what story you told and why. Listing unfinished projects"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "English/story base + core rigor"
+    ],
+    "activity": [
+     "Finish a first short (any length) — the completion experience"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Plan English and Art History for 11th"
+    ],
+    "activity": [
+     "2–3 shorts + direct a school video"
+    ]
+   },
+   "11": {
+    "academic": [
+     "English Lang (+ Art History)"
+    ],
+    "activity": [
+     "Submit to festivals",
+     "Plan and shoot your signature piece"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Check each school's portfolio rules + finish and edit the signature piece"
+    ]
+   }
+  }
+ },
+ "music": {
+  "title": "Music",
+  "ap": [
+   "AP Music Theory — directly tied",
+   "AP English + core rigor (university music programs read academics too)",
+   "AP Psychology — if heading toward music ed/therapy",
+   "AP Calculus — if heading toward audio tech"
+  ],
+  "strong": "Performance polish and a steady record of performing — the audition/recorded portfolio is effectively a second application",
+  "guide": [
+   {
+    "label": "Spike type",
+    "text": "Cumulative recital and competition records, an original composition/arrangement portfolio, ensemble leadership (concertmaster, conducting)"
+   },
+   {
+    "label": "External validation type",
+    "text": "Competitions / youth orchestra auditions / composition contests"
+   },
+   {
+    "label": "Pitfalls",
+    "text": "A narrative that is only 'studied for years' — you need stage records and leadership. Audition rules vary a lot by school"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "Core rigor + music theory basics"
+    ],
+    "activity": [
+     "Join a school ensemble + start a performance log"
+    ]
+   },
+   "10": {
+    "academic": [
+     "Lock in AP Music Theory for 11th"
+    ],
+    "activity": [
+     "Try competitions and youth orchestras",
+     "Start composing/arranging"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Music Theory + keep the core"
+    ],
+    "activity": [
+     "Ensemble leadership roles",
+     "Prepare audition repertoire and recordings"
+    ]
+   },
+   "12": {
+    "academic": [
+     "Keep rigor up"
+    ],
+    "activity": [
+     "Check each school's audition/portfolio rules; finish recordings"
+    ]
+   }
+  }
  }
 }

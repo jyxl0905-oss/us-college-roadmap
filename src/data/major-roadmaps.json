@@ -1671,5 +1671,539 @@
     ]
    }
   }
+ },
+ "economics": {
+  "title": "경제학 (Economics)",
+  "ap": [
+   "AP Calculus BC — 톱스쿨은 경제학을 수학 전공처럼 봄",
+   "AP Macro/Micro Economics — 전공 직결, 자습 용이",
+   "AP Statistics — 계량경제의 언어",
+   "AP English Language"
+  ],
+  "strong": "수학이 핵심 — '경제 뉴스 좋아함'이 아니라 데이터·모델로 질문을 다뤄본 흔적",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "경제 데이터를 직접 분석한 리서치(물가·환율·지역 상권), 경제 개념을 쉽게 알리는 콘텐츠 장기 운영"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "경제 올림피아드(IEO·NEC류) / 에세이 대회(John Locke 경제 부문) / 데이터 대회"
+   },
+   {
+    "label": "함정",
+    "text": "'경영이랑 비슷한 것' 취급 — 경제학은 사회과학 중 가장 수학적인 전공"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "수학 트랙 확인 + 경제 입문 독서"
+    ],
+    "activity": [
+     "경제 동아리·시사 노트 시작"
+    ]
+   },
+   "10": {
+    "academic": [
+     "11학년 Calc BC·Econ 신청 확정"
+    ],
+    "activity": [
+     "첫 데이터 리서치 완주",
+     "경제 올림피아드 첫 응시"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Calc BC + Econ (+Statistics)"
+    ],
+    "activity": [
+     "에세이 대회·올림피아드 본선 도전",
+     "리서치·콘텐츠 누적"
+    ]
+   },
+   "12": {
+    "academic": [
+     "리거 유지"
+    ],
+    "activity": [
+     "리서치 결과물 정리해 원서 반영"
+    ]
+   }
+  }
+ },
+ "accounting": {
+  "title": "회계 (Accounting)",
+  "ap": [
+   "AP Macro/Micro Economics",
+   "AP Statistics",
+   "AP Calculus AB 이상",
+   "AP Computer Science Principles/A — 데이터 처리"
+  ],
+  "strong": "꼼꼼함+숫자 감각을 증명하는 기록 — 실제 장부·예산을 맡아본 경험이 최고의 스파이크",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "동아리·행사·소규모 프로젝트의 회계/예산 담당 — 실제 돈의 기록을 관리한 경험, 재무 분석 리포트"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "DECA·FBLA 회계 부문 / 수학·데이터 대회"
+   },
+   {
+    "label": "함정",
+    "text": "'안정적이라서'만으로 고르는 서사 — 왜 숫자로 신뢰를 만드는 일이 좋은지가 있어야 함. CPA는 대학 이후 자격 과정"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "수학 기초 + 스프레드시트 익히기"
+    ],
+    "activity": [
+     "동아리 예산·기록 담당 자원"
+    ]
+   },
+   "10": {
+    "academic": [
+     "11학년 Econ·Statistics 확정"
+    ],
+    "activity": [
+     "행사 예산 운영 — 결산 기록 남기기",
+     "FBLA/DECA 회계 이벤트 출전"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Econ + Statistics (+Calc)"
+    ],
+    "activity": [
+     "회계 담당 범위 확장(학생회 등)",
+     "대회 본선 도전"
+    ]
+   },
+   "12": {
+    "academic": [
+     "리거 유지"
+    ],
+    "activity": [
+     "관리한 예산 규모·결산 기록 정리해 원서 반영"
+    ]
+   }
+  }
+ },
+ "neuroscience": {
+  "title": "신경과학 (Neuroscience)",
+  "ap": [
+   "AP Biology — 중심축",
+   "AP Chemistry — 신경과학의 기반 화학",
+   "AP Psychology — 행동 축",
+   "AP Statistics — 연구 방법"
+  ],
+  "strong": "생물+심리+통계의 교차점 — 프리메드와 겹치지만 '연구' 정체성이 더 강한 전공",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "행동·인지 실험 프로젝트(반응시간·기억·수면), 뇌과학 주제 리서치·콘텐츠 장기 운영"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "Brain Bee(신경과학 대회 — 지역 참가 가능 여부 확인) / 과학전람회 / 학생 저널"
+   },
+   {
+    "label": "함정",
+    "text": "'뇌 신기함' 독서 나열 — 작아도 데이터를 수집한 실험 하나가 필요. 연구자 진로는 대학원(PhD)이 일반적"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "생물·화학 기초 + 수학 트랙"
+    ],
+    "activity": [
+     "뇌과학 독서 노트 + 관심 질문 정하기"
+    ]
+   },
+   "10": {
+    "academic": [
+     "11학년 AP Bio·Psych 확정"
+    ],
+    "activity": [
+     "첫 행동 실험 프로젝트 완주",
+     "Brain Bee 응시 검토"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Bio + Psych (+Chem·Stats)"
+    ],
+    "activity": [
+     "실험 심화 — 전람회·저널 투고",
+     "연구 동아리 운영"
+    ]
+   },
+   "12": {
+    "academic": [
+     "리거 유지"
+    ],
+    "activity": [
+     "실험 결과물 정리해 원서 반영"
+    ]
+   }
+  }
+ },
+ "biomedical_eng": {
+  "title": "바이오메디컬공학 (Biomedical Engineering)",
+  "ap": [
+   "AP Calculus BC",
+   "AP Physics 1(또는 C)",
+   "AP Biology — 의공학의 생물 축",
+   "AP Chemistry"
+  ],
+  "strong": "공학 수학+생물을 동시에 — '의료 문제를 기술로 푼' 프로젝트가 이 전공의 언어",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "보조기구·헬스 디바이스 프로토타입(3D프린팅·아두이노), 의료 데이터를 다룬 프로젝트"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "과학전람회 공학·의공학 부문 / 로보틱스 대회 / 해커톤(헬스 주제)"
+   },
+   {
+    "label": "함정",
+    "text": "'의대 대신 안전하게' 서사 — 의공학은 공학이 본체. 만든 것 없이 지원하는 것"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "수학 트랙 + 생물·물리 기초"
+    ],
+    "activity": [
+     "아두이노·3D프린팅 입문, 만들기 기록 시작"
+    ]
+   },
+   "10": {
+    "academic": [
+     "11학년 Calc BC·Physics·Bio 설계"
+    ],
+    "activity": [
+     "첫 헬스 디바이스 프로토타입 완성"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Calc BC + Physics (+Bio/Chem)"
+    ],
+    "activity": [
+     "프로토타입 심화 — 전람회·대회 출품"
+    ]
+   },
+   "12": {
+    "academic": [
+     "리거 유지"
+    ],
+    "activity": [
+     "빌드 로그·결과물 정리해 원서 반영"
+    ]
+   }
+  }
+ },
+ "chemical_eng": {
+  "title": "화학공학 (Chemical Engineering)",
+  "ap": [
+   "AP Calculus BC",
+   "AP Chemistry — 중심축",
+   "AP Physics 1(또는 C)",
+   "AP Biology — 바이오 방향이면"
+  ],
+  "strong": "화학+수학+물리 삼각형 — 공학 중 과학 비중이 가장 높은 축, 셋 다 성적으로 증명",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "공정·에너지·소재를 다룬 프로젝트(배터리·정수·발효 등 안전 범위 실험+정량 분석)"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "USNCO / 과학전람회 화학·에너지 부문 / 학생 저널"
+   },
+   {
+    "label": "함정",
+    "text": "화학'만' 좋아하는 서사 — ChemE는 수학·물리가 절반. Calc BC 없이 지원하는 것"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "수학 트랙 + 화학 기초"
+    ],
+    "activity": [
+     "안전한 정량 실험 프로젝트 시작"
+    ]
+   },
+   "10": {
+    "academic": [
+     "11학년 Calc BC·Chem·Physics 설계"
+    ],
+    "activity": [
+     "USNCO 첫 응시",
+     "에너지·소재 프로젝트 완주"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Calc BC + Chem + Physics"
+    ],
+    "activity": [
+     "프로젝트 심화 — 전람회 출품"
+    ]
+   },
+   "12": {
+    "academic": [
+     "리거 유지"
+    ],
+    "activity": [
+     "실험·프로젝트 기록 정리해 원서 반영"
+    ]
+   }
+  }
+ },
+ "aerospace_eng": {
+  "title": "항공우주공학 (Aerospace Engineering)",
+  "ap": [
+   "AP Calculus BC",
+   "AP Physics C — 역학이 본체",
+   "AP Computer Science A — 시뮬레이션",
+   "AP Chemistry"
+  ],
+  "strong": "물리 C+Calc BC 라인이 사실상 표준 — '날린 것'의 기록(로켓·드론·시뮬레이션)이 스파이크",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "모델 로켓·드론·글라이더 설계-제작-비행 기록, 궤도·비행 시뮬레이션 프로젝트"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "TARC(로켓 대회 — 참가 자격 확인) / 과학전람회 / 로보틱스·드론 대회"
+   },
+   {
+    "label": "함정",
+    "text": "'우주 좋아함' 서사만 — 설계·실패·개선의 기록이 없으면 안 섬"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "수학 트랙 + 물리 기초"
+    ],
+    "activity": [
+     "모델 로켓·글라이더 입문, 비행 로그 시작"
+    ]
+   },
+   "10": {
+    "academic": [
+     "11학년 Physics C·Calc BC 설계"
+    ],
+    "activity": [
+     "설계-제작-비행 사이클 1회 완주",
+     "시뮬레이션 입문"
+    ]
+   },
+   "11": {
+    "academic": [
+     "Physics C + Calc BC (+CS A)"
+    ],
+    "activity": [
+     "대회 출전·프로젝트 심화"
+    ]
+   },
+   "12": {
+    "academic": [
+     "리거 유지"
+    ],
+    "activity": [
+     "비행 로그·개선 기록 정리해 원서 반영"
+    ]
+   }
+  }
+ },
+ "education": {
+  "title": "교육학 (Education)",
+  "ap": [
+   "AP Psychology — 학습·발달의 과학",
+   "AP English Language",
+   "AP Statistics — 교육 데이터",
+   "역사·과학 등 가르치고 싶은 과목의 AP"
+  ],
+  "strong": "'가르쳐 본 기록'이 전부 — 튜터링·교육 콘텐츠·캠프 운영의 누적이 스파이크",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "후배·지역 아동 튜터링 장기 운영(커리큘럼을 직접 설계), 교육 콘텐츠 제작, 학습 격차 프로젝트"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "교육 봉사 프로그램 운영 실적 / 에세이 대회(교육 주제) / 학생 저널"
+   },
+   {
+    "label": "함정",
+    "text": "'애들 좋아함' 수준 — 무엇을 어떻게 가르쳤고 학습자가 어떻게 변했는지 기록이 필요"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "영어·심리 기초"
+    ],
+    "activity": [
+     "튜터링 첫 경험 — 기록 시작"
+    ]
+   },
+   "10": {
+    "academic": [
+     "11학년 AP Psych·English Lang 확정"
+    ],
+    "activity": [
+     "튜터링 정례화 + 커리큘럼 설계"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Psych + English Lang (+Stats)"
+    ],
+    "activity": [
+     "교육 프로그램·캠프 운영으로 확장",
+     "학습자 변화 기록"
+    ]
+   },
+   "12": {
+    "academic": [
+     "리거 유지"
+    ],
+    "activity": [
+     "가르친 시간·학습자 수·변화 기록 정리해 원서 반영"
+    ]
+   }
+  }
+ },
+ "film": {
+  "title": "영화 (Film)",
+  "ap": [
+   "AP English Language/Literature — 스토리텔링 기반",
+   "AP Art History — 시각 언어",
+   "AP Psychology — 인물·서사 이해",
+   "코어 리거 유지 (종합대 영화과는 학업도 봄)"
+  ],
+  "strong": "완성한 작품 수와 꾸준함 — 장비보다 '끝낸 단편'이 중요, 포트폴리오 제출 학교가 많음",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "단편 영화·다큐 완성작(폰으로도 OK), 학교 행사 영상 연출, 시나리오 집필"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "청소년 영화제(All American High School Film Festival 등 — 출품 자격 확인) / Scholastic(영상 부문)"
+   },
+   {
+    "label": "함정",
+    "text": "장비·편집 기술 자랑 — AO와 영화과는 '무슨 이야기를 왜 했는가'를 봄. 미완성 프로젝트 나열"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "영어·스토리 기반 + 코어 리거"
+    ],
+    "activity": [
+     "첫 단편 완성(길이 무관) — 완주 경험"
+    ]
+   },
+   "10": {
+    "academic": [
+     "11학년 English·Art History 설계"
+    ],
+    "activity": [
+     "단편 2~3편 + 학교 영상 연출 맡기"
+    ]
+   },
+   "11": {
+    "academic": [
+     "English Lang (+Art History)"
+    ],
+    "activity": [
+     "영화제 출품",
+     "대표작 기획·촬영"
+    ]
+   },
+   "12": {
+    "academic": [
+     "리거 유지"
+    ],
+    "activity": [
+     "포트폴리오 요건 학교별 확인 + 대표작 완성·편집"
+    ]
+   }
+  }
+ },
+ "music": {
+  "title": "음악 (Music)",
+  "ap": [
+   "AP Music Theory — 전공 직결",
+   "AP English·코어 리거 유지 (종합대 음악과는 학업도 봄)",
+   "AP Psychology — 음악교육·치료 방향이면",
+   "AP Calculus — 음향·테크 방향이면"
+  ],
+  "strong": "실기 완성도와 꾸준한 연주 기록 — 오디션·포트폴리오(녹음)가 사실상 두 번째 원서",
+  "guide": [
+   {
+    "label": "스파이크 유형",
+    "text": "연주회·콩쿠르 누적 기록, 자작곡·편곡 포트폴리오, 앙상블 리더(악장·지휘)"
+   },
+   {
+    "label": "외부 검증 유형",
+    "text": "콩쿠르 / 유스 오케스트라 선발 / 작곡 공모전"
+   },
+   {
+    "label": "함정",
+    "text": "'오래 배움'만 있는 서사 — 무대에 세운 기록과 리더 역할이 필요. 오디션 요건은 학교별로 크게 다름"
+   }
+  ],
+  "roadmap": {
+   "9": {
+    "academic": [
+     "코어 리거 + 음악 이론 기초"
+    ],
+    "activity": [
+     "학교 앙상블 참여 + 연주 기록 시작"
+    ]
+   },
+   "10": {
+    "academic": [
+     "11학년 AP Music Theory 확정"
+    ],
+    "activity": [
+     "콩쿠르·유스 오케스트라 도전",
+     "자작·편곡 시작"
+    ]
+   },
+   "11": {
+    "academic": [
+     "AP Music Theory + 코어 유지"
+    ],
+    "activity": [
+     "앙상블 리더 역할",
+     "오디션 레퍼토리·녹음 준비"
+    ]
+   },
+   "12": {
+    "academic": [
+     "리거 유지"
+    ],
+    "activity": [
+     "학교별 오디션·포트폴리오 요건 확인, 녹음 완성"
+    ]
+   }
+  }
  }
 }

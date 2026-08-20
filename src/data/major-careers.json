@@ -728,5 +728,221 @@
   ],
   "outlook_note_ko": "BLS 기준 통·번역사(2%)와 테크니컬 라이터(1%) 모두 평균보다 느린(slower than average) 성장 전망입니다(2024-34).",
   "grad_note_ko": "언어학 연구자(대학·연구소)가 되려면 보통 대학원(석사·박사) 진학이 필요합니다. 통·번역 등 실무 직군은 학사로 진입 가능합니다."
+ },
+ "economics": {
+  "desc_ko": "돈·시장·사람의 선택을 데이터와 모델로 분석하는 법을 배워요 — 사회과학 중 가장 수학적이에요. 금융, 컨설팅, 정책, 로스쿨 준비까지 폭넓게 이어져요.",
+  "desc_en": "You analyze money, markets and human choices with data and models — the most mathematical social science. Leads broadly to finance, consulting, policy, and law-school prep.",
+  "occupations": [
+   {
+    "title": "Economists",
+    "pay": "$115,440 per year",
+    "pay_year": 2024,
+    "outlook": "+1%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/economists.htm",
+    "note": "Typical entry-level education: Master's degree (some government positions accept a bachelor's; some require a Ph.D.)"
+   },
+   {
+    "title": "Market Research Analysts",
+    "pay": "$76,950 per year",
+    "pay_year": 2024,
+    "outlook": "+7%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/business-and-financial/market-research-analysts.htm",
+    "note": "Typical entry-level education: Bachelor's degree; some employers require or prefer a master's"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Economists 고용은 2024–34년 1% 성장(평균보다 느림) 전망이며, Market Research Analysts는 7% 성장(평균보다 훨씬 빠름) 전망입니다.",
+  "grad_note_ko": "BLS에 따르면 Economists는 일반적으로 최소 석사(Master's) 학위가 필요하며, 일부 정부 직위는 학사로도 진입 가능하고 일부는 박사(Ph.D.)가 필요합니다."
+ },
+ "accounting": {
+  "desc_ko": "기업의 돈 흐름을 기록하고 검증하는 법을 배워요 — 회계 원리, 감사, 세무. 졸업 후 CPA 자격으로 이어지는, 취업이 탄탄한 실용 전공이에요.",
+  "desc_en": "You learn to record and verify how money moves through companies — accounting principles, auditing, tax. A practical, employable major leading to the CPA.",
+  "occupations": [
+   {
+    "title": "Accountants and Auditors",
+    "pay": "$81,680 per year",
+    "pay_year": 2024,
+    "outlook": "+5%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/business-and-financial/accountants-and-auditors.htm",
+    "note": "Typical entry-level education: Bachelor's degree; CPA certification may improve job prospects"
+   },
+   {
+    "title": "Financial Managers",
+    "pay": "$161,700 per year",
+    "pay_year": 2024,
+    "outlook": "+15%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/management/financial-managers.htm",
+    "note": "Bachelor's degree plus 5 years or more of related work experience"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Accountants and Auditors 고용은 2024–34년 5% 성장(평균보다 빠름) 전망이며, Financial Managers는 15% 성장(평균보다 훨씬 빠름) 전망입니다.",
+  "grad_note_ko": null
+ },
+ "neuroscience": {
+  "desc_ko": "뇌와 신경계가 행동을 어떻게 만드는지 배워요 — 생물+심리+화학의 교차점. 연구, 의약, AI 분야로 이어지고 연구자는 보통 대학원(PhD)까지 가요.",
+  "desc_en": "You study how the brain and nervous system produce behavior — bio + psych + chem combined. Leads to research, medicine-adjacent paths, AI; researchers usually go on to a PhD.",
+  "occupations": [
+   {
+    "title": "Medical Scientists",
+    "pay": "$100,590 per year",
+    "pay_year": 2024,
+    "outlook": "+9%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/medical-scientists.htm",
+    "note": "Typical entry-level education: Doctoral or professional degree (typically a Ph.D.; some also or instead hold a medical degree)"
+   },
+   {
+    "title": "Biochemists and Biophysicists",
+    "pay": "$103,650 per year",
+    "pay_year": 2024,
+    "outlook": "+6%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/biochemists-and-biophysicists.htm",
+    "note": "Ph.D. needed for independent research and development; bachelor's/master's qualify for some entry-level positions"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Medical Scientists 고용은 2024–34년 9% 성장(평균보다 훨씬 빠름), Biochemists and Biophysicists는 6% 성장(평균보다 빠름) 전망입니다.",
+  "grad_note_ko": "BLS에 따르면 Medical Scientists는 일반적으로 박사(Ph.D., 보통 생물학 등 생명과학 분야) 학위가 필요하며, Biochemists and Biophysicists도 독립 연구·개발직에는 Ph.D.가 필요합니다."
+ },
+ "biomedical_eng": {
+  "desc_ko": "공학 기술로 의료 문제를 풀어요 — 인공장기, 의료기기, 헬스 데이터. 수학·물리에 생물을 얹은 전공으로, 의료기기 산업과 대학원 연구로 이어져요.",
+  "desc_en": "You solve medical problems with engineering — artificial organs, devices, health data. Math and physics plus biology; leads to the medical-device industry and graduate research.",
+  "occupations": [
+   {
+    "title": "Bioengineers and Biomedical Engineers",
+    "pay": "$106,950 per year",
+    "pay_year": 2024,
+    "outlook": "+5%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/architecture-and-engineering/biomedical-engineers.htm",
+    "note": "Typical entry-level education: Bachelor's degree; some positions require a graduate degree"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Bioengineers and Biomedical Engineers 고용은 2024–34년 5% 성장(평균보다 빠름) 전망입니다.",
+  "grad_note_ko": null
+ },
+ "chemical_eng": {
+  "desc_ko": "실험실의 화학 반응을 공장 규모의 공정으로 바꾸는 법을 배워요 — 에너지, 배터리, 제약, 반도체 산업의 핵심 전공이에요.",
+  "desc_en": "You learn to turn lab reactions into factory-scale processes — a core major for energy, batteries, pharma, and semiconductors.",
+  "occupations": [
+   {
+    "title": "Chemical Engineers",
+    "pay": "$121,860 per year",
+    "pay_year": 2024,
+    "outlook": "+3%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/architecture-and-engineering/chemical-engineers.htm",
+    "note": "Typical entry-level education: Bachelor's degree"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Chemical Engineers 고용은 2024–34년 3% 성장(평균 수준) 전망입니다.",
+  "grad_note_ko": null
+ },
+ "aerospace_eng": {
+  "desc_ko": "비행기와 로켓을 설계하는 법을 배워요 — 공기역학, 추진, 구조, 제어. 항공·우주·방위 산업과 위성·발사체 분야로 이어져요.",
+  "desc_en": "You learn to design aircraft and rockets — aerodynamics, propulsion, structures, control. Leads to aviation, space, defense, satellites and launch vehicles.",
+  "occupations": [
+   {
+    "title": "Aerospace Engineers",
+    "pay": "$134,830 per year",
+    "pay_year": 2024,
+    "outlook": "+6%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/architecture-and-engineering/aerospace-engineers.htm",
+    "note": "Typical entry-level education: Bachelor's degree; defense-related projects may require a security clearance"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Aerospace Engineers 고용은 2024–34년 6% 성장(평균보다 빠름) 전망입니다.",
+  "grad_note_ko": null
+ },
+ "education": {
+  "desc_ko": "사람이 어떻게 배우는지, 그리고 잘 가르치는 법을 배워요 — 교육 심리, 커리큘럼 설계, 실습. 교사, 교육 콘텐츠, 에듀테크로 이어져요.",
+  "desc_en": "You study how people learn and how to teach well — educational psychology, curriculum design, practicum. Leads to teaching, education content, and edtech.",
+  "occupations": [
+   {
+    "title": "High School Teachers",
+    "pay": "$64,580 per year",
+    "pay_year": 2024,
+    "outlook": "-2%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm",
+    "note": "Bachelor's degree; public school teachers need state-issued certification or license"
+   },
+   {
+    "title": "Kindergarten and Elementary School Teachers",
+    "pay": "$62,310 per year",
+    "pay_year": 2024,
+    "outlook": "-2%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/education-training-and-library/kindergarten-and-elementary-school-teachers.htm",
+    "note": "Bachelor's degree; public school teachers need state-issued certification or license"
+   },
+   {
+    "title": "School and Career Counselors and Advisors",
+    "pay": "$65,140 per year",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/community-and-social-service/school-and-career-counselors.htm",
+    "note": "Typical entry-level education: Master's degree (most school counselors need a master's in school counseling or a related field plus a state credential)"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 High School Teachers와 Kindergarten and Elementary School Teachers 고용은 2024–34년 각각 2% 감소 전망이지만, 은퇴·이직 대체 수요로 매년 다수의 채용 기회가 예상됩니다. School and Career Counselors and Advisors는 4% 성장(평균 수준) 전망입니다.",
+  "grad_note_ko": "BLS에 따르면 School and Career Counselors and Advisors 진입에는 일반적으로 석사(Master's) 학위가 필요합니다. 교사(초·중·고)는 학사 학위와 주(州) 발급 교사 자격이 기본입니다."
+ },
+ "film": {
+  "desc_ko": "이야기를 영상으로 만드는 전 과정을 배워요 — 시나리오, 연출, 촬영, 편집. 영화·방송·스트리밍·광고 산업으로 이어지고, 포트폴리오(완성작)가 핵심이에요.",
+  "desc_en": "You learn the whole craft of telling stories on screen — writing, directing, shooting, editing. Leads to film, TV, streaming and advertising; the portfolio of finished work is key.",
+  "occupations": [
+   {
+    "title": "Producers and Directors",
+    "pay": "$83,480 per year",
+    "pay_year": 2024,
+    "outlook": "+5%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/entertainment-and-sports/producers-and-directors.htm",
+    "note": "Bachelor's degree plus several years of on-set work experience typical"
+   },
+   {
+    "title": "Film and Video Editors and Camera Operators",
+    "pay": "$70,570 per year",
+    "pay_year": 2024,
+    "outlook": "+3%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/media-and-communication/film-and-video-editors-and-camera-operators.htm",
+    "note": "Typical entry-level education: Bachelor's degree in a field related to film or broadcasting"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Producers and Directors 고용은 2024–34년 5% 성장(평균보다 빠름), Film and Video Editors and Camera Operators는 3% 성장(평균 수준) 전망입니다.",
+  "grad_note_ko": null
+ },
+ "music": {
+  "desc_ko": "연주·작곡·음악 이론을 깊이 훈련해요 — 오디션이 사실상 두 번째 원서예요. 연주자, 작곡가, 음악 교육, 음향·미디어 산업으로 이어져요.",
+  "desc_en": "Deep training in performance, composition and theory — the audition is effectively a second application. Leads to performing, composing, music education, and audio/media.",
+  "occupations": [
+   {
+    "title": "Musicians and Singers",
+    "pay": "$42.45 per hour",
+    "pay_year": 2024,
+    "outlook": "+1%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/entertainment-and-sports/musicians-and-singers.htm",
+    "note": "BLS reports an hourly (not annual) median wage; no formal educational credential typically required, part-time work common"
+   },
+   {
+    "title": "Music Directors and Composers",
+    "pay": "$63,670 per year",
+    "pay_year": 2024,
+    "outlook": "0%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/entertainment-and-sports/music-directors-and-composers.htm",
+    "note": "Typically at least a bachelor's degree, though education requirements vary; most positions require related work experience"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Musicians and Singers 고용은 2024–34년 1% 성장(평균보다 느림), Music Directors and Composers는 거의 변동 없음(0%) 전망입니다. 두 직업 모두 파트타임 근무가 흔합니다.",
+  "grad_note_ko": null
  }
 }
