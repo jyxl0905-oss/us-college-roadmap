@@ -120,6 +120,20 @@ export default function ComparePage({ profile }: ComparePageProps) {
         ]
       : []),
     {
+      // 재정지원: 국제학생 CDS H6 평균 (데이터 있으면)
+      label: t('국제학생 평균 지원', 'Avg. intl aid'),
+      render: (s) =>
+        s.intl_aid_count != null && s.intl_aid_count > 0 && s.intl_aid_avg != null ? (
+          <span className="text-xs">
+            ${s.intl_aid_avg.toLocaleString('en-US')} <span className="text-gray-400">({s.intl_aid_count.toLocaleString()}{t('명', '')}{s.intl_aid_year ? ` · ${s.intl_aid_year}` : ''})</span>
+          </span>
+        ) : s.intl_aid_count === 0 ? (
+          <span className="text-xs text-gray-400">{t('기록 없음', 'None reported')}</span>
+        ) : (
+          <span className="text-gray-400">{t('미확인', 'Not verified')}</span>
+        ),
+    },
+    {
       // F3 데이터 연동: 마감 유형·시기 요약
       label: t('지원 마감', 'Deadlines'),
       render: (s) => {

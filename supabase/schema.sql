@@ -384,3 +384,15 @@ create table if not exists feedback (
 );
 alter table feedback enable row level security;
 create policy "insert own feedback" on feedback for insert to authenticated with check (auth.uid() = user_id);
+
+-- 재정지원·장학금 (공식 출처: CDS H6·학교 재정지원 페이지) — null=미확인, 지원 신분에 따라 화면 분기
+alter table schools
+  add column if not exists intl_aid_count int,        -- CDS H6: 지원받은 국제학생 수
+  add column if not exists intl_aid_avg int,          -- CDS H6: 평균 지원액($)
+  add column if not exists intl_aid_year text,        -- CDS 연도 (예: 2024-25)
+  add column if not exists meets_full_need_intl boolean, -- 국제학생 포함 need 100% 충족 공식 명시
+  add column if not exists merit_intl text,           -- 국제학생 지원 가능 메리트 장학금 이름들
+  add column if not exists meets_full_need_all boolean,  -- (국내) need 100% 충족
+  add column if not exists no_loan boolean,           -- (국내) 무대출 정책
+  add column if not exists merit_note text,           -- 주요 메리트 프로그램 이름들
+  add column if not exists aid_source_url text;

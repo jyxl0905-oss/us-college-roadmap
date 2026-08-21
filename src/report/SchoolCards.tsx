@@ -3,15 +3,17 @@ import type { School } from '../lib/types'
 import { satBandMid } from '../lib/score'
 import SchoolLogo from '../browse/SchoolLogo'
 import { t } from '../i18n'
+import AidBlock from '../browse/AidBlock'
 
 interface SchoolCardsProps {
   schools: School[]
   satBand: string | null // 프로필 SAT 밴드 (응시한 경우만)
   majorPrimary: string | null
+  aidStatus?: 'intl' | 'domestic' | null // 재정지원 한 줄 표시용 (지원 신분)
 }
 
 // 목표 학교 카드 (모바일 우선이라 테이블 대신 카드 목록)
-export default function SchoolCards({ schools, satBand, majorPrimary }: SchoolCardsProps) {
+export default function SchoolCards({ schools, satBand, majorPrimary, aidStatus = null }: SchoolCardsProps) {
   const mySat = satBand ? (satBandMid[satBand] ?? null) : null
 
   return (
@@ -105,6 +107,7 @@ export default function SchoolCards({ schools, satBand, majorPrimary }: SchoolCa
               </p>
             )}
 
+            {aidStatus !== null && <div className="mt-2"><AidBlock school={s} status={aidStatus} compact /></div>}
             {s.what_they_value && s.what_they_value !== 'PLACEHOLDER' && (
               <p className="mt-2 text-xs leading-relaxed text-gray-500">
                 <span className="font-medium text-gray-600">{t('이 학교가 보는 것:', 'What this school looks for:')}</span>{' '}

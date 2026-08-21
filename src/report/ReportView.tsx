@@ -543,6 +543,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
               schools={schools}
               satBand={profile.sat_status === 'taken' ? profile.sat_band : null}
               majorPrimary={profile.major_primary}
+              aidStatus={profile.applicant_status === 'domestic' ? 'domestic' : 'intl'}
             />
           </div>
         </div>

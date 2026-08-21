@@ -120,6 +120,16 @@ export interface School {
   // F4: CDS C7에서 Very Important로 공시된 요소 슬러그 (null = 미확인/미공시)
   c7_very_important?: string[] | null
   c7_source_url?: string | null
+  // 재정지원 (공식: CDS H6·학교 페이지)
+  intl_aid_count?: number | null
+  intl_aid_avg?: number | null
+  intl_aid_year?: string | null
+  meets_full_need_intl?: boolean | null
+  merit_intl?: string | null
+  meets_full_need_all?: boolean | null
+  no_loan?: boolean | null
+  merit_note?: string | null
+  aid_source_url?: string | null
 }
 
 export interface ChecklistItem {

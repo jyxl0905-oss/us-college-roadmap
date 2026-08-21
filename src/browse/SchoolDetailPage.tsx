@@ -4,6 +4,7 @@ import { loadSchools } from '../lib/schoolsCache'
 import { navigate, slugify } from '../lib/router'
 import { majorLabel } from '../data/majors'
 import { saveProfile, type ProfileRow } from '../lib/profile'
+import AidBlock from './AidBlock'
 import { setPrefillSchoolIds } from './prefill'
 import SchoolLogo from './SchoolLogo'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
@@ -135,6 +136,11 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
                 {t('공식 출처 보기 ↗', 'View official source ↗')}
               </a>
             )}
+
+        {/* 💰 재정지원 — 지원 신분에 맞는 부분만 */}
+        <div className="mt-4">
+          <AidBlock school={s} status={profile ? (profile.applicant_status === 'domestic' ? 'domestic' : 'intl') : null} />
+        </div>
           </div>
         )}
 
