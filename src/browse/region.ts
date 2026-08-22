@@ -39,6 +39,8 @@ const KEYWORD_REGION: [string, Region][] = [
   ['펜실베이니아', 'northeast'], ['Pennsylvania', 'northeast'], [', PA', 'northeast'],
   ['필라델피아', 'northeast'], ['Philadelphia', 'northeast'],
   ['피츠버그', 'northeast'], ['Pittsburgh', 'northeast'],
+  ['메인', 'northeast'], ['Maine', 'northeast'], [', ME', 'northeast'],
+  ['버몬트', 'northeast'], ['Vermont', 'northeast'], [', VT', 'northeast'],
   // 남부 (South)
   ['노스캐롤라이나', 'south'], ['North Carolina', 'south'],
   ['메릴랜드', 'south'], ['Maryland', 'south'],
@@ -52,7 +54,13 @@ const KEYWORD_REGION: [string, Region][] = [
   ['휴스턴', 'south'], ['Houston', 'south'],
   ['테네시', 'south'], ['Tennessee', 'south'],
   ['내슈빌', 'south'], ['Nashville', 'south'],
+  ['켄터키', 'south'], ['Kentucky', 'south'],
   // 중서부 (Midwest)
+  ['미네소타', 'midwest'], ['Minnesota', 'midwest'],
+  ['아이오와', 'midwest'], ['Iowa', 'midwest'],
+  ['오하이오', 'midwest'], ['Ohio', 'midwest'],
+  ['위스콘신', 'midwest'], ['Wisconsin', 'midwest'],
+  ['미시간', 'midwest'], ['Michigan', 'midwest'],
   ['일리노이', 'midwest'], ['Illinois', 'midwest'],
   ['시카고', 'midwest'], ['Chicago', 'midwest'],
   ['인디애나', 'midwest'], ['Indiana', 'midwest'],
@@ -64,6 +72,7 @@ const KEYWORD_REGION: [string, Region][] = [
   ['미네소타', 'midwest'], ['Minnesota', 'midwest'],
   // 서부 (West)
   ['캘리포니아', 'west'], ['California', 'west'], [', CA', 'west'],
+  ['콜로라도', 'west'], ['Colorado', 'west'], [', CO', 'west'],
   ['로스앤젤레스', 'west'], ['Los Angeles', 'west'],
   ['패서디나', 'west'], ['Pasadena', 'west'],
   ['버클리', 'west'], ['Berkeley', 'west'],
