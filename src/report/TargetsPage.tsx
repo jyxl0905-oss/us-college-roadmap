@@ -28,7 +28,7 @@ export default function TargetsPage({ profile }: { profile: ProfileRow }) {
 
   return (
     <div className="min-h-dvh bg-gray-50">
-      <div className="mx-auto max-w-md px-5 py-6">
+      <div className="mx-auto max-w-md px-5 py-6 lg:max-w-5xl">
         <div className="flex items-baseline justify-between gap-2">
           <h1 className="text-xl font-bold text-gray-900">🎯 {t('내 목표 학교', 'My target schools')}</h1>
           <span className="text-xs text-gray-400">
