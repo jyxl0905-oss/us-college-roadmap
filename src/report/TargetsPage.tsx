@@ -63,15 +63,18 @@ export default function TargetsPage({ profile }: { profile: ProfileRow }) {
                 📋 {t('지원 라운드 정하기', 'Set rounds')}
               </button>
             </div>
-            <div className="mt-4">
-              <AidRanking schools={schools} status={profile.applicant_status === 'domestic' ? 'domestic' : 'intl'} />
-            </div>
-            <div className="mt-4">
+            {/* 데스크톱(md+): 왼쪽 = 재정지원 순위(고정), 오른쪽 = 목표 학교 카드 — 모바일은 세로 */}
+            <div className="mt-4 md:grid md:grid-cols-5 md:items-start md:gap-6">
+              <div className="md:col-span-2 md:sticky md:top-16">
+                <AidRanking schools={schools} status={profile.applicant_status === 'domestic' ? 'domestic' : 'intl'} />
+              </div>
+              <div className="mt-4 md:col-span-3 md:mt-0">
               <SchoolCards
                 schools={schools}
                 satBand={profile.sat_status === 'taken' ? profile.sat_band : null}
                 majorPrimary={profile.major_primary}
               />
+            </div>
             </div>
             <p className="mt-4 text-xs text-gray-400">
               {t('학교 추가·제거는 둘러보기의 각 학교 카드에서, Reach/Match/Safety와 라운드는 내 원서 → 지원에서 정해요.', 'Add or remove schools from each card in Browse; set Reach/Match/Safety and rounds in My App → Colleges.')}
