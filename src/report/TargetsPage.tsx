@@ -6,6 +6,7 @@ import type { ProfileRow } from '../lib/profile'
 import type { School } from '../lib/types'
 import { tierLabels } from '../onboarding/labels'
 import SchoolCards from './SchoolCards'
+import AidRanking from './AidRanking'
 
 // 목표 학교 전용 페이지 — 상단 바에서 바로 진입 (리포트 스크롤 없이). 카드 내용은 리포트의 목표 학교 섹션과 동일
 export default function TargetsPage({ profile }: { profile: ProfileRow }) {
@@ -61,6 +62,9 @@ export default function TargetsPage({ profile }: { profile: ProfileRow }) {
               <button onClick={() => navigate('/app/colleges')} className="rounded-full border-2 border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700 active:bg-blue-100">
                 📋 {t('지원 라운드 정하기', 'Set rounds')}
               </button>
+            </div>
+            <div className="mt-4">
+              <AidRanking schools={schools} status={profile.applicant_status === 'domestic' ? 'domestic' : 'intl'} />
             </div>
             <div className="mt-4">
               <SchoolCards

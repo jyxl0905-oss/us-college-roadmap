@@ -656,6 +656,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
               ✅ {t('이번 시즌 체크리스트', 'This season’s checklist')} <span className="text-xs text-gray-400">{commonItems.concat(intlItems).filter((i) => checkedIds.has(i.id)).length}/{commonItems.length + intlItems.length}</span>
             </button>
           )}
+          <button onClick={() => navigate('/targets')} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">🎯 {t('목표 학교 · 💰 재정지원 순위', 'Targets · 💰 aid ranking')}</button>
           <button onClick={() => navigate('/deadlines')} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">🗓️ {t('마감 캘린더', 'Deadline calendar')}</button>
           <button onClick={() => navigate(`/major/${profile.major_primary ?? 'undecided'}`)} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">🗺️ {t('전공 가이드 맵', 'Major guide map')}</button>
           <button onClick={onOpenGuide} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">📚 {t('입시 기본기 · 용어집', 'Basics · glossary')}</button>
