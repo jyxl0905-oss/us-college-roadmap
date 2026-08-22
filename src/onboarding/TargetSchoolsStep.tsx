@@ -57,7 +57,7 @@ export default function TargetSchoolsStep({ selectedIds, onChange, onNext }: Tar
                   <span className="min-w-0">
                     <span className="block font-medium text-gray-900">{s.name}</span>
                     <span className="block text-sm text-gray-500">
-                      {t(`${s.name_ko} · `, '')}US News #{s.usnews_rank}
+                      {t(`${s.name_ko} · `, '')}{s.kind === 'lac' ? `LAC #${s.lac_rank ?? '–'}` : `US News #${s.usnews_rank}`}
                     </span>
                   </span>
                 </span>

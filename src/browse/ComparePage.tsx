@@ -86,7 +86,7 @@ export default function ComparePage({ profile }: ComparePageProps) {
     v === null ? <span className="text-gray-400">{t('미공개', 'Not disclosed')}</span> : v ? yes : no
 
   const rows: { label: string; render: (s: School) => React.ReactNode }[] = [
-    { label: t('티어', 'Tier'), render: (s) => tierTitles[s.tier] },
+    { label: t('티어', 'Tier'), render: (s) => (s.kind === 'lac' ? `LAC #${s.lac_rank ?? '–'}` : tierTitles[s.tier]) },
     { label: t('SAT 중간 50%', 'SAT middle 50%'), render: satCell },
     {
       label: t('국제학생 합격률', 'Intl. accept rate'),

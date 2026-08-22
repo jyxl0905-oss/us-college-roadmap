@@ -396,3 +396,7 @@ alter table schools
   add column if not exists no_loan boolean,           -- (국내) 무대출 정책
   add column if not exists merit_note text,           -- 주요 메리트 프로그램 이름들
   add column if not exists aid_source_url text;
+
+-- 학교 종류: 종합대(university) / 리버럴 아츠 칼리지(lac). LAC는 US News LAC 순위(lac_rank)로 티어 매핑(1-12→1, 13-24→2, 25-35→3)
+alter table schools add column if not exists kind text not null default 'university' check (kind in ('university','lac'));
+alter table schools add column if not exists lac_rank int;

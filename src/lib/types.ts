@@ -120,6 +120,8 @@ export interface School {
   // F4: CDS C7에서 Very Important로 공시된 요소 슬러그 (null = 미확인/미공시)
   c7_very_important?: string[] | null
   c7_source_url?: string | null
+  kind?: 'university' | 'lac' // 학교 종류 (기본 university)
+  lac_rank?: number | null // LAC 순위 (US News National Liberal Arts Colleges)
   // 재정지원 (공식: CDS H6·학교 페이지)
   intl_aid_count?: number | null
   intl_aid_avg?: number | null

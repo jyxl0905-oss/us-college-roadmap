@@ -13,6 +13,10 @@ const tierTitles: Record<Tier, string> = bilingual(
   { 1: 'Top 20', 2: '21–40위', 3: '41–60위' },
   { 1: 'Top 20', 2: 'Ranked 21–40', 3: 'Ranked 41–60' },
 )
+const lacTierTitles: Record<Tier, string> = bilingual(
+  { 1: 'LAC Top 12', 2: 'LAC 13–24위', 3: 'LAC 25–35위' },
+  { 1: 'LAC Top 12', 2: 'LAC ranked 13–24', 3: 'LAC ranked 25–35' },
+)
 
 interface SchoolsListPageProps {
   profile: ProfileRow | null // 로그인 시 전공 direct-admit 필터 노출
@@ -22,6 +26,8 @@ interface SchoolsListPageProps {
 export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
   const [schools, setSchools] = useState<School[]>([])
   const [query, setQuery] = useState('')
+  const [kind, setKind] = useState<'university' | 'lac'>('university') // 종합대 / 리버럴 아츠 칼리지
+  const [lacInfoOpen, setLacInfoOpen] = useState(false)
   const [sortByIntl, setSortByIntl] = useState(false)
   const [needBlindOnly, setNeedBlindOnly] = useState(false)
   const [testPolicy, setTestPolicy] = useState<'all' | 'test-required' | 'test-optional' | 'test-free'>('all')
@@ -43,6 +49,7 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
     return schools.filter((s) => {
+      if ((s.kind ?? 'university') !== kind) return false
       if (q && !s.name.toLowerCase().includes(q) && !s.name_ko.toLowerCase().includes(q)) return false
       if (needBlindOnly && s.need_blind_intl !== true) return false
       if (testPolicy !== 'all' && s.test_policy !== testPolicy) return false
@@ -50,14 +57,14 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
       if (directAdmitMine && myMajor && !s.direct_admit_majors.includes(majorParent(myMajor) as string)) return false
       return true
     })
-  }, [schools, query, needBlindOnly, testPolicy, region, directAdmitMine, myMajor])
+  }, [schools, kind, query, needBlindOnly, testPolicy, region, directAdmitMine, myMajor])
 
   const groups: Tier[] = [1, 2, 3]
   const sortGroup = (list: School[]) =>
     [...list].sort((a, b) =>
       sortByIntl
         ? (b.intl_accept_rate ?? -1) - (a.intl_accept_rate ?? -1)
-        : a.usnews_rank - b.usnews_rank,
+        : (kind === 'lac' ? (a.lac_rank ?? 999) - (b.lac_rank ?? 999) : a.usnews_rank - b.usnews_rank),
     )
 
   const chip = (on: boolean) =>
@@ -82,6 +89,46 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
           placeholder={t('학교 이름 검색 (예: NYU, 하버드)', 'Search schools (e.g., NYU, Harvard)')}
           className="mt-4 w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-base focus:border-blue-600 focus:outline-none"
         />
+
+        {/* 종합대 / 리버럴 아츠 칼리지 전환 */}
+        {schools.some((s) => s.kind === 'lac') && (
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            <button onClick={() => setKind('university')} className={`rounded-xl border-2 px-3 py-2.5 text-sm font-semibold ${kind === 'university' ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-700'}`}>
+              {t('종합대학', 'Universities')} <span className="ml-1 text-xs font-normal opacity-70">{schools.filter((s) => (s.kind ?? 'university') === 'university').length}</span>
+            </button>
+            <button onClick={() => setKind('lac')} className={`rounded-xl border-2 px-3 py-2.5 text-sm font-semibold ${kind === 'lac' ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-700'}`}>
+              {t('리버럴 아츠 칼리지', 'Liberal Arts Colleges')} <span className="ml-1 text-xs font-normal opacity-70">{schools.filter((s) => s.kind === 'lac').length}</span>
+            </button>
+          </div>
+        )}
+        {schools.some((s) => s.kind === 'lac') && (
+          <div className="mt-2 rounded-xl border border-gray-200 bg-white">
+            <button onClick={() => setLacInfoOpen((v) => !v)} className="flex w-full items-center justify-between px-3.5 py-2.5 text-left text-sm font-medium text-gray-800">
+              <span>🎓 {t('종합대학 vs 리버럴 아츠 칼리지 — 뭐가 다른가요?', 'Universities vs Liberal Arts Colleges — what’s the difference?')}</span>
+              <span className="text-gray-400">{lacInfoOpen ? '▴' : '▾'}</span>
+            </button>
+            {lacInfoOpen && (
+              <div className="border-t border-gray-100 px-3.5 pb-3.5 pt-2 text-sm leading-relaxed text-gray-700">
+                <p>{t('리버럴 아츠 칼리지(LAC)는 학부 교육에만 집중하는 소규모 대학이에요. 대학원·전문대학원이 거의 없고, 학생 수가 보통 1,500~3,000명이라 교수가 직접 가르치고 수업도 작아요. "유명한 대학"만 찾다가 놓치기 쉬운데, 미국 안에서는 종합대 못지않게 인정받아요.', 'Liberal arts colleges (LACs) are small schools focused entirely on undergraduate teaching. They have few or no graduate/professional schools, usually 1,500–3,000 students, professors teach classes themselves, and classes are small. Easy to miss if you only look for famous names — but well respected within the US.')}</p>
+                <div className="mt-2 overflow-x-auto">
+                  <table className="w-full min-w-[420px] text-xs">
+                    <thead><tr className="text-left text-gray-400"><th className="py-1 pr-2"></th><th className="pr-2">{t('종합대학', 'University')}</th><th>{t('리버럴 아츠 칼리지', 'LAC')}</th></tr></thead>
+                    <tbody className="[&_td]:py-1 [&_td]:pr-2 [&_td]:align-top">
+                      <tr className="border-t border-gray-100"><td className="font-medium text-gray-500">{t('규모', 'Size')}</td><td>{t('학부 5,000~40,000명 + 대학원', '5,000–40,000 undergrads + grad schools')}</td><td>{t('학부 1,500~3,000명, 대학원 거의 없음', '1,500–3,000 undergrads, few/no grad schools')}</td></tr>
+                      <tr className="border-t border-gray-100"><td className="font-medium text-gray-500">{t('수업', 'Classes')}</td><td>{t('대형 강의 + 조교(TA) 세션 많음', 'Large lectures + TA sections common')}</td><td>{t('소규모 토론식, 교수가 직접', 'Small, discussion-based, taught by professors')}</td></tr>
+                      <tr className="border-t border-gray-100"><td className="font-medium text-gray-500">{t('전공', 'Majors')}</td><td>{t('공학·간호·경영 등 전문 단과대 많음', 'Many professional schools: engineering, nursing, business')}</td><td>{t('기초 학문 중심(수학·과학·인문·사회). 공학·경영 학부는 드묾(예외 있음)', 'Core disciplines (math, sciences, humanities, social sciences). Engineering/business rare (with exceptions)')}</td></tr>
+                      <tr className="border-t border-gray-100"><td className="font-medium text-gray-500">{t('연구', 'Research')}</td><td>{t('대학원생 중심 연구실, 학부생 참여는 경쟁', 'Grad-student-led labs; undergrad spots competitive')}</td><td>{t('학부생이 교수 연구에 직접 참여하기 쉬움', 'Undergrads easily join faculty research')}</td></tr>
+                      <tr className="border-t border-gray-100"><td className="font-medium text-gray-500">{t('졸업 후', 'After graduation')}</td><td>{t('취업 브랜드·동문 네트워크 큼', 'Big brand recognition & alumni network')}</td><td>{t('대학원(PhD·의대·로스쿨) 진학률 높음, 미국 내 평판 좋음', 'High PhD/med/law school placement; strong US reputation')}</td></tr>
+                      <tr className="border-t border-gray-100"><td className="font-medium text-gray-500">{t('국제학생 지원금', 'Intl. aid')}</td><td>{t('학교마다 큰 차이 (주립대는 거의 없음)', 'Varies widely (publics: almost none)')}</td><td>{t('상위권은 후한 편 — 일부는 국제학생 need-blind', 'Top LACs are generous — some need-blind for internationals')}</td></tr>
+                      <tr className="border-t border-gray-100"><td className="font-medium text-gray-500">{t('한국 인지도', 'Recognition in Korea')}</td><td>{t('높음', 'High')}</td><td>{t('낮음 — 설명이 필요할 수 있음', 'Low — you may need to explain it')}</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-2 text-xs text-gray-500">{t('이런 학생에게 맞아요: 작은 수업·교수와의 관계를 중시하거나, 전공을 넓게 탐색하고 싶거나, 대학원 진학을 생각하거나, 국제학생 재정지원이 중요한 경우. 반대로 공학·간호처럼 전문 학부가 필요하면 종합대가 맞아요. LAC 순위는 US News의 별도 랭킹(National Liberal Arts Colleges)이라 종합대 순위와 직접 비교되지 않아요.', 'A fit if you value small classes and close faculty relationships, want to explore majors broadly, plan on grad school, or need international financial aid. If you need a professional program (engineering, nursing), a university fits better. LAC ranks come from US News’ separate National Liberal Arts Colleges list and are not directly comparable to university ranks.')}</p>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* 필터 칩 */}
         <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
@@ -136,7 +183,7 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
           if (list.length === 0) return null
           return (
             <div key={tier} className="mt-6">
-              <h2 className="font-semibold text-gray-900">{tierTitles[tier]}</h2>
+              <h2 className="font-semibold text-gray-900">{kind === 'lac' ? lacTierTitles[tier] : tierTitles[tier]}</h2>
               <div className="mt-3 flex flex-col gap-2.5">
                 {list.map((s) => (
                   <button
@@ -170,7 +217,7 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
                     </span>
                     <span className="mt-2 flex flex-wrap gap-1.5 text-xs">
                       <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
-                        {tierTitles[s.tier]}
+                        {s.kind === 'lac' ? `LAC #${s.lac_rank ?? '–'}` : tierTitles[s.tier]}
                       </span>
                       {s.intl_accept_rate !== null && (
                         <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">

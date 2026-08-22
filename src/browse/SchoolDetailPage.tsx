@@ -89,7 +89,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
             ←
           </button>
           <span className="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-600">
-            {tierTitles[s.tier]}
+            {s.kind === 'lac' ? `🎓 LAC #${s.lac_rank ?? '–'}` : tierTitles[s.tier]}
           </span>
         </div>
 
