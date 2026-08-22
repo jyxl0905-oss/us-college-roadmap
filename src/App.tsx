@@ -508,7 +508,7 @@ function AppRoutes() {
     return (
       <Screen>
         <div className="py-10 text-center">
-          <p className="text-5xl">🎓</p>
+          <img src="/icons/icon-192.png" alt="" width={72} height={72} className="mx-auto h-[72px] w-[72px] rounded-2xl shadow-sm" />
           <h1 className="mt-5 text-2xl font-bold text-gray-900">{t('미국 대학 입시 로드맵', 'US College Roadmap')}</h1>
           <p className="mt-3 text-sm leading-relaxed text-gray-500">
             {t('학년·전공·목표 학교에 맞는 시즌별 체크리스트로', 'Season-by-season checklists tailored to your grade, major and target schools —')}

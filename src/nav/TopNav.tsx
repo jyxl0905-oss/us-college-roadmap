@@ -45,7 +45,7 @@ export default function TopNav() {
     <header className="no-print sticky top-0 z-40 border-b border-gray-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center gap-1 overflow-x-auto px-3 py-2">
         <button onClick={() => navigate('/')} className="mr-1 flex shrink-0 items-center gap-1.5 rounded-lg px-1.5 py-1 text-sm font-bold text-gray-900">
-          🎓 <span className="hidden sm:inline">{t('미국 대입 로드맵', 'US College Roadmap')}</span>
+          <img src="/icons/favicon-64.png" alt="" width={20} height={20} className="h-5 w-5 rounded-md" /> <span className="hidden sm:inline">{t('미국 대입 로드맵', 'US College Roadmap')}</span>
         </button>
         {links.map((l) => (
           <button
