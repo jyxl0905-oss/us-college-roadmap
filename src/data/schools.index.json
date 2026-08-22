@@ -5,7 +5,8 @@
   "name_ko": "프린스턴 대학교",
   "usnews_rank": 1,
   "tier": 1,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 2,
@@ -13,7 +14,8 @@
   "name_ko": "매사추세츠 공과대학교 (MIT)",
   "usnews_rank": 2,
   "tier": 1,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 3,
@@ -21,7 +23,8 @@
   "name_ko": "하버드 대학교",
   "usnews_rank": 3,
   "tier": 1,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 4,
@@ -29,7 +32,8 @@
   "name_ko": "스탠퍼드 대학교",
   "usnews_rank": 4,
   "tier": 1,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 5,
@@ -37,7 +41,8 @@
   "name_ko": "예일 대학교",
   "usnews_rank": 4,
   "tier": 1,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 6,
@@ -45,7 +50,8 @@
   "name_ko": "시카고대학교",
   "usnews_rank": 6,
   "tier": 1,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 7,
@@ -55,7 +61,8 @@
   "tier": 1,
   "direct_admit_majors": [
    "engineering"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 8,
@@ -65,7 +72,8 @@
   "tier": 1,
   "direct_admit_majors": [
    "engineering"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 9,
@@ -77,7 +85,8 @@
    "engineering",
    "arts",
    "social_sci"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 10,
@@ -89,7 +98,8 @@
    "business",
    "engineering",
    "nursing"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 11,
@@ -97,7 +107,8 @@
   "name_ko": "캘리포니아 공과대학교(칼텍)",
   "usnews_rank": 11,
   "tier": 1,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 12,
@@ -115,7 +126,8 @@
    "math_data",
    "natural_sci",
    "social_sci"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 13,
@@ -123,7 +135,8 @@
   "name_ko": "브라운대학교",
   "usnews_rank": 13,
   "tier": 1,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 14,
@@ -131,7 +144,8 @@
   "name_ko": "다트머스칼리지",
   "usnews_rank": 13,
   "tier": 1,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 15,
@@ -141,7 +155,8 @@
   "tier": 1,
   "direct_admit_majors": [
    "engineering"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 16,
@@ -155,7 +170,8 @@
    "cs",
    "engineering",
    "math_data"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 17,
@@ -166,7 +182,8 @@
   "direct_admit_majors": [
    "architecture",
    "arts"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 18,
@@ -180,7 +197,8 @@
    "engineering",
    "nursing",
    "premed"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 19,
@@ -191,7 +209,8 @@
   "direct_admit_majors": [
    "engineering",
    "arts"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 20,
@@ -209,7 +228,8 @@
    "math_data",
    "natural_sci",
    "social_sci"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 21,
@@ -223,7 +243,8 @@
    "business",
    "engineering",
    "nursing"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 22,
@@ -233,7 +254,8 @@
   "tier": 1,
   "direct_admit_majors": [
    "business"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 23,
@@ -246,7 +268,8 @@
    "arts",
    "business",
    "engineering"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 24,
@@ -254,7 +277,8 @@
   "name_ko": "에모리 대학교",
   "usnews_rank": 24,
   "tier": 2,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 25,
@@ -267,7 +291,8 @@
    "nursing",
    "premed",
    "social_sci"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 26,
@@ -277,7 +302,8 @@
   "tier": 2,
   "direct_admit_majors": [
    "business"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 27,
@@ -292,7 +318,8 @@
    "engineering",
    "nursing",
    "premed"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 28,
@@ -306,7 +333,8 @@
    "business",
    "cs",
    "engineering"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 29,
@@ -319,7 +347,8 @@
    "engineering",
    "math_data",
    "premed"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 30,
@@ -327,7 +356,8 @@
   "name_ko": "플로리다대학교",
   "usnews_rank": 30,
   "tier": 2,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 31,
@@ -347,7 +377,8 @@
    "nursing",
    "premed",
    "social_sci"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 32,
@@ -355,7 +386,8 @@
   "name_ko": "조지아공과대학교 (조지아텍)",
   "usnews_rank": 32,
   "tier": 2,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 33,
@@ -368,7 +400,8 @@
    "business",
    "engineering",
    "nursing"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 34,
@@ -384,7 +417,8 @@
    "social_sci",
    "humanities",
    "arts"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 35,
@@ -403,7 +437,8 @@
    "nursing",
    "premed",
    "social_sci"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 36,
@@ -415,7 +450,8 @@
    "business",
    "nursing",
    "premed"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 37,
@@ -426,7 +462,8 @@
   "direct_admit_majors": [
    "engineering",
    "arts"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 38,
@@ -444,7 +481,8 @@
    "math_data",
    "natural_sci",
    "social_sci"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 39,
@@ -455,7 +493,8 @@
   "direct_admit_majors": [
    "engineering",
    "business"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 40,
@@ -466,7 +505,8 @@
   "direct_admit_majors": [
    "cs",
    "engineering"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 41,
@@ -477,7 +517,8 @@
   "direct_admit_majors": [
    "architecture",
    "nursing"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 42,
@@ -491,7 +532,8 @@
    "arts",
    "cs",
    "math_data"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 43,
@@ -506,7 +548,8 @@
    "natural_sci",
    "nursing",
    "premed"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 44,
@@ -522,7 +565,8 @@
    "engineering",
    "natural_sci",
    "social_sci"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 45,
@@ -538,7 +582,8 @@
    "engineering",
    "math_data",
    "natural_sci"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 46,
@@ -546,7 +591,8 @@
   "name_ko": "리하이 대학교",
   "usnews_rank": 46,
   "tier": 3,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 47,
@@ -557,7 +603,8 @@
   "direct_admit_majors": [
    "architecture",
    "nursing"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 48,
@@ -576,7 +623,8 @@
    "nursing",
    "premed",
    "social_sci"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 49,
@@ -584,7 +632,8 @@
   "name_ko": "조지아 대학교",
   "usnews_rank": 46,
   "tier": 3,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 50,
@@ -592,7 +641,8 @@
   "name_ko": "로체스터 대학교",
   "usnews_rank": 46,
   "tier": 3,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 51,
@@ -602,7 +652,8 @@
   "tier": 3,
   "direct_admit_majors": [
    "nursing"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 52,
@@ -610,7 +661,8 @@
   "name_ko": "플로리다 주립 대학교",
   "usnews_rank": 51,
   "tier": 3,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 53,
@@ -622,7 +674,8 @@
    "architecture",
    "cs",
    "engineering"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 54,
@@ -641,7 +694,8 @@
    "natural_sci",
    "premed",
    "social_sci"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 55,
@@ -649,7 +703,8 @@
   "name_ko": "웨이크 포레스트 대학교",
   "usnews_rank": 51,
   "tier": 3,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 56,
@@ -657,7 +712,8 @@
   "name_ko": "윌리엄 앤 메리 대학교",
   "usnews_rank": 51,
   "tier": 3,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 57,
@@ -665,7 +721,8 @@
   "name_ko": "캘리포니아 대학교 머세드(UC 머세드)",
   "usnews_rank": 57,
   "tier": 3,
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "kind": "university"
  },
  {
   "id": 58,
@@ -678,7 +735,8 @@
    "engineering",
    "nursing",
    "premed"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 59,
@@ -693,7 +751,8 @@
    "social_sci",
    "arts",
    "premed"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 60,
@@ -704,7 +763,8 @@
   "direct_admit_majors": [
    "architecture",
    "nursing"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 61,
@@ -715,7 +775,8 @@
   "direct_admit_majors": [
    "business",
    "engineering"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 62,
@@ -726,7 +787,8 @@
   "direct_admit_majors": [
    "cs",
    "engineering"
-  ]
+  ],
+  "kind": "university"
  },
  {
   "id": 63,
@@ -743,6 +805,361 @@
    "natural_sci",
    "nursing",
    "premed"
-  ]
+  ],
+  "kind": "university"
+ },
+ {
+  "id": 64,
+  "name": "Williams College",
+  "name_ko": "윌리엄스 칼리지",
+  "usnews_rank": 1,
+  "tier": 1,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 1
+ },
+ {
+  "id": 65,
+  "name": "Amherst College",
+  "name_ko": "애머스트 칼리지",
+  "usnews_rank": 2,
+  "tier": 1,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 2
+ },
+ {
+  "id": 66,
+  "name": "Swarthmore College",
+  "name_ko": "스워스모어 칼리지",
+  "usnews_rank": 4,
+  "tier": 1,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 4
+ },
+ {
+  "id": 67,
+  "name": "Bowdoin College",
+  "name_ko": "보든 칼리지",
+  "usnews_rank": 5,
+  "tier": 1,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 5
+ },
+ {
+  "id": 68,
+  "name": "Claremont McKenna College",
+  "name_ko": "클레어몬트 매케나 칼리지",
+  "usnews_rank": 7,
+  "tier": 1,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 7
+ },
+ {
+  "id": 69,
+  "name": "Pomona College",
+  "name_ko": "포모나 칼리지",
+  "usnews_rank": 7,
+  "tier": 1,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 7
+ },
+ {
+  "id": 70,
+  "name": "Wellesley College",
+  "name_ko": "웰즐리 칼리지",
+  "usnews_rank": 7,
+  "tier": 1,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 7
+ },
+ {
+  "id": 71,
+  "name": "Carleton College",
+  "name_ko": "칼턴 칼리지",
+  "usnews_rank": 10,
+  "tier": 1,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 10
+ },
+ {
+  "id": 72,
+  "name": "Harvey Mudd College",
+  "name_ko": "하비 머드 칼리지",
+  "usnews_rank": 10,
+  "tier": 1,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 10
+ },
+ {
+  "id": 73,
+  "name": "Barnard College",
+  "name_ko": "바너드 칼리지",
+  "usnews_rank": 13,
+  "tier": 2,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 13
+ },
+ {
+  "id": 74,
+  "name": "Davidson College",
+  "name_ko": "데이비슨 칼리지",
+  "usnews_rank": 13,
+  "tier": 2,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 13
+ },
+ {
+  "id": 75,
+  "name": "Grinnell College",
+  "name_ko": "그리넬 칼리지",
+  "usnews_rank": 13,
+  "tier": 2,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 13
+ },
+ {
+  "id": 76,
+  "name": "Hamilton College",
+  "name_ko": "해밀턴 칼리지",
+  "usnews_rank": 13,
+  "tier": 2,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 13
+ },
+ {
+  "id": 77,
+  "name": "Middlebury College",
+  "name_ko": "미들버리 칼리지",
+  "usnews_rank": 13,
+  "tier": 2,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 13
+ },
+ {
+  "id": 78,
+  "name": "Smith College",
+  "name_ko": "스미스 칼리지",
+  "usnews_rank": 13,
+  "tier": 2,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 13
+ },
+ {
+  "id": 79,
+  "name": "Vassar College",
+  "name_ko": "배서 칼리지",
+  "usnews_rank": 13,
+  "tier": 2,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 13
+ },
+ {
+  "id": 80,
+  "name": "Wesleyan University",
+  "name_ko": "웨슬리언 대학교",
+  "usnews_rank": 13,
+  "tier": 2,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 13
+ },
+ {
+  "id": 81,
+  "name": "Washington and Lee University",
+  "name_ko": "워싱턴 앤드 리 대학교",
+  "usnews_rank": 21,
+  "tier": 2,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 21
+ },
+ {
+  "id": 82,
+  "name": "Colgate University",
+  "name_ko": "콜게이트 대학교",
+  "usnews_rank": 22,
+  "tier": 2,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 22
+ },
+ {
+  "id": 83,
+  "name": "University of Richmond",
+  "name_ko": "리치먼드 대학교",
+  "usnews_rank": 22,
+  "tier": 2,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 22
+ },
+ {
+  "id": 84,
+  "name": "Bates College",
+  "name_ko": "베이츠 칼리지",
+  "usnews_rank": 24,
+  "tier": 2,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 24
+ },
+ {
+  "id": 85,
+  "name": "Colby College",
+  "name_ko": "콜비 칼리지",
+  "usnews_rank": 24,
+  "tier": 2,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 24
+ },
+ {
+  "id": 86,
+  "name": "Haverford College",
+  "name_ko": "해버퍼드 칼리지",
+  "usnews_rank": 24,
+  "tier": 2,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 24
+ },
+ {
+  "id": 87,
+  "name": "College of the Holy Cross",
+  "name_ko": "홀리크로스 칼리지",
+  "usnews_rank": 27,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 27
+ },
+ {
+  "id": 88,
+  "name": "Macalester College",
+  "name_ko": "매칼레스터 칼리지",
+  "usnews_rank": 28,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 28
+ },
+ {
+  "id": 89,
+  "name": "Mount Holyoke College",
+  "name_ko": "마운트 홀리요크 칼리지",
+  "usnews_rank": 29,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 29
+ },
+ {
+  "id": 90,
+  "name": "Bryn Mawr College",
+  "name_ko": "브린 마 칼리지",
+  "usnews_rank": 30,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 30
+ },
+ {
+  "id": 91,
+  "name": "Bucknell University",
+  "name_ko": "버크넬 대학교",
+  "usnews_rank": 30,
+  "tier": 3,
+  "direct_admit_majors": [
+   "College of Arts & Sciences",
+   "College of Engineering",
+   "Freeman College of Management"
+  ],
+  "kind": "lac",
+  "lac_rank": 30
+ },
+ {
+  "id": 92,
+  "name": "Colorado College",
+  "name_ko": "콜로라도 칼리지",
+  "usnews_rank": 30,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 30
+ },
+ {
+  "id": 93,
+  "name": "Lafayette College",
+  "name_ko": "라파예트 칼리지",
+  "usnews_rank": 30,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 30
+ },
+ {
+  "id": 94,
+  "name": "Denison University",
+  "name_ko": "데니슨 대학교",
+  "usnews_rank": 34,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 34
+ },
+ {
+  "id": 95,
+  "name": "Franklin & Marshall College",
+  "name_ko": "프랭클린 앤 마셜 칼리지",
+  "usnews_rank": 35,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 35
+ },
+ {
+  "id": 96,
+  "name": "Occidental College",
+  "name_ko": "옥시덴탈 칼리지",
+  "usnews_rank": 35,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 35
+ },
+ {
+  "id": 97,
+  "name": "Pitzer College",
+  "name_ko": "피처 칼리지",
+  "usnews_rank": 37,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 37
+ },
+ {
+  "id": 98,
+  "name": "Scripps College",
+  "name_ko": "스크립스 칼리지",
+  "usnews_rank": 37,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "lac_rank": 37
  }
 ]

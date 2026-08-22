@@ -83,3 +83,7 @@ npm run dev
 ## 재정지원·장학금 데이터
 - 출처: 각 대학 Common Data Set 섹션 H6(국제학생 지원 인원·평균)과 공식 재정지원/장학금 페이지만. 추정치 없음, 미확인은 null(화면 비표시).
 - 지원 신분(국제학생 / 시민권·영주권)에 따라 해당 파트만 표시. 시드: `supabase/seed-aid.sql`, 검토: `docs/i18n-review/aid-review.md`. 연 1회 갱신 대상.
+
+## 학교 데이터 범위
+- 종합대학 63개교(US News National Universities 기준 Top 60권) + 리버럴 아츠 칼리지 35개교(US News 2026 National Liberal Arts Colleges Top 35, 사관학교 제외·37위 공동 포함). `schools.kind` = university | lac, LAC는 `lac_rank`로 티어 매핑(1-12→1, 13-24→2, 25-35→3).
+- 각 학교: CDS C7·C9·C10-12·H6, 공식 마감·재정지원 페이지 검증. 시드: `supabase/seed-lac.sql`, 검토: `docs/i18n-review/lac-review.md`.

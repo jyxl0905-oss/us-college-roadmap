@@ -18,6 +18,41 @@ const domains: Record<number, string> = {
 
 // 고해상도 공식 마크 — 각 대학 영문 위키피디아 인포박스의 현행 인장/방패 — 표시 크기(≤52px, 2x)에 맞춘 120px 썸네일로 전송량 최소화 (2026-08-10 63곳 전수 검증)
 const hiResLogos: Record<number, string> = {
+  64: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Seal_Williams_College.png/120px-Seal_Williams_College.png', // LAC
+  65: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Amherst_College_logo.png/120px-Amherst_College_logo.png', // LAC
+  66: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Swarthmore_logo_from_NCAA.svg/120px-Swarthmore_logo_from_NCAA.svg.png', // LAC
+  67: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Bowdoin_college_blacklogo.png/120px-Bowdoin_college_blacklogo.png', // LAC
+  68: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Claremont_McKenna_College_wordmark.png/120px-Claremont_McKenna_College_wordmark.png', // LAC
+  69: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Pomona_College_logo.svg/120px-Pomona_College_logo.svg.png', // LAC
+  70: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Formal_Logo_of_Wellesley_College%2C_Wellesley%2C_MA%2C_USA.svg/120px-Formal_Logo_of_Wellesley_College%2C_Wellesley%2C_MA%2C_USA.svg.png', // LAC
+  71: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Carleton_College_logo.svg/120px-Carleton_College_logo.svg.png', // LAC
+  72: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Harvey_Mudd_College_logo.svg/120px-Harvey_Mudd_College_logo.svg.png', // LAC
+  73: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Barnard_College_logo.jpeg/120px-Barnard_College_logo.jpeg', // LAC
+  74: 'https://commons.wikimedia.org/wiki/Special:FilePath/Davidson_College_logo_2023.svg?width=120', // LAC
+  75: 'https://commons.wikimedia.org/wiki/Special:FilePath/Grinnell_College_logo.svg?width=120', // LAC
+  76: 'https://commons.wikimedia.org/wiki/Special:FilePath/Hamilton_College_logo.svg?width=120', // LAC
+  77: 'https://commons.wikimedia.org/wiki/Special:FilePath/Middlebury_college_wmark.svg?width=120', // LAC
+  78: 'https://commons.wikimedia.org/wiki/Special:FilePath/Smith_college_textlogo.svg?width=120', // LAC
+  79: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Vassar_College_logo.svg/120px-Vassar_College_logo.svg.png', // LAC
+  80: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Wesleyan_University_logo.svg/120px-Wesleyan_University_logo.svg.png', // LAC
+  81: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Washington_and_lee_univ_seal.png/120px-Washington_and_lee_univ_seal.png', // LAC
+  82: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Colgate_University_wordmark.svg/120px-Colgate_University_wordmark.svg.png', // LAC
+  83: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/University_of_Richmond_logo.png/120px-University_of_Richmond_logo.png', // LAC
+  84: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Bates_College_wordmark.svg/120px-Bates_College_wordmark.svg.png', // LAC
+  85: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Colby_college_maine_seal.svg/120px-Colby_college_maine_seal.svg.png', // LAC
+  86: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Haverford_college_wordmark.png/120px-Haverford_college_wordmark.png', // LAC
+  87: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Holy_Cross_College_logo.jpg/120px-Holy_Cross_College_logo.jpg', // LAC
+  88: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/MacalesterCollegeSeal.gif/120px-MacalesterCollegeSeal.gif', // LAC
+  89: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Mount_Holyoke_College_logo.svg/120px-Mount_Holyoke_College_logo.svg.png', // LAC
+  90: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Bryn_Mawr_College_logo.svg/120px-Bryn_Mawr_College_logo.svg.png', // LAC
+  91: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Bucknell_University_logo.svg/120px-Bucknell_University_logo.svg.png', // LAC
+  92: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Colorado_College_logo.svg/120px-Colorado_College_logo.svg.png', // LAC
+  93: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Seal_of_Lafayette_College.jpg/120px-Seal_of_Lafayette_College.jpg', // LAC
+  94: 'https://commons.wikimedia.org/wiki/Special:FilePath/Denison_University_seal2.png?width=120', // LAC
+  95: 'https://commons.wikimedia.org/wiki/Special:FilePath/Franklin_marshall_college_logo.svg?width=120', // LAC
+  96: 'https://commons.wikimedia.org/wiki/Special:FilePath/Occidental_College_logo.svg?width=120', // LAC
+  97: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pitzer_college_textlogo.svg?width=120', // LAC
+  98: 'https://commons.wikimedia.org/wiki/Special:FilePath/Scripps_College_logo.svg?width=120', // LAC
   1: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Princeton_seal.svg/120px-Princeton_seal.svg.png',
   2: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/MIT_2023_red_logo.svg/120px-MIT_2023_red_logo.svg.png',
   3: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Harvard_University_coat_of_arms.svg/120px-Harvard_University_coat_of_arms.svg.png',
