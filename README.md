@@ -79,3 +79,7 @@ npm run dev
 - UI: 한국어/영어 토글 (`src/i18n`, `t()`·`bilingual()`), localStorage `lang`
 - DB 콘텐츠: 한국어 원문 + `*_en` 컬럼 (checklist_items·prescriptions·appeal_strategies·glossary·basics·quiz_items·clarity_items·schools). 영어값이 없으면 한국어 표시. 시드: `supabase/seed-i18n-en.sql`, 검토 문서: `docs/i18n-review/`
 - 전공 가이드 맵: `src/data/major-roadmaps.json` / `.en.json`
+
+## 재정지원·장학금 데이터
+- 출처: 각 대학 Common Data Set 섹션 H6(국제학생 지원 인원·평균)과 공식 재정지원/장학금 페이지만. 추정치 없음, 미확인은 null(화면 비표시).
+- 지원 신분(국제학생 / 시민권·영주권)에 따라 해당 파트만 표시. 시드: `supabase/seed-aid.sql`, 검토: `docs/i18n-review/aid-review.md`. 연 1회 갱신 대상.
