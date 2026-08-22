@@ -10,14 +10,15 @@ interface SchoolCardsProps {
   satBand: string | null // 프로필 SAT 밴드 (응시한 경우만)
   majorPrimary: string | null
   aidStatus?: 'intl' | 'domestic' | null // 재정지원 한 줄 표시용 (지원 신분)
+  twoColumn?: boolean // 데스크톱(md+)에서 카드 2열 그리드
 }
 
 // 목표 학교 카드 (모바일 우선이라 테이블 대신 카드 목록)
-export default function SchoolCards({ schools, satBand, majorPrimary, aidStatus = null }: SchoolCardsProps) {
+export default function SchoolCards({ schools, satBand, majorPrimary, aidStatus = null, twoColumn = false }: SchoolCardsProps) {
   const mySat = satBand ? (satBandMid[satBand] ?? null) : null
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className={twoColumn ? "flex flex-col gap-3 md:grid md:grid-cols-2 md:items-start" : "flex flex-col gap-3"}>
       {schools.map((s) => {
         const hasRange = s.sat_mid50_low !== null && s.sat_mid50_high !== null && s.sat_mid50_high > s.sat_mid50_low
         const markerPct =
