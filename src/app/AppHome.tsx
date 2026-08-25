@@ -77,6 +77,9 @@ export default function AppHome({ userId, profile }: AppHomeProps) {
       <p className="mt-3 text-sm text-gray-500">
         {t(`실제 Common App 형식 그대로, ${grade}학년부터 미리 채워두는 나만의 원서예요. 12학년 원서 시즌에 여기서 그대로 옮기면 돼요.`, `Your own application in the real Common App format, filled in ahead of time from grade ${grade}. In 12th-grade application season, just copy it over.`)}
       </p>
+      <p className="mt-2 text-xs text-gray-400">
+        🔒 {t('여기 기록과 메모는 당신만 볼 수 있어요. 저장 즉시 비공개로 보호되며, 운영자 화면에서도 내용은 확인할 수 없어요.', 'Everything you write here is visible only to you. It is private the moment you save it — its contents are not visible even on the operator screens.')}
+      </p>
 
       {!rec ? (
         <p className="mt-10 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>

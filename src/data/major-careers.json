@@ -1135,5 +1135,31 @@
   ],
   "outlook_note_ko": "BLS 기준 Chefs and Head Cooks 고용은 2024–34년 7% 성장(평균보다 훨씬 빠름), Food Service Managers는 6% 성장(평균보다 빠름) 전망입니다.",
   "grad_note_ko": "셰프는 학위보다 주방 경력·수련이 핵심이에요. 대학 진학 시엔 호스피탈리티 경영(예: Cornell 호텔스쿨 계열)과 전문 요리학교(CIA 등) 두 갈래를 비교해 보세요."
+ },
+ "nutrition": {
+  "desc_ko": "음식과 몸의 관계를 과학으로 배워요 — 영양소 대사, 식단 설계, 임상 영양, 식품 과학. 병원·스포츠팀의 영양사, 공중보건, 식품 회사 연구직으로 이어져요. 미국에서 임상 영양사(RD)는 학위+인턴십+면허가 필요해요.",
+  "desc_en": "You study how food and the body interact — nutrient metabolism, diet design, clinical nutrition, and food science. Leads to dietitian roles in hospitals and sports teams, public health, and food-industry research. In the US, becoming a registered dietitian (RD) requires a degree, an internship, and a license.",
+  "occupations": [
+   {
+    "title": "Dietitians and Nutritionists",
+    "pay": "$73,850 per year",
+    "pay_year": 2024,
+    "outlook": "+6%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/healthcare/dietitians-and-nutritionists.htm",
+    "note": "Typical entry-level education: Bachelor's degree (plus supervised internship; many states require a license)"
+   },
+   {
+    "title": "Agricultural and Food Scientists",
+    "pay": "$78,770 per year",
+    "pay_year": 2024,
+    "outlook": "+6%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/agricultural-and-food-scientists.htm",
+    "note": "Typical entry-level education: Bachelor's degree"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Dietitians and Nutritionists 고용은 2024–34년 6% 성장(평균보다 빠름), Agricultural and Food Scientists도 6% 성장(평균보다 빠름) 전망입니다.",
+  "grad_note_ko": "임상 영양사(RD/RDN)가 목표라면 학부에서 영양학(DPD 인증 과정)을 듣고 졸업 후 인턴십·자격시험까지 이어지는 경로를 확인하세요. 2024년부터 RD 시험 응시에 석사 학위가 요구돼요."
  }
 }

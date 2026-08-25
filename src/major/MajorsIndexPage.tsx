@@ -48,6 +48,7 @@ const KEYWORDS: Record<string, string> = {
   education: '교육 교사 선생님',
   music: '음악 악기 연주 작곡',
   culinary: '요리 요리사 셰프 조리 제빵 베이킹 외식 레스토랑 호텔 푸드',
+  nutrition: '영양 영양사 식품 다이어트 헬스 건강 푸드',
 }
 
 // 전공 알아보기 — 전체 전공 카드 인덱스 (로그인 불필요). 각 카드는 전공 가이드 맵으로

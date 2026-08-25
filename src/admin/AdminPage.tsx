@@ -194,7 +194,7 @@ function normalize(raw: Stats): Stats {
 function HealthCard() {
   const [db, setDb] = useState<number | 'fail' | null>(null)
   const [auth, setAuth] = useState<number | 'fail' | null>(null)
-  const [meta, setMeta] = useState<{ last_reminder_at?: string; last_signup_at?: string; last_event_at?: string } | null>(null)
+  const [meta, setMeta] = useState<{ last_reminder_at?: string; last_signup_at?: string; last_event_at?: string; online_now?: number; online_today?: number } | null>(null)
   const [checkedAt, setCheckedAt] = useState<Date | null>(null)
 
   const run = async () => {
@@ -231,6 +231,11 @@ function HealthCard() {
         <button onClick={run} className="text-xs text-blue-600 underline">다시 확인</button>
       </div>
       <div className="mt-2 grid grid-cols-2 gap-2 text-sm sm:grid-cols-4">
+        <div className="rounded-lg bg-blue-50 px-3 py-2">
+          👥 현재 접속자{' '}
+          <span className="font-bold tabular-nums text-blue-700">{meta?.online_now ?? '…'}</span>
+          <span className="ml-1 text-xs text-gray-400">(5분 내{meta?.online_today !== undefined ? ` · 오늘 ${meta.online_today}` : ''})</span>
+        </div>
         <div className="rounded-lg bg-gray-50 px-3 py-2">{dot(db)} DB <span className="tabular-nums text-gray-500">{label(db)}</span></div>
         <div className="rounded-lg bg-gray-50 px-3 py-2">{dot(auth)} 로그인 서버 <span className="tabular-nums text-gray-500">{label(auth)}</span></div>
         <div className="rounded-lg bg-gray-50 px-3 py-2">🟢 사이트 <span className="text-gray-500">지금 열려 있음</span></div>

@@ -173,6 +173,22 @@ function AppRoutes() {
   // 세션 객체는 토큰 갱신(약 1시간마다·탭 복귀 시)마다 새로 생기므로 user id 기준으로만 프로필을 다시 불러옴
   // (세션 객체 기준이면 갱신 때마다 로딩 화면으로 바뀌며 리포트·원서 화면 상태가 날아감)
   const userId = session?.user.id ?? null
+
+  // 접속자 집계용 하트비트 — 로그인 상태에서 접속 시 + 1분마다 last_seen 갱신 (운영 통계의 '현재 접속자', 실패는 무시)
+  useEffect(() => {
+    if (!supabase || !userId) return
+    const beat = () => {
+      supabase!.from('presence').upsert({ user_id: userId, last_seen: new Date().toISOString() }).then(() => {}, () => {})
+    }
+    beat()
+    const iv = window.setInterval(() => { if (document.visibilityState === 'visible') beat() }, 60_000)
+    const onVis = () => { if (document.visibilityState === 'visible') beat() }
+    document.addEventListener('visibilitychange', onVis)
+    return () => {
+      window.clearInterval(iv)
+      document.removeEventListener('visibilitychange', onVis)
+    }
+  }, [userId])
   useEffect(() => {
     if (!userId) {
       setProfile(null)
