@@ -3,6 +3,7 @@ import { navigate, usePath } from '../lib/router'
 import { supabase } from '../lib/supabase'
 import { t } from '../i18n'
 import LangToggle from '../i18n/LangToggle'
+import ThemeToggle from './ThemeToggle'
 import { isAdminEmail } from '../lib/admin'
 import FeedbackModal from './FeedbackModal'
 
@@ -66,6 +67,7 @@ export default function TopNav() {
             <button onClick={() => setFeedbackOpen(true)} title={t('의견 보내기', 'Send feedback')} className="rounded-full px-2 py-1 text-sm text-gray-500 hover:bg-gray-100">💬</button>
           )}
           <LangToggle />
+          <ThemeToggle />
         </div>
       </div>
       {feedbackOpen && <FeedbackModal onClose={() => setFeedbackOpen(false)} />}

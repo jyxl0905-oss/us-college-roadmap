@@ -2,6 +2,9 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App'
+import { applyStoredTheme } from './nav/ThemeToggle'
+
+applyStoredTheme()
 
 // 유입 경로 태그 (?ref=insta, ?ref=f-초대코드 등) — 최초 방문 값만 기록, URL은 깨끗하게 정리
 try {
