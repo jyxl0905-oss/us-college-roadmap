@@ -48,6 +48,9 @@ export default function TargetsPage({ profile }: { profile: ProfileRow }) {
         ) : (
           <>
             <div className="mt-3 flex gap-2">
+              <button onClick={() => navigate('/schools')} className="rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 active:bg-gray-50">
+                {t('둘러보기 · 추가/제거', 'Browse · add/remove')}
+              </button>
               {schools.length >= 2 && (
                 <button
                   onClick={() => navigate(`/compare?ids=${schools.slice(0, 3).map((s) => s.id).join(',')}`)}
@@ -56,9 +59,6 @@ export default function TargetsPage({ profile }: { profile: ProfileRow }) {
                   ⚖️ {t('비교하기', 'Compare')}
                 </button>
               )}
-              <button onClick={() => navigate('/schools')} className="rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 active:bg-gray-50">
-                {t('둘러보기 · 추가/제거', 'Browse · add/remove')}
-              </button>
               <button onClick={() => navigate('/app/colleges')} className="rounded-full border-2 border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700 active:bg-blue-100">
                 📋 {t('지원 라운드 정하기', 'Set rounds')}
               </button>

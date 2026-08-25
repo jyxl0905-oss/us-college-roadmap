@@ -49,6 +49,17 @@ const KEYWORDS: Record<string, string> = {
   music: '음악 악기 연주 작곡',
   culinary: '요리 요리사 셰프 조리 제빵 베이킹 외식 레스토랑 호텔 푸드',
   nutrition: '영양 영양사 식품 다이어트 헬스 건강 푸드',
+  pharmacy: '약 약사 약대 제약 파마시',
+  pre_dental: '치과 치대 치과의사 덴탈',
+  nuclear_eng: '원자력 원전 핵 에너지',
+  robotics: '로봇 자동화 드론 메카트로닉스 ai',
+  pilot: '파일럿 조종사 비행 비행기 항공사',
+  political_sci: '정치 외교 외교관 정외 국회',
+  intl_relations: '국제 외교 유엔 un 국제기구 대사관',
+  criminology: '범죄 경찰 형사 수사 fbi',
+  criminal_psych: '범죄 심리 프로파일러 프로파일링 수사',
+  philosophy: '철학 윤리 논리 사상',
+  graphic_design: '그래픽 디자인 일러스트 브랜딩 포스터 ui',
 }
 
 // 전공 알아보기 — 전체 전공 카드 인덱스 (로그인 불필요). 각 카드는 전공 가이드 맵으로

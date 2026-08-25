@@ -1161,5 +1161,264 @@
   ],
   "outlook_note_ko": "BLS 기준 Dietitians and Nutritionists 고용은 2024–34년 6% 성장(평균보다 빠름), Agricultural and Food Scientists도 6% 성장(평균보다 빠름) 전망입니다.",
   "grad_note_ko": "임상 영양사(RD/RDN)가 목표라면 학부에서 영양학(DPD 인증 과정)을 듣고 졸업 후 인턴십·자격시험까지 이어지는 경로를 확인하세요. 2024년부터 RD 시험 응시에 석사 학위가 요구돼요."
+ },
+ "pharmacy": {
+  "desc_ko": "약이 몸에서 어떻게 작용하는지 배워요 — 약물학, 화학, 생리학, 환자 상담. 약국·병원 약사, 제약회사 연구·개발로 이어져요. 미국 약사는 학부 후 약대(PharmD)까지 가야 해요.",
+  "desc_en": "You study how drugs work in the body — pharmacology, chemistry, physiology, and patient care. Leads to pharmacist roles in pharmacies and hospitals, and pharma R&D. In the US, being a pharmacist requires a PharmD after undergrad.",
+  "occupations": [
+   {
+    "title": "Pharmacists",
+    "pay": "$137,480 per year",
+    "pay_year": 2024,
+    "outlook": "+5%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/healthcare/pharmacists.htm",
+    "note": "Typical entry-level education: Doctoral or professional degree (PharmD + license)"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Pharmacists 고용은 2024–34년 5% 성장(평균보다 빠름) 전망입니다.",
+  "grad_note_ko": "미국 약사는 PharmD(4년 전문 학위)+면허가 필요해요. 학부는 프리파마시·화학·생물 계열을 거쳐 약대로 진학하는 경로가 일반적이에요."
+ },
+ "pre_dental": {
+  "desc_ko": "치의예는 학부 단계의 준비 트랙이에요 — 생물·화학 중심으로 공부하고 DAT 시험을 거쳐 치의학대학원(DDS/DMD)으로 진학해요. 치과의사, 교정·구강외과 전문의로 이어져요.",
+  "desc_en": "Pre-dental is an undergraduate preparation track — biology- and chemistry-heavy coursework, the DAT exam, then dental school (DDS/DMD). Leads to careers as a dentist or dental specialist.",
+  "occupations": [
+   {
+    "title": "Dentists",
+    "pay": "$179,210 per year",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/healthcare/dentists.htm",
+    "note": "Typical entry-level education: Doctoral or professional degree (DDS/DMD + license)"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Dentists 고용은 2024–34년 4% 성장(평균 수준) 전망입니다.",
+  "grad_note_ko": "치과의사는 학부(전공 자유, 생물·화학 선수과목 필수) 후 치의학대학원 4년+면허 경로예요. 학부 성적과 DAT가 핵심이에요."
+ },
+ "nuclear_eng": {
+  "desc_ko": "원자로, 방사선, 핵연료 주기를 다뤄요 — 원자력 발전, 의료 방사선, 핵추진. 발전사·국립연구소·규제기관으로 이어져요. 학부 개설 학교가 적어 기계·물리로 시작해 대학원에서 전공하는 경로도 흔해요.",
+  "desc_en": "You work with reactors, radiation, and the nuclear fuel cycle — power generation, medical radiation, nuclear propulsion. Leads to utilities, national labs, and regulators. Few schools offer it at undergrad, so starting in mechanical engineering or physics and specializing in grad school is common.",
+  "occupations": [
+   {
+    "title": "Nuclear Engineers",
+    "pay": "$127,520 per year",
+    "pay_year": 2024,
+    "outlook": "-1%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/architecture-and-engineering/nuclear-engineers.htm",
+    "note": "Typical entry-level education: Bachelor's degree"
+   },
+   {
+    "title": "Mechanical Engineers",
+    "pay": "$102,320",
+    "pay_year": 2024,
+    "outlook": "+9%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/architecture-and-engineering/mechanical-engineers.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Nuclear Engineers 고용은 2024–34년 1% 감소 전망이에요(직군 규모가 작음). 다만 Mechanical Engineers 등 인접 직군은 9% 성장 전망이라 진로 폭을 넓게 보는 게 좋아요.",
+  "grad_note_ko": null
+ },
+ "robotics": {
+  "desc_ko": "기계·전자·소프트웨어를 합쳐 움직이는 시스템을 만들어요 — 로봇 팔, 자율주행, 드론. 학부에 로보틱스 전공이 있는 학교는 소수(CMU 등)라, 보통 기계공학·전기공학·CS로 진학해 로보틱스를 파요.",
+  "desc_en": "You combine mechanical, electrical and software engineering to build systems that move — robot arms, autonomous vehicles, drones. Few schools offer a robotics undergrad major (e.g., CMU), so most students major in ME, EE or CS and specialize.",
+  "occupations": [
+   {
+    "title": "Mechanical Engineers",
+    "pay": "$102,320",
+    "pay_year": 2024,
+    "outlook": "+9%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/architecture-and-engineering/mechanical-engineers.htm",
+    "note": null
+   },
+   {
+    "title": "Electrical and Electronics Engineers",
+    "pay": "$118,780",
+    "pay_year": 2024,
+    "outlook": "+7%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/architecture-and-engineering/electrical-and-electronics-engineers.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Mechanical Engineers 고용은 2024–34년 9% 성장, Electrical and Electronics Engineers는 7% 성장 전망입니다.",
+  "grad_note_ko": null
+ },
+ "pilot": {
+  "desc_ko": "항공운항 전공은 비행 이론·기상·항법과 실제 비행 훈련을 함께 해요. 항공사·화물·헬기 조종사로 이어져요. 학위보다 비행시간과 FAA 자격증이 핵심이라, 대학 항공운항 프로그램과 플라이트 스쿨 경로를 비교해 보세요.",
+  "desc_en": "Aviation programs combine flight theory, weather, and navigation with actual flight training. Leads to airline, cargo, and helicopter pilot careers. Flight hours and FAA certificates matter more than the degree itself — compare university aviation programs with flight-school routes.",
+  "occupations": [
+   {
+    "title": "Airline and Commercial Pilots",
+    "pay": "$198,100 per year",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/transportation-and-material-moving/airline-and-commercial-pilots.htm",
+    "note": "Requirements: FAA certificates and flight hours (airlines typically also want a bachelor's degree)"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Airline and Commercial Pilots 고용은 2024–34년 4% 성장(평균 수준) 전망입니다.",
+  "grad_note_ko": "국제학생은 주의: 미국 항공사 취업은 영주권·시민권을 요구하는 경우가 많아요. 훈련 비자(F-1/M-1)와 졸업 후 취업 경로를 미리 확인하세요."
+ },
+ "political_sci": {
+  "desc_ko": "권력과 제도가 어떻게 작동하는지 배워요 — 비교정치, 국제정치, 정치이론, 데이터 분석. 외교관, 정책 분석가, 로스쿨, 언론으로 이어져요.",
+  "desc_en": "You study how power and institutions work — comparative politics, international politics, political theory, and data analysis. Leads to diplomacy, policy analysis, law school, and journalism.",
+  "occupations": [
+   {
+    "title": "Political Scientists",
+    "pay": "$139,380",
+    "pay_year": 2024,
+    "outlook": "-3%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/political-scientists.htm",
+    "note": null
+   },
+   {
+    "title": "Lawyers",
+    "pay": "$151,160",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/legal/lawyers.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Political Scientists 고용은 2024–34년 3% 감소 전망(작은 직군)이지만, 로스쿨·정책·언론 등 진로 폭이 넓은 전공이에요. Lawyers는 4% 성장 전망입니다.",
+  "grad_note_ko": null
+ },
+ "intl_relations": {
+  "desc_ko": "국가 간 관계를 배워요 — 외교, 국제기구, 국제경제, 안보. 외교관, 유엔 등 국제기구, 싱크탱크, 글로벌 기업으로 이어져요. 외국어와 해외 경험이 큰 자산이에요.",
+  "desc_en": "You study relations between states — diplomacy, international organizations, global economics, security. Leads to foreign service, international organizations like the UN, think tanks, and global business. Languages and international experience are major assets.",
+  "occupations": [
+   {
+    "title": "Political Scientists",
+    "pay": "$139,380",
+    "pay_year": 2024,
+    "outlook": "-3%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/political-scientists.htm",
+    "note": null
+   },
+   {
+    "title": "Economists",
+    "pay": "$115,440",
+    "pay_year": 2024,
+    "outlook": "+1%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/economists.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Political Scientists 고용은 2024–34년 3% 감소, Economists는 1% 성장 전망이에요. 국제기구·외교 등 BLS 통계 밖 진로가 많은 전공이에요.",
+  "grad_note_ko": null
+ },
+ "criminology": {
+  "desc_ko": "범죄가 왜 일어나고 사회가 어떻게 대응하는지 배워요 — 범죄 이론, 형사사법 제도, 통계. 경찰·연방수사기관(FBI 등), 교정, 정책 연구로 이어져요.",
+  "desc_en": "You study why crime happens and how society responds — criminological theory, the criminal justice system, statistics. Leads to policing, federal agencies like the FBI, corrections, and policy research.",
+  "occupations": [
+   {
+    "title": "Police and Detectives",
+    "pay": "$77,270 per year",
+    "pay_year": 2024,
+    "outlook": "+3%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/protective-service/police-and-detectives.htm",
+    "note": "Entry requirements vary (academy training; a degree helps for federal agencies like the FBI)"
+   },
+   {
+    "title": "Forensic Science Technicians",
+    "pay": "$67,440",
+    "pay_year": 2024,
+    "outlook": "+13%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/forensic-science-technicians.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Police and Detectives 고용은 2024–34년 3% 성장, Forensic Science Technicians는 13% 성장(매우 빠름) 전망입니다.",
+  "grad_note_ko": "국제학생은 주의: 미국 경찰·연방수사기관은 대부분 시민권이 필요해요. 연구·정책·민간 보안 쪽 진로를 함께 보세요."
+ },
+ "criminal_psych": {
+  "desc_ko": "범죄 행동의 심리를 배워요 — 이상심리, 프로파일링, 법정 심리 평가. 법정 심리학자, 프로파일러, 교정·상담으로 이어져요. 심리학 학부 위에 대학원까지 가는 경로가 일반적이에요.",
+  "desc_en": "You study the psychology of criminal behavior — abnormal psychology, profiling, forensic assessment. Leads to forensic psychologist, profiler, and corrections/counseling roles. The usual route is a psychology undergrad followed by graduate school.",
+  "occupations": [
+   {
+    "title": "Psychologists",
+    "pay": "$94,310",
+    "pay_year": 2024,
+    "outlook": "+6%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/psychologists.htm",
+    "note": null
+   },
+   {
+    "title": "Forensic Science Technicians",
+    "pay": "$67,440",
+    "pay_year": 2024,
+    "outlook": "+13%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/forensic-science-technicians.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Psychologists 고용은 2024–34년 6% 성장, Forensic Science Technicians는 13% 성장 전망입니다.",
+  "grad_note_ko": "법정 심리학자(forensic psychologist)는 보통 심리학 석·박사와 면허까지 필요해요. 학부는 심리학 전공+범죄학 부전공 조합이 흔해요."
+ },
+ "philosophy": {
+  "desc_ko": "생각하는 법 자체를 배워요 — 논리, 윤리, 인식론, 글쓰기. 논증과 글이 강해져서 로스쿨 준비 전공으로 널리 쓰이고, 정책·테크 윤리·학계로도 이어져요.",
+  "desc_en": "You learn how to think — logic, ethics, epistemology, and rigorous writing. A classic pre-law pathway thanks to argumentation skills, also leading to policy, tech ethics, and academia.",
+  "occupations": [
+   {
+    "title": "Lawyers",
+    "pay": "$151,160",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/legal/lawyers.htm",
+    "note": null
+   },
+   {
+    "title": "Postsecondary Teachers",
+    "pay": "$83,980 per year",
+    "pay_year": 2024,
+    "outlook": "+7%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/education-training-and-library/postsecondary-teachers.htm",
+    "note": "Typically requires a graduate degree (often a doctorate)"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Lawyers 고용은 2024–34년 4% 성장, Postsecondary Teachers는 7% 성장 전망입니다.",
+  "grad_note_ko": null
+ },
+ "graphic_design": {
+  "desc_ko": "시각으로 메시지를 전달하는 법을 배워요 — 타이포그래피, 브랜딩, 편집·웹 디자인, 포트폴리오 제작. 디자인 스튜디오, 인하우스 디자이너, UI/UX로 이어져요. 입시에서는 포트폴리오가 성적만큼 중요해요.",
+  "desc_en": "You learn to communicate visually — typography, branding, editorial and web design, and portfolio building. Leads to design studios, in-house design, and UI/UX. In admissions, the portfolio matters as much as grades.",
+  "occupations": [
+   {
+    "title": "Graphic Designers",
+    "pay": "$61,300",
+    "pay_year": 2024,
+    "outlook": "+2%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/arts-and-design/graphic-designers.htm",
+    "note": null
+   },
+   {
+    "title": "Web Developers and Digital Designers",
+    "pay": "$95,380",
+    "pay_year": 2024,
+    "outlook": "+7%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Graphic Designers 고용은 2024–34년 2% 성장, Web Developers and Digital Designers는 7% 성장 전망입니다.",
+  "grad_note_ko": null
  }
 }
