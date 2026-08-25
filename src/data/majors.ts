@@ -47,6 +47,7 @@ export const majorCategories: MajorCategory[] = [
   { value: 'linguistics', label: '언어학 (Linguistics)', track: 'liberal' },
   { value: 'education', label: '교육학 (Education)', track: 'liberal' },
   { value: 'arts', label: '예술·디자인 (Art·Design)', track: 'liberal' },
+  { value: 'culinary', label: '요리·조리학 (Culinary Arts)', track: 'liberal' },
   { value: 'media', label: '커뮤니케이션·미디어 (Communication·Media)', track: 'liberal' },
   { value: 'film', label: '영화 (Film)', track: 'liberal' },
   { value: 'music', label: '음악 (Music)', track: 'liberal' },
@@ -100,6 +101,7 @@ export const majorAlias: Record<string, string> = {
   genetics: 'biology',
   molecular_bio: 'biology',
   microbiology: 'biology',
+  culinary: 'business', // 미국 대학 조리·호스피탈리티 프로그램은 외식 경영 중심 → 체크리스트·로드맵은 비즈니스 것을 사용
 }
 // 별칭 체인 재귀 해석 (예: genetics → biology → natural_sci)
 export const majorParent = (value: string | null): string | null => {
@@ -108,6 +110,12 @@ export const majorParent = (value: string | null): string | null => {
   for (let i = 0; i < 5 && majorAlias[v]; i++) v = majorAlias[v]
   return v
 }
+
+// direct-admit 판정용 — 로드맵·체크리스트는 상위 계열 것을 빌려 써도 되지만,
+// direct-admit은 실제 지원 단위라 계열이 다른 전공(요리 등)은 별칭을 따라가면 틀린 학교가 잡힘
+const directAdmitAliasExceptions = new Set(['culinary'])
+export const directAdmitParent = (value: string | null): string | null =>
+  value && directAdmitAliasExceptions.has(value) ? value : majorParent(value)
 
 // 목록 화면용 소그룹 — 트랙 안에서 비슷한 전공끼리 묶음 (모든 전공이 정확히 한 그룹에 속해야 함)
 export interface MajorCluster { track: MajorTrack; ko: string; en: string; values: string[] }
@@ -122,4 +130,5 @@ export const majorClusters: MajorCluster[] = [
   { track: 'liberal', ko: '심리', en: 'Psychology', values: ['psychology', 'sport_psychology'] },
   { track: 'liberal', ko: '인문·언어', en: 'Humanities & Language', values: ['humanities', 'linguistics'] },
   { track: 'liberal', ko: '예술·미디어', en: 'Arts & Media', values: ['arts', 'media', 'film', 'music'] },
+  { track: 'liberal', ko: '요리·호스피탈리티', en: 'Culinary & Hospitality', values: ['culinary'] },
 ]

@@ -13,7 +13,15 @@ interface TestingTabProps {
   onProfileChange: (p: ProfileRow) => void
 }
 
-const kindKo: Record<TestKind, string> = { sat: 'SAT', toefl: 'TOEFL', ielts: 'IELTS', ap: 'AP' }
+const kindKo: Record<TestKind, string> = { sat: 'SAT', act: 'ACT', toefl: 'TOEFL', ielts: 'IELTS', ap: 'AP' }
+
+// ACT 영역 표기 (컴포지트는 4영역 평균이라 합계 검증은 하지 않음)
+const ACT_SECTIONS = [
+  { key: 'english', ko: '영어', en: 'English' },
+  { key: 'math', ko: '수학', en: 'Math' },
+  { key: 'reading', ko: '독해', en: 'Reading' },
+  { key: 'science', ko: '과학', en: 'Science' },
+] as const
 
 // F5 시험 — SAT·TOEFL/IELTS·AP 실제 점수 기록. 기록이 생기면 프로필 밴드·상태를 자동 파생
 export default function TestingTab({ userId, profile, onProfileChange }: TestingTabProps) {
@@ -82,7 +90,7 @@ export default function TestingTab({ userId, profile, onProfileChange }: Testing
   }
 
   const best = bestSat(tests)
-  const groups: TestKind[] = ['sat', 'toefl', 'ielts', 'ap']
+  const groups: TestKind[] = ['sat', 'act', 'toefl', 'ielts', 'ap']
 
   return (
     <AppShell tab="testing" title={t('시험', 'Testing')}>
@@ -119,6 +127,13 @@ export default function TestingTab({ userId, profile, onProfileChange }: Testing
                           {t('영어', 'EBRW')} {ts.section_scores.ebrw ?? '-'} · {t('수학', 'Math')} {ts.section_scores.math ?? '-'}
                         </span>
                       )}
+                      {ts.kind === 'act' && ts.section_scores && (
+                        <span className="ml-2 text-xs font-normal text-gray-500">
+                          {ACT_SECTIONS.filter((s) => ts.section_scores?.[s.key] != null)
+                            .map((s) => `${t(s.ko, s.en)} ${ts.section_scores?.[s.key]}`)
+                            .join(' · ')}
+                        </span>
+                      )}
                     </p>
                     <p className="text-xs text-gray-400">{ts.taken_on ?? t('응시일 미입력', 'No test date')}</p>
                   </div>
@@ -139,6 +154,7 @@ function ScoreForm({ kind, onSave, onCancel }: { kind: TestKind; onSave: (r: Omi
   const [ebrw, setEbrw] = useState('')
   const [math, setMath] = useState('')
   const [subject, setSubject] = useState('')
+  const [act, setAct] = useState<Record<string, string>>({ english: '', math: '', reading: '', science: '' })
   const [saving, setSaving] = useState(false)
   const field = 'mt-1 w-full rounded-lg border-2 border-gray-200 px-3 py-2 text-sm focus:border-blue-600 focus:outline-none'
   const label = 'text-xs font-medium text-gray-500'
@@ -150,8 +166,11 @@ function ScoreForm({ kind, onSave, onCancel }: { kind: TestKind; onSave: (r: Omi
     (mathNum === null || (Number.isInteger(mathNum) && mathNum >= 200 && mathNum <= 800)) &&
     // 영역 점수를 둘 다 적었으면 합계가 총점과 같아야 함
     (ebrwNum === null || mathNum === null || totalNum === null || ebrwNum + mathNum === totalNum)
+  const actNums = Object.fromEntries(Object.entries(act).map(([k, v]) => [k, v === '' ? null : Number(v)])) as Record<string, number | null>
+  const actSectionsOk = Object.values(actNums).every((v) => v === null || (Number.isInteger(v) && v >= 1 && v <= 36))
   const valid =
     kind === 'sat' ? totalNum !== null && Number.isInteger(totalNum) && totalNum >= 400 && totalNum <= 1600 && sectionOk
+    : kind === 'act' ? totalNum !== null && Number.isInteger(totalNum) && totalNum >= 1 && totalNum <= 36 && actSectionsOk
     : kind === 'toefl' ? totalNum !== null && Number.isInteger(totalNum) && totalNum >= 0 && totalNum <= 120
     : kind === 'ielts' ? totalNum !== null && totalNum >= 0 && totalNum <= 9 && Number.isInteger(totalNum * 2) // 0.5 단위
     : totalNum !== null && Number.isInteger(totalNum) && totalNum >= 1 && totalNum <= 5 && subject.trim() !== ''
@@ -166,9 +185,9 @@ function ScoreForm({ kind, onSave, onCancel }: { kind: TestKind; onSave: (r: Omi
       )}
       <div className="mt-2 grid grid-cols-2 gap-2">
         <div>
-          <label className={label}>{kind === 'ap' ? t('점수 (1~5)', 'Score (1–5)') : t('총점', 'Total')}</label>
+          <label className={label}>{kind === 'ap' ? t('점수 (1~5)', 'Score (1–5)') : kind === 'act' ? t('컴포지트 (1~36)', 'Composite (1–36)') : t('총점', 'Total')}</label>
           <input type="number" inputMode="decimal" value={total} onChange={(e) => setTotal(e.target.value)} className={field}
-            placeholder={kind === 'sat' ? '400~1600' : kind === 'toefl' ? '0~120' : kind === 'ielts' ? '0~9' : '1~5'} />
+            placeholder={kind === 'sat' ? '400~1600' : kind === 'act' ? '1~36' : kind === 'toefl' ? '0~120' : kind === 'ielts' ? '0~9' : '1~5'} />
         </div>
         <div>
           <label className={label}>{t('응시일', 'Test date')}</label>
@@ -180,6 +199,20 @@ function ScoreForm({ kind, onSave, onCancel }: { kind: TestKind; onSave: (r: Omi
           <div><label className={label}>{t('영어 (EBRW)', 'EBRW')}</label><input type="number" inputMode="numeric" min={200} max={800} step={10} value={ebrw} onChange={(e) => setEbrw(e.target.value)} className={field} /></div>
           <div><label className={label}>{t('수학', 'Math')}</label><input type="number" inputMode="numeric" min={200} max={800} step={10} value={math} onChange={(e) => setMath(e.target.value)} className={field} /></div>
         </div>
+      )}
+      {kind === 'act' && (
+        <div className="mt-2 grid grid-cols-2 gap-2">
+          {ACT_SECTIONS.map((s) => (
+            <div key={s.key}>
+              <label className={label}>{t(s.ko, s.en)} <span className="font-normal text-gray-400">{t('(선택)', '(optional)')}</span></label>
+              <input type="number" inputMode="numeric" min={1} max={36} value={act[s.key]}
+                onChange={(e) => setAct((prev) => ({ ...prev, [s.key]: e.target.value }))} className={field} placeholder="1~36" />
+            </div>
+          ))}
+        </div>
+      )}
+      {kind === 'act' && !actSectionsOk && (
+        <p className="mt-1 text-xs text-red-600">{t('ACT 영역 점수는 1~36 정수예요.', 'ACT section scores must be whole numbers from 1 to 36.')}</p>
       )}
       {kind === 'sat' && total !== '' && !sectionOk && (
         <p className="mt-1 text-xs text-red-600">{t('영역 점수는 200~800, 두 영역 합이 총점과 같아야 해요.', 'Section scores must be 200–800 and add up to the total.')}</p>
@@ -193,9 +226,12 @@ function ScoreForm({ kind, onSave, onCancel }: { kind: TestKind; onSave: (r: Omi
             try {
               await onSave({
                 kind, taken_on: date || null, total: totalNum,
-                section_scores: kind === 'sat' && (ebrwNum !== null || mathNum !== null)
-                  ? { ...(ebrwNum !== null ? { ebrw: ebrwNum } : {}), ...(mathNum !== null ? { math: mathNum } : {}) }
-                  : null,
+                section_scores:
+                  kind === 'sat' && (ebrwNum !== null || mathNum !== null)
+                    ? { ...(ebrwNum !== null ? { ebrw: ebrwNum } : {}), ...(mathNum !== null ? { math: mathNum } : {}) }
+                    : kind === 'act' && Object.values(actNums).some((v) => v !== null)
+                      ? Object.fromEntries(Object.entries(actNums).filter(([, v]) => v !== null)) as Record<string, number>
+                      : null,
                 subject: kind === 'ap' ? subject.trim() : null,
               })
             } finally { setSaving(false) }

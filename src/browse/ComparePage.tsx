@@ -3,7 +3,7 @@ import type { School, Tier } from '../lib/types'
 import { loadSchools } from '../lib/schoolsCache'
 import { navigate, slugify } from '../lib/router'
 import { satBandMid } from '../lib/score'
-import { majorLabel, majorParent } from '../data/majors'
+import { majorLabel, directAdmitParent } from '../data/majors'
 import type { ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
 import SchoolLogo from './SchoolLogo'
@@ -111,7 +111,7 @@ export default function ComparePage({ profile }: ComparePageProps) {
           {
             label: t(`${majorLabel(myMajor)} 직접 선발`, `Direct admit: ${majorLabel(myMajor)}`),
             render: (s: School) =>
-              s.direct_admit_majors.includes(majorParent(myMajor) as string) ? (
+              s.direct_admit_majors.includes(directAdmitParent(myMajor) as string) ? (
                 <span className="text-amber-700">{t('⚠️ 직접 선발', '⚠️ Direct admit')}</span>
               ) : (
                 t('아니오', 'No')

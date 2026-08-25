@@ -1109,5 +1109,31 @@
   ],
   "outlook_note_ko": "BLS 기준 미생물학자는 2024-34년 +4%로 평균 수준의 성장 전망입니다.",
   "grad_note_ko": null
+ },
+ "culinary": {
+  "desc_ko": "요리를 학문으로 배워요 — 조리 기술, 제과·제빵, 메뉴 개발, 주방 운영, 외식 경영. 셰프, 레스토랑·호텔 운영, 식품 산업으로 이어져요. 미국에선 4년제 대학보다 CIA(Culinary Institute of America) 같은 전문 요리학교나 호스피탈리티 프로그램이 주요 경로인 경우도 많아요.",
+  "desc_en": "You study cooking as a discipline — culinary technique, baking and pastry, menu development, kitchen operations, and restaurant management. Leads to chef roles, restaurant and hotel operations, and the food industry. In the US, dedicated culinary schools like the CIA and hospitality programs are often the main route rather than a 4-year degree.",
+  "occupations": [
+   {
+    "title": "Chefs and Head Cooks",
+    "pay": "$60,990 per year",
+    "pay_year": 2024,
+    "outlook": "+7%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/food-preparation-and-serving/chefs-and-head-cooks.htm",
+    "note": "Typical entry-level education: High school diploma or equivalent (plus 5+ years of kitchen experience; many attend a culinary program)"
+   },
+   {
+    "title": "Food Service Managers",
+    "pay": "$65,310 per year",
+    "pay_year": 2024,
+    "outlook": "+6%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/management/food-service-managers.htm",
+    "note": "Typical entry-level education: High school diploma or equivalent (some train at culinary schools or 4-year colleges)"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Chefs and Head Cooks 고용은 2024–34년 7% 성장(평균보다 훨씬 빠름), Food Service Managers는 6% 성장(평균보다 빠름) 전망입니다.",
+  "grad_note_ko": "셰프는 학위보다 주방 경력·수련이 핵심이에요. 대학 진학 시엔 호스피탈리티 경영(예: Cornell 호텔스쿨 계열)과 전문 요리학교(CIA 등) 두 갈래를 비교해 보세요."
  }
 }

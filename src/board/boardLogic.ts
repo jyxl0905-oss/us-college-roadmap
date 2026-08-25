@@ -1,4 +1,4 @@
-import { majorParent } from '../data/majors'
+import { directAdmitParent } from '../data/majors'
 import type { School } from '../lib/types'
 import type { ProfileRow } from '../lib/profile'
 import { profileGrade } from '../lib/profile'
@@ -164,7 +164,7 @@ export function autoItems(s: School, profile: ProfileRow, app: ApplicationRow | 
         : di('TOEFL 발송·면제 확인', 'Send TOEFL / confirm waiver'),
     )
   if (isIntl && s.need_blind_intl === false) items.push(di('재정지원 신청 여부 결정', 'Decide whether to apply for financial aid'))
-  if (profile.major_primary && s.direct_admit_majors.includes(majorParent(profile.major_primary) as string))
+  if (profile.major_primary && s.direct_admit_majors.includes(directAdmitParent(profile.major_primary) as string))
     items.push(di('지원 전공 확정', 'Finalize the major you apply to'))
   if (app?.round) items.push(di('마감 역산 일정 확인', 'Check the countdown schedule from the deadline'))
   items.push(di('보충 에세이 문항 확인·목록화', 'Find and list the supplemental essay prompts'))

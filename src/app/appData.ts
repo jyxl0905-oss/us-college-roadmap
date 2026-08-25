@@ -53,7 +53,7 @@ export interface Honor {
   activity_id: number | null
 }
 
-export type TestKind = 'sat' | 'toefl' | 'ielts' | 'ap'
+export type TestKind = 'sat' | 'act' | 'toefl' | 'ielts' | 'ap'
 export interface TestScore {
   id: number
   kind: TestKind
@@ -87,6 +87,14 @@ export interface Essay {
   status: EssayStatus
   word_limit: number | null
   notes: string | null
+  body: string | null // 에세이 본문 (앱 안에서 직접 작성·자동 저장)
+  body_saved_at: string | null
+}
+
+// 에세이 단어 수 (Common App 방식과 같게 공백 기준)
+export function wordCount(text: string | null): number {
+  if (!text) return 0
+  return text.trim().split(/\s+/).filter(Boolean).length
 }
 
 export interface AppRecords {

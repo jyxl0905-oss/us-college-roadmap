@@ -11,7 +11,7 @@ import type { Axis } from '../lib/score'
 import { t, getLang } from '../i18n'
 import careersData from '../data/major-careers.json'
 import rankingsData from '../data/major-rankings.json'
-import { majorParent } from '../data/majors'
+import { directAdmitParent } from '../data/majors'
 import schoolsIndex from '../data/schools.index.json'
 import SchoolLogo from '../browse/SchoolLogo'
 import { slugify } from '../lib/router'
@@ -299,7 +299,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
 
         {/* 이 전공을 전공 단위로 뽑는 학교 (direct-admit 조사 데이터) */}
         {(() => {
-          const parent = majorParent(majorKey)
+          const parent = directAdmitParent(majorKey)
           const list = IDX.filter((sc) => (sc.direct_admit_majors ?? []).includes(parent ?? ''))
           if (list.length === 0) return null
           return (
