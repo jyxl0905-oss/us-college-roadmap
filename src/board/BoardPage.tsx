@@ -12,7 +12,7 @@ import { loadAppRecords, bestSat, type AppRecords } from '../app/appData'
 import { profileGrade } from '../lib/profile'
 import { currentSeason } from '../lib/academics'
 import {
-  boardWarnings, offeredRounds, roundTiming, roundLabels, statusLabels, roundSlots, dDay, timingLabel, fitOrder, fitLabels, fitHint,
+  boardWarnings, offeredRounds, roundTiming, roundLabels, statusLabels, roundSlots, dDay, timingLabel, fitOrder, fitLabels, fitHint, normalizeFit,
   autoItems, c7Actions, c7Checkable, isFirstChoice, suppEssayTip,
   type ApplicationRow, type CustomTask, type Round, type AppStatus,
 } from './boardLogic'
@@ -24,8 +24,19 @@ interface BoardPageProps {
 
 // F4→F5 지원 학교(My Colleges) — 라운드 칸 배치·상태 추적·학교 맞춤 준비 + 내 원서 연동.
 // 추천 없음: 사실 고지·규칙 검증·정리·추적까지만
-const fitActive: Record<string, string> = { reach: 'border-purple-500 bg-purple-50 text-purple-700', match: 'border-blue-600 bg-blue-50 text-blue-700', safety: 'border-green-600 bg-green-50 text-green-700' }
-const fitBadge: Record<string, string> = { reach: 'bg-purple-100 text-purple-700', match: 'bg-blue-100 text-blue-700', safety: 'bg-green-100 text-green-700' }
+// 사용자 지정 4단계 색: Reach #E74C3C(긴장·도전) / Hard Target #F39C12(신중) / Target #F1C40F(균형) / Safety #27AE60(안심)
+const fitActive: Record<string, string> = {
+  reach: 'border-[#E74C3C] bg-[#E74C3C]/10 text-[#C0392B]',
+  hard_target: 'border-[#F39C12] bg-[#F39C12]/10 text-[#B9770E]',
+  target: 'border-[#F1C40F] bg-[#F1C40F]/15 text-[#9A7D0A]',
+  safety: 'border-[#27AE60] bg-[#27AE60]/10 text-[#1E8449]',
+}
+const fitBadge: Record<string, string> = {
+  reach: 'bg-[#E74C3C]/15 text-[#C0392B]',
+  hard_target: 'bg-[#F39C12]/15 text-[#B9770E]',
+  target: 'bg-[#F1C40F]/20 text-[#9A7D0A]',
+  safety: 'bg-[#27AE60]/15 text-[#1E8449]',
+}
 
 export default function BoardPage({ userId, profile }: BoardPageProps) {
   const [schools, setSchools] = useState<School[] | null>(null)
@@ -64,7 +75,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
       loadAppRecords(userId),
     ]).then(([sc, ap, ct, rec]) => {
       setSchools(localizeRows((sc.data ?? []) as School[]))
-      setApps((ap.data ?? []) as ApplicationRow[])
+      setApps(((ap.data ?? []) as ApplicationRow[]).map((a) => ({ ...a, fit: normalizeFit(a.fit as string | null) })))
       setTasks((ct.data ?? []) as CustomTask[])
       setRecords(rec)
     })

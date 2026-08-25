@@ -77,7 +77,7 @@ export default function TargetsPage({ profile }: { profile: ProfileRow }) {
             </div>
             </div>
             <p className="mt-4 text-xs text-gray-400">
-              {t('학교 추가·제거는 둘러보기의 각 학교 카드에서, Reach/Match/Safety와 라운드는 내 원서 → 지원에서 정해요.', 'Add or remove schools from each card in Browse; set Reach/Match/Safety and rounds in My App → Colleges.')}
+              {t('학교 추가·제거는 둘러보기의 각 학교 카드에서, Reach/Hard Target/Target/Safety와 라운드는 내 원서 → 지원에서 정해요.', 'Add or remove schools from each card in Browse; set Reach/Hard Target/Target/Safety and rounds in My App → Colleges.')}
             </p>
           </>
         )}

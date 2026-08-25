@@ -21,14 +21,17 @@ export interface ApplicationRow {
   fit?: Fit | null // 학생이 직접 정한 분류 — 툴은 판단하지 않음
 }
 
-export type Fit = 'reach' | 'match' | 'safety'
-export const fitOrder: Fit[] = ['reach', 'match', 'safety']
+export type Fit = 'reach' | 'hard_target' | 'target' | 'safety'
+export const fitOrder: Fit[] = ['reach', 'hard_target', 'target', 'safety']
 export const fitLabels: Record<Fit, string> = bilingual<Fit>(
-  { reach: 'Reach (도전)', match: 'Match (적정)', safety: 'Safety (안전)' },
-  { reach: 'Reach', match: 'Match', safety: 'Safety' },
+  { reach: 'Reach (도전)', hard_target: 'Hard Target (상향)', target: 'Target (적정)', safety: 'Safety (안전)' },
+  { reach: 'Reach', hard_target: 'Hard Target', target: 'Target', safety: 'Safety' },
 )
+// 예전 3단계('match')로 저장된 값 호환
+export const normalizeFit = (f: string | null | undefined): Fit | null =>
+  f === 'match' ? 'target' : f && (fitOrder as string[]).includes(f) ? (f as Fit) : null
 export const fitHint = () =>
-  t('학생이 직접 정하는 분류예요 — 툴은 합격 가능성을 계산하지 않아요. 학교 카드의 SAT 중간 50%·국제학생 합격률을 보고 스스로 판단해 붙이세요. 세 그룹이 골고루 있는지가 리스트의 기본 골격이에요.', 'You set these yourself — the tool does not estimate admission chances. Use the SAT middle-50% and international acceptance rate on each school card to judge, and aim for a mix of all three.')
+  t('학생이 직접 정하는 분류예요 — 툴은 합격 가능성을 계산하지 않아요. 학교 카드의 SAT 중간 50%·국제학생 합격률을 보고 스스로 판단해 붙이세요. Reach(도전)→Hard Target(상향)→Target(적정)→Safety(안전) 네 그룹이 골고루 있는지가 리스트의 기본 골격이에요.', 'You set these yourself — the tool does not estimate admission chances. Use the SAT middle-50% and international acceptance rate on each school card to judge, and aim for a mix across Reach, Hard Target, Target and Safety.')
 
 // 라운드 칸 표시 순서 (F5 지원 학교 탭)
 export const roundSlots: { round: Round; label: string; rule: string }[] = [
