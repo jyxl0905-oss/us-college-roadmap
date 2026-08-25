@@ -1,5 +1,35 @@
 @import "tailwindcss";
 
+/* 마우스 사용 기기에서 모든 인터랙티브 요소에 공통 호버 하이라이트
+   (터치 기기는 제외 — hover가 탭에 들러붙는 것 방지) */
+@media (hover: hover) and (pointer: fine) {
+  button,
+  [role='button'],
+  [role='checkbox'],
+  a,
+  select,
+  summary,
+  label:has(> input[type='checkbox']),
+  label:has(> input[type='radio']) {
+    transition:
+      filter 0.12s ease,
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      box-shadow 0.15s ease,
+      transform 0.12s ease;
+  }
+  button:hover:not(:disabled),
+  [role='button']:hover,
+  [role='checkbox']:hover,
+  a:hover,
+  select:hover,
+  summary:hover,
+  label:has(> input[type='checkbox']):hover,
+  label:has(> input[type='radio']):hover {
+    filter: brightness(0.94);
+  }
+}
+
 /* PDF 저장 = 브라우저 인쇄. A4 1-2장에 맞게 정리 */
 @media print {
   .no-print {
