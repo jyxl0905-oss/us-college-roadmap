@@ -9,12 +9,9 @@ import { loadSchools } from '../lib/schoolsCache'
 import type { School } from '../lib/types'
 import SchoolLogo from '../browse/SchoolLogo'
 import {
-  insertRow, updateRow, deleteRow, loadAppRecords, essayStatusKo, wordCount,
+  updateRow, loadAppRecords, essayStatusKo, wordCount,
   type Essay, type EssayStatus,
 } from './appData'
-
-// 폼에서 다루는 필드만 (본문은 전용 에디터에서 따로 저장)
-type EssayDraft = Omit<Essay, 'id' | 'body' | 'body_saved_at'>
 
 interface WritingTabProps {
   userId: string
@@ -22,17 +19,17 @@ interface WritingTabProps {
 }
 
 const PERSONAL_WORD_LIMIT = 650 // Common App 개인 에세이 단어 제한
+const SPLIT_KEY = 'essay_split_pct' // 작성 창 좌/우 분할 비율 (md+)
 
-// F5 에세이 — 개인 에세이·학교별 보충 에세이의 문항/상태/메모만 저장 (본문은 저장하지 않음)
+// 작성 창 대상: id=null이면 새 항목, focusBody면 본문 칸에 포커스
+interface WorkspaceTarget { id: number | null; schoolId: number | null; focusBody: boolean; seedPrompt?: string; defaultLimit?: number }
+
+// F5 에세이 — 문항·상태·메모 + 본문을 한 작성 창에서 기록 (자동 저장)
 export default function WritingTab({ userId, profile }: WritingTabProps) {
   const [essays, setEssays] = useState<Essay[] | null>(null)
   const [schools, setSchools] = useState<School[]>([])
-  const [adding, setAdding] = useState<'personal' | number | null>(null) // number = school_id
-  const [editing, setEditing] = useState<number | null>(null)
-  const [writing, setWriting] = useState<number | null>(null) // 본문 에디터가 열린 에세이 id
   const [showPrompts, setShowPrompts] = useState(false)
-  const [seedPrompt, setSeedPrompt] = useState<string | undefined>(undefined)
-  const busyRef = useRef(false) // 저장·삭제 중복 요청 방지 (더블탭)
+  const [ws, setWs] = useState<WorkspaceTarget | null>(null)
 
   useEffect(() => {
     loadAppRecords(userId).then((r) => setEssays(r.essays))
@@ -52,28 +49,6 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
   const personal = essays.filter((e) => e.school_id === null)
   const forSchool = (id: number) => essays.filter((e) => e.school_id === id)
 
-  const guarded = async (fn: () => Promise<void>) => {
-    if (busyRef.current) return
-    busyRef.current = true
-    try { await fn() } catch { /* insertRow/updateRow/deleteRow가 이미 alert */ } finally { busyRef.current = false }
-  }
-  const save = (draft: EssayDraft, id: number | null) => guarded(async () => {
-    if (id === null) {
-      const row = await insertRow<Essay>('essays', userId, { ...draft, body: null, body_saved_at: null })
-      if (row) setEssays([...essays, row])
-    } else {
-      await updateRow<Essay>('essays', id, draft)
-      setEssays(essays.map((e) => (e.id === id ? { ...e, ...draft } : e)))
-    }
-    setAdding(null)
-    setEditing(null)
-  })
-  const remove = (id: number) => guarded(async () => {
-    if (!confirm(t('이 에세이 항목을 삭제할까요? 되돌릴 수 없어요.', 'Delete this essay entry? This cannot be undone.'))) return
-    await deleteRow('essays', id)
-    setEssays(essays.filter((e) => e.id !== id))
-    setEditing(null)
-  })
   const setStatus = async (e: Essay, status: EssayStatus) => {
     const before = essays
     setEssays(essays.map((x) => (x.id === e.id ? { ...x, status } : x))) // 낙관적 갱신
@@ -97,35 +72,32 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
     </select>
   )
 
-  const essayCard = (e: Essay) =>
-    editing === e.id ? (
-      <EssayForm key={e.id} initial={e} schoolId={e.school_id} onSave={(d) => save(d, e.id)} onCancel={() => setEditing(null)} onDelete={() => remove(e.id)} />
-    ) : (
-      <div key={e.id} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3">
-        <div className="flex items-start justify-between gap-2">
-          <p className="min-w-0 flex-1 break-words text-sm leading-relaxed text-gray-800">{e.prompt || <span className="text-gray-300">{t('문항 미입력', 'No prompt set')}</span>}</p>
-          {statusPill(e)}
-        </div>
-        <div className="mt-2 flex items-center gap-3 text-xs text-gray-400">
-          {e.word_limit ? <span className="shrink-0">{t(`${e.word_limit}단어`, `${e.word_limit} words`)}</span> : null}
-          {e.notes && <span className="min-w-0 truncate">{t('메모: ', 'Note: ')}{e.notes}</span>}
-          <button onClick={() => setEditing(e.id)} className="ml-auto shrink-0 text-blue-600 underline">{t('편집', 'Edit')}</button>
-        </div>
-        <button
-          onClick={() => setWriting(e.id)}
-          className="mt-2 flex w-full items-center justify-between rounded-lg bg-gray-50 px-3 py-2 text-left text-xs active:bg-gray-100"
-        >
-          <span className="font-semibold text-gray-700">
-            {e.body ? t('✍️ 이어서 쓰기', '✍️ Keep writing') : t('✍️ 본문 쓰기', '✍️ Write the essay')}
-          </span>
-          <span className="text-gray-400">
-            {e.body
-              ? t(`${wordCount(e.body)}단어 저장됨`, `${wordCount(e.body)} words saved`)
-              : t('앱 안에서 쓰고 자동 저장돼요', 'Write here — saves automatically')}
-          </span>
-        </button>
+  const essayCard = (e: Essay) => (
+    <div key={e.id} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3">
+      <div className="flex items-start justify-between gap-2">
+        <p className="min-w-0 flex-1 break-words text-sm leading-relaxed text-gray-800">{e.prompt || <span className="text-gray-300">{t('문항 미입력', 'No prompt set')}</span>}</p>
+        {statusPill(e)}
       </div>
-    )
+      <div className="mt-2 flex items-center gap-3 text-xs text-gray-400">
+        {e.word_limit ? <span className="shrink-0">{t(`${e.word_limit}단어`, `${e.word_limit} words`)}</span> : null}
+        {e.notes && <span className="min-w-0 truncate">{t('메모: ', 'Note: ')}{e.notes}</span>}
+        <button onClick={() => setWs({ id: e.id, schoolId: e.school_id, focusBody: false })} className="ml-auto shrink-0 text-blue-600 underline">{t('편집', 'Edit')}</button>
+      </div>
+      <button
+        onClick={() => setWs({ id: e.id, schoolId: e.school_id, focusBody: true })}
+        className="mt-2 flex w-full items-center justify-between rounded-lg bg-gray-50 px-3 py-2 text-left text-xs active:bg-gray-100"
+      >
+        <span className="font-semibold text-gray-700">
+          {e.body ? t('✍️ 이어서 쓰기', '✍️ Keep writing') : t('✍️ 본문 쓰기', '✍️ Write the essay')}
+        </span>
+        <span className="text-gray-400">
+          {e.body
+            ? t(`${wordCount(e.body)}단어 저장됨`, `${wordCount(e.body)} words saved`)
+            : t('앱 안에서 쓰고 자동 저장돼요', 'Write here — saves automatically')}
+        </span>
+      </button>
+    </div>
+  )
 
   return (
     <AppShell tab="writing" title={t('에세이', 'Essays')}>
@@ -156,8 +128,8 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
                   <p className="text-xs font-semibold text-gray-500">#{pr.n} · {pr.ko}</p>
                   <p className="mt-0.5 text-xs leading-relaxed text-gray-700">{pr.en}</p>
                   {personal.length === 0 && (
-                    <button onClick={() => { setSeedPrompt(`Common App #${pr.n}: ${pr.en}`); setAdding('personal'); setShowPrompts(false) }} className="mt-1 text-xs font-semibold text-blue-600 underline">
-                      {t('이 문항으로 메모 시작', 'Start a note with this prompt')}
+                    <button onClick={() => { setWs({ id: null, schoolId: null, focusBody: false, seedPrompt: `Common App #${pr.n}: ${pr.en}`, defaultLimit: PERSONAL_WORD_LIMIT }); setShowPrompts(false) }} className="mt-1 text-xs font-semibold text-blue-600 underline">
+                      {t('이 문항으로 쓰기 시작', 'Start writing with this prompt')}
                     </button>
                   )}
                 </li>
@@ -176,14 +148,10 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
       </div>
       <div className="mt-2 flex flex-col gap-2">
         {personal.map(essayCard)}
-        {adding === 'personal' ? (
-          <EssayForm schoolId={null} defaultLimit={PERSONAL_WORD_LIMIT} defaultPrompt={seedPrompt} onSave={(d) => save(d, null)} onCancel={() => { setAdding(null); setSeedPrompt(undefined) }} />
-        ) : (
-          personal.length === 0 && (
-            <button onClick={() => setAdding('personal')} className="rounded-xl border-2 border-dashed border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-500 active:bg-gray-50">
-              {t('＋ 개인 에세이 주제 메모 시작', '＋ Start a personal essay topic note')}
-            </button>
-          )
+        {personal.length === 0 && (
+          <button onClick={() => setWs({ id: null, schoolId: null, focusBody: false, defaultLimit: PERSONAL_WORD_LIMIT })} className="rounded-xl border-2 border-dashed border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-500 active:bg-gray-50">
+            {t('＋ 개인 에세이 시작', '＋ Start a personal essay')}
+          </button>
         )}
       </div>
 
@@ -200,99 +168,227 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
           </div>
           <div className="mt-2 flex flex-col gap-2">
             {forSchool(s.id).map(essayCard)}
-            {adding === s.id ? (
-              <EssayForm schoolId={s.id} onSave={(d) => save(d, null)} onCancel={() => setAdding(null)} />
-            ) : (
-              <button onClick={() => setAdding(s.id)} className="rounded-xl border-2 border-dashed border-gray-300 bg-white px-4 py-2.5 text-xs font-medium text-gray-500 active:bg-gray-50">
-                {t('＋ 문항 추가', '＋ Add prompt')}
-              </button>
-            )}
+            <button onClick={() => setWs({ id: null, schoolId: s.id, focusBody: false })} className="rounded-xl border-2 border-dashed border-gray-300 bg-white px-4 py-2.5 text-xs font-medium text-gray-500 active:bg-gray-50">
+              {t('＋ 문항 추가', '＋ Add prompt')}
+            </button>
           </div>
         </div>
       ))}
 
-      {writing !== null && (() => {
-        const essay = essays.find((e) => e.id === writing)
-        if (!essay) return null
-        return (
-          <EssayEditor
-            essay={essay}
-            onClose={(body, savedAt) => {
-              setEssays(essays.map((e) => (e.id === essay.id ? { ...e, body, body_saved_at: savedAt } : e)))
-              setWriting(null)
-            }}
-          />
-        )
-      })()}
+      {ws && (
+        <EssayWorkspace
+          key={ws.id ?? 'new'}
+          userId={userId}
+          essay={ws.id !== null ? essays.find((e) => e.id === ws.id) ?? null : null}
+          schoolId={ws.schoolId}
+          seedPrompt={ws.seedPrompt}
+          defaultLimit={ws.defaultLimit}
+          focusBody={ws.focusBody}
+          onClose={({ row, deletedId }) => {
+            setEssays((prev) => {
+              if (!prev) return prev
+              let next = prev
+              if (deletedId !== null) next = next.filter((e) => e.id !== deletedId)
+              if (row) next = next.some((e) => e.id === row.id) ? next.map((e) => (e.id === row.id ? row : e)) : [...next, row]
+              return next
+            })
+            setWs(null)
+          }}
+        />
+      )}
     </AppShell>
   )
 }
 
-// 본문 에디터 — 전체 화면, 1.5초 자동 저장 + 닫을 때 저장. 실패해도 alert 없이 상태 표시로만 알림.
-function EssayEditor({ essay, onClose }: { essay: Essay; onClose: (body: string | null, savedAt: string | null) => void }) {
-  const [body, setBody] = useState(essay.body ?? '')
-  const [savedAt, setSavedAt] = useState<string | null>(essay.body_saved_at)
+// 에세이 작성 창 — 전체 화면. md+에선 왼쪽 문항·상태·메모 / 오른쪽 본문을 나란히 두고
+// 가운데 경계선을 드래그해 크기 조절. 모바일은 위 접이식 폼 + 아래 본문. 모든 필드 1.2초 자동 저장.
+function EssayWorkspace({
+  userId, essay, schoolId, seedPrompt, defaultLimit, focusBody, onClose,
+}: {
+  userId: string
+  essay: Essay | null
+  schoolId: number | null
+  seedPrompt?: string
+  defaultLimit?: number
+  focusBody: boolean
+  onClose: (r: { row: Essay | null; deletedId: number | null }) => void
+}) {
+  const [prompt, setPrompt] = useState(essay?.prompt ?? seedPrompt ?? '')
+  const [status, setStatusField] = useState<EssayStatus>(essay?.status ?? 'not_started')
+  const [limit, setLimit] = useState<string>(essay?.word_limit?.toString() ?? defaultLimit?.toString() ?? '')
+  const [notes, setNotes] = useState(essay?.notes ?? '')
+  const [body, setBody] = useState(essay?.body ?? '')
+  const [savedAt, setSavedAt] = useState<string | null>(essay?.body_saved_at ?? null)
   const [state, setState] = useState<'idle' | 'dirty' | 'saving' | 'error'>('idle')
-  const bodyRef = useRef(body)
-  const savedBodyRef = useRef(essay.body ?? '')
+  const [formOpen, setFormOpen] = useState(!focusBody) // 모바일 접이식 폼
+  const [leftPct, setLeftPct] = useState(() => {
+    const v = Number(localStorage.getItem(SPLIT_KEY))
+    return Number.isFinite(v) && v >= 22 && v <= 65 ? v : 34
+  })
+
+  const rowRef = useRef<Essay | null>(essay)
+  const fieldsRef = useRef({ prompt, status, limit, notes, body })
+  fieldsRef.current = { prompt, status, limit, notes, body }
+  // 마지막으로 저장에 성공한 스냅샷 — 다르면 저장할 게 남아 있는 상태
+  const snap = (f: typeof fieldsRef.current) => JSON.stringify(f)
+  const savedSnapRef = useRef(essay ? snap({ prompt: essay.prompt, status: essay.status, limit: essay.word_limit?.toString() ?? defaultLimit?.toString() ?? '', notes: essay.notes ?? '', body: essay.body ?? '' }) : '')
   const timerRef = useRef<number | null>(null)
+  const busyRef = useRef(false)
+  const leftPctRef = useRef(leftPct)
+  leftPctRef.current = leftPct
+  const containerRef = useRef<HTMLDivElement>(null)
+  const bodyElRef = useRef<HTMLTextAreaElement>(null)
 
-  const persist = useCallback(async (): Promise<string | null> => {
-    const text = bodyRef.current
-    if (!supabase || text === savedBodyRef.current) return null
-    setState('saving')
+  const limitNum = limit.trim() === '' ? null : Number(limit)
+  const limitBad = limitNum !== null && (!Number.isInteger(limitNum) || limitNum <= 0)
+
+  const persist = useCallback(async (): Promise<void> => {
+    if (!supabase || busyRef.current) return
+    const f = { ...fieldsRef.current }
+    if (snap(f) === savedSnapRef.current) return
+    const ln = f.limit.trim() === '' ? null : Number(f.limit)
     const now = new Date().toISOString()
-    const { error } = await supabase.from('essays').update({ body: text || null, body_saved_at: now, updated_at: now }).eq('id', essay.id)
-    if (error) {
-      setState('error')
-      return null
+    const data = {
+      school_id: schoolId,
+      prompt: f.prompt.trim(),
+      status: f.status,
+      word_limit: ln !== null && Number.isInteger(ln) && ln > 0 ? ln : null,
+      notes: f.notes.trim() || null,
+      body: f.body || null,
+      body_saved_at: f.body ? now : rowRef.current?.body_saved_at ?? null,
+      updated_at: now,
     }
-    savedBodyRef.current = text
-    setSavedAt(now)
-    // 저장 중에 더 입력했으면 dirty 유지 → 다음 타이머가 다시 저장
-    setState(bodyRef.current === text ? 'idle' : 'dirty')
-    return now
-  }, [essay.id])
+    busyRef.current = true
+    setState('saving')
+    try {
+      if (!rowRef.current) {
+        // 아무것도 안 썼으면 행을 만들지 않음 (빈 항목 방지)
+        if (!data.prompt && !data.body && !data.notes) { setState('idle'); return }
+        const { data: created, error } = await supabase.from('essays').insert({ user_id: userId, ...data }).select('*').single()
+        if (error) { setState('error'); return }
+        rowRef.current = created as Essay
+      } else {
+        const { error } = await supabase.from('essays').update(data).eq('id', rowRef.current.id)
+        if (error) { setState('error'); return }
+        rowRef.current = { ...rowRef.current, ...data } as Essay
+      }
+      savedSnapRef.current = snap(f)
+      if (f.body) setSavedAt(now)
+      setState(snap(fieldsRef.current) === savedSnapRef.current ? 'idle' : 'dirty')
+    } finally {
+      busyRef.current = false
+    }
+  }, [schoolId, userId])
 
-  // 입력 1.5초 후 자동 저장
+  // 입력 1.2초 후 자동 저장 (문항·상태·메모·본문 전부)
   useEffect(() => {
-    bodyRef.current = body
-    if (body === savedBodyRef.current) return
+    if (snap(fieldsRef.current) === savedSnapRef.current) return
     setState('dirty')
     if (timerRef.current) window.clearTimeout(timerRef.current)
-    timerRef.current = window.setTimeout(() => { void persist() }, 1500)
+    timerRef.current = window.setTimeout(() => { void persist() }, 1200)
     return () => { if (timerRef.current) window.clearTimeout(timerRef.current) }
-  }, [body, persist])
+  }, [prompt, status, limit, notes, body, persist])
 
-  // 탭을 닫거나 이탈할 때 저장 안 된 내용 경고
+  // 이탈 시 저장 안 된 내용 경고
   useEffect(() => {
     const onBeforeUnload = (e: BeforeUnloadEvent) => {
-      if (bodyRef.current !== savedBodyRef.current) e.preventDefault()
+      if (snap(fieldsRef.current) !== savedSnapRef.current) e.preventDefault()
     }
     window.addEventListener('beforeunload', onBeforeUnload)
     return () => window.removeEventListener('beforeunload', onBeforeUnload)
   }, [])
 
+  useEffect(() => {
+    if (focusBody) bodyElRef.current?.focus()
+  }, [focusBody])
+
+  // 분할 크기 조절 (md+) — 경계선 드래그
+  const onDividerDown = (e: React.PointerEvent) => {
+    e.preventDefault()
+    const el = containerRef.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
+    const onMove = (ev: PointerEvent) => {
+      const pct = Math.min(65, Math.max(22, ((ev.clientX - rect.left) / rect.width) * 100))
+      setLeftPct(pct)
+    }
+    const onUp = () => {
+      window.removeEventListener('pointermove', onMove)
+      window.removeEventListener('pointerup', onUp)
+      localStorage.setItem(SPLIT_KEY, String(Math.round(leftPctRef.current)))
+    }
+    window.addEventListener('pointermove', onMove)
+    window.addEventListener('pointerup', onUp)
+  }
+
   const words = wordCount(body)
-  const over = essay.word_limit !== null && words > essay.word_limit
+  const over = limitNum !== null && !limitBad && words > limitNum
+
   const close = async () => {
-    const now = await persist()
-    if (bodyRef.current !== savedBodyRef.current) {
-      if (!confirm(t('저장에 실패한 내용이 있어요. 그래도 닫을까요? (닫으면 마지막 저장본만 남아요)', 'Some changes could not be saved. Close anyway? (Only the last saved version will be kept)'))) return
-      onClose(savedBodyRef.current || null, savedAt)
+    await persist()
+    if (snap(fieldsRef.current) !== savedSnapRef.current && rowRef.current === null) {
+      // 새 항목인데 저장 실패 (또는 빈 항목) — 빈 항목이면 그냥 닫힘
+      const f = fieldsRef.current
+      if ((f.prompt.trim() || f.body.trim() || f.notes.trim()) &&
+        !confirm(t('저장에 실패한 내용이 있어요. 그래도 닫을까요?', 'Some changes could not be saved. Close anyway?'))) return
+    } else if (snap(fieldsRef.current) !== savedSnapRef.current) {
+      if (!confirm(t('저장에 실패한 내용이 있어요. 그래도 닫을까요? (마지막 저장본만 남아요)', 'Some changes could not be saved. Close anyway? (Only the last saved version will be kept)'))) return
+    }
+    onClose({ row: rowRef.current, deletedId: null })
+  }
+
+  const del = async () => {
+    if (!supabase || !rowRef.current) { onClose({ row: null, deletedId: null }); return }
+    if (!confirm(t('이 에세이 항목을 삭제할까요? 본문까지 지워지고 되돌릴 수 없어요.', 'Delete this essay? The saved text is deleted too and cannot be recovered.'))) return
+    const id = rowRef.current.id
+    const { error } = await supabase.from('essays').delete().eq('id', id)
+    if (error) {
+      alert(t(`삭제에 실패했어요. 네트워크를 확인해 주세요.\n(${error.message})`, `Delete failed. Check your connection.\n(${error.message})`))
       return
     }
-    onClose(bodyRef.current || null, now ?? savedAt)
+    onClose({ row: null, deletedId: id })
   }
+
+  const field = 'mt-1 w-full rounded-lg border-2 border-gray-200 px-3 py-2 text-sm focus:border-blue-600 focus:outline-none'
+  const label = 'text-xs font-medium text-gray-500'
+  const formFields = (
+    <div className="flex flex-col gap-3">
+      <div>
+        <label className={label}>{schoolId === null ? t('문항 · 주제', 'Prompt · Topic') : t('문항 (공식 페이지에서 붙여넣기)', 'Prompt (paste from the official page)')}</label>
+        <textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} rows={3} className={field}
+          placeholder={schoolId === null ? t('예: Common App #2 — 실패에서 배운 것', 'e.g. Common App #2 — a lesson from failure') : t('예: Why NYU? (250 words)', 'e.g. Why NYU? (250 words)')} />
+      </div>
+      <div className="grid grid-cols-2 gap-2">
+        <div>
+          <label className={label}>{t('상태', 'Status')}</label>
+          <select value={status} onChange={(e) => setStatusField(e.target.value as EssayStatus)} className={field}>
+            {(Object.keys(essayStatusKo) as EssayStatus[]).map((s) => <option key={s} value={s}>{essayStatusKo[s]}</option>)}
+          </select>
+        </div>
+        <div>
+          <label className={label}>{t('단어 제한', 'Word limit')}</label>
+          <input type="number" inputMode="numeric" min={1} value={limit} onChange={(e) => setLimit(e.target.value)} className={`${field} ${limitBad ? 'border-red-400' : ''}`} />
+        </div>
+      </div>
+      <div>
+        <label className={label}>{t('메모 (짧게)', 'Note (short)')}</label>
+        <input value={notes} onChange={(e) => setNotes(e.target.value)} className={field} placeholder={t('예: 3번째 문단 다시 / 선생님 피드백 반영', 'e.g. redo paragraph 3 / apply teacher feedback')} />
+      </div>
+      {rowRef.current && (
+        <button onClick={() => void del()} className="self-start text-xs text-red-500 underline">{t('이 에세이 삭제', 'Delete this essay')}</button>
+      )}
+    </div>
+  )
 
   return createPortal(
     <div className="fixed inset-0 z-50 flex flex-col bg-white">
+      {/* 헤더 */}
       <div className="flex items-center gap-3 border-b border-gray-200 px-4 py-3">
         <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-semibold text-gray-900">{essay.prompt || t('(문항 미입력)', '(No prompt set)')}</p>
+          <p className="truncate text-sm font-semibold text-gray-900">{prompt.trim() || t('새 에세이', 'New essay')}</p>
           <p className="text-xs text-gray-400">
             <span className={over ? 'font-semibold text-red-600' : ''}>
-              {t(`${words}단어`, `${words} words`)}{essay.word_limit ? ` / ${essay.word_limit}` : ''}
+              {t(`${words}단어`, `${words} words`)}{limitNum !== null && !limitBad ? ` / ${limitNum}` : ''}
             </span>
             {' · '}
             {state === 'saving' ? t('저장 중…', 'Saving…')
@@ -307,76 +403,42 @@ function EssayEditor({ essay, onClose }: { essay: Essay; onClose: (body: string 
         )}
         <button onClick={() => void close()} className="shrink-0 rounded-xl bg-gray-900 px-4 py-2 text-sm font-semibold text-white active:bg-gray-700">{t('완료', 'Done')}</button>
       </div>
-      <textarea
-        value={body}
-        onChange={(e) => setBody(e.target.value)}
-        autoFocus
-        placeholder={t('여기에 에세이를 쓰세요. 쓰는 동안 자동으로 저장돼요.', 'Write your essay here. It saves automatically as you type.')}
-        className="min-h-0 flex-1 resize-none px-4 py-4 text-[15px] leading-relaxed text-gray-900 focus:outline-none"
-      />
+
+      {/* 모바일: 접이식 폼 */}
+      <div className="border-b border-gray-200 md:hidden">
+        <button onClick={() => setFormOpen((v) => !v)} className="flex w-full items-center justify-between px-4 py-2.5 text-left text-sm font-medium text-gray-700">
+          <span>{t('문항 · 상태 · 메모', 'Prompt · Status · Notes')}</span>
+          <span className="text-gray-400">{formOpen ? '▴' : '▾'}</span>
+        </button>
+        {formOpen && <div className="px-4 pb-4">{formFields}</div>}
+      </div>
+
+      <div ref={containerRef} className="flex min-h-0 flex-1">
+        {/* md+: 왼쪽 문항 패널 */}
+        <div className="hidden overflow-y-auto border-r border-gray-100 p-4 md:block" style={{ width: `${leftPct}%` }}>
+          {formFields}
+        </div>
+        {/* 드래그 경계선 */}
+        <div
+          onPointerDown={onDividerDown}
+          title={t('드래그해서 크기 조절', 'Drag to resize')}
+          className="hidden w-1.5 shrink-0 cursor-col-resize bg-gray-100 transition-colors hover:bg-blue-300 active:bg-blue-400 md:block"
+        />
+        <textarea
+          ref={bodyElRef}
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+          placeholder={t('여기에 에세이를 쓰세요. 쓰는 동안 자동으로 저장돼요.', 'Write your essay here. It saves automatically as you type.')}
+          className="min-h-0 min-w-0 flex-1 resize-none px-4 py-4 text-[15px] leading-relaxed text-gray-900 focus:outline-none"
+        />
+      </div>
+
       {over && (
         <p className="border-t border-red-100 bg-red-50 px-4 py-2 text-xs font-medium text-red-600">
-          {t(`단어 제한(${essay.word_limit})을 ${words - (essay.word_limit ?? 0)}단어 넘었어요.`, `You are ${words - (essay.word_limit ?? 0)} words over the limit (${essay.word_limit}).`)}
+          {t(`단어 제한(${limitNum})을 ${words - (limitNum ?? 0)}단어 넘었어요.`, `You are ${words - (limitNum ?? 0)} words over the limit (${limitNum}).`)}
         </p>
       )}
     </div>,
     document.body,
-  )
-}
-
-function EssayForm({
-  initial, schoolId, defaultLimit, defaultPrompt, onSave, onCancel, onDelete,
-}: {
-  initial?: Essay
-  schoolId: number | null
-  defaultLimit?: number
-  defaultPrompt?: string
-  onSave: (d: EssayDraft) => Promise<void>
-  onCancel: () => void
-  onDelete?: () => void
-}) {
-  const [prompt, setPrompt] = useState(initial?.prompt ?? defaultPrompt ?? '')
-  const [status, setStatus] = useState<EssayStatus>(initial?.status ?? 'not_started')
-  const [limit, setLimit] = useState<string>(initial?.word_limit?.toString() ?? defaultLimit?.toString() ?? '')
-  const [notes, setNotes] = useState(initial?.notes ?? '')
-  const [saving, setSaving] = useState(false)
-  const limitNum = limit.trim() === '' ? null : Number(limit)
-  const limitBad = limitNum !== null && (!Number.isInteger(limitNum) || limitNum <= 0)
-  const field = 'mt-1 w-full rounded-lg border-2 border-gray-200 px-3 py-2 text-sm focus:border-blue-600 focus:outline-none'
-  const label = 'text-xs font-medium text-gray-500'
-  return (
-    <div className="rounded-xl border-2 border-blue-600 bg-white px-4 py-3">
-      <label className={label}>{schoolId === null ? t('주제 메모 (본문 아님)', 'Topic note (not the essay itself)') : t('문항 (공식 페이지에서 붙여넣기)', 'Prompt (paste from the official page)')}</label>
-      <textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} rows={3} className={field}
-        placeholder={schoolId === null ? t('예: 로봇 동아리 실패 경험에서 배운 것', 'e.g. What I learned from a failure in robotics club') : t('예: Why NYU? (250 words)', 'e.g. Why NYU? (250 words)')} />
-      <div className="mt-2 grid grid-cols-2 gap-2">
-        <div>
-          <label className={label}>{t('상태', 'Status')}</label>
-          <select value={status} onChange={(e) => setStatus(e.target.value as EssayStatus)} className={field}>
-            {(Object.keys(essayStatusKo) as EssayStatus[]).map((s) => <option key={s} value={s}>{essayStatusKo[s]}</option>)}
-          </select>
-        </div>
-        <div>
-          <label className={label}>{t('단어 제한', 'Word limit')}</label>
-          <input type="number" inputMode="numeric" min={1} value={limit} onChange={(e) => setLimit(e.target.value)} className={`${field} ${limitBad ? 'border-red-400' : ''}`} />
-        </div>
-      </div>
-      <label className={`${label} mt-2 block`}>{t('메모 (짧게)', 'Note (short)')}</label>
-      <input value={notes} onChange={(e) => setNotes(e.target.value)} className={field} placeholder={t('예: 초안 구글독스 링크 / 3번째 문단 다시', 'e.g. Google Docs link / redo paragraph 3')} />
-      <div className="mt-3 flex items-center gap-2">
-        <button
-          disabled={saving || limitBad}
-          onClick={async () => {
-            if (saving) return
-            setSaving(true)
-            try {
-              await onSave({ school_id: schoolId, prompt: prompt.trim(), status, word_limit: limitNum, notes: notes.trim() || null })
-            } finally { setSaving(false) }
-          }}
-          className="flex-1 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white disabled:bg-gray-300">{saving ? t('저장 중…', 'Saving…') : t('저장', 'Save')}</button>
-        <button onClick={onCancel} className="rounded-xl border-2 border-gray-200 px-4 py-2.5 text-sm text-gray-600">{t('취소', 'Cancel')}</button>
-        {onDelete && <button onClick={onDelete} className="ml-auto text-xs text-red-500 underline">{t('삭제', 'Delete')}</button>}
-      </div>
-    </div>
   )
 }
