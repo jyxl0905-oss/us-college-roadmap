@@ -6,7 +6,8 @@ import { navigate, slugify } from '../lib/router'
 import { regionLabels, schoolRegion, type Region } from './region'
 import SchoolLogo from './SchoolLogo'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
-import type { ProfileRow } from '../lib/profile'
+import { saveProfile, type ProfileRow } from '../lib/profile'
+import { setPrefillSchoolIds } from './prefill'
 import { t, bilingual } from '../i18n'
 
 const tierTitles: Record<Tier, string> = bilingual(
@@ -20,10 +21,12 @@ const lacTierTitles: Record<Tier, string> = bilingual(
 
 interface SchoolsListPageProps {
   profile: ProfileRow | null // 로그인 시 전공 direct-admit 필터 노출
+  userId: string | null
+  onProfileChange: (p: ProfileRow) => void
 }
 
 // F1: 대학 둘러보기 리스트 — 비로그인 전체 접근
-export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
+export default function SchoolsListPage({ profile, userId, onProfileChange }: SchoolsListPageProps) {
   const [schools, setSchools] = useState<School[]>([])
   const [query, setQuery] = useState('')
   const [kind, setKind] = useState<'university' | 'lac'>('university') // 종합대 / 리버럴 아츠 칼리지
@@ -39,6 +42,34 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
     setCompareIdsState(ids)
   }
   const toggleCompare = (id: number) => setCompareIds(toggleCompareId(compareIds, id))
+  const [targetPending, setTargetPending] = useState(false)
+
+  // ＋ 추가: 로그인 시 목표 학교에 추가/제거 (상세 페이지와 같은 로직), 비로그인 시 이 학교로 온보딩 시작
+  const toggleTarget = async (s: School) => {
+    if (!profile || !userId) {
+      setPrefillSchoolIds([s.id])
+      navigate('/')
+      return
+    }
+    if (targetPending) return
+    setTargetPending(true)
+    const base = profile.target_mode === 'schools' ? profile.target_school_ids : []
+    const isTargeted = base.includes(s.id)
+    const updated: ProfileRow = {
+      ...profile,
+      target_mode: 'schools',
+      target_tier: null,
+      target_school_ids: isTargeted ? base.filter((id) => id !== s.id) : [...base, s.id],
+    }
+    try {
+      await saveProfile(userId, updated)
+      onProfileChange(updated)
+    } catch {
+      alert(t('저장에 실패했어요. 네트워크를 확인하고 다시 시도해주세요.', 'Could not save. Check your connection and try again.'))
+    } finally {
+      setTargetPending(false)
+    }
+  }
 
   useEffect(() => {
     loadSchools().then(setSchools)
@@ -191,24 +222,41 @@ export default function SchoolsListPage({ profile }: SchoolsListPageProps) {
                     onClick={() => navigate(`/schools/${slugify(s.name)}`)}
                     className="relative w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 text-left active:bg-gray-50"
                   >
-                    {/* F2: 비교 선택 (카드 이동과 분리) */}
-                    <span
-                      role="checkbox"
-                      aria-checked={compareIds.includes(s.id)}
-                      aria-label={t(`${s.name} 비교에 추가`, `Add ${s.name} to compare`)}
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        toggleCompare(s.id)
-                      }}
-                      className={`absolute right-3 top-3 rounded-full border-2 px-3 py-1.5 text-xs font-semibold ${
-                        compareIds.includes(s.id)
-                          ? 'border-blue-600 bg-blue-600 text-white'
-                          : 'border-blue-200 bg-blue-50 text-blue-700'
-                      }`}
-                    >
-                      {compareIds.includes(s.id) ? t('✓ 비교 담김', '✓ Comparing') : t('＋ 비교', '＋ Compare')}
+                    {/* F2: 비교 선택 + 목표 추가 (카드 이동과 분리) */}
+                    <span className="absolute right-3 top-3 flex gap-1.5">
+                      <span
+                        role="button"
+                        aria-label={t(`${s.name} 목표 학교에 추가`, `Add ${s.name} to my targets`)}
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          void toggleTarget(s)
+                        }}
+                        className={`rounded-full border-2 px-3 py-1.5 text-xs font-semibold ${
+                          profile?.target_mode === 'schools' && profile.target_school_ids.includes(s.id)
+                            ? 'border-green-600 bg-green-600 text-white'
+                            : 'border-green-200 bg-green-50 text-green-700'
+                        }`}
+                      >
+                        {profile?.target_mode === 'schools' && profile.target_school_ids.includes(s.id) ? t('✓ 추가됨', '✓ Added') : t('＋ 추가', '＋ Add')}
+                      </span>
+                      <span
+                        role="checkbox"
+                        aria-checked={compareIds.includes(s.id)}
+                        aria-label={t(`${s.name} 비교에 추가`, `Add ${s.name} to compare`)}
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          toggleCompare(s.id)
+                        }}
+                        className={`rounded-full border-2 px-3 py-1.5 text-xs font-semibold ${
+                          compareIds.includes(s.id)
+                            ? 'border-blue-600 bg-blue-600 text-white'
+                            : 'border-blue-200 bg-blue-50 text-blue-700'
+                        }`}
+                      >
+                        {compareIds.includes(s.id) ? t('✓ 비교 담김', '✓ Comparing') : t('＋ 비교', '＋ Compare')}
+                      </span>
                     </span>
-                    <span className="flex items-center gap-3 pr-16">
+                    <span className="flex items-center gap-3 pr-40">
                       <SchoolLogo schoolId={s.id} name={s.name} size={36} />
                       <span className="min-w-0">
                         <p className="font-semibold text-gray-900">{s.name}</p>

@@ -280,7 +280,7 @@ function AppRoutes() {
   }
   // F1: 대학 둘러보기 — 로그인 여부와 무관하게 고유 URL로 접근 가능
   if (path === '/schools' || path === '/schools/') {
-    return <SchoolsListPage profile={profile} />
+    return <SchoolsListPage profile={profile} userId={session?.user.id ?? null} onProfileChange={setProfile} />
   }
   // F2: 학교 비교 (?ids=1,2,3)
   if (path === '/compare' || path === '/compare/') {
