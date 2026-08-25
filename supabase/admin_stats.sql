@@ -1,5 +1,5 @@
 -- 운영자 통계 함수 — 실제 정의는 Supabase에 apply_migration으로 적용됨(admin_stats_fix).
--- SECURITY DEFINER + auth.jwt() 이메일 화이트리스트('j.yxl0905@gmail.com'). 집계만 반환, 개인 식별 정보 없음.
+-- SECURITY DEFINER + auth.jwt() 이메일 화이트리스트('j.yxl0905@gmail.com', 'a01024160890@gmail.com'). 집계만 반환, 개인 식별 정보 없음.
 -- 운영자 추가 시: 함수 안의 `caller_email not in (...)` 목록에 이메일 추가 후 재적용.
 -- 호출: supabase.rpc('admin_stats')  (클라이언트 /admin 페이지)
 -- 반환 키: totals, signups_by_week, events_by_day, events_by_type_30d, grad_year, major, applicant_status,
