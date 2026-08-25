@@ -49,7 +49,7 @@ export default function TargetsPage({ profile }: { profile: ProfileRow }) {
           <>
             <div className="mt-3 flex gap-2">
               <button onClick={() => navigate('/schools')} className="rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 active:bg-gray-50">
-                {t('둘러보기 · 추가/제거', 'Browse · add/remove')}
+                🔍 {t('둘러보기 · 추가/제거', 'Browse · add/remove')}
               </button>
               {schools.length >= 2 && (
                 <button
