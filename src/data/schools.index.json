@@ -6,7 +6,8 @@
   "usnews_rank": 1,
   "tier": 1,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 4.6
  },
  {
   "id": 2,
@@ -15,7 +16,8 @@
   "usnews_rank": 2,
   "tier": 1,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 4.5
  },
  {
   "id": 3,
@@ -24,7 +26,8 @@
   "usnews_rank": 3,
   "tier": 1,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 3.6
  },
  {
   "id": 4,
@@ -33,7 +36,8 @@
   "usnews_rank": 4,
   "tier": 1,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 3.6
  },
  {
   "id": 5,
@@ -42,7 +46,8 @@
   "usnews_rank": 4,
   "tier": 1,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 3.9
  },
  {
   "id": 6,
@@ -51,7 +56,8 @@
   "usnews_rank": 6,
   "tier": 1,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 4.5
  },
  {
   "id": 7,
@@ -62,7 +68,8 @@
   "direct_admit_majors": [
    "engineering"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 5.7
  },
  {
   "id": 8,
@@ -73,7 +80,8 @@
   "direct_admit_majors": [
    "engineering"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 6.4
  },
  {
   "id": 9,
@@ -86,7 +94,8 @@
    "arts",
    "social_sci"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 7.7
  },
  {
   "id": 10,
@@ -99,7 +108,8 @@
    "engineering",
    "nursing"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 5.4
  },
  {
   "id": 11,
@@ -108,7 +118,8 @@
   "usnews_rank": 11,
   "tier": 1,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 2.6
  },
  {
   "id": 12,
@@ -127,7 +138,8 @@
    "natural_sci",
    "social_sci"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 8.8
  },
  {
   "id": 13,
@@ -136,7 +148,8 @@
   "usnews_rank": 13,
   "tier": 1,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 5.4
  },
  {
   "id": 14,
@@ -145,7 +158,8 @@
   "usnews_rank": 13,
   "tier": 1,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 5.4
  },
  {
   "id": 15,
@@ -156,7 +170,8 @@
   "direct_admit_majors": [
    "engineering"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 4.0
  },
  {
   "id": 16,
@@ -171,7 +186,8 @@
    "engineering",
    "math_data"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 11.0
  },
  {
   "id": 17,
@@ -183,7 +199,8 @@
    "architecture",
    "arts"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 8.0
  },
  {
   "id": 18,
@@ -198,7 +215,8 @@
    "nursing",
    "premed"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 9.0
  },
  {
   "id": 19,
@@ -210,7 +228,8 @@
    "engineering",
    "arts"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 5.9
  },
  {
   "id": 20,
@@ -229,7 +248,8 @@
    "natural_sci",
    "social_sci"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 11.7
  },
  {
   "id": 21,
@@ -244,7 +264,8 @@
    "engineering",
    "nursing"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 15.6
  },
  {
   "id": 22,
@@ -255,7 +276,8 @@
   "direct_admit_majors": [
    "business"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 11.3
  },
  {
   "id": 23,
@@ -269,7 +291,8 @@
    "business",
    "engineering"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 12.1
  },
  {
   "id": 24,
@@ -278,7 +301,8 @@
   "usnews_rank": 24,
   "tier": 2,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 10.7
  },
  {
   "id": 25,
@@ -292,7 +316,8 @@
    "premed",
    "social_sci"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 12.9
  },
  {
   "id": 26,
@@ -303,7 +328,8 @@
   "direct_admit_majors": [
    "business"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 15.3
  },
  {
   "id": 27,
@@ -319,7 +345,8 @@
    "nursing",
    "premed"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 16.8
  },
  {
   "id": 28,
@@ -334,7 +361,8 @@
    "cs",
    "engineering"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 9.8
  },
  {
   "id": 29,
@@ -348,7 +376,8 @@
    "math_data",
    "premed"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 26.7
  },
  {
   "id": 30,
@@ -357,7 +386,8 @@
   "usnews_rank": 30,
   "tier": 2,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 24.2
  },
  {
   "id": 31,
@@ -378,7 +408,8 @@
    "premed",
    "social_sci"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 26.6
  },
  {
   "id": 32,
@@ -387,7 +418,8 @@
   "usnews_rank": 32,
   "tier": 2,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 14.1
  },
  {
   "id": 33,
@@ -401,7 +433,8 @@
    "engineering",
    "nursing"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 9.2
  },
  {
   "id": 34,
@@ -418,7 +451,8 @@
    "humanities",
    "arts"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 41.8
  },
  {
   "id": 35,
@@ -438,7 +472,8 @@
    "premed",
    "social_sci"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 28.6
  },
  {
   "id": 36,
@@ -451,7 +486,8 @@
    "nursing",
    "premed"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 16.4
  },
  {
   "id": 37,
@@ -463,7 +499,8 @@
    "engineering",
    "arts"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 11.5
  },
  {
   "id": 38,
@@ -482,7 +519,8 @@
    "natural_sci",
    "social_sci"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 42.4
  },
  {
   "id": 39,
@@ -494,7 +532,8 @@
    "engineering",
    "business"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 45.2
  },
  {
   "id": 40,
@@ -506,7 +545,8 @@
    "cs",
    "engineering"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 33.0
  },
  {
   "id": 41,
@@ -518,7 +558,8 @@
    "architecture",
    "nursing"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 60.6
  },
  {
   "id": 42,
@@ -533,7 +574,8 @@
    "cs",
    "math_data"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 11.1
  },
  {
   "id": 43,
@@ -549,7 +591,8 @@
    "nursing",
    "premed"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 58.1
  },
  {
   "id": 44,
@@ -566,7 +609,8 @@
    "natural_sci",
    "social_sci"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 44.8
  },
  {
   "id": 45,
@@ -583,7 +627,8 @@
    "math_data",
    "natural_sci"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 39.1
  },
  {
   "id": 46,
@@ -592,7 +637,8 @@
   "usnews_rank": 46,
   "tier": 3,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 25.9
  },
  {
   "id": 47,
@@ -604,7 +650,8 @@
    "architecture",
    "nursing"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 5.2
  },
  {
   "id": 48,
@@ -624,7 +671,8 @@
    "premed",
    "social_sci"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 49.9
  },
  {
   "id": 49,
@@ -633,7 +681,8 @@
   "usnews_rank": 46,
   "tier": 3,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 37.7
  },
  {
   "id": 50,
@@ -642,7 +691,8 @@
   "usnews_rank": 46,
   "tier": 3,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 40.1
  },
  {
   "id": 51,
@@ -653,7 +703,8 @@
   "direct_admit_majors": [
    "nursing"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 36.5
  },
  {
   "id": 52,
@@ -662,7 +713,8 @@
   "usnews_rank": 51,
   "tier": 3,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 24.2
  },
  {
   "id": 53,
@@ -675,7 +727,8 @@
    "cs",
    "engineering"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 57.4
  },
  {
   "id": 54,
@@ -695,7 +748,8 @@
    "premed",
    "social_sci"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 54.8
  },
  {
   "id": 55,
@@ -704,7 +758,8 @@
   "usnews_rank": 51,
   "tier": 3,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 21.7
  },
  {
   "id": 56,
@@ -713,7 +768,8 @@
   "usnews_rank": 51,
   "tier": 3,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 34.1
  },
  {
   "id": 57,
@@ -722,7 +778,8 @@
   "usnews_rank": 57,
   "tier": 3,
   "direct_admit_majors": [],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 90.5
  },
  {
   "id": 58,
@@ -736,7 +793,8 @@
    "nursing",
    "premed"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 27.0
  },
  {
   "id": 59,
@@ -752,7 +810,8 @@
    "arts",
    "premed"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 47.1
  },
  {
   "id": 60,
@@ -764,7 +823,8 @@
    "architecture",
    "nursing"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 60.6
  },
  {
   "id": 61,
@@ -776,7 +836,8 @@
    "business",
    "engineering"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 48.0
  },
  {
   "id": 62,
@@ -788,7 +849,8 @@
    "cs",
    "engineering"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 49.0
  },
  {
   "id": 63,
@@ -806,7 +868,8 @@
    "nursing",
    "premed"
   ],
-  "kind": "university"
+  "kind": "university",
+  "overall_accept_rate": 79.8
  },
  {
   "id": 64,
@@ -816,7 +879,8 @@
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 1
+  "lac_rank": 1,
+  "overall_accept_rate": 8.2
  },
  {
   "id": 65,
@@ -826,7 +890,8 @@
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 2
+  "lac_rank": 2,
+  "overall_accept_rate": 9.0
  },
  {
   "id": 66,
@@ -836,7 +901,8 @@
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 4
+  "lac_rank": 4,
+  "overall_accept_rate": 7.5
  },
  {
   "id": 67,
@@ -846,7 +912,8 @@
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 5
+  "lac_rank": 5,
+  "overall_accept_rate": 7.1
  },
  {
   "id": 68,
@@ -856,7 +923,8 @@
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 7
+  "lac_rank": 7,
+  "overall_accept_rate": 9.6
  },
  {
   "id": 69,
@@ -866,7 +934,8 @@
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 7
+  "lac_rank": 7,
+  "overall_accept_rate": 7.1
  },
  {
   "id": 70,
@@ -876,7 +945,8 @@
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 7
+  "lac_rank": 7,
+  "overall_accept_rate": 14.1
  },
  {
   "id": 71,
@@ -886,7 +956,8 @@
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 10
+  "lac_rank": 10,
+  "overall_accept_rate": 20.4
  },
  {
   "id": 72,
@@ -896,7 +967,8 @@
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 10
+  "lac_rank": 10,
+  "overall_accept_rate": 12.7
  },
  {
   "id": 73,
@@ -906,7 +978,8 @@
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13
+  "lac_rank": 13,
+  "overall_accept_rate": 8.8
  },
  {
   "id": 74,
@@ -916,7 +989,8 @@
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13
+  "lac_rank": 13,
+  "overall_accept_rate": 13.4
  },
  {
   "id": 75,
@@ -926,7 +1000,8 @@
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13
+  "lac_rank": 13,
+  "overall_accept_rate": 14.5
  },
  {
   "id": 76,
@@ -936,7 +1011,8 @@
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13
+  "lac_rank": 13,
+  "overall_accept_rate": 13.6
  },
  {
   "id": 77,
@@ -946,7 +1022,8 @@
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13
+  "lac_rank": 13,
+  "overall_accept_rate": 10.8
  },
  {
   "id": 78,
@@ -956,7 +1033,8 @@
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13
+  "lac_rank": 13,
+  "overall_accept_rate": 21.0
  },
  {
   "id": 79,
@@ -966,7 +1044,8 @@
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13
+  "lac_rank": 13,
+  "overall_accept_rate": 18.6
  },
  {
   "id": 80,
@@ -976,7 +1055,8 @@
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13
+  "lac_rank": 13,
+  "overall_accept_rate": 16.5
  },
  {
   "id": 81,
@@ -986,7 +1066,8 @@
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 21
+  "lac_rank": 21,
+  "overall_accept_rate": 14.0
  },
  {
   "id": 82,
@@ -996,7 +1077,8 @@
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 22
+  "lac_rank": 22,
+  "overall_accept_rate": 13.9
  },
  {
   "id": 83,
@@ -1006,7 +1088,8 @@
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 22
+  "lac_rank": 22,
+  "overall_accept_rate": 22.2
  },
  {
   "id": 84,
@@ -1016,7 +1099,8 @@
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 24
+  "lac_rank": 24,
+  "overall_accept_rate": 13.3
  },
  {
   "id": 85,
@@ -1026,7 +1110,8 @@
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 24
+  "lac_rank": 24,
+  "overall_accept_rate": 7.1
  },
  {
   "id": 86,
@@ -1036,7 +1121,8 @@
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 24
+  "lac_rank": 24,
+  "overall_accept_rate": 12.4
  },
  {
   "id": 87,
@@ -1046,7 +1132,8 @@
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 27
+  "lac_rank": 27,
+  "overall_accept_rate": 17.6
  },
  {
   "id": 88,
@@ -1056,7 +1143,8 @@
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 28
+  "lac_rank": 28,
+  "overall_accept_rate": 28.5
  },
  {
   "id": 89,
@@ -1066,7 +1154,8 @@
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 29
+  "lac_rank": 29,
+  "overall_accept_rate": 36.0
  },
  {
   "id": 90,
@@ -1076,7 +1165,8 @@
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 30
+  "lac_rank": 30,
+  "overall_accept_rate": 29.4
  },
  {
   "id": 91,
@@ -1090,7 +1180,8 @@
    "Freeman College of Management"
   ],
   "kind": "lac",
-  "lac_rank": 30
+  "lac_rank": 30,
+  "overall_accept_rate": 28.9
  },
  {
   "id": 92,
@@ -1100,7 +1191,8 @@
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 30
+  "lac_rank": 30,
+  "overall_accept_rate": 18.5
  },
  {
   "id": 93,
@@ -1110,7 +1202,8 @@
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 30
+  "lac_rank": 30,
+  "overall_accept_rate": 31.4
  },
  {
   "id": 94,
@@ -1120,7 +1213,8 @@
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 34
+  "lac_rank": 34,
+  "overall_accept_rate": 17.4
  },
  {
   "id": 95,
@@ -1130,7 +1224,8 @@
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 35
+  "lac_rank": 35,
+  "overall_accept_rate": 28.2
  },
  {
   "id": 96,
@@ -1140,7 +1235,8 @@
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 35
+  "lac_rank": 35,
+  "overall_accept_rate": 44.2
  },
  {
   "id": 97,
@@ -1150,7 +1246,8 @@
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 37
+  "lac_rank": 37,
+  "overall_accept_rate": 25.2
  },
  {
   "id": 98,
@@ -1160,6 +1257,7 @@
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 37
+  "lac_rank": 37,
+  "overall_accept_rate": 38.3
  }
 ]
