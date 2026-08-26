@@ -182,8 +182,6 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
               {t('내 전공 직접 선발', 'Direct admit for my major')}
             </button>
           )}
-        </div>
-        <div className="mt-2 flex gap-2 overflow-x-auto pb-1">
           <select
             value={testPolicy}
             onChange={(e) => setTestPolicy(e.target.value as typeof testPolicy)}
