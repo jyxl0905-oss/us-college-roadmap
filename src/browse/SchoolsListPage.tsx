@@ -267,6 +267,11 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
                       <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
                         {s.kind === 'lac' ? `LAC #${s.lac_rank ?? '–'}` : tierTitles[s.tier]}
                       </span>
+                      {s.overall_accept_rate != null && (
+                        <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
+                          {t(`합격률 ${s.overall_accept_rate}%`, `Accept ${s.overall_accept_rate}%`)}
+                        </span>
+                      )}
                       {s.intl_accept_rate !== null && (
                         <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
                           {t(`국제 합격률 ${s.intl_accept_rate}%`, `Intl. accept ${s.intl_accept_rate}%`)}

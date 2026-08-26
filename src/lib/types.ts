@@ -98,6 +98,7 @@ export interface School {
   sat_mid50_high: number | null
   gpa_note: string | null
   intl_accept_rate: number | null
+  overall_accept_rate?: number | null // 전체 합격률 (College Scorecard/CDS C1)
   need_blind_intl: boolean | null // null = 학교가 공식 표명하지 않음
   demonstrated_interest: boolean | null
   direct_admit_majors: string[]

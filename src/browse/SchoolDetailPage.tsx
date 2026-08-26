@@ -155,6 +155,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
                   ? `${s.sat_mid50_low} – ${s.sat_mid50_high}`
                   : t('미공개', 'Not disclosed'),
             ],
+            [t('전체 합격률', 'Overall accept rate'), dash(s.overall_accept_rate, '%')],
             [t('국제학생 합격률', 'Intl. student accept rate'), dash(s.intl_accept_rate, '%')],
             [
               t('Need-blind (국제학생)', 'Need-blind (intl. students)'),
