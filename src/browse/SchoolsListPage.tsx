@@ -75,6 +75,14 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
     loadSchools().then(setSchools)
   }, [])
 
+  // 긴 목록 스크롤 보조: 위로 가기 버튼 표시 여부
+  const [showTop, setShowTop] = useState(false)
+  useEffect(() => {
+    const on = () => setShowTop(window.scrollY > 600)
+    window.addEventListener('scroll', on, { passive: true })
+    return () => window.removeEventListener('scroll', on)
+  }, [])
+
   const myMajor = profile?.major_primary && profile.major_primary !== 'undecided' ? profile.major_primary : null
 
   const filtered = useMemo(() => {
@@ -105,7 +113,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
 
   return (
     <div className="min-h-dvh bg-gray-50">
-      <div className={`mx-auto max-w-md px-5 py-6 ${compareIds.length > 0 ? 'pb-28' : 'pb-16'}`}>
+      <div className={`mx-auto max-w-md px-5 py-6 md:max-w-3xl lg:max-w-6xl ${compareIds.length > 0 ? 'pb-28' : 'pb-16'}`}>
         <div className="flex items-center gap-3">
           <button onClick={() => navigate('/')} aria-label={t('홈으로', 'Home')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
             ←
@@ -209,13 +217,31 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
 
         {schools.length === 0 && <p className="mt-10 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>}
 
+        {schools.length > 0 && filtered.length > 0 && (
+          <div className="mt-3 flex gap-1.5 overflow-x-auto">
+            {groups.map((tier) => {
+              const n = filtered.filter((s) => s.tier === tier).length
+              if (n === 0) return null
+              return (
+                <button
+                  key={tier}
+                  onClick={() => document.getElementById(`tier-${tier}`)?.scrollIntoView({ behavior: 'smooth' })}
+                  className="shrink-0 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600 active:bg-gray-200"
+                >
+                  ↓ {kind === 'lac' ? lacTierTitles[tier] : tierTitles[tier]} {n}
+                </button>
+              )
+            })}
+          </div>
+        )}
+
         {groups.map((tier) => {
           const list = sortGroup(filtered.filter((s) => s.tier === tier))
           if (list.length === 0) return null
           return (
-            <div key={tier} className="mt-6">
+            <div key={tier} id={`tier-${tier}`} className="mt-6 scroll-mt-24">
               <h2 className="font-semibold text-gray-900">{kind === 'lac' ? lacTierTitles[tier] : tierTitles[tier]}</h2>
-              <div className="mt-3 flex flex-col gap-2.5">
+              <div className="mt-3 grid gap-2.5 md:grid-cols-2 lg:grid-cols-3">
                 {list.map((s) => (
                   <button
                     key={s.id}
@@ -301,6 +327,16 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
           <p className="mt-10 text-center text-sm text-gray-400">{t('조건에 맞는 학교가 없어요.', 'No schools match these filters.')}</p>
         )}
       </div>
+
+      {showTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          aria-label={t('맨 위로', 'Back to top')}
+          className={`no-print fixed right-4 z-40 h-11 w-11 rounded-full bg-gray-900/80 text-lg text-white shadow-lg backdrop-blur active:bg-gray-700 ${compareIds.length > 0 ? 'bottom-24' : 'bottom-5'}`}
+        >
+          ↑
+        </button>
+      )}
 
       {/* F2: 비교하기 바 */}
       {compareIds.length > 0 && (

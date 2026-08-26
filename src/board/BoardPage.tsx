@@ -618,7 +618,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
               {timing && <span className="text-xs text-gray-500">{t('대개 ', 'Usually ')}{timingLabel(timing)}</span>}
             </div>
             <p className="text-[11px] text-gray-400">{rule}</p>
-            <div className="mt-2 flex flex-col gap-2">
+            <div className="mt-2 grid gap-2 md:grid-cols-2">
               {list.length === 0 ? (
                 <div className="rounded-xl border-2 border-dashed border-gray-200 px-3 py-3 text-center text-xs text-gray-400">
                   {t('비어 있음', 'Empty')}
@@ -637,7 +637,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
           {t('미배정', 'Unassigned')} <span className="ml-1 text-xs font-normal text-gray-400">{t(`${unassigned.length}곳`, `${unassigned.length}`)}</span>
         </h2>
         <p className="text-[11px] text-gray-400">{t('카드의 [라운드 칸에 넣기]로 위 칸에 배치해요. 그 학교가 제공하는 라운드만 보여요.', 'Use [Put in a round slot] on a card to place it above. Only rounds that school offers are shown.')}</p>
-        <div className="mt-2 flex flex-col gap-2">
+        <div className="mt-2 grid gap-2 md:grid-cols-2">
           {unassigned.length === 0 ? (
             <p className="text-xs text-gray-400">{t('전부 배정됐어요 🎉', 'All assigned 🎉')}</p>
           ) : (

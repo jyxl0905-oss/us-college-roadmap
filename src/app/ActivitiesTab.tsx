@@ -118,7 +118,7 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
       </div>
       <p className="mt-0.5 text-xs text-gray-400">{t('실제 원서도 이 순서로 읽혀요 — 중요한 활동을 위로 (▲▼)', 'The real application is read in this order — move important activities up (▲▼)')}</p>
 
-      <div className="mt-3 flex flex-col gap-2.5">
+      <div className="mt-3 grid gap-2.5 md:grid-cols-2">
         {activities.map((a, i) =>
           editing === a.id ? (
             <ActivityForm key={a.id} initial={a} busy={busy} onSave={(d) => saveActivity(d, a.id)} onCancel={() => setEditing(null)} onDelete={() => removeActivity(a.id)} />
@@ -164,7 +164,7 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
         <h2 className="font-semibold text-gray-900">{t('수상 (Honors)', 'Honors')}</h2>
         <span className="text-sm text-gray-400">{honors.length}/{HONOR_MAX}</span>
       </div>
-      <div className="mt-3 flex flex-col gap-2.5">
+      <div className="mt-3 grid gap-2.5 md:grid-cols-2">
         {honors.map((h) =>
           editingHonor === h.id ? (
             <HonorForm key={h.id} initial={h} activities={activities} busy={busy} onSave={(d) => saveHonor(d, h.id)} onCancel={() => setEditingHonor(null)} onDelete={() => removeHonor(h.id)} />
