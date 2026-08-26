@@ -160,6 +160,25 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
                     <p className="mt-1 text-sm font-semibold text-gray-900">{timingLabel(e.timing) ?? t('미공개', 'Not disclosed')}</p>
                   </div>
                 </div>
+                {(e.school.overall_accept_rate != null || e.school.intl_accept_rate !== null) && (
+                  <div className="mt-2 flex flex-wrap items-center gap-1 text-[11px]">
+                    {e.school.overall_accept_rate != null && (
+                      <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
+                        {t(`합격률 ${e.school.overall_accept_rate}%`, `Accept ${e.school.overall_accept_rate}%`)}
+                      </span>
+                    )}
+                    {e.school.intl_accept_rate !== null && (
+                      <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
+                        {t(`국제 ${e.school.intl_accept_rate}%`, `Intl. ${e.school.intl_accept_rate}%`)}
+                      </span>
+                    )}
+                    {(e.plan === 'ED' || e.plan === 'ED II' || e.plan === 'EA' || e.plan === 'REA') && (
+                      <span className="text-gray-400">
+                        {t('· 전체 지원자 기준 — 조기 라운드별 합격률은 대부분 미공개예요', '· all applicants — most schools don’t publish per-round rates')}
+                      </span>
+                    )}
+                  </div>
+                )}
                 <div className="mt-2 flex items-center justify-between gap-3">
                   {def ? (
                     <details className="min-w-0 text-xs text-gray-400">
