@@ -286,7 +286,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
                         <SchoolLogo schoolId={s.id} name={s.name} size={38} />
                       </span>
                       <span className="min-w-0">
-                        <p title={s.name} className="line-clamp-2 min-h-[2.5rem] text-[15px] font-bold leading-5 text-gray-900">{s.name}</p>
+                        <p title={s.name} className="line-clamp-2 text-[15px] font-bold leading-5 text-gray-900">{s.name}</p>
                         <p className="mt-0.5 truncate text-xs text-gray-400">{s.name_ko}</p>
                       </span>
                     </span>
