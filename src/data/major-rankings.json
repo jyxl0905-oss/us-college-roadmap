@@ -439,7 +439,7 @@
    {
     "rank": 8,
     "name": "Indiana University--Bloomington",
-    "school_id": null
+    "school_id": 99
    },
    {
     "rank": 8,
@@ -501,7 +501,7 @@
    {
     "rank": 9,
     "name": "Indiana University--Bloomington",
-    "school_id": null
+    "school_id": 99
    },
    {
     "rank": 10,
@@ -543,7 +543,7 @@
    {
     "rank": 4,
     "name": "Indiana University--Bloomington",
-    "school_id": null
+    "school_id": 99
    },
    {
     "rank": 5,

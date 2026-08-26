@@ -1259,5 +1259,18 @@
   "kind": "lac",
   "lac_rank": 37,
   "overall_accept_rate": 38.3
+ },
+ {
+  "id": 99,
+  "name": "Indiana University Bloomington",
+  "name_ko": "인디애나 대학교 블루밍턴",
+  "usnews_rank": 73,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business",
+   "music"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 75.9
  }
 ]

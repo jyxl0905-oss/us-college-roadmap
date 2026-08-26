@@ -11,8 +11,8 @@ import { t, bilingual } from '../i18n'
 import { timingLabel } from '../lib/academics'
 
 const tierTitles: Record<Tier, string> = bilingual(
-  { 1: 'Top 20', 2: '21–40위', 3: '41–60위' },
-  { 1: 'Top 20', 2: 'Ranked 21–40', 3: 'Ranked 41–60' },
+  { 1: 'Top 20', 2: '21–40위', 3: '41위 이하' },
+  { 1: 'Top 20', 2: 'Ranked 21–40', 3: 'Ranked 41+' },
 )
 
 // URL ?ids=3,1,5 → 비교할 학교 id (최대 3)

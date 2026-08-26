@@ -18,6 +18,7 @@ const domains: Record<number, string> = {
 
 // 고해상도 공식 마크 — 각 대학 영문 위키피디아 인포박스의 현행 인장/방패 — 표시 크기(≤52px, 2x)에 맞춘 120px 썸네일로 전송량 최소화 (2026-08-10 63곳 전수 검증)
 const hiResLogos: Record<number, string> = {
+  99: 'https://upload.wikimedia.org/wikipedia/commons/4/47/Indiana_Hoosiers_logo.svg',
   64: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Seal_Williams_College.png/120px-Seal_Williams_College.png', // LAC
   65: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Amherst_College_logo.png/120px-Amherst_College_logo.png', // LAC
   66: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Swarthmore_logo_from_NCAA.svg/120px-Swarthmore_logo_from_NCAA.svg.png', // LAC

@@ -1,0 +1,3 @@
+-- Indiana University Bloomington (id 99) — 2026-08-26 승인·적용됨
+-- 출처: IU 공식 CDS 앱(2025-26, Fall 2025 코호트) C1/C7/C8/C9/C12/C21/C22/H6, 입학처 마감·장학금 페이지, US News 2026 (#73)
+-- 실제 적용은 MCP로 실행됨. 재실행 시 id 99 존재 여부 확인 필요.

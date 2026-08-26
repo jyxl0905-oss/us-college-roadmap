@@ -11,8 +11,8 @@ import { setPrefillSchoolIds } from './prefill'
 import { t, bilingual } from '../i18n'
 
 const tierTitles: Record<Tier, string> = bilingual(
-  { 1: 'Top 20', 2: '21–40위', 3: '41–60위' },
-  { 1: 'Top 20', 2: 'Ranked 21–40', 3: 'Ranked 41–60' },
+  { 1: 'Top 20', 2: '21–40위', 3: '41위 이하' },
+  { 1: 'Top 20', 2: 'Ranked 21–40', 3: 'Ranked 41+' },
 )
 const lacTierTitles: Record<Tier, string> = bilingual(
   { 1: 'LAC Top 12', 2: 'LAC 13–24위', 3: 'LAC 25–35위' },
