@@ -99,6 +99,9 @@ export interface School {
   gpa_note: string | null
   intl_accept_rate: number | null
   overall_accept_rate?: number | null // 전체 합격률 (College Scorecard/CDS C1)
+  ed_applied?: number | null // CDS C21 ED 지원자 수
+  ed_admitted?: number | null // CDS C21 ED 합격자 수
+  ed_cds_year?: string | null
   need_blind_intl: boolean | null // null = 학교가 공식 표명하지 않음
   demonstrated_interest: boolean | null
   direct_admit_majors: string[]

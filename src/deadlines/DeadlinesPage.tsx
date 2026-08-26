@@ -172,11 +172,16 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
                         {t(`국제 ${e.school.intl_accept_rate}%`, `Intl. ${e.school.intl_accept_rate}%`)}
                       </span>
                     )}
-                    {(e.plan === 'ED' || e.plan === 'ED II' || e.plan === 'EA' || e.plan === 'REA') && (
-                      <span className="text-gray-400">
-                        {t('· 전체 지원자 기준 — 조기 라운드별 합격률은 대부분 미공개예요', '· all applicants — most schools don’t publish per-round rates')}
+                    {(e.plan === 'ED' || e.plan === 'ED II') && e.school.ed_applied != null && e.school.ed_admitted != null && e.school.ed_applied > 0 ? (
+                      <span className="rounded-full bg-red-50 px-2 py-0.5 text-red-700">
+                        {t(`ED 합격률 ${Math.round((e.school.ed_admitted / e.school.ed_applied) * 1000) / 10}% (CDS ${e.school.ed_cds_year ?? ''})`,
+                           `ED accept ${Math.round((e.school.ed_admitted / e.school.ed_applied) * 1000) / 10}% (CDS ${e.school.ed_cds_year ?? ''})`)}
                       </span>
-                    )}
+                    ) : (e.plan === 'ED' || e.plan === 'ED II' || e.plan === 'EA' || e.plan === 'REA') ? (
+                      <span className="text-gray-400">
+                        {t('· 전체 지원자 기준 — 이 라운드별 합격률은 미공개예요', '· all applicants — this round’s rate isn’t published')}
+                      </span>
+                    ) : null}
                   </div>
                 )}
                 <div className="mt-2 flex items-center justify-between gap-3">

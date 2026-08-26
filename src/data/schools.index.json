@@ -69,7 +69,10 @@
    "engineering"
   ],
   "kind": "university",
-  "overall_accept_rate": 5.7
+  "overall_accept_rate": 5.7,
+  "ed_applied": 6013,
+  "ed_admitted": 1042,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 8,
@@ -81,7 +84,10 @@
    "engineering"
   ],
   "kind": "university",
-  "overall_accept_rate": 6.4
+  "overall_accept_rate": 6.4,
+  "ed_applied": 7639,
+  "ed_admitted": 835,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 9,
@@ -95,7 +101,10 @@
    "social_sci"
   ],
   "kind": "university",
-  "overall_accept_rate": 7.7
+  "overall_accept_rate": 7.7,
+  "ed_applied": 5154,
+  "ed_admitted": 1186,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 10,
@@ -109,7 +118,10 @@
    "nursing"
   ],
   "kind": "university",
-  "overall_accept_rate": 5.4
+  "overall_accept_rate": 5.4,
+  "ed_applied": 9503,
+  "ed_admitted": 1266,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 11,
@@ -149,7 +161,10 @@
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "university",
-  "overall_accept_rate": 5.4
+  "overall_accept_rate": 5.4,
+  "ed_applied": 6251,
+  "ed_admitted": 898,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 14,
@@ -159,7 +174,10 @@
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "university",
-  "overall_accept_rate": 5.4
+  "overall_accept_rate": 5.4,
+  "ed_applied": 3552,
+  "ed_admitted": 768,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 15,
@@ -171,7 +189,10 @@
    "engineering"
   ],
   "kind": "university",
-  "overall_accept_rate": 4.0
+  "overall_accept_rate": 4.0,
+  "ed_applied": 6007,
+  "ed_admitted": 795,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 16,
@@ -200,7 +221,10 @@
    "arts"
   ],
   "kind": "university",
-  "overall_accept_rate": 8.0
+  "overall_accept_rate": 8.0,
+  "ed_applied": 5748,
+  "ed_admitted": 647,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 18,
@@ -229,7 +253,10 @@
    "arts"
   ],
   "kind": "university",
-  "overall_accept_rate": 5.9
+  "overall_accept_rate": 5.9,
+  "ed_applied": 6202,
+  "ed_admitted": 874,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 20,
@@ -249,7 +276,10 @@
    "social_sci"
   ],
   "kind": "university",
-  "overall_accept_rate": 11.7
+  "overall_accept_rate": 11.7,
+  "ed_applied": 2680,
+  "ed_admitted": 553,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 21,
@@ -292,7 +322,10 @@
    "engineering"
   ],
   "kind": "university",
-  "overall_accept_rate": 12.1
+  "overall_accept_rate": 12.1,
+  "ed_applied": 4934,
+  "ed_admitted": 1333,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 24,
@@ -302,7 +335,10 @@
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "university",
-  "overall_accept_rate": 10.7
+  "overall_accept_rate": 10.7,
+  "ed_applied": 4728,
+  "ed_admitted": 1049,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 25,
@@ -346,7 +382,10 @@
    "premed"
   ],
   "kind": "university",
-  "overall_accept_rate": 16.8
+  "overall_accept_rate": 16.8,
+  "ed_applied": 4461,
+  "ed_admitted": 1245,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 28,
@@ -487,7 +526,10 @@
    "premed"
   ],
   "kind": "university",
-  "overall_accept_rate": 16.4
+  "overall_accept_rate": 16.4,
+  "ed_applied": 4288,
+  "ed_admitted": 1434,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 37,
@@ -500,7 +542,10 @@
    "arts"
   ],
   "kind": "university",
-  "overall_accept_rate": 11.5
+  "overall_accept_rate": 11.5,
+  "ed_applied": 3344,
+  "ed_admitted": 1071,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 38,
@@ -575,7 +620,10 @@
    "math_data"
   ],
   "kind": "university",
-  "overall_accept_rate": 11.1
+  "overall_accept_rate": 11.1,
+  "ed_applied": 6907,
+  "ed_admitted": 2165,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 43,
@@ -638,7 +686,10 @@
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
-  "overall_accept_rate": 25.9
+  "overall_accept_rate": 25.9,
+  "ed_applied": 2040,
+  "ed_admitted": 966,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 47,
@@ -651,7 +702,10 @@
    "nursing"
   ],
   "kind": "university",
-  "overall_accept_rate": 5.2
+  "overall_accept_rate": 5.2,
+  "ed_applied": 3466,
+  "ed_admitted": 1492,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 48,
@@ -692,7 +746,10 @@
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
-  "overall_accept_rate": 40.1
+  "overall_accept_rate": 40.1,
+  "ed_applied": 1129,
+  "ed_admitted": 472,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 51,
@@ -704,7 +761,10 @@
    "nursing"
   ],
   "kind": "university",
-  "overall_accept_rate": 36.5
+  "overall_accept_rate": 36.5,
+  "ed_applied": 1053,
+  "ed_admitted": 263,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 52,
@@ -769,7 +829,10 @@
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
-  "overall_accept_rate": 34.1
+  "overall_accept_rate": 34.1,
+  "ed_applied": 1586,
+  "ed_admitted": 746,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 57,
@@ -794,7 +857,10 @@
    "premed"
   ],
   "kind": "university",
-  "overall_accept_rate": 27.0
+  "overall_accept_rate": 27.0,
+  "ed_applied": 1680,
+  "ed_admitted": 1005,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 59,
@@ -811,7 +877,10 @@
    "premed"
   ],
   "kind": "university",
-  "overall_accept_rate": 47.1
+  "overall_accept_rate": 47.1,
+  "ed_applied": 1139,
+  "ed_admitted": 755,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 60,
@@ -837,7 +906,10 @@
    "engineering"
   ],
   "kind": "university",
-  "overall_accept_rate": 48.0
+  "overall_accept_rate": 48.0,
+  "ed_applied": 611,
+  "ed_admitted": 467,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 62,
@@ -880,7 +952,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 1,
-  "overall_accept_rate": 8.2
+  "overall_accept_rate": 8.2,
+  "ed_applied": 964,
+  "ed_admitted": 256,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 65,
@@ -891,7 +966,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 2,
-  "overall_accept_rate": 9.0
+  "overall_accept_rate": 9.0,
+  "ed_applied": 971,
+  "ed_admitted": 216,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 66,
@@ -902,7 +980,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 4,
-  "overall_accept_rate": 7.5
+  "overall_accept_rate": 7.5,
+  "ed_applied": 1281,
+  "ed_admitted": 228,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 67,
@@ -913,7 +994,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 5,
-  "overall_accept_rate": 7.1
+  "overall_accept_rate": 7.1,
+  "ed_applied": 1985,
+  "ed_admitted": 296,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 68,
@@ -924,7 +1008,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 7,
-  "overall_accept_rate": 9.6
+  "overall_accept_rate": 9.6,
+  "ed_applied": 978,
+  "ed_admitted": 216,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 69,
@@ -935,7 +1022,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 7,
-  "overall_accept_rate": 7.1
+  "overall_accept_rate": 7.1,
+  "ed_applied": 1656,
+  "ed_admitted": 227,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 70,
@@ -946,7 +1036,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 7,
-  "overall_accept_rate": 14.1
+  "overall_accept_rate": 14.1,
+  "ed_applied": 1033,
+  "ed_admitted": 308,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 71,
@@ -957,7 +1050,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 10,
-  "overall_accept_rate": 20.4
+  "overall_accept_rate": 20.4,
+  "ed_applied": 760,
+  "ed_admitted": 263,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 72,
@@ -968,7 +1064,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 10,
-  "overall_accept_rate": 12.7
+  "overall_accept_rate": 12.7,
+  "ed_applied": 594,
+  "ed_admitted": 109,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 73,
@@ -979,7 +1078,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 8.8
+  "overall_accept_rate": 8.8,
+  "ed_applied": 1437,
+  "ed_admitted": 476,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 74,
@@ -990,7 +1092,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 13.4
+  "overall_accept_rate": 13.4,
+  "ed_applied": 1232,
+  "ed_admitted": 358,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 75,
@@ -1001,7 +1106,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 14.5
+  "overall_accept_rate": 14.5,
+  "ed_applied": 828,
+  "ed_admitted": 283,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 76,
@@ -1012,7 +1120,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 13.6
+  "overall_accept_rate": 13.6,
+  "ed_applied": 1120,
+  "ed_admitted": 315,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 77,
@@ -1023,7 +1134,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 10.8
+  "overall_accept_rate": 10.8,
+  "ed_applied": 1179,
+  "ed_admitted": 460,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 78,
@@ -1034,7 +1148,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 21.0
+  "overall_accept_rate": 21.0,
+  "ed_applied": 1107,
+  "ed_admitted": 371,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 79,
@@ -1045,7 +1162,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 18.6
+  "overall_accept_rate": 18.6,
+  "ed_applied": 1046,
+  "ed_admitted": 402,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 80,
@@ -1056,7 +1176,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 16.5
+  "overall_accept_rate": 16.5,
+  "ed_applied": 1220,
+  "ed_admitted": 522,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 81,
@@ -1067,7 +1190,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 21,
-  "overall_accept_rate": 14.0
+  "overall_accept_rate": 14.0,
+  "ed_applied": 1048,
+  "ed_admitted": 289,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 82,
@@ -1078,7 +1204,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 22,
-  "overall_accept_rate": 13.9
+  "overall_accept_rate": 13.9,
+  "ed_applied": 1342,
+  "ed_admitted": 477,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 83,
@@ -1089,7 +1218,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 22,
-  "overall_accept_rate": 22.2
+  "overall_accept_rate": 22.2,
+  "ed_applied": 1154,
+  "ed_admitted": 421,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 84,
@@ -1100,7 +1232,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 24,
-  "overall_accept_rate": 13.3
+  "overall_accept_rate": 13.3,
+  "ed_applied": 1128,
+  "ed_admitted": 306,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 85,
@@ -1122,7 +1257,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 24,
-  "overall_accept_rate": 12.4
+  "overall_accept_rate": 12.4,
+  "ed_applied": 745,
+  "ed_admitted": 219,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 87,
@@ -1133,7 +1271,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 27,
-  "overall_accept_rate": 17.6
+  "overall_accept_rate": 17.6,
+  "ed_applied": 761,
+  "ed_admitted": 511,
+  "ed_cds_year": "2023-24"
  },
  {
   "id": 88,
@@ -1144,7 +1285,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 28,
-  "overall_accept_rate": 28.5
+  "overall_accept_rate": 28.5,
+  "ed_applied": 479,
+  "ed_admitted": 201,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 89,
@@ -1155,7 +1299,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 29,
-  "overall_accept_rate": 36.0
+  "overall_accept_rate": 36.0,
+  "ed_applied": 411,
+  "ed_admitted": 208,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 90,
@@ -1166,7 +1313,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 30,
-  "overall_accept_rate": 29.4
+  "overall_accept_rate": 29.4,
+  "ed_applied": 456,
+  "ed_admitted": 167,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 91,
@@ -1181,7 +1331,10 @@
   ],
   "kind": "lac",
   "lac_rank": 30,
-  "overall_accept_rate": 28.9
+  "overall_accept_rate": 28.9,
+  "ed_applied": 1200,
+  "ed_admitted": 656,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 92,
@@ -1192,7 +1345,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 30,
-  "overall_accept_rate": 18.5
+  "overall_accept_rate": 18.5,
+  "ed_applied": 918,
+  "ed_admitted": 292,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 93,
@@ -1203,7 +1359,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 30,
-  "overall_accept_rate": 31.4
+  "overall_accept_rate": 31.4,
+  "ed_applied": 937,
+  "ed_admitted": 356,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 94,
@@ -1214,7 +1373,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 34,
-  "overall_accept_rate": 17.4
+  "overall_accept_rate": 17.4,
+  "ed_applied": 1589,
+  "ed_admitted": 394,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 95,
@@ -1225,7 +1387,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 35,
-  "overall_accept_rate": 28.2
+  "overall_accept_rate": 28.2,
+  "ed_applied": 860,
+  "ed_admitted": 254,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 96,
@@ -1236,7 +1401,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 35,
-  "overall_accept_rate": 44.2
+  "overall_accept_rate": 44.2,
+  "ed_applied": 466,
+  "ed_admitted": 223,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 97,
@@ -1247,7 +1415,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 37,
-  "overall_accept_rate": 25.2
+  "overall_accept_rate": 25.2,
+  "ed_applied": 385,
+  "ed_admitted": 167,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 98,
@@ -1258,7 +1429,10 @@
   "direct_admit_majors": [],
   "kind": "lac",
   "lac_rank": 37,
-  "overall_accept_rate": 38.3
+  "overall_accept_rate": 38.3,
+  "ed_applied": 275,
+  "ed_admitted": 141,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 99,

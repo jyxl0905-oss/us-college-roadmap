@@ -268,7 +268,10 @@
    "character"
   ],
   "c7_source_url": "https://ir.provost.duke.edu/sites/default/files/CDS_PDF_2025-2026-20260622-website-published-version.pdf",
-  "overall_accept_rate": 5.7
+  "overall_accept_rate": 5.7,
+  "ed_applied": 6013,
+  "ed_admitted": 1042,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 8,
@@ -309,7 +312,10 @@
    "recommendations"
   ],
   "c7_source_url": "https://oira.jhu.edu/wp-content/uploads/2025-2026-CDS-Johns-Hopkins-University-v2.pdf",
-  "overall_accept_rate": 6.4
+  "overall_accept_rate": 6.4,
+  "ed_applied": 7639,
+  "ed_admitted": 835,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 9,
@@ -354,7 +360,10 @@
    "character"
   ],
   "c7_source_url": "https://enrollment.northwestern.edu/data/2024-2025.pdf",
-  "overall_accept_rate": 7.7
+  "overall_accept_rate": 7.7,
+  "ed_applied": 5154,
+  "ed_admitted": 1186,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 10,
@@ -396,7 +405,10 @@
    "character"
   ],
   "c7_source_url": "https://upenn.box.com/s/ckv4frz37rzxa4u6bdiv2h4yzykqm4ef",
-  "overall_accept_rate": 5.4
+  "overall_accept_rate": 5.4,
+  "ed_applied": 9503,
+  "ed_admitted": 1266,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 11,
@@ -515,7 +527,10 @@
   "deadlines_verified_at": "2026-08-10",
   "c7_very_important": null,
   "c7_source_url": null,
-  "overall_accept_rate": 5.4
+  "overall_accept_rate": 5.4,
+  "ed_applied": 6251,
+  "ed_admitted": 898,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 14,
@@ -556,7 +571,10 @@
    "character"
   ],
   "c7_source_url": "https://www.dartmouth.edu/oir/pdfs/cds_2025-26.pdf",
-  "overall_accept_rate": 5.4
+  "overall_accept_rate": 5.4,
+  "ed_applied": 3552,
+  "ed_admitted": 768,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 15,
@@ -598,7 +616,10 @@
    "character"
   ],
   "c7_source_url": "https://opir.columbia.edu/sites/opir.columbia.edu/files/content/Common%20Data%20Set/2024-25_Columbia_College_and_Columbia_Engineering_CDS.pdf",
-  "overall_accept_rate": 4.0
+  "overall_accept_rate": 4.0,
+  "ed_applied": 6007,
+  "ed_admitted": 795,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 16,
@@ -685,7 +706,10 @@
    "character"
   ],
   "c7_source_url": "https://ideas.rice.edu/wp-content/uploads/2026/07/CDS_2025-26_WEBSITE.pdf",
-  "overall_accept_rate": 8.0
+  "overall_accept_rate": 8.0,
+  "ed_applied": 5748,
+  "ed_admitted": 647,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 18,
@@ -769,7 +793,10 @@
    "character"
   ],
   "c7_source_url": "https://cdn.vanderbilt.edu/vu-wpfsx/wp-content/uploads/sites/70/2026/07/CDS_2025-2026.xlsx",
-  "overall_accept_rate": 5.9
+  "overall_accept_rate": 5.9,
+  "ed_applied": 6202,
+  "ed_admitted": 874,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 20,
@@ -818,7 +845,10 @@
    "volunteer_work"
   ],
   "c7_source_url": "https://www.cmu.edu/ira/CDS/pdf/cds_2025_26/cds-2025-c-first-time-first-year-admission.pdf",
-  "overall_accept_rate": 11.7
+  "overall_accept_rate": 11.7,
+  "ed_applied": 2680,
+  "ed_admitted": 553,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 21,
@@ -949,7 +979,10 @@
    "character"
   ],
   "c7_source_url": "https://washu.edu/app/uploads/2026/06/2025-2026-WashU-CDS.pdf",
-  "overall_accept_rate": 12.1
+  "overall_accept_rate": 12.1,
+  "ed_applied": 4934,
+  "ed_admitted": 1333,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 24,
@@ -988,7 +1021,10 @@
    "character"
   ],
   "c7_source_url": "https://provost.emory.edu/planning-administration/_includes/documents/sections/institutional-data/emory-common-date-set-2025-2026.pdf",
-  "overall_accept_rate": 10.7
+  "overall_accept_rate": 10.7,
+  "ed_applied": 4728,
+  "ed_admitted": 1049,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 25,
@@ -1121,7 +1157,10 @@
    "state_residency"
   ],
   "c7_source_url": "https://ira.virginia.edu/common-data-set/common-data-set-2025-2026",
-  "overall_accept_rate": 16.8
+  "overall_accept_rate": 16.8,
+  "ed_applied": 4461,
+  "ed_admitted": 1245,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 28,
@@ -1500,7 +1539,10 @@
    "gpa"
   ],
   "c7_source_url": "https://www.bc.edu/content/dam/bc1/offices/irp/ir/cds/Boston_College_CDS_2024-2025_Final.pdf",
-  "overall_accept_rate": 16.4
+  "overall_accept_rate": 16.4,
+  "ed_applied": 4288,
+  "ed_admitted": 1434,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 37,
@@ -1542,7 +1584,10 @@
    "character"
   ],
   "c7_source_url": "https://provost.tufts.edu/institutionalresearch/wp-content/uploads/sites/5/CDS_2025-2026.pdf",
-  "overall_accept_rate": 11.5
+  "overall_accept_rate": 11.5,
+  "ed_applied": 3344,
+  "ed_admitted": 1071,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 38,
@@ -1748,7 +1793,10 @@
    "gpa"
   ],
   "c7_source_url": "https://www.bu.edu/asir/files/2026/05/CDS-2025-2026-2.pdf",
-  "overall_accept_rate": 11.1
+  "overall_accept_rate": 11.1,
+  "ed_applied": 6907,
+  "ed_admitted": 2165,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 43,
@@ -1912,7 +1960,10 @@
    "gpa"
   ],
   "c7_source_url": "https://data.lehigh.edu/sites/data.lehigh.edu/files/4.6.2026_CDS_Finalized-Published_Definition%20Sheet%20Removed%20for%20Website%20Posting_0.pdf",
-  "overall_accept_rate": 25.9
+  "overall_accept_rate": 25.9,
+  "ed_applied": 2040,
+  "ed_admitted": 966,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 47,
@@ -1952,7 +2003,10 @@
    "recommendations"
   ],
   "c7_source_url": "https://uds.northeastern.edu/wp-content/uploads/2026/03/CDS-2024-25.pdf",
-  "overall_accept_rate": 5.2
+  "overall_accept_rate": 5.2,
+  "ed_applied": 3466,
+  "ed_admitted": 1492,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 48,
@@ -2071,7 +2125,10 @@
    "character"
   ],
   "c7_source_url": "https://www.rochester.edu/provost/wp-content/uploads/2026/06/CDS-2025-26-completed-for-web.pdf",
-  "overall_accept_rate": 40.1
+  "overall_accept_rate": 40.1,
+  "ed_applied": 1129,
+  "ed_admitted": 472,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 51,
@@ -2110,7 +2167,10 @@
    "extracurricular"
   ],
   "c7_source_url": "https://case.edu/ir/sites/default/files/2026-02/CDS%202025-26%20Adjusted%20Final.pdf",
-  "overall_accept_rate": 36.5
+  "overall_accept_rate": 36.5,
+  "ed_applied": 1053,
+  "ed_admitted": 263,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 52,
@@ -2309,7 +2369,10 @@
    "work_experience"
   ],
   "c7_source_url": "https://www.wm.edu/offices/ir/university_data/cds/cds_2025-26_c1.pdf",
-  "overall_accept_rate": 34.1
+  "overall_accept_rate": 34.1,
+  "ed_applied": 1586,
+  "ed_admitted": 746,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 57,
@@ -2386,7 +2449,10 @@
    "essay"
   ],
   "c7_source_url": "https://www.villanova.edu/content/dam/villanova/provost/decision_support/CDS-2025-2026-v3.pdf",
-  "overall_accept_rate": 27.0
+  "overall_accept_rate": 27.0,
+  "ed_applied": 1680,
+  "ed_admitted": 1005,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 59,
@@ -2428,7 +2494,10 @@
    "gpa"
   ],
   "c7_source_url": "https://irp.gwu.edu/sites/g/files/zaxdzs6056/files/2026-04/CDS-PDF-2025-2026.pdf",
-  "overall_accept_rate": 47.1
+  "overall_accept_rate": 47.1,
+  "ed_applied": 1139,
+  "ed_admitted": 755,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 60,
@@ -2509,7 +2578,10 @@
    "work_experience"
   ],
   "c7_source_url": "https://www.scu.edu/media/offices/institutional-research/fampf/common-data-set/CDS-2024-2025---Final---Revised-01152026.pdf",
-  "overall_accept_rate": 48.0
+  "overall_accept_rate": 48.0,
+  "ed_applied": 611,
+  "ed_admitted": 467,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 62,
@@ -2634,7 +2706,10 @@
   "c7_source_url": "https://hub.williams.edu/institutional-research/files/2026/04/Williams-CDS-2025-2026-V2.pdf",
   "kind": "lac",
   "lac_rank": 1,
-  "overall_accept_rate": 8.2
+  "overall_accept_rate": 8.2,
+  "ed_applied": 964,
+  "ed_admitted": 256,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 65,
@@ -2676,7 +2751,10 @@
   "c7_source_url": "https://www.amherst.edu/system/files/C.%20First-Time%20First-Year%20Admission%202025-26_0.pdf",
   "kind": "lac",
   "lac_rank": 2,
-  "overall_accept_rate": 9.0
+  "overall_accept_rate": 9.0,
+  "ed_applied": 971,
+  "ed_admitted": 216,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 66,
@@ -2717,7 +2795,10 @@
   "c7_source_url": "https://www.swarthmore.edu/sites/default/files/assets/documents/institutional-effectiveness-research-assessment/Swarthmore-CDS-2025-26.pdf",
   "kind": "lac",
   "lac_rank": 4,
-  "overall_accept_rate": 7.5
+  "overall_accept_rate": 7.5,
+  "ed_applied": 1281,
+  "ed_admitted": 228,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 67,
@@ -2760,7 +2841,10 @@
   "c7_source_url": "https://www.bowdoin.edu/ir/pdf/bowdoin-cds_2025-2026.pdf",
   "kind": "lac",
   "lac_rank": 5,
-  "overall_accept_rate": 7.1
+  "overall_accept_rate": 7.1,
+  "ed_applied": 1985,
+  "ed_admitted": 296,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 68,
@@ -2801,7 +2885,10 @@
   "c7_source_url": "https://www.cmc.edu/sites/default/files/CDS_2025-26.pdf",
   "kind": "lac",
   "lac_rank": 7,
-  "overall_accept_rate": 9.6
+  "overall_accept_rate": 9.6,
+  "ed_applied": 978,
+  "ed_admitted": 216,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 69,
@@ -2844,7 +2931,10 @@
   "c7_source_url": "https://tableau.campus.pomona.edu/views/CDS2025-26/C_First-timeFirst-yearadmission",
   "kind": "lac",
   "lac_rank": 7,
-  "overall_accept_rate": 7.1
+  "overall_accept_rate": 7.1,
+  "ed_applied": 1656,
+  "ed_admitted": 227,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 70,
@@ -2883,7 +2973,10 @@
   "c7_source_url": "https://wellesley-college.files.svdcdn.com/production/administrative-departments/OIR/CDS_2025-2026-FINAL.pdf",
   "kind": "lac",
   "lac_rank": 7,
-  "overall_accept_rate": 14.1
+  "overall_accept_rate": 14.1,
+  "ed_applied": 1033,
+  "ed_admitted": 308,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 71,
@@ -2926,7 +3019,10 @@
   "c7_source_url": "https://carleton-wp-production.s3.amazonaws.com/uploads/sites/292/2026/06/CDS-PDF-2025-2026_PDF_Carleton_06242026.pdf",
   "kind": "lac",
   "lac_rank": 10,
-  "overall_accept_rate": 20.4
+  "overall_accept_rate": 20.4,
+  "ed_applied": 760,
+  "ed_admitted": 263,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 72,
@@ -2964,7 +3060,10 @@
   "c7_source_url": "https://www.hmc.edu/institutional-research/wp-content/uploads/sites/42/2026/03/CDS-HMC-2025.2026_shared.pdf",
   "kind": "lac",
   "lac_rank": 10,
-  "overall_accept_rate": 12.7
+  "overall_accept_rate": 12.7,
+  "ed_applied": 594,
+  "ed_admitted": 109,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 73,
@@ -3004,7 +3103,10 @@
   "c7_source_url": "https://barnard.edu/institutional-effectiveness/common-data-set",
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 8.8
+  "overall_accept_rate": 8.8,
+  "ed_applied": 1437,
+  "ed_admitted": 476,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 74,
@@ -3042,7 +3144,10 @@
   "c7_source_url": "https://www.davidson.edu/media/9718/download",
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 13.4
+  "overall_accept_rate": 13.4,
+  "ed_applied": 1232,
+  "ed_admitted": 358,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 75,
@@ -3080,7 +3185,10 @@
   "c7_source_url": "https://www.grinnell.edu/doc/grinnell-college-common-data-set-2024-2025",
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 14.5
+  "overall_accept_rate": 14.5,
+  "ed_applied": 828,
+  "ed_admitted": 283,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 76,
@@ -3118,7 +3226,10 @@
   "c7_source_url": "https://www.hamilton.edu/documents/CDS%202025-26%20Excel%20Final.pdf",
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 13.6
+  "overall_accept_rate": 13.6,
+  "ed_applied": 1120,
+  "ed_admitted": 315,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 77,
@@ -3159,7 +3270,10 @@
   "c7_source_url": "https://www.middlebury.edu/sites/default/files/2026-02/Fall%202025%20CDS%20Preliminary.pdf",
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 10.8
+  "overall_accept_rate": 10.8,
+  "ed_applied": 1179,
+  "ed_admitted": 460,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 78,
@@ -3199,7 +3313,10 @@
   "c7_source_url": "https://www1.smith.edu/sites/default/files/2025-02/2024-2025-CDS-Smith-PUB19Dec24%20v2.pdf",
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 21.0
+  "overall_accept_rate": 21.0,
+  "ed_applied": 1107,
+  "ed_admitted": 371,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 79,
@@ -3241,7 +3358,10 @@
   "c7_source_url": "https://offices.vassar.edu/institutional-research/wp-content/uploads/sites/23/2026/03/Vassar_College_CDS_2025-2026.pdf",
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 18.6
+  "overall_accept_rate": 18.6,
+  "ed_applied": 1046,
+  "ed_admitted": 402,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 80,
@@ -3277,7 +3397,10 @@
   "c7_source_url": "https://www.wesleyan.edu/ir/common-data-sets.html",
   "kind": "lac",
   "lac_rank": 13,
-  "overall_accept_rate": 16.5
+  "overall_accept_rate": 16.5,
+  "ed_applied": 1220,
+  "ed_admitted": 522,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 81,
@@ -3316,7 +3439,10 @@
   "c7_source_url": "https://my.wlu.edu/document/2025-common-data-set",
   "kind": "lac",
   "lac_rank": 21,
-  "overall_accept_rate": 14.0
+  "overall_accept_rate": 14.0,
+  "ed_applied": 1048,
+  "ed_admitted": 289,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 82,
@@ -3354,7 +3480,10 @@
   "c7_source_url": "https://www.colgate.edu/sites/default/files/2026-07/CDS-PDF-2025-2026.pdf",
   "kind": "lac",
   "lac_rank": 22,
-  "overall_accept_rate": 13.9
+  "overall_accept_rate": 13.9,
+  "ed_applied": 1342,
+  "ed_admitted": 477,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 83,
@@ -3391,7 +3520,10 @@
   "c7_source_url": "https://ifx.richmond.edu/pdfs/CDS2025-2026SectionC.pdf",
   "kind": "lac",
   "lac_rank": 22,
-  "overall_accept_rate": 22.2
+  "overall_accept_rate": 22.2,
+  "ed_applied": 1154,
+  "ed_admitted": 421,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 84,
@@ -3434,7 +3566,10 @@
   "c7_source_url": "https://www.bates.edu/research/files/2026/06/CDS_2025-2026.pdf",
   "kind": "lac",
   "lac_rank": 24,
-  "overall_accept_rate": 13.3
+  "overall_accept_rate": 13.3,
+  "ed_applied": 1128,
+  "ed_admitted": 306,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 85,
@@ -3509,7 +3644,10 @@
   "c7_source_url": "https://www.haverford.edu/sites/default/files/Office/President/CDS_2024-2025.pdf",
   "kind": "lac",
   "lac_rank": 24,
-  "overall_accept_rate": 12.4
+  "overall_accept_rate": 12.4,
+  "ed_applied": 745,
+  "ed_admitted": 219,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 87,
@@ -3550,7 +3688,10 @@
   "c7_source_url": "https://www.holycross.edu/document/common-data-set-20232024",
   "kind": "lac",
   "lac_rank": 27,
-  "overall_accept_rate": 17.6
+  "overall_accept_rate": 17.6,
+  "ed_applied": 761,
+  "ed_admitted": 511,
+  "ed_cds_year": "2023-24"
  },
  {
   "id": 88,
@@ -3587,7 +3728,10 @@
   "c7_source_url": "https://www.macalester.edu/institutional-research/wp-content/uploads/sites/515/CDS_2025-2026_Macalester-College_completed-1.pdf",
   "kind": "lac",
   "lac_rank": 28,
-  "overall_accept_rate": 28.5
+  "overall_accept_rate": 28.5,
+  "ed_applied": 479,
+  "ed_admitted": 201,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 89,
@@ -3626,7 +3770,10 @@
   "c7_source_url": "https://drive.google.com/file/d/1YBj1g21DRKEMSV0WHaiIT6paJg1qruX9/view",
   "kind": "lac",
   "lac_rank": 29,
-  "overall_accept_rate": 36.0
+  "overall_accept_rate": 36.0,
+  "ed_applied": 411,
+  "ed_admitted": 208,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 90,
@@ -3665,7 +3812,10 @@
   "c7_source_url": "https://www.brynmawr.edu/sites/default/files/media/documents/2026-04/CDS%202025-26%20Bryn%20Mawr%20Read%20Only.pdf",
   "kind": "lac",
   "lac_rank": 30,
-  "overall_accept_rate": 29.4
+  "overall_accept_rate": 29.4,
+  "ed_applied": 456,
+  "ed_admitted": 167,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 91,
@@ -3710,7 +3860,10 @@
   "c7_source_url": "https://www.bucknell.edu/sites/default/files/institutional-research/common_data_set_2025-26.pdf",
   "kind": "lac",
   "lac_rank": 30,
-  "overall_accept_rate": 28.9
+  "overall_accept_rate": 28.9,
+  "ed_applied": 1200,
+  "ed_admitted": 656,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 92,
@@ -3744,7 +3897,10 @@
   "c7_source_url": "https://www.coloradocollege.edu/offices/ipe/documents/CDS-2025-2026_PDF_Final.pdf",
   "kind": "lac",
   "lac_rank": 30,
-  "overall_accept_rate": 18.5
+  "overall_accept_rate": 18.5,
+  "ed_applied": 918,
+  "ed_admitted": 292,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 93,
@@ -3781,7 +3937,10 @@
   "c7_source_url": "https://oir.lafayette.edu/wp-content/uploads/sites/196/2026/01/CDS2025-2026.pdf",
   "kind": "lac",
   "lac_rank": 30,
-  "overall_accept_rate": 31.4
+  "overall_accept_rate": 31.4,
+  "ed_applied": 937,
+  "ed_admitted": 356,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 94,
@@ -3820,7 +3979,10 @@
   "c7_source_url": "https://denison.edu/sites/default/files/forms/2026-08/cds_du_20252026_published_updated2026.08.14.pdf",
   "kind": "lac",
   "lac_rank": 34,
-  "overall_accept_rate": 17.4
+  "overall_accept_rate": 17.4,
+  "ed_applied": 1589,
+  "ed_admitted": 394,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 95,
@@ -3859,7 +4021,10 @@
   "c7_source_url": "https://drive.google.com/file/d/1CpyIXEDF-2bMSlt8qXimtThANg0xsUlw/view",
   "kind": "lac",
   "lac_rank": 35,
-  "overall_accept_rate": 28.2
+  "overall_accept_rate": 28.2,
+  "ed_applied": 860,
+  "ed_admitted": 254,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 96,
@@ -3898,7 +4063,10 @@
   "c7_source_url": "https://www.oxy.edu/sites/default/files/assets/Institutional_Research/CDS_C_2526_0.pdf",
   "kind": "lac",
   "lac_rank": 35,
-  "overall_accept_rate": 44.2
+  "overall_accept_rate": 44.2,
+  "ed_applied": 466,
+  "ed_admitted": 223,
+  "ed_cds_year": "2024-25"
  },
  {
   "id": 97,
@@ -3938,7 +4106,10 @@
   "c7_source_url": "https://www.pitzer.edu/documents/common-data-set-2025-2026",
   "kind": "lac",
   "lac_rank": 37,
-  "overall_accept_rate": 25.2
+  "overall_accept_rate": 25.2,
+  "ed_applied": 385,
+  "ed_admitted": 167,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 98,
@@ -3977,7 +4148,10 @@
   "c7_source_url": "https://www.scrippscollege.edu/assessir/wp-content/uploads/sites/30/CDS_2025-2026_FINAL_V3.pdf",
   "kind": "lac",
   "lac_rank": 37,
-  "overall_accept_rate": 38.3
+  "overall_accept_rate": 38.3,
+  "ed_applied": 275,
+  "ed_admitted": 141,
+  "ed_cds_year": "2025-26"
  },
  {
   "id": 99,
