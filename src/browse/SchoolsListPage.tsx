@@ -244,7 +244,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
                   <button
                     key={s.id}
                     onClick={() => navigate(`/schools/${slugify(s.name)}`)}
-                    className="relative w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 text-left active:bg-gray-50"
+                    className="relative h-full w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 text-left active:bg-gray-50"
                   >
                     {/* F2: 비교 선택 + 목표 추가 (카드 이동과 분리) */}
                     <span className="absolute right-3 top-3 flex gap-1.5">
@@ -255,10 +255,10 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
                           e.stopPropagation()
                           void toggleTarget(s)
                         }}
-                        className={`rounded-full border-2 px-3 py-1.5 text-xs font-semibold ${
+                        className={`rounded-full border px-2.5 py-1 text-[11px] font-medium ${
                           profile?.target_mode === 'schools' && profile.target_school_ids.includes(s.id)
-                            ? 'border-green-600 bg-green-600 text-white'
-                            : 'border-green-200 bg-green-50 text-green-700'
+                            ? 'border-green-600 bg-green-600 font-semibold text-white'
+                            : 'border-gray-200 bg-white text-gray-500'
                         }`}
                       >
                         {profile?.target_mode === 'schools' && profile.target_school_ids.includes(s.id) ? t('✓ 추가됨', '✓ Added') : t('＋ 추가', '＋ Add')}
@@ -271,23 +271,26 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
                           e.stopPropagation()
                           toggleCompare(s.id)
                         }}
-                        className={`rounded-full border-2 px-3 py-1.5 text-xs font-semibold ${
+                        className={`rounded-full border px-2.5 py-1 text-[11px] font-medium ${
                           compareIds.includes(s.id)
-                            ? 'border-blue-600 bg-blue-600 text-white'
-                            : 'border-blue-200 bg-blue-50 text-blue-700'
+                            ? 'border-blue-600 bg-blue-600 font-semibold text-white'
+                            : 'border-gray-200 bg-white text-gray-500'
                         }`}
                       >
                         {compareIds.includes(s.id) ? t('✓ 비교 담김', '✓ Comparing') : t('＋ 비교', '＋ Compare')}
                       </span>
                     </span>
-                    <span className="flex items-center gap-3 pr-40">
-                      <SchoolLogo schoolId={s.id} name={s.name} size={36} />
+                    <span className="flex items-start gap-3 pr-32">
+                      {/* 로고 고정 박스 48px — 아이콘형·텍스트형 로고의 무게를 통일 */}
+                      <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-gray-100 bg-white">
+                        <SchoolLogo schoolId={s.id} name={s.name} size={38} />
+                      </span>
                       <span className="min-w-0">
-                        <p className="font-semibold text-gray-900">{s.name}</p>
-                        <p className="text-sm text-gray-500">{s.name_ko}</p>
+                        <p title={s.name} className="line-clamp-2 min-h-[2.5rem] text-[15px] font-bold leading-5 text-gray-900">{s.name}</p>
+                        <p className="mt-0.5 truncate text-xs text-gray-400">{s.name_ko}</p>
                       </span>
                     </span>
-                    <span className="mt-2 flex flex-wrap gap-1.5 text-xs">
+                    <span className="mt-2.5 flex flex-wrap gap-1 text-[11px]">
                       <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
                         {s.kind === 'lac' ? `LAC #${s.lac_rank ?? '–'}` : tierTitles[s.tier]}
                       </span>
@@ -308,10 +311,10 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
                         <span className="rounded-full bg-red-50 px-2 py-0.5 text-red-700">{t('SAT/ACT 필수', 'SAT/ACT required')}</span>
                       )}
                       {s.test_policy === 'test-optional' && (
-                        <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">Test-optional</span>
+                        <span className="rounded-full bg-green-100 px-2 py-0.5 text-green-700">Test-optional</span>
                       )}
                       {s.test_policy === 'test-free' && (
-                        <span className="rounded-full bg-blue-50 px-2 py-0.5 text-blue-700">{t('시험 미반영', 'Test-free')}</span>
+                        <span className="rounded-full bg-green-100 px-2 py-0.5 text-green-700">{t('시험 미반영', 'Test-free')}</span>
                       )}
                     </span>
                   </button>
