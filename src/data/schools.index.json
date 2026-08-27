@@ -1446,5 +1446,545 @@
   ],
   "kind": "university",
   "overall_accept_rate": 75.9
+ },
+ {
+  "id": 100,
+  "name": "Michigan State University",
+  "name_ko": "미시간 주립대학교",
+  "usnews_rank": 64,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 84.8
+ },
+ {
+  "id": 101,
+  "name": "North Carolina State University",
+  "name_ko": "노스캐롤라이나 주립대학교",
+  "usnews_rank": 64,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business",
+   "engineering",
+   "cs",
+   "arts",
+   "architecture",
+   "natural_sci",
+   "math_data",
+   "media",
+   "education"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 41.7
+ },
+ {
+  "id": 102,
+  "name": "Rensselaer Polytechnic Institute",
+  "name_ko": "렌슬리어 공과대학교 (RPI)",
+  "usnews_rank": 64,
+  "tier": 3,
+  "direct_admit_majors": [
+   "engineering",
+   "cs",
+   "business",
+   "architecture",
+   "natural_sci",
+   "math_data",
+   "arts",
+   "music",
+   "premed"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 63.5,
+  "ed_applied": 317,
+  "ed_admitted": 219,
+  "ed_cds_year": "2025-26"
+ },
+ {
+  "id": 103,
+  "name": "University of Massachusetts Amherst",
+  "name_ko": "매사추세츠 대학교 애머스트",
+  "usnews_rank": 64,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business",
+   "cs",
+   "engineering",
+   "nursing"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 59.7
+ },
+ {
+  "id": 104,
+  "name": "University of Miami",
+  "name_ko": "마이애미 대학교",
+  "usnews_rank": 64,
+  "tier": 3,
+  "direct_admit_majors": [
+   "nursing",
+   "music",
+   "architecture",
+   "arts"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 18.9,
+  "ed_applied": 2395,
+  "ed_admitted": 1062,
+  "ed_cds_year": "2025-26"
+ },
+ {
+  "id": 105,
+  "name": "Brandeis University",
+  "name_ko": "브랜다이스 대학교",
+  "usnews_rank": 69,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 40.5,
+  "ed_applied": 680,
+  "ed_admitted": 242,
+  "ed_cds_year": "2025-26"
+ },
+ {
+  "id": 106,
+  "name": "Tulane University",
+  "name_ko": "툴레인 대학교",
+  "usnews_rank": 69,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 14.0,
+  "ed_applied": 2077,
+  "ed_admitted": 1209,
+  "ed_cds_year": "2025-26"
+ },
+ {
+  "id": 107,
+  "name": "University of Connecticut",
+  "name_ko": "코네티컷 대학교 (UConn)",
+  "usnews_rank": 69,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business",
+   "engineering",
+   "cs",
+   "nursing",
+   "arts",
+   "music"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 52.4,
+  "ed_applied": 1442,
+  "ed_admitted": 672,
+  "ed_cds_year": "2025-26"
+ },
+ {
+  "id": 108,
+  "name": "University of Pittsburgh",
+  "name_ko": "피츠버그 대학교",
+  "usnews_rank": 69,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business",
+   "engineering",
+   "cs",
+   "nursing"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 58.1
+ },
+ {
+  "id": 109,
+  "name": "Binghamton University (SUNY)",
+  "name_ko": "빙엄턴 대학교 (SUNY)",
+  "usnews_rank": 73,
+  "tier": 3,
+  "direct_admit_majors": [
+   "arts",
+   "music"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 38.6
+ },
+ {
+  "id": 110,
+  "name": "Clemson University",
+  "name_ko": "클렘슨 대학교",
+  "usnews_rank": 75,
+  "tier": 3,
+  "direct_admit_majors": [
+   "nursing"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 38.3
+ },
+ {
+  "id": 111,
+  "name": "Rutgers University--Newark",
+  "name_ko": "럿거스 대학교 뉴어크",
+  "usnews_rank": 75,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business",
+   "nursing",
+   "premed"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 71.4
+ },
+ {
+  "id": 112,
+  "name": "Syracuse University",
+  "name_ko": "시러큐스 대학교",
+  "usnews_rank": 75,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business",
+   "engineering",
+   "cs",
+   "arts",
+   "music",
+   "architecture",
+   "media",
+   "education"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 45.9
+ },
+ {
+  "id": 113,
+  "name": "University at Buffalo (SUNY)",
+  "name_ko": "버팔로 대학교 (SUNY)",
+  "usnews_rank": 75,
+  "tier": 3,
+  "direct_admit_majors": [
+   "arts",
+   "music"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 74.2
+ },
+ {
+  "id": 114,
+  "name": "University of California, Riverside",
+  "name_ko": "캘리포니아 대학교 리버사이드 (UCR)",
+  "usnews_rank": 75,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 76.4
+ },
+ {
+  "id": 115,
+  "name": "Colorado School of Mines",
+  "name_ko": "콜로라도 광산대학교",
+  "usnews_rank": 80,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 60.7
+ },
+ {
+  "id": 116,
+  "name": "Drexel University",
+  "name_ko": "드렉셀 대학교",
+  "usnews_rank": 80,
+  "tier": 3,
+  "direct_admit_majors": [
+   "architecture",
+   "arts",
+   "music",
+   "nursing",
+   "premed"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 79.4,
+  "ed_applied": 299,
+  "ed_admitted": 234,
+  "ed_cds_year": "2025-26"
+ },
+ {
+  "id": 117,
+  "name": "New Jersey Institute of Technology",
+  "name_ko": "뉴저지 공과대학교 (NJIT)",
+  "usnews_rank": 80,
+  "tier": 3,
+  "direct_admit_majors": [
+   "architecture",
+   "arts"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 65.1
+ },
+ {
+  "id": 118,
+  "name": "Stevens Institute of Technology",
+  "name_ko": "스티븐스 공과대학교",
+  "usnews_rank": 80,
+  "tier": 3,
+  "direct_admit_majors": [
+   "premed"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 47.6,
+  "ed_applied": 407,
+  "ed_admitted": 284,
+  "ed_cds_year": "2025-26"
+ },
+ {
+  "id": 119,
+  "name": "Pepperdine University",
+  "name_ko": "페퍼다인 대학교",
+  "usnews_rank": 84,
+  "tier": 3,
+  "direct_admit_majors": [
+   "nursing"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 62.9
+ },
+ {
+  "id": 120,
+  "name": "University of Illinois Chicago",
+  "name_ko": "일리노이 대학교 시카고 (UIC)",
+  "usnews_rank": 84,
+  "tier": 3,
+  "direct_admit_majors": [
+   "nursing",
+   "premed"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 77.3
+ },
+ {
+  "id": 121,
+  "name": "Worcester Polytechnic Institute",
+  "name_ko": "우스터 공과대학교 (WPI)",
+  "usnews_rank": 84,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 60.2,
+  "ed_applied": 397,
+  "ed_admitted": 310,
+  "ed_cds_year": "2025-26"
+ },
+ {
+  "id": 122,
+  "name": "Yeshiva University",
+  "name_ko": "예시바 대학교",
+  "usnews_rank": 84,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 55.6,
+  "ed_applied": 129,
+  "ed_admitted": 129,
+  "ed_cds_year": "2023-24"
+ },
+ {
+  "id": 123,
+  "name": "American University",
+  "name_ko": "아메리칸 대학교",
+  "usnews_rank": 88,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 62.0,
+  "ed_applied": 392,
+  "ed_admitted": 316,
+  "ed_cds_year": "2025-26"
+ },
+ {
+  "id": 124,
+  "name": "Baylor University",
+  "name_ko": "베일러 대학교",
+  "usnews_rank": 88,
+  "tier": 3,
+  "direct_admit_majors": [
+   "engineering",
+   "premed",
+   "music"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 51.3,
+  "ed_applied": 566,
+  "ed_admitted": 453,
+  "ed_cds_year": "2025-26"
+ },
+ {
+  "id": 125,
+  "name": "Howard University",
+  "name_ko": "하워드 대학교",
+  "usnews_rank": 88,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 41.3,
+  "ed_applied": 430,
+  "ed_admitted": 363,
+  "ed_cds_year": "2025-26"
+ },
+ {
+  "id": 126,
+  "name": "Marquette University",
+  "name_ko": "마켓 대학교",
+  "usnews_rank": 88,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 81.3
+ },
+ {
+  "id": 127,
+  "name": "Rochester Institute of Technology",
+  "name_ko": "로체스터 공과대학교 (RIT)",
+  "usnews_rank": 88,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business",
+   "engineering",
+   "cs",
+   "arts",
+   "media",
+   "natural_sci",
+   "math_data"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 66.9,
+  "ed_applied": 1405,
+  "ed_admitted": 1028,
+  "ed_cds_year": "2025-26"
+ },
+ {
+  "id": 128,
+  "name": "Southern Methodist University",
+  "name_ko": "서던메소디스트 대학교 (SMU)",
+  "usnews_rank": 88,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business",
+   "engineering",
+   "arts",
+   "music"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 63.3,
+  "ed_applied": 528,
+  "ed_admitted": 424,
+  "ed_cds_year": "2025-26"
+ },
+ {
+  "id": 129,
+  "name": "University of California, Santa Cruz",
+  "name_ko": "캘리포니아 대학교 산타크루즈 (UCSC)",
+  "usnews_rank": 88,
+  "tier": 3,
+  "direct_admit_majors": [
+   "cs"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 65.8
+ },
+ {
+  "id": 130,
+  "name": "University of Delaware",
+  "name_ko": "델라웨어 대학교",
+  "usnews_rank": 88,
+  "tier": 3,
+  "direct_admit_majors": [
+   "nursing",
+   "engineering",
+   "business",
+   "music"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 70.6
+ },
+ {
+  "id": 131,
+  "name": "University of South Florida",
+  "name_ko": "사우스플로리다 대학교",
+  "usnews_rank": 88,
+  "tier": 3,
+  "direct_admit_majors": [
+   "nursing"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 43.2
+ },
+ {
+  "id": 132,
+  "name": "Florida International University",
+  "name_ko": "플로리다 국제대학교 (FIU)",
+  "usnews_rank": 97,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 54.7
+ },
+ {
+  "id": 133,
+  "name": "Fordham University",
+  "name_ko": "포덤 대학교",
+  "usnews_rank": 97,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 59.3,
+  "ed_applied": 595,
+  "ed_admitted": 307,
+  "ed_cds_year": "2024-25"
+ },
+ {
+  "id": 134,
+  "name": "Rutgers University--Camden",
+  "name_ko": "럿거스 대학교 캠던",
+  "usnews_rank": 97,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business",
+   "nursing"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 66.3
+ },
+ {
+  "id": 135,
+  "name": "Texas Christian University",
+  "name_ko": "텍사스 크리스천 대학교 (TCU)",
+  "usnews_rank": 97,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business",
+   "nursing"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 44.5,
+  "ed_applied": 1373,
+  "ed_admitted": 935,
+  "ed_cds_year": "2025-26"
+ },
+ {
+  "id": 136,
+  "name": "University of Colorado Boulder",
+  "name_ko": "콜로라도 대학교 볼더",
+  "usnews_rank": 97,
+  "tier": 3,
+  "direct_admit_majors": [
+   "business",
+   "engineering",
+   "cs",
+   "music"
+  ],
+  "kind": "university",
+  "overall_accept_rate": 78.1
  }
 ]
