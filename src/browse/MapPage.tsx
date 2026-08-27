@@ -121,6 +121,7 @@ interface MapPageProps {
 export default function MapPage({ profile }: MapPageProps) {
   const [schools, setSchools] = useState<School[]>([])
   const [kind, setKind] = useState<'all' | 'university' | 'lac' | 'targets'>('all')
+  const [tierSel, setTierSel] = useState<0 | 1 | 2 | 3>(0) // 0 = 전체
   const [selectedId, setSelectedId] = useState<number | null>(null)
   const [hoverId, setHoverId] = useState<number | null>(null)
   const [box, setBox] = useState<Box>(FULL)
@@ -156,6 +157,7 @@ export default function MapPage({ profile }: MapPageProps) {
     () =>
       schools
         .filter((s) => (kind === 'targets' ? targetIds.has(s.id) : kind === 'all' || (s.kind ?? 'university') === kind))
+        .filter((s) => tierSel === 0 || s.tier === tierSel)
         .map((s) => {
           const ll = coords[String(s.id)]
           if (!ll) return null
@@ -164,7 +166,7 @@ export default function MapPage({ profile }: MapPageProps) {
           return { s, x: p[0], y: p[1] }
         })
         .filter((d): d is { s: School; x: number; y: number } => d !== null),
-    [schools, kind, targetIds],
+    [schools, kind, targetIds, tierSel],
   )
   const selected = selectedId !== null ? schools.find((s) => s.id === selectedId) ?? null : null
 
@@ -316,6 +318,30 @@ export default function MapPage({ profile }: MapPageProps) {
             <button onClick={resetZoom} className="rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-600">{t('전체', 'Reset')}</button>
           </span>
         </div>
+
+        {kind !== 'targets' && (
+          <div className="mt-2 flex gap-1.5 overflow-x-auto pb-1">
+            {([0, 1, 2, 3] as const).map((tr) => {
+              const label =
+                tr === 0
+                  ? t('순위 전체', 'All ranks')
+                  : kind === 'lac'
+                    ? ({ 1: 'LAC Top 12', 2: t('LAC 13–24위', 'LAC 13–24'), 3: t('LAC 25–35위', 'LAC 25–35') } as const)[tr]
+                    : ({ 1: 'Top 20', 2: t('21–40위', 'Ranked 21–40'), 3: t('41위 이하', 'Ranked 41+') } as const)[tr]
+              return (
+                <button
+                  key={tr}
+                  onClick={() => setTierSel(tr)}
+                  className={`shrink-0 rounded-full border px-2.5 py-1 text-xs font-medium ${
+                    tierSel === tr ? 'border-blue-600 bg-blue-50 text-blue-700' : 'border-gray-200 bg-white text-gray-500'
+                  }`}
+                >
+                  {label}
+                </button>
+              )
+            })}
+          </div>
+        )}
 
         <div className="map-ocean mt-3 overflow-hidden rounded-2xl border-2 border-gray-200">
           <svg
