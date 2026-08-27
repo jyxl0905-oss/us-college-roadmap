@@ -204,6 +204,12 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
               </option>
             ))}
           </select>
+          <button
+            onClick={() => navigate('/map')}
+            className="shrink-0 rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-sm font-medium text-gray-600 active:bg-gray-50"
+          >
+            🗺️ {t('지도로 보기', 'Map view')}
+          </button>
         </div>
 
         {/* F2 안내: 비교 진입점 */}
