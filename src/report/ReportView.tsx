@@ -330,7 +330,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
             onClick={() => navigate(`/major/${profile.major_primary ?? 'undecided'}`)}
             className="no-print mt-1.5 rounded-full border-2 border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 active:bg-blue-100"
           >
-            {t('🗺️ 전공 가이드 맵 보기', '🗺️ Major guide map')}
+            {t('🧭 전공 가이드 맵 보기', '🧭 Major guide map')}
           </button>
           {!graduated && (
             <button
@@ -658,7 +658,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           )}
           <button onClick={() => navigate('/targets')} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">🎯 {t('목표 학교 · 💰 재정지원 순위', 'Targets · 💰 aid ranking')}</button>
           <button onClick={() => navigate('/deadlines')} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">🗓️ {t('마감 캘린더', 'Deadline calendar')}</button>
-          <button onClick={() => navigate(`/major/${profile.major_primary ?? 'undecided'}`)} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">🗺️ {t('전공 가이드 맵', 'Major guide map')}</button>
+          <button onClick={() => navigate(`/major/${profile.major_primary ?? 'undecided'}`)} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">🧭 {t('전공 가이드 맵', 'Major guide map')}</button>
           <button onClick={onOpenGuide} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">📚 {t('입시 기본기 · 용어집', 'Basics · glossary')}</button>
         </div>
         <ShareInvite userId={userId} className="mt-2 w-full rounded-lg bg-green-50 px-2 py-1.5 text-left text-sm font-medium text-green-800 hover:bg-green-100" />

@@ -323,7 +323,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
             <p className="mt-0.5 text-xs text-blue-800">{t('학년별 로드맵·추천 AP·활동 전략은 내 학년에 맞춘 리포트에서 볼 수 있어요.', 'The year-by-year roadmap, recommended APs and activity strategy live in your personalized report.')}</p>
             {userId ? (
               <button onClick={() => setFull(true)} className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white active:bg-blue-700">
-                {t('🗺️ 전체 가이드 보기 (로드맵·AP·활동)', '🗺️ See the full guide (roadmap · APs · activities)')}
+                {t('🧭 전체 가이드 보기 (로드맵·AP·활동)', '🧭 See the full guide (roadmap · APs · activities)')}
               </button>
             ) : (
               <button onClick={() => navigate('/')} className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white active:bg-blue-700">

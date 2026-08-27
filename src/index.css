@@ -127,10 +127,12 @@
 .map-state { fill: #e8eaef; stroke: #ffffff; stroke-width: 0.7; }
 .map-dot-ring { stroke: #ffffff; }
 .map-label { fill: #111827; paint-order: stroke; stroke: #ffffff; stroke-width: 3px; stroke-linejoin: round; }
+.map-logo-bg { fill: #ffffff; stroke: #d1d5db; stroke-width: 0.5; }
 @media screen {
   html.dark .map-state { fill: #242a36; stroke: #0f1115; }
   html.dark .map-dot-ring { stroke: #181c24; }
   html.dark .map-label { fill: #e8ebf1; stroke: #0f1115; }
+  html.dark .map-logo-bg { fill: #e8ebf1; stroke: #3a4254; }
 }
 
 /* PDF 저장 = 브라우저 인쇄. A4 1-2장에 맞게 정리 */

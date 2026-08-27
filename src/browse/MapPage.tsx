@@ -8,6 +8,7 @@ import type { School } from '../lib/types'
 import { loadSchools } from '../lib/schoolsCache'
 import { navigate, slugify } from '../lib/router'
 import SchoolLogo from './SchoolLogo'
+import { schoolLogoSources } from './logos'
 import type { ProfileRow } from '../lib/profile'
 import { t } from '../i18n'
 
@@ -31,13 +32,35 @@ function geomPath(geom: StateGeom): string {
   return ''
 }
 
+// 핀 위에 띄우는 로고 칩 (SVG image, 실패 시 다음 소스 → 전부 실패면 숨김)
+function PinLogo({ schoolId, x, y, size }: { schoolId: number; x: number; y: number; size: number }) {
+  const [i, setI] = useState(0)
+  const sources = schoolLogoSources(schoolId)
+  if (i >= sources.length) return null
+  const pad = size * 0.18
+  return (
+    <g pointerEvents="none">
+      <rect x={x - size / 2 - pad} y={y - size - size * 0.55 - pad} width={size + pad * 2} height={size + pad * 2} rx={size * 0.2} className="map-logo-bg" />
+      <image
+        href={sources[i]}
+        x={x - size / 2}
+        y={y - size - size * 0.55}
+        width={size}
+        height={size}
+        preserveAspectRatio="xMidYMid meet"
+        onError={() => setI((v) => v + 1)}
+      />
+    </g>
+  )
+}
+
 interface MapPageProps {
   profile: ProfileRow | null
 }
 
 export default function MapPage({ profile }: MapPageProps) {
   const [schools, setSchools] = useState<School[]>([])
-  const [kind, setKind] = useState<'all' | 'university' | 'lac'>('all')
+  const [kind, setKind] = useState<'all' | 'university' | 'lac' | 'targets'>('all')
   const [selectedId, setSelectedId] = useState<number | null>(null)
   const [box, setBox] = useState({ x: 0, y: 0, w: W, h: H })
   const svgRef = useRef<SVGSVGElement>(null)
@@ -54,11 +77,11 @@ export default function MapPage({ profile }: MapPageProps) {
     return fc.features.map((f) => ({ id: f.id, d: geomPath(f.geometry) }))
   }, [])
 
-  const targetIds = new Set(profile?.target_mode === 'schools' ? profile.target_school_ids : [])
+  const targetIds = useMemo(() => new Set(profile?.target_mode === 'schools' ? profile.target_school_ids : []), [profile])
   const dots = useMemo(
     () =>
       schools
-        .filter((s) => kind === 'all' || (s.kind ?? 'university') === kind)
+        .filter((s) => (kind === 'targets' ? targetIds.has(s.id) : kind === 'all' || (s.kind ?? 'university') === kind))
         .map((s) => {
           const ll = coords[String(s.id)]
           if (!ll) return null
@@ -67,7 +90,7 @@ export default function MapPage({ profile }: MapPageProps) {
           return { s, x: p[0], y: p[1] }
         })
         .filter((d): d is { s: School; x: number; y: number } => d !== null),
-    [schools, kind],
+    [schools, kind, targetIds],
   )
   const selected = selectedId !== null ? schools.find((s) => s.id === selectedId) ?? null : null
 
@@ -130,6 +153,9 @@ export default function MapPage({ profile }: MapPageProps) {
           <button onClick={() => setKind('all')} className={chip(kind === 'all')}>{t('전체', 'All')} {schools.length}</button>
           <button onClick={() => setKind('university')} className={chip(kind === 'university')}>{t('종합대학', 'Universities')}</button>
           <button onClick={() => setKind('lac')} className={chip(kind === 'lac')}>{t('리버럴 아츠', 'Liberal arts')}</button>
+          {targetIds.size > 0 && (
+            <button onClick={() => setKind('targets')} className={chip(kind === 'targets')}>🎯 {t('내 목표', 'My targets')} {targetIds.size}</button>
+          )}
           <span className="ml-auto flex shrink-0 gap-1.5">
             <button onClick={zoomNortheast} className="rounded-full border-2 border-blue-200 bg-blue-50 px-3 py-1.5 text-sm font-medium text-blue-700">{t('동북부 확대', 'Northeast')}</button>
             <button onClick={() => zoomAt(1.5)} aria-label={t('확대', 'Zoom in')} className="rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-600">＋</button>
@@ -169,8 +195,11 @@ export default function MapPage({ profile }: MapPageProps) {
                     strokeWidth={(isTarget || isSel ? 2.2 : 1.2) / scale}
                     className={`${lac ? 'fill-emerald-500' : 'fill-blue-600'} ${isSel ? 'stroke-gray-900' : isTarget ? 'stroke-amber-400' : 'map-dot-ring'}`}
                   />
-                  {(isSel || (isTarget && scale > 1.8)) && (
-                    <text x={x} y={y - 9 / scale} textAnchor="middle" style={{ fontSize: 12 / scale }} className="map-label pointer-events-none font-semibold">
+                  {(kind === 'targets' || scale >= 2.2 || isSel) && (
+                    <PinLogo schoolId={s.id} x={x} y={y} size={18 / scale} />
+                  )}
+                  {(isSel || (isTarget && scale > 1.8) || kind === 'targets') && (
+                    <text x={x} y={y - 32 / scale} textAnchor="middle" style={{ fontSize: 11 / scale }} className="map-label pointer-events-none font-semibold">
                       {s.name}
                     </text>
                   )}

@@ -70,7 +70,7 @@ export default function PlansTab({ userId, majorKey }: PlansTabProps) {
         onClick={() => navigate(`/major/${majorKey ?? 'undecided'}`)}
         className="mt-2 w-full rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-2.5 text-sm font-semibold text-blue-700 active:bg-blue-100"
       >
-        {t('🗺️ 전공 가이드 맵에서 골라 담기', '🗺️ Pick from the major guide map')}
+        {t('🧭 전공 가이드 맵에서 골라 담기', '🧭 Pick from the major guide map')}
       </button>
 
       {/* 입력 */}
