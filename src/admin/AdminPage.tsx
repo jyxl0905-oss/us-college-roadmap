@@ -191,6 +191,58 @@ function normalize(raw: Stats): Stats {
 }
 
 // 서버 상태 — DB·Auth 응답 속도 실측 + 최근 활동 시각. 느리면 Supabase 일시정지/장애 신호
+// 월별 운영 기록 — stats_snapshots (매일 크론이 이번 달 행을 갱신, 지난 달 행 = 월말 기록)
+function SnapshotsCard() {
+  const [rows, setRows] = useState<{ month: string; data: Record<string, number | null>; updated_at: string }[] | null>(null)
+  useEffect(() => {
+    if (!supabase) return
+    supabase.rpc('admin_snapshots').then(({ data }) => setRows((data as typeof rows) ?? []), () => setRows([]))
+  }, [])
+  const n = (v: number | null | undefined) => (v === null || v === undefined ? '—' : v.toLocaleString())
+  return (
+    <div className="mb-4 rounded-2xl border border-gray-100 bg-white p-4">
+      <h2 className="font-semibold text-gray-900">📈 월별 기록</h2>
+      <p className="mt-0.5 text-xs text-gray-400">매일 자동 저장 — 달이 넘어가면 그 달의 마지막 값이 월말 기록으로 남아요. 원서의 성장 지표용.</p>
+      {!rows ? (
+        <p className="mt-2 text-sm text-gray-400">불러오는 중…</p>
+      ) : rows.length === 0 ? (
+        <p className="mt-2 text-sm text-gray-400">아직 기록이 없어요 (다음 크론 실행 때 첫 행이 생겨요)</p>
+      ) : (
+        <div className="mt-2 overflow-x-auto">
+          <table className="w-full min-w-[560px] text-sm">
+            <thead>
+              <tr className="text-left text-xs text-gray-400">
+                <th className="py-1 pr-3 font-medium">월</th>
+                <th className="py-1 pr-3 font-medium">가입자(누적)</th>
+                <th className="py-1 pr-3 font-medium">신규</th>
+                <th className="py-1 pr-3 font-medium">MAU</th>
+                <th className="py-1 pr-3 font-medium">체크 수</th>
+                <th className="py-1 pr-3 font-medium">리포트</th>
+                <th className="py-1 pr-3 font-medium">피드백</th>
+                <th className="py-1 font-medium">설문 평점</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((r) => (
+                <tr key={r.month} className="border-t border-gray-100 text-gray-800">
+                  <td className="py-1.5 pr-3 font-semibold tabular-nums">{r.month}</td>
+                  <td className="py-1.5 pr-3 tabular-nums">{n(r.data.total_users)}</td>
+                  <td className="py-1.5 pr-3 tabular-nums">+{n(r.data.new_users_month)}</td>
+                  <td className="py-1.5 pr-3 tabular-nums">{n(r.data.mau)}</td>
+                  <td className="py-1.5 pr-3 tabular-nums">{n(r.data.checks_total)}</td>
+                  <td className="py-1.5 pr-3 tabular-nums">{n(r.data.reports_total)}</td>
+                  <td className="py-1.5 pr-3 tabular-nums">{n(r.data.feedback_total)}</td>
+                  <td className="py-1.5 tabular-nums">{r.data.helpful_avg ?? '—'}{r.data.surveys ? ` (${r.data.surveys}명)` : ''}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  )
+}
+
 function HealthCard() {
   const [db, setDb] = useState<number | 'fail' | null>(null)
   const [auth, setAuth] = useState<number | 'fail' | null>(null)
@@ -320,6 +372,7 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
       </div>
 
       <HealthCard />
+      <SnapshotsCard />
 
       {/* 피드백은 바로 위에서 — 가장 자주 확인하는 카드 */}
       <div className="mb-4">

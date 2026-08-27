@@ -142,6 +142,9 @@ export default async function handler(req, res) {
 
   try {
     const sb = createClient(url, service, { auth: { persistSession: false } })
+
+    // 월별 운영 스냅샷 — 매일 이번 달 행을 갱신, 월이 바뀌면 이전 행이 '월말 기록'으로 남음 (실패해도 본 작업엔 영향 없음)
+    try { await sb.rpc('take_stats_snapshot') } catch { /* ignore */ }
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com', port: 465, secure: true,
       auth: { user: gmailUser, pass: gmailPass },
