@@ -358,7 +358,7 @@ export default function MapPage({ profile }: MapPageProps) {
               ))}
             {(() => {
               // 로고가 핀: 기본 화면 크기 12px, 확대하면 서서히 커짐 (scale^0.45)
-              const basePx = (kind === 'targets' ? 16 : 12) * Math.pow(scale, 0.45)
+              const basePx = (kind === 'targets' ? 20 : 16) * Math.pow(scale, 0.45)
               return dots.map(({ s, x, y }) => {
                 const isTarget = targetIds.has(s.id)
                 const isSel = selectedId === s.id
