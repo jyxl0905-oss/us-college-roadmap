@@ -9,6 +9,7 @@ import { loadSchools } from '../lib/schoolsCache'
 import { navigate, slugify } from '../lib/router'
 import SchoolLogo from './SchoolLogo'
 import { schoolLogoSources } from './logos'
+import { uniGroupOf, uniGroupTitles, uniGroups } from './rankGroups'
 import type { ProfileRow } from '../lib/profile'
 import { t } from '../i18n'
 
@@ -121,7 +122,7 @@ interface MapPageProps {
 export default function MapPage({ profile }: MapPageProps) {
   const [schools, setSchools] = useState<School[]>([])
   const [kind, setKind] = useState<'all' | 'university' | 'lac' | 'targets'>('all')
-  const [tierSel, setTierSel] = useState<0 | 1 | 2 | 3>(0) // 0 = 전체
+  const [tierSel, setTierSel] = useState<number>(0) // 0 = 전체 (종합대 5그룹은 usnews_rank, LAC은 tier)
   const [selectedId, setSelectedId] = useState<number | null>(null)
   const [hoverId, setHoverId] = useState<number | null>(null)
   const [box, setBox] = useState<Box>(FULL)
@@ -157,7 +158,7 @@ export default function MapPage({ profile }: MapPageProps) {
     () =>
       schools
         .filter((s) => (kind === 'targets' ? targetIds.has(s.id) : kind === 'all' || (s.kind ?? 'university') === kind))
-        .filter((s) => tierSel === 0 || s.tier === tierSel)
+        .filter((s) => tierSel === 0 || ((s.kind ?? 'university') === 'lac' ? s.tier === tierSel : uniGroupOf(s.usnews_rank) === tierSel))
         .map((s) => {
           const ll = coords[String(s.id)]
           if (!ll) return null
@@ -321,13 +322,13 @@ export default function MapPage({ profile }: MapPageProps) {
 
         {kind !== 'targets' && (
           <div className="mt-2 flex gap-1.5 overflow-x-auto pb-1">
-            {([0, 1, 2, 3] as const).map((tr) => {
+            {[0, ...(kind === 'lac' ? [1, 2, 3] : uniGroups)].map((tr) => {
               const label =
                 tr === 0
                   ? t('순위 전체', 'All ranks')
                   : kind === 'lac'
-                    ? ({ 1: 'LAC Top 12', 2: t('LAC 13–24위', 'LAC 13–24'), 3: t('LAC 25–35위', 'LAC 25–35') } as const)[tr]
-                    : ({ 1: 'Top 20', 2: t('21–40위', 'Ranked 21–40'), 3: t('41위 이하', 'Ranked 41+') } as const)[tr]
+                    ? ({ 1: 'LAC Top 12', 2: t('LAC 13–24위', 'LAC 13–24'), 3: t('LAC 25–35위', 'LAC 25–35') } as Record<number, string>)[tr]
+                    : uniGroupTitles[tr as 1 | 2 | 3 | 4 | 5]
               return (
                 <button
                   key={tr}

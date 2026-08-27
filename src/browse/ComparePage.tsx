@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import type { School, Tier } from '../lib/types'
+import type { School } from '../lib/types'
 import { loadSchools } from '../lib/schoolsCache'
 import { navigate, slugify } from '../lib/router'
 import { satBandMid } from '../lib/score'
@@ -7,13 +7,10 @@ import { majorLabel, directAdmitParent } from '../data/majors'
 import type { ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
 import SchoolLogo from './SchoolLogo'
-import { t, bilingual } from '../i18n'
+import { uniGroupOf, uniGroupTitles } from './rankGroups'
+import { t } from '../i18n'
 import { timingLabel } from '../lib/academics'
 
-const tierTitles: Record<Tier, string> = bilingual(
-  { 1: 'Top 20', 2: '21–40위', 3: '41위 이하' },
-  { 1: 'Top 20', 2: 'Ranked 21–40', 3: 'Ranked 41+' },
-)
 
 // URL ?ids=3,1,5 → 비교할 학교 id (최대 3)
 export function compareIdsFromUrl(): number[] {
@@ -86,7 +83,7 @@ export default function ComparePage({ profile }: ComparePageProps) {
     v === null ? <span className="text-gray-400">{t('미공개', 'Not disclosed')}</span> : v ? yes : no
 
   const rows: { label: string; render: (s: School) => React.ReactNode }[] = [
-    { label: t('티어', 'Tier'), render: (s) => (s.kind === 'lac' ? `LAC #${s.lac_rank ?? '–'}` : tierTitles[s.tier]) },
+    { label: t('티어', 'Tier'), render: (s) => (s.kind === 'lac' ? `LAC #${s.lac_rank ?? '–'}` : uniGroupTitles[uniGroupOf(s.usnews_rank)]) },
     { label: t('SAT 중간 50%', 'SAT middle 50%'), render: satCell },
     {
       label: t('국제학생 합격률', 'Intl. accept rate'),

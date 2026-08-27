@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import type { School, Tier } from '../lib/types'
+import type { School } from '../lib/types'
 import { loadSchools } from '../lib/schoolsCache'
 import { navigate, slugify } from '../lib/router'
 import { majorLabel } from '../data/majors'
@@ -7,13 +7,10 @@ import { saveProfile, type ProfileRow } from '../lib/profile'
 import AidBlock from './AidBlock'
 import { setPrefillSchoolIds } from './prefill'
 import SchoolLogo from './SchoolLogo'
+import { uniGroupOf, uniGroupTitles } from './rankGroups'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
-import { t, bilingual } from '../i18n'
+import { t } from '../i18n'
 
-const tierTitles: Record<Tier, string> = bilingual(
-  { 1: 'Top 20', 2: '21–40위', 3: '41위 이하' },
-  { 1: 'Top 20', 2: 'Ranked 21–40', 3: 'Ranked 41+' },
-)
 
 interface SchoolDetailPageProps {
   slug: string
@@ -89,7 +86,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
             ←
           </button>
           <span className="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-600">
-            {s.kind === 'lac' ? `🎓 LAC #${s.lac_rank ?? '–'}` : tierTitles[s.tier]}
+            {s.kind === 'lac' ? `🎓 LAC #${s.lac_rank ?? '–'}` : uniGroupTitles[uniGroupOf(s.usnews_rank)]}
           </span>
         </div>
 

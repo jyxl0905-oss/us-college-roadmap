@@ -6,14 +6,11 @@ import { navigate, slugify } from '../lib/router'
 import { regionLabels, schoolRegion, type Region } from './region'
 import SchoolLogo from './SchoolLogo'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
+import { uniGroupOf, uniGroupTitles, uniGroups } from './rankGroups'
 import { saveProfile, type ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
 import { t, bilingual } from '../i18n'
 
-const tierTitles: Record<Tier, string> = bilingual(
-  { 1: 'Top 20', 2: '21–40위', 3: '41위 이하' },
-  { 1: 'Top 20', 2: 'Ranked 21–40', 3: 'Ranked 41+' },
-)
 const lacTierTitles: Record<Tier, string> = bilingual(
   { 1: 'LAC Top 12', 2: 'LAC 13–24위', 3: 'LAC 25–35위' },
   { 1: 'LAC Top 12', 2: 'LAC ranked 13–24', 3: 'LAC ranked 25–35' },
@@ -98,7 +95,10 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
     })
   }, [schools, kind, query, needBlindOnly, testPolicy, region, directAdmitMine, myMajor])
 
-  const groups: Tier[] = [1, 2, 3]
+  // 종합대는 순위 5그룹(usnews_rank), LAC은 기존 3그룹(tier)
+  const groups: number[] = kind === 'lac' ? [1, 2, 3] : uniGroups
+  const groupOf = (s: School) => (kind === 'lac' ? s.tier : uniGroupOf(s.usnews_rank))
+  const groupTitle = (g: number) => (kind === 'lac' ? lacTierTitles[g as Tier] : uniGroupTitles[g as 1 | 2 | 3 | 4 | 5])
   const sortGroup = (list: School[]) =>
     [...list].sort((a, b) =>
       sortByIntl
@@ -223,28 +223,28 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
 
         {schools.length > 0 && filtered.length > 0 && (
           <div className="mt-3 flex gap-1.5 overflow-x-auto">
-            {groups.map((tier) => {
-              const n = filtered.filter((s) => s.tier === tier).length
+            {groups.map((g) => {
+              const n = filtered.filter((s) => groupOf(s) === g).length
               if (n === 0) return null
               return (
                 <button
-                  key={tier}
-                  onClick={() => document.getElementById(`tier-${tier}`)?.scrollIntoView({ behavior: 'smooth' })}
+                  key={g}
+                  onClick={() => document.getElementById(`tier-${g}`)?.scrollIntoView({ behavior: 'smooth' })}
                   className="shrink-0 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600 active:bg-gray-200"
                 >
-                  ↓ {kind === 'lac' ? lacTierTitles[tier] : tierTitles[tier]} {n}
+                  ↓ {groupTitle(g)} {n}
                 </button>
               )
             })}
           </div>
         )}
 
-        {groups.map((tier) => {
-          const list = sortGroup(filtered.filter((s) => s.tier === tier))
+        {groups.map((g) => {
+          const list = sortGroup(filtered.filter((s) => groupOf(s) === g))
           if (list.length === 0) return null
           return (
-            <div key={tier} id={`tier-${tier}`} className="mt-6 scroll-mt-24">
-              <h2 className="font-semibold text-gray-900">{kind === 'lac' ? lacTierTitles[tier] : tierTitles[tier]}</h2>
+            <div key={g} id={`tier-${g}`} className="mt-6 scroll-mt-24">
+              <h2 className="font-semibold text-gray-900">{groupTitle(g)}</h2>
               <div className="mt-3 grid gap-2.5 md:grid-cols-2 lg:grid-cols-3">
                 {list.map((s) => (
                   <button
@@ -298,7 +298,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
                     </span>
                     <span className="mt-2.5 flex flex-wrap gap-1 text-[11px]">
                       <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
-                        {s.kind === 'lac' ? `LAC #${s.lac_rank ?? '–'}` : tierTitles[s.tier]}
+                        {s.kind === 'lac' ? `LAC #${s.lac_rank ?? '–'}` : uniGroupTitles[uniGroupOf(s.usnews_rank)]}
                       </span>
                       {s.overall_accept_rate != null && (
                         <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
