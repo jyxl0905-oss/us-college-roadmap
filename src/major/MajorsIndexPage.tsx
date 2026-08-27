@@ -63,6 +63,7 @@ const KEYWORDS: Record<string, string> = {
   zoology: '동물 야생 동물원 생물 주올로지',
   animal_science: '동물 축산 수의 수의대 수의사 반려동물 가축',
   animal_behavior: '동물 행동 훈련 생태 에솔로지',
+  cybersecurity: '보안 해킹 해커 사이버 정보보안 화이트해커 ctf',
 }
 
 // 전공 알아보기 — 전체 전공 카드 인덱스 (로그인 불필요). 각 카드는 전공 가이드 맵으로

@@ -1489,5 +1489,22 @@
   ],
   "outlook_note_ko": "BLS 기준 Zoologists and Wildlife Biologists 고용은 2024–34년 2% 성장(평균보다 느림, 작은 직군) 전망입니다.",
   "grad_note_ko": "동물행동학을 학부 전공으로 개설한 학교는 소수라, 보통 생물학 전공+행동생태 연구실 경험으로 준비해요. 연구자 경로는 대학원이 사실상 필수예요."
+ },
+ "cybersecurity": {
+  "desc_ko": "시스템과 데이터를 공격으로부터 지키는 법을 배워요 — 네트워크 보안, 암호학, 해킹·방어 실습, 디지털 포렌식. 보안 분석가, 화이트해커(모의 침투), 정부·금융·테크 기업 보안팀으로 이어져요.",
+  "desc_en": "You learn to defend systems and data — network security, cryptography, offensive/defensive labs, and digital forensics. Leads to security analyst and penetration-testing roles across government, finance, and tech.",
+  "occupations": [
+   {
+    "title": "Information Security Analysts",
+    "pay": "$124,910 per year",
+    "pay_year": 2024,
+    "outlook": "+29%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm",
+    "note": "Typical entry-level education: Bachelor's degree"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Information Security Analysts 고용은 2024–34년 29% 성장(전 직군 최상위권) 전망입니다.",
+  "grad_note_ko": "학부 전공은 사이버보안 또는 CS+보안 동아리·CTF(해킹 대회) 조합이 일반적이에요. 자격증(Security+ 등)과 실전 CTF 경력이 취업에 크게 작용해요."
  }
 }

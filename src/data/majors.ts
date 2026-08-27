@@ -20,6 +20,7 @@ export const majorCategories: MajorCategory[] = [
   { value: 'pilot', label: '항공운항·파일럿 (Aviation·Pilot)', track: 'stem' },
   { value: 'math_data', label: '수학·통계·데이터 (Math·Stats·Data)', track: 'stem' },
   { value: 'data_science', label: '데이터 사이언스 (Data Science)', track: 'stem' },
+  { value: 'cybersecurity', label: '사이버보안 (Cybersecurity)', track: 'stem' },
   { value: 'applied_math', label: '응용수학 (Applied Math)', track: 'stem' },
   { value: 'actuarial', label: '보험계리 (Actuarial Science)', track: 'stem' },
   { value: 'natural_sci', label: '자연과학 (Natural Sciences)', track: 'stem' },
@@ -89,6 +90,7 @@ export function majorLabel(value: string | null): string {
 // 세분 전공 → 체크리스트·direct-admit 판정용 상위 계열 (콘텐츠는 상위 계열 것을 그대로 사용)
 export const majorAlias: Record<string, string> = {
   data_science: 'math_data',
+  cybersecurity: 'cs',
   applied_math: 'math_data',
   biology: 'natural_sci',
   chemistry: 'natural_sci',
@@ -151,7 +153,7 @@ export const directAdmitParent = (value: string | null): string | null =>
 export interface MajorCluster { track: MajorTrack; ko: string; en: string; values: string[] }
 export const majorClusters: MajorCluster[] = [
   { track: 'stem', ko: '공학·건축', en: 'Engineering & Architecture', values: ['engineering', 'industrial_eng', 'biomedical_eng', 'chemical_eng', 'aerospace_eng', 'nuclear_eng', 'robotics', 'pilot', 'architecture'] },
-  { track: 'stem', ko: '컴퓨터·데이터', en: 'Computing & Data', values: ['cs', 'data_science', 'cognitive_science'] },
+  { track: 'stem', ko: '컴퓨터·데이터', en: 'Computing & Data', values: ['cs', 'data_science', 'cybersecurity', 'cognitive_science'] },
   { track: 'stem', ko: '수학', en: 'Math', values: ['math_data', 'applied_math', 'actuarial'] },
   { track: 'stem', ko: '자연과학', en: 'Natural Sciences', values: ['natural_sci', 'biology', 'genetics', 'molecular_bio', 'microbiology', 'zoology', 'animal_science', 'animal_behavior', 'neuroscience', 'chemistry', 'physics', 'environmental'] },
   { track: 'stem', ko: '보건·의료', en: 'Health & Medicine', values: ['premed', 'nursing', 'public_health', 'kinesiology', 'nutrition', 'pharmacy', 'pre_dental'] },
