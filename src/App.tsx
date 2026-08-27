@@ -26,6 +26,7 @@ const MajorRoadmapPage = lazy(() => import('./major/MajorRoadmapPage'))
 const AdminPage = lazy(() => import('./admin/AdminPage'))
 const TargetsPage = lazy(() => import('./report/TargetsPage'))
 const MajorsIndexPage = lazy(() => import('./major/MajorsIndexPage'))
+const MapPage = lazy(() => import('./browse/MapPage'))
 // 개발용: /admin?demo=1 → 샘플 데이터로 레이아웃 확인 (프로덕션 빌드에서 제거됨)
 const AdminDemo = lazy(async () => {
   const [{ default: Page }, { default: demo }] = await Promise.all([import('./admin/AdminPage'), import('./admin/demo-stats.json')])
@@ -277,6 +278,9 @@ function AppRoutes() {
         </Screen>
       )
     return <AdminPage email={session.user.email ?? null} />
+  }
+  if (path === '/map' || path === '/map/') {
+    return <MapPage profile={profile} />
   }
   // F1: 대학 둘러보기 — 로그인 여부와 무관하게 고유 URL로 접근 가능
   if (path === '/schools' || path === '/schools/') {

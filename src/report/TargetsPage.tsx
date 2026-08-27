@@ -59,6 +59,9 @@ export default function TargetsPage({ profile }: { profile: ProfileRow }) {
                   ⚖️ {t('비교하기', 'Compare')}
                 </button>
               )}
+              <button onClick={() => navigate('/map')} className="rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 active:bg-gray-50">
+                🗺️ {t('지도로 보기', 'Map view')}
+              </button>
               <button onClick={() => navigate('/app/colleges')} className="rounded-full border-2 border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700 active:bg-blue-100">
                 📋 {t('지원 라운드 정하기', 'Set rounds')}
               </button>
