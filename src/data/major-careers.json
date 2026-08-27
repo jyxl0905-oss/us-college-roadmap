@@ -1420,5 +1420,74 @@
   ],
   "outlook_note_ko": "BLS 기준 Graphic Designers 고용은 2024–34년 2% 성장, Web Developers and Digital Designers는 7% 성장 전망입니다.",
   "grad_note_ko": null
+ },
+ "zoology": {
+  "desc_ko": "동물의 몸·진화·생태를 배워요 — 해부학, 생리학, 야생동물 생태, 현장 조사. 야생동물 연구자, 동물원·수족관, 환경 기관, 수의대 진학으로 이어져요.",
+  "desc_en": "You study animal bodies, evolution, and ecology — anatomy, physiology, wildlife ecology, and fieldwork. Leads to wildlife research, zoos and aquariums, environmental agencies, and vet school.",
+  "occupations": [
+   {
+    "title": "Zoologists and Wildlife Biologists",
+    "pay": "$72,860 per year",
+    "pay_year": 2024,
+    "outlook": "+2%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/zoologists-and-wildlife-biologists.htm",
+    "note": "Typical entry-level education: Bachelor's degree (research roles usually need a graduate degree)"
+   },
+   {
+    "title": "Veterinarians",
+    "pay": "$125,510 per year",
+    "pay_year": 2024,
+    "outlook": "+10%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/healthcare/veterinarians.htm",
+    "note": "Typical entry-level education: Doctoral or professional degree (DVM + license)"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Zoologists and Wildlife Biologists 고용은 2024–34년 2% 성장(평균보다 느림, 작은 직군), Veterinarians는 10% 성장(매우 빠름) 전망입니다.",
+  "grad_note_ko": "연구직은 대부분 석·박사까지 이어져요. 학부에서 현장 조사·연구실 경험을 쌓는 게 핵심이에요."
+ },
+ "animal_science": {
+  "desc_ko": "가축과 반려동물을 과학으로 다뤄요 — 동물 영양, 번식, 유전, 사육 관리. 수의대(pre-vet) 진학의 대표 경로이고, 축산·사료·동물 헬스케어 산업으로도 이어져요.",
+  "desc_en": "You study livestock and companion animals scientifically — nutrition, reproduction, genetics, and management. A classic pre-vet pathway, also leading to the animal agriculture and animal-health industries.",
+  "occupations": [
+   {
+    "title": "Veterinarians",
+    "pay": "$125,510 per year",
+    "pay_year": 2024,
+    "outlook": "+10%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/healthcare/veterinarians.htm",
+    "note": "Typical entry-level education: Doctoral or professional degree (DVM + license)"
+   },
+   {
+    "title": "Agricultural and Food Scientists",
+    "pay": "$78,770 per year",
+    "pay_year": 2024,
+    "outlook": "+6%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/agricultural-and-food-scientists.htm",
+    "note": "Typical entry-level education: Bachelor's degree"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Veterinarians 고용은 2024–34년 10% 성장(매우 빠름), Agricultural and Food Scientists는 6% 성장(평균보다 빠름) 전망입니다.",
+  "grad_note_ko": "수의사(DVM)는 학부 후 수의학대학원 4년+면허 경로예요. 동물과학 전공은 수의대 선수과목을 자연스럽게 채울 수 있어 pre-vet로 많이 선택해요."
+ },
+ "animal_behavior": {
+  "desc_ko": "동물이 왜 그렇게 행동하는지 배워요 — 행동 관찰·실험, 학습과 인지, 진화와 생태. 야생동물 연구, 동물원 행동 풍부화, 동물 훈련·복지, 대학원 연구로 이어져요.",
+  "desc_en": "You study why animals behave the way they do — observation and experiments, learning and cognition, evolution and ecology. Leads to wildlife research, zoo enrichment, animal training and welfare, and graduate research.",
+  "occupations": [
+   {
+    "title": "Zoologists and Wildlife Biologists",
+    "pay": "$72,860 per year",
+    "pay_year": 2024,
+    "outlook": "+2%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/zoologists-and-wildlife-biologists.htm",
+    "note": "Typical entry-level education: Bachelor's degree (research roles usually need a graduate degree)"
+   }
+  ],
+  "outlook_note_ko": "BLS 기준 Zoologists and Wildlife Biologists 고용은 2024–34년 2% 성장(평균보다 느림, 작은 직군) 전망입니다.",
+  "grad_note_ko": "동물행동학을 학부 전공으로 개설한 학교는 소수라, 보통 생물학 전공+행동생태 연구실 경험으로 준비해요. 연구자 경로는 대학원이 사실상 필수예요."
  }
 }

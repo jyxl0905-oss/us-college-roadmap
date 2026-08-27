@@ -27,6 +27,9 @@ export const majorCategories: MajorCategory[] = [
   { value: 'genetics', label: '유전학 (Genetics)', track: 'stem' },
   { value: 'molecular_bio', label: '분자생물학 (Molecular Biology)', track: 'stem' },
   { value: 'microbiology', label: '미생물학 (Microbiology)', track: 'stem' },
+  { value: 'zoology', label: '동물학 (Zoology)', track: 'stem' },
+  { value: 'animal_science', label: '동물과학 (Animal Science)', track: 'stem' },
+  { value: 'animal_behavior', label: '동물행동학 (Animal Behavior)', track: 'stem' },
   { value: 'neuroscience', label: '신경과학 (Neuroscience)', track: 'stem' },
   { value: 'chemistry', label: '화학 (Chemistry)', track: 'stem' },
   { value: 'physics', label: '물리학 (Physics)', track: 'stem' },
@@ -125,6 +128,9 @@ export const majorAlias: Record<string, string> = {
   genetics: 'biology',
   molecular_bio: 'biology',
   microbiology: 'biology',
+  zoology: 'biology',
+  animal_science: 'biology',
+  animal_behavior: 'biology',
   culinary: 'business', // 미국 대학 조리·호스피탈리티 프로그램은 외식 경영 중심 → 체크리스트·로드맵은 비즈니스 것을 사용
 }
 // 별칭 체인 재귀 해석 (예: genetics → biology → natural_sci)
@@ -147,7 +153,7 @@ export const majorClusters: MajorCluster[] = [
   { track: 'stem', ko: '공학·건축', en: 'Engineering & Architecture', values: ['engineering', 'industrial_eng', 'biomedical_eng', 'chemical_eng', 'aerospace_eng', 'nuclear_eng', 'robotics', 'pilot', 'architecture'] },
   { track: 'stem', ko: '컴퓨터·데이터', en: 'Computing & Data', values: ['cs', 'data_science', 'cognitive_science'] },
   { track: 'stem', ko: '수학', en: 'Math', values: ['math_data', 'applied_math', 'actuarial'] },
-  { track: 'stem', ko: '자연과학', en: 'Natural Sciences', values: ['natural_sci', 'biology', 'genetics', 'molecular_bio', 'microbiology', 'neuroscience', 'chemistry', 'physics', 'environmental'] },
+  { track: 'stem', ko: '자연과학', en: 'Natural Sciences', values: ['natural_sci', 'biology', 'genetics', 'molecular_bio', 'microbiology', 'zoology', 'animal_science', 'animal_behavior', 'neuroscience', 'chemistry', 'physics', 'environmental'] },
   { track: 'stem', ko: '보건·의료', en: 'Health & Medicine', values: ['premed', 'nursing', 'public_health', 'kinesiology', 'nutrition', 'pharmacy', 'pre_dental'] },
   { track: 'liberal', ko: '비즈니스·경제', en: 'Business & Economics', values: ['business', 'finance', 'economics', 'accounting', 'sport_management'] },
   { track: 'liberal', ko: '사회·법·교육', en: 'Society, Law & Education', values: ['social_sci', 'prelaw', 'political_sci', 'intl_relations', 'criminology', 'education'] },
