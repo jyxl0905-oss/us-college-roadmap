@@ -72,19 +72,31 @@ function geomCenter(geom: StateGeom): [number, number] {
   return [(minX + maxX) / 2, (minY + maxY) / 2]
 }
 
-// 핀 위에 띄우는 로고 칩 (SVG image, 실패 시 다음 소스 → 전부 실패면 숨김)
-function PinLogo({ schoolId, x, y, size }: { schoolId: number; x: number; y: number; size: number }) {
+// 로고 핀 — 점 대신 로고 자체가 핀. 실패 시 다음 소스 → 전부 실패면 색 점으로 폴백
+function LogoPin({ schoolId, x, y, size, ring, ringWidth, fallback }: {
+  schoolId: number; x: number; y: number; size: number; ring: string; ringWidth: number; fallback: string
+}) {
   const [i, setI] = useState(0)
   const sources = schoolLogoSources(schoolId)
-  if (i >= sources.length) return null
-  const pad = size * 0.18
+  if (i >= sources.length) {
+    return <circle cx={x} cy={y} r={size / 2} fill={fallback} style={{ stroke: ring, strokeWidth: ringWidth }} />
+  }
+  const pad = size * 0.16
   return (
     <g pointerEvents="none" filter="url(#pinShadow)">
-      <rect x={x - size / 2 - pad} y={y - size - size * 0.55 - pad} width={size + pad * 2} height={size + pad * 2} rx={size * 0.2} className="map-logo-bg" />
+      <rect
+        x={x - size / 2 - pad}
+        y={y - size / 2 - pad}
+        width={size + pad * 2}
+        height={size + pad * 2}
+        rx={size * 0.24}
+        className="map-logo-bg"
+        style={{ stroke: ring, strokeWidth: ringWidth }}
+      />
       <image
         href={sources[i]}
         x={x - size / 2}
-        y={y - size - size * 0.55}
+        y={y - size / 2}
         width={size}
         height={size}
         preserveAspectRatio="xMidYMid meet"
@@ -344,48 +356,53 @@ export default function MapPage({ profile }: MapPageProps) {
                   </text>
                 </g>
               ))}
-            {dots.map(({ s, x, y }) => {
-              const isTarget = targetIds.has(s.id)
-              const isSel = selectedId === s.id
-              const isHover = hoverId === s.id
-              const lac = (s.kind ?? 'university') === 'lac'
-              const big = isTarget || isSel || isHover
-              return (
-                <g
-                  key={s.id}
-                  onClick={() => { if (!movedRef.current) setSelectedId(isSel ? null : s.id) }}
-                  onPointerEnter={(e) => { if (e.pointerType === 'mouse') setHoverId(s.id) }}
-                  onPointerLeave={(e) => { if (e.pointerType === 'mouse') setHoverId((v) => (v === s.id ? null : v)) }}
-                  className="cursor-pointer"
-                >
-                  <circle cx={x} cy={y} r={12 / scale} fill="transparent" />
-                  {(isSel || isHover) && <circle cx={x} cy={y} r={9 / scale} className={`${lac ? 'fill-emerald-500' : 'fill-blue-600'} opacity-25`} />}
-                  <circle
-                    cx={x}
-                    cy={y}
-                    r={(big ? 6.5 : 4.5) / scale}
-                    strokeWidth={(big ? 2.2 : 1.2) / scale}
-                    className={`${lac ? 'fill-emerald-500' : 'fill-blue-600'} ${isSel ? 'stroke-gray-900' : isTarget ? 'stroke-amber-400' : 'map-dot-ring'}`}
-                  />
-                  {(kind === 'targets' || scale >= 2.2 || isSel) && (
-                    <PinLogo schoolId={s.id} x={x} y={y} size={18 / scale} />
-                  )}
-                  {(isSel || isHover || (isTarget && scale > 1.8) || kind === 'targets') && (
-                    <text x={x} y={y - ((kind === 'targets' || scale >= 2.2 || isSel) ? 32 : 10) / scale} textAnchor="middle" style={{ fontSize: 11 / scale }} className="map-label pointer-events-none font-semibold">
-                      {s.name}
-                    </text>
-                  )}
-                </g>
-              )
-            })}
+            {(() => {
+              // 로고가 핀: 기본 화면 크기 12px, 확대하면 서서히 커짐 (scale^0.45)
+              const basePx = (kind === 'targets' ? 16 : 12) * Math.pow(scale, 0.45)
+              return dots.map(({ s, x, y }) => {
+                const isTarget = targetIds.has(s.id)
+                const isSel = selectedId === s.id
+                const isHover = hoverId === s.id
+                const lac = (s.kind ?? 'university') === 'lac'
+                const px = basePx * (isSel || isHover ? 1.35 : isTarget ? 1.15 : 1)
+                const size = px / scale
+                const ring = isSel ? '#111827' : isTarget ? '#f59e0b' : lac ? '#10b981' : '#3b82f6'
+                const ringWidth = ((isSel || isTarget ? 2 : 1.1) / scale)
+                return (
+                  <g
+                    key={s.id}
+                    onClick={() => { if (!movedRef.current) setSelectedId(isSel ? null : s.id) }}
+                    onPointerEnter={(e) => { if (e.pointerType === 'mouse') setHoverId(s.id) }}
+                    onPointerLeave={(e) => { if (e.pointerType === 'mouse') setHoverId((v) => (v === s.id ? null : v)) }}
+                    className="cursor-pointer"
+                  >
+                    <circle cx={x} cy={y} r={Math.max(12 / scale, size * 0.7)} fill="transparent" />
+                    <LogoPin
+                      schoolId={s.id}
+                      x={x}
+                      y={y}
+                      size={size}
+                      ring={ring}
+                      ringWidth={ringWidth}
+                      fallback={lac ? '#10b981' : '#2563eb'}
+                    />
+                    {(isSel || isHover || (isTarget && scale > 1.8) || kind === 'targets') && (
+                      <text x={x} y={y - size / 2 - 5 / scale} textAnchor="middle" style={{ fontSize: 11 / scale }} className="map-label pointer-events-none font-semibold">
+                        {s.name}
+                      </text>
+                    )}
+                  </g>
+                )
+              })
+            })()}
           </svg>
         </div>
 
         <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500">
-          <span><span className="mr-1 inline-block h-2.5 w-2.5 rounded-full bg-blue-600 align-middle" />{t('종합대학', 'University')}</span>
-          <span><span className="mr-1 inline-block h-2.5 w-2.5 rounded-full bg-emerald-500 align-middle" />{t('리버럴 아츠 칼리지', 'Liberal arts college')}</span>
+          <span><span className="mr-1 inline-block h-3 w-3 rounded-sm border-2 border-blue-500 bg-white align-middle" />{t('종합대학', 'University')}</span>
+          <span><span className="mr-1 inline-block h-3 w-3 rounded-sm border-2 border-emerald-500 bg-white align-middle" />{t('리버럴 아츠 칼리지', 'Liberal arts college')}</span>
           {targetIds.size > 0 && (
-            <span><span className="mr-1 inline-block h-2.5 w-2.5 rounded-full border-2 border-amber-400 bg-blue-600 align-middle" />{t('내 목표 학교', 'My target')}</span>
+            <span><span className="mr-1 inline-block h-3 w-3 rounded-sm border-2 border-amber-400 bg-white align-middle" />{t('내 목표 학교', 'My target')}</span>
           )}
           <span className="text-gray-400">{t('· 좌표: 미 교육부 College Scorecard', '· Coordinates: US Dept. of Education College Scorecard')}</span>
         </div>
