@@ -124,15 +124,23 @@
 }
 
 /* 🗺️ 대학 지도 — 주 경계·점·라벨 색 (다크 모드 포함) */
-.map-state { fill: #e8eaef; stroke: #ffffff; stroke-width: 0.7; }
+.map-state { fill: #f4f6f9; stroke: #c9d4e0; stroke-width: 0.6; }
 .map-dot-ring { stroke: #ffffff; }
 .map-label { fill: #111827; paint-order: stroke; stroke: #ffffff; stroke-width: 3px; stroke-linejoin: round; }
 .map-logo-bg { fill: #ffffff; stroke: #d1d5db; stroke-width: 0.5; }
+.map-ocean { background: linear-gradient(180deg, #eef4fb 0%, #e6eef9 100%); }
+.map-state-label { fill: #94a3b8; font-weight: 600; letter-spacing: 0.06em; }
+.map-city-dot { fill: #64748b; }
+.map-city-label { fill: #64748b; font-style: italic; }
 @media screen {
-  html.dark .map-state { fill: #242a36; stroke: #0f1115; }
+  html.dark .map-state { fill: #1d232e; stroke: #303a4a; }
   html.dark .map-dot-ring { stroke: #181c24; }
   html.dark .map-label { fill: #e8ebf1; stroke: #0f1115; }
   html.dark .map-logo-bg { fill: #e8ebf1; stroke: #3a4254; }
+  html.dark .map-ocean { background: linear-gradient(180deg, #10151f 0%, #0d1119 100%); }
+  html.dark .map-state-label { fill: #4d566b; }
+  html.dark .map-city-dot { fill: #6b7488; }
+  html.dark .map-city-label { fill: #8791a3; }
 }
 
 /* PDF 저장 = 브라우저 인쇄. A4 1-2장에 맞게 정리 */
