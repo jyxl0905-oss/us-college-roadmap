@@ -130,8 +130,18 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
     return e.plan === roundToPlan[app.round]
   }
   const all = schools.flatMap(entriesForSchool).filter(byAssignedRound)
-  const fall = sortEntries(all.filter((e) => e.plan === 'ED' || e.plan === 'EA' || e.plan === 'REA'))
-  const winter = sortEntries(all.filter((e) => e.plan === 'ED II' || e.plan === 'RD'))
+  // 월별 그룹 — 입시 사이클 순서(8월→7월). 시기 미공개 항목은 맨 뒤 그룹으로
+  const sorted = sortEntries(all.filter((e) => e.timing))
+  const monthOf = (timing: string) => timing.match(/(\d+)월/)?.[1] ?? null
+  const monthGroups: { month: string; list: DeadlineEntry[] }[] = []
+  for (const e of sorted) {
+    const m = monthOf(e.timing!) ?? '?'
+    const last = monthGroups[monthGroups.length - 1]
+    if (last && last.month === m) last.list.push(e)
+    else monthGroups.push({ month: m, list: [e] })
+  }
+  const noTiming = all.filter((e) => !e.timing)
+  const monthNamesEn: Record<string, string> = { '1': 'January', '2': 'February', '3': 'March', '4': 'April', '5': 'May', '6': 'June', '7': 'July', '8': 'August', '9': 'September', '10': 'October', '11': 'November', '12': 'December' }
   // 마감 정보가 아직 없는 목표 학교 (미조사 or 미공개)
   const noData = schools.filter((s) => entriesForSchool(s).length === 0)
 
@@ -238,8 +248,20 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
           </p>
         )}
 
-        {renderGroup(t('가을 — 조기 지원', 'Fall — Early applications'), t('ED · EA · REA (대개 10~11월 마감)', 'ED · EA · REA (usually due Oct–Nov)'), fall)}
-        {renderGroup(t('겨울 — 정시·2차', 'Winter — Regular & round 2'), t('ED II · RD (대개 1월 마감)', 'ED II · RD (usually due January)'), winter)}
+        {monthGroups.map((g) => {
+          const plans = [...new Set(g.list.map((e) => e.plan))].join(' · ')
+          return (
+            <div key={g.month}>
+              {renderGroup(
+                g.month === '?' ? t('기타', 'Other') : t(`${g.month}월`, monthNamesEn[g.month] ?? `Month ${g.month}`),
+                t(`${g.list.length}건 · ${plans}`, `${g.list.length} deadline${g.list.length === 1 ? '' : 's'} · ${plans}`),
+                g.list,
+              )}
+            </div>
+          )
+        })}
+        {noTiming.length > 0 &&
+          renderGroup(t('시기 미공개', 'Timing not disclosed'), t('학교가 마감 시기를 공표하지 않았어요 — 공식 페이지 확인', 'The school has not published a timing — check its official page'), noTiming)}
 
         {noData.length > 0 && all.length > 0 && (
           <div className="mt-6">
