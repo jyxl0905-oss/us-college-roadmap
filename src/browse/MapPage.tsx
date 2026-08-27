@@ -385,7 +385,10 @@ export default function MapPage({ profile }: MapPageProps) {
             {(() => {
               // 로고가 핀: 기본 화면 크기 12px, 확대하면 서서히 커짐 (scale^0.45)
               const basePx = (kind === 'targets' ? 20 : 16) * Math.pow(scale, 0.45)
-              return dots.map(({ s, x, y }) => {
+              // 겹칠 때 선택/호버/목표 핀이 위로 오도록 렌더 순서 조정 (SVG는 나중에 그린 것이 위)
+              const layer = (id: number) => (selectedId === id ? 3 : hoverId === id ? 2 : targetIds.has(id) ? 1 : 0)
+              const ordered = [...dots].sort((a, b) => layer(a.s.id) - layer(b.s.id))
+              return ordered.map(({ s, x, y }) => {
                 const isTarget = targetIds.has(s.id)
                 const isSel = selectedId === s.id
                 const isHover = hoverId === s.id
