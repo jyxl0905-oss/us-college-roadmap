@@ -1,0 +1,1295 @@
+{
+ "1": {
+  "id": 1,
+  "name": "Princeton University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Princeton_seal.svg/120px-Princeton_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is Princeton seal.svg; URL normalized to 120px thumb",
+  "http_status": 200
+ },
+ "2": {
+  "id": 2,
+  "name": "Massachusetts Institute of Technology",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/MIT_2023_red_logo.svg/120px-MIT_2023_red_logo.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/4/44/MIT_Seal.svg/120px-MIT_Seal.svg.png",
+  "changed": false,
+  "reason": "already current — infobox logo=MIT 2023 red logo.svg; short 3-letter mark stays legible at 50px, so kept over the fine-detail seal (seal in alt_url)",
+  "http_status": 200
+ },
+ "3": {
+  "id": 3,
+  "name": "Harvard University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Harvard_University_coat_of_arms.svg/120px-Harvard_University_coat_of_arms.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the coat of arms",
+  "http_status": 200
+ },
+ "4": {
+  "id": 4,
+  "name": "Stanford University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Seal_of_Leland_Stanford_Junior_University.svg/120px-Seal_of_Leland_Stanford_Junior_University.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the seal (infobox logo= is a text-only wordmark, not used)",
+  "http_status": 200
+ },
+ "5": {
+  "id": 5,
+  "name": "Yale University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Yale_University_Shield_1.svg/120px-Yale_University_Shield_1.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the shield",
+  "http_status": 200
+ },
+ "6": {
+  "id": 6,
+  "name": "University of Chicago",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/7/79/University_of_Chicago_shield.svg/120px-University_of_Chicago_shield.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the shield (infobox logo= is a text-only wordmark, not used)",
+  "http_status": 200
+ },
+ "7": {
+  "id": 7,
+  "name": "Duke University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/Duke_University_seal.svg/120px-Duke_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Duke_University_logo.svg/120px-Duke_University_logo.svg.png",
+  "changed": true,
+  "reason": "replaced text-only 'Duke' wordmark (infobox logo=) with the round seal from infobox image= — wide wordmark is unusable in a ~50px square map pin; wordmark kept in alt_url",
+  "http_status": 200
+ },
+ "8": {
+  "id": 8,
+  "name": "Johns Hopkins University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/09/Johns_Hopkins_University%27s_Academic_Seal.svg/120px-Johns_Hopkins_University%27s_Academic_Seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the academic seal",
+  "http_status": 200
+ },
+ "9": {
+  "id": 9,
+  "name": "Northwestern University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Northwestern_University_seal.svg/120px-Northwestern_University_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the seal (infobox logo= is a long wordmark, unreadable at 50px)",
+  "http_status": 200
+ },
+ "10": {
+  "id": 10,
+  "name": "University of Pennsylvania",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UPenn_shield_with_banner.svg/120px-UPenn_shield_with_banner.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the shield with banner",
+  "http_status": 200
+ },
+ "11": {
+  "id": 11,
+  "name": "California Institute of Technology",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Seal_of_the_California_Institute_of_Technology.svg/120px-Seal_of_the_California_Institute_of_Technology.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the seal",
+  "http_status": 200
+ },
+ "12": {
+  "id": 12,
+  "name": "Cornell University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Cornell_University_seal.svg/120px-Cornell_University_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the seal",
+  "http_status": 200
+ },
+ "13": {
+  "id": 13,
+  "name": "Brown University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/5/50/Shield_of_Brown_University.svg/120px-Shield_of_Brown_University.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the shield",
+  "http_status": 200
+ },
+ "14": {
+  "id": 14,
+  "name": "Dartmouth College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e4/Dartmouth_College_shield.svg/120px-Dartmouth_College_shield.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the shield",
+  "http_status": 200
+ },
+ "15": {
+  "id": 15,
+  "name": "Columbia University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Coat_of_Arms_of_Columbia_University.svg/120px-Coat_of_Arms_of_Columbia_University.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the coat of arms",
+  "http_status": 200
+ },
+ "16": {
+  "id": 16,
+  "name": "University of California, Berkeley",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Seal_of_University_of_California%2C_Berkeley.svg/120px-Seal_of_University_of_California%2C_Berkeley.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the seal",
+  "http_status": 200
+ },
+ "17": {
+  "id": 17,
+  "name": "Rice University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/Rice_University_seal.svg/120px-Rice_University_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the seal",
+  "http_status": 200
+ },
+ "18": {
+  "id": 18,
+  "name": "University of California, Los Angeles",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/The_University_of_California_UCLA.svg/120px-The_University_of_California_UCLA.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the UCLA seal",
+  "http_status": 200
+ },
+ "19": {
+  "id": 19,
+  "name": "Vanderbilt University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Vanderbilt_University_seal.svg/120px-Vanderbilt_University_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the seal",
+  "http_status": 200
+ },
+ "20": {
+  "id": 20,
+  "name": "Carnegie Mellon University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bb/Carnegie_Mellon_University_seal.svg/120px-Carnegie_Mellon_University_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the seal (infobox logo= is a long wordmark)",
+  "http_status": 200
+ },
+ "21": {
+  "id": 21,
+  "name": "University of Michigan",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Seal_of_the_University_of_Michigan.svg/120px-Seal_of_the_University_of_Michigan.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is the seal",
+  "http_status": 200
+ },
+ "22": {
+  "id": 22,
+  "name": "University of Notre Dame",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/University_of_Notre_Dame_seal_%282%29.svg/120px-University_of_Notre_Dame_seal_%282%29.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox image= is University of Notre Dame seal (2).svg",
+  "http_status": 200
+ },
+ "23": {
+  "id": 23,
+  "name": "Washington University in St. Louis",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/WashU_St._Louis_seal.svg/120px-WashU_St._Louis_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "already current — infobox has only image= (the seal); no logo file",
+  "http_status": 200
+ },
+ "24": {
+  "id": 24,
+  "name": "Emory University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/63/Emory_University_Seal.svg/120px-Emory_University_Seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still Emory_University_Seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "25": {
+  "id": 25,
+  "name": "Georgetown University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Georgetown_University_seal.svg/120px-Georgetown_University_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still Georgetown_University_seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "26": {
+  "id": 26,
+  "name": "University of North Carolina at Chapel Hill",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/University_of_North_Carolina_at_Chapel_Hill_seal.svg/120px-University_of_North_Carolina_at_Chapel_Hill_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still University_of_North_Carolina_at_Chapel_Hill_seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. The new 2025 UNC wordmark in the article sits in the |logo= field, not the infobox image, and is text-only, so the seal remains the better 50px mark.",
+  "http_status": 200
+ },
+ "27": {
+  "id": 27,
+  "name": "University of Virginia",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/University_of_Virginia_seal.svg/120px-University_of_Virginia_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still University_of_Virginia_seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "28": {
+  "id": 28,
+  "name": "University of Southern California",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/University_of_Southern_California_%28USC%29_seal.svg/120px-University_of_Southern_California_%28USC%29_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still University_of_Southern_California_(USC)_seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "29": {
+  "id": 29,
+  "name": "University of California, San Diego",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Seal_of_the_University_of_California%2C_San_Diego.svg/120px-Seal_of_the_University_of_California%2C_San_Diego.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still Seal_of_the_University_of_California,_San_Diego.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "30": {
+  "id": 30,
+  "name": "University of Florida",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/University_of_Florida_seal.svg/120px-University_of_Florida_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still University_of_Florida_seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "31": {
+  "id": 31,
+  "name": "University of Texas at Austin",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e1/University_of_Texas_at_Austin_seal.svg/120px-University_of_Texas_at_Austin_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still University_of_Texas_at_Austin_seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "32": {
+  "id": 32,
+  "name": "Georgia Institute of Technology",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Georgia_Tech_seal.svg/120px-Georgia_Tech_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still Georgia_Tech_seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "33": {
+  "id": 33,
+  "name": "New York University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/New_York_University_Seal.svg/120px-New_York_University_Seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still New_York_University_Seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "34": {
+  "id": 34,
+  "name": "University of California, Davis",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/The_University_of_California_Davis.svg/120px-The_University_of_California_Davis.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still The_University_of_California_Davis.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "35": {
+  "id": 35,
+  "name": "University of California, Irvine",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/The_University_of_California_Irvine.svg/120px-The_University_of_California_Irvine.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still The_University_of_California_Irvine.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "36": {
+  "id": 36,
+  "name": "Boston College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/00/Boston_College_seal.svg/120px-Boston_College_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still Boston_College_seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "37": {
+  "id": 37,
+  "name": "Tufts University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b1/Tufts_official_seal.svg/120px-Tufts_official_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still Tufts_official_seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "38": {
+  "id": 38,
+  "name": "University of Illinois Urbana-Champaign",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/University_of_Illinois_seal.svg/120px-University_of_Illinois_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still University_of_Illinois_seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "39": {
+  "id": 39,
+  "name": "University of Wisconsin–Madison",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Seal_of_the_University_of_Wisconsin.svg/120px-Seal_of_the_University_of_Wisconsin.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox writes |image= University of Wisconsin seal.svg, which is a redirect to Seal_of_the_University_of_Wisconsin.svg — the same file already in use. URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "40": {
+  "id": 40,
+  "name": "University of California, Santa Barbara",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/UC_Santa_Barbara_Seal.png/120px-UC_Santa_Barbara_Seal.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still UC_Santa_Barbara_Seal.png (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Original is a PNG (no SVG seal exists for UCSB), but the 120px raster thumbnail is clean at 50px; the |logo= field is a text-only wordmark and was not used.",
+  "http_status": 200
+ },
+ "41": {
+  "id": 41,
+  "name": "Ohio State University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e1/Ohio_State_University_seal.svg/120px-Ohio_State_University_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still Ohio_State_University_seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "42": {
+  "id": 42,
+  "name": "Boston University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Boston_University_seal.svg/120px-Boston_University_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still Boston_University_seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "43": {
+  "id": 43,
+  "name": "Rutgers University (New Brunswick)",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Rutgers_University_seal.svg/120px-Rutgers_University_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still Rutgers_University_seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "44": {
+  "id": 44,
+  "name": "University of Maryland, College Park",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3e/University_of_Maryland_seal.svg/120px-University_of_Maryland_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still University_of_Maryland_seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "45": {
+  "id": 45,
+  "name": "University of Washington",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/5/58/University_of_Washington_seal.svg/120px-University_of_Washington_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still University_of_Washington_seal.svg (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Seal/crest, not a text-only wordmark, so no swap needed.",
+  "http_status": 200
+ },
+ "46": {
+  "id": 46,
+  "name": "Lehigh University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/63/Lehigh_University_seal.png/120px-Lehigh_University_seal.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "Infobox |image= is still Lehigh_University_seal.png (current official seal). Same file, URL normalized to the /thumb/.../120px- form. Original is a PNG (no SVG seal on Wikipedia), but the 120px raster thumbnail is clean at 50px.",
+  "http_status": 200
+ },
+ "47": {
+  "id": 47,
+  "name": "Northeastern University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/NU_RGB_seal_R.png/120px-NU_RGB_seal_R.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Northeastern_Wordmark.svg/120px-Northeastern_Wordmark.svg.png",
+  "changed": false,
+  "reason": "Infobox image is unchanged (official seal on Commons); URL normalized to a 120px thumb. Infobox wordmark stored as alt_url.",
+  "http_status": 200
+ },
+ "48": {
+  "id": 48,
+  "name": "Purdue University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/61/Purdue_University_seal.svg/120px-Purdue_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Purdue_University_system_logo.svg/120px-Purdue_University_system_logo.svg.png",
+  "changed": false,
+  "reason": "Infobox image unchanged (SVG seal). Infobox logo is the Purdue system wordmark -> alt_url.",
+  "http_status": 200
+ },
+ "49": {
+  "id": 49,
+  "name": "University of Georgia",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/University_of_Georgia_seal_1801.svg/120px-University_of_Georgia_seal_1801.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d0/University_of_Georgia_logo.svg/120px-University_of_Georgia_logo.svg.png",
+  "changed": false,
+  "reason": "Infobox image unchanged (SVG 1801 seal). Arch/wordmark logo -> alt_url.",
+  "http_status": 200
+ },
+ "50": {
+  "id": 50,
+  "name": "University of Rochester",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c8/University_of_Rochester_seal.svg/120px-University_of_Rochester_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/3/34/University_of_Rochester_logo_%282025%29.svg/120px-University_of_Rochester_logo_%282025%29.svg.png",
+  "changed": false,
+  "reason": "Seal unchanged; the article's wordmark was refreshed to the 2025 version, stored as alt_url.",
+  "http_status": 200
+ },
+ "51": {
+  "id": 51,
+  "name": "Case Western Reserve University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/08/Case_Western_Reserve_University_seal.svg/120px-Case_Western_Reserve_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/CWRU_Two-line_horizontal_logo_Blue.svg/120px-CWRU_Two-line_horizontal_logo_Blue.svg.png",
+  "changed": false,
+  "reason": "Infobox image unchanged (SVG seal). Two-line horizontal wordmark -> alt_url.",
+  "http_status": 200
+ },
+ "52": {
+  "id": 52,
+  "name": "Florida State University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Florida_State_University_seal.svg/120px-Florida_State_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Florida_State_University_logo.svg/120px-Florida_State_University_logo.svg.png",
+  "changed": false,
+  "reason": "Infobox image unchanged (SVG seal). Wordmark logo -> alt_url.",
+  "http_status": 200
+ },
+ "53": {
+  "id": 53,
+  "name": "Texas A&M University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f7/Texas_A%26M_University_seal.svg/120px-Texas_A%26M_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Texas_A%26M_University_wordmark.svg/120px-Texas_A%26M_University_wordmark.svg.png",
+  "changed": false,
+  "reason": "Infobox image unchanged (SVG seal). Wordmark -> alt_url.",
+  "http_status": 200
+ },
+ "54": {
+  "id": 54,
+  "name": "Virginia Tech",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Virginia_Tech_seal.svg/120px-Virginia_Tech_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Virginia_Tech_logo.svg/120px-Virginia_Tech_logo.svg.png",
+  "changed": false,
+  "reason": "Infobox image unchanged (SVG seal). VT logo -> alt_url.",
+  "http_status": 200
+ },
+ "55": {
+  "id": 55,
+  "name": "Wake Forest University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0a/Wake_Forest_University_seal.svg/120px-Wake_Forest_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b9/Wake_Forest_University_logo.svg/120px-Wake_Forest_University_logo.svg.png",
+  "changed": false,
+  "reason": "Infobox image unchanged (SVG seal). Wordmark logo -> alt_url.",
+  "http_status": 200
+ },
+ "56": {
+  "id": 56,
+  "name": "College of William & Mary",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/College_of_William_%26_Mary_Coat_of_Arms.png/120px-College_of_William_%26_Mary_Coat_of_Arms.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0a/Logo_of_the_College_of_William_%26_Mary.png/120px-Logo_of_the_College_of_William_%26_Mary.png",
+  "changed": false,
+  "reason": "Infobox image unchanged (coat of arms; no SVG version exists on Wikipedia). Wordmark logo -> alt_url.",
+  "http_status": 200
+ },
+ "57": {
+  "id": 57,
+  "name": "University of California, Merced",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/5/51/UC_Merced_Seal.png/120px-UC_Merced_Seal.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Uc_merced_logo.png/120px-Uc_merced_logo.png",
+  "changed": false,
+  "reason": "Infobox image unchanged (seal PNG; no SVG on Wikipedia). Wordmark -> alt_url.",
+  "http_status": 200
+ },
+ "58": {
+  "id": 58,
+  "name": "Villanova University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/da/Villanova_University_seal.svg/120px-Villanova_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c8/Villanova_University_logo.svg/120px-Villanova_University_logo.svg.png",
+  "changed": false,
+  "reason": "Infobox image unchanged (SVG seal). Wordmark logo -> alt_url.",
+  "http_status": 200
+ },
+ "59": {
+  "id": 59,
+  "name": "George Washington University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d8/George_Washington_University_seal.svg/120px-George_Washington_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/George_Washington_University_wordmark.svg/120px-George_Washington_University_wordmark.svg.png",
+  "changed": false,
+  "reason": "Infobox image unchanged (SVG seal). Wordmark -> alt_url.",
+  "http_status": 200
+ },
+ "60": {
+  "id": 60,
+  "name": "Pennsylvania State University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5c/Pennsylvania_State_University_seal.svg/120px-Pennsylvania_State_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Pennsylvania_State_University_logo.svg/120px-Pennsylvania_State_University_logo.svg.png",
+  "changed": false,
+  "reason": "Infobox image unchanged (SVG seal). Wordmark logo -> alt_url.",
+  "http_status": 200
+ },
+ "61": {
+  "id": 61,
+  "name": "Santa Clara University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Santa_Clara_U_Seal.svg/120px-Santa_Clara_U_Seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Santa_Clara_University_Text_Logo_Stacked.png/120px-Santa_Clara_University_Text_Logo_Stacked.png",
+  "changed": false,
+  "reason": "Infobox image unchanged (SVG seal). Stacked text logo -> alt_url.",
+  "http_status": 200
+ },
+ "62": {
+  "id": 62,
+  "name": "Stony Brook University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Stony_Brook_University_seal.svg/120px-Stony_Brook_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Stony_Brook_U_logo_horizontal.svg/120px-Stony_Brook_U_logo_horizontal.svg.png",
+  "changed": false,
+  "reason": "Infobox image unchanged (SVG seal). Horizontal wordmark -> alt_url.",
+  "http_status": 200
+ },
+ "63": {
+  "id": 63,
+  "name": "University of Minnesota",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Seal_of_the_University_of_Minnesota.svg/120px-Seal_of_the_University_of_Minnesota.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/University_of_Minnesota_Logo.svg/120px-University_of_Minnesota_Logo.svg.png",
+  "changed": false,
+  "reason": "Infobox image unchanged (SVG seal). Block-M wordmark logo -> alt_url.",
+  "http_status": 200
+ },
+ "64": {
+  "id": 64,
+  "name": "Williams College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/1/19/Williams_College_Seal.svg/120px-Williams_College_Seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Williams_College_wordmark.svg/120px-Williams_College_wordmark.svg.png",
+  "changed": true,
+  "reason": "Replaced the legacy raster Seal_Williams_College.png with Williams_College_Seal.svg, the SVG seal now used in the infobox; wordmark -> alt_url.",
+  "http_status": 200
+ },
+ "65": {
+  "id": 65,
+  "name": "Amherst College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/65/Amherst_College_Seal.svg/120px-Amherst_College_Seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Amherst_College_logo.svg/120px-Amherst_College_logo.svg.png",
+  "changed": true,
+  "reason": "Amherst_College_logo.png was a text-only wordmark and is no longer the infobox image; switched to the current SVG seal (Amherst_College_Seal.svg), SVG wordmark -> alt_url.",
+  "http_status": 200
+ },
+ "66": {
+  "id": 66,
+  "name": "Swarthmore College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Formal_Seal_of_Swarthmore_College%2C_Swarthmore%2C_PA%2C_USA.svg/120px-Formal_Seal_of_Swarthmore_College%2C_Swarthmore%2C_PA%2C_USA.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cb/Formal_Logo_of_Swarthmore_College%2C_Swarthmore%2C_PA%2C_USA.svg/120px-Formal_Logo_of_Swarthmore_College%2C_Swarthmore%2C_PA%2C_USA.svg.png",
+  "changed": true,
+  "reason": "Swarthmore_logo_from_NCAA.svg is an athletics-feed mark, not the article's image; switched to the formal seal now in the infobox, formal wordmark -> alt_url.",
+  "http_status": 200
+ },
+ "67": {
+  "id": 67,
+  "name": "Bowdoin College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e8/Formal_Seal_of_Bowdoin_College%2C_Brunswick%2C_ME%2C_USA.svg/120px-Formal_Seal_of_Bowdoin_College%2C_Brunswick%2C_ME%2C_USA.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Bowdoin_college_blacklogo.png/120px-Bowdoin_college_blacklogo.png",
+  "changed": true,
+  "reason": "Previous file was a pure text wordmark, unreadable at 50px; switched to the SVG formal seal used as the infobox image, wordmark kept as alt_url.",
+  "http_status": 200
+ },
+ "68": {
+  "id": 68,
+  "name": "Claremont McKenna College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/7/73/Claremont_McKenna_College_Seal.svg/120px-Claremont_McKenna_College_Seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d9/Claremont_McKenna_College_logo.svg/120px-Claremont_McKenna_College_logo.svg.png",
+  "changed": true,
+  "reason": "Previous file was a pure text wordmark, unreadable at 50px; switched to Claremont_McKenna_College_Seal.svg (infobox image), current SVG wordmark -> alt_url.",
+  "http_status": 200
+ },
+ "69": {
+  "id": 69,
+  "name": "Pomona College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/Pomona_College_seal.svg/120px-Pomona_College_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Pomona_College_logo.svg/120px-Pomona_College_logo.svg.png",
+  "changed": true,
+  "reason": "Pomona_College_logo.svg is the wordmark (the infobox labels it 'Pomona College wordmark'); switched to the infobox seal image, wordmark -> alt_url.",
+  "http_status": 200
+ },
+ "70": {
+  "id": 70,
+  "name": "Wellesley College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Formal_Logo_of_Wellesley_College%2C_Wellesley%2C_MA%2C_USA.svg/120px-Formal_Logo_of_Wellesley_College%2C_Wellesley%2C_MA%2C_USA.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Formal_Seal_of_Wellesley_College%2C_Wellesley%2C_MA%2C_USA.svg/120px-Formal_Seal_of_Wellesley_College%2C_Wellesley%2C_MA%2C_USA.svg.png",
+  "changed": false,
+  "reason": "Infobox logo unchanged (large blue 'W' mark above wordmark, 250x171 SVG) - already the current logo and legible at 50px; URL normalized to /thumb/.../120px- form. alt_url = official seal.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "71": {
+  "id": 71,
+  "name": "Carleton College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Carleton_College_symbol.svg/120px-Carleton_College_symbol.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Carleton_College_logo.svg/120px-Carleton_College_logo.svg.png",
+  "changed": true,
+  "reason": "Infobox logo (Carleton College logo.svg) is a pure text wordmark, 440x76 (~8px tall at 50px wide). Replaced with the current circular 'C' symbol (SVG, 133x133); wordmark moved to alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "72": {
+  "id": 72,
+  "name": "Harvey Mudd College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Harvey_Mudd_College_logo.svg/120px-Harvey_Mudd_College_logo.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Harvey_Mudd_College_seal.svg/120px-Harvey_Mudd_College_seal.svg.png",
+  "changed": false,
+  "reason": "Infobox logo unchanged - square 480x480 SVG (yellow/white 'HARVEY MUDD COLLEGE' on solid black block), high contrast and readable at 50px. URL normalized.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "73": {
+  "id": 73,
+  "name": "Barnard College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/07/Formal_Seal_of_Barnard_College%2C_New_York_City%2C_USA.svg/120px-Formal_Seal_of_Barnard_College%2C_New_York_City%2C_USA.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Barnard_College_logo.jpeg/120px-Barnard_College_logo.jpeg",
+  "changed": true,
+  "reason": "Old .jpeg wordmark (443x114) replaced. Infobox image is now the official seal as SVG (200x200) - square, legible at 50px. Wordmark kept as alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "74": {
+  "id": 74,
+  "name": "Davidson College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Davidson_College_Primary_Logo.png/120px-Davidson_College_Primary_Logo.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Davidson_College_logo_2023.svg/120px-Davidson_College_logo_2023.svg.png",
+  "changed": true,
+  "reason": "Infobox logo is now 'Davidson College Primary Logo' (415x256 PNG): stacked red interlocking 'DC' monogram over wordmark, so the mark occupies ~60% of height and survives 50px. Previous horizontal 2023 SVG wordmark (415x92) moved to alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "75": {
+  "id": 75,
+  "name": "Grinnell College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bc/Grinnell_College_seal.svg/120px-Grinnell_College_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Grinnell_College_logo.svg/120px-Grinnell_College_logo.svg.png",
+  "changed": true,
+  "reason": "Infobox logo is a 694x73 wordmark (~5px tall at 50px). Replaced with the current seal SVG (340x283) - bold black emblem, strong at 50px. Wordmark in alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "76": {
+  "id": 76,
+  "name": "Hamilton College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/Hamilton_College_seal.svg/120px-Hamilton_College_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Hamilton_College_logo.svg/120px-Hamilton_College_logo.svg.png",
+  "changed": true,
+  "reason": "Infobox logo is a 512x121 'Hamilton' text wordmark (~12px tall at 50px). Replaced with the seal SVG (229x229, square). Wordmark in alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "77": {
+  "id": 77,
+  "name": "Middlebury College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/8/85/Middlebury_College_logo.svg/120px-Middlebury_College_logo.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/01/Middlebury_College_seal.svg/120px-Middlebury_College_seal.svg.png",
+  "changed": true,
+  "reason": "Previous file (Middlebury college wmark.svg, 243x50) was a pure text wordmark and is no longer the infobox logo. Current infobox logo is Middlebury College logo.svg (243x93) - blue shield/tower mark plus wordmark. Seal SVG in alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "78": {
+  "id": 78,
+  "name": "Smith College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Smith_College_seal.svg/120px-Smith_College_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Smith_college_textlogo.svg/120px-Smith_college_textlogo.svg.png",
+  "changed": true,
+  "reason": "Infobox logo 'Smith college textlogo.svg' is pure text, 500x47 (~5px tall at 50px). Replaced with the seal SVG (123x123). Wordmark in alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "79": {
+  "id": 79,
+  "name": "Vassar College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/Vassar_College_Seal.svg/120px-Vassar_College_Seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Vassar_college_garnet_logo.svg/120px-Vassar_college_garnet_logo.svg.png",
+  "changed": true,
+  "reason": "Infobox logo is now 'Vassar college garnet logo.svg' (534x106) - still a pure 'VASSAR' wordmark. Replaced with the seal SVG (316x316, bold red circular mark). Current garnet wordmark in alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "80": {
+  "id": 80,
+  "name": "Wesleyan University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Wesleyan_University_Academic_Seal.png/120px-Wesleyan_University_Academic_Seal.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Wesleyan_University_logo.svg/120px-Wesleyan_University_logo.svg.png",
+  "changed": true,
+  "reason": "Infobox logo (3365x702 SVG) is essentially a text wordmark. Replaced with the infobox image, the Academic Seal (317x314 PNG, square). No SVG seal exists on Commons or en.wp for Wesleyan. Wordmark in alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "81": {
+  "id": 81,
+  "name": "Washington and Lee University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Washington_and_lee_univ_seal.png/120px-Washington_and_lee_univ_seal.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Web_wordmark1.png/120px-Web_wordmark1.png",
+  "changed": false,
+  "reason": "Unchanged: infobox image is still Washington and lee univ seal.png (270x271, square). Infobox logo is a 2238x331 text wordmark, unusable at 50px. No SVG seal exists for W&L. URL normalized to /thumb/.../120px- form.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "82": {
+  "id": 82,
+  "name": "Colgate University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/Colgate_University_Seal_2018.svg/120px-Colgate_University_Seal_2018.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Colgate_University_Wordmark_2018.svg/120px-Colgate_University_Wordmark_2018.svg.png",
+  "changed": true,
+  "reason": "Previous file was the 2018 wordmark (512x30, ~3px tall at 50px). Replaced with the matching 2018 seal SVG (300x300). Wordmark in alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "83": {
+  "id": 83,
+  "name": "University of Richmond",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/UR_Shield.svg/120px-UR_Shield.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/University_of_Richmond_seal.svg/120px-University_of_Richmond_seal.svg.png",
+  "changed": true,
+  "reason": "Old University_of_Richmond_logo.png (1053x248 wordmark) replaced. Infobox logo is now UR Shield.svg (91x108) - navy shield with red/white checkerboard, near-square SVG, excellent at 50px. Formal seal in alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "84": {
+  "id": 84,
+  "name": "Bates College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Seal_Bates_College.svg/120px-Seal_Bates_College.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Bates_College_wordmark.svg/120px-Bates_College_wordmark.svg.png",
+  "changed": true,
+  "reason": "Infobox logo is a pure 'Bates' wordmark (209x61). Replaced with the seal SVG (298x300, red circular 'ACADEMIA BATESINA'). Wordmark in alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "85": {
+  "id": 85,
+  "name": "Colby College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Colby_college_maine_seal.svg/120px-Colby_college_maine_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Colby_College_logo.svg/120px-Colby_College_logo.svg.png",
+  "changed": false,
+  "reason": "Unchanged: infobox image is the Colby seal SVG (250x250, bold blue circular sunburst) - already ideal at 50px. Infobox logo field is a pure 'Colby' text wordmark (250x128), kept as alt_url. URL normalized.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "86": {
+  "id": 86,
+  "name": "Haverford College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Formal_Seal_of_Haverford_College%2C_Haverford_Township%2C_PA%2C_USA.svg/120px-Formal_Seal_of_Haverford_College%2C_Haverford_Township%2C_PA%2C_USA.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Haverford_College_logo.svg/120px-Haverford_College_logo.svg.png",
+  "changed": true,
+  "reason": "Old Haverford_college_wordmark.png replaced. Infobox logo is now Haverford College logo.svg (304x136) - Founders Hall illustration plus wordmark, SVG. Formal seal SVG in alt_url as the more compact option. | 50px 실측 비교 후 인장이 더 판독 가능해 alt와 교체 (사용자 검증)",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "87": {
+  "id": 87,
+  "name": "College of the Holy Cross",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/2/20/College_of_the_Holy_Cross_seal.svg/120px-College_of_the_Holy_Cross_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/College_of_the_Holy_Cross_logo.svg/120px-College_of_the_Holy_Cross_logo.svg.png",
+  "changed": true,
+  "reason": "Old Holy_Cross_College_logo.jpg replaced. Infobox logo (300x74) is a wide shield+text lockup (~12px tall at 50px), so used the current seal SVG (250x250) - colorful square crest, very distinctive at 50px. Infobox logo in alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "88": {
+  "id": 88,
+  "name": "Macalester College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Macalester_college_roundlogo.png/120px-Macalester_college_roundlogo.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Macalester_College_Logo.png/120px-Macalester_College_Logo.png",
+  "changed": true,
+  "reason": "Old MacalesterCollegeSeal.gif (122x116 GIF) replaced. Infobox logo is a 5885x1379 wordmark; infobox image is a detailed engraved seal PNG. Used the current round brand emblem (Macalester college roundlogo.png, 500x500) - square, high contrast, best at 50px. Wordmark in alt_url. No SVG exists for Macalester.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "89": {
+  "id": 89,
+  "name": "Mount Holyoke College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/Mount_Holyoke_College_seal.svg/120px-Mount_Holyoke_College_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Mount_Holyoke_College_logo.svg/120px-Mount_Holyoke_College_logo.svg.png",
+  "changed": true,
+  "reason": "Infobox logo is a 357x55 text wordmark (~8px tall at 50px). Replaced with the seal SVG (127x127, blue circular palm-tree mark). Wordmark in alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "90": {
+  "id": 90,
+  "name": "Bryn Mawr College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3d/Bryn_Mawr_Seal.svg/120px-Bryn_Mawr_Seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Bryn_Mawr_College_logo.svg/120px-Bryn_Mawr_College_logo.svg.png",
+  "changed": true,
+  "reason": "Infobox logo is a 449x88 text wordmark. Replaced with the infobox seal SVG (250x250, yellow/owl crest). Wordmark in alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "91": {
+  "id": 91,
+  "name": "Bucknell University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/1/16/Bucknell_University_seal.svg/120px-Bucknell_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Bucknell_University_logo.svg/120px-Bucknell_University_logo.svg.png",
+  "changed": true,
+  "reason": "Infobox logo (250x112) is a pure 'Bucknell UNIVERSITY' text wordmark. Per the wordmark rule, swapped to the infobox seal SVG (192x250, blue circular). Judgment call: the orange wordmark is arguably still readable at 50px, so alt_url keeps it if you prefer to revert.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "92": {
+  "id": 92,
+  "name": "Colorado College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Colorado_College_seal.svg/120px-Colorado_College_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Colorado_College_logo.svg/120px-Colorado_College_logo.svg.png",
+  "changed": true,
+  "reason": "Infobox logo is a 512x108 wordmark (~11px tall at 50px). Replaced with the seal SVG (316x316, gold circular). Wordmark in alt_url.",
+  "http_status": {
+   "logo_url": 200,
+   "alt_url": 200
+  }
+ },
+ "93": {
+  "id": 93,
+  "name": "Lafayette College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/3/31/Seal_of_Lafayette_College.png/120px-Seal_of_Lafayette_College.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Lafayette_College_wordmark.png/120px-Lafayette_College_wordmark.png",
+  "changed": true,
+  "reason": "Article infobox seal is now the PNG upload (Seal of Lafayette College.png); previous DB value pointed at the older .jpg. Wordmark kept as alt.",
+  "http_status": 200
+ },
+ "94": {
+  "id": 94,
+  "name": "Denison University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Denison_University_seal2.png/120px-Denison_University_seal2.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Denison-logo.svg/120px-Denison-logo.svg.png",
+  "changed": true,
+  "reason": "Same file as before, but URL normalized from Special:FilePath?width=120 to the /thumb/.../120px- form. Seal matches the article infobox image.",
+  "http_status": 200
+ },
+ "95": {
+  "id": 95,
+  "name": "Franklin & Marshall College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/Formal_Seal_of_Franklin_%26_Marshall_College%2C_Lancaster%2C_PA%2C_USA.svg/120px-Formal_Seal_of_Franklin_%26_Marshall_College%2C_Lancaster%2C_PA%2C_USA.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Franklin_marshall_college_logo.svg/120px-Franklin_marshall_college_logo.svg.png",
+  "changed": true,
+  "reason": "Previous value was the 387x73 text-only wordmark (illegible at 50px). Swapped to the article's infobox seal SVG; wordmark moved to alt.",
+  "http_status": 200
+ },
+ "96": {
+  "id": 96,
+  "name": "Occidental College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Occidental_College_Seal.svg/120px-Occidental_College_Seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Occidental_College_logo.svg/120px-Occidental_College_logo.svg.png",
+  "changed": true,
+  "reason": "Previous value was the 432x83 text-only wordmark. Swapped to the article's infobox seal SVG; wordmark moved to alt.",
+  "http_status": 200
+ },
+ "97": {
+  "id": 97,
+  "name": "Pitzer College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a0/Pitzer_College_seal%2C_cali.svg/120px-Pitzer_College_seal%2C_cali.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Pitzer_College_logo.svg/120px-Pitzer_College_logo.svg.png",
+  "changed": true,
+  "reason": "Previous file (Pitzer_college_textlogo.svg) is no longer the article's logo and was a text-only wordmark. Using the infobox seal SVG; current wordmark (Pitzer College logo.svg) as alt.",
+  "http_status": 200
+ },
+ "98": {
+  "id": 98,
+  "name": "Scripps College",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Scripps_College_seal.svg/120px-Scripps_College_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Scripps_College_logo.svg/120px-Scripps_College_logo.svg.png",
+  "changed": true,
+  "reason": "Previous value was the 480x114 text-only wordmark. Swapped to the article's infobox seal SVG; wordmark moved to alt.",
+  "http_status": 200
+ },
+ "99": {
+  "id": 99,
+  "name": "Indiana University Bloomington",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Indiana_University_seal.svg/120px-Indiana_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Indiana_University_logotype.svg/120px-Indiana_University_logotype.svg.png",
+  "changed": true,
+  "reason": "Replaced the ATHLETICS mark (Indiana_Hoosiers_logo.svg, also a non-thumb full-size URL) with the university's own academic mark from the article infobox: Indiana University seal.svg. IU academic logotype kept as alt.",
+  "http_status": 200
+ },
+ "100": {
+  "id": 100,
+  "name": "Michigan State University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Michigan_State_University_seal.svg/120px-Michigan_State_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Michigan_State_University_wordmark.svg/120px-Michigan_State_University_wordmark.svg.png",
+  "changed": false,
+  "reason": "Already the article's infobox seal in correct 120px thumb form; no change needed.",
+  "http_status": 200
+ },
+ "101": {
+  "id": 101,
+  "name": "North Carolina State University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/2/24/North_Carolina_State_University_seal.svg/120px-North_Carolina_State_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/North_Carolina_State_University_logo.svg/120px-North_Carolina_State_University_logo.svg.png",
+  "changed": true,
+  "reason": "Previous value was the 512x46 text-only wordmark (ratio 11:1, unreadable at 50px). Swapped to the article's infobox seal SVG; wordmark moved to alt.",
+  "http_status": 200
+ },
+ "102": {
+  "id": 102,
+  "name": "Rensselaer Polytechnic Institute",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Rensselear_poly_inst_seal.png/120px-Rensselear_poly_inst_seal.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Rensselear_poly_ny_logo.png/120px-Rensselear_poly_ny_logo.png",
+  "changed": false,
+  "reason": "Already the article's infobox seal in correct 120px thumb form; no SVG version exists on Wikipedia.",
+  "http_status": 200
+ },
+ "103": {
+  "id": 103,
+  "name": "University of Massachusetts Amherst",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/UMass_Seal_Medium_PMS_202.png/120px-UMass_Seal_Medium_PMS_202.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/68/Umass_Amherst_Logo.png/120px-Umass_Amherst_Logo.png",
+  "changed": false,
+  "reason": "Already the article's infobox seal in correct 120px thumb form; no SVG version exists on Wikipedia.",
+  "http_status": 200
+ },
+ "104": {
+  "id": 104,
+  "name": "University of Miami",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/University_of_Miami_logo.svg/120px-University_of_Miami_logo.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/2/27/University_of_Miami_seal.svg/120px-University_of_Miami_seal.svg.png",
+  "changed": false,
+  "reason": "Current value is the article's logo param — the split-U mark (250x120), not a text-only wordmark, and legible at 50px. Already normalized. Seal kept as alt.",
+  "http_status": 200
+ },
+ "105": {
+  "id": 105,
+  "name": "Brandeis University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/3/32/Brandeis_University_seal.svg/120px-Brandeis_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Brandeis-University-Word-Mark.svg/120px-Brandeis-University-Word-Mark.svg.png",
+  "changed": false,
+  "reason": "Already the article's infobox seal in correct 120px thumb form; no change needed.",
+  "http_status": 200
+ },
+ "106": {
+  "id": 106,
+  "name": "Tulane University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Tulane_University_Logo.svg/120px-Tulane_University_Logo.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7e/Tulane_logo.svg/120px-Tulane_logo.svg.png",
+  "changed": false,
+  "reason": "Current value is the article's infobox image — the Tulane shield (132x187), legible at 50px. Already normalized.",
+  "http_status": 200
+ },
+ "107": {
+  "id": 107,
+  "name": "University of Connecticut",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/University_of_Connecticut_seal.svg/120px-University_of_Connecticut_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/University_of_Connecticut_logo.svg/120px-University_of_Connecticut_logo.svg.png",
+  "changed": true,
+  "reason": "Previous value was the 171x52 UCONN text wordmark. Swapped to the article's infobox seal SVG; wordmark moved to alt.",
+  "http_status": 200
+ },
+ "108": {
+  "id": 108,
+  "name": "University of Pittsburgh",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/University_of_Pittsburgh_seal.svg/120px-University_of_Pittsburgh_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/University_of_Pittsburgh_logo.svg/120px-University_of_Pittsburgh_logo.svg.png",
+  "changed": false,
+  "reason": "Already the article's infobox seal in correct 120px thumb form; no change needed.",
+  "http_status": 200
+ },
+ "109": {
+  "id": 109,
+  "name": "Binghamton University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/67/State_University_of_New_York_at_Binghamton_Seal.png/120px-State_University_of_New_York_at_Binghamton_Seal.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Binghamton_University_logo.svg/120px-Binghamton_University_logo.svg.png",
+  "changed": true,
+  "reason": "Previous value was the 173x57 text-only wordmark. Swapped to the article's infobox seal (PNG; no SVG seal exists); wordmark moved to alt.",
+  "http_status": 200
+ },
+ "110": {
+  "id": 110,
+  "name": "Clemson University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9c/Clemson_University_Seal.svg/120px-Clemson_University_Seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Clemson_University_Wordmark.svg/120px-Clemson_University_Wordmark.svg.png",
+  "changed": false,
+  "reason": "Already the article's infobox seal in correct 120px thumb form; no change needed.",
+  "http_status": 200
+ },
+ "111": {
+  "id": 111,
+  "name": "Rutgers University–Newark",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Rutgers_newark_univ_logo.png/120px-Rutgers_newark_univ_logo.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Rutgers_University_seal.svg/120px-Rutgers_University_seal.svg.png",
+  "changed": false,
+  "reason": "Kept the Newark-specific logo. The article's infobox image is the generic Rutgers University seal, which is already used by id 43 (Rutgers-New Brunswick) and would make the two campuses indistinguishable on the map. URL already normalized. Rutgers seal recorded as alt.",
+  "http_status": 200
+ },
+ "112": {
+  "id": 112,
+  "name": "Syracuse University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/Syracuse_University_seal.svg/120px-Syracuse_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Syracuse_University_wordmark.svg/120px-Syracuse_University_wordmark.svg.png",
+  "changed": false,
+  "reason": "Already the article's infobox seal in correct 120px thumb form; no change needed.",
+  "http_status": 200
+ },
+ "113": {
+  "id": 113,
+  "name": "University at Buffalo",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/University_at_Buffalo_logo.svg/120px-University_at_Buffalo_logo.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/4/40/University-at-Buffalo-logo-300x300.png/120px-University-at-Buffalo-logo-300x300.png",
+  "changed": false,
+  "reason": "Current value is the article's logo param, an SVG of the UB mark at 512x378 (near-square, legible at 50px). The article's image param is a 300x300 PNG of the same mark; SVG preferred per rule 3.",
+  "http_status": 200
+ },
+ "114": {
+  "id": 114,
+  "name": "University of California, Riverside",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/5/51/UC_Riverside_seal.svg/120px-UC_Riverside_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/UC_Riverside_logo.svg/120px-UC_Riverside_logo.svg.png",
+  "changed": true,
+  "reason": "Previous value was the 496x151 text wordmark. Swapped to the article's infobox seal SVG; wordmark moved to alt.",
+  "http_status": 200
+ },
+ "115": {
+  "id": 115,
+  "name": "Colorado School of Mines",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Colorado_School_of_Mines_seal.svg/120px-Colorado_School_of_Mines_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Colorado_School_of_Mines_wordmark_%282023%29.svg/120px-Colorado_School_of_Mines_wordmark_%282023%29.svg.png",
+  "changed": false,
+  "reason": "Already the article's infobox seal in correct 120px thumb form; no change needed.",
+  "http_status": 200
+ },
+ "116": {
+  "id": 116,
+  "name": "Drexel University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Drexel_University_seal.svg/120px-Drexel_University_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "인포박스 image = Drexel University seal.svg 그대로. SVG 기반 정사각 씰이라 50px에서도 판독 가능. 120px 썸네일 형식으로만 정규화.",
+  "http_status": 200
+ },
+ "117": {
+  "id": 117,
+  "name": "New Jersey Institute of Technology",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e9/New_Jersey_IT_seal.svg/120px-New_Jersey_IT_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/New_Jersey_IT_logo.svg/120px-New_Jersey_IT_logo.svg.png",
+  "changed": true,
+  "reason": "기존 New_Jersey_IT_logo.svg는 가로 2.41:1 로고타입(붉은 NJIT + 작은 태그라인)이라 50px에서 뭉개짐. 인포박스 image 파라미터인 정사각 씰로 교체, 로고타입은 alt_url.",
+  "http_status": 200
+ },
+ "118": {
+  "id": 118,
+  "name": "Stevens Institute of Technology",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Seal_of_Stevens_Institute_of_Technology.svg/120px-Seal_of_Stevens_Institute_of_Technology.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "인포박스 image와 동일. 정사각 SVG 씰 유지.",
+  "http_status": 200
+ },
+ "119": {
+  "id": 119,
+  "name": "Pepperdine University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Pepperdine_University_seal.svg/120px-Pepperdine_University_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "인포박스 image와 동일(현재 문서의 logo 파라미터는 비어 있음). 정사각 SVG 씰 유지.",
+  "http_status": 200
+ },
+ "120": {
+  "id": 120,
+  "name": "University of Illinois Chicago",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/University_of_Illinois_at_Chicago_circle_logo.svg/120px-University_of_Illinois_at_Chicago_circle_logo.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/University_of_Illinois_Chicago_wordmark.png/120px-University_of_Illinois_Chicago_wordmark.png",
+  "changed": true,
+  "reason": "인포박스 image가 순수 텍스트 워드마크(PNG, 3.6:1)라 50px에서 판독 불가. 현행 UIC 브랜드 마크인 붉은 원형 'UIC' 로고(SVG, 1:1)로 교체하고 워드마크는 alt_url.",
+  "http_status": 200
+ },
+ "121": {
+  "id": 121,
+  "name": "Worcester Polytechnic Institute",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/e/ec/WPI_logo.svg/120px-WPI_logo.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "인포박스 image와 동일. 씰+대형 'WPI' 조합이라 50px에서도 식별 가능해 유지.",
+  "http_status": 200
+ },
+ "122": {
+  "id": 122,
+  "name": "Yeshiva University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Yeshiva_University.svg/120px-Yeshiva_University.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Yeshiva_univ_logo.png/120px-Yeshiva_univ_logo.png",
+  "changed": true,
+  "reason": "기존 Yeshiva_univ_logo.png는 7.7:1 텍스트 워드마크(PNG). 인포박스 image인 방패형 크레스트 SVG로 교체.",
+  "http_status": 200
+ },
+ "123": {
+  "id": 123,
+  "name": "American University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/American_University_Seal.svg/120px-American_University_Seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/American_University_logo.svg/120px-American_University_logo.svg.png",
+  "changed": true,
+  "reason": "기존 파일은 3.2:1 가로형 워드마크. 인포박스 image인 정사각 씰 SVG로 교체, 워드마크는 alt_url.",
+  "http_status": 200
+ },
+ "124": {
+  "id": 124,
+  "name": "Baylor University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f0/Baylor_University_seal.svg/120px-Baylor_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Baylor_University_logo.svg/120px-Baylor_University_logo.svg.png",
+  "changed": true,
+  "reason": "기존 파일은 5.4:1 워드마크라 50px에서 판독 불가. 인포박스 image인 정사각 씰 SVG로 교체.",
+  "http_status": 200
+ },
+ "125": {
+  "id": 125,
+  "name": "Howard University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a3/Howard_University_seal.svg/120px-Howard_University_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "인포박스 image와 동일. 정사각 SVG 씰 유지.",
+  "http_status": 200
+ },
+ "126": {
+  "id": 126,
+  "name": "Marquette University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Marquette_University_seal.jpg/120px-Marquette_University_seal.jpg",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/Marquette_University.svg/120px-Marquette_University.svg.png",
+  "changed": true,
+  "reason": "인포박스 image가 .jpg 씰이라 SVG 우선 규칙 적용. 인포박스 logo인 SVG(청·금색 방패 마크 + 워드마크, 1.66:1)는 상단 방패가 커서 50px에서 더 잘 보임. .jpg 씰은 alt_url. | 50px 실측 비교 후 인장이 더 판독 가능해 alt와 교체 (사용자 검증)",
+  "http_status": 200
+ },
+ "127": {
+  "id": 127,
+  "name": "Rochester Institute of Technology",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Rochester_Institute_of_Technology_Seal_%282018%29.svg/120px-Rochester_Institute_of_Technology_Seal_%282018%29.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "인포박스 image와 동일(2018 씰). 파일명 괄호는 %28/%29로 인코딩된 형태가 정식 썸네일 URL.",
+  "http_status": 200
+ },
+ "128": {
+  "id": 128,
+  "name": "Southern Methodist University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f8/Southern_Methodist_University_seal.svg/120px-Southern_Methodist_University_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "인포박스 image와 동일. 정사각 SVG 씰 유지.",
+  "http_status": 200
+ },
+ "129": {
+  "id": 129,
+  "name": "University of California, Santa Cruz",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/The_University_of_California_1868_UCSC.svg/120px-The_University_of_California_1868_UCSC.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/UC_Santa_Cruz_logo.svg/120px-UC_Santa_Cruz_logo.svg.png",
+  "changed": true,
+  "reason": "기존 파일은 4.1:1 워드마크. 인포박스 image인 UCSC 씰 SVG(1:1)로 교체. 다만 이 씰은 UC 계열 공용 디자인과 유사하므로 다른 UC 캠퍼스와 지도에서 겹칠 경우 구분이 어려울 수 있음.",
+  "http_status": 200
+ },
+ "130": {
+  "id": 130,
+  "name": "University of Delaware",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/University_of_Delaware_Seal.svg/120px-University_of_Delaware_Seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "인포박스 image와 동일. 정사각 SVG 씰 유지.",
+  "http_status": 200
+ },
+ "131": {
+  "id": 131,
+  "name": "University of South Florida",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/University_of_South_Florida_seal.svg/120px-University_of_South_Florida_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "인포박스 image와 동일. 정사각 SVG 씰 유지.",
+  "http_status": 200
+ },
+ "132": {
+  "id": 132,
+  "name": "Florida International University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Florida_Internation_University_seal.svg/120px-Florida_Internation_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Florida_International_University_logo.svg/120px-Florida_International_University_logo.svg.png",
+  "changed": true,
+  "reason": "기존 파일은 5.55:1 워드마크. 인포박스 image인 씰 SVG로 교체(위키미디어 파일명이 'Internation'으로 오타나 있으므로 URL 그대로 사용해야 함).",
+  "http_status": 200
+ },
+ "133": {
+  "id": 133,
+  "name": "Fordham University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3e/Fordham_University_seal.svg/120px-Fordham_University_seal.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Fordham_University_logo_2025.png/120px-Fordham_University_logo_2025.png",
+  "changed": true,
+  "reason": "기존 2025 로고는 3.7:1 PNG 워드마크. 인포박스 image인 방패형 씰 SVG(0.77:1)로 교체.",
+  "http_status": 200
+ },
+ "134": {
+  "id": 134,
+  "name": "Rutgers University–Camden",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Rutgers_camden_univ_logo.png/120px-Rutgers_camden_univ_logo.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Rutgers_University_seal.svg/120px-Rutgers_University_seal.svg.png",
+  "changed": true,
+  "reason": "럿거스 공통 인장은 뉴브런즈윅(id 43)과 동일해져 지도에서 구분 불가 — 캠퍼스 고유 로고 유지",
+  "http_status": 200
+ },
+ "135": {
+  "id": 135,
+  "name": "Texas Christian University",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/en/thumb/7/72/Texas_Christian_University_seal.svg/120px-Texas_Christian_University_seal.svg.png",
+  "alt_url": null,
+  "changed": false,
+  "reason": "인포박스 image와 동일. 정사각 SVG 씰 유지.",
+  "http_status": 200
+ },
+ "136": {
+  "id": 136,
+  "name": "University of Colorado Boulder",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Seal_of_the_University_of_Colorado.svg/120px-Seal_of_the_University_of_Colorado.svg.png",
+  "alt_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/UC_Boulder_logo.svg/120px-UC_Boulder_logo.svg.png",
+  "changed": true,
+  "reason": "기존 파일은 6.67:1 워드마크로 50px에서 완전히 뭉개짐. 인포박스 image인 콜로라도대 씰 SVG로 교체(CU 시스템 공용 씰이라 다른 CU 캠퍼스와는 동일 이미지).",
+  "http_status": 200
+ }
+}

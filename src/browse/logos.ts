@@ -56,87 +56,14 @@ const domains: Record<number, string> = {
 
 // 고해상도 공식 마크 — 각 대학 영문 위키피디아 인포박스의 현행 인장/방패 — 표시 크기(≤52px, 2x)에 맞춘 120px 썸네일로 전송량 최소화 (2026-08-10 63곳 전수 검증)
 const hiResLogos: Record<number, string> = {
-  // 60~100위 확장 (2026-08, 위키미디어 200 검증)
-  100: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Michigan_State_University_seal.svg/120px-Michigan_State_University_seal.svg.png',
-  101: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/North_Carolina_State_University_logo.svg/120px-North_Carolina_State_University_logo.svg.png',
-  102: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Rensselear_poly_inst_seal.png/120px-Rensselear_poly_inst_seal.png',
-  103: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/UMass_Seal_Medium_PMS_202.png/120px-UMass_Seal_Medium_PMS_202.png',
-  104: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/University_of_Miami_logo.svg/120px-University_of_Miami_logo.svg.png',
-  105: 'https://upload.wikimedia.org/wikipedia/en/thumb/3/32/Brandeis_University_seal.svg/120px-Brandeis_University_seal.svg.png',
-  106: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Tulane_University_Logo.svg/120px-Tulane_University_Logo.svg.png',
-  107: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/University_of_Connecticut_logo.svg/120px-University_of_Connecticut_logo.svg.png',
-  108: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/University_of_Pittsburgh_seal.svg/120px-University_of_Pittsburgh_seal.svg.png',
-  109: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Binghamton_University_logo.svg/120px-Binghamton_University_logo.svg.png',
-  110: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/9c/Clemson_University_Seal.svg/120px-Clemson_University_Seal.svg.png',
-  111: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Rutgers_newark_univ_logo.png/120px-Rutgers_newark_univ_logo.png',
-  112: 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/Syracuse_University_seal.svg/120px-Syracuse_University_seal.svg.png',
-  113: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/University_at_Buffalo_logo.svg/120px-University_at_Buffalo_logo.svg.png',
-  114: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/UC_Riverside_logo.svg/120px-UC_Riverside_logo.svg.png',
-  115: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Colorado_School_of_Mines_seal.svg/120px-Colorado_School_of_Mines_seal.svg.png',
-  116: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Drexel_University_seal.svg/120px-Drexel_University_seal.svg.png',
-  117: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/New_Jersey_IT_logo.svg/120px-New_Jersey_IT_logo.svg.png',
-  118: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Seal_of_Stevens_Institute_of_Technology.svg/120px-Seal_of_Stevens_Institute_of_Technology.svg.png',
-  119: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Pepperdine_University_seal.svg/120px-Pepperdine_University_seal.svg.png',
-  120: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/University_of_Illinois_Chicago_wordmark.png/120px-University_of_Illinois_Chicago_wordmark.png',
-  121: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/ec/WPI_logo.svg/120px-WPI_logo.svg.png',
-  122: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Yeshiva_univ_logo.png/120px-Yeshiva_univ_logo.png',
-  123: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/American_University_logo.svg/120px-American_University_logo.svg.png',
-  124: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Baylor_University_logo.svg/120px-Baylor_University_logo.svg.png',
-  125: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a3/Howard_University_seal.svg/120px-Howard_University_seal.svg.png',
-  126: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Marquette_University_seal.jpg/120px-Marquette_University_seal.jpg',
-  127: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Rochester_Institute_of_Technology_Seal_%282018%29.svg/120px-Rochester_Institute_of_Technology_Seal_%282018%29.svg.png',
-  128: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f8/Southern_Methodist_University_seal.svg/120px-Southern_Methodist_University_seal.svg.png',
-  129: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/UC_Santa_Cruz_logo.svg/120px-UC_Santa_Cruz_logo.svg.png',
-  130: 'https://upload.wikimedia.org/wikipedia/en/thumb/2/29/University_of_Delaware_Seal.svg/120px-University_of_Delaware_Seal.svg.png',
-  131: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/University_of_South_Florida_seal.svg/120px-University_of_South_Florida_seal.svg.png',
-  132: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Florida_International_University_logo.svg/120px-Florida_International_University_logo.svg.png',
-  133: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Fordham_University_logo_2025.png/120px-Fordham_University_logo_2025.png',
-  134: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Rutgers_camden_univ_logo.png/120px-Rutgers_camden_univ_logo.png',
-  135: 'https://upload.wikimedia.org/wikipedia/en/thumb/7/72/Texas_Christian_University_seal.svg/120px-Texas_Christian_University_seal.svg.png',
-  136: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/UC_Boulder_logo.svg/120px-UC_Boulder_logo.svg.png',
-  99: 'https://upload.wikimedia.org/wikipedia/commons/4/47/Indiana_Hoosiers_logo.svg',
-  64: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Seal_Williams_College.png/120px-Seal_Williams_College.png', // LAC
-  65: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Amherst_College_logo.png/120px-Amherst_College_logo.png', // LAC
-  66: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Swarthmore_logo_from_NCAA.svg/120px-Swarthmore_logo_from_NCAA.svg.png', // LAC
-  67: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Bowdoin_college_blacklogo.png/120px-Bowdoin_college_blacklogo.png', // LAC
-  68: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Claremont_McKenna_College_wordmark.png/120px-Claremont_McKenna_College_wordmark.png', // LAC
-  69: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Pomona_College_logo.svg/120px-Pomona_College_logo.svg.png', // LAC
-  70: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Formal_Logo_of_Wellesley_College%2C_Wellesley%2C_MA%2C_USA.svg/120px-Formal_Logo_of_Wellesley_College%2C_Wellesley%2C_MA%2C_USA.svg.png', // LAC
-  71: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Carleton_College_logo.svg/120px-Carleton_College_logo.svg.png', // LAC
-  72: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Harvey_Mudd_College_logo.svg/120px-Harvey_Mudd_College_logo.svg.png', // LAC
-  73: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Barnard_College_logo.jpeg/120px-Barnard_College_logo.jpeg', // LAC
-  74: 'https://commons.wikimedia.org/wiki/Special:FilePath/Davidson_College_logo_2023.svg?width=120', // LAC
-  75: 'https://commons.wikimedia.org/wiki/Special:FilePath/Grinnell_College_logo.svg?width=120', // LAC
-  76: 'https://commons.wikimedia.org/wiki/Special:FilePath/Hamilton_College_logo.svg?width=120', // LAC
-  77: 'https://commons.wikimedia.org/wiki/Special:FilePath/Middlebury_college_wmark.svg?width=120', // LAC
-  78: 'https://commons.wikimedia.org/wiki/Special:FilePath/Smith_college_textlogo.svg?width=120', // LAC
-  79: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Vassar_College_logo.svg/120px-Vassar_College_logo.svg.png', // LAC
-  80: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Wesleyan_University_logo.svg/120px-Wesleyan_University_logo.svg.png', // LAC
-  81: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Washington_and_lee_univ_seal.png/120px-Washington_and_lee_univ_seal.png', // LAC
-  82: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Colgate_University_wordmark.svg/120px-Colgate_University_wordmark.svg.png', // LAC
-  83: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/University_of_Richmond_logo.png/120px-University_of_Richmond_logo.png', // LAC
-  84: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Bates_College_wordmark.svg/120px-Bates_College_wordmark.svg.png', // LAC
-  85: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Colby_college_maine_seal.svg/120px-Colby_college_maine_seal.svg.png', // LAC
-  86: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Haverford_college_wordmark.png/120px-Haverford_college_wordmark.png', // LAC
-  87: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Holy_Cross_College_logo.jpg/120px-Holy_Cross_College_logo.jpg', // LAC
-  88: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/MacalesterCollegeSeal.gif/120px-MacalesterCollegeSeal.gif', // LAC
-  89: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Mount_Holyoke_College_logo.svg/120px-Mount_Holyoke_College_logo.svg.png', // LAC
-  90: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Bryn_Mawr_College_logo.svg/120px-Bryn_Mawr_College_logo.svg.png', // LAC
-  91: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Bucknell_University_logo.svg/120px-Bucknell_University_logo.svg.png', // LAC
-  92: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Colorado_College_logo.svg/120px-Colorado_College_logo.svg.png', // LAC
-  93: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Seal_of_Lafayette_College.jpg/120px-Seal_of_Lafayette_College.jpg', // LAC
-  94: 'https://commons.wikimedia.org/wiki/Special:FilePath/Denison_University_seal2.png?width=120', // LAC
-  95: 'https://commons.wikimedia.org/wiki/Special:FilePath/Franklin_marshall_college_logo.svg?width=120', // LAC
-  96: 'https://commons.wikimedia.org/wiki/Special:FilePath/Occidental_College_logo.svg?width=120', // LAC
-  97: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pitzer_college_textlogo.svg?width=120', // LAC
-  98: 'https://commons.wikimedia.org/wiki/Special:FilePath/Scripps_College_logo.svg?width=120', // LAC
+  // 2026-08-28 전수 리서치: 위키피디아 인포박스의 현행 마크로 갱신 + 50px 판독성 우선(글자 워드마크 → 인장/방패), 전 URL 120px 썸네일 형식·HTTP 200 검증
   1: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Princeton_seal.svg/120px-Princeton_seal.svg.png',
   2: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/MIT_2023_red_logo.svg/120px-MIT_2023_red_logo.svg.png',
   3: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Harvard_University_coat_of_arms.svg/120px-Harvard_University_coat_of_arms.svg.png',
   4: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Seal_of_Leland_Stanford_Junior_University.svg/120px-Seal_of_Leland_Stanford_Junior_University.svg.png',
   5: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Yale_University_Shield_1.svg/120px-Yale_University_Shield_1.svg.png',
   6: 'https://upload.wikimedia.org/wikipedia/en/thumb/7/79/University_of_Chicago_shield.svg/120px-University_of_Chicago_shield.svg.png',
-  7: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Duke_University_logo.svg/120px-Duke_University_logo.svg.png',
+  7: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/Duke_University_seal.svg/120px-Duke_University_seal.svg.png',
   8: 'https://upload.wikimedia.org/wikipedia/en/thumb/0/09/Johns_Hopkins_University%27s_Academic_Seal.svg/120px-Johns_Hopkins_University%27s_Academic_Seal.svg.png',
   9: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Northwestern_University_seal.svg/120px-Northwestern_University_seal.svg.png',
   10: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UPenn_shield_with_banner.svg/120px-UPenn_shield_with_banner.svg.png',
@@ -193,6 +120,79 @@ const hiResLogos: Record<number, string> = {
   61: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Santa_Clara_U_Seal.svg/120px-Santa_Clara_U_Seal.svg.png',
   62: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Stony_Brook_University_seal.svg/120px-Stony_Brook_University_seal.svg.png',
   63: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Seal_of_the_University_of_Minnesota.svg/120px-Seal_of_the_University_of_Minnesota.svg.png',
+  64: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/19/Williams_College_Seal.svg/120px-Williams_College_Seal.svg.png',
+  65: 'https://upload.wikimedia.org/wikipedia/en/thumb/6/65/Amherst_College_Seal.svg/120px-Amherst_College_Seal.svg.png',
+  66: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Formal_Seal_of_Swarthmore_College%2C_Swarthmore%2C_PA%2C_USA.svg/120px-Formal_Seal_of_Swarthmore_College%2C_Swarthmore%2C_PA%2C_USA.svg.png',
+  67: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e8/Formal_Seal_of_Bowdoin_College%2C_Brunswick%2C_ME%2C_USA.svg/120px-Formal_Seal_of_Bowdoin_College%2C_Brunswick%2C_ME%2C_USA.svg.png',
+  68: 'https://upload.wikimedia.org/wikipedia/en/thumb/7/73/Claremont_McKenna_College_Seal.svg/120px-Claremont_McKenna_College_Seal.svg.png',
+  69: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/Pomona_College_seal.svg/120px-Pomona_College_seal.svg.png',
+  70: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Formal_Logo_of_Wellesley_College%2C_Wellesley%2C_MA%2C_USA.svg/120px-Formal_Logo_of_Wellesley_College%2C_Wellesley%2C_MA%2C_USA.svg.png',
+  71: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Carleton_College_symbol.svg/120px-Carleton_College_symbol.svg.png',
+  72: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Harvey_Mudd_College_logo.svg/120px-Harvey_Mudd_College_logo.svg.png',
+  73: 'https://upload.wikimedia.org/wikipedia/en/thumb/0/07/Formal_Seal_of_Barnard_College%2C_New_York_City%2C_USA.svg/120px-Formal_Seal_of_Barnard_College%2C_New_York_City%2C_USA.svg.png',
+  74: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Davidson_College_Primary_Logo.png/120px-Davidson_College_Primary_Logo.png',
+  75: 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bc/Grinnell_College_seal.svg/120px-Grinnell_College_seal.svg.png',
+  76: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/Hamilton_College_seal.svg/120px-Hamilton_College_seal.svg.png',
+  77: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/85/Middlebury_College_logo.svg/120px-Middlebury_College_logo.svg.png',
+  78: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Smith_College_seal.svg/120px-Smith_College_seal.svg.png',
+  79: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/Vassar_College_Seal.svg/120px-Vassar_College_Seal.svg.png',
+  80: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Wesleyan_University_Academic_Seal.png/120px-Wesleyan_University_Academic_Seal.png',
+  81: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Washington_and_lee_univ_seal.png/120px-Washington_and_lee_univ_seal.png',
+  82: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/Colgate_University_Seal_2018.svg/120px-Colgate_University_Seal_2018.svg.png',
+  83: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/UR_Shield.svg/120px-UR_Shield.svg.png',
+  84: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Seal_Bates_College.svg/120px-Seal_Bates_College.svg.png',
+  85: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Colby_college_maine_seal.svg/120px-Colby_college_maine_seal.svg.png',
+  86: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Formal_Seal_of_Haverford_College%2C_Haverford_Township%2C_PA%2C_USA.svg/120px-Formal_Seal_of_Haverford_College%2C_Haverford_Township%2C_PA%2C_USA.svg.png',
+  87: 'https://upload.wikimedia.org/wikipedia/en/thumb/2/20/College_of_the_Holy_Cross_seal.svg/120px-College_of_the_Holy_Cross_seal.svg.png',
+  88: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Macalester_college_roundlogo.png/120px-Macalester_college_roundlogo.png',
+  89: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/Mount_Holyoke_College_seal.svg/120px-Mount_Holyoke_College_seal.svg.png',
+  90: 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3d/Bryn_Mawr_Seal.svg/120px-Bryn_Mawr_Seal.svg.png',
+  91: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/16/Bucknell_University_seal.svg/120px-Bucknell_University_seal.svg.png',
+  92: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Colorado_College_seal.svg/120px-Colorado_College_seal.svg.png',
+  93: 'https://upload.wikimedia.org/wikipedia/en/thumb/3/31/Seal_of_Lafayette_College.png/120px-Seal_of_Lafayette_College.png',
+  94: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Denison_University_seal2.png/120px-Denison_University_seal2.png',
+  95: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/Formal_Seal_of_Franklin_%26_Marshall_College%2C_Lancaster%2C_PA%2C_USA.svg/120px-Formal_Seal_of_Franklin_%26_Marshall_College%2C_Lancaster%2C_PA%2C_USA.svg.png',
+  96: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Occidental_College_Seal.svg/120px-Occidental_College_Seal.svg.png',
+  97: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a0/Pitzer_College_seal%2C_cali.svg/120px-Pitzer_College_seal%2C_cali.svg.png',
+  98: 'https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Scripps_College_seal.svg/120px-Scripps_College_seal.svg.png',
+  99: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Indiana_University_seal.svg/120px-Indiana_University_seal.svg.png',
+  100: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Michigan_State_University_seal.svg/120px-Michigan_State_University_seal.svg.png',
+  101: 'https://upload.wikimedia.org/wikipedia/en/thumb/2/24/North_Carolina_State_University_seal.svg/120px-North_Carolina_State_University_seal.svg.png',
+  102: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Rensselear_poly_inst_seal.png/120px-Rensselear_poly_inst_seal.png',
+  103: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/UMass_Seal_Medium_PMS_202.png/120px-UMass_Seal_Medium_PMS_202.png',
+  104: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/University_of_Miami_logo.svg/120px-University_of_Miami_logo.svg.png',
+  105: 'https://upload.wikimedia.org/wikipedia/en/thumb/3/32/Brandeis_University_seal.svg/120px-Brandeis_University_seal.svg.png',
+  106: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Tulane_University_Logo.svg/120px-Tulane_University_Logo.svg.png',
+  107: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/56/University_of_Connecticut_seal.svg/120px-University_of_Connecticut_seal.svg.png',
+  108: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/University_of_Pittsburgh_seal.svg/120px-University_of_Pittsburgh_seal.svg.png',
+  109: 'https://upload.wikimedia.org/wikipedia/en/thumb/6/67/State_University_of_New_York_at_Binghamton_Seal.png/120px-State_University_of_New_York_at_Binghamton_Seal.png',
+  110: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/9c/Clemson_University_Seal.svg/120px-Clemson_University_Seal.svg.png',
+  111: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Rutgers_newark_univ_logo.png/120px-Rutgers_newark_univ_logo.png',
+  112: 'https://upload.wikimedia.org/wikipedia/en/thumb/b/bf/Syracuse_University_seal.svg/120px-Syracuse_University_seal.svg.png',
+  113: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/University_at_Buffalo_logo.svg/120px-University_at_Buffalo_logo.svg.png',
+  114: 'https://upload.wikimedia.org/wikipedia/en/thumb/5/51/UC_Riverside_seal.svg/120px-UC_Riverside_seal.svg.png',
+  115: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Colorado_School_of_Mines_seal.svg/120px-Colorado_School_of_Mines_seal.svg.png',
+  116: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Drexel_University_seal.svg/120px-Drexel_University_seal.svg.png',
+  117: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e9/New_Jersey_IT_seal.svg/120px-New_Jersey_IT_seal.svg.png',
+  118: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Seal_of_Stevens_Institute_of_Technology.svg/120px-Seal_of_Stevens_Institute_of_Technology.svg.png',
+  119: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Pepperdine_University_seal.svg/120px-Pepperdine_University_seal.svg.png',
+  120: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/University_of_Illinois_at_Chicago_circle_logo.svg/120px-University_of_Illinois_at_Chicago_circle_logo.svg.png',
+  121: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/ec/WPI_logo.svg/120px-WPI_logo.svg.png',
+  122: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Yeshiva_University.svg/120px-Yeshiva_University.svg.png',
+  123: 'https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/American_University_Seal.svg/120px-American_University_Seal.svg.png',
+  124: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f0/Baylor_University_seal.svg/120px-Baylor_University_seal.svg.png',
+  125: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a3/Howard_University_seal.svg/120px-Howard_University_seal.svg.png',
+  126: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Marquette_University_seal.jpg/120px-Marquette_University_seal.jpg',
+  127: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Rochester_Institute_of_Technology_Seal_%282018%29.svg/120px-Rochester_Institute_of_Technology_Seal_%282018%29.svg.png',
+  128: 'https://upload.wikimedia.org/wikipedia/en/thumb/f/f8/Southern_Methodist_University_seal.svg/120px-Southern_Methodist_University_seal.svg.png',
+  129: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/The_University_of_California_1868_UCSC.svg/120px-The_University_of_California_1868_UCSC.svg.png',
+  130: 'https://upload.wikimedia.org/wikipedia/en/thumb/2/29/University_of_Delaware_Seal.svg/120px-University_of_Delaware_Seal.svg.png',
+  131: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/University_of_South_Florida_seal.svg/120px-University_of_South_Florida_seal.svg.png',
+  132: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Florida_Internation_University_seal.svg/120px-Florida_Internation_University_seal.svg.png',
+  133: 'https://upload.wikimedia.org/wikipedia/en/thumb/3/3e/Fordham_University_seal.svg/120px-Fordham_University_seal.svg.png',
+  134: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Rutgers_camden_univ_logo.png/120px-Rutgers_camden_univ_logo.png',
+  135: 'https://upload.wikimedia.org/wikipedia/en/thumb/7/72/Texas_Christian_University_seal.svg/120px-Texas_Christian_University_seal.svg.png',
+  136: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Seal_of_the_University_of_Colorado.svg/120px-Seal_of_the_University_of_Colorado.svg.png',
 }
 
 // 소스별 화질·진위 실측 결과 (2026-08-10, 63곳 전수 확인):
