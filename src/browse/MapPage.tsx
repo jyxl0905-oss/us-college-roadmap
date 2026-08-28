@@ -123,6 +123,7 @@ export default function MapPage({ profile }: MapPageProps) {
   const [schools, setSchools] = useState<School[]>([])
   const [kind, setKind] = useState<'all' | 'university' | 'lac' | 'targets'>('all')
   const [tierSel, setTierSel] = useState<number>(0) // 0 = 전체 (종합대 5그룹은 usnews_rank, LAC은 tier)
+  const [query, setQuery] = useState('')
   const [selectedId, setSelectedId] = useState<number | null>(null)
   const [hoverId, setHoverId] = useState<number | null>(null)
   const [box, setBox] = useState<Box>(FULL)
@@ -174,10 +175,14 @@ export default function MapPage({ profile }: MapPageProps) {
   const scale = W / box.w // 화면 확대 배율 — 점·글자 크기를 화면상 일정하게 유지
 
   // 부드러운 줌 (버튼·프리셋) — 300ms ease
+  const snapRef = useRef<number | null>(null)
   const animateTo = (target: Box) => {
     if (animRef.current) cancelAnimationFrame(animRef.current)
+    if (snapRef.current) window.clearTimeout(snapRef.current)
     const from = boxRef.current
     const to = clampBox(target)
+    // 탭이 백그라운드면 rAF가 멈춰 중간에 서므로, 시간이 지나면 목적지로 확정
+    snapRef.current = window.setTimeout(() => setBox(to), 420)
     const t0 = performance.now()
     const dur = 320
     const step = (now: number) => {
@@ -290,6 +295,32 @@ export default function MapPage({ profile }: MapPageProps) {
     animateTo({ x: b.x + fx * b.w - fx * w, y: b.y + fy * b.h - fy * h, w, h })
   }
 
+  // 검색: 이름(영/한)으로 최대 6곳 — 필터와 무관하게 전체에서 찾음
+  const q = query.trim().toLowerCase()
+  const suggestions = useMemo(() => {
+    if (!q) return []
+    return schools
+      .filter((s) => s.name.toLowerCase().includes(q) || s.name_ko.toLowerCase().includes(q))
+      .sort((a, b) => (a.kind === 'lac' ? 1 : 0) - (b.kind === 'lac' ? 1 : 0) || a.usnews_rank - b.usnews_rank)
+      .slice(0, 6)
+  }, [schools, q])
+
+  // 검색 결과 선택 → 해당 학교로 확대 이동 + 카드 열기 (필터에 가려져 있으면 전체 보기로)
+  const goToSchool = (s: School) => {
+    const ll = coords[String(s.id)]
+    const p = ll ? project([ll[1], ll[0]]) : null
+    if (!p) return
+    if (kind === 'lac' && (s.kind ?? 'university') !== 'lac') setKind('all')
+    if (kind === 'university' && s.kind === 'lac') setKind('all')
+    if (kind === 'targets' && !targetIds.has(s.id)) setKind('all')
+    if (tierSel !== 0) setTierSel(0)
+    setSelectedId(s.id)
+    setQuery('')
+    const w = 170
+    const h = (w / W) * H
+    animateTo({ x: p[0] - w / 2, y: p[1] - h / 2, w, h })
+  }
+
   const chip = (on: boolean) =>
     `shrink-0 rounded-full border-2 px-3 py-1.5 text-sm font-medium ${on ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-600'}`
 
@@ -300,8 +331,47 @@ export default function MapPage({ profile }: MapPageProps) {
           <button onClick={() => navigate('/targets')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
           <div>
             <h1 className="text-xl font-bold text-gray-900">🗺️ {t('대학 지도', 'College Map')}</h1>
-            <p className="text-xs text-gray-400">{t('점을 누르면 학교 정보 · 드래그 이동 · 휠/핀치/더블탭 확대', 'Tap a dot for info · drag to pan · wheel/pinch/double-tap to zoom')}</p>
+            <p className="text-xs text-gray-400">{t('검색하거나 로고를 눌러 학교 정보 · 드래그 이동 · 휠/핀치/더블탭 확대', 'Search or tap a logo for info · drag to pan · wheel/pinch/double-tap to zoom')}</p>
           </div>
+        </div>
+
+        {/* 학교 검색 — 고르면 그 위치로 확대 */}
+        <div className="relative mt-3">
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => { if (e.key === 'Enter' && suggestions[0]) goToSchool(suggestions[0]) }}
+            placeholder={t('지도에서 학교 찾기 (예: NYU, 하버드)', 'Find a school on the map (e.g., NYU, Harvard)')}
+            className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-2.5 text-base focus:border-blue-600 focus:outline-none"
+          />
+          {suggestions.length > 0 && (
+            <div className="absolute left-0 right-0 top-full z-20 mt-1 overflow-hidden rounded-xl border-2 border-gray-200 bg-white shadow-lg">
+              {suggestions.map((s) => (
+                <button
+                  key={s.id}
+                  onClick={() => goToSchool(s)}
+                  className="flex w-full items-center gap-2.5 px-3 py-2.5 text-left active:bg-gray-50"
+                >
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-md border border-gray-100 bg-white">
+                    <SchoolLogo schoolId={s.id} name={s.name} size={26} />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-sm font-semibold text-gray-900">{s.name}</span>
+                    <span className="block truncate text-xs text-gray-400">
+                      {s.name_ko} · {s.kind === 'lac' ? `LAC #${s.lac_rank ?? '–'}` : `US News #${s.usnews_rank}`}
+                      {targetIds.has(s.id) ? t(' · 내 목표', ' · my target') : ''}
+                    </span>
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
+          {q !== '' && suggestions.length === 0 && (
+            <p className="absolute left-0 right-0 top-full z-20 mt-1 rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm text-gray-400 shadow-lg">
+              {t('검색 결과가 없어요', 'No matches')}
+            </p>
+          )}
         </div>
 
         <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
