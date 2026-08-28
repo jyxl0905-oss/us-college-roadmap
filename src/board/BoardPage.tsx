@@ -620,7 +620,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
             <p className="text-[11px] text-gray-400">{rule}</p>
             <div className="mt-2 grid gap-2 md:grid-cols-2">
               {list.length === 0 ? (
-                <div className="rounded-xl border-2 border-dashed border-gray-200 px-3 py-3 text-center text-xs text-gray-400">
+                <div className="rounded-xl border-2 border-dashed border-gray-200 px-3 py-3 text-center text-xs text-gray-400 md:col-span-2">
                   {t('비어 있음', 'Empty')}
                 </div>
               ) : (
@@ -639,7 +639,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
         <p className="text-[11px] text-gray-400">{t('카드의 [라운드 칸에 넣기]로 위 칸에 배치해요. 그 학교가 제공하는 라운드만 보여요.', 'Use [Put in a round slot] on a card to place it above. Only rounds that school offers are shown.')}</p>
         <div className="mt-2 grid gap-2 md:grid-cols-2">
           {unassigned.length === 0 ? (
-            <p className="text-xs text-gray-400">{t('전부 배정됐어요 🎉', 'All assigned 🎉')}</p>
+            <p className="text-xs text-gray-400 md:col-span-2">{t('전부 배정됐어요 🎉', 'All assigned 🎉')}</p>
           ) : (
             unassigned.map(card)
           )}

@@ -121,7 +121,9 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
       <div className="mt-3 grid gap-2.5 md:grid-cols-2">
         {activities.map((a, i) =>
           editing === a.id ? (
-            <ActivityForm key={a.id} initial={a} busy={busy} onSave={(d) => saveActivity(d, a.id)} onCancel={() => setEditing(null)} onDelete={() => removeActivity(a.id)} />
+            <div key={a.id} className="md:col-span-2">
+              <ActivityForm initial={a} busy={busy} onSave={(d) => saveActivity(d, a.id)} onCancel={() => setEditing(null)} onDelete={() => removeActivity(a.id)} />
+            </div>
           ) : (
             <div key={a.id} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3">
               <div className="flex items-start justify-between gap-2">
@@ -146,12 +148,14 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
           ),
         )}
         {editing === 'new' ? (
-          <ActivityForm busy={busy} onSave={(d) => saveActivity(d, 'new')} onCancel={() => setEditing(null)} />
+          <div className="md:col-span-2">
+            <ActivityForm busy={busy} onSave={(d) => saveActivity(d, 'new')} onCancel={() => setEditing(null)} />
+          </div>
         ) : (
           activities.length < ACTIVITY_MAX && (
             <button
               onClick={() => setEditing('new')}
-              className="rounded-xl border-2 border-dashed border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-500 active:bg-gray-50"
+              className="rounded-xl border-2 border-dashed border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-500 active:bg-gray-50 md:col-span-2"
             >
               {t('＋ 활동 추가', '＋ Add activity')}
             </button>
@@ -167,7 +171,9 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
       <div className="mt-3 grid gap-2.5 md:grid-cols-2">
         {honors.map((h) =>
           editingHonor === h.id ? (
-            <HonorForm key={h.id} initial={h} activities={activities} busy={busy} onSave={(d) => saveHonor(d, h.id)} onCancel={() => setEditingHonor(null)} onDelete={() => removeHonor(h.id)} />
+            <div key={h.id} className="md:col-span-2">
+              <HonorForm initial={h} activities={activities} busy={busy} onSave={(d) => saveHonor(d, h.id)} onCancel={() => setEditingHonor(null)} onDelete={() => removeHonor(h.id)} />
+            </div>
           ) : (
             <button key={h.id} onClick={() => setEditingHonor(h.id)} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-left active:bg-gray-50">
               <p className="break-words font-semibold text-gray-900">{h.title || <span className="text-gray-300">{t('제목 미입력', 'No title set')}</span>}</p>
@@ -178,12 +184,14 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
           ),
         )}
         {editingHonor === 'new' ? (
-          <HonorForm activities={activities} busy={busy} onSave={(d) => saveHonor(d, 'new')} onCancel={() => setEditingHonor(null)} />
+          <div className="md:col-span-2">
+            <HonorForm activities={activities} busy={busy} onSave={(d) => saveHonor(d, 'new')} onCancel={() => setEditingHonor(null)} />
+          </div>
         ) : (
           honors.length < HONOR_MAX && (
             <button
               onClick={() => setEditingHonor('new')}
-              className="rounded-xl border-2 border-dashed border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-500 active:bg-gray-50"
+              className="rounded-xl border-2 border-dashed border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-500 active:bg-gray-50 md:col-span-2"
             >
               {t('＋ 수상 추가', '＋ Add honor')}
             </button>
