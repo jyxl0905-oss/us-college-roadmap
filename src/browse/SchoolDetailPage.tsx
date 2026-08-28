@@ -41,6 +41,12 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
       </div>
     )
 
+  // 검색·공유용 페이지 제목
+  useEffect(() => {
+    if (school) document.title = `${school.name} (${school.name_ko}) — 미국 대입 로드맵`
+    return () => { document.title = '미국 대입 로드맵' }
+  }, [school])
+
   const s = school
   const isTargeted = profile?.target_school_ids.includes(s.id) ?? false
   const dash = (v: string | number | null | undefined, suffix = '') =>

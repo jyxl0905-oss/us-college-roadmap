@@ -44,6 +44,12 @@ interface MajorRoadmapPageProps {
 
 // 전공 로드맵 — v1(가이드)·v2(4년 로드맵) 원문을 배치만 함. 글 최소: 내 학년만 펼침, 가이드는 접힘
 export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoadmapPageProps) {
+  // 검색·공유용 페이지 제목
+  useEffect(() => {
+    document.title = `${majorLabel(majorKey)} 전공 가이드 — 미국 대입 로드맵`
+    return () => { document.title = '미국 대입 로드맵' }
+  }, [majorKey])
+
   // 세부 전공(유전학 등)은 자체 로드맵이 없으면 상위 전공 로드맵을 사용
   let roadmapKey = majorKey
   for (let i = 0; i < 5 && !DATA[roadmapKey] && majorAlias[roadmapKey]; i++) roadmapKey = majorAlias[roadmapKey]
