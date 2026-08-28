@@ -484,7 +484,7 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
         options={[
           { value: 1, label: 'Top 20' },
           { value: 2, label: t('21-40위', 'Ranked 21-40') },
-          { value: 3, label: t('41-60위', 'Ranked 41-60') },
+          { value: 3, label: t('41위 이하', 'Ranked 41+') },
         ]}
         selected={draft.target_tier}
         onSelect={(v) => finish({ ...draft, target_tier: v as Tier })}

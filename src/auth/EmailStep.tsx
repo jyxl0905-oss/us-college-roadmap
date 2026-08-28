@@ -68,9 +68,12 @@ export default function EmailStep({ redirectPath = '/', title, minimal = false }
         <p className="mt-2 text-sm text-gray-500">
           {t('', 'We sent a login link to ')}<strong>{email}</strong>{t('로 로그인 링크를 보냈어요. 메일의 링크를 누르면 입력한 내용이 저장되고 체크리스트가 열려요.', '. Tap the link in the email to save your answers and open your checklist.')}
         </p>
-        <p className="mt-4 text-sm text-gray-400">
-          {t('메일이 안 보이면 스팸함도 확인해 보세요.', "Don't see it? Check your spam folder.")}
-        </p>
+        <div className="mt-4 rounded-xl border-2 border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+          <p className="font-semibold">📥 {t('메일이 안 보이면 스팸함을 확인해 보세요', "Don't see it? Check your spam folder")}</p>
+          <p className="mt-1 text-xs text-amber-800">
+            {t('처음 받는 주소라 스팸함으로 가는 경우가 종종 있어요. 찾으면 [스팸 아님]을 눌러두면 다음부터 받은편지함으로 와요.', 'First-time senders often land in spam. If you find it there, tap "Not spam" so future emails reach your inbox.')}
+          </p>
+        </div>
         <button
           onClick={() => setSent(false)}
           className="mt-6 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"

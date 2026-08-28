@@ -6,8 +6,8 @@ import schoolsData from '../data/schools.index.json' // 경량 인덱스(id·이
 const schools = schoolsData as School[]
 
 export const tierLabels: Record<number, string> = bilingual<number>(
-  { 1: 'Top 20', 2: '21-40위', 3: '41-60위' },
-  { 1: 'Top 20', 2: 'Ranks 21–40', 3: 'Ranks 41–60' },
+  { 1: 'Top 20', 2: '21-40위', 3: '41위 이하' },
+  { 1: 'Top 20', 2: 'Ranks 21–40', 3: 'Ranks 41+' },
 )
 
 export const gpaBandLabels: Record<string, string> = bilingual(

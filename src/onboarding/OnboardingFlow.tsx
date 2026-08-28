@@ -323,8 +323,8 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
           <ChoiceStep
             title={t('목표 학교가 정해져 있나요?', 'Do you have target schools?')}
             options={[
-              { value: 'schools', label: t('구체적인 학교가 있어요', 'Yes, specific schools'), description: t('톱60에서 검색해서 골라요', 'Search and pick from the top 60') },
-              { value: 'tier', label: t('대략적인 순위대만 있어요', 'Just a rank range'), description: t('Top 20 / 21-40위 / 41-60위', 'Top 20 / 21–40 / 41–60') },
+              { value: 'schools', label: t('구체적인 학교가 있어요', 'Yes, specific schools'), description: t('종합대 톱100 + 리버럴 아츠 35곳에서 검색해요', 'Search the top 100 universities + 35 LACs') },
+              { value: 'tier', label: t('대략적인 순위대만 있어요', 'Just a rank range'), description: t('Top 20 / 21-40위 / 41위 이하', 'Top 20 / 21–40 / 41+') },
               { value: 'undecided', label: t('아직 미정이에요', 'Undecided') },
             ]}
             selected={answers.targetMode}
@@ -353,7 +353,7 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
             options={[
               { value: 1, label: 'Top 20' },
               { value: 2, label: t('21-40위', 'Ranks 21–40') },
-              { value: 3, label: t('41-60위', 'Ranks 41–60') },
+              { value: 3, label: t('41위 이하', 'Ranks 41+') },
             ]}
             selected={answers.targetTier}
             onSelect={(v) => answer({ targetTier: v as Tier })}
