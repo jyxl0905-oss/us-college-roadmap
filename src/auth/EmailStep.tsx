@@ -29,7 +29,7 @@ export default function EmailStep({ redirectPath = '/', title, minimal = false }
     try { if (redirectPath !== '/') localStorage.setItem('post_login_path', redirectPath); else localStorage.removeItem('post_login_path') } catch { /* ignore */ }
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: 'https://us-college-roadmap.vercel.app' },
+      options: { redirectTo: 'https://uscollegeroadmap.com' },
     })
     if (error)
       setError(t('구글 로그인이 지금은 안 돼요 — 아래 이메일 방식으로 로그인해 주세요.', 'Google sign-in is unavailable right now — please use the email option below.'))
@@ -49,7 +49,7 @@ export default function EmailStep({ redirectPath = '/', title, minimal = false }
     const { error } = await supabase.auth.signInWithOtp({
       email: email.trim(),
       // 메일 링크는 항상 실제 사이트로 돌아오게 고정 — 개발용 localhost에서 요청해도 꺼진 서버로 돌아가는 일 방지
-      options: { emailRedirectTo: 'https://us-college-roadmap.vercel.app' },
+      options: { emailRedirectTo: 'https://uscollegeroadmap.com' },
     })
     setSending(false)
     if (error)

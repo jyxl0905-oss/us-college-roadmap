@@ -6,7 +6,7 @@
 import { createClient } from '@supabase/supabase-js'
 import nodemailer from 'nodemailer'
 
-const SITE = 'https://us-college-roadmap.vercel.app'
+const SITE = 'https://uscollegeroadmap.com'
 
 function seasonInfo(now) {
   // KST 기준 날짜 (크론은 00:30 UTC = 09:30 KST에 실행)

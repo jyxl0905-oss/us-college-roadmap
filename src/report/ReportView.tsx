@@ -607,7 +607,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         <button
           onClick={() => {
             const events = [
-              { title: t('미국 대입 로드맵 — 시즌 체크인', 'US College Roadmap — season check-in'), date: nextCheckinDate(), description: t('새 시즌 체크리스트 확인', 'Check your new season checklist') + ': https://us-college-roadmap.vercel.app' },
+              { title: t('미국 대입 로드맵 — 시즌 체크인', 'US College Roadmap — season check-in'), date: nextCheckinDate(), description: t('새 시즌 체크리스트 확인', 'Check your new season checklist') + ': https://uscollegeroadmap.com' },
               ...assignedRounds
                 .filter((a) => a.student_deadline)
                 .map((a) => {
@@ -631,7 +631,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       {/* 8. 푸터 */}
       <div className="mt-8 border-t border-gray-200 pt-4 text-center text-xs text-gray-400">
         <p>
-          {t('미국 대입 로드맵', 'US College Roadmap')} · us-college-roadmap.vercel.app ·{' '}
+          {t('미국 대입 로드맵', 'US College Roadmap')} · uscollegeroadmap.com ·{' '}
           <button onClick={onOpenGuide} className="no-print underline">{t('📚 기본기·용어집', '📚 Basics · glossary')}</button>
         </p>
         <p className="mt-1">

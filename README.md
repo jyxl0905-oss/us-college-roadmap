@@ -2,7 +2,7 @@
 
 한국 국제학교 학생을 위한 미국 대학 입시 시즌별 체크리스트·리포트 서비스입니다.
 
-**🌐 서비스 주소: https://us-college-roadmap.vercel.app**
+**🌐 서비스 주소: https://uscollegeroadmap.com**
 
 ## 프로젝트 목적
 
