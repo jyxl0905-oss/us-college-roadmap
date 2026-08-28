@@ -29,6 +29,12 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
     loadSchools().then((list) => setSchool(list.find((s) => slugify(s.name) === slug) ?? null))
   }, [slug])
 
+  // 검색·공유용 페이지 제목 — 훅은 조기 return보다 위에 있어야 함 (훅 순서 고정)
+  useEffect(() => {
+    if (school && school !== 'loading') document.title = `${school.name} (${school.name_ko}) — 미국 대입 로드맵`
+    return () => { document.title = '미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴' }
+  }, [school])
+
   if (school === 'loading')
     return <p className="mt-20 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
   if (!school)
@@ -40,12 +46,6 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         </button>
       </div>
     )
-
-  // 검색·공유용 페이지 제목
-  useEffect(() => {
-    if (school) document.title = `${school.name} (${school.name_ko}) — 미국 대입 로드맵`
-    return () => { document.title = '미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴' }
-  }, [school])
 
   const s = school
   const isTargeted = profile?.target_school_ids.includes(s.id) ?? false
