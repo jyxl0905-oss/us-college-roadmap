@@ -82,18 +82,30 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
 
   const myMajor = profile?.major_primary && profile.major_primary !== 'undecided' ? profile.major_primary : null
 
+  // 종합대/LAC 외의 조건은 공통 — 탭 전환 판단에도 같은 기준을 씀
+  const passesFilters = (s: School, q: string) => {
+    if (q && !s.name.toLowerCase().includes(q) && !s.name_ko.toLowerCase().includes(q)) return false
+    if (needBlindOnly && s.need_blind_intl !== true) return false
+    if (testPolicy !== 'all' && s.test_policy !== testPolicy) return false
+    if (region !== 'all' && schoolRegion(s) !== region) return false
+    if (directAdmitMine && myMajor && !s.direct_admit_majors.includes(directAdmitParent(myMajor) as string)) return false
+    return true
+  }
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
-    return schools.filter((s) => {
-      if ((s.kind ?? 'university') !== kind) return false
-      if (q && !s.name.toLowerCase().includes(q) && !s.name_ko.toLowerCase().includes(q)) return false
-      if (needBlindOnly && s.need_blind_intl !== true) return false
-      if (testPolicy !== 'all' && s.test_policy !== testPolicy) return false
-      if (region !== 'all' && schoolRegion(s) !== region) return false
-      if (directAdmitMine && myMajor && !s.direct_admit_majors.includes(directAdmitParent(myMajor) as string)) return false
-      return true
-    })
+    return schools.filter((s) => (s.kind ?? 'university') === kind && passesFilters(s, q))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [schools, kind, query, needBlindOnly, testPolicy, region, directAdmitMine, myMajor])
+
+  // 검색어가 지금 탭에는 없고 반대 탭에 있으면 자동 전환 (LAC 탭에서 '하버드'를 찾으면 종합대로)
+  useEffect(() => {
+    const q = query.trim().toLowerCase()
+    if (!q || filtered.length > 0) return
+    const other = kind === 'lac' ? 'university' : 'lac'
+    if (schools.some((s) => (s.kind ?? 'university') === other && passesFilters(s, q))) setKind(other)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query, filtered.length, kind, schools])
 
   // 종합대는 순위 5그룹(usnews_rank), LAC은 기존 3그룹(tier)
   const groups: number[] = kind === 'lac' ? [1, 2, 3] : uniGroups
