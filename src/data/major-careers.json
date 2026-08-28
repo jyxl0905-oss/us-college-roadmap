@@ -1506,5 +1506,31 @@
   ],
   "outlook_note_ko": "BLS 기준 Information Security Analysts 고용은 2024–34년 29% 성장(전 직군 최상위권) 전망입니다.",
   "grad_note_ko": "학부 전공은 사이버보안 또는 CS+보안 동아리·CTF(해킹 대회) 조합이 일반적이에요. 자격증(Security+ 등)과 실전 CTF 경력이 취업에 크게 작용해요."
+ },
+ "marine_biology": {
+  "desc_ko": "바다의 생물과 생태계를 배워요 — 해양 생물의 생리·행동, 산호초와 연안 생태, 어류·포유류 연구, 해양 오염과 기후 영향. 현장 잠수·승선 조사와 실험실 분석을 함께 하고, 해양 연구소·수족관·환경 기관·수산 관련 기관으로 이어져요.",
+  "desc_en": "You study ocean life and ecosystems — the physiology and behavior of marine organisms, coral reef and coastal ecology, fish and mammal research, and the effects of pollution and climate. Combines fieldwork (diving, research vessels) with lab analysis, leading to marine labs, aquariums, environmental agencies and fisheries.",
+  "occupations": [
+   {
+    "title": "Zoologists and Wildlife Biologists",
+    "pay": "$72,860 per year",
+    "pay_year": 2024,
+    "outlook": "+2%",
+    "window": "2024–34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/zoologists-and-wildlife-biologists.htm",
+    "note": "Typical entry-level education: Bachelor's degree (research roles usually need a graduate degree)"
+   },
+   {
+    "title": "Environmental Scientists and Specialists",
+    "pay": "$80,060",
+    "pay_year": 2024,
+    "outlook": "+4%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/life-physical-and-social-science/environmental-scientists-and-specialists.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS는 해양생물학자를 별도 직군으로 집계하지 않고 Zoologists and Wildlife Biologists에 포함합니다. 이 직군 고용은 2024–34년 2% 성장(평균보다 느림, 규모가 작은 직군), Environmental Scientists and Specialists는 4% 성장 전망입니다.",
+  "grad_note_ko": "연구직은 석·박사가 사실상 필수예요. 해안에 있는 학교(해양 연구소·승선 실습 보유)인지, 학부 때 현장 조사와 연구실 경험을 쌓을 수 있는지가 학교 선택의 핵심이에요."
  }
 }
