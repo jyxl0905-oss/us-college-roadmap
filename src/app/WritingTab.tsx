@@ -384,6 +384,7 @@ function EssayWorkspace({
     <div className="fixed inset-0 z-50 flex flex-col bg-white">
       {/* 헤더 */}
       <div className="flex items-center gap-3 border-b border-gray-200 px-4 py-3">
+        <button onClick={() => void close()} aria-label={t('뒤로 (저장하고 닫기)', 'Back (saves and closes)')} className="shrink-0 rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-semibold text-gray-900">{prompt.trim() || t('새 에세이', 'New essay')}</p>
           <p className="text-xs text-gray-400">
