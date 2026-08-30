@@ -115,6 +115,9 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
                 <p className="text-xl font-bold text-gray-900">{total.weighted.toFixed(2)}</p>
               </div>
             </div>
+            <p className="mt-2 text-[11px] leading-relaxed text-gray-400">
+              {t('College Board 표준 기준으로 계산한 참고치예요. 학교마다 산정 기준이 달라서 학교 성적표의 GPA와 다를 수 있어요.', 'A reference computed on the College Board standard scale. Schools calculate GPA differently, so this may differ from your school transcript.')}
+            </p>
             <div className="mt-2 flex flex-col gap-1">
               {GRADES.map((g) => {
                 const r = computeGpa(courses.filter((c) => c.grade === g))
@@ -153,6 +156,7 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
       {/* % → 레터 기준 (College Board 표준) — 성적 입력칸 옆에서 바로 참고 */}
       <div className="mt-2 overflow-x-auto rounded-lg bg-gray-100 px-3 py-2">
         <p className="text-[11px] font-medium text-gray-500">{t('점수 → 레터 기준 (College Board 표준)', 'Score → letter scale (College Board standard)')}</p>
+        <p className="text-[11px] text-gray-400">{t('가장 널리 쓰이는 일반 기준이에요 — 학교마다 기준이 달라 결과가 다를 수 있어요.', 'The most widely used general scale — your school’s scale may differ.')}</p>
         <p className="mt-1 whitespace-nowrap text-[11px] leading-relaxed text-gray-500">
           97+ <b className="text-gray-700">A+</b> · 93 <b className="text-gray-700">A</b> · 90 <b className="text-gray-700">A-</b> · 87 <b className="text-gray-700">B+</b> · 83 <b className="text-gray-700">B</b> · 80 <b className="text-gray-700">B-</b> · 77 <b className="text-gray-700">C+</b> · 73 <b className="text-gray-700">C</b> · 70 <b className="text-gray-700">C-</b> · 67 <b className="text-gray-700">D+</b> · 65 <b className="text-gray-700">D</b> · &lt;65 <b className="text-gray-700">F</b>
         </p>
