@@ -631,7 +631,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       {/* 8. 푸터 */}
       <div className="mt-8 border-t border-gray-200 pt-4 text-center text-xs text-gray-400">
         <p>
-          {t('미국 대입 로드맵', 'US College Roadmap')} · uscollegeroadmap.com ·{' '}
+          {t('미국 대입 로드맵', 'US College Roadmap')} · {t('전 기능 무료 · 광고 없음', 'Everything free · no ads')} · uscollegeroadmap.com ·{' '}
           <button onClick={onOpenGuide} className="no-print underline">{t('📚 기본기·용어집', '📚 Basics · glossary')}</button>
         </p>
         <p className="mt-1">

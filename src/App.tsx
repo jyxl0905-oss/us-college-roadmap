@@ -417,7 +417,7 @@ function AppRoutes() {
   }
   // F3: 마감 캘린더 (로그인 전용)
   if (path === '/targets' || path === '/targets/') {
-    if (session && profile) return <TargetsPage profile={profile} />
+    if (session && profile) return <TargetsPage userId={session.user.id} profile={profile} />
     return <Redirect to="/" />
   }
   if (path === '/deadlines' || path === '/deadlines/') {

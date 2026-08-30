@@ -6,6 +6,7 @@ import { majorLabel } from '../data/majors'
 import { saveProfile, type ProfileRow } from '../lib/profile'
 import AidBlock from './AidBlock'
 import { setPrefillSchoolIds } from './prefill'
+import FitPicker from './FitPicker'
 import SchoolLogo from './SchoolLogo'
 import { uniGroupOf, uniGroupTitles } from './rankGroups'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
@@ -49,6 +50,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
 
   const s = school
   const isTargeted = profile?.target_school_ids.includes(s.id) ?? false
+  const [fitPrompt, setFitPrompt] = useState(false) // 방금 추가함 — 티어 선택 유도
   const dash = (v: string | number | null | undefined, suffix = '') =>
     v === null || v === undefined ? t('미공개', 'Not disclosed') : `${v}${suffix}`
 
@@ -67,6 +69,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
     try {
       await saveProfile(userId, updated)
       onProfileChange(updated)
+      setFitPrompt(!isTargeted)
     } catch (e) {
       console.error(e)
       alert(t('저장에 실패했어요. 네트워크를 확인하고 다시 시도해주세요.', 'Could not save. Check your connection and try again.'))
@@ -250,6 +253,15 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
           >
             {isTargeted ? t('✓ 내 목표 학교예요 — 탭해서 제거', '✓ In my targets — tap to remove') : t('＋ 내 목표에 추가', '＋ Add to my targets')}
           </button>
+        )}
+        {/* 추가 직후: 티어(예측) 선택 — 이 선택이 곧 예측 기록 */}
+        {fitPrompt && isTargeted && userId && (
+          <div className="mt-2.5 rounded-xl border border-gray-200 bg-white px-3.5 py-3">
+            <p className="text-xs font-medium text-gray-600">{t('네 생각엔 이 학교, 너한테 뭐야?', 'Your call — what is this school to you?')}</p>
+            <div className="mt-2">
+              <FitPicker userId={userId} schoolId={s.id} value={null} dataFit={null} onSaved={() => setFitPrompt(false)} />
+            </div>
+          </div>
         )}
       </div>
 

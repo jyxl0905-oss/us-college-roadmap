@@ -9,6 +9,7 @@ import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
 import { uniGroupOf, uniGroupTitles, uniGroups } from './rankGroups'
 import { saveProfile, type ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
+import FitPicker from './FitPicker'
 import { t, bilingual } from '../i18n'
 
 const lacTierTitles: Record<Tier, string> = bilingual(
@@ -40,6 +41,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
   }
   const toggleCompare = (id: number) => setCompareIds(toggleCompareId(compareIds, id))
   const [targetPending, setTargetPending] = useState(false)
+  const [fitPromptId, setFitPromptId] = useState<number | null>(null) // 방금 목표에 추가한 학교 — 티어 선택 유도
 
   // ＋ 추가: 로그인 시 목표 학교에 추가/제거 (상세 페이지와 같은 로직), 비로그인 시 이 학교로 온보딩 시작
   const toggleTarget = async (s: School) => {
@@ -61,6 +63,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
     try {
       await saveProfile(userId, updated)
       onProfileChange(updated)
+      setFitPromptId(isTargeted ? null : s.id)
     } catch {
       alert(t('저장에 실패했어요. 네트워크를 확인하고 다시 시도해주세요.', 'Could not save. Check your connection and try again.'))
     } finally {
@@ -308,6 +311,15 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
                         <p className="mt-0.5 truncate text-xs text-gray-400">{s.name_ko}</p>
                       </span>
                     </span>
+                    {/* 목표 추가 직후: 티어(예측) 바로 고르기 — 이 선택이 곧 예측 기록 */}
+                    {fitPromptId === s.id && userId && (
+                      <span className="mt-2.5 block rounded-lg bg-gray-50 px-2.5 py-2" onClick={(e) => e.stopPropagation()}>
+                        <span className="block text-[11px] font-medium text-gray-600">{t('네 생각엔 이 학교, 너한테 뭐야?', 'Your call — what is this school to you?')}</span>
+                        <span className="mt-1.5 block">
+                          <FitPicker userId={userId} schoolId={s.id} value={null} dataFit={null} size="xs" onSaved={() => setFitPromptId(null)} />
+                        </span>
+                      </span>
+                    )}
                     <span className="mt-2.5 flex flex-wrap gap-1 text-[11px]">
                       <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
                         {s.kind === 'lac' ? `LAC #${s.lac_rank ?? '–'}` : uniGroupTitles[uniGroupOf(s.usnews_rank)]}

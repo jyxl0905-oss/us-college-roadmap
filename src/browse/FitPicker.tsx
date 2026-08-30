@@ -64,20 +64,22 @@ export default function FitPicker({ userId, schoolId, value, dataFit, onSaved, s
   }
 
   const pad = size === 'xs' ? 'px-2 py-0.5 text-[11px]' : 'px-2.5 py-1 text-xs'
+  // 카드 전체가 <button>인 곳(둘러보기 목록)에도 넣을 수 있게 span[role=button] 사용 (버튼 중첩 방지)
   return (
-    <div className="flex flex-wrap gap-1.5">
+    <span className="flex flex-wrap gap-1.5">
       {fitOrder.map((f) => (
-        <button
+        <span
           key={f}
-          disabled={busy}
-          onClick={() => void pick(f)}
-          className={`rounded-full border-2 font-semibold ${pad} ${
+          role="button"
+          aria-disabled={busy}
+          onClick={(e) => { e.stopPropagation(); if (!busy) void pick(f) }}
+          className={`cursor-pointer rounded-full border-2 font-semibold ${pad} ${
             current === f ? fitChipColors[f] : 'border-gray-200 bg-white text-gray-500'
-          }`}
+          } ${busy ? 'opacity-50' : ''}`}
         >
           {fitLabels[f]}
-        </button>
+        </span>
       ))}
-    </div>
+    </span>
   )
 }
