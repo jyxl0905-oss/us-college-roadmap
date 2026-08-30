@@ -311,15 +311,6 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
                         <p className="mt-0.5 truncate text-xs text-gray-400">{s.name_ko}</p>
                       </span>
                     </span>
-                    {/* 목표 추가 직후: 티어(예측) 바로 고르기 — 이 선택이 곧 예측 기록 */}
-                    {fitPromptId === s.id && userId && (
-                      <span className="mt-2.5 block rounded-lg bg-gray-50 px-2.5 py-2" onClick={(e) => e.stopPropagation()}>
-                        <span className="block text-[11px] font-medium text-gray-600">{t('네 생각엔 이 학교, 너한테 뭐야?', 'Your call — what is this school to you?')}</span>
-                        <span className="mt-1.5 block">
-                          <FitPicker userId={userId} schoolId={s.id} value={null} dataFit={null} size="xs" onSaved={() => setFitPromptId(null)} />
-                        </span>
-                      </span>
-                    )}
                     <span className="mt-2.5 flex flex-wrap gap-1 text-[11px]">
                       <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
                         {s.kind === 'lac' ? `LAC #${s.lac_rank ?? '–'}` : uniGroupTitles[uniGroupOf(s.usnews_rank)]}
@@ -358,6 +349,27 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
           <p className="mt-10 text-center text-sm text-gray-400">{t('조건에 맞는 학교가 없어요.', 'No schools match these filters.')}</p>
         )}
       </div>
+
+      {/* 목표 추가 직후: 티어(예측) 선택 — 하단 고정 바 (카드 레이아웃을 건드리지 않음) */}
+      {fitPromptId !== null && userId && (() => {
+        const ps = schools.find((x) => x.id === fitPromptId)
+        if (!ps) return null
+        return (
+          <div className="fixed inset-x-0 bottom-0 z-30 border-t border-gray-200 bg-white/95 px-5 py-3 backdrop-blur">
+            <div className="mx-auto max-w-md">
+              <div className="flex items-center justify-between gap-2">
+                <p className="min-w-0 truncate text-sm font-medium text-gray-800">
+                  ✓ <span className="font-bold">{ps.name}</span> {t('추가됨 — 네 생각엔 이 학교, 너한테 뭐야?', 'added — your call, what is this school to you?')}
+                </p>
+                <button onClick={() => setFitPromptId(null)} className="shrink-0 text-xs text-gray-400 underline">{t('나중에', 'Later')}</button>
+              </div>
+              <div className="mt-2">
+                <FitPicker userId={userId} schoolId={ps.id} value={null} dataFit={null} onSaved={() => setFitPromptId(null)} />
+              </div>
+            </div>
+          </div>
+        )
+      })()}
 
       {showTop && (
         <button
