@@ -181,6 +181,17 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
       </div>
       <p className="mt-0.5 text-xs text-gray-400">{t('학년별로 적어두면 12학년에 성적표 확인·리거 점검이 쉬워요.', 'Listing courses by grade makes transcript and rigor checks easy in 12th grade.')}</p>
 
+      {/* % → 레터 기준 (College Board 표준) — 성적 입력칸 옆에서 바로 참고 */}
+      <div className="mt-2 overflow-x-auto rounded-lg bg-gray-100 px-3 py-2">
+        <p className="text-[11px] font-medium text-gray-500">{t('점수 → 레터 기준 (College Board 표준)', 'Score → letter scale (College Board standard)')}</p>
+        <p className="mt-1 whitespace-nowrap text-[11px] leading-relaxed text-gray-500">
+          97+ <b className="text-gray-700">A+</b> · 93 <b className="text-gray-700">A</b> · 90 <b className="text-gray-700">A-</b> · 87 <b className="text-gray-700">B+</b> · 83 <b className="text-gray-700">B</b> · 80 <b className="text-gray-700">B-</b> · 77 <b className="text-gray-700">C+</b> · 73 <b className="text-gray-700">C</b> · 70 <b className="text-gray-700">C-</b> · 67 <b className="text-gray-700">D+</b> · 65 <b className="text-gray-700">D</b> · &lt;65 <b className="text-gray-700">F</b>
+        </p>
+        <p className="mt-0.5 whitespace-nowrap text-[11px] text-gray-400">
+          {t('환산점', 'Points')}: A+/A 4.0 · A- 3.7 · B+ 3.3 · B 3.0 · B- 2.7 · C+ 2.3 · C 2.0 · C- 1.7 · D+ 1.3 · D 1.0 · F 0
+        </p>
+      </div>
+
       <div className="mt-3 rounded-xl border-2 border-gray-200 bg-white px-4 py-3">
         <div className="grid grid-cols-[64px_1fr_88px] gap-2">
           <select value={newCourse.grade} onChange={(e) => setNewCourse({ ...newCourse, grade: Number(e.target.value) })} className={field}>
