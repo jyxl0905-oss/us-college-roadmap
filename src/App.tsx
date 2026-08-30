@@ -230,7 +230,11 @@ function AppRoutes() {
   // undefined = 아직 조회 전 (조회가 끝나기 전에 리포트를 먼저 그리면 안 됨)
   const [lastSeason, setLastSeason] = useState<string | null | undefined>(undefined)
   // TopNav 링크 구성용 — 온보딩 미완료 유저는 '홈'/'리포트' 분리
-  useEffect(() => { broadcastOnboarded(session ? isOnboarded(profile) : true) }, [session, profile])
+  useEffect(() => {
+    // 프로필 로딩 중(null)에는 보내지 않음 — 기존 유저 상단바가 잠깐 '홈/리포트'로 갈라지는 깜빡임 방지
+    if (!session) broadcastOnboarded(true)
+    else if (profile) broadcastOnboarded(isOnboarded(profile))
+  }, [session, profile])
   const [checkinDone, setCheckinDone] = useState(false)
   const [showGuide, setShowGuide] = useState(false)
 
