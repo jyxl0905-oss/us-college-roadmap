@@ -24,6 +24,10 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
   const busyRef = useRef(false) // Enter 연타·더블탭 중복 추가 방지
   const [gradeDrafts, setGradeDrafts] = useState<Record<number, string>>({}) // 과목별 성적 입력창 임시값
   const [convOpen, setConvOpen] = useState(false)
+  // 학년 섹션 접기 — 기본: 현재 학년만 펼침 (목록이 길어 스크롤 부담 완화)
+  const myGrade = Math.min(12, Math.max(9, profileGrade(profile)))
+  const [openGrades, setOpenGrades] = useState<Set<number>>(() => new Set([myGrade]))
+  const toggleGrade = (g: number) => setOpenGrades((prev) => { const n = new Set(prev); if (n.has(g)) n.delete(g); else n.add(g); return n })
 
   useEffect(() => {
     loadAppRecords(userId).then((r) => setCourses(r.courses))
@@ -79,9 +83,11 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
   const apCount = (courses ?? []).filter((c) => c.level === 'ap').length
 
   return (
-    <AppShell tab="education" title={t('학업', 'Education')}>
+    <AppShell tab="education" title={t('학업', 'Education')} wide>
       <p className="mt-3 text-sm text-gray-500">{t('리포트의 교과 난이도(rigor) 축은 아래 과목·성적 기록으로 계산돼요 — 과목과 성적을 채울수록 정확해져요.', 'The rigor axis in your report is calculated from the courses and grades below — the more you fill in, the more accurate it gets.')}</p>
 
+      <div className="lg:grid lg:grid-cols-5 lg:items-start lg:gap-6">
+      <div className="lg:col-span-2 lg:sticky lg:top-16">
       {/* GPA 자동 계산 — 과목 성적 기반 (표준 4.0 산식, 산식 공개) */}
       {courses && (() => {
         const total = computeGpa(courses)
@@ -144,13 +150,6 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
         )
       })()}
 
-      {/* 수강 과목 */}
-      <div className="mt-6 flex items-baseline justify-between">
-        <h2 className="font-semibold text-gray-900">{t('수강 과목', 'Courses')}</h2>
-        <span className="text-xs text-gray-400">{courses ? t(`${courses.length}개 · AP ${apCount}`, `${courses.length} · AP ${apCount}`) : ''}</span>
-      </div>
-      <p className="mt-0.5 text-xs text-gray-400">{t('학년별로 적어두면 12학년에 성적표 확인·리거 점검이 쉬워요.', 'Listing courses by grade makes transcript and rigor checks easy in 12th grade.')}</p>
-
       {/* % → 레터 기준 (College Board 표준) — 성적 입력칸 옆에서 바로 참고 */}
       <div className="mt-2 overflow-x-auto rounded-lg bg-gray-100 px-3 py-2">
         <p className="text-[11px] font-medium text-gray-500">{t('점수 → 레터 기준 (College Board 표준)', 'Score → letter scale (College Board standard)')}</p>
@@ -161,6 +160,16 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
           {t('환산점', 'Points')}: A+/A 4.0 · A- 3.7 · B+ 3.3 · B 3.0 · B- 2.7 · C+ 2.3 · C 2.0 · C- 1.7 · D+ 1.3 · D 1.0 · F 0
         </p>
       </div>
+      </div>{/* /왼쪽 열 */}
+
+      <div className="lg:col-span-3">
+      {/* 수강 과목 */}
+      <div className="mt-6 flex items-baseline justify-between lg:mt-4">
+        <h2 className="font-semibold text-gray-900">{t('수강 과목', 'Courses')}</h2>
+        <span className="text-xs text-gray-400">{courses ? t(`${courses.length}개 · AP ${apCount}`, `${courses.length} · AP ${apCount}`) : ''}</span>
+      </div>
+      <p className="mt-0.5 text-xs text-gray-400">{t('학년별로 적어두면 12학년에 성적표 확인·리거 점검이 쉬워요.', 'Listing courses by grade makes transcript and rigor checks easy in 12th grade.')}</p>
+
 
       <div className="mt-3 rounded-xl border-2 border-gray-200 bg-white px-4 py-3">
         <div className="grid grid-cols-[64px_1fr_88px] gap-2">
@@ -179,9 +188,18 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
 
       {courses && GRADES.map((g) => {
         const list = courses.filter((c) => c.grade === g)
+        const gOpen = openGrades.has(g)
+        const gGpa = computeGpa(list)
         return (
-          <div key={g} className="mt-4">
-            <p className="text-xs font-semibold text-gray-500">{t(`${g}학년`, `Grade ${g}`)}</p>
+          <div key={g} className="mt-3 rounded-xl border-2 border-gray-200 bg-white px-3 py-2.5">
+            <button onClick={() => toggleGrade(g)} className="flex w-full items-center justify-between text-left">
+              <span className="text-sm font-semibold text-gray-700">
+                {t(`${g}학년`, `Grade ${g}`)}
+                <span className="ml-2 text-[11px] font-normal text-gray-400">{t(`과목 ${list.length}`, `${list.length} courses`)}{gGpa ? ` · UW ${gGpa.unweighted.toFixed(2)}` : ''}</span>
+              </span>
+              <span className="text-gray-300">{gOpen ? '▴' : '▾'}</span>
+            </button>
+            {gOpen && (<>
             {list.length === 0 && <p className="mt-1 text-[11px] text-gray-300">{t('아직 과목이 없어요', 'No courses yet')}</p>}
             <div className="mt-1.5 flex flex-col gap-1.5">
               {list.map((c) => (
@@ -209,9 +227,12 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
               ))}
             </div>
             <RecordsVault userId={userId} grade={g} />
+            </>)}
           </div>
         )
       })}
+      </div>{/* /오른쪽 열 */}
+      </div>{/* /그리드 */}
     </AppShell>
   )
 }
