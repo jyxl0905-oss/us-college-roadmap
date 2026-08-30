@@ -155,6 +155,8 @@ const ynKo: Record<string, string> = { yes: '예', no: '아니오', unknown: '�
 const targetModeKo: Record<string, string> = { schools: '구체 학교', tier: '티어만', undecided: '미정', '?': '미입력' }
 const levelKo: Record<string, string> = { 1: '아직 없음', 2: '어느 정도', 3: '뚜렷함', '?': '미입력' }
 const infoKo: Record<string, string> = { youtube: '유튜브', blog_cafe: '블로그·카페', hagwon: '학원·컨설팅', school: '학교 카운슬러', friends: '친구·선배', parents: '부모님', none: '없음' }
+interface FunnelData { members: number; onboarded: number; members_7d: number; onboarded_7d: number }
+
 const eventKo: Record<string, string> = { signup: '가입', login: '로그인', check: '체크', report_view: '리포트 열람', board_view: '지원 보드 열람', round_assigned: '라운드 배정' }
 const appKo: Record<string, string> = { activities: '활동', honors: '수상', test_scores: '시험 점수', courses: '과목', essays: '에세이', plans: '계획', applications: '지원 학교', custom_tasks: '커스텀 항목' }
 const roundKo: Record<string, string> = { ed: 'ED', ed2: 'ED II', ea: 'EA', rea: 'REA', rd: 'RD', unassigned: '미배정' }
@@ -242,6 +244,7 @@ function SnapshotsCard() {
               <tr className="text-left text-xs text-gray-400">
                 <th className="py-1 pr-3 font-medium">월</th>
                 <th className="py-1 pr-3 font-medium">가입자(누적)</th>
+                <th className="py-1 pr-3 font-medium">리포트 완료</th>
                 <th className="py-1 pr-3 font-medium">신규</th>
                 <th className="py-1 pr-3 font-medium">MAU</th>
                 <th className="py-1 pr-3 font-medium">체크 수</th>
@@ -255,6 +258,7 @@ function SnapshotsCard() {
                 <tr key={r.month} className="border-t border-gray-100 text-gray-800">
                   <td className="py-1.5 pr-3 font-semibold tabular-nums">{r.month}</td>
                   <td className="py-1.5 pr-3 tabular-nums">{n(r.data.total_users)}</td>
+                  <td className="py-1.5 pr-3 tabular-nums">{n(r.data.onboarded)}</td>
                   <td className="py-1.5 pr-3 tabular-nums">+{n(r.data.new_users_month)}</td>
                   <td className="py-1.5 pr-3 tabular-nums">{n(r.data.mau)}</td>
                   <td className="py-1.5 pr-3 tabular-nums">{n(r.data.checks_total)}</td>
@@ -332,6 +336,7 @@ function HealthCard() {
 export default function AdminPage({ email, demo }: { email: string | null; demo?: Stats }) {
   const [stats, setStats] = useState<Stats | null>(demo ? normalize(demo) : null)
   const [extra, setExtra] = useState<Extra | null>(null)
+  const [funnelData, setFunnelData] = useState<FunnelData | null>(null) // 개편 퍼널: 가입(구글)→리포트 완료
   const [school, setSchool] = useState<string | null>(null) // null=전체, '__none__'=미입력
   const [bySchool, setBySchool] = useState<SchoolRow[] | null>(null)
   const [feedback, setFeedback] = useState<{ message: string; page: string | null; created_at: string; grad_year: number | null; school: string | null }[] | null>(null)
@@ -365,6 +370,7 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
       else setStats(normalize(data as Stats))
     }, (e: unknown) => { setLoadingStats(false); setError(e instanceof Error ? e.message : String(e)) })
     if (!extra) supabase.rpc('admin_stats_extra').then(({ data }) => { if (data) setExtra(data as Extra) }, () => {})
+    if (!funnelData) supabase.rpc('admin_funnel').then(({ data }) => { if (data) setFunnelData(data as FunnelData) }, () => {})
     if (!bySchool) supabase.rpc('admin_stats_schools').then(({ data }) => { if (data) setBySchool(data as SchoolRow[]) }, () => {})
     if (!feedback) supabase.rpc('admin_feedback').then(({ data }) => { if (data) setFeedback(data as typeof feedback) }, () => {})
   }, [demo, school]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -380,9 +386,10 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
 
   const T = stats.totals
   const appUsersMax = Math.max(0, ...Object.values(stats.app_usage).map((v) => v.users))
+  const onboardedN = funnelData?.onboarded ?? null
   const funnel = [
-    { label: '가입 (이메일 인증)', n: T.auth_users },
-    { label: '온보딩 완료 (프로필)', n: T.profiles },
+    { label: '가입 (구글/이메일 로그인)', n: T.profiles },
+    { label: '리포트 완료 (온보딩 12문항)', n: onboardedN ?? T.reports_users },
     { label: '리포트 열람 사용자', n: T.reports_users },
     { label: '체크 1개 이상', n: T.checks_users },
     { label: '내 원서 기록 사용자', n: appUsersMax },
@@ -494,8 +501,8 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
 
       {/* 핵심 지표 */}
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-        <Tile label="총 가입자" value={T.auth_users} sub={`최근 7일 +${T.new_7d} · 30일 +${T.new_30d}`} />
-        <Tile label="온보딩 완료" value={T.profiles} sub={pct(T.profiles, T.auth_users) + ' 전환'} />
+        <Tile label="총 가입자" value={T.profiles} sub={`최근 7일 +${T.new_7d} · 30일 +${T.new_30d}`} />
+        <Tile label="리포트 완료" value={onboardedN ?? '–'} sub={onboardedN !== null ? pct(onboardedN, T.profiles) + ' 전환' : '온보딩(12문항) 완료 기준'} />
         <Tile label="활성 사용자 (7일)" value={T.active_7d} sub={`30일 ${T.active_30d}`} />
         <Tile label="재방문 (2개월+)" value={T.multi_month_users} sub={pct(T.multi_month_users, T.profiles) + ' 리텐션'} />
         <Tile label="리포트 발급" value={T.reports_total} sub={`${T.reports_users}명`} />
