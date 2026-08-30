@@ -104,3 +104,54 @@
 - 현재: 필수 short answer 2문항: ① 'bold question'(50단어 이내) ② 자신과 관점·문제해결 방식이 다르지만 사람들을 모으는 데 뛰어난 여성에게서 얻을 교훈(200-250단어). 공식 페이지가 2026-2027 명시.
 - 변경: 2025-26에 3문항(200+150+150단어)에서 1문항(200-250단어)으로 축소됐다가, 2026-27에 50단어 'bold question'이 추가되어 필수 2문항으로 재편됨.
 - 출처: https://barnard.edu/barnard-short-answer-questions
+
+## 2차 조사: 41~136위 + LAC 11~35 (2026-08-30)
+
+- 결과: 변경 9곳 · 변화 없음 72곳 · 미확인 5곳(Lehigh·Vassar·Scripps·UMass Amherst·Brandeis — 공식 페이지에서 확정 불가, 제외)
+
+### 변경 확인된 9곳
+
+#### Boston University (2026-27)
+- 현재: 필수 supplement 1개(300단어 이내): "What about being a student at BU most excites you?" 단일 프롬프트(선택지 없음). Common App 개인 에세이는 별도 필수.
+- 변경: 2025-26엔 2개 프롬프트(사회·커뮤니티 이슈 성찰 / BU에서 기대되는 것+기여) 중 택1(300단어)이었으나 2026-27부터 단일 프롬프트로 통합되고 '기여' 파트가 삭제됨.
+- 출처: https://www.bu.edu/admissions/apply/first-year/
+
+#### University of Washington, Seattle (2026-27)
+- 현재: Common App로 지원, Common App 개인 에세이(250~650단어)만 필수. UW 전용 필수 단문 없음. 선택 항목: Common App 'Challenges and Circumstances'(250단어), 'Additional Information'(300단어).
+- 변경: 직전 사이클까지는 UW 지정 프롬프트 에세이(650단어)+필수 커뮤니티/다양성 단문(300단어) 체계였으나, 2026-27 공식 안내 기준 표준 Common App 에세이만 필수로 전환되고 UW 전용 필수 단문이 폐지됨.
+- 출처: https://admit.washington.edu/apply/first-year/how-to-apply/writing-section/
+
+#### Purdue University (2026-27)
+- 현재: Common App 개인 에세이 + Purdue 전용 필수 단문 2개(각 250단어 이내): ① Purdue의 기회가 교내외 관심사를 어떻게 뒷받침할지 ② 전공·캠퍼스(West Lafayette/Indianapolis) 선택 이유. 대체 전공 기재 시 동일 질문 1개 추가. Honors College 지원 시 추가 에세이(각 200단어).
+- 변경: 최근 두 사이클 내 변경: 필수 단문 2개의 단어 제한이 각 100단어에서 250단어로 확대됨(2025-26부터 적용, 2026-27 동일 유지).
+- 출처: https://admissions.purdue.edu/apply/essay.php
+
+#### University of Georgia (2026-27)
+- 현재: UGA 전용 supplemental essay 없음. Common App 개인 에세이(250~650단어) 1개만 필수.
+- 변경: Fall 2026(2025-26 사이클)까지 요구하던 UGA 전용 단문 에세이(200~300단어)를 Fall 2027(2026-27 사이클)부터 폐지 — 공식 입학처 블로그에서 '개인 에세이 하나로 충분하다'고 명시.
+- 출처: https://admissions.uga.edu/blog/fall-2027-essay-questions/
+
+#### Wake Forest University (2026-27)
+- 현재: 필수: "Why Wake?"(최대 100단어, supplement 섹션). 추가 단답은 4개 프롬프트(흥미로웠던 책 5권 목록 / 지적 호기심 / 마야 앤절루 인용 응답 / 자유 주제 Top 10 리스트) 중 최대 1개만 선택 응답. 글 또는 영상으로 '목소리 공유'는 완전 선택(비필수 명시).
+- 변경: 2026-27부터 단답 프롬프트를 복수 응답하던 방식에서 4개 중 1개 선택으로 축소되고, Why Wake?(100단어)가 supplement 질문 섹션으로 이동 — 공식 입학처 블로그(2026.7)에서 변경 공지.
+- 출처: https://admissions.wfu.edu/2026/07/wake-forest-applications-open-august-1-heres-whats-new/
+
+#### Santa Clara University (2026-27)
+- 현재: 선택(optional) supplemental essay 1개, 150-300단어 — 'SCU 교육이 내가 중요하게 여기는 문제(지역/글로벌)를 다루는 데 어떻게 도움이 될지' 프롬프트. SCU 지원 포털에서 언제든 제출 가능하며 필수 아님.
+- 변경: 2025-26의 필수 supplemental essay가 폐지되고 2026-27부터 선택 에세이 1개(150-300단어)로 축소됨.
+- 출처: https://www.scu.edu/admission/undergraduate/first-year-students/
+
+#### NC State University (2026-27)
+- 현재: Common App/Coalition 에세이(650단어 이하) 필수 + NC State 단답 1개 필수 — '위에서 선택한 전공(들)을 고른 이유와 왜 NC State에서 공부하고 싶은지'(공식 페이지에 단어수 미표기, 안내 기준 최대 250단어). University Honors Program 지원 희망자는 600단어 이하 에세이(선택, 11/1 마감, Park Scholarships와 동일 프롬프트) 추가.
+- 변경: 2지망 전공 이유를 묻던 두 번째 단답이 사라지고 전공 선택 이유 단답 1개로 정리됨.
+- 출처: https://admissions.ncsu.edu/apply/first-year/
+
+#### University of Miami (2026-27)
+- 현재: Supplemental essay 없음 — 공식 발표: 'The University of Miami does not require a supplemental essay for first-year admission as of the 2026-2027 application cycle.' Common App 개인 에세이만 제출(필수). Frost School of Music 등 일부 프로그램은 별도 지원 자료(오디션 등) 필요.
+- 변경: 2026-27부터 마이애미 자체 supplemental essay 문항이 폐지되어 Common App 개인 에세이만 제출하면 됨.
+- 출처: https://news.miami.edu/admissions/stories/2026/07/does-the-university-of-miami-require-a-supplemental-essay.html
+
+#### Tulane University (2026-27)
+- 현재: Supplemental essay 없음 — 공식 지원 안내(Application Instructions)의 제출 항목은 지원서(활동 목록·personal statement 포함), 성적표, 추천서, 선택 시험 점수뿐이며 'Why Tulane' 등 추가 에세이 항목이 없음. Common App 개인 에세이(personal statement)는 필수.
+- 변경: 선택(optional)이던 'Why Tulane' supplemental essay가 2026-27 사이클부터 중단(폐지)되어 개인 에세이만 제출함.
+- 출처: https://admission.tulane.edu/apply/instructions
