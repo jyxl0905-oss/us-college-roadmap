@@ -167,6 +167,11 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
             <span className="text-xs text-gray-400">{t(`${forSchool(s.id).length}개`, `${forSchool(s.id).length}`)}</span>
           </div>
           {/* 이 학교의 에세이 요구사항 (공식 출처 확인분) — 상세 페이지의 보충 에세이 카드와 같은 데이터 */}
+          {!s.essay_req && (
+            <p className="mt-2 rounded-lg bg-gray-50 px-3 py-2 text-[11px] text-gray-400">
+              {t('이 학교의 에세이 요구사항은 아직 조사 전이에요 — 없다는 뜻이 아니니 공식 입학처 페이지에서 꼭 확인하세요.', 'We haven’t surveyed this school’s essay requirements yet — that doesn’t mean there are none; check the official admissions page.')}
+            </p>
+          )}
           {s.essay_req && (
             <div className="mt-2 rounded-lg bg-gray-50 px-3 py-2.5">
               <p className="text-[11px] leading-relaxed text-gray-600">
