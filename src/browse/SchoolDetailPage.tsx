@@ -136,6 +136,29 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
           </div>
         )}
 
+        {/* 보충 에세이 요구사항 (공식 확인분만 표시) */}
+        {s.essay_req && (
+          <div className="mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
+            <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">
+              ✍️ {t('보충 에세이 (Supplemental Essays)', 'Supplemental essays')}{s.essay_cycle ? ` · ${s.essay_cycle}` : ''}
+            </p>
+            <p className="mt-1.5 text-sm leading-relaxed text-gray-800">{s.essay_req}</p>
+            {s.essay_change && (
+              <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-800">
+                🔄 {t('최근 변경', 'Recent change')}: {s.essay_change}
+              </p>
+            )}
+            {s.essay_source_url && (
+              <a href={s.essay_source_url} target="_blank" rel="noreferrer" className="mt-2 inline-block text-xs text-blue-600 underline">
+                {t('공식 출처 보기 ↗', 'View official source ↗')}
+              </a>
+            )}
+            <p className="mt-1.5 text-[11px] text-gray-400">
+              {t('문항은 매년 바뀔 수 있어요 — 지원 직전에 공식 페이지에서 꼭 재확인하세요.', 'Prompts can change every year — reconfirm on the official page right before you apply.')}
+            </p>
+          </div>
+        )}
+
         {/* 인재상 카드 */}
         {s.what_they_value && s.what_they_value !== 'PLACEHOLDER' && (
           <div className="mt-5 rounded-xl bg-blue-600 px-4 py-4 text-white">

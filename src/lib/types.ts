@@ -136,6 +136,11 @@ export interface School {
   no_loan?: boolean | null
   merit_note?: string | null
   aid_source_url?: string | null
+  // 보충 에세이 요구사항 (공식 입학처 확인분, null=미조사)
+  essay_req?: string | null
+  essay_change?: string | null
+  essay_cycle?: string | null
+  essay_source_url?: string | null
 }
 
 export interface ChecklistItem {

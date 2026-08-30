@@ -117,7 +117,6 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
         {/* 4. 신뢰 라인 + 5. CTA */}
         <div className="mt-10 text-center">
           <p className="text-sm font-semibold text-gray-700">{t('전 기능 무료 · 광고 없음 · 유료 전환 없음', 'Everything free · no ads · no paid tier')}</p>
-          <p className="mt-1 text-xs text-gray-400">{t('한국 국제학교 재학생이 직접 만들어 무료로 여는 프로젝트입니다', 'Built and opened for free by a student at a Korean international school')}</p>
           <div className="mt-5">{cta}</div>
           <button onClick={onEmailLogin} className="mt-5 text-xs text-gray-400 underline">
             {t('기존 이메일 계정으로 로그인', 'Log in with an existing email account')}
