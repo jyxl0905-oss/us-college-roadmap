@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import AppShell from './AppShell'
 import { t } from '../i18n'
 import {
@@ -29,6 +30,7 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
   const [editing, setEditing] = useState<number | 'new' | null>(null) // 활동 편집 대상
   const [editingHonor, setEditingHonor] = useState<number | 'new' | null>(null)
   const [copied, setCopied] = useState<number | null>(null)
+  const [previewOpen, setPreviewOpen] = useState(false) // 원서 미리보기 (실제 Common App 형식)
   const [busy, setBusy] = useState(false) // 저장·삭제 중복 요청 방지 (더블탭)
   const busyRef = useRef(false) // 같은 틱의 연속 탭까지 막기 위한 동기 가드
 
@@ -114,8 +116,16 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
       {/* 활동 */}
       <div className="mt-4 flex items-baseline justify-between">
         <h2 className="font-semibold text-gray-900">{t('활동 (Activities)', 'Activities')}</h2>
-        <span className="text-sm text-gray-400">{activities.length}/{ACTIVITY_MAX}</span>
+        <span className="flex items-baseline gap-3">
+          {(activities.length > 0 || honors.length > 0) && (
+            <button onClick={() => setPreviewOpen(true)} className="rounded-full border-2 border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 active:bg-blue-100">
+              📄 {t('원서 미리보기', 'Application preview')}
+            </button>
+          )}
+          <span className="text-sm text-gray-400">{activities.length}/{ACTIVITY_MAX}</span>
+        </span>
       </div>
+      {previewOpen && <AppPreview activities={activities} honors={honors} onClose={() => setPreviewOpen(false)} />}
       <p className="mt-0.5 text-xs text-gray-400">{t('실제 원서도 이 순서로 읽혀요 — 중요한 활동을 위로 (▲▼)', 'The real application is read in this order — move important activities up (▲▼)')}</p>
 
       <div className="mt-3 grid gap-2.5 md:grid-cols-2">
@@ -246,6 +256,7 @@ function ActivityForm({
 
       <label className={`${label} mt-3`}>{t('설명', 'Description')} <Counter len={d.description.length} max={LIMITS.description} /></label>
       <textarea value={d.description} onChange={(e) => setD({ ...d, description: e.target.value })} rows={3} placeholder={t('무엇을·어떻게·결과 — 숫자가 있으면 숫자로', 'What, how, and the result — use numbers when you have them')} className={field} />
+      <DescriptionCoach text={d.description} />
 
       <label className={`${label} mt-3`}>{t('참여 학년', 'Grades participated')}</label>
       <div className="mt-1 flex gap-2">
@@ -348,5 +359,108 @@ function HonorForm({
         {onDelete && <button onClick={onDelete} className="ml-auto text-xs text-red-500 underline">{t('삭제', 'Delete')}</button>}
       </div>
     </div>
+  )
+}
+
+// ─── 설명 코칭 — 규칙 기반 체크 3개 (저장을 막지 않는 팁, AI 아님) ───
+function DescriptionCoach({ text }: { text: string }) {
+  const v = text.trim()
+  if (v.length === 0) return null
+  const hasNumber = /\d/.test(v)
+  const hasKorean = /[가-힣]/.test(v)
+  const roomLeft = LIMITS.description - v.length
+  const check = (ok: boolean, okMsg: string, noMsg: string) => (
+    <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] ${ok ? 'bg-green-50 text-green-700' : 'bg-gray-100 text-gray-500'}`}>
+      {ok ? '✓' : '○'} {ok ? okMsg : noMsg}
+    </span>
+  )
+  return (
+    <div className="mt-1.5 flex flex-wrap gap-1.5">
+      {check(hasNumber, t('숫자 있음', 'Has numbers'), t('숫자로 쓰면 강해져요 (인원·시간·등수)', 'Numbers make it stronger (people, hours, rank)'))}
+      {check(roomLeft <= 60, t('공간 활용 좋아요', 'Good use of space'), t(`${roomLeft}자 남음 — 결과·성과를 더 담아보세요`, `${roomLeft} chars left — add outcomes`))}
+      {hasKorean && (
+        <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-[11px] text-amber-700">
+          💡 {t('실제 원서는 영어예요 — 지금 영어로 써두면 12학년에 옮겨 적기만 하면 돼요', 'The real application is in English — write it in English now and senior-year you just copies it')}
+        </span>
+      )}
+    </div>
+  )
+}
+
+// ─── 원서 미리보기 — 실제 Common App 제출 화면 형식의 읽기 전용 뷰 + 필드별 복사 ───
+function AppPreview({ activities, honors, onClose }: { activities: Activity[]; honors: Honor[]; onClose: () => void }) {
+  const [copiedKey, setCopiedKey] = useState<string | null>(null)
+  const copy = async (key: string, text: string) => {
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopiedKey(key)
+      setTimeout(() => setCopiedKey(null), 1200)
+    } catch { /* 클립보드 미지원 */ }
+  }
+  const CopyBtn = ({ k, text }: { k: string; text: string }) =>
+    text.trim() ? (
+      <button onClick={() => void copy(k, text)} className="shrink-0 rounded-md border border-gray-200 px-1.5 py-0.5 text-[10px] text-gray-500 active:bg-gray-100">
+        {copiedKey === k ? t('복사됨 ✓', 'Copied ✓') : t('복사', 'Copy')}
+      </button>
+    ) : null
+  const row = (k: string, label: string, value: string, max: number) => (
+    <div className="mt-1.5 flex items-start justify-between gap-2">
+      <div className="min-w-0">
+        <p className="text-[10px] uppercase tracking-wide text-gray-400">{label} <span className="normal-case">({value.length}/{max})</span></p>
+        <p className="break-words text-sm text-gray-800">{value.trim() || <span className="text-gray-300">—</span>}</p>
+      </div>
+      <CopyBtn k={k} text={value} />
+    </div>
+  )
+  return createPortal(
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-gray-50">
+      <div className="mx-auto max-w-md px-5 py-5 md:max-w-2xl">
+        <div className="flex items-center gap-3">
+          <button onClick={onClose} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
+          <div>
+            <h1 className="text-lg font-bold text-gray-900">📄 {t('원서 미리보기', 'Application preview')}</h1>
+            <p className="text-xs text-gray-400">{t('실제 Common App에 보이는 순서·형식 그대로예요 — 12학년 때 이 화면을 켜고 옮겨 적으세요.', 'Shown in the real Common App order and format — open this senior year and copy it over.')}</p>
+          </div>
+        </div>
+
+        <h2 className="mt-5 text-sm font-bold uppercase tracking-wide text-gray-500">Activities ({activities.length}/{ACTIVITY_MAX})</h2>
+        {activities.length === 0 && <p className="mt-2 text-sm text-gray-400">{t('기록된 활동이 없어요.', 'No activities recorded.')}</p>}
+        <div className="mt-2 flex flex-col gap-2.5">
+          {activities.map((a, i) => (
+            <div key={a.id} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3">
+              <p className="text-xs font-semibold text-gray-400">
+                {i + 1}. {activityCategoryKo[a.category]}
+                {a.grades.length > 0 && ` · ${t('학년', 'Grades')} ${a.grades.join(', ')}`}
+                {a.timing && ` · ${timingKo[a.timing]}`}
+              </p>
+              {row(`p${a.id}`, t('직책 (Position)', 'Position'), a.position, LIMITS.position)}
+              {row(`o${a.id}`, t('단체 (Organization)', 'Organization'), a.organization, LIMITS.organization)}
+              {row(`d${a.id}`, t('설명 (Description)', 'Description'), a.description, LIMITS.description)}
+              <p className="mt-2 text-[11px] text-gray-400">
+                {a.hours_per_week !== null ? `${a.hours_per_week} hr/wk` : t('시간 미입력', 'hours not set')}
+                {' · '}
+                {a.weeks_per_year !== null ? `${a.weeks_per_year} wk/yr` : t('주 수 미입력', 'weeks not set')}
+                {' · '}
+                {t('대학에서 계속', 'Continue in college')}: {a.continue_in_college === true ? 'Yes' : a.continue_in_college === false ? 'No' : '—'}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <h2 className="mt-6 text-sm font-bold uppercase tracking-wide text-gray-500">Honors ({honors.length}/{HONOR_MAX})</h2>
+        {honors.length === 0 && <p className="mt-2 text-sm text-gray-400">{t('기록된 수상이 없어요.', 'No honors recorded.')}</p>}
+        <div className="mt-2 flex flex-col gap-2.5 pb-10">
+          {honors.map((h, i) => (
+            <div key={h.id} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3">
+              <p className="text-xs font-semibold text-gray-400">
+                {i + 1}.{h.level ? ` ${honorLevelKo[h.level]}` : ''}{h.grade ? ` · ${t(`${h.grade}학년`, `Grade ${h.grade}`)}` : ''}
+              </p>
+              {row(`h${h.id}`, t('제목 (Title)', 'Title'), h.title, LIMITS.honorTitle)}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>,
+    document.body,
   )
 }
