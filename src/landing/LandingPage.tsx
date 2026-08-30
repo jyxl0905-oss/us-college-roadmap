@@ -105,7 +105,7 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
           </div>
 
           <div className="rounded-2xl border border-gray-200 bg-white p-4">
-            <p className="font-semibold text-gray-900">🧭 {t('전공 60+ 가이드 + 대학 지도', '60+ major guides + the college map')}</p>
+            <p className="font-semibold text-gray-900">🧭 {t('전공 70+ 가이드 + 대학 지도', '70+ major guides + the college map')}</p>
             <p className="mt-0.5 text-sm text-gray-500">{t('전공별 추천 AP·4년 로드맵·직업 전망(미 노동통계국)에 미국 지도 위 대학 위치까지 볼 수 있어요.', 'Per-major APs, 4-year roadmaps, career outlooks (BLS) — and every college on a US map.')}</p>
             <div className="mt-2 flex gap-1.5">
               <button onClick={() => navigate('/majors')} className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-600 active:bg-gray-50">{t('전공 구경하기', 'Browse majors')}</button>
