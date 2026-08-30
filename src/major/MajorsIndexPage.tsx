@@ -66,6 +66,16 @@ const KEYWORDS: Record<string, string> = {
   animal_science: '동물 축산 수의 수의대 수의사 반려동물 가축',
   animal_behavior: '동물 행동 훈련 생태 에솔로지',
   cybersecurity: '보안 해킹 해커 사이버 정보보안 화이트해커 ctf',
+  ai: '인공지능 머신러닝 딥러닝 챗봇 에이아이',
+  game_design: '게임 게임개발 유니티 언리얼 인디게임',
+  astronomy: '천문 우주 별 행성 천체 나사 nasa 천체물리',
+  pre_vet: '수의사 수의대 동물병원 반려동물 동물 벳',
+  history: '역사 세계사 미국사 사학',
+  english: '영문 문학 글쓰기 작가 소설 시 에세이',
+  sociology: '사회 불평등 사회문제 조사',
+  journalism: '언론 기자 뉴스 취재 방송',
+  fashion_design: '패션 옷 의류 디자이너 파슨스 스타일',
+  hospitality: '호텔 관광 리조트 외식 호스피탈리티 경영',
 }
 
 // 전공 알아보기 — 전체 전공 카드 인덱스 (로그인 불필요). 각 카드는 전공 가이드 맵으로

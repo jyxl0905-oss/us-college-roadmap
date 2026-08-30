@@ -10,6 +10,8 @@ export interface MajorCategory {
 
 export const majorCategories: MajorCategory[] = [
   { value: 'cs', label: '컴퓨터과학 (CS)', track: 'stem' },
+  { value: 'ai', label: '인공지능 (AI)', track: 'stem' },
+  { value: 'game_design', label: '게임 디자인 (Game Design)', track: 'stem' },
   { value: 'engineering', label: '공학 (Engineering)', track: 'stem' },
   { value: 'industrial_eng', label: '산업공학 (Industrial Engineering)', track: 'stem' },
   { value: 'biomedical_eng', label: '바이오메디컬공학 (Biomedical Engineering)', track: 'stem' },
@@ -36,6 +38,7 @@ export const majorCategories: MajorCategory[] = [
   { value: 'neuroscience', label: '신경과학 (Neuroscience)', track: 'stem' },
   { value: 'chemistry', label: '화학 (Chemistry)', track: 'stem' },
   { value: 'physics', label: '물리학 (Physics)', track: 'stem' },
+  { value: 'astronomy', label: '천문학 (Astronomy)', track: 'stem' },
   { value: 'environmental', label: '환경과학 (Environmental Science)', track: 'stem' },
   { value: 'premed', label: '보건·프리메드 (Health·Pre-med)', track: 'stem' },
   { value: 'nursing', label: '간호 (Nursing)', track: 'stem' },
@@ -44,6 +47,7 @@ export const majorCategories: MajorCategory[] = [
   { value: 'nutrition', label: '영양학 (Nutrition)', track: 'stem' },
   { value: 'pharmacy', label: '약학 (Pharmacy)', track: 'stem' },
   { value: 'pre_dental', label: '치의예 (Pre-Dental)', track: 'stem' },
+  { value: 'pre_vet', label: '수의예과 (Pre-Vet)', track: 'stem' },
   { value: 'architecture', label: '건축 (Architecture)', track: 'stem' },
   { value: 'business', label: '비즈니스·경제 (Business·Economics)', track: 'liberal' },
   { value: 'finance', label: '금융 (Finance)', track: 'liberal' },
@@ -55,18 +59,24 @@ export const majorCategories: MajorCategory[] = [
   { value: 'political_sci', label: '정치외교학 (Political Science)', track: 'liberal' },
   { value: 'intl_relations', label: '국제관계학 (International Relations)', track: 'liberal' },
   { value: 'criminology', label: '범죄학 (Criminology)', track: 'liberal' },
+  { value: 'sociology', label: '사회학 (Sociology)', track: 'liberal' },
   { value: 'psychology', label: '심리학 (Psychology)', track: 'liberal' },
   { value: 'cognitive_science', label: '인지과학 (Cognitive Science)', track: 'stem' },
   { value: 'sport_psychology', label: '스포츠 심리학 (Sport Psychology)', track: 'liberal' },
   { value: 'criminal_psych', label: '범죄심리학 (Criminal Psychology)', track: 'liberal' },
   { value: 'humanities', label: '인문 (Humanities)', track: 'liberal' },
+  { value: 'history', label: '역사학 (History)', track: 'liberal' },
+  { value: 'english', label: '영문학 (English)', track: 'liberal' },
   { value: 'linguistics', label: '언어학 (Linguistics)', track: 'liberal' },
   { value: 'philosophy', label: '철학 (Philosophy)', track: 'liberal' },
   { value: 'education', label: '교육학 (Education)', track: 'liberal' },
   { value: 'arts', label: '예술·디자인 (Art·Design)', track: 'liberal' },
   { value: 'culinary', label: '요리·조리학 (Culinary Arts)', track: 'liberal' },
+  { value: 'hospitality', label: '호텔경영 (Hospitality Management)', track: 'liberal' },
   { value: 'graphic_design', label: '그래픽 디자인 (Graphic Design)', track: 'liberal' },
+  { value: 'fashion_design', label: '패션 디자인 (Fashion Design)', track: 'liberal' },
   { value: 'media', label: '커뮤니케이션·미디어 (Communication·Media)', track: 'liberal' },
+  { value: 'journalism', label: '저널리즘 (Journalism)', track: 'liberal' },
   { value: 'film', label: '영화 (Film)', track: 'liberal' },
   { value: 'music', label: '음악 (Music)', track: 'liberal' },
 ]
@@ -93,6 +103,16 @@ export function majorLabel(value: string | null): string {
 export const majorAlias: Record<string, string> = {
   data_science: 'math_data',
   cybersecurity: 'cs',
+  ai: 'cs',
+  game_design: 'cs',
+  astronomy: 'physics',
+  pre_vet: 'premed',
+  history: 'humanities',
+  english: 'humanities',
+  sociology: 'social_sci',
+  journalism: 'media',
+  fashion_design: 'arts',
+  hospitality: 'business',
   applied_math: 'math_data',
   statistics: 'math_data',
   biology: 'natural_sci',
@@ -149,7 +169,7 @@ export const majorParent = (value: string | null): string | null => {
 
 // direct-admit 판정용 — 로드맵·체크리스트는 상위 계열 것을 빌려 써도 되지만,
 // direct-admit은 실제 지원 단위라 계열이 다른 전공(요리 등)은 별칭을 따라가면 틀린 학교가 잡힘
-const directAdmitAliasExceptions = new Set(['culinary', 'pilot'])
+const directAdmitAliasExceptions = new Set(['culinary', 'pilot', 'hospitality', 'fashion_design', 'game_design', 'pre_vet'])
 export const directAdmitParent = (value: string | null): string | null =>
   value && directAdmitAliasExceptions.has(value) ? value : majorParent(value)
 
@@ -157,14 +177,14 @@ export const directAdmitParent = (value: string | null): string | null =>
 export interface MajorCluster { track: MajorTrack; ko: string; en: string; values: string[] }
 export const majorClusters: MajorCluster[] = [
   { track: 'stem', ko: '공학·건축', en: 'Engineering & Architecture', values: ['engineering', 'industrial_eng', 'biomedical_eng', 'chemical_eng', 'aerospace_eng', 'nuclear_eng', 'robotics', 'pilot', 'architecture'] },
-  { track: 'stem', ko: '컴퓨터·데이터', en: 'Computing & Data', values: ['cs', 'data_science', 'cybersecurity', 'cognitive_science'] },
+  { track: 'stem', ko: '컴퓨터·데이터', en: 'Computing & Data', values: ['cs', 'ai', 'data_science', 'cybersecurity', 'game_design', 'cognitive_science'] },
   { track: 'stem', ko: '수학', en: 'Math', values: ['math_data', 'applied_math', 'statistics', 'actuarial'] },
-  { track: 'stem', ko: '자연과학', en: 'Natural Sciences', values: ['natural_sci', 'biology', 'genetics', 'molecular_bio', 'microbiology', 'zoology', 'marine_biology', 'animal_science', 'animal_behavior', 'neuroscience', 'chemistry', 'physics', 'environmental'] },
-  { track: 'stem', ko: '보건·의료', en: 'Health & Medicine', values: ['premed', 'nursing', 'public_health', 'kinesiology', 'nutrition', 'pharmacy', 'pre_dental'] },
+  { track: 'stem', ko: '자연과학', en: 'Natural Sciences', values: ['natural_sci', 'biology', 'genetics', 'molecular_bio', 'microbiology', 'zoology', 'marine_biology', 'animal_science', 'animal_behavior', 'neuroscience', 'chemistry', 'physics', 'astronomy', 'environmental'] },
+  { track: 'stem', ko: '보건·의료', en: 'Health & Medicine', values: ['premed', 'nursing', 'public_health', 'kinesiology', 'nutrition', 'pharmacy', 'pre_dental', 'pre_vet'] },
   { track: 'liberal', ko: '비즈니스·경제', en: 'Business & Economics', values: ['business', 'finance', 'economics', 'accounting', 'sport_management'] },
-  { track: 'liberal', ko: '사회·법·교육', en: 'Society, Law & Education', values: ['social_sci', 'prelaw', 'political_sci', 'intl_relations', 'criminology', 'education'] },
+  { track: 'liberal', ko: '사회·법·교육', en: 'Society, Law & Education', values: ['social_sci', 'prelaw', 'political_sci', 'intl_relations', 'criminology', 'sociology', 'education'] },
   { track: 'liberal', ko: '심리', en: 'Psychology', values: ['psychology', 'sport_psychology', 'criminal_psych'] },
-  { track: 'liberal', ko: '인문·언어', en: 'Humanities & Language', values: ['humanities', 'linguistics', 'philosophy'] },
-  { track: 'liberal', ko: '예술·미디어', en: 'Arts & Media', values: ['arts', 'graphic_design', 'media', 'film', 'music'] },
-  { track: 'liberal', ko: '요리·호스피탈리티', en: 'Culinary & Hospitality', values: ['culinary'] },
+  { track: 'liberal', ko: '인문·언어', en: 'Humanities & Language', values: ['humanities', 'history', 'english', 'linguistics', 'philosophy'] },
+  { track: 'liberal', ko: '예술·미디어', en: 'Arts & Media', values: ['arts', 'graphic_design', 'fashion_design', 'media', 'journalism', 'film', 'music'] },
+  { track: 'liberal', ko: '요리·호스피탈리티', en: 'Culinary & Hospitality', values: ['culinary', 'hospitality'] },
 ]
