@@ -1532,5 +1532,31 @@
   ],
   "outlook_note_ko": "BLS는 해양생물학자를 별도 직군으로 집계하지 않고 Zoologists and Wildlife Biologists에 포함합니다. 이 직군 고용은 2024–34년 2% 성장(평균보다 느림, 규모가 작은 직군), Environmental Scientists and Specialists는 4% 성장 전망입니다.",
   "grad_note_ko": "연구직은 석·박사가 사실상 필수예요. 해안에 있는 학교(해양 연구소·승선 실습 보유)인지, 학부 때 현장 조사와 연구실 경험을 쌓을 수 있는지가 학교 선택의 핵심이에요."
+ },
+ "statistics": {
+  "desc_ko": "데이터에서 결론을 끌어내는 방법을 배워요 — 확률론, 통계적 추론, 실험 설계, 회귀분석, 베이즈 통계. 수학과 코딩(R·Python)을 함께 쓰고, 데이터 사이언스·금융·보험계리·연구직 등 데이터가 있는 모든 분야로 이어져요.",
+  "desc_en": "You learn to draw conclusions from data — probability, statistical inference, experimental design, regression, Bayesian statistics. Combines math with coding (R·Python) and leads to data science, finance, actuarial work and research — anywhere there is data.",
+  "occupations": [
+   {
+    "title": "Mathematicians and Statisticians",
+    "pay": "$104,350",
+    "pay_year": 2024,
+    "outlook": "+8%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/math/mathematicians-and-statisticians.htm",
+    "note": "BLS 기준 일반적 입직 학력은 석사 (Typical Entry-Level Education: Master's degree)"
+   },
+   {
+    "title": "Actuaries",
+    "pay": "$125,770",
+    "pay_year": 2024,
+    "outlook": "+22%",
+    "window": "2024-34",
+    "url": "https://www.bls.gov/ooh/math/actuaries.htm",
+    "note": null
+   }
+  ],
+  "outlook_note_ko": "BLS는 통계학자를 Mathematicians and Statisticians 직군으로 집계합니다. 이 직군은 2024–34년 8% 성장 전망(평균보다 빠름)이며, 일반적 입직 학력은 석사입니다.",
+  "grad_note_ko": "학부 통계학 + 석사가 일반적인 경로예요. 데이터 사이언스 쪽으로 가면 학사로도 취업이 열려 있고, 코딩 과목을 함께 듣는 게 큰 차이를 만들어요."
  }
 }

@@ -51,8 +51,13 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
   return (
     <div className="min-h-dvh bg-gray-50">
       <div className="mx-auto max-w-md px-5 py-10 md:max-w-lg">
+        {/* 0. 무료 라인 — 최상단, 제일 잘 보이게 */}
+        <p className="rounded-xl bg-blue-50 px-4 py-2.5 text-center text-sm font-bold text-blue-700">
+          {t('전 기능 무료 · 광고 없음 · 유료 전환 없음', 'Everything free · no ads · no paid tier')}
+        </p>
+
         {/* 1. 헤드라인 */}
-        <img src="/icons/icon-192.png" alt="" width={56} height={56} className="h-14 w-14 rounded-2xl shadow-sm" />
+        <img src="/icons/icon-192.png" alt="" width={56} height={56} className="mt-6 h-14 w-14 rounded-2xl shadow-sm" />
         <h1 className="mt-5 text-[26px] font-bold leading-snug text-gray-900">
           {t('활동·수상, 지금부터 기록해두세요.', 'Log your activities and honors from today.')}
           <br />
@@ -60,7 +65,7 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
         </h1>
 
         {/* 2. 대비 문구 */}
-        <p className="mt-4 font-medium text-gray-700">{t('고액 컨설팅 없이도, 혼자서도 관리할 수 있게.', 'Manage it yourself — no expensive consulting required.')}</p>
+        <p className="mt-4 font-medium text-gray-700">{t('고액 컨설팅 없이도, 혼자서도 관리할 수 있게 만들었어요.', 'Built so you can manage it yourself — no expensive consulting required.')}</p>
         <p className="mt-1 text-sm text-gray-500">
           {t('컨설팅은 비싸고, 합격을 보장하지도 않습니다. 필요한 건 정보와 기록입니다.', "Consulting is expensive and guarantees nothing. What you need is information and a record.")}
         </p>
@@ -71,7 +76,7 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
         <div className="mt-10 flex flex-col gap-4">
           <div className="rounded-2xl border border-gray-200 bg-white p-4">
             <p className="font-semibold text-gray-900">📋 {t('내 원서 (가상 Common App)', 'My App (a practice Common App)')}</p>
-            <p className="mt-0.5 text-sm text-gray-500">{t("실제 원서 형식 그대로 미리 기록 — '9학년 때 뭐 했더라?' 방지", "Log in the real application's format — no more \"what did I even do in 9th grade?\"")}</p>
+            <p className="mt-0.5 text-sm text-gray-500">{t("실제 원서 형식 그대로 미리 기록해 두세요 — '9학년 때 뭐 했더라?'를 막아드려요.", "Log everything in the real application's format — no more \"what did I even do in 9th grade?\"")}</p>
             <div className="mt-3 rounded-xl border border-gray-100 bg-gray-50 p-3 text-left">
               <p className="text-[11px] text-gray-400">{t('활동 (Activities) · 예시', 'Activities · example')}</p>
               <p className="mt-1 text-sm font-semibold text-gray-800">{t('부회장 — 학교 로봇공학 동아리', 'Vice president — school robotics club')}</p>
@@ -82,8 +87,8 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
           </div>
 
           <div className="rounded-2xl border border-gray-200 bg-white p-4">
-            <p className="font-semibold text-gray-900">🎓 {t(`대학 ${univCount + lacCount}곳 공식 데이터`, `Official data on ${univCount + lacCount} colleges`)}</p>
-            <p className="mt-0.5 text-sm text-gray-500">{t('합격률·SAT·ED·마감일, 전부 공식 출처(CDS)만', 'Acceptance rates, SAT, ED, deadlines — official sources (CDS) only')}</p>
+            <p className="font-semibold text-gray-900">🎓 {t(`대학 ${univCount + lacCount}+ 공식 데이터`, `Official data on ${univCount + lacCount}+ colleges`)}</p>
+            <p className="mt-0.5 text-sm text-gray-500">{t('합격률·SAT·ED·마감일을 전부 공식 출처(CDS)로만 정리했어요.', 'Acceptance rates, SAT, ED, deadlines — official sources (CDS) only.')}</p>
             <div className="mt-3 divide-y divide-gray-100 rounded-xl border border-gray-100">
               {preview.map((s) => (
                 <div key={s.id} className="flex items-center gap-2.5 px-3 py-2">
@@ -100,8 +105,8 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
           </div>
 
           <div className="rounded-2xl border border-gray-200 bg-white p-4">
-            <p className="font-semibold text-gray-900">🧭 {t('전공 59개 가이드 + 대학 지도', '59 major guides + the college map')}</p>
-            <p className="mt-0.5 text-sm text-gray-500">{t('전공별 추천 AP·4년 로드맵·직업 전망(미 노동통계국), 미국 지도 위 대학 위치까지', 'Per-major APs, 4-year roadmaps, career outlooks (BLS) — and every college on a US map')}</p>
+            <p className="font-semibold text-gray-900">🧭 {t('전공 60+ 가이드 + 대학 지도', '60+ major guides + the college map')}</p>
+            <p className="mt-0.5 text-sm text-gray-500">{t('전공별 추천 AP·4년 로드맵·직업 전망(미 노동통계국)에 미국 지도 위 대학 위치까지 볼 수 있어요.', 'Per-major APs, 4-year roadmaps, career outlooks (BLS) — and every college on a US map.')}</p>
             <div className="mt-2 flex gap-1.5">
               <button onClick={() => navigate('/majors')} className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-600 active:bg-gray-50">{t('전공 구경하기', 'Browse majors')}</button>
               <button onClick={() => navigate('/schools')} className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-600 active:bg-gray-50">{t('대학 구경하기', 'Browse colleges')}</button>

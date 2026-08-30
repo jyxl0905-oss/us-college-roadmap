@@ -18,6 +18,7 @@ const KEYWORDS: Record<string, string> = {
   math_data: '수학 통계',
   data_science: '데이터 분석 머신러닝 빅데이터',
   applied_math: '수학 모델링',
+  statistics: '통계 확률 데이터 분석 스탯',
   actuarial: '보험 계리 리스크',
   natural_sci: '과학 연구',
   biology: '생물 유전 바이오',
