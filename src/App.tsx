@@ -17,7 +17,6 @@ import TopNav from './nav/TopNav'
 // 무거운 화면(차트·리포트·보드·온보딩)은 필요할 때만 내려받음 — 둘러보기 첫 로딩을 가볍게
 const OnboardingFlow = lazy(() => import('./onboarding/OnboardingFlow'))
 const ReportView = lazy(() => import('./report/ReportView'))
-const PreviewReport = lazy(() => import('./report/PreviewReport'))
 const CheckinFlow = lazy(() => import('./checkin/CheckinFlow'))
 const GuideView = lazy(() => import('./report/GuideView'))
 const DeadlinesPage = lazy(() => import('./deadlines/DeadlinesPage'))
@@ -32,6 +31,9 @@ const AdminDemo = lazy(async () => {
   const [{ default: Page }, { default: demo }] = await Promise.all([import('./admin/AdminPage'), import('./admin/demo-stats.json')])
   return { default: () => <Page email="demo" demo={demo as unknown as Parameters<typeof Page>[0]['demo']} /> }
 })
+import LandingPage from './landing/LandingPage'
+import MainHome from './home/MainHome'
+import ReportGate from './report/ReportGate'
 import { readPrefillSchoolIds, clearPrefill } from './browse/prefill'
 import { logEvent } from './lib/analytics'
 
@@ -71,7 +73,7 @@ function Screen({ children }: { children: React.ReactNode }) {
   )
 }
 
-type GuestPhase = 'home' | 'onboarding' | 'preview' | 'email'
+type GuestPhase = 'home' | 'email' // 개편: 게스트 온보딩·프리뷰 제거 (온보딩은 로그인 후 /report 게이트에서)
 
 // 다른 브라우저에서 매직 링크를 연 경우: 서버에 보관된 온보딩 답변(take_onboarding)을 한 번 가져옴
 function StashFetcher({ userId, onDone }: { userId: string; onDone: (r: { answers: OnboardingAnswers; research_consent: boolean } | null) => void }) {
@@ -93,6 +95,82 @@ function StashFetcher({ userId, onDone }: { userId: string; onDone: (r: { answer
 // 렌더 중 navigate 호출 대신 effect에서 이동 (StrictMode 이중 push 방지)
 function Redirect({ to }: { to: string }) {
   useEffect(() => { navigate(to) }, [to])
+  return <LoadingScreen />
+}
+
+// 온보딩 완료 여부 — 기존 유저는 전부 grad_year가 있음. 스텁 프로필(구글 로그인 직후)만 null
+const isOnboarded = (p: ProfileRow | null): boolean => !!p && p.grad_year !== null
+
+// TopNav에 온보딩 상태 알림 (미완료 유저는 '홈'과 '리포트' 링크가 분리됨)
+function broadcastOnboarded(v: boolean) {
+  try { window.dispatchEvent(new CustomEvent('app:onboarded', { detail: v })) } catch { /* ignore */ }
+}
+
+// /report 게이트 — 온보딩 미완료 유저: 블러 샘플 → [지금 알려주기] → 12문항 → 프로필 완성
+function GateFlow({ userId, profile, onDone }: { userId: string; profile: ProfileRow; onDone: (p: ProfileRow) => void }) {
+  const [started, setStarted] = useState(false)
+  if (!started) return <Screen><ReportGate onStart={() => setStarted(true)} /></Screen>
+  return (
+    <OnboardingFlow
+      onExit={() => setStarted(false)}
+      onComplete={async (answers) => {
+        const row = answersToRow(answers, profile.nickname ?? '', profile.research_consent)
+        // 온보딩 전 담아둔 목표 학교 보존: 답변이 미정이면 기존 목록 유지, 학교 선택이면 합집합
+        const prevIds = profile.target_mode === 'schools' ? profile.target_school_ids : []
+        if (prevIds.length > 0) {
+          if (row.target_mode === 'schools') row.target_school_ids = [...new Set([...prevIds, ...row.target_school_ids])]
+          else if (row.target_mode === 'undecided' || !row.target_mode) { row.target_mode = 'schools'; row.target_school_ids = prevIds; row.target_tier = null }
+        }
+        try {
+          await saveProfile(userId, row)
+        } catch {
+          alert(t('저장에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.', 'Could not save. Check your connection and try again.'))
+          return
+        }
+        markSeenGrade(userId, row.grad_year)
+        localStorage.removeItem(PENDING_KEY)
+        onDone({ ...profile, ...row, user_id: userId })
+        navigate('/')
+      }}
+    />
+  )
+}
+
+// 구글 로그인 직후: 온보딩 없이 최소 프로필(스텁) 자동 생성 → 바로 메인
+function StubCreator({ userId, onDone }: { userId: string; onDone: (p: ProfileRow) => void }) {
+  useEffect(() => {
+    let cancelled = false
+    ;(async () => {
+      const { data } = await supabase!.auth.getUser()
+      const meta = (data.user?.user_metadata ?? {}) as { full_name?: string; name?: string }
+      const nickname = (meta.full_name || meta.name || data.user?.email?.split('@')[0] || '').trim().slice(0, 30) || null
+      const prefill = readPrefillSchoolIds()
+      let ref: string | null = null
+      try { ref = localStorage.getItem('ref_source') } catch { /* ignore */ }
+      const row: ProfileRow = {
+        nickname,
+        grad_year: null, applicant_status: null, has_counselor: null, school_accredited: null,
+        major_primary: null, major_secondary: null,
+        target_mode: prefill.length > 0 ? 'schools' : null, target_school_ids: prefill, target_tier: null,
+        gpa_band: null, math_course: null, sat_status: null, sat_band: null,
+        ap_completed: null, ap_current: null, toefl_status: null,
+        activity_spike: null, activity_leadership: null, activity_validation: null,
+        quiz_answers: null, info_sources: null,
+        research_consent: localStorage.getItem(RESEARCH_CONSENT_KEY) === '1',
+        lang: getLang(), ref_source: ref,
+      }
+      try {
+        await saveProfile(userId, row)
+        clearPrefill()
+        logEvent(userId, 'signup')
+        if (!cancelled) onDone({ ...row, user_id: userId })
+      } catch {
+        // 저장 실패 시 로딩 화면 유지 대신 재시도 여지를 두고 로그아웃 안내는 profileError 경로에 맡김
+        if (!cancelled) setTimeout(() => { if (!cancelled) onDone(row) }, 0)
+      }
+    })()
+    return () => { cancelled = true }
+  }, [userId]) // eslint-disable-line react-hooks/exhaustive-deps
   return <LoadingScreen />
 }
 
@@ -151,6 +229,8 @@ function AppRoutes() {
   // 마지막 리포트 시즌 — 현재 시즌과 다르면 체크인 플로우부터
   // undefined = 아직 조회 전 (조회가 끝나기 전에 리포트를 먼저 그리면 안 됨)
   const [lastSeason, setLastSeason] = useState<string | null | undefined>(undefined)
+  // TopNav 링크 구성용 — 온보딩 미완료 유저는 '홈'/'리포트' 분리
+  useEffect(() => { broadcastOnboarded(session ? isOnboarded(profile) : true) }, [session, profile])
   const [checkinDone, setCheckinDone] = useState(false)
   const [showGuide, setShowGuide] = useState(false)
 
@@ -300,12 +380,12 @@ function AppRoutes() {
         <div className="py-16 text-center">
           <p className="text-4xl">📋</p>
           <h1 className="mt-4 text-xl font-bold text-gray-900">{t('내 원서', 'My Application')}</h1>
-          <p className="mt-3 text-sm text-gray-500">{t('가상 Common App은 리포트를 받은 뒤 사용할 수 있어요.', 'The virtual Common App opens after you get your report.')}</p>
+          <p className="mt-3 text-sm text-gray-500">{t('로그인하면 바로 기록을 시작할 수 있어요 — 질문 없이.', 'Log in and start recording right away — no questions asked.')}</p>
           <button
             onClick={() => navigate('/')}
             className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
           >
-            {t('내 리포트 받기', 'Get my report')}
+            {t('로그인하러 가기', 'Go log in')}
           </button>
         </div>
       </Screen>
@@ -328,6 +408,13 @@ function AppRoutes() {
   if (path === '/board' || path === '/board/') {
     return <Redirect to="/app/colleges" />
   }
+  // 리포트·체크리스트 게이트 — 온보딩 미완료 유저 전용 진입점 (완료 유저·게스트는 '/'로)
+  if (path === '/report' || path === '/report/') {
+    if (session && profile && !isOnboarded(profile)) {
+      return <GateFlow userId={session.user.id} profile={profile} onDone={setProfile} />
+    }
+    return <Redirect to="/" />
+  }
   // F3: 마감 캘린더 (로그인 전용)
   if (path === '/targets' || path === '/targets/') {
     if (session && profile) return <TargetsPage profile={profile} />
@@ -342,13 +429,13 @@ function AppRoutes() {
           <p className="text-4xl">🗓️</p>
           <h1 className="mt-4 text-xl font-bold text-gray-900">{t('마감 캘린더', 'Deadline Calendar')}</h1>
           <p className="mt-3 text-sm text-gray-500">
-            {t('내 목표 학교 기준 캘린더는 리포트를 받은 뒤 볼 수 있어요.', 'Your target-school calendar opens after you get your report.')}
+            {t('로그인하면 목표 학교 기준 마감 캘린더를 바로 볼 수 있어요.', 'Log in to see the deadline calendar for your target schools.')}
           </p>
           <button
             onClick={() => navigate('/')}
             className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
           >
-            {t('내 리포트 받기', 'Get my report')}
+            {t('로그인하러 가기', 'Go log in')}
           </button>
         </div>
       </Screen>
@@ -371,7 +458,7 @@ function AppRoutes() {
   if (profileErrorScreen) return profileErrorScreen
 
   // 로그인 완료 + 프로필 있음인데 새 온보딩 답변이 남아 있음 → 덮어쓸지 물어봄 (묵살하면 새 목표 학교가 반영 안 되는 버그)
-  if (session && profile && pendingAnswers) {
+  if (session && profile && pendingAnswers && isOnboarded(profile)) {
     const pending = pendingAnswers
     return (
       <Screen>
@@ -410,7 +497,12 @@ function AppRoutes() {
     )
   }
 
-  // 로그인 완료 + 프로필 있음 → (새 시즌이면 체크인 먼저) 시즌 리포트
+  // 로그인 완료 + 온보딩 미완료(스텁 프로필) → 기록 중심 메인 홈
+  if (session && profile && !isOnboarded(profile)) {
+    return <MainHome userId={session.user.id} profile={profile} />
+  }
+
+  // 로그인 완료 + 프로필 있음 → (새 시즌이면 체크인 먼저) 시즌 리포트 — 기존 유저 흐름 그대로
   if (session && profile) {
     const needsCheckin =
       !profile.graduated && !checkinDone && typeof lastSeason === 'string' && lastSeason !== currentSeasonLabel()
@@ -472,15 +564,8 @@ function AppRoutes() {
       }} />
     }
     if (!pending) {
-      // 답변이 없으면 온보딩부터 (로그인 상태라 이메일 단계는 건너뜀)
-      return (
-        <OnboardingFlow
-          onComplete={(answers) => {
-            localStorage.setItem(PENDING_KEY, JSON.stringify(answers))
-            window.location.reload()
-          }}
-        />
-      )
+      // 답변이 없으면 온보딩 강제 대신 최소 프로필을 만들고 바로 메인으로 (개편: 온보딩은 리포트 게이트에서)
+      return <StubCreator userId={session.user.id} onDone={setProfile} />
     }
     return (
       <Screen>
@@ -501,7 +586,7 @@ function AppRoutes() {
     )
   }
 
-  // 미로그인: 온보딩 → 리포트 프리뷰(블러) → 이메일 입력
+  // 미로그인: 훅 랜딩 (개편 — 리포트 강제 진입 제거, CTA는 구글 로그인 하나)
   if (phase === 'email') {
     return (
       <Screen>
@@ -512,92 +597,14 @@ function AppRoutes() {
         >
           ←
         </button>
+        {pendingAnswers && (
+          <p className="mb-4 rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-900">
+            {t('✍️ 예전에 작성해 둔 답변이 있어요 — 로그인하면 이어서 저장돼요.', '✍️ You have saved answers — log in and they will be saved.')}
+          </p>
+        )}
         <EmailStep />
       </Screen>
     )
   }
-  if (phase === 'preview' && pendingAnswers) {
-    return (
-      <Screen>
-        <PreviewReport answers={pendingAnswers} onContinue={() => setPhase('email')} />
-      </Screen>
-    )
-  }
-  // F1: 홈 이원화 — 학교 상세 CTA에서 프리필을 들고 돌아온 경우엔 바로 온보딩으로
-  if (phase === 'home' && readPrefillSchoolIds().length === 0) {
-    return (
-      <Screen>
-        <div className="py-10 text-center">
-          <img src="/icons/icon-192.png" alt="" width={72} height={72} className="mx-auto h-[72px] w-[72px] rounded-2xl shadow-sm" />
-          <h1 className="mt-5 text-2xl font-bold text-gray-900">{t('미국 대학 입시 로드맵', 'US College Roadmap')}</h1>
-          <p className="mt-3 text-sm leading-relaxed text-gray-500">
-            {t('학년·전공·목표 학교에 맞는 시즌별 체크리스트로', 'Season-by-season checklists tailored to your grade, major and target schools —')}
-            <br />
-            {t('4년을 관리하는 툴이에요.', 'manage all four years in one place.')}
-          </p>
-          {pendingAnswers ? (
-            <>
-              {/* 미인증 답변이 남은 경우: 이어서 인증 유도 */}
-              <p className="mt-6 rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-900">
-                {t('✍️ 작성해 둔 답변이 있어요 — 이메일 인증만 하면 리포트가 나와요.', '✍️ You have saved answers — verify your email to get the report.')}
-              </p>
-              <button
-                onClick={() => setPhase('email')}
-                className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-4 font-semibold text-white active:bg-blue-700"
-              >
-                {t('이어서 이메일 인증하기', 'Continue to email verification')}
-              </button>
-              <button
-                onClick={() => {
-                  localStorage.removeItem(PENDING_KEY)
-                  setPendingAnswers(null)
-                  setPhase('onboarding')
-                }}
-                className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 text-sm font-semibold text-gray-500 active:bg-gray-50"
-              >
-                {t('답변 버리고 처음부터 하기', 'Discard and start over')}
-              </button>
-            </>
-          ) : (
-            <button
-              onClick={() => setPhase('onboarding')}
-              className="mt-8 w-full rounded-xl bg-blue-600 px-4 py-4 font-semibold text-white active:bg-blue-700"
-            >
-              {t('내 리포트 받기', 'Get my report')}
-            </button>
-          )}
-          <button
-            onClick={() => navigate('/schools')}
-            className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-4 font-semibold text-gray-700 active:bg-gray-50"
-          >
-            {t('대학 둘러보기', 'Browse colleges')}
-          </button>
-          <button
-            onClick={() => navigate('/majors')}
-            className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
-          >
-            {t('전공 알아보기', 'Explore majors')}
-          </button>
-          {!pendingAnswers && (
-            <button onClick={() => setPhase('email')} className="mt-6 text-sm text-gray-400 underline">
-              {t('이미 가입했어요 — 이메일로 로그인', 'Already signed up — log in by email')}
-            </button>
-          )}
-        </div>
-      </Screen>
-    )
-  }
-  return (
-    <OnboardingFlow
-      onComplete={(answers) => {
-        localStorage.setItem(PENDING_KEY, JSON.stringify(answers))
-        setPendingAnswers(answers)
-        setPhase('preview')
-      }}
-      onExit={() => {
-        clearPrefill()
-        setPhase('home')
-      }}
-    />
-  )
+  return <LandingPage onEmailLogin={() => setPhase('email')} />
 }

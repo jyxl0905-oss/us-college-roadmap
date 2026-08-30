@@ -12,6 +12,8 @@ import FeedbackModal from './FeedbackModal'
 export default function TopNav() {
   const path = usePath()
   const [loggedIn, setLoggedIn] = useState(false)
+  const [onboarded, setOnboarded] = useState(true) // 기본 true = 기존 유저 동작 그대로
+
   const [admin, setAdmin] = useState(false)
   const [feedbackOpen, setFeedbackOpen] = useState(false)
 
@@ -25,12 +27,20 @@ export default function TopNav() {
       setLoggedIn(!!s)
       setAdmin(isAdminEmail(s?.user.email))
     })
-    return () => sub.subscription.unsubscribe()
+    const onOb = (e: Event) => setOnboarded((e as CustomEvent<boolean>).detail)
+    window.addEventListener('app:onboarded', onOb)
+    return () => { sub.subscription.unsubscribe(); window.removeEventListener('app:onboarded', onOb) }
   }, [])
 
   const links = loggedIn
     ? [
-        { to: '/', label: t('리포트', 'Report'), active: path === '/' },
+        // 온보딩 미완료: '/'는 기록 중심 홈, 리포트는 게이트(/report)로 — 메뉴에서 숨기지 않음 (자물쇠 금지)
+        ...(onboarded
+          ? [{ to: '/', label: t('리포트', 'Report'), active: path === '/' }]
+          : [
+              { to: '/', label: t('홈', 'Home'), active: path === '/' },
+              { to: '/report', label: t('리포트', 'Report'), active: path.startsWith('/report') },
+            ]),
         { to: '/targets', label: t('목표 학교', 'Targets'), active: path.startsWith('/targets') },
         { to: '/app', label: t('내 원서', 'My App'), active: path.startsWith('/app') },
         { to: '/schools', label: t('둘러보기', 'Browse'), active: path.startsWith('/schools') || path.startsWith('/compare') },
