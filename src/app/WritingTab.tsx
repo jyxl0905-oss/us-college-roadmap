@@ -166,6 +166,22 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
             <p className="min-w-0 flex-1 truncate text-sm font-semibold text-gray-900">{s.name}</p>
             <span className="text-xs text-gray-400">{t(`${forSchool(s.id).length}개`, `${forSchool(s.id).length}`)}</span>
           </div>
+          {/* 이 학교의 에세이 요구사항 (공식 출처 확인분) — 상세 페이지의 보충 에세이 카드와 같은 데이터 */}
+          {s.essay_req && (
+            <div className="mt-2 rounded-lg bg-gray-50 px-3 py-2.5">
+              <p className="text-[11px] leading-relaxed text-gray-600">
+                📌 {s.essay_req}{s.essay_cycle ? <span className="text-gray-400"> ({s.essay_cycle})</span> : null}
+              </p>
+              {s.essay_change && (
+                <p className="mt-1 text-[11px] leading-relaxed text-amber-700">🔄 {t('최근 변경', 'Recent change')}: {s.essay_change}</p>
+              )}
+              {s.essay_source_url && (
+                <a href={s.essay_source_url} target="_blank" rel="noreferrer" className="mt-0.5 inline-block text-[11px] text-blue-600 underline">
+                  {t('공식 출처 ↗', 'Official source ↗')}
+                </a>
+              )}
+            </div>
+          )}
           <div className="mt-2 flex flex-col gap-2">
             {forSchool(s.id).map(essayCard)}
             <button onClick={() => setWs({ id: null, schoolId: s.id, focusBody: false })} className="rounded-xl border-2 border-dashed border-gray-300 bg-white px-4 py-2.5 text-xs font-medium text-gray-500 active:bg-gray-50">
