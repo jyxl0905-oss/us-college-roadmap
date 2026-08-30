@@ -1,6 +1,7 @@
 import type { ChecklistItem } from './types'
 import type { ProfileRow } from './profile'
 import { bilingual, t } from '../i18n'
+import { computeGpa, gpaToBand } from '../app/gpa'
 
 // 6축 밸런스 점수 (0~100)
 // - rigor·testing: 프로필 값(GPA 밴드, 수학 트랙, AP 수, SAT/TOEFL)에서 자동 계산
@@ -49,16 +50,44 @@ const selfPts: Record<number, number> = { 1: 20, 2: 45, 3: 70 }
 // storyStats: 스토리 준비 점수용 — done(전 시즌 누적 완료 수) / exposed(현재 학년·시즌까지 노출된 항목 수).
 // 저학년이 아직 보지도 못한 항목 때문에 낮게 진단되는 것을 방지 (§0-2)
 // overrides: F5 내 원서 기록 기반 점수 (null이면 자가진단 사용). 기록 기반일 때도 해당 축 체크 가산은 유지
+// 학업 탭의 과목·성적 기록 (rigor를 실기록으로 계산하기 위한 최소 형태)
+export interface CourseLike {
+  name: string
+  level: string
+  letter_grade: string | null
+  percent: number | null
+  credits: number
+}
+
+// 과목명에서 수학 트랙 추정 (없으면 null → 프로필 값 사용)
+function mathFromCourses(courses: CourseLike[]): string | null {
+  const names = courses.map((c) => c.name.toLowerCase())
+  if (names.some((n) => /multivariable|linear algebra|differential eq/.test(n))) return 'post_calc'
+  if (names.some((n) => /calculus|calc\b|미적/.test(n) && !/pre/.test(n))) return 'calc'
+  if (names.some((n) => /pre-?calc|프리캘/.test(n))) return 'precalc'
+  return null
+}
+
 export function computeScores(
   p: ProfileRow,
   checkedItems: ChecklistItem[],
   storyStats?: { done: number; exposed: number },
   overrides?: { spike: number | null; leadership: number | null; validation: number | null },
+  courses?: CourseLike[],
 ): AxisScores {
   const checks = (axis: Axis) => checkedItems.filter((i) => i.axis === axis).length
 
-  const apCount = Math.min((p.ap_completed ?? 0) + (p.ap_current ?? 0), 8)
-  const rigor = (gpaPts[p.gpa_band ?? ''] ?? 20) + (mathPts[p.math_course ?? ''] ?? 5) + apCount * 5
+  // rigor: 학업 탭의 실기록(과목·성적) 우선, 없으면 온보딩 프로필 값으로 폴백 (기존 유저 보호)
+  const cs = courses ?? []
+  //  · GPA: 성적 입력된 과목이 있으면 표준 4.0 산식으로 계산한 값 사용
+  const gpaRes = cs.length > 0 ? computeGpa(cs as never) : null
+  const gpaBand = gpaRes ? gpaToBand(gpaRes.unweighted) : (p.gpa_band ?? '')
+  //  · AP 수: 과목 목록의 AP·IB 과목 수와 온보딩 값 중 큰 쪽 (목록이 불완전할 수 있음)
+  const advancedInCourses = cs.filter((c) => c.level === 'ap' || c.level === 'ib').length
+  const apCount = Math.min(Math.max((p.ap_completed ?? 0) + (p.ap_current ?? 0), advancedInCourses), 8)
+  //  · 수학 트랙: 과목명에서 추정, 없으면 프로필 값
+  const mathTrack = mathFromCourses(cs) ?? p.math_course ?? ''
+  const rigor = (gpaPts[gpaBand] ?? 20) + (mathPts[mathTrack] ?? 5) + apCount * 5
 
   const sat =
     p.sat_status === 'taken'

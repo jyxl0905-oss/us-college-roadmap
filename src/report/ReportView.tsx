@@ -12,6 +12,7 @@ import {
   axisKo,
   axisDiagnosis,
   storyAxisTooltip,
+  type CourseLike,
 } from '../lib/score'
 import { downloadDocx } from '../lib/report-doc'
 import { logEvent } from '../lib/analytics'
@@ -80,6 +81,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   const [assignedRounds, setAssignedRounds] = useState<{ school_id: number; round: string | null; student_deadline?: string | null }[]>([])
   // F5 연동: 내 원서 활동·수상 기록 → spike/leadership/validation 기록 기반 점수
   const [overrides, setOverrides] = useState<RecordOverrides>({ spike: null, leadership: null, validation: null })
+  const [courseRecords, setCourseRecords] = useState<CourseLike[]>([]) // rigor 축 실기록 계산용 (학업 탭 과목·성적)
   const [plans, setPlans] = useState<Plan[]>([]) // F6 내 계획 → 6축 점선
 
   useEffect(() => {
@@ -92,7 +94,11 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
     Promise.all([
       supabase.from('activities').select('*').eq('user_id', userId),
       supabase.from('honors').select('*').eq('user_id', userId),
-    ]).then(([a, h]) => setOverrides(recordOverrides((a.data ?? []) as Activity[], (h.data ?? []) as Honor[])))
+      supabase.from('courses').select('*').eq('user_id', userId),
+    ]).then(([a, h, c]) => {
+      setOverrides(recordOverrides((a.data ?? []) as Activity[], (h.data ?? []) as Honor[]))
+      setCourseRecords((c.data ?? []) as CourseLike[])
+    })
     loadPlans(userId).then(setPlans)
   }, [userId])
 
@@ -184,7 +190,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   const storyItemIds = new Set(allItems.filter((i) => i.axis === 'story').map((i) => i.id))
   const storyDone = [...allDoneIds].filter((id) => storyItemIds.has(id)).length
   const storyStats = { done: storyDone, exposed: countStoryExposure(allItems, profile) }
-  const scores = computeScores(profile, checkedItems, storyStats, overrides)
+  const scores = computeScores(profile, checkedItems, storyStats, overrides, courseRecords)
   const recordBased = overrides.spike !== null || overrides.leadership !== null || overrides.validation !== null
   // F6: 계획 반영 시 점수(점선) + 숫자 진단 한 줄
   const activePlans = plans.filter((p) => p.status !== 'done')

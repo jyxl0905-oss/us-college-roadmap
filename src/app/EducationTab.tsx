@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import AppShell from './AppShell'
 import { t } from '../i18n'
 import { saveProfile, profileGrade, type ProfileRow } from '../lib/profile'
-import { gpaBandLabels, mathCourseLabels } from '../onboarding/labels'
+import { gpaBandLabels } from '../onboarding/labels'
 import { insertRow, updateRow, deleteRow, loadAppRecords, courseLevelKo, type Course, type CourseLevel } from './appData'
 import { supabase } from '../lib/supabase'
 import { computeGpa, courseLetter, gpaToBand, LETTERS } from './gpa'
@@ -76,41 +76,11 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
   }
 
   const field = 'mt-1 w-full rounded-lg border-2 border-gray-200 bg-white px-3 py-2.5 text-sm focus:border-blue-600 focus:outline-none'
-  const label = 'text-xs font-medium text-gray-500'
   const apCount = (courses ?? []).filter((c) => c.level === 'ap').length
 
   return (
     <AppShell tab="education" title={t('학업', 'Education')}>
-      <p className="mt-3 text-sm text-gray-500">{t('리포트의 교과 난이도(rigor) 축이 여기 값으로 계산돼요. 바뀌면 바로 갱신해 두세요.', 'The rigor axis in your report is calculated from these values. Update them as soon as anything changes.')}</p>
-
-      <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-4">
-        <label className={label}>{t('GPA (unweighted 4.0 기준)', 'GPA (unweighted, 4.0 scale)')}</label>
-        <select value={profile.gpa_band ?? ''} onChange={(e) => patchProfile({ gpa_band: e.target.value || null })} className={field}>
-          <option value="">—</option>
-          {Object.entries(gpaBandLabels).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-        </select>
-
-        <label className={`${label} mt-3 block`}>{t('현재 수학 과목', 'Current math course')}</label>
-        <select value={profile.math_course ?? ''} onChange={(e) => patchProfile({ math_course: e.target.value || null })} className={field}>
-          <option value="">—</option>
-          {Object.entries(mathCourseLabels).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
-        </select>
-
-        <div className="mt-3 grid grid-cols-2 gap-2">
-          <div>
-            <label className={label}>{t('이수 완료 AP', 'APs completed')}</label>
-            <select value={profile.ap_completed ?? 0} onChange={(e) => patchProfile({ ap_completed: Number(e.target.value) })} className={field}>
-              {[0,1,2,3,4,5,6,7,8,9,10].map((n) => <option key={n} value={n}>{n}{n === 10 ? '+' : ''}</option>)}
-            </select>
-          </div>
-          <div>
-            <label className={label}>{t('수강 중 AP', 'APs in progress')}</label>
-            <select value={profile.ap_current ?? 0} onChange={(e) => patchProfile({ ap_current: Number(e.target.value) })} className={field}>
-              {[0,1,2,3,4,5,6,7,8,9,10].map((n) => <option key={n} value={n}>{n}{n === 10 ? '+' : ''}</option>)}
-            </select>
-          </div>
-        </div>
-      </div>
+      <p className="mt-3 text-sm text-gray-500">{t('리포트의 교과 난이도(rigor) 축은 아래 과목·성적 기록으로 계산돼요 — 과목과 성적을 채울수록 정확해져요.', 'The rigor axis in your report is calculated from the courses and grades below — the more you fill in, the more accurate it gets.')}</p>
 
       {/* GPA 자동 계산 — 과목 성적 기반 (표준 4.0 산식, 산식 공개) */}
       {courses && (() => {
