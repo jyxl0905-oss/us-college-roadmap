@@ -192,6 +192,34 @@ function normalize(raw: Stats): Stats {
 
 // 서버 상태 — DB·Auth 응답 속도 실측 + 최근 활동 시각. 느리면 Supabase 일시정지/장애 신호
 // 월별 운영 기록 — stats_snapshots (매일 크론이 이번 달 행을 갱신, 지난 달 행 = 월말 기록)
+// 데이터 갱신 스케줄 — 연 2회 배치 + 9월 순위. 현재 달에 해당하는 항목을 강조
+function RefreshScheduleCard() {
+  const month = new Date().getMonth() + 1
+  const items: { window: string; active: boolean; title: string; detail: string; done?: string }[] = [
+    { window: '7–8월', active: month === 7 || month === 8, title: '여름 배치', detail: '에세이 프롬프트·정책 전수, 지원 마감일, BLS 직업 전망, 로고·공식 링크', done: '에세이 2026-08-30 완료 (130/136곳)' },
+    { window: '9월 말', active: month === 9, title: 'US News 새 순위', detail: '종합대·LAC 순위 갱신 (그룹·지도·정렬 반영)' },
+    { window: '1–3월', active: month >= 1 && month <= 3, title: '겨울 배치', detail: 'CDS 기반 전부 — 합격률(전체·국제), SAT 중간50%, ED 합격률, 장학금, 학교가 보는 것 + Scorecard' },
+  ]
+  return (
+    <div className="mb-4 rounded-2xl border border-gray-100 bg-white p-4">
+      <h2 className="font-semibold text-gray-900">🗓️ 데이터 갱신 스케줄</h2>
+      <p className="mt-0.5 text-xs text-gray-400">연 2회 배치 + 순위 단발 — 큰 이벤트(시험 정책 전환 등)는 수시. 해당 시기가 되면 "여름/겨울 배치 돌려줘" 한 마디면 돼요.</p>
+      <div className="mt-2.5 flex flex-col gap-1.5">
+        {items.map((it) => (
+          <div key={it.title} className={`rounded-xl border px-3 py-2 ${it.active ? 'border-blue-300 bg-blue-50' : 'border-gray-100'}`}>
+            <p className="text-sm font-semibold text-gray-800">
+              <span className={`mr-2 rounded-full px-2 py-0.5 text-[11px] ${it.active ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-500'}`}>{it.window}</span>
+              {it.title}{it.active && <span className="ml-1.5 text-[11px] font-normal text-blue-600">← 지금 시기</span>}
+            </p>
+            <p className="mt-0.5 text-xs text-gray-500">{it.detail}</p>
+            {it.done && <p className="mt-0.5 text-[11px] text-green-600">✓ {it.done}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function SnapshotsCard() {
   const [rows, setRows] = useState<{ month: string; data: Record<string, number | null>; updated_at: string }[] | null>(null)
   useEffect(() => {
@@ -373,6 +401,7 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
 
       <HealthCard />
       <SnapshotsCard />
+      <RefreshScheduleCard />
 
       {/* 피드백은 바로 위에서 — 가장 자주 확인하는 카드 */}
       <div className="mb-4">
