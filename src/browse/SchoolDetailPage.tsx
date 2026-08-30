@@ -7,6 +7,7 @@ import { saveProfile, type ProfileRow } from '../lib/profile'
 import AidBlock from './AidBlock'
 import { setPrefillSchoolIds } from './prefill'
 import FitPicker from './FitPicker'
+import { schoolWebsite } from './logos'
 import SchoolLogo from './SchoolLogo'
 import { uniGroupOf, uniGroupTitles } from './rankGroups'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
@@ -104,6 +105,16 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
           <div className="min-w-0">
             <h1 className="text-2xl font-bold text-gray-900">{s.name}</h1>
             <p className="text-gray-500">{s.name_ko}</p>
+            {schoolWebsite(s.id) && (
+              <a
+                href={schoolWebsite(s.id)!}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-1 inline-flex items-center gap-1 text-sm text-blue-600 underline"
+              >
+                🌐 {t('공식 사이트', 'Official website')} ↗
+              </a>
+            )}
           </div>
         </div>
 

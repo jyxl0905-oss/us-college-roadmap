@@ -14,6 +14,15 @@ const domains: Record<number, string> = {
   51: 'case.edu', 52: 'fsu.edu', 53: 'tamu.edu', 54: 'vt.edu', 55: 'wfu.edu',
   56: 'wm.edu', 57: 'ucmerced.edu', 58: 'villanova.edu', 59: 'gwu.edu', 60: 'psu.edu',
   61: 'scu.edu', 62: 'stonybrook.edu', 63: 'umn.edu',
+  // LAC 35곳 + 인디애나 (공식 사이트 링크·파비콘 폴백용, 2026-08 전수 접속 검증)
+  64: 'williams.edu', 65: 'amherst.edu', 66: 'swarthmore.edu', 67: 'bowdoin.edu', 68: 'cmc.edu',
+  69: 'pomona.edu', 70: 'wellesley.edu', 71: 'carleton.edu', 72: 'hmc.edu', 73: 'barnard.edu',
+  74: 'davidson.edu', 75: 'grinnell.edu', 76: 'hamilton.edu', 77: 'middlebury.edu', 78: 'smith.edu',
+  79: 'vassar.edu', 80: 'wesleyan.edu', 81: 'wlu.edu', 82: 'colgate.edu', 83: 'richmond.edu',
+  84: 'bates.edu', 85: 'colby.edu', 86: 'haverford.edu', 87: 'holycross.edu', 88: 'macalester.edu',
+  89: 'mtholyoke.edu', 90: 'brynmawr.edu', 91: 'bucknell.edu', 92: 'coloradocollege.edu', 93: 'lafayette.edu',
+  94: 'denison.edu', 95: 'fandm.edu', 96: 'oxy.edu', 97: 'pitzer.edu', 98: 'scrippscollege.edu',
+  99: 'indiana.edu',
   // 60~100위 확장 (2026-08)
   100: 'msu.edu',
   101: 'ncsu.edu',
@@ -211,4 +220,10 @@ function faviconUrl(schoolId: number): string | null {
 // 시도 순서: 고해상도 마크 → 파비콘 (SchoolLogo가 onError로 순차 폴백)
 export function schoolLogoSources(schoolId: number): string[] {
   return [hiResLogos[schoolId], faviconUrl(schoolId)].filter(Boolean) as string[]
+}
+
+// 학교 공식 웹사이트 — 파비콘용 도메인을 그대로 사용 (전수 검증됨)
+export function schoolWebsite(schoolId: number): string | null {
+  const d = domains[schoolId]
+  return d ? `https://www.${d}` : null
 }
