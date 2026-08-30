@@ -25,6 +25,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
   const [school, setSchool] = useState<School | null | 'loading'>('loading')
   const [togglePending, setTogglePending] = useState(false)
   const [compareIds, setCompareIds] = useState<number[]>(readCompareIds) // F2: 상세에서도 비교 담기
+  const [fitPrompt, setFitPrompt] = useState(false) // 방금 목표에 추가함 — 티어 선택 유도 (훅은 조기 return보다 위)
 
   useEffect(() => {
     loadSchools().then((list) => setSchool(list.find((s) => slugify(s.name) === slug) ?? null))
@@ -50,7 +51,6 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
 
   const s = school
   const isTargeted = profile?.target_school_ids.includes(s.id) ?? false
-  const [fitPrompt, setFitPrompt] = useState(false) // 방금 추가함 — 티어 선택 유도
   const dash = (v: string | number | null | undefined, suffix = '') =>
     v === null || v === undefined ? t('미공개', 'Not disclosed') : `${v}${suffix}`
 
