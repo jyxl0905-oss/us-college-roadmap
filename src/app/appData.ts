@@ -73,6 +73,9 @@ export interface Course {
   grade: number
   name: string
   level: CourseLevel
+  letter_grade: string | null // 'A+'~'F' (성적 미입력이면 null)
+  percent: number | null // 100점제 성적 (레터 대신 입력 가능)
+  credits: number // 학점 (기본 1)
 }
 
 export type EssayStatus = 'not_started' | 'brainstorm' | 'draft' | 'revising' | 'done'
