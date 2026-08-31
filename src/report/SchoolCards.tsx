@@ -45,6 +45,13 @@ export default function SchoolCards({ schools, satBand, majorPrimary, aidStatus 
               <p className="shrink-0 text-xs text-gray-400">#{s.usnews_rank}</p>
             </div>
 
+            {s.avg_gpa != null && (
+              <p className="mt-2.5 text-xs text-gray-500">
+                {t('신입생 평균 GPA', 'Avg. GPA')} <span className="font-semibold text-gray-800">{s.avg_gpa}</span>
+                {s.avg_gpa_scale === 'weighted' && <span className="text-gray-400"> (weighted)</span>}
+                {s.avg_gpa_year && <span className="text-gray-400"> · {s.avg_gpa_year}</span>}
+              </p>
+            )}
             {s.test_policy === 'test-free' ? (
               <p className="mt-3 rounded-lg bg-blue-50 px-3 py-2 text-xs text-blue-900">
                 {t('이 학교는 SAT/ACT를 심사에 반영하지 않아요 (test-free)', 'This school does not consider SAT/ACT (test-free)')}

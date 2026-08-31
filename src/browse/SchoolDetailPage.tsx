@@ -188,6 +188,12 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         <div className="mt-5 divide-y divide-gray-100 rounded-xl border-2 border-gray-200 bg-white">
           {[
             [
+              t('신입생 평균 GPA', 'Avg. GPA of enrolled students'),
+              s.avg_gpa != null
+                ? `${s.avg_gpa}${s.avg_gpa_scale === 'weighted' ? t(' (weighted)', ' (weighted)') : ''}${s.avg_gpa_year ? ` · ${s.avg_gpa_year}` : ''}`
+                : t('미공개', 'Not disclosed'),
+            ],
+            [
               t('SAT 중간 50%', 'SAT middle 50%'),
               s.test_policy === 'test-free'
                 ? t('시험 미반영 (test-free)', 'Test-free')

@@ -97,6 +97,11 @@ export interface School {
   sat_mid50_low: number | null
   sat_mid50_high: number | null
   gpa_note: string | null
+  // 신입생 평균 고교 GPA (CDS C12 / 공식 class profile, null=미공개)
+  avg_gpa?: number | null
+  avg_gpa_scale?: string | null
+  avg_gpa_year?: string | null
+  avg_gpa_source_url?: string | null
   intl_accept_rate: number | null
   overall_accept_rate?: number | null // 전체 합격률 (College Scorecard/CDS C1)
   ed_applied?: number | null // CDS C21 ED 지원자 수
