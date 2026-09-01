@@ -70,7 +70,14 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
           {t('컨설팅은 비싸고, 합격을 보장하지도 않습니다. 필요한 건 정보와 기록입니다.', "Consulting is expensive and guarantees nothing. What you need is information and a record.")}
         </p>
 
-        <div className="mt-6">{cta}</div>
+        {/* 공유 요청 — 첫 화면에서 바로 보이게 */}
+        <p className="mt-4 rounded-xl border border-blue-100 bg-blue-50/60 px-4 py-3 text-sm leading-relaxed text-blue-900">
+          {t('혼자 미국 대입을 준비하는 학생들을 위한 툴입니다.', 'A tool for students preparing for US college admissions on their own.')}
+          <br />
+          {t('주변에 필요한 학생이 있다면 이 페이지를 공유해주세요. 🙏', 'If you know a student who needs this, please share this page. 🙏')}
+        </p>
+
+        <div className="mt-5">{cta}</div>
 
         {/* 3. 핵심 기능 3개 */}
         <div className="mt-10 flex flex-col gap-4">
@@ -117,11 +124,6 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
         {/* 4. 신뢰 라인 + 공유 요청 + 5. CTA */}
         <div className="mt-10 text-center">
           <p className="text-sm font-semibold text-gray-700">{t('전 기능 무료 · 광고 없음 · 유료 전환 없음', 'Everything free · no ads · no paid tier')}</p>
-          <p className="mt-3 text-sm leading-relaxed text-gray-500">
-            {t('혼자 미국 대입을 준비하는 학생들을 위한 툴입니다.', 'A tool for students preparing for US college admissions on their own.')}
-            <br />
-            {t('주변에 필요한 학생이 있다면 이 페이지를 공유해주세요.', 'If you know a student who needs this, please share this page.')}
-          </p>
           <div className="mt-5">{cta}</div>
           <button onClick={onEmailLogin} className="mt-5 text-xs text-gray-400 underline">
             {t('기존 이메일 계정으로 로그인', 'Log in with an existing email account')}
