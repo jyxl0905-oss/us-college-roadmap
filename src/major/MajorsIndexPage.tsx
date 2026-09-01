@@ -87,7 +87,7 @@ export default function MajorsIndexPage() {
 
   // 검색용 페이지 제목
   useEffect(() => {
-    document.title = '미국 대학 전공 가이드 — 유명 전공부터 희귀 전공까지 73개 | 미국 대입 로드맵'
+    document.title = '미국 대학 전공 가이드 — 유명 전공부터 희귀 전공까지 73+ | 미국 대입 로드맵'
     return () => { document.title = '미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴' }
   }, [])
   const q = query.trim().toLowerCase()
