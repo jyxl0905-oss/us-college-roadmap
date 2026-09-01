@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { navigate } from '../lib/router'
 import { t, getLang } from '../i18n'
 import { majorsByTrack, majorDisplay, majorClusters, majorCategories, type MajorCategory } from '../data/majors'
@@ -84,6 +84,12 @@ const KEYWORDS: Record<string, string> = {
 // 전공 알아보기 — 전체 전공 카드 인덱스 (로그인 불필요). 각 카드는 전공 가이드 맵으로
 export default function MajorsIndexPage() {
   const [query, setQuery] = useState('')
+
+  // 검색용 페이지 제목
+  useEffect(() => {
+    document.title = '미국 대학 전공 가이드 — 유명 전공부터 희귀 전공까지 73개 | 미국 대입 로드맵'
+    return () => { document.title = '미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴' }
+  }, [])
   const q = query.trim().toLowerCase()
   const matches = (m: MajorCategory) => {
     if (!q) return true

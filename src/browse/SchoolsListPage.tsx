@@ -75,6 +75,12 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
     loadSchools().then(setSchools)
   }, [])
 
+  // 검색용 페이지 제목
+  useEffect(() => {
+    document.title = '미국 명문대 합격률·합격 전략 — 대학 136곳 공식 데이터 | 미국 대입 로드맵'
+    return () => { document.title = '미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴' }
+  }, [])
+
   // 긴 목록 스크롤 보조: 위로 가기 버튼 표시 여부
   const [showTop, setShowTop] = useState(false)
   useEffect(() => {
