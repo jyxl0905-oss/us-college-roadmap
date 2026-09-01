@@ -2,7 +2,7 @@ import { directAdmitParent } from '../data/majors'
 import { useEffect, useMemo, useState } from 'react'
 import type { School, Tier } from '../lib/types'
 import { loadSchools } from '../lib/schoolsCache'
-import { navigate, slugify } from '../lib/router'
+import { navigate, slugify, goBack } from '../lib/router'
 import { regionLabels, schoolRegion, type Region } from './region'
 import SchoolLogo from './SchoolLogo'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
@@ -130,7 +130,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
     <div className="min-h-dvh bg-gray-50">
       <div className={`mx-auto max-w-md px-5 py-6 md:max-w-3xl lg:max-w-6xl ${compareIds.length > 0 ? 'pb-28' : 'pb-16'}`}>
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate('/')} aria-label={t('홈으로', 'Home')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
+          <button onClick={() => goBack('/')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
             ←
           </button>
           <h1 className="text-xl font-bold text-gray-900">{t('대학 둘러보기', 'Browse Colleges')}</h1>

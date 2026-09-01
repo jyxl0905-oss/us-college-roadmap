@@ -2,7 +2,7 @@ import { timingLabel } from '../lib/academics'
 import { useEffect, useState } from 'react'
 import type { School } from '../lib/types'
 import { supabase } from '../lib/supabase'
-import { navigate } from '../lib/router'
+import { navigate, goBack } from '../lib/router'
 import type { ProfileRow } from '../lib/profile'
 import SchoolLogo from '../browse/SchoolLogo'
 import { t, localizeRows } from '../i18n'
@@ -225,7 +225,7 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
     <div className="min-h-dvh bg-gray-50">
       <div className="mx-auto max-w-md px-5 py-6 pb-16 lg:max-w-4xl">
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate('/')} aria-label={t('리포트로', 'Back to report')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
+          <button onClick={() => goBack('/')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
             ←
           </button>
           <h1 className="text-xl font-bold text-gray-900">{t('마감 캘린더', 'Deadline Calendar')}</h1>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { School } from '../lib/types'
 import { loadSchools } from '../lib/schoolsCache'
-import { navigate, slugify } from '../lib/router'
+import { navigate, slugify, goBack } from '../lib/router'
 import { majorLabel } from '../data/majors'
 import { saveProfile, type ProfileRow } from '../lib/profile'
 import AidBlock from './AidBlock'
@@ -92,7 +92,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
     <div className="min-h-dvh bg-gray-50">
       <div className="mx-auto max-w-md px-5 py-6 pb-32">
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate('/schools')} aria-label={t('목록으로', 'Back to list')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
+          <button onClick={() => goBack('/schools')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
             ←
           </button>
           <span className="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-600">

@@ -1,4 +1,4 @@
-import { navigate } from '../lib/router'
+import { navigate, goBack } from '../lib/router'
 import { t } from '../i18n'
 
 export type AppTab = 'home' | 'plans' | 'activities' | 'testing' | 'education' | 'colleges' | 'writing'
@@ -28,7 +28,7 @@ export default function AppShell({ tab, title, children, onBack, headerExtra, wi
     <div className="min-h-dvh bg-gray-50">
       <div className={`mx-auto max-w-md px-5 py-6 pb-28 md:max-w-2xl ${wide ? "lg:max-w-5xl" : ""}`}>
         <div className="flex items-center gap-3">
-          <button onClick={onBack ?? (() => navigate('/'))} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
+          <button onClick={onBack ?? (() => goBack('/'))} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
             ←
           </button>
           {headerExtra}

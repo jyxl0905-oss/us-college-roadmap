@@ -6,7 +6,7 @@ import statesTopo from 'us-atlas/states-albers-10m.json'
 import coordsData from '../data/school-coords.json'
 import type { School } from '../lib/types'
 import { loadSchools } from '../lib/schoolsCache'
-import { navigate, slugify } from '../lib/router'
+import { navigate, slugify, goBack } from '../lib/router'
 import SchoolLogo from './SchoolLogo'
 import { schoolLogoSources } from './logos'
 import { uniGroupOf, uniGroupTitles, uniGroups } from './rankGroups'
@@ -328,7 +328,7 @@ export default function MapPage({ profile }: MapPageProps) {
     <div className="min-h-dvh bg-gray-50">
       <div className="mx-auto max-w-md px-5 py-6 pb-16 md:max-w-4xl">
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate('/targets')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
+          <button onClick={() => goBack('/targets')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
           <div>
             <h1 className="text-xl font-bold text-gray-900">🗺️ {t('대학 지도', 'College Map')}</h1>
             <p className="text-xs text-gray-400">{t('검색하거나 로고를 눌러 학교 정보 · 드래그 이동 · 휠/핀치/더블탭 확대', 'Search or tap a logo for info · drag to pan · wheel/pinch/double-tap to zoom')}</p>

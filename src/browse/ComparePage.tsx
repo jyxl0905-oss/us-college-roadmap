@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { School } from '../lib/types'
 import { loadSchools } from '../lib/schoolsCache'
-import { navigate, slugify } from '../lib/router'
+import { navigate, slugify, goBack } from '../lib/router'
 import { satBandMid } from '../lib/score'
 import { majorLabel, directAdmitParent } from '../data/majors'
 import type { ProfileRow } from '../lib/profile'
@@ -172,7 +172,7 @@ export default function ComparePage({ profile }: ComparePageProps) {
     <div className="min-h-dvh bg-gray-50">
       <div className="mx-auto max-w-2xl px-5 py-6 pb-28">
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate('/schools')} aria-label={t('목록으로', 'Back to list')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
+          <button onClick={() => goBack('/schools')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
             ←
           </button>
           <h1 className="text-xl font-bold text-gray-900">{t('학교 비교', 'Compare Schools')}</h1>

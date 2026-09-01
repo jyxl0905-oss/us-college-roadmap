@@ -3,7 +3,7 @@ import roadmaps from '../data/major-roadmaps.json'
 import roadmapsEn from '../data/major-roadmaps.en.json'
 import { majorLabel, majorCategories, majorDisplay, majorAlias } from '../data/majors'
 import { profileGrade, type ProfileRow } from '../lib/profile'
-import { navigate } from '../lib/router'
+import { navigate, goBack } from '../lib/router'
 import { currentSeasonLabel } from '../lib/academics'
 import { insertRow } from '../app/appData'
 import { loadPlans, cycleSeasons, type Plan } from '../app/plans'
@@ -107,7 +107,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
     <div className="min-h-dvh bg-gray-50">
       <div className="mx-auto max-w-md px-5 py-6 pb-16 lg:max-w-4xl">
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate('/')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
+          <button onClick={() => goBack('/majors')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
           <div className="min-w-0 flex-1">
             <h1 className="truncate text-xl font-bold text-gray-900">{majorLabel(majorKey)}</h1>
             <p className="text-xs text-gray-400">{t('전공 가이드 맵 · 4년 로드맵 (편집 가이드)', 'Major guide map · 4-year roadmap (editorial guide)')}</p>
