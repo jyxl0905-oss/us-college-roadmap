@@ -46,7 +46,7 @@ interface MajorRoadmapPageProps {
 export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoadmapPageProps) {
   // 검색·공유용 페이지 제목
   useEffect(() => {
-    document.title = `${majorLabel(majorKey)} 전공 가이드 — 미국 대입 로드맵`
+    document.title = `${majorLabel(majorKey)} 전공 — 미국 대학 진로·추천 AP 가이드 | 미국 대입 로드맵`
     return () => { document.title = '미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴' }
   }, [majorKey])
 

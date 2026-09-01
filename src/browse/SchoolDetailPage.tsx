@@ -34,7 +34,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
 
   // 검색·공유용 페이지 제목 — 훅은 조기 return보다 위에 있어야 함 (훅 순서 고정)
   useEffect(() => {
-    if (school && school !== 'loading') document.title = `${school.name} (${school.name_ko}) — 미국 대입 로드맵`
+    if (school && school !== 'loading') document.title = `${school.name} 합격률·SAT·에세이 (${school.name_ko}) — 미국 대입 로드맵`
     return () => { document.title = '미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴' }
   }, [school])
 
