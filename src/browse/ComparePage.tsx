@@ -225,7 +225,7 @@ export default function ComparePage({ profile }: ComparePageProps) {
             onClick={guestCta}
             className="mx-auto block w-full max-w-md rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
           >
-            {t('내 위치까지 보려면 리포트 받기', 'Get my report to see where I stand')}
+            {t('가입하고 더 많은 정보 보기', 'Sign up to see more')}
           </button>
         </div>
       )}

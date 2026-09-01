@@ -313,7 +313,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         >
           {profile
             ? t('내 리포트에서 이 학교 보기', 'See this school in my report')
-            : t('이 학교 합격자 범위에서 내 위치 확인하기 → 리포트 받기', 'See where you stand vs. admitted students → Get my report')}
+            : t('가입하고 더 많은 정보 보기', 'Sign up to see more')}
         </button>
       </div>
     </div>

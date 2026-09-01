@@ -333,7 +333,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
               </button>
             ) : (
               <button onClick={() => navigate('/')} className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white active:bg-blue-700">
-                {t('내 리포트 받기 (3분)', 'Get my report (3 min)')}
+                {t('가입하고 더 많은 정보 보기', 'Sign up to see more')}
               </button>
             )}
           </div>
