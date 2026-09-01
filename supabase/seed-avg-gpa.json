@@ -1,0 +1,1225 @@
+[
+ {
+  "id": 1,
+  "name": "Princeton University",
+  "status": "found",
+  "value": 3.96,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://ir.princeton.edu/sites/g/files/toruqf2041/files/documents/CDS_2526_Princeton_v2.pdf",
+  "note": "C12; 99% of first-years submitted GPA"
+ },
+ {
+  "id": 2,
+  "name": "Massachusetts Institute of Technology",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://ir.mit.edu/projects/2025-26-common-data-set/",
+  "note": "C12 reported as N/Av; admissions stats page also publishes no GPA"
+ },
+ {
+  "id": 3,
+  "name": "Harvard University",
+  "status": "found",
+  "value": 4.22,
+  "scale": "weighted",
+  "year": "CDS 2025-26",
+  "source_url": "https://bpb-us-e1.wpmucdn.com/sites.harvard.edu/dist/6/210/files/2026/07/CDS_2025-2026.pdf",
+  "note": "C12; 99.10% submitted. Value exceeds 4.0 so it reflects weighted GPAs in practice, but the CDS does not label it weighted"
+ },
+ {
+  "id": 4,
+  "name": "Stanford University",
+  "status": "found",
+  "value": 3.94,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://drive.google.com/file/d/1GIPKgVj1d86dkmLkHI_mZVCk_iY6kiCp/view",
+  "note": "C12; 69.60% submitted. PDF linked from official https://irds.stanford.edu/data-findings/cds"
+ },
+ {
+  "id": 5,
+  "name": "Yale University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://oir.yale.edu/sites/default/files/yale_cds_2025-26_md_20260616.pdf",
+  "note": "C11 and C12 left blank; admissions class profile publishes no GPA"
+ },
+ {
+  "id": 6,
+  "name": "University of Chicago",
+  "status": "found",
+  "value": 4.54,
+  "scale": "weighted",
+  "year": "CDS 2025-26",
+  "source_url": "https://data.uchicago.edu/files/2026/08/CDS_2025-2026_to_publish-1.pdf",
+  "note": "C12; 62.15% submitted. Value exceeds 4.0 so it reflects weighted GPAs in practice, but the CDS does not label it weighted"
+ },
+ {
+  "id": 7,
+  "name": "Duke University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://ir.provost.duke.edu/sites/default/files/CDS_PDF_2025-2026-20260622-website-published-version.pdf",
+  "note": "C12 left blank; admissions class profile publishes no GPA"
+ },
+ {
+  "id": 8,
+  "name": "Johns Hopkins University",
+  "status": "found",
+  "value": 3.93,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://oira.jhu.edu/wp-content/uploads/2025-2026-CDS-Johns-Hopkins-University-v2.pdf",
+  "note": "C12 = 3.93; 95.86% of first-years submitted GPA. Site blocks bots (Cloudflare); content verified via Internet Archive copy of the same official PDF."
+ },
+ {
+  "id": 9,
+  "name": "Northwestern University",
+  "status": "not_reported",
+  "year": "CDS 2024-25",
+  "source_url": "https://enrollment.northwestern.edu/data/2024-2025.pdf",
+  "note": "Latest published CDS (2024-25); C12 left blank. No 2025-26 CDS posted as of 2026-09. Class of 2029 facts-and-figures PDF publishes no GPA."
+ },
+ {
+  "id": 10,
+  "name": "University of Pennsylvania",
+  "status": "found",
+  "value": 3.9,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://upenn.box.com/s/woo7d85yxpol6j9e2o121aucjc6dc1k5",
+  "note": "C12 = 3.9; 98% submitted GPA. Official Box link from https://ira.upenn.edu/penn-numbers/common-data-set."
+ },
+ {
+  "id": 11,
+  "name": "California Institute of Technology",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://iro.caltech.edu/documents/35129/Caltech_CDS_2025-26_August_2026.pdf",
+  "note": "C11/C12 left blank (verified visually in rendered page). Caltech admissions publishes no average GPA."
+ },
+ {
+  "id": 12,
+  "name": "Cornell University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://irp.cornell.edu/wp-content/uploads/2026/06/CDS-Cornell-2025-2026-v2.xlsx",
+  "note": "C12 cell contains '-' (not reported); 2024-25 CDS also blank. Class profile publishes no average GPA."
+ },
+ {
+  "id": 13,
+  "name": "Brown University",
+  "status": "not_reported",
+  "year": "CDS 2024-25",
+  "source_url": "https://oir.brown.edu/institutional-data/common-data-set",
+  "note": "CDS 2024-25 (official file CDS_2024_2025.pdf, verified via Internet Archive) reports C12 as 'n/a'. Brown's OIR page currently lists no downloadable CDS files; admissions publishes no average GPA."
+ },
+ {
+  "id": 14,
+  "name": "Dartmouth College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.dartmouth.edu/oir/pdfs/cds_2025-26.pdf",
+  "note": "C12 boxes empty (verified visually in rendered page). Class of 2029 profile publishes no average GPA."
+ },
+ {
+  "id": 15,
+  "name": "Columbia University",
+  "status": "not_reported",
+  "year": "CDS 2024-25",
+  "source_url": "https://opir.columbia.edu/sites/opir.columbia.edu/files/content/Common%20Data%20Set/2024-25_Columbia_College_and_Columbia_Engineering_CDS.pdf",
+  "note": "C12 blank in CDS 2024-25 (verified in PDF); admissions class profile publishes no average GPA"
+ },
+ {
+  "id": 16,
+  "name": "University of California Berkeley",
+  "status": "found",
+  "value": 3.9,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://opa.berkeley.edu/common-data-set",
+  "note": "C12=3.9, 100% submitted GPA; verified in official CDS 2025-26 spreadsheet linked from this page"
+ },
+ {
+  "id": 17,
+  "name": "Rice University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://ideas.rice.edu/wp-content/uploads/2026/07/CDS_2025-26_WEBSITE.pdf",
+  "note": "C12 states N/A (verified in PDF); class profile page has no average GPA"
+ },
+ {
+  "id": 18,
+  "name": "University of California Los Angeles",
+  "status": "found",
+  "value": 3.94,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://apb.ucla.edu/file/d1ab04b3-ee89-4cf2-9124-8dc0471b5e5a",
+  "note": "C12=3.94, 99.8% submitted GPA (verified in PDF form fields)"
+ },
+ {
+  "id": 19,
+  "name": "Vanderbilt University",
+  "status": "found",
+  "value": 3.9,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://cdn.vanderbilt.edu/vu-wpfsx/wp-content/uploads/sites/70/2026/07/CDS_2025-2026.xlsx",
+  "note": "C12 cell value 3.895 (rounds to 3.90 per CDS hundredths instruction), 99.8% submitted GPA"
+ },
+ {
+  "id": 20,
+  "name": "Carnegie Mellon University",
+  "status": "found",
+  "value": 3.89,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.cmu.edu/ira/CDS/pdf/cds_2025_26/cds-2025-c-first-time-first-year-admission.pdf",
+  "note": "C12=3.89, 99.7% submitted GPA (verified in PDF)"
+ },
+ {
+  "id": 21,
+  "name": "University of Michigan Ann Arbor",
+  "status": "found",
+  "value": 3.9,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://obp.umich.edu/wp-content/uploads/pubdata/cds/cds_2025-26_umaa.pdf",
+  "note": "C12=3.9, 97.8% submitted GPA (verified in PDF)"
+ },
+ {
+  "id": 22,
+  "name": "University of Notre Dame",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://drive.google.com/file/d/1jFtuEmv7OPCTq9e8kD90I7CByERcMBty/view",
+  "note": "CDS 2025-26 (linked from iris.nd.edu Common Data Set page) leaves C11/C12 blank; admissions site publishes no average GPA."
+ },
+ {
+  "id": 23,
+  "name": "Washington University in St. Louis",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://washu.edu/app/uploads/2026/06/2025-2026-WashU-CDS.pdf",
+  "note": "CDS 2025-26 C11/C12 blank; admissions.washu.edu incoming class profile states no GPA."
+ },
+ {
+  "id": 24,
+  "name": "Emory University",
+  "status": "found",
+  "value": 3.8,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://provost.emory.edu/planning-administration/_includes/documents/sections/institutional-data/emory-common-date-set-2025-2026.pdf",
+  "note": "C12 = 3.80; 95.00% of first-years submitted GPA."
+ },
+ {
+  "id": 25,
+  "name": "Georgetown University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://georgetown.box.com/s/0r8akn4cbm52zjkll6i7uttlb9k36px2",
+  "note": "CDS 2025-26 (Box link from oads.georgetown.edu/commondataset) leaves C11/C12 blank."
+ },
+ {
+  "id": 26,
+  "name": "University of North Carolina at Chapel Hill",
+  "status": "found",
+  "value": 4.47,
+  "scale": "weighted",
+  "year": "CDS 2025-26",
+  "source_url": "https://oira.unc.edu/wp-content/uploads/sites/297/2026/06/CDS_UNCCH_2025-26_20260615.pdf",
+  "note": "C12 = 4.47; 89.9% submitted GPA. Value exceeds 4.0 so it is a weighted average (CDS does not label it explicitly at C12)."
+ },
+ {
+  "id": 27,
+  "name": "University of Virginia",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://ira.virginia.edu/common-data-set/common-data-set-2025-2026",
+  "note": "2025-26 CDS Section C (Qlik viewer) leaves C11/C12 blank; UVA stopped reporting C12 in the most recent CDS."
+ },
+ {
+  "id": 28,
+  "name": "University of Southern California",
+  "status": "found",
+  "value": 3.85,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://oir.usc.edu/wp-content/uploads/sites/3/2026/10/CDS_2025-26_FINAL.pdf",
+  "note": "C12 = 3.85 (Fall 2025 cohort; title page says 2025-2026, some interior page headers carry a stale 2024-2025 label)."
+ },
+ {
+  "id": 29,
+  "name": "University of California San Diego",
+  "status": "found",
+  "value": 3.88,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://ir.ucsd.edu/stats/undergrad/CDS-2025-2026-Final2.pdf",
+  "note": "C12 = 3.88; 94% submitted GPA."
+ },
+ {
+  "id": 30,
+  "name": "University of Florida",
+  "status": "found",
+  "value": 3.9,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://data-apps.ir.aa.ufl.edu/public/cds/CDS%202025-26_v8_08.14.2026.pdf",
+  "note": "C12 = 3.9; 95% submitted GPA."
+ },
+ {
+  "id": 31,
+  "name": "University of Texas at Austin",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://utexas.box.com/s/z5p8zzbr6yk4eluam3v3dt2wyaha3cja",
+  "note": "C11/C12 left blank (verified visually in rendered page). Official Box link from https://reports.utexas.edu/common-data-set/pdf. Admissions publishes class-rank data, not average GPA."
+ },
+ {
+  "id": 32,
+  "name": "Georgia Institute of Technology",
+  "status": "found",
+  "value": 4.17,
+  "scale": "weighted",
+  "year": "CDS 2025-26",
+  "source_url": "https://irp.gatech.edu/sites/default/files/CDS/CDS_2025-2026_FINAL_R3_30MAR2026.pdf",
+  "note": "C12 = 4.17; 95.31% submitted GPA. Value exceeds 4.0 so it reflects weighted GPAs (CDS does not label it explicitly)."
+ },
+ {
+  "id": 33,
+  "name": "New York University",
+  "status": "found",
+  "value": 3.81,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL%20(no%20G).pdf",
+  "note": "C12 = 3.81; 100.00% submitted GPA; C9-C12 cover students enrolled Fall 2025. Some interior page headers carry a stale 2024-2025 label."
+ },
+ {
+  "id": 34,
+  "name": "University of California Davis",
+  "status": "found",
+  "value": 4.03,
+  "scale": "weighted",
+  "year": "CDS 2025-26",
+  "source_url": "https://aggiedata.ucdavis.edu/sites/g/files/dgvnsk1841/files/media/documents/CDS_UCD_0.pdf",
+  "note": "C12 = 4.03; 100.00% submitted GPA. Value exceeds 4.0 so it reflects weighted GPAs (CDS does not label it explicitly)."
+ },
+ {
+  "id": 35,
+  "name": "University of California Irvine",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://bpb-us-e2.wpmucdn.com/sites.uci.edu/dist/2/5478/files/2026/05/2025-26-CDS-PDF-Upload.pdf",
+  "note": "C11/C12 left blank (form fields empty; verified visually in rendered page). Official file linked from https://irap.uci.edu/institutional-research/data-hub/common-data-set/."
+ },
+ {
+  "id": 36,
+  "name": "Boston College",
+  "status": "not_reported",
+  "year": "CDS 2024-25",
+  "source_url": "https://www.bc.edu/content/dam/bc1/offices/irp/ir/cds/Boston_College_CDS_2024-2025_Final.pdf",
+  "note": "Latest published CDS (2024-25); C12 shows 0.00 with 0.00% submitting, i.e. not reported. No 2025-26 CDS posted as of 2026-09; admissions class profile publishes no average GPA."
+ },
+ {
+  "id": 37,
+  "name": "Tufts University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://provost.tufts.edu/institutionalresearch/wp-content/uploads/sites/5/CDS_2025-2026.pdf",
+  "note": "C11/C12 left blank (verified visually in rendered page)."
+ },
+ {
+  "id": 38,
+  "name": "University of Illinois Urbana-Champaign",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.dmi.illinois.edu/stuenr/misc/cds_2025_2026.xlsx",
+  "note": "C12 cell empty in the official 2025-26 CDS workbook (Fall 2025 cohort). Admissions class profile publishes middle-50% GPA, not an average."
+ },
+ {
+  "id": 39,
+  "name": "University of Wisconsin-Madison",
+  "status": "found",
+  "value": 3.91,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://uwmadison.box.com/s/ilx9kil11ninf8vwj1z87vumhuvpw4px",
+  "note": "C12 = 3.91; 94% submitted GPA. Official Box link (2025-2026 CDS Excel) from https://data.wisc.edu/common-data-set-and-rankings/."
+ },
+ {
+  "id": 40,
+  "name": "University of California Santa Barbara",
+  "status": "found",
+  "value": 4.29,
+  "scale": "weighted",
+  "year": "CDS 2025-26",
+  "source_url": "https://drive.google.com/file/d/1FIkvY5dANho45ioG7-JHgO3IPH6-ui1W/view",
+  "note": "C12 = 4.29; 97.07% submitted GPA. Official Google Drive link from https://bap.ucsb.edu/institutional-research. Value exceeds 4.0 so it reflects weighted GPAs (CDS does not label it explicitly)."
+ },
+ {
+  "id": 41,
+  "name": "Ohio State University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://irp.osu.edu/sites/default/files/documents/2026/03/CDS-2025-2026-OSU-Columbus-Campus.pdf",
+  "note": "C11/C12 blank (0.00) in CDS 2025-26 and 2024-25 (both verified in rendered PDF pages); undergrad.osu.edu 'Who gets in' page publishes no GPA."
+ },
+ {
+  "id": 42,
+  "name": "Boston University",
+  "status": "found",
+  "value": 3.86,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.bu.edu/asir/files/2026/05/CDS-2025-2026-2.pdf",
+  "note": "C12 = 3.86; 100% of first-years submitted GPA."
+ },
+ {
+  "id": 43,
+  "name": "Rutgers University-New Brunswick",
+  "status": "not_reported",
+  "year": "CDS 2023-24 (latest published)",
+  "source_url": "https://oirap.rutgers.edu/ReportingCommonDataSet.html",
+  "note": "No CDS 2024-25 or 2025-26 published (latest is 2023-24, outside accepted years); admissions desk reference card publishes only middle-50% GPA ranges by school (e.g. 3.9-4.2), no average."
+ },
+ {
+  "id": 44,
+  "name": "University of Maryland, College Park",
+  "status": "found",
+  "value": 4.41,
+  "scale": "weighted",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.irpa.umd.edu/InstitutionalData/CommonDataSet/CDS_2025-2026.xlsx",
+  "note": "C12 = 4.41; 95% submitted GPA. Value exceeds 4.0 so it reflects weighted GPAs (CDS does not label it). File linked from irpa.umd.edu CDS page year picker."
+ },
+ {
+  "id": 45,
+  "name": "University of Washington, Seattle",
+  "status": "found",
+  "value": 3.84,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://cdn.uw.edu/wp-content/uploads/sites/162/2026/02/27111247/CDS_2025-2026_Seattle.pdf",
+  "note": "C12 form-field value 3.835791 (rounds to 3.84); 99.87% submitted GPA."
+ },
+ {
+  "id": 46,
+  "name": "Lehigh University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://data.lehigh.edu/sites/data.lehigh.edu/files/4.6.2026_CDS_Finalized-Published_Definition%20Sheet%20Removed%20for%20Website%20Posting_0.pdf",
+  "note": "C11 all blank and C12 box empty (verified in rendered PDF p13); admissions statistics page (www2.lehigh.edu/admissions/admission-statistics) publishes no GPA."
+ },
+ {
+  "id": 47,
+  "name": "Northeastern University",
+  "status": "not_reported",
+  "year": "CDS 2024-25",
+  "source_url": "https://uds.northeastern.edu/wp-content/uploads/2026/03/CDS-2024-25.pdf",
+  "note": "CDS 2025-26 not published as of 2026-09; in CDS 2024-25 the C12 average box is blank (C11 ranges reported, verified in rendered PDF p10); facts.northeastern.edu publishes no GPA."
+ },
+ {
+  "id": 48,
+  "name": "Purdue University",
+  "status": "found",
+  "value": 3.81,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.purdue.edu/idata/wp-content/uploads/2026/04/CDS-2025-2026.xlsx",
+  "note": "C12 = 3.81; 92.76% submitted GPA."
+ },
+ {
+  "id": 49,
+  "name": "University of Georgia",
+  "status": "found",
+  "value": 4.17,
+  "scale": "weighted",
+  "year": "CDS 2025-26",
+  "source_url": "https://oir.uga.edu/wp-content/uploads/UGA_CDS_2025-2026.pdf",
+  "note": "C12 form-field value 4.17; 100% submitted GPA. Value exceeds 4.0 so it reflects weighted GPAs (CDS does not label it)."
+ },
+ {
+  "id": 50,
+  "name": "University of Rochester",
+  "status": "found",
+  "value": 3.73,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.rochester.edu/provost/wp-content/uploads/2026/06/CDS-2025-26-completed-for-web.pdf",
+  "note": "C12 = 3.73; 99.9% submitted GPA."
+ },
+ {
+  "id": 51,
+  "name": "Case Western Reserve University",
+  "status": "found",
+  "value": 3.78,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://case.edu/ir/sites/default/files/2026-02/CDS%202025-26%20Adjusted%20Final.pdf",
+  "note": "C12 = 3.78; 92.00% submitted GPA."
+ },
+ {
+  "id": 52,
+  "name": "Florida State University",
+  "status": "not_reported",
+  "year": "CDS unavailable (site down)",
+  "source_url": "https://ir.fsu.edu/commondataset.aspx",
+  "note": "Could not verify: official CDS host ir.fsu.edu was unreachable (connection timeout from multiple networks) at collection time (2026-09-01), and the CDS is served only via that ASP.NET page (no archived copies of sections). Admissions guide publishes only middle-50% ADMITTED ranges (Fall: GPA 4.2-4.6 weighted), no enrolled average. Re-check ir.fsu.edu when back online — FSU may in fact report C12."
+ },
+ {
+  "id": 53,
+  "name": "Texas A&M University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://abpa.tamu.edu/_files/_documents/common-data/cds-pdf-2025-2026.pdf",
+  "note": "C11/C12 form fields all empty in CDS 2025-26 (verified); admissions.tamu.edu publishes no class-profile average GPA."
+ },
+ {
+  "id": 54,
+  "name": "Virginia Tech",
+  "status": "found",
+  "value": 4.09,
+  "scale": "weighted",
+  "year": "CDS 2024-25",
+  "source_url": "https://web.archive.org/web/2026id_/https://aie.vt.edu/content/dam/aie_vt_edu/common-data-set/24-25/2024-2025-CDS.xlsx",
+  "note": "C12 = 4.09; 97% submitted GPA. Weighted (value exceeds 4.0). VT removed public CDS files in 2026 (now email-request only via aiesupport@vt.edu), so value taken from the Wayback-archived official 2024-25 xlsx (original URL aie.vt.edu/content/dam/aie_vt_edu/common-data-set/24-25/2024-2025-CDS.xlsx); 2025-26 CDS not publicly available. Admissions First-Year Snapshot infographic has no GPA."
+ },
+ {
+  "id": 55,
+  "name": "Wake Forest University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://prod.wp.cdn.aws.wfu.edu/sites/202/2026/06/CDS_2025-2026-PDF_Template_WFU.pdf",
+  "note": "C11/C12 form fields all empty in CDS 2025-26 (verified); admissions facts page publishes no average GPA (states no minimum/average GPA published)."
+ },
+ {
+  "id": 56,
+  "name": "College of William & Mary",
+  "status": "found",
+  "value": 4.34,
+  "scale": "weighted",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.wm.edu/offices/ir/university_data/cds/cds_2025-26_c.pdf",
+  "note": "C12 form-field value 4.34; 88% submitted GPA. Weighted (value exceeds 4.0)."
+ },
+ {
+  "id": 57,
+  "name": "University of California, Merced",
+  "status": "found",
+  "value": 3.59,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://cie.ucmerced.edu/sites/g/files/ufvvjh616/f/page/documents/cds_2025-26_uc_merced.xlsx",
+  "note": "C12 cell value 3.589 (rounds to 3.59); 100% submitted GPA. Extracted from the official xlsx (CDS-C row C12) linked on cie.ucmerced.edu external-reporting page."
+ },
+ {
+  "id": 58,
+  "name": "Villanova University",
+  "status": "found",
+  "value": 3.87,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.villanova.edu/content/dam/villanova/provost/decision_support/CDS-2025-2026-v3.pdf",
+  "note": "C12 = 3.87; only 16.00% of first-years submitted GPA (verified in rendered PDF p12)."
+ },
+ {
+  "id": 59,
+  "name": "George Washington University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://irp.gwu.edu/sites/g/files/zaxdzs6056/files/2026-04/CDS-PDF-2025-2026.pdf",
+  "note": "C12 blank in CDS 2025-26 (form fields empty) and reported as 0.00 with 0.00% submitting in CDS 2024-25 (verified in rendered PDF p11)."
+ },
+ {
+  "id": 60,
+  "name": "Penn State University Park",
+  "status": "found",
+  "value": 3.67,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://opair.psu.edu/files/2026/07/UniversityParkCDS_2025_2026_UniversityPark_v2.pdf",
+  "note": "C12 = 3.67; 96% submitted GPA (University Park campus)."
+ },
+ {
+  "id": 61,
+  "name": "Santa Clara University",
+  "status": "found",
+  "value": 3.72,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.scu.edu/media/offices/institutional-research/fampf/common-data-set/rba13-Common_Data_Set_2025-2026.pdf",
+  "note": "C12 = 3.72; 100.00% submitted GPA."
+ },
+ {
+  "id": 62,
+  "name": "Stony Brook University",
+  "status": "found",
+  "value": 94.48,
+  "scale": "weighted",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.stonybrook.edu/irpe/_media/Common_data_sets/CDS_2025-2026.xlsx",
+  "note": "C12 = 94.48 reported on a 100-point scale (not 4.0); 99.95% submitted GPA. Roughly equivalent to ~3.7-3.9 on 4.0 scale but SBU does not publish a 4.0-scale average."
+ },
+ {
+  "id": 63,
+  "name": "University of Minnesota, Twin Cities",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://idr.umn.edu/sites/idr.umn.edu/files/cds_2025_2026_tc.pdf",
+  "note": "C11/C12 blank in CDS 2025-26 (verified in rendered PDF p18; only zero totals in form fields)."
+ },
+ {
+  "id": 64,
+  "name": "Williams College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://hub.williams.edu/institutional-research/files/2026/04/Williams-CDS-2025-2026-V2.pdf",
+  "note": "C12 average left blank (percent submitting GPA 74.25% is reported, but no average); C11 ranges also blank"
+ },
+ {
+  "id": 65,
+  "name": "Amherst College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.amherst.edu/about/facts/common_data_sets/2025",
+  "note": "Section C states 'Do not track' at C12; no average GPA published"
+ },
+ {
+  "id": 66,
+  "name": "Swarthmore College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.swarthmore.edu/sites/default/files/assets/documents/institutional-effectiveness-research-assessment/Swarthmore-CDS-2025-26.pdf",
+  "note": "C12 form fields empty (FRSH_GPA blank, 0% submitted)"
+ },
+ {
+  "id": 67,
+  "name": "Bowdoin College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.bowdoin.edu/ir/pdf/bowdoin-cds_2025-2026.pdf",
+  "note": "C12 form fields empty"
+ },
+ {
+  "id": 68,
+  "name": "Claremont McKenna College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.cmc.edu/sites/default/files/CDS_2025-26_Annotated(Updated20260605).pdf",
+  "note": "C11/C12 blank (0.00% totals, no average value)"
+ },
+ {
+  "id": 69,
+  "name": "Pomona College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.pomona.edu/administration/institutional-research/information-center/common-data-set",
+  "note": "CDS published as Tableau dashboards; Section C omits items C11/C12 entirely (jumps C10 to C13)"
+ },
+ {
+  "id": 70,
+  "name": "Wellesley College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www1.wellesley.edu/oir/wellesley-college-data/instdata",
+  "note": "C12 blank in CDS 2025-2026 (C11 totals 0.00%, no average value)"
+ },
+ {
+  "id": 71,
+  "name": "Carleton College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.carleton.edu/ira/institutional-data/cds1/",
+  "note": "C12 form fields empty in CDS 2025-2026"
+ },
+ {
+  "id": 72,
+  "name": "Harvey Mudd College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.hmc.edu/institutional-research/institutional-statistics/common-data-set/",
+  "note": "C12 form fields empty in CDS 2025-2026"
+ },
+ {
+  "id": 73,
+  "name": "Barnard College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://barnard.edu/institutional-effectiveness/common-data-set",
+  "note": "C12 form fields empty in CDS 2025-2026; class profile publishes no average GPA"
+ },
+ {
+  "id": 74,
+  "name": "Davidson College",
+  "status": "found",
+  "value": 3.85,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.davidson.edu/media/9718/download",
+  "note": "C12 = 3.85; 99.81% of first-years submitted GPA"
+ },
+ {
+  "id": 75,
+  "name": "Grinnell College",
+  "status": "not_reported",
+  "year": "CDS 2024-25",
+  "source_url": "https://www.grinnell.edu/doc/grinnell-college-common-data-set-2024-2025",
+  "note": "Latest published CDS is 2024-25; C1201 average shown as 0.00 (blank, 0.00% submitted). No 2025-26 CDS posted yet"
+ },
+ {
+  "id": 76,
+  "name": "Hamilton College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.hamilton.edu/offices/oir/common-data-sets/cds-2025-26",
+  "note": "C12 blank; admissions class profile publishes no average GPA either"
+ },
+ {
+  "id": 77,
+  "name": "Middlebury College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.middlebury.edu/sites/default/files/2026-02/Fall%202025%20CDS%20Preliminary.pdf",
+  "note": "Fall 2025 preliminary CDS (2025-26 cycle; interior header carries stale 2024-2025 template label): C11/C12 blank. C12 also blank in final CDS 2024-25"
+ },
+ {
+  "id": 78,
+  "name": "Smith College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://drive.google.com/file/d/1Ea415S5mOPL9WM_XDaQLwKgXuCuVHAZj/view",
+  "note": "CDS 2025-26 (official Smith IR shared Google Drive, linked from smith.edu institutional-research page): C12 shows dashes/blank"
+ },
+ {
+  "id": 79,
+  "name": "Vassar College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://offices.vassar.edu/institutional-research/wp-content/uploads/sites/23/2026/03/Vassar_College_CDS_2025-2026.pdf",
+  "note": "C12 form fields empty"
+ },
+ {
+  "id": 80,
+  "name": "Wesleyan University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.wesleyan.edu/ir/common-data-sets.html",
+  "note": "CDS_2025-2026.xlsx (official SharePoint linked from this page): CDS-C cell E243 (C12 average) empty"
+ },
+ {
+  "id": 81,
+  "name": "Washington and Lee University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://my.wlu.edu/document/2025-common-data-set",
+  "note": "C11/C12 blank in CDS 2025-2026; current class profile page publishes no average GPA (older profiles did)"
+ },
+ {
+  "id": 82,
+  "name": "Colgate University",
+  "status": "found",
+  "value": 3.85,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.colgate.edu/sites/default/files/2026-07/CDS-PDF-2025-2026.pdf",
+  "note": "C12 = 3.85; 100% of first-years submitted GPA"
+ },
+ {
+  "id": 83,
+  "name": "University of Richmond",
+  "status": "found",
+  "value": 3.81,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://ifx.richmond.edu/pdfs/CDS2025-2026SectionC.pdf",
+  "note": "C12 = 3.81; 100% of first-years submitted GPA"
+ },
+ {
+  "id": 84,
+  "name": "Bates College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.bates.edu/research/files/2026/06/CDS_2025-2026.pdf",
+  "note": "C12 form fields empty"
+ },
+ {
+  "id": 85,
+  "name": "Colby College",
+  "status": "not_reported",
+  "year": "checked 2026-09",
+  "source_url": "https://afa.colby.edu/apply/college-profile/",
+  "note": "Colby publishes no recent Common Data Set, and its official college profile page states no average GPA."
+ },
+ {
+  "id": 86,
+  "name": "Haverford College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.haverford.edu/sites/default/files/Office/President/CDS-2025-26.pdf",
+  "note": "C12 explicitly 'n/a' in CDS 2025-26 (verified in PDF)."
+ },
+ {
+  "id": 87,
+  "name": "College of the Holy Cross",
+  "status": "not_reported",
+  "year": "checked 2026-09",
+  "source_url": "https://www.holycross.edu/about-holy-cross/offices-services/office-of-institutional-research-analytics",
+  "note": "Newest published CDS is 2023-24 (outside allowed years); no average GPA on official admissions/at-a-glance pages."
+ },
+ {
+  "id": 88,
+  "name": "Macalester College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.macalester.edu/institutional-research/wp-content/uploads/sites/515/CDS_2025-2026_Macalester-College_completed-1.pdf",
+  "note": "C11/C12 left blank in CDS 2025-26 (form fields empty, verified); admissions pages publish no average GPA."
+ },
+ {
+  "id": 89,
+  "name": "Mount Holyoke College",
+  "status": "found",
+  "value": 3.88,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.mtholyoke.edu/directory/departments-offices-centers/institutional-planning-and-research/common-data-set",
+  "note": "C12 = 3.88; 85.45% submitted GPA (section C document linked from this official CDS page)."
+ },
+ {
+  "id": 90,
+  "name": "Bryn Mawr College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.brynmawr.edu/sites/default/files/media/documents/2026-04/CDS%202025-26%20Bryn%20Mawr%20Read%20Only.pdf",
+  "note": "C11 and C12 left blank in CDS 2025-26 (verified by rendering the C12 page)."
+ },
+ {
+  "id": 91,
+  "name": "Bucknell University",
+  "status": "found",
+  "value": 3.58,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.bucknell.edu/sites/default/files/institutional-research/common_data_set_2025-26.pdf",
+  "note": "C12 = 3.58; 100% submitted GPA. Fall 2025 cohort (C1); the PDF's cover header carries a stale '2024-2025' label but the file is Bucknell's official 2025-26 CDS."
+ },
+ {
+  "id": 92,
+  "name": "Colorado College",
+  "status": "found",
+  "value": 3.93,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.coloradocollege.edu/offices/ipe/documents/CDS-2025-2026_PDF_Final.pdf"
+ },
+ {
+  "id": 93,
+  "name": "Lafayette College",
+  "status": "found",
+  "value": 3.56,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://oir.lafayette.edu/wp-content/uploads/sites/196/2026/01/CDS2025-2026.pdf"
+ },
+ {
+  "id": 94,
+  "name": "Denison University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://denison.edu/sites/default/files/forms/2026-08/cds_du_20252026_published_updated2026.08.14.pdf"
+ },
+ {
+  "id": 95,
+  "name": "Franklin & Marshall College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://drive.google.com/file/d/1CpyIXEDF-2bMSlt8qXimtThANg0xsUlw/view"
+ },
+ {
+  "id": 96,
+  "name": "Occidental College",
+  "status": "found",
+  "value": 3.64,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.oxy.edu/sites/default/files/assets/Institutional_Research/CDS_C_2526.pdf"
+ },
+ {
+  "id": 97,
+  "name": "Pitzer College",
+  "status": "found",
+  "value": 3.95,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.pitzer.edu/documents/common-data-set-2025-2026"
+ },
+ {
+  "id": 98,
+  "name": "Scripps College",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.scrippscollege.edu/assessir/wp-content/uploads/sites/30/CDS_2025-2026_FINAL_V3.pdf"
+ },
+ {
+  "id": 99,
+  "name": "Indiana University Bloomington",
+  "status": "found",
+  "value": 3.8,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://iuapps.iu.edu/cds/?p=index&i=home&campus=Bloomington&year=2025&section=C.+First-Time%2C+%28Freshman%29+Admission",
+  "note": "C12 = 3.8; 94.94% submitted GPA. IU's official interactive CDS tool, campus=Bloomington, year 2025 (Fall 2025 cohort)."
+ },
+ {
+  "id": 100,
+  "name": "Michigan State University",
+  "status": "found",
+  "value": 3.74,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://edge.sitecorecloud.io/michiganstab57e-msustrategi129d-prod9868-7e5e/media/project/msu/ir/docs/cds/cds-2025-2026.pdf",
+  "note": "C12 = 3.74; 92.00% submitted GPA (verified in PDF)."
+ },
+ {
+  "id": 101,
+  "name": "North Carolina State University",
+  "status": "found",
+  "value": 3.84,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://report.isa.ncsu.edu/ir/cds/pdfs/CDS_2025-26.v1.pdf",
+  "note": "C12 = 3.84; 98.11% submitted GPA (PDF form fields FRSH_GPA verified)."
+ },
+ {
+  "id": 102,
+  "name": "Rensselaer Polytechnic Institute",
+  "status": "found",
+  "value": 3.93,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://rpi.box.com/s/xvg8qola8gporzjhu40rr1nadz417db0",
+  "note": "C12 = 3.93; 96% submitted GPA (official Box link from RPI Institutional Research; verified in PDF form fields)."
+ },
+ {
+  "id": 103,
+  "name": "University of Massachusetts Amherst",
+  "status": "found",
+  "value": 4.05,
+  "scale": "weighted",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.umass.edu/uair/media/1062/download",
+  "note": "C12 = 4.05; 99.3% submitted GPA. Value exceeds 4.0 so it reflects weighted GPAs (CDS does not label it explicitly)."
+ },
+ {
+  "id": 104,
+  "name": "University of Miami",
+  "status": "found",
+  "value": 3.75,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://irsa.miami.edu/facts-and-information/common-data-set/cds2526.pdf",
+  "note": "C12 = 3.75; 99.96% submitted GPA (verified by rendering the C12 page of the PDF)."
+ },
+ {
+  "id": 105,
+  "name": "Brandeis University",
+  "status": "found",
+  "value": 3.84,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.brandeis.edu/institutional-research/docs/cds-2025-26.pdf",
+  "note": "C12 = 3.84; 87.00% submitted GPA (verified in PDF)."
+ },
+ {
+  "id": 106,
+  "name": "Tulane University",
+  "status": "found",
+  "value": 3.67,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://tulane.box.com/s/1dgaxpa2x2ie24zgglrg0puwm1h7xrt5",
+  "note": "C12 = 3.67 (official 2025-26 CDS Box link from https://oair.tulane.edu/common-data-set; verified in PDF)."
+ },
+ {
+  "id": 107,
+  "name": "University of Connecticut",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://bpir.media.uconn.edu/wp-content/uploads/sites/3452/2026/08/UConn_CDS_2025_2026_WEB.pdf",
+  "note": "CDS 2025-26 omits C11/C12 entirely (section jumps from C10 to C13; verified); 2024-25 CDS also blank; no average GPA on admissions site."
+ },
+ {
+  "id": 108,
+  "name": "University of Pittsburgh",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.ir.pitt.edu/sites/default/files/2026-02/CDS_2025-2026_PGH-UA_0.pdf",
+  "note": "C12 left blank ('Click or tap here to enter text.') in CDS 2025-26; admissions class profile publishes only mid-50% weighted GPA ranges, not an average."
+ },
+ {
+  "id": 109,
+  "name": "Binghamton University (SUNY)",
+  "status": "found",
+  "value": 3.88,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.binghamton.edu/offices/oir/institutional-data/common-data-set.html",
+  "note": "C12 = 3.88; 100.00% submitted GPA. 'Common Data Set 2025' Google Drive file linked from this official OIR page; Fall 2025 cohort (C1), cover header carries a stale '2024-2025' label."
+ },
+ {
+  "id": 110,
+  "name": "Clemson University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://open.clemson.edu/cds/18/",
+  "note": "C12 Average High School GPA cell left blank in the scanned CDS 2025-26 (verified by rendering the page; Percent Submitting GPA = 100.00); admissions statistics page publishes no class-wide average GPA."
+ },
+ {
+  "id": 111,
+  "name": "Rutgers University--Newark",
+  "status": "not_reported",
+  "year": "checked 2026-09",
+  "source_url": "https://oirap.rutgers.edu/ReportingCommonDataSet.html",
+  "note": "Newest published Newark CDS is 2023-24 (outside allowed years); admissions publishes only mid-50% GPA ranges (e.g., 3.4-3.9), not an average."
+ },
+ {
+  "id": 112,
+  "name": "Syracuse University",
+  "status": "not_reported",
+  "year": "checked 2026-09",
+  "source_url": "https://www.syracuse.edu/admissions-aid/application-process/undergraduate/what-we-look-for/",
+  "note": "Syracuse publishes no Common Data Set and its official admissions pages state no average GPA."
+ },
+ {
+  "id": 113,
+  "name": "University at Buffalo (SUNY)",
+  "status": "found",
+  "value": 91.6,
+  "scale": "weighted",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.buffalo.edu/content/dam/www/oia/Common-Data-Sets/CDS_2025-2026.pdf",
+  "note": "C12 reported on a 100-point scale (91.6); 92.7% submitted GPA"
+ },
+ {
+  "id": 114,
+  "name": "University of California, Riverside",
+  "status": "found",
+  "value": 3.75,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://ir.ucr.edu/sites/default/files/2026-05/cds-2025-2026.pdf",
+  "note": "C12=3.75, 100% submitted GPA"
+ },
+ {
+  "id": 115,
+  "name": "Colorado School of Mines",
+  "status": "not_reported",
+  "year": "CDS not published since 2022-23",
+  "source_url": "https://ir.mines.edu/common-data-set/",
+  "note": "No 2024-25/2025-26 CDS; admissions page (undergraduate-admissions.mines.edu/first-year/) shows only an applicant-based '3.84 average unweighted GPA' for competitive applicants, not an enrolled-class average"
+ },
+ {
+  "id": 116,
+  "name": "Drexel University",
+  "status": "found",
+  "value": 3.79,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://drexel.edu/institutionalresearch/~/media/Drexel/Provost-Group/InstitutionalResearch/Documents/Factbook/CDS_2025-2026.pdf",
+  "note": "C12=3.79, 94.4% submitted GPA"
+ },
+ {
+  "id": 117,
+  "name": "New Jersey Institute of Technology",
+  "status": "found",
+  "value": 3.66,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.njit.edu/oie/external-surveys",
+  "note": "C12=3.6585 in official 2025-26 CDS xlsx (rounds to 3.66)"
+ },
+ {
+  "id": 118,
+  "name": "Stevens Institute of Technology",
+  "status": "found",
+  "value": 3.83,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://assets.stevens.edu/mviowpldu823/3UEOxHKHu8NfqyLxwqBmZP/86f651ed176aae469c805a50cee0d4ee/CDS-2025-2026-PDF_3.12_updated.pdf",
+  "note": "C12=3.83, 98.46% submitted GPA"
+ },
+ {
+  "id": 119,
+  "name": "Pepperdine University",
+  "status": "found",
+  "value": 3.57,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.pepperdine.edu/oie/institutional-research/common-data-set.htm",
+  "note": "C12=3.57, 99.9% submitted GPA (PDF hosted on Google Drive from this page)"
+ },
+ {
+  "id": 120,
+  "name": "University of Illinois Chicago",
+  "status": "found",
+  "value": 3.45,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://oir.uic.edu/wp-content/uploads/sites/213/2026/06/CDS_Final_2025_26.pdf",
+  "note": "C12=3.45, 98.61% submitted GPA (PDF form field FRSH_GPA)"
+ },
+ {
+  "id": 121,
+  "name": "Worcester Polytechnic Institute",
+  "status": "found",
+  "value": 3.9,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.wpi.edu/sites/default/files/2026-05/WPI_CDS_2025-2026.pdf",
+  "note": "C12=3.9, 88% submitted GPA"
+ },
+ {
+  "id": 122,
+  "name": "Yeshiva University",
+  "status": "not_reported",
+  "year": "no CDS 2024-25/2025-26",
+  "source_url": "https://www.yu.edu/oir",
+  "note": "OIR page's most recent CDS is 2023-24 (outside accepted years); no official class profile average GPA found"
+ },
+ {
+  "id": 123,
+  "name": "American University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.american.edu/provost/oira/upload/CDS-PDF-2025-2026_PDF_American-University_WEB_FINAL_04-23-26.pdf",
+  "note": "C11/C12 left blank in 2025-26 and 2024-25 CDS; admissions pages publish only middle-50% GPA ranges, no average"
+ },
+ {
+  "id": 124,
+  "name": "Baylor University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://ir.web.baylor.edu/sites/g/files/ecbvkj1621/files/2026-04/cds-pdf-2025-2026-final.pdf",
+  "note": "C11/C12 blank in 2025-26 and 2024-25 CDS; Baylor does not publish a formal average GPA"
+ },
+ {
+  "id": 125,
+  "name": "Howard University",
+  "status": "found",
+  "value": 3.68,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://ira.howard.edu/sites/ira.howard.edu/files/2026-06/CDS%20PDF%202526_06.25.26.pdf",
+  "note": "C12=3.68, 100% submitted GPA (PDF form field FRSH_GPA)"
+ },
+ {
+  "id": 126,
+  "name": "Marquette University",
+  "status": "found",
+  "value": 3.61,
+  "scale": "4.0 scale",
+  "year": "CDS 2024-25",
+  "source_url": "https://www.marquette.edu/academic-effectiveness/institutional-research-analysis/documents/cds-2024-2025_final.pdf",
+  "note": "2025-26 CDS leaves C11/C12 blank; 2024-25 C12=3.61, 100% submitted GPA"
+ },
+ {
+  "id": 127,
+  "name": "Rochester Institute of Technology",
+  "status": "found",
+  "value": 3.9,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.rit.edu/institutionalresearch/sites/rit.edu.institutionalresearch/files/documents/Common%20Data%20Set%20PDFs/RIT_CDS_2025_26_FINAL_20260603.pdf",
+  "note": "C12=3.90, 98.6% submitted GPA"
+ },
+ {
+  "id": 128,
+  "name": "Southern Methodist University",
+  "status": "found",
+  "value": 3.69,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.smu.edu/-/media/site/ir/commondatasets/2025/cds-2025-26-part-c-first-time-freshman-final.pdf",
+  "note": "C12=3.69, 100% submitted GPA"
+ },
+ {
+  "id": 129,
+  "name": "University of California, Santa Cruz",
+  "status": "found",
+  "value": 3.87,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://mediafiles.ucsc.edu/iraps/common-data-set/common-data-set-2025-26.pdf",
+  "note": "C12=3.87, 99.26% submitted GPA"
+ },
+ {
+  "id": 130,
+  "name": "University of Delaware",
+  "status": "found",
+  "value": 3.98,
+  "scale": "4.0 scale",
+  "year": "CDS 2024-25",
+  "source_url": "https://bpb-us-w2.wpmucdn.com/sites.udel.edu/dist/e/2019/files/2025/07/CDS2425_UDelaware.pdf",
+  "note": "2025-26 CDS not yet posted (ire.udel.edu says content forthcoming); 2024-25 C12=3.98, 98.7% submitted GPA"
+ },
+ {
+  "id": 131,
+  "name": "University of South Florida",
+  "status": "found",
+  "value": 4.09,
+  "scale": "weighted",
+  "year": "CDS 2025-26",
+  "source_url": "https://www.usf.edu/ods/documents/cds/usf-cds-2025-2026-final-v2.pdf",
+  "note": "C12=4.09 (>4.0, weighted/recalculated), 99.9% submitted GPA (PDF form field FRSH_GPA)"
+ },
+ {
+  "id": 132,
+  "name": "Florida International University",
+  "status": "found",
+  "value": 4.0,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://aim.fiu.edu/cds/CDS2025.pdf",
+  "note": "C12=4.0, 99% submitted GPA (PDF form field FRSH_GPA); Florida publics recalculate GPA with weighting, so likely weighted-recalculated despite not exceeding 4.0"
+ },
+ {
+  "id": 133,
+  "name": "Fordham University",
+  "status": "found",
+  "value": 3.61,
+  "scale": "4.0 scale",
+  "year": "Class of 2029 admissions profile (Fall 2025 enrolled)",
+  "source_url": "https://www.fordham.edu/undergraduate-admission/why-fordham/admission-facts/",
+  "note": "Official admission facts page: Enrolled High School GPA 3.61 (admitted 3.75); recent CDS documents are behind Fordham CAS login, public CDS archive stops at 2019-20"
+ },
+ {
+  "id": 134,
+  "name": "Rutgers University-Camden",
+  "status": "not_reported",
+  "year": "no CDS 2024-25/2025-26",
+  "source_url": "https://oirds.rutgers.edu/ReportingCommonDataSet.html",
+  "note": "Latest published Camden CDS is 2023-24 (outside accepted years); no official class profile average GPA found"
+ },
+ {
+  "id": 135,
+  "name": "Texas Christian University",
+  "status": "not_reported",
+  "year": "CDS 2025-26",
+  "source_url": "https://ir.tcu.edu/wp-content/uploads/2026/03/CDS-2025-26-TCU.pdf",
+  "note": "C11/C12 blank in 2025-26 and 2024-25 CDS; admissions FAQ publishes only mid-50% GPA 3.65-3.95 for fall 2025, no average"
+ },
+ {
+  "id": 136,
+  "name": "University of Colorado Boulder",
+  "status": "found",
+  "value": 3.77,
+  "scale": "4.0 scale",
+  "year": "CDS 2025-26",
+  "source_url": "https://data.colorado.edu/reports/common-data-set",
+  "note": "C12=3.77, 99.9% submitted GPA (2025-2026 Common Data Set.html in the linked public SharePoint folder)"
+ }
+]

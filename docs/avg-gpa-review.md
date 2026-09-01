@@ -1,0 +1,79 @@
+# 신입생 평균 GPA 리서치 (2026-09-01)
+
+- 범위: 136곳 전수 · 출처: 각 대학 CDS C12 또는 공식 class profile만 · 확보 71곳 / 미공개 65곳
+- 4.0 초과 값은 weighted 평균(출처 미표기 시에도 수학적으로 명백)으로 표기 · SUNY 2곳(Stony Brook·Buffalo)은 100점 만점 스케일
+- 미공개는 CDS C12 공란/N-A를 원문에서 직접 확인한 것 (톱 LAC·일부 톱 사립은 발표 안 함)
+
+## 확보 값
+
+- 1 Princeton University: 3.96 · CDS 2025-26 · https://ir.princeton.edu/sites/g/files/toruqf2041/files/documents/CDS_2526_Princeton_v2.pdf
+- 3 Harvard University: 4.22 (weighted) · CDS 2025-26 · https://bpb-us-e1.wpmucdn.com/sites.harvard.edu/dist/6/210/files/2026/07/CDS_2025-2026.pdf
+- 4 Stanford University: 3.94 · CDS 2025-26 · https://drive.google.com/file/d/1GIPKgVj1d86dkmLkHI_mZVCk_iY6kiCp/view
+- 6 University of Chicago: 4.54 (weighted) · CDS 2025-26 · https://data.uchicago.edu/files/2026/08/CDS_2025-2026_to_publish-1.pdf
+- 8 Johns Hopkins University: 3.93 · CDS 2025-26 · https://oira.jhu.edu/wp-content/uploads/2025-2026-CDS-Johns-Hopkins-University-v2.pdf
+- 10 University of Pennsylvania: 3.9 · CDS 2025-26 · https://upenn.box.com/s/woo7d85yxpol6j9e2o121aucjc6dc1k5
+- 16 University of California Berkeley: 3.9 · CDS 2025-26 · https://opa.berkeley.edu/common-data-set
+- 18 University of California Los Angeles: 3.94 · CDS 2025-26 · https://apb.ucla.edu/file/d1ab04b3-ee89-4cf2-9124-8dc0471b5e5a
+- 19 Vanderbilt University: 3.9 · CDS 2025-26 · https://cdn.vanderbilt.edu/vu-wpfsx/wp-content/uploads/sites/70/2026/07/CDS_2025-2026.xlsx
+- 20 Carnegie Mellon University: 3.89 · CDS 2025-26 · https://www.cmu.edu/ira/CDS/pdf/cds_2025_26/cds-2025-c-first-time-first-year-admission.pdf
+- 21 University of Michigan Ann Arbor: 3.9 · CDS 2025-26 · https://obp.umich.edu/wp-content/uploads/pubdata/cds/cds_2025-26_umaa.pdf
+- 24 Emory University: 3.8 · CDS 2025-26 · https://provost.emory.edu/planning-administration/_includes/documents/sections/institutional-data/emory-common-date-set-2025-2026.pdf
+- 26 University of North Carolina at Chapel Hill: 4.47 (weighted) · CDS 2025-26 · https://oira.unc.edu/wp-content/uploads/sites/297/2026/06/CDS_UNCCH_2025-26_20260615.pdf
+- 28 University of Southern California: 3.85 · CDS 2025-26 · https://oir.usc.edu/wp-content/uploads/sites/3/2026/10/CDS_2025-26_FINAL.pdf
+- 29 University of California San Diego: 3.88 · CDS 2025-26 · https://ir.ucsd.edu/stats/undergrad/CDS-2025-2026-Final2.pdf
+- 30 University of Florida: 3.9 · CDS 2025-26 · https://data-apps.ir.aa.ufl.edu/public/cds/CDS%202025-26_v8_08.14.2026.pdf
+- 32 Georgia Institute of Technology: 4.17 (weighted) · CDS 2025-26 · https://irp.gatech.edu/sites/default/files/CDS/CDS_2025-2026_FINAL_R3_30MAR2026.pdf
+- 33 New York University: 3.81 · CDS 2025-26 · https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL%20(no%20G).pdf
+- 34 University of California Davis: 4.03 (weighted) · CDS 2025-26 · https://aggiedata.ucdavis.edu/sites/g/files/dgvnsk1841/files/media/documents/CDS_UCD_0.pdf
+- 39 University of Wisconsin-Madison: 3.91 · CDS 2025-26 · https://uwmadison.box.com/s/ilx9kil11ninf8vwj1z87vumhuvpw4px
+- 40 University of California Santa Barbara: 4.29 (weighted) · CDS 2025-26 · https://drive.google.com/file/d/1FIkvY5dANho45ioG7-JHgO3IPH6-ui1W/view
+- 42 Boston University: 3.86 · CDS 2025-26 · https://www.bu.edu/asir/files/2026/05/CDS-2025-2026-2.pdf
+- 44 University of Maryland, College Park: 4.41 (weighted) · CDS 2025-26 · https://www.irpa.umd.edu/InstitutionalData/CommonDataSet/CDS_2025-2026.xlsx
+- 45 University of Washington, Seattle: 3.84 · CDS 2025-26 · https://cdn.uw.edu/wp-content/uploads/sites/162/2026/02/27111247/CDS_2025-2026_Seattle.pdf
+- 48 Purdue University: 3.81 · CDS 2025-26 · https://www.purdue.edu/idata/wp-content/uploads/2026/04/CDS-2025-2026.xlsx
+- 49 University of Georgia: 4.17 (weighted) · CDS 2025-26 · https://oir.uga.edu/wp-content/uploads/UGA_CDS_2025-2026.pdf
+- 50 University of Rochester: 3.73 · CDS 2025-26 · https://www.rochester.edu/provost/wp-content/uploads/2026/06/CDS-2025-26-completed-for-web.pdf
+- 51 Case Western Reserve University: 3.78 · CDS 2025-26 · https://case.edu/ir/sites/default/files/2026-02/CDS%202025-26%20Adjusted%20Final.pdf
+- 54 Virginia Tech: 4.09 (weighted) · CDS 2024-25 · https://web.archive.org/web/2026id_/https://aie.vt.edu/content/dam/aie_vt_edu/common-data-set/24-25/2024-2025-CDS.xlsx
+- 56 College of William & Mary: 4.34 (weighted) · CDS 2025-26 · https://www.wm.edu/offices/ir/university_data/cds/cds_2025-26_c.pdf
+- 57 University of California, Merced: 3.59 · CDS 2025-26 · https://cie.ucmerced.edu/sites/g/files/ufvvjh616/f/page/documents/cds_2025-26_uc_merced.xlsx
+- 58 Villanova University: 3.87 · CDS 2025-26 · https://www.villanova.edu/content/dam/villanova/provost/decision_support/CDS-2025-2026-v3.pdf
+- 60 Penn State University Park: 3.67 · CDS 2025-26 · https://opair.psu.edu/files/2026/07/UniversityParkCDS_2025_2026_UniversityPark_v2.pdf
+- 61 Santa Clara University: 3.72 · CDS 2025-26 · https://www.scu.edu/media/offices/institutional-research/fampf/common-data-set/rba13-Common_Data_Set_2025-2026.pdf
+- 62 Stony Brook University: 94.48/100 · CDS 2025-26 · https://www.stonybrook.edu/irpe/_media/Common_data_sets/CDS_2025-2026.xlsx
+- 74 Davidson College: 3.85 · CDS 2025-26 · https://www.davidson.edu/media/9718/download
+- 82 Colgate University: 3.85 · CDS 2025-26 · https://www.colgate.edu/sites/default/files/2026-07/CDS-PDF-2025-2026.pdf
+- 83 University of Richmond: 3.81 · CDS 2025-26 · https://ifx.richmond.edu/pdfs/CDS2025-2026SectionC.pdf
+- 89 Mount Holyoke College: 3.88 · CDS 2025-26 · https://www.mtholyoke.edu/directory/departments-offices-centers/institutional-planning-and-research/common-data-set
+- 91 Bucknell University: 3.58 · CDS 2025-26 · https://www.bucknell.edu/sites/default/files/institutional-research/common_data_set_2025-26.pdf
+- 92 Colorado College: 3.93 · CDS 2025-26 · https://www.coloradocollege.edu/offices/ipe/documents/CDS-2025-2026_PDF_Final.pdf
+- 93 Lafayette College: 3.56 · CDS 2025-26 · https://oir.lafayette.edu/wp-content/uploads/sites/196/2026/01/CDS2025-2026.pdf
+- 96 Occidental College: 3.64 · CDS 2025-26 · https://www.oxy.edu/sites/default/files/assets/Institutional_Research/CDS_C_2526.pdf
+- 97 Pitzer College: 3.95 · CDS 2025-26 · https://www.pitzer.edu/documents/common-data-set-2025-2026
+- 99 Indiana University Bloomington: 3.8 · CDS 2025-26 · https://iuapps.iu.edu/cds/?p=index&i=home&campus=Bloomington&year=2025&section=C.+First-Time%2C+%28Freshman%29+Admission
+- 100 Michigan State University: 3.74 · CDS 2025-26 · https://edge.sitecorecloud.io/michiganstab57e-msustrategi129d-prod9868-7e5e/media/project/msu/ir/docs/cds/cds-2025-2026.pdf
+- 101 North Carolina State University: 3.84 · CDS 2025-26 · https://report.isa.ncsu.edu/ir/cds/pdfs/CDS_2025-26.v1.pdf
+- 102 Rensselaer Polytechnic Institute: 3.93 · CDS 2025-26 · https://rpi.box.com/s/xvg8qola8gporzjhu40rr1nadz417db0
+- 103 University of Massachusetts Amherst: 4.05 (weighted) · CDS 2025-26 · https://www.umass.edu/uair/media/1062/download
+- 104 University of Miami: 3.75 · CDS 2025-26 · https://irsa.miami.edu/facts-and-information/common-data-set/cds2526.pdf
+- 105 Brandeis University: 3.84 · CDS 2025-26 · https://www.brandeis.edu/institutional-research/docs/cds-2025-26.pdf
+- 106 Tulane University: 3.67 · CDS 2025-26 · https://tulane.box.com/s/1dgaxpa2x2ie24zgglrg0puwm1h7xrt5
+- 109 Binghamton University (SUNY): 3.88 · CDS 2025-26 · https://www.binghamton.edu/offices/oir/institutional-data/common-data-set.html
+- 113 University at Buffalo (SUNY): 91.6/100 · CDS 2025-26 · https://www.buffalo.edu/content/dam/www/oia/Common-Data-Sets/CDS_2025-2026.pdf
+- 114 University of California, Riverside: 3.75 · CDS 2025-26 · https://ir.ucr.edu/sites/default/files/2026-05/cds-2025-2026.pdf
+- 116 Drexel University: 3.79 · CDS 2025-26 · https://drexel.edu/institutionalresearch/~/media/Drexel/Provost-Group/InstitutionalResearch/Documents/Factbook/CDS_2025-2026.pdf
+- 117 New Jersey Institute of Technology: 3.66 · CDS 2025-26 · https://www.njit.edu/oie/external-surveys
+- 118 Stevens Institute of Technology: 3.83 · CDS 2025-26 · https://assets.stevens.edu/mviowpldu823/3UEOxHKHu8NfqyLxwqBmZP/86f651ed176aae469c805a50cee0d4ee/CDS-2025-2026-PDF_3.12_updated.pdf
+- 119 Pepperdine University: 3.57 · CDS 2025-26 · https://www.pepperdine.edu/oie/institutional-research/common-data-set.htm
+- 120 University of Illinois Chicago: 3.45 · CDS 2025-26 · https://oir.uic.edu/wp-content/uploads/sites/213/2026/06/CDS_Final_2025_26.pdf
+- 121 Worcester Polytechnic Institute: 3.9 · CDS 2025-26 · https://www.wpi.edu/sites/default/files/2026-05/WPI_CDS_2025-2026.pdf
+- 125 Howard University: 3.68 · CDS 2025-26 · https://ira.howard.edu/sites/ira.howard.edu/files/2026-06/CDS%20PDF%202526_06.25.26.pdf
+- 126 Marquette University: 3.61 · CDS 2024-25 · https://www.marquette.edu/academic-effectiveness/institutional-research-analysis/documents/cds-2024-2025_final.pdf
+- 127 Rochester Institute of Technology: 3.9 · CDS 2025-26 · https://www.rit.edu/institutionalresearch/sites/rit.edu.institutionalresearch/files/documents/Common%20Data%20Set%20PDFs/RIT_CDS_2025_26_FINAL_20260603.pdf
+- 128 Southern Methodist University: 3.69 · CDS 2025-26 · https://www.smu.edu/-/media/site/ir/commondatasets/2025/cds-2025-26-part-c-first-time-freshman-final.pdf
+- 129 University of California, Santa Cruz: 3.87 · CDS 2025-26 · https://mediafiles.ucsc.edu/iraps/common-data-set/common-data-set-2025-26.pdf
+- 130 University of Delaware: 3.98 · CDS 2024-25 · https://bpb-us-w2.wpmucdn.com/sites.udel.edu/dist/e/2019/files/2025/07/CDS2425_UDelaware.pdf
+- 131 University of South Florida: 4.09 (weighted) · CDS 2025-26 · https://www.usf.edu/ods/documents/cds/usf-cds-2025-2026-final-v2.pdf
+- 132 Florida International University: 4.0 · CDS 2025-26 · https://aim.fiu.edu/cds/CDS2025.pdf
+- 133 Fordham University: 3.61 · Class of 2029 admissions profile (Fall 2025 enrolled) · https://www.fordham.edu/undergraduate-admission/why-fordham/admission-facts/
+- 136 University of Colorado Boulder: 3.77 · CDS 2025-26 · https://data.colorado.edu/reports/common-data-set

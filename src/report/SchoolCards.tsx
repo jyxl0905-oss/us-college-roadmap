@@ -47,7 +47,7 @@ export default function SchoolCards({ schools, satBand, majorPrimary, aidStatus 
 
             {s.avg_gpa != null && (
               <p className="mt-2.5 text-xs text-gray-500">
-                {t('신입생 평균 GPA', 'Avg. GPA')} <span className="font-semibold text-gray-800">{s.avg_gpa}</span>
+                {t('신입생 평균 GPA', 'Avg. GPA')} <span className="font-semibold text-gray-800">{s.avg_gpa}{s.avg_gpa_scale === '100 scale' ? '/100' : ''}</span>
                 {s.avg_gpa_scale === 'weighted' && <span className="text-gray-400"> (weighted)</span>}
                 {s.avg_gpa_year && <span className="text-gray-400"> · {s.avg_gpa_year}</span>}
               </p>

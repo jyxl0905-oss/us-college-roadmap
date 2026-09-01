@@ -190,7 +190,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
             [
               t('신입생 평균 GPA', 'Avg. GPA of enrolled students'),
               s.avg_gpa != null
-                ? `${s.avg_gpa}${s.avg_gpa_scale === 'weighted' ? t(' (weighted)', ' (weighted)') : ''}${s.avg_gpa_year ? ` · ${s.avg_gpa_year}` : ''}`
+                ? `${s.avg_gpa}${s.avg_gpa_scale === '100 scale' ? '/100' : ''}${s.avg_gpa_scale === 'weighted' ? ' (weighted)' : ''}${s.avg_gpa_year ? ` · ${s.avg_gpa_year}` : ''}`
                 : t('미공개', 'Not disclosed'),
             ],
             [
