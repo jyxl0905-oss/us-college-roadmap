@@ -18,6 +18,7 @@ function GoogleIcon() {
 
 export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void }) {
   const [error, setError] = useState<string | null>(null)
+  const [shared, setShared] = useState(false) // 링크 복사 피드백
 
   const googleLogin = async () => {
     if (!supabase) return
@@ -28,6 +29,21 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
       options: { redirectTo: 'https://uscollegeroadmap.com' },
     })
     if (error) setError(t('구글 로그인이 지금은 안 돼요 — 아래의 이메일 로그인을 이용해 주세요.', 'Google sign-in is unavailable right now — please use email login below.'))
+  }
+
+  // 공유하기 — 폰이면 시스템 공유 시트, 아니면 링크 복사
+  const share = async () => {
+    const url = 'https://uscollegeroadmap.com'
+    const data = { title: t('미국 대입 로드맵', 'US College Roadmap'), text: t('혼자 미국 대입을 준비하는 학생들을 위한 무료 툴', 'A free tool for students preparing for US college admissions on their own'), url }
+    if (navigator.share) {
+      try { await navigator.share(data) } catch { /* 사용자가 취소 */ }
+      return
+    }
+    try {
+      await navigator.clipboard.writeText(url)
+      setShared(true)
+      setTimeout(() => setShared(false), 1800)
+    } catch { /* 클립보드 미지원 */ }
   }
 
   const cta = (
@@ -71,11 +87,14 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
         </p>
 
         {/* 공유 요청 — 첫 화면에서 바로 보이게 */}
-        <p className="mt-4 rounded-xl border border-blue-100 bg-blue-50/60 px-4 py-3 text-sm leading-relaxed text-blue-900">
+        <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/60 px-4 py-3 text-sm leading-relaxed text-blue-900">
           {t('혼자 미국 대입을 준비하는 학생들을 위한 툴입니다.', 'A tool for students preparing for US college admissions on their own.')}
           <br />
-          {t('주변에 필요한 학생이 있다면 이 페이지를 공유해주세요. 🙏', 'If you know a student who needs this, please share this page. 🙏')}
-        </p>
+          {t('주변에 필요한 학생이 있다면 이 페이지를 공유해주세요.', 'If you know a student who needs this, please share this page.')}{' '}
+          <button onClick={() => void share()} className="mt-1.5 inline-flex items-center gap-1 rounded-full border border-blue-300 bg-white px-3 py-1 text-xs font-semibold text-blue-700 active:bg-blue-50">
+            {shared ? t('링크 복사됨 ✓', 'Link copied ✓') : t('🔗 공유하기', '🔗 Share')}
+          </button>
+        </div>
 
         <div className="mt-5">{cta}</div>
 
