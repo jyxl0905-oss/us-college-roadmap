@@ -273,7 +273,7 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
         return (
           <ChoiceStep
             title={t('문과·이과 중 어느 쪽인가요?', 'STEM or humanities/social?')}
-            subtitle={t('관심 있는 계열을 골라주세요. 다음 질문에서 그 계열 전공만 보여드려요.', "Pick a track — we'll show only those majors next.")}
+            subtitle={t('관심 있는 계열을 골라주세요. 1순위 전공은 이 계열에서 고르고, 2순위는 계열 상관없이 고를 수 있어요.', "Pick a track for your first-choice major — your second choice can be from either track.")}
             options={[
               { value: 'stem', label: t('이과 (STEM)', 'STEM'), description: t('CS, 공학, 수학, 자연과학, 프리메드', 'CS, engineering, math, sciences, pre-med') },
               { value: 'liberal', label: t('문과 (Humanities·Social)', 'Humanities / Social'), description: t('비즈니스·경제, 사회과학, 인문, 예술', 'Business, social sciences, humanities, arts') },
@@ -308,9 +308,11 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
         return (
           <ChoiceStep
             title={t('2순위 전공도 있나요? (선택)', 'A second-choice major? (optional)')}
+            subtitle={t('1순위와 다른 계열(문과↔이과)을 골라도 괜찮아요. 내 계열 전공을 먼저, 그다음 다른 계열 전공을 보여드려요.', 'Feel free to cross tracks (STEM ↔ humanities). Your track is listed first, then the other.')}
             options={[
               { value: '', label: t('없어요 / 건너뛰기', 'None / skip') },
-              ...majorsByTrack(answers.majorTrack === 'liberal' ? 'liberal' : 'stem')
+              // 2순위는 계열 제한 없음 — 1순위 계열 먼저, 그다음 반대 계열 (사용자 피드백)
+              ...[...majorsByTrack(answers.majorTrack === 'liberal' ? 'liberal' : 'stem'), ...majorsByTrack(answers.majorTrack === 'liberal' ? 'stem' : 'liberal')]
                 .filter((m) => m.value !== answers.majorPrimary)
                 .map((m) => ({ value: m.value, label: majorDisplay(m) })),
             ]}
