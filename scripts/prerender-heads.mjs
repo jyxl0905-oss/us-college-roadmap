@@ -28,10 +28,10 @@ function emit(path, title, description) {
   writeFileSync(file, render(title, description, path))
 }
 
-// ── 학교 136곳 ──
+// ── 학교 143곳 ──
 const schools = JSON.parse(readFileSync('src/data/schools.index.json', 'utf8'))
 for (const s of schools) {
-  const rank = s.kind === 'lac' ? `리버럴 아츠 칼리지 ${s.lac_rank ?? ''}위` : `미국 대학 순위 ${s.usnews_rank}위`
+  const rank = s.kind === 'lac' ? `리버럴 아츠 칼리지 ${s.lac_rank ?? ''}위` : s.kind === 'art' ? '미술·디자인 전문학교, 포트폴리오 요구사항' : `미국 대학 순위 ${s.usnews_rank}위`
   const rate = s.overall_accept_rate != null ? ` 합격률 ${s.overall_accept_rate}%,` : ''
   emit(
     `/schools/${slugify(s.name)}`,
@@ -52,8 +52,8 @@ for (const m of majors) {
 }
 
 // ── 주요 목록 페이지 ──
-emit('/schools', '미국 명문대 합격률·합격 전략 — 대학 136+ 공식 데이터 | 미국 대입 로드맵',
-  '미국 대학 136곳의 합격률·국제학생 합격률·SAT 중간 50%·보충 에세이·장학금을 공식 출처(CDS)로만 정리 — 종합대 톱 100 + 리버럴 아츠 칼리지 35곳.')
+emit('/schools', '미국 명문대 합격률·합격 전략 — 대학 143+ 공식 데이터 | 미국 대입 로드맵',
+  '미국 대학 143곳의 합격률·국제학생 합격률·SAT 중간 50%·보충 에세이·장학금을 공식 출처(CDS)로만 정리 — 종합대 톱 100 + 리버럴 아츠 칼리지 35곳 + 미술·디자인 전문학교 7곳.')
 emit('/majors', '미국 대학 전공 가이드 — 유명 전공부터 희귀 전공까지 73+ | 미국 대입 로드맵',
   '컴퓨터과학부터 해양생물학·고고학까지 미국 대학 전공 73개의 진로·연봉 전망(미 노동통계국), 추천 AP, 4년 로드맵을 정리했어요.')
 emit('/map', '미국 대학 지도 — 명문대 136곳 위치를 한눈에 | 미국 대입 로드맵',

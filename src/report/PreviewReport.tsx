@@ -49,7 +49,7 @@ export default function PreviewReport({ answers, onContinue }: PreviewReportProp
           ? supabase.from('schools').select('*').eq('tier', profile.target_tier)
           : null
     schoolsQuery?.then(({ data }) => {
-      if (data) setSchools(localizeRows(data as School[]).sort((a, b) => a.usnews_rank - b.usnews_rank))
+      if (data) setSchools(localizeRows(data as School[]).sort((a, b) => (a.usnews_rank ?? 9999) - (b.usnews_rank ?? 9999)))
     })
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 

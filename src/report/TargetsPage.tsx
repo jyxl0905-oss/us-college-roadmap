@@ -6,6 +6,7 @@ import type { ProfileRow } from '../lib/profile'
 import type { School } from '../lib/types'
 import { tierLabels } from '../onboarding/labels'
 import SchoolCards from './SchoolCards'
+import ArtSchoolRecs from '../browse/ArtSchoolRecs'
 import AidRanking from './AidRanking'
 import SchoolLogo from '../browse/SchoolLogo'
 import FitPicker, { saveFit, fitChipColors } from '../browse/FitPicker'
@@ -55,7 +56,7 @@ export default function TargetsPage({ userId, profile }: { userId: string; profi
           ? supabase.from('schools').select('*').eq('tier', profile.target_tier)
           : null
     if (!q) { setSchools([]); return }
-    q.then(({ data }) => setSchools(localizeRows((data ?? []) as School[]).sort((a, b) => a.usnews_rank - b.usnews_rank)))
+    q.then(({ data }) => setSchools(localizeRows((data ?? []) as School[]).sort((a, b) => (a.usnews_rank ?? 9999) - (b.usnews_rank ?? 9999))))
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (schools === null) return <p className="mt-20 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
@@ -71,6 +72,8 @@ export default function TargetsPage({ userId, profile }: { userId: string; profi
               : t(`${schools.length}개`, `${schools.length} school${schools.length === 1 ? '' : 's'}`)}
           </span>
         </div>
+
+        <ArtSchoolRecs profile={profile} className="mt-3" />
 
         {schools.length === 0 ? (
           <div className="mt-8 rounded-2xl border-2 border-dashed border-gray-300 bg-white px-5 py-8 text-center">

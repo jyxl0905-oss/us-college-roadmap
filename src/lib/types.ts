@@ -92,8 +92,8 @@ export interface School {
   id: number
   name: string
   name_ko: string
-  usnews_rank: number
-  tier: Tier
+  usnews_rank: number | null // 미술·디자인 전문학교(kind='art')는 US News 종합대 순위가 없어 null
+  tier: Tier | null
   sat_mid50_low: number | null
   sat_mid50_high: number | null
   gpa_note: string | null
@@ -129,7 +129,7 @@ export interface School {
   // F4: CDS C7에서 Very Important로 공시된 요소 슬러그 (null = 미확인/미공시)
   c7_very_important?: string[] | null
   c7_source_url?: string | null
-  kind?: 'university' | 'lac' // 학교 종류 (기본 university)
+  kind?: 'university' | 'lac' | 'art' // 학교 종류 (기본 university, art=미술·디자인 전문학교)
   lac_rank?: number | null // LAC 순위 (US News National Liberal Arts Colleges)
   // 재정지원 (공식: CDS H6·학교 페이지)
   intl_aid_count?: number | null
@@ -146,6 +146,10 @@ export interface School {
   essay_change?: string | null
   essay_cycle?: string | null
   essay_source_url?: string | null
+  // 미술·디자인 전문학교 — 포트폴리오 요구사항·개설 전공 (공식 입학처 확인분)
+  portfolio_req?: string | null
+  portfolio_source_url?: string | null
+  art_programs?: string[] | null // arts/graphic_design/fashion_design/film/architecture/game_design/music/industrial_design/interior_design
 }
 
 export interface ChecklistItem {

@@ -14,6 +14,7 @@ import rankingsData from '../data/major-rankings.json'
 import { directAdmitParent } from '../data/majors'
 import schoolsIndex from '../data/schools.index.json'
 import SchoolLogo from '../browse/SchoolLogo'
+import { artSchoolsForMajors } from '../data/artSchools'
 import { slugify } from '../lib/router'
 
 interface Occupation { title: string; pay: string | null; pay_year: number | null; outlook: string | null; window: string | null; url: string | null; note?: string | null }
@@ -302,6 +303,25 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
             </p>
           </details>
         ))}
+
+        {/* 창작 계열 전공: 이 전공을 공식 개설한 미술·디자인 전문학교 자동 추천 */}
+        {(() => {
+          const list = artSchoolsForMajors([majorKey])
+          if (list.length === 0) return null
+          return (
+            <div className="mt-4 rounded-xl border-2 border-pink-200 bg-pink-50 px-4 py-3.5">
+              <p className="font-semibold text-gray-900">{t('🎨 이 전공 특화 미술·디자인 전문학교', '🎨 Art & design schools for this major')} <span className="ml-1 text-xs font-normal text-gray-400">{list.length}{t('곳', '')}</span></p>
+              <p className="mt-0.5 text-xs text-pink-900">{t('이 전공을 공식 개설한 전문학교예요. 종합대와 달리 포트폴리오 심사가 중심이라 준비 방식이 달라요 — 각 학교 카드에서 포트폴리오 요구사항을 확인하세요.', 'Specialized schools that officially offer this major. Unlike universities, admissions center on a portfolio review — check each school card for portfolio requirements.')}</p>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {list.map((sc) => (
+                  <button key={sc.id} onClick={() => navigate(`/schools/${slugify(sc.name)}`)} className="flex items-center gap-1.5 rounded-full border border-pink-200 bg-white px-2.5 py-1 text-xs text-gray-700 active:bg-gray-50">
+                    <SchoolLogo schoolId={sc.id} name={sc.name} size={16} />{sc.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )
+        })()}
 
         {/* 이 전공을 전공 단위로 뽑는 학교 (direct-admit 조사 데이터) */}
         {(() => {

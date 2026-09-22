@@ -61,6 +61,14 @@ const domains: Record<number, string> = {
   134: 'camden.rutgers.edu',
   135: 'tcu.edu',
   136: 'colorado.edu',
+  // 미술·디자인 전문학교 (2026-09 추가)
+  137: 'pratt.edu',
+  138: 'newschool.edu',
+  139: 'risd.edu',
+  140: 'calarts.edu',
+  141: 'cooper.edu',
+  142: 'saic.edu',
+  143: 'sva.edu',
 }
 
 // 고해상도 공식 마크 — 각 대학 영문 위키피디아 인포박스의 현행 인장/방패 — 표시 크기(≤52px, 2x)에 맞춘 120px 썸네일로 전송량 최소화 (2026-08-10 63곳 전수 검증)
@@ -223,7 +231,10 @@ export function schoolLogoSources(schoolId: number): string[] {
 }
 
 // 학교 공식 웹사이트 — 파비콘용 도메인을 그대로 사용 (전수 검증됨)
+// 도메인 루트가 상위 기관인 경우(파슨스 → 뉴스쿨) 학교 페이지로 직접 연결
+const WEBSITE_OVERRIDE: Record<number, string> = { 138: 'https://www.newschool.edu/parsons/' }
 export function schoolWebsite(schoolId: number): string | null {
+  if (WEBSITE_OVERRIDE[schoolId]) return WEBSITE_OVERRIDE[schoolId]
   const d = domains[schoolId]
   return d ? `https://www.${d}` : null
 }

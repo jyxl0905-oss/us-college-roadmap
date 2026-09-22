@@ -17,6 +17,8 @@ const bandMid: Record<string, number> = {
 
 export function dataFitOf(profile: ProfileRow, school: School): Fit | null {
   if (profile.sat_status !== 'taken' || !profile.sat_band) return null
+  // 미술·디자인 전문학교는 포트폴리오 심사가 중심이라 SAT 기준 분류가 오해를 부름 → 표시 안 함
+  if (school.kind === 'art') return null
   const my = bandMid[profile.sat_band]
   if (my === undefined) return null
   if (school.intl_accept_rate !== null && school.intl_accept_rate < 10) return 'reach'

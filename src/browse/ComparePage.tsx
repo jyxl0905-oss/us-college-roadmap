@@ -7,7 +7,7 @@ import { majorLabel, directAdmitParent } from '../data/majors'
 import type { ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
 import SchoolLogo from './SchoolLogo'
-import { uniGroupOf, uniGroupTitles } from './rankGroups'
+import { rankBadge } from './rankGroups'
 import { t } from '../i18n'
 import { timingLabel } from '../lib/academics'
 
@@ -83,7 +83,7 @@ export default function ComparePage({ profile }: ComparePageProps) {
     v === null ? <span className="text-gray-400">{t('미공개', 'Not disclosed')}</span> : v ? yes : no
 
   const rows: { label: string; render: (s: School) => React.ReactNode }[] = [
-    { label: t('티어', 'Tier'), render: (s) => (s.kind === 'lac' ? `LAC #${s.lac_rank ?? '–'}` : uniGroupTitles[uniGroupOf(s.usnews_rank)]) },
+    { label: t('티어', 'Tier'), render: (s) => rankBadge(s) },
     { label: t('SAT 중간 50%', 'SAT middle 50%'), render: satCell },
     {
       label: t('국제학생 합격률', 'Intl. accept rate'),

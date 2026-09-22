@@ -60,9 +60,7 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
   )
 
   // 실데이터 미리보기: 둘러보기와 동일한 시드에서 상위 3곳
-  const preview = schools.filter((s) => (s.kind ?? 'university') === 'university').sort((a, b) => a.usnews_rank - b.usnews_rank).slice(0, 3)
-  const univCount = schools.filter((s) => (s.kind ?? 'university') === 'university').length
-  const lacCount = schools.filter((s) => s.kind === 'lac').length
+  const preview = schools.filter((s) => (s.kind ?? 'university') === 'university').sort((a, b) => (a.usnews_rank ?? 9999) - (b.usnews_rank ?? 9999)).slice(0, 3)
 
   return (
     <div className="min-h-dvh bg-gray-50">
@@ -113,7 +111,7 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
           </div>
 
           <div className="rounded-2xl border border-gray-200 bg-white p-4">
-            <p className="font-semibold text-gray-900">🎓 {t(`대학 ${univCount + lacCount}+ 공식 데이터`, `Official data on ${univCount + lacCount}+ colleges`)}</p>
+            <p className="font-semibold text-gray-900">🎓 {t(`대학 ${schools.length}+ 공식 데이터`, `Official data on ${schools.length}+ colleges`)}</p>
             <p className="mt-0.5 text-sm text-gray-500">{t('합격률·SAT·ED·마감일을 전부 공식 출처(CDS)로만 정리했어요.', 'Acceptance rates, SAT, ED, deadlines — official sources (CDS) only.')}</p>
             <div className="mt-3 divide-y divide-gray-100 rounded-xl border border-gray-100">
               {preview.map((s) => (

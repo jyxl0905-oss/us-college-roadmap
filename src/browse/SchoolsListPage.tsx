@@ -1,4 +1,5 @@
-import { directAdmitParent } from '../data/majors'
+import { directAdmitParent, majorLabel } from '../data/majors'
+import { isArtMajor } from '../data/artSchools'
 import { useEffect, useMemo, useState } from 'react'
 import type { School, Tier } from '../lib/types'
 import { loadSchools } from '../lib/schoolsCache'
@@ -6,7 +7,7 @@ import { navigate, slugify, goBack } from '../lib/router'
 import { regionLabels, schoolRegion, type Region } from './region'
 import SchoolLogo from './SchoolLogo'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
-import { uniGroupOf, uniGroupTitles, uniGroups } from './rankGroups'
+import { uniGroupOf, uniGroupTitles, uniGroups, rankBadge } from './rankGroups'
 import { saveProfile, type ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
 import FitPicker from './FitPicker'
@@ -27,7 +28,7 @@ interface SchoolsListPageProps {
 export default function SchoolsListPage({ profile, userId, onProfileChange }: SchoolsListPageProps) {
   const [schools, setSchools] = useState<School[]>([])
   const [query, setQuery] = useState('')
-  const [kind, setKind] = useState<'university' | 'lac'>('university') // 종합대 / 리버럴 아츠 칼리지
+  const [kind, setKind] = useState<'university' | 'lac' | 'art'>('university') // 종합대 / 리버럴 아츠 칼리지 / 미술·디자인 전문학교
   const [lacInfoOpen, setLacInfoOpen] = useState(false)
   const [sortByIntl, setSortByIntl] = useState(false)
   const [needBlindOnly, setNeedBlindOnly] = useState(false)
@@ -77,7 +78,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
 
   // 검색용 페이지 제목
   useEffect(() => {
-    document.title = '미국 명문대 합격률·합격 전략 — 대학 136+ 공식 데이터 | 미국 대입 로드맵'
+    document.title = '미국 명문대 합격률·합격 전략 — 대학 143+ 공식 데이터 | 미국 대입 로드맵'
     return () => { document.title = '미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴' }
   }, [])
 
@@ -90,6 +91,9 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
   }, [])
 
   const myMajor = profile?.major_primary && profile.major_primary !== 'undecided' ? profile.major_primary : null
+  const hasArt = schools.some((s) => s.kind === 'art')
+  // 1·2순위 중 창작 계열 전공 (전문학교 추천 배너용)
+  const artMajor = [profile?.major_primary, profile?.major_secondary].find((m) => isArtMajor(m)) ?? null
 
   // 종합대/LAC 외의 조건은 공통 — 탭 전환 판단에도 같은 기준을 씀
   const passesFilters = (s: School, q: string) => {
@@ -111,20 +115,20 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
   useEffect(() => {
     const q = query.trim().toLowerCase()
     if (!q || filtered.length > 0) return
-    const other = kind === 'lac' ? 'university' : 'lac'
-    if (schools.some((s) => (s.kind ?? 'university') === other && passesFilters(s, q))) setKind(other)
+    const other = (['university', 'lac', 'art'] as const).find((k) => k !== kind && schools.some((s) => (s.kind ?? 'university') === k && passesFilters(s, q)))
+    if (other) setKind(other)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, filtered.length, kind, schools])
 
-  // 종합대는 순위 5그룹(usnews_rank), LAC은 기존 3그룹(tier)
-  const groups: number[] = kind === 'lac' ? [1, 2, 3] : uniGroups
-  const groupOf = (s: School) => (kind === 'lac' ? s.tier : uniGroupOf(s.usnews_rank))
-  const groupTitle = (g: number) => (kind === 'lac' ? lacTierTitles[g as Tier] : uniGroupTitles[g as 1 | 2 | 3 | 4 | 5])
+  // 종합대는 순위 5그룹(usnews_rank), LAC은 기존 3그룹(tier), 미술·디자인 전문학교는 순위 없이 한 그룹
+  const groups: number[] = kind === 'lac' ? [1, 2, 3] : kind === 'art' ? [1] : uniGroups
+  const groupOf = (s: School) => (kind === 'lac' ? s.tier : kind === 'art' ? 1 : uniGroupOf(s.usnews_rank ?? 9999))
+  const groupTitle = (g: number) => (kind === 'lac' ? lacTierTitles[g as Tier] : kind === 'art' ? t('미술·디자인 전문학교', 'Art & design schools') : uniGroupTitles[g as 1 | 2 | 3 | 4 | 5])
   const sortGroup = (list: School[]) =>
     [...list].sort((a, b) =>
       sortByIntl
         ? (b.intl_accept_rate ?? -1) - (a.intl_accept_rate ?? -1)
-        : (kind === 'lac' ? (a.lac_rank ?? 999) - (b.lac_rank ?? 999) : a.usnews_rank - b.usnews_rank),
+        : (kind === 'lac' ? (a.lac_rank ?? 999) - (b.lac_rank ?? 999) : kind === 'art' ? a.name.localeCompare(b.name) : (a.usnews_rank ?? 9999) - (b.usnews_rank ?? 9999)),
     )
 
   const chip = (on: boolean) =>
@@ -152,16 +156,32 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
 
         {/* 종합대 / 리버럴 아츠 칼리지 전환 */}
         {schools.some((s) => s.kind === 'lac') && (
-          <div className="mt-3 grid grid-cols-2 gap-2">
+          <div className={`mt-3 grid gap-2 ${hasArt ? 'grid-cols-3' : 'grid-cols-2'}`}>
             <button onClick={() => setKind('university')} className={`rounded-xl border-2 px-3 py-2.5 text-sm font-semibold ${kind === 'university' ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-700'}`}>
               {t('종합대학', 'Universities')} <span className="ml-1 text-xs font-normal opacity-70">{schools.filter((s) => (s.kind ?? 'university') === 'university').length}</span>
             </button>
             <button onClick={() => setKind('lac')} className={`rounded-xl border-2 px-3 py-2.5 text-sm font-semibold ${kind === 'lac' ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-700'}`}>
-              {t('리버럴 아츠 칼리지', 'Liberal Arts Colleges')} <span className="ml-1 text-xs font-normal opacity-70">{schools.filter((s) => s.kind === 'lac').length}</span>
+              {hasArt ? t('리버럴 아츠', 'Liberal Arts') : t('리버럴 아츠 칼리지', 'Liberal Arts Colleges')} <span className="ml-1 text-xs font-normal opacity-70">{schools.filter((s) => s.kind === 'lac').length}</span>
             </button>
+            {hasArt && (
+              <button onClick={() => setKind('art')} className={`rounded-xl border-2 px-3 py-2.5 text-sm font-semibold ${kind === 'art' ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-700'}`}>
+                🎨 {t('미술·디자인', 'Art & Design')} <span className="ml-1 text-xs font-normal opacity-70">{schools.filter((s) => s.kind === 'art').length}</span>
+              </button>
+            )}
           </div>
         )}
-        {schools.some((s) => s.kind === 'lac') && (
+        {/* 창작 계열 전공 학생: 전문학교 탭 자동 추천 */}
+        {hasArt && kind !== 'art' && artMajor && (
+          <button onClick={() => setKind('art')} className="mt-2 w-full rounded-xl border border-pink-200 bg-pink-50 px-3.5 py-2.5 text-left text-sm font-medium text-pink-900 active:bg-pink-100">
+            🎨 {t(`${majorLabel(artMajor)} 전공이라면 미술·디자인 전문학교도 함께 보세요 →`, `Studying ${majorLabel(artMajor)}? See art & design schools too →`)}
+          </button>
+        )}
+        {kind === 'art' && (
+          <div className="mt-2 rounded-xl border border-pink-200 bg-pink-50 px-3.5 py-2.5 text-sm leading-relaxed text-pink-900">
+            {t('미술·디자인 전문학교는 포트폴리오(작품) 심사가 입시의 중심이에요. 학교마다 개설 전공과 포트폴리오 요구사항이 다르니, 학교 카드를 눌러 확인하세요. 이 탭은 순위 대신 이름순으로 보여줘요.', 'At art & design schools, the portfolio review is the core of admissions. Majors offered and portfolio requirements differ by school — open each card to check. This tab is sorted by name, not rank.')}
+          </div>
+        )}
+        {schools.some((s) => s.kind === 'lac') && kind !== 'art' && (
           <div className="mt-2 rounded-xl border border-gray-200 bg-white">
             <button onClick={() => setLacInfoOpen((v) => !v)} className="flex w-full items-center justify-between px-3.5 py-2.5 text-left text-sm font-medium text-gray-800">
               <span>🎓 {t('종합대학 vs 리버럴 아츠 칼리지 — 뭐가 다른가요?', 'Universities vs Liberal Arts Colleges — what’s the difference?')}</span>
@@ -319,7 +339,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
                     </span>
                     <span className="mt-2.5 flex flex-wrap gap-1 text-[11px]">
                       <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
-                        {s.kind === 'lac' ? `LAC #${s.lac_rank ?? '–'}` : uniGroupTitles[uniGroupOf(s.usnews_rank)]}
+                        {rankBadge(s)}
                       </span>
                       {s.overall_accept_rate != null && (
                         <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">

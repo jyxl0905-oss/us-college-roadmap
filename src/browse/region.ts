@@ -62,6 +62,13 @@ const REGION_BY_ID: Record<number, Region> = {
   134: 'northeast',
   135: 'south',
   136: 'west',
+  137: 'northeast', // Pratt (Brooklyn)
+  138: 'northeast', // Parsons (NYC)
+  139: 'northeast', // RISD (Providence)
+  140: 'west', // CalArts (Valencia, CA)
+  141: 'northeast', // Cooper Union (NYC)
+  142: 'midwest', // SAIC (Chicago)
+  143: 'northeast', // SVA (NYC)
 }
 
 // 신규 학교 폴백 — intro/location_note의 주(州)·도시 표기(한/영)에서 유도

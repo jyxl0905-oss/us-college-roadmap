@@ -1,4 +1,5 @@
 import type { ChecklistItem, School } from './types'
+import { rankShort } from '../browse/rankGroups'
 import type { ProfileRow } from './profile'
 import { profileGrade } from './profile'
 import { currentSeason, seasonLabelKo, nextCheckinKo } from './academics'
@@ -43,7 +44,7 @@ export async function downloadDocx(
   if (schools.length > 0) {
     children.push(h(t('목표 학교', 'Target Schools')))
     for (const s of schools) {
-      children.push(p(`${s.name} (${s.name_ko}) · US News #${s.usnews_rank}`, true))
+      children.push(p(`${s.name} (${s.name_ko}) · ${rankShort(s)}`, true))
       const parts: string[] = []
       if (s.test_policy === 'test-free') parts.push(t('SAT/ACT 미반영(test-free)', 'Test-free (SAT/ACT not considered)'))
       else if (s.sat_mid50_low && s.sat_mid50_high) parts.push(`${t('SAT 중간 50%', 'SAT middle 50%')}: ${s.sat_mid50_low}-${s.sat_mid50_high}`)

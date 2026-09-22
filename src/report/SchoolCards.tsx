@@ -38,11 +38,11 @@ export default function SchoolCards({ schools, satBand, majorPrimary, aidStatus 
               <span className="flex min-w-0 items-center gap-3">
                 <SchoolLogo schoolId={s.id} name={s.name} size={36} />
                 <span className="min-w-0">
-                  <p className="font-semibold text-gray-900">{s.name}{s.kind === 'lac' && <span className="ml-1.5 rounded-full bg-purple-100 px-1.5 py-0.5 align-middle text-[10px] font-semibold text-purple-700">LAC #{s.lac_rank ?? '–'}</span>}</p>
+                  <p className="font-semibold text-gray-900">{s.name}{s.kind === 'lac' && <span className="ml-1.5 rounded-full bg-purple-100 px-1.5 py-0.5 align-middle text-[10px] font-semibold text-purple-700">LAC #{s.lac_rank ?? '–'}</span>}{s.kind === 'art' && <span className="ml-1.5 rounded-full bg-pink-100 px-1.5 py-0.5 align-middle text-[10px] font-semibold text-pink-700">🎨 {t('미술·디자인', 'Art & design')}</span>}</p>
                   <p className="text-sm text-gray-500">{s.name_ko}</p>
                 </span>
               </span>
-              <p className="shrink-0 text-xs text-gray-400">#{s.usnews_rank}</p>
+              {s.usnews_rank != null && <p className="shrink-0 text-xs text-gray-400">#{s.usnews_rank}</p>}
             </div>
 
             {s.avg_gpa != null && (

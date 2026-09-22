@@ -1986,5 +1986,124 @@
   ],
   "kind": "university",
   "overall_accept_rate": 78.1
+ },
+ {
+  "id": 137,
+  "name": "Pratt Institute",
+  "name_ko": "프랫 인스티튜트",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "art",
+  "overall_accept_rate": 86.4,
+  "art_programs": [
+   "arts",
+   "graphic_design",
+   "fashion_design",
+   "film",
+   "architecture",
+   "game_design",
+   "industrial_design",
+   "interior_design"
+  ]
+ },
+ {
+  "id": 138,
+  "name": "Parsons School of Design at The New School",
+  "name_ko": "파슨스 디자인 스쿨 (뉴스쿨)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "art",
+  "overall_accept_rate": null,
+  "art_programs": [
+   "arts",
+   "graphic_design",
+   "fashion_design",
+   "industrial_design",
+   "interior_design"
+  ]
+ },
+ {
+  "id": 139,
+  "name": "Rhode Island School of Design",
+  "name_ko": "로드아일랜드 디자인스쿨 (RISD)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "art",
+  "overall_accept_rate": 23.0,
+  "art_programs": [
+   "arts",
+   "graphic_design",
+   "fashion_design",
+   "film",
+   "architecture",
+   "industrial_design",
+   "interior_design"
+  ]
+ },
+ {
+  "id": 140,
+  "name": "California Institute of the Arts",
+  "name_ko": "캘리포니아 예술대학 (CalArts)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "art",
+  "overall_accept_rate": 40.0,
+  "art_programs": [
+   "arts",
+   "graphic_design",
+   "film",
+   "music"
+  ]
+ },
+ {
+  "id": 141,
+  "name": "The Cooper Union for the Advancement of Science and Art",
+  "name_ko": "쿠퍼 유니언",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "art",
+  "overall_accept_rate": 16.4,
+  "art_programs": [
+   "arts",
+   "architecture"
+  ]
+ },
+ {
+  "id": 142,
+  "name": "School of the Art Institute of Chicago",
+  "name_ko": "시카고 예술대학(SAIC)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "art",
+  "overall_accept_rate": 57.0,
+  "art_programs": [
+   "arts",
+   "graphic_design",
+   "fashion_design",
+   "film",
+   "interior_design"
+  ]
+ },
+ {
+  "id": 143,
+  "name": "School of Visual Arts",
+  "name_ko": "스쿨 오브 비주얼 아츠 (SVA)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "art",
+  "overall_accept_rate": null,
+  "art_programs": [
+   "arts",
+   "graphic_design",
+   "film",
+   "interior_design"
+  ]
  }
 ]

@@ -9,7 +9,7 @@ import { setPrefillSchoolIds } from './prefill'
 import FitPicker from './FitPicker'
 import { schoolWebsite } from './logos'
 import SchoolLogo from './SchoolLogo'
-import { uniGroupOf, uniGroupTitles } from './rankGroups'
+import { rankBadge } from './rankGroups'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
 import { t } from '../i18n'
 
@@ -22,6 +22,12 @@ interface SchoolDetailPageProps {
 }
 
 // F1: 학교 상세 — 고유 URL 직접 접근 가능
+// 전문학교 개설 전공 키 → 표시 이름 (우리 전공 목록에 없는 산업·인테리어 디자인은 직접 표기)
+const artProgramLabel = (k: string): string =>
+  k === 'industrial_design' ? t('산업 디자인 (Industrial Design)', 'Industrial Design')
+    : k === 'interior_design' ? t('인테리어 디자인 (Interior Design)', 'Interior Design')
+      : majorLabel(k)
+
 export default function SchoolDetailPage({ slug, userId, profile, onProfileChange }: SchoolDetailPageProps) {
   const [school, setSchool] = useState<School | null | 'loading'>('loading')
   const [togglePending, setTogglePending] = useState(false)
@@ -96,7 +102,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
             ←
           </button>
           <span className="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-600">
-            {s.kind === 'lac' ? `🎓 LAC #${s.lac_rank ?? '–'}` : uniGroupTitles[uniGroupOf(s.usnews_rank)]}
+            {s.kind === 'lac' ? '🎓 ' : s.kind === 'art' ? '🎨 ' : ''}{rankBadge(s)}
           </span>
         </div>
 
@@ -133,6 +139,36 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
           <div className="mt-4 space-y-1.5 text-sm leading-relaxed text-gray-600">
             {s.intro_ko && <p>{s.intro_ko}</p>}
             {s.location_note && <p>{s.location_note}</p>}
+          </div>
+        )}
+
+        {/* 미술·디자인 전문학교: 개설 전공 + 포트폴리오 요구사항 (공식 입학처 확인분) */}
+        {(s.portfolio_req || (s.art_programs && s.art_programs.length > 0)) && (
+          <div className="mt-5 rounded-xl border-2 border-pink-200 bg-pink-50/60 px-4 py-3.5">
+            {s.art_programs && s.art_programs.length > 0 && (
+              <>
+                <p className="text-xs font-semibold uppercase tracking-wide text-pink-700">🎨 {t('개설 전공 (공식)', 'Majors offered (official)')}</p>
+                <div className="mt-1.5 flex flex-wrap gap-1.5">
+                  {s.art_programs.map((k) => (
+                    <span key={k} className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-gray-800 ring-1 ring-pink-200">{artProgramLabel(k)}</span>
+                  ))}
+                </div>
+              </>
+            )}
+            {s.portfolio_req && (
+              <>
+                <p className={`text-xs font-semibold uppercase tracking-wide text-pink-700 ${s.art_programs && s.art_programs.length > 0 ? 'mt-3' : ''}`}>🖼️ {t('포트폴리오 요구사항', 'Portfolio requirements')}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-gray-800">{s.portfolio_req}</p>
+              </>
+            )}
+            {s.portfolio_source_url && (
+              <a href={s.portfolio_source_url} target="_blank" rel="noreferrer" className="mt-2 inline-block text-xs text-blue-600 underline">
+                {t('공식 출처 보기 ↗', 'View official source ↗')}
+              </a>
+            )}
+            <p className="mt-1.5 text-[11px] text-gray-400">
+              {t('요구사항은 매년 바뀔 수 있어요 — 지원 직전에 공식 페이지에서 꼭 재확인하세요.', 'Requirements can change every year — reconfirm on the official page right before you apply.')}
+            </p>
           </div>
         )}
 

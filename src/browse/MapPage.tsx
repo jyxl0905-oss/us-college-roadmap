@@ -9,7 +9,7 @@ import { loadSchools } from '../lib/schoolsCache'
 import { navigate, slugify, goBack } from '../lib/router'
 import SchoolLogo from './SchoolLogo'
 import { schoolLogoSources } from './logos'
-import { uniGroupOf, uniGroupTitles, uniGroups } from './rankGroups'
+import { uniGroupOf, uniGroupTitles, uniGroups, rankSortKey, rankShort } from './rankGroups'
 import type { ProfileRow } from '../lib/profile'
 import { t } from '../i18n'
 
@@ -121,7 +121,7 @@ interface MapPageProps {
 
 export default function MapPage({ profile }: MapPageProps) {
   const [schools, setSchools] = useState<School[]>([])
-  const [kind, setKind] = useState<'all' | 'university' | 'lac' | 'targets'>('all')
+  const [kind, setKind] = useState<'all' | 'university' | 'lac' | 'art' | 'targets'>('all')
   const [tierSel, setTierSel] = useState<number>(0) // 0 = 전체 (종합대 5그룹은 usnews_rank, LAC은 tier)
   const [query, setQuery] = useState('')
   const [selectedId, setSelectedId] = useState<number | null>(null)
@@ -159,7 +159,7 @@ export default function MapPage({ profile }: MapPageProps) {
     () =>
       schools
         .filter((s) => (kind === 'targets' ? targetIds.has(s.id) : kind === 'all' || (s.kind ?? 'university') === kind))
-        .filter((s) => tierSel === 0 || ((s.kind ?? 'university') === 'lac' ? s.tier === tierSel : uniGroupOf(s.usnews_rank) === tierSel))
+        .filter((s) => tierSel === 0 || ((s.kind ?? 'university') === 'lac' ? s.tier === tierSel : s.usnews_rank != null && uniGroupOf(s.usnews_rank) === tierSel))
         .map((s) => {
           const ll = coords[String(s.id)]
           if (!ll) return null
@@ -301,7 +301,7 @@ export default function MapPage({ profile }: MapPageProps) {
     if (!q) return []
     return schools
       .filter((s) => s.name.toLowerCase().includes(q) || s.name_ko.toLowerCase().includes(q))
-      .sort((a, b) => (a.kind === 'lac' ? 1 : 0) - (b.kind === 'lac' ? 1 : 0) || a.usnews_rank - b.usnews_rank)
+      .sort((a, b) => (a.kind === 'lac' ? 1 : a.kind === 'art' ? 2 : 0) - (b.kind === 'lac' ? 1 : b.kind === 'art' ? 2 : 0) || rankSortKey(a) - rankSortKey(b))
       .slice(0, 6)
   }, [schools, q])
 
@@ -310,8 +310,7 @@ export default function MapPage({ profile }: MapPageProps) {
     const ll = coords[String(s.id)]
     const p = ll ? project([ll[1], ll[0]]) : null
     if (!p) return
-    if (kind === 'lac' && (s.kind ?? 'university') !== 'lac') setKind('all')
-    if (kind === 'university' && s.kind === 'lac') setKind('all')
+    if ((kind === 'university' || kind === 'lac' || kind === 'art') && (s.kind ?? 'university') !== kind) setKind('all')
     if (kind === 'targets' && !targetIds.has(s.id)) setKind('all')
     if (tierSel !== 0) setTierSel(0)
     setSelectedId(s.id)
@@ -359,7 +358,7 @@ export default function MapPage({ profile }: MapPageProps) {
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-sm font-semibold text-gray-900">{s.name}</span>
                     <span className="block truncate text-xs text-gray-400">
-                      {s.name_ko} · {s.kind === 'lac' ? `LAC #${s.lac_rank ?? '–'}` : `US News #${s.usnews_rank}`}
+                      {s.name_ko} · {rankShort(s)}
                       {targetIds.has(s.id) ? t(' · 내 목표', ' · my target') : ''}
                     </span>
                   </span>
@@ -378,6 +377,9 @@ export default function MapPage({ profile }: MapPageProps) {
           <button onClick={() => setKind('all')} className={chip(kind === 'all')}>{t('전체', 'All')} {schools.length}</button>
           <button onClick={() => setKind('university')} className={chip(kind === 'university')}>{t('종합대학', 'Universities')}</button>
           <button onClick={() => setKind('lac')} className={chip(kind === 'lac')}>{t('리버럴 아츠', 'Liberal arts')}</button>
+          {schools.some((s) => s.kind === 'art') && (
+            <button onClick={() => setKind('art')} className={chip(kind === 'art')}>🎨 {t('미술·디자인', 'Art & design')}</button>
+          )}
           {targetIds.size > 0 && (
             <button onClick={() => setKind('targets')} className={chip(kind === 'targets')}>🎯 {t('내 목표', 'My targets')} {targetIds.size}</button>
           )}
@@ -390,7 +392,7 @@ export default function MapPage({ profile }: MapPageProps) {
           </span>
         </div>
 
-        {kind !== 'targets' && (
+        {kind !== 'targets' && kind !== 'art' && (
           <div className="mt-2 flex gap-1.5 overflow-x-auto pb-1">
             {[0, ...(kind === 'lac' ? [1, 2, 3] : uniGroups)].map((tr) => {
               const label =
@@ -464,9 +466,10 @@ export default function MapPage({ profile }: MapPageProps) {
                 const isSel = selectedId === s.id
                 const isHover = hoverId === s.id
                 const lac = (s.kind ?? 'university') === 'lac'
+                const art = s.kind === 'art'
                 const px = basePx * (isSel || isHover ? 1.35 : isTarget ? 1.15 : 1)
                 const size = px / scale
-                const ring = isSel ? '#111827' : isTarget ? '#f59e0b' : lac ? '#10b981' : '#3b82f6'
+                const ring = isSel ? '#111827' : isTarget ? '#f59e0b' : lac ? '#10b981' : art ? '#ec4899' : '#3b82f6'
                 const ringWidth = ((isSel || isTarget ? 2 : 1.1) / scale)
                 return (
                   <g
@@ -484,7 +487,7 @@ export default function MapPage({ profile }: MapPageProps) {
                       size={size}
                       ring={ring}
                       ringWidth={ringWidth}
-                      fallback={lac ? '#10b981' : '#2563eb'}
+                      fallback={lac ? '#10b981' : art ? '#db2777' : '#2563eb'}
                     />
                     {(isSel || isHover || (isTarget && scale > 1.8) || kind === 'targets') && (
                       <text x={x} y={y - size / 2 - 5 / scale} textAnchor="middle" style={{ fontSize: 11 / scale }} className="map-label pointer-events-none font-semibold">
@@ -501,6 +504,9 @@ export default function MapPage({ profile }: MapPageProps) {
         <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500">
           <span><span className="mr-1 inline-block h-3 w-3 rounded-sm border-2 border-blue-500 bg-white align-middle" />{t('종합대학', 'University')}</span>
           <span><span className="mr-1 inline-block h-3 w-3 rounded-sm border-2 border-emerald-500 bg-white align-middle" />{t('리버럴 아츠 칼리지', 'Liberal arts college')}</span>
+          {schools.some((s) => s.kind === 'art') && (
+            <span><span className="mr-1 inline-block h-3 w-3 rounded-sm border-2 border-pink-500 bg-white align-middle" />{t('미술·디자인 전문학교', 'Art & design school')}</span>
+          )}
           {targetIds.size > 0 && (
             <span><span className="mr-1 inline-block h-3 w-3 rounded-sm border-2 border-amber-400 bg-white align-middle" />{t('내 목표 학교', 'My target')}</span>
           )}
@@ -521,7 +527,7 @@ export default function MapPage({ profile }: MapPageProps) {
             </div>
             <div className="mt-2 flex flex-wrap gap-1 text-[11px]">
               <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
-                {selected.kind === 'lac' ? `LAC #${selected.lac_rank ?? '–'}` : `US News #${selected.usnews_rank}`}
+                {rankShort(selected)}
               </span>
               {selected.overall_accept_rate != null && (
                 <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">{t(`합격률 ${selected.overall_accept_rate}%`, `Accept ${selected.overall_accept_rate}%`)}</span>
