@@ -10,7 +10,7 @@ import RolloverGate, { markSeenGrade } from './RolloverGate'
 import SchoolsListPage from './browse/SchoolsListPage'
 import SchoolDetailPage from './browse/SchoolDetailPage'
 import ComparePage from './browse/ComparePage'
-import { usePath, navigate } from './lib/router'
+import { usePath, navigate, redirect } from './lib/router'
 import { getLang, t } from './i18n'
 import TopNav from './nav/TopNav'
 
@@ -92,9 +92,9 @@ function StashFetcher({ userId, onDone }: { userId: string; onDone: (r: { answer
   return <LoadingScreen />
 }
 
-// 렌더 중 navigate 호출 대신 effect에서 이동 (StrictMode 이중 push 방지)
+// 렌더 중 이동 대신 effect에서 이동. 기록을 쌓지 않고 바꿔치기(redirect) — 뒤로가기 시 다시 튕기지 않도록
 function Redirect({ to }: { to: string }) {
-  useEffect(() => { navigate(to) }, [to])
+  useEffect(() => { redirect(to) }, [to])
   return <LoadingScreen />
 }
 
