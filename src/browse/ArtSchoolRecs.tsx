@@ -18,7 +18,7 @@ export default function ArtSchoolRecs({ profile, className = '' }: { profile: Pr
     <div className={`no-print rounded-xl border-2 border-pink-200 bg-pink-50 px-4 py-3.5 ${className}`}>
       <p className="text-sm font-semibold text-gray-900">🎨 {t(`${majorLabel(major)} 전공 특화 학교 추천`, `Specialized schools for ${majorLabel(major)}`)}</p>
       <p className="mt-0.5 text-xs text-pink-900">
-        {t('이 전공을 공식 개설한 미술·디자인 전문학교예요. 포트폴리오 심사가 중심이라 종합대와 준비 방식이 달라요 — 눌러서 요구사항을 확인하고 목표에 담을 수 있어요.', 'Art & design schools that officially offer this major. Admissions center on a portfolio review — tap to check requirements and add to your targets.')}
+        {t('이 전공을 공식 개설한 미술·디자인 전문학교와 종합대 예술대학이에요. 포트폴리오 심사가 중심이라 종합대와 준비 방식이 달라요 — 눌러서 요구사항을 확인하고 목표에 담을 수 있어요.', 'Art & design schools and university arts schools that officially offer this major. Admissions center on a portfolio review — tap to check requirements and add to your targets.')}
       </p>
       <div className="mt-2 flex flex-wrap gap-1.5">
         {list.map((s) => (

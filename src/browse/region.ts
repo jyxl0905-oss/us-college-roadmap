@@ -70,6 +70,9 @@ const REGION_BY_ID: Record<number, Region> = {
   142: 'midwest', // SAIC (Chicago)
   143: 'northeast', // SVA (NYC)
   144: 'northeast', // FIT (NYC)
+  145: 'south', // MICA (Baltimore, MD)
+  146: 'south', // SCAD (Savannah, GA)
+  147: 'northeast', // MassArt (Boston)
 }
 
 // 신규 학교 폴백 — intro/location_note의 주(州)·도시 표기(한/영)에서 유도

@@ -240,7 +240,14 @@
    "premed"
   ],
   "kind": "university",
-  "overall_accept_rate": 9.0
+  "overall_accept_rate": 9.0,
+  "art_programs": [
+   "arts",
+   "graphic_design",
+   "game_design",
+   "film",
+   "music"
+  ]
  },
  {
   "id": 19,
@@ -2127,6 +2134,59 @@
    "interior_design",
    "film",
    "game_design"
+  ]
+ },
+ {
+  "id": 145,
+  "name": "Maryland Institute College of Art",
+  "name_ko": "메릴랜드 인스티튜트 예술대학 (MICA)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "art",
+  "overall_accept_rate": null,
+  "art_programs": [
+   "arts",
+   "graphic_design",
+   "film",
+   "game_design",
+   "interior_design"
+  ]
+ },
+ {
+  "id": 146,
+  "name": "Savannah College of Art and Design",
+  "name_ko": "사바나 예술 디자인 대학 (SCAD)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "art",
+  "overall_accept_rate": 74.9,
+  "art_programs": [
+   "arts",
+   "graphic_design",
+   "fashion_design",
+   "film",
+   "game_design",
+   "industrial_design",
+   "interior_design"
+  ]
+ },
+ {
+  "id": 147,
+  "name": "Massachusetts College of Art and Design",
+  "name_ko": "매사추세츠 예술디자인대학 (MassArt)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "art",
+  "overall_accept_rate": null,
+  "art_programs": [
+   "arts",
+   "graphic_design",
+   "fashion_design",
+   "film",
+   "industrial_design"
   ]
  }
 ]
