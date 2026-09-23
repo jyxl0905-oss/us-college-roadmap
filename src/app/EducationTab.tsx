@@ -6,6 +6,8 @@ import { gpaBandLabels } from '../onboarding/labels'
 import { insertRow, updateRow, deleteRow, loadAppRecords, courseLevelKo, type Course, type CourseLevel } from './appData'
 import { supabase } from '../lib/supabase'
 import { computeGpa, courseLetter, gpaToBand, LETTERS } from './gpa'
+import { recommendCourses } from '../lib/courseRecs'
+import { navigate } from '../lib/router'
 
 interface EducationTabProps {
   userId: string
@@ -173,6 +175,34 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
         <span className="text-xs text-gray-400">{courses ? t(`${courses.length}개 · AP ${apCount}`, `${courses.length} · AP ${apCount}`) : ''}</span>
       </div>
       <p className="mt-0.5 text-xs text-gray-400">{t('학년별로 적어두면 12학년에 성적표 확인·리거 점검이 쉬워요.', 'Listing courses by grade makes transcript and rigor checks easy in 12th grade.')}</p>
+
+      {/* 다음 학년 수강 추천 — 과목 단계표·전공 핵심 과목 기준, 최대 2개 */}
+      {courses && (() => {
+        const recs = recommendCourses(courses, myGrade, profile.major_primary)
+        return (
+          <div className="mt-3 rounded-xl border-2 border-amber-200 bg-amber-50/60 px-4 py-3.5">
+            <p className="text-sm font-semibold text-gray-900">🧭 {t(`${Math.min(12, myGrade + 1)}학년 수강 추천`, `Suggestions for grade ${Math.min(12, myGrade + 1)}`)}</p>
+            {courses.length === 0 ? (
+              <p className="mt-1 text-xs text-gray-600">{t('아래에 지금까지 들은 과목을 적으면, 다음 학년에 어떤 과목을 올리면 좋을지 추천해 드려요.', 'Add the courses you’ve taken below and we’ll suggest what to step up next year.')}</p>
+            ) : myGrade >= 12 ? (
+              <p className="mt-1 text-xs text-gray-600">{t('12학년은 지금 듣는 과목의 성적 유지가 가장 중요해요.', 'In 12th grade, keeping your current grades up matters most.')}</p>
+            ) : recs.length === 0 ? (
+              <p className="mt-1 text-xs text-gray-600">{t('지금 기록으로는 추가로 올릴 과목이 보이지 않아요 — 현재 흐름을 유지하세요.', 'Nothing to step up based on your current record — keep the momentum.')}</p>
+            ) : (
+              <ul className="mt-1.5 flex flex-col gap-1.5">
+                {recs.map((r, i) => (
+                  <li key={i} className="text-sm leading-relaxed text-gray-800">
+                    {i + 1}. {t(r.ko, r.en)}
+                    {r.url && <a href={r.url} target="_blank" rel="noreferrer" className="ml-1 text-[11px] text-blue-600 underline">{t('근거 ↗', 'Source ↗')}</a>}
+                  </li>
+                ))}
+              </ul>
+            )}
+            <p className="mt-2 text-[11px] text-gray-500">{t('학교에 개설된 과목 안에서, 성적 유지가 먼저예요.', 'Within your school’s offerings — keeping grades up comes first.')}</p>
+            <button onClick={() => navigate('/guide/courses')} className="mt-1.5 text-xs font-medium text-blue-600 underline">{t('학년별 수업 난이도 가이드 보기 →', 'See the course rigor guide by grade →')}</button>
+          </div>
+        )
+      })()}
 
 
       <div className="mt-3 rounded-xl border-2 border-gray-200 bg-white px-4 py-3">

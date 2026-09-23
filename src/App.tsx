@@ -25,6 +25,7 @@ const MajorRoadmapPage = lazy(() => import('./major/MajorRoadmapPage'))
 const AdminPage = lazy(() => import('./admin/AdminPage'))
 const TargetsPage = lazy(() => import('./report/TargetsPage'))
 const MajorsIndexPage = lazy(() => import('./major/MajorsIndexPage'))
+const CourseGuidePage = lazy(() => import('./guide/CourseGuidePage'))
 const MapPage = lazy(() => import('./browse/MapPage'))
 // 개발용: /admin?demo=1 → 샘플 데이터로 레이아웃 확인 (프로덕션 빌드에서 제거됨)
 const AdminDemo = lazy(async () => {
@@ -398,6 +399,10 @@ function AppRoutes() {
   // 전공 로드맵 (비로그인도 열람 가능, 계획 담기는 로그인 필요)
   if (path === '/majors' || path === '/majors/') {
     return <MajorsIndexPage />
+  }
+  // 수업 난이도 가이드 (비로그인도 열람 가능, 로그인 시 '지금 여기' 표시)
+  if (path === '/guide/courses' || path === '/guide/courses/') {
+    return <CourseGuidePage profile={profile} />
   }
   if (path.startsWith('/major/')) {
     return (
