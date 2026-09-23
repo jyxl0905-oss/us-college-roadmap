@@ -214,6 +214,18 @@ const hiResLogos: Record<number, string> = {
   134: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Rutgers_camden_univ_logo.png/120px-Rutgers_camden_univ_logo.png',
   135: 'https://upload.wikimedia.org/wikipedia/en/thumb/7/72/Texas_Christian_University_seal.svg/120px-Texas_Christian_University_seal.svg.png',
   136: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Seal_of_the_University_of_Colorado.svg/120px-Seal_of_the_University_of_Colorado.svg.png',
+  // 미술·디자인 전문학교 (2026-09-23): 사이트 파비콘이 16~32px라 확대 시 흐려짐 → 학교 공식 사이트 apple-touch-icon(180~192px) 또는 위키백과 마크로 교체
+  // (SVA는 48px 파비콘이 선명해 그대로 둠)
+  137: 'https://www.pratt.edu/wp-content/themes/pratt/static/img/favicon/apple-touch-icon.png',
+  138: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Parsons_Logo.svg/120px-Parsons_Logo.svg.png',
+  139: 'https://www.risd.edu/themes/custom/risd_base_theme/favicon_io/apple-touch-icon.png',
+  140: 'https://calarts.edu/themes/custom/d10starter/images/calarts-favicon-192x192.png',
+  141: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Cooper_Union.svg/120px-Cooper_Union.svg.png',
+  142: 'https://www.saic.edu/themes/custom/saic/favicon/apple-touch-icon.png',
+  144: 'https://www.fitnyc.edu/_resources/assets/favicon/apple-touch-icon.png',
+  145: 'https://www.mica.edu/favicons/apple-touch-icon.png',
+  146: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Savannah_College_of_Art_and_Design_seal.png/120px-Savannah_College_of_Art_and_Design_seal.png',
+  147: 'https://e9jn6jeo54q.exactdn.com/app/uploads/2025/08/cropped-M_Favicon_White.png?strip=all&resize=192%2C192',
 }
 
 // 소스별 화질·진위 실측 결과 (2026-08-10, 63곳 전수 확인):
