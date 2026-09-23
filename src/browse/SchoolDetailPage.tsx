@@ -238,7 +238,8 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
                   : t('미공개', 'Not disclosed'),
             ],
             [t('전체 합격률', 'Overall accept rate'), dash(s.overall_accept_rate, '%')],
-            [t('국제학생 합격률', 'Intl. student accept rate'), dash(s.intl_accept_rate, '%')],
+            // 국제학생 합격률이 공개되지 않은 학교는 행을 숨기고 위의 공식 전체 합격률만 보여줌
+            ...(s.intl_accept_rate != null ? [[t('국제학생 합격률', 'Intl. student accept rate'), dash(s.intl_accept_rate, '%')]] : []),
             [
               t('Need-blind (국제학생)', 'Need-blind (intl. students)'),
               s.need_blind_intl === true

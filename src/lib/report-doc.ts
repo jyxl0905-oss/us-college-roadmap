@@ -51,6 +51,7 @@ export async function downloadDocx(
       // null = 학교가 공식 표명하지 않음 → 웹 카드와 동일하게 표시 생략
       if (s.need_blind_intl !== null) parts.push(s.need_blind_intl ? t('Need-blind(국제학생)', 'Need-blind (intl.)') : t('Need-aware(국제학생)', 'Need-aware (intl.)'))
       if (s.intl_accept_rate !== null) parts.push(`${t('국제학생 합격률', 'Intl. acceptance rate')} ${s.intl_accept_rate}%`)
+      else if (s.overall_accept_rate != null) parts.push(`${t('합격률', 'Acceptance rate')} ${s.overall_accept_rate}%`)
       if (s.demonstrated_interest) parts.push(t('Demonstrated Interest 반영', 'Considers demonstrated interest'))
       if (parts.length > 0) children.push(p(parts.join(' · ')))
     }

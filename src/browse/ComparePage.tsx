@@ -86,9 +86,14 @@ export default function ComparePage({ profile }: ComparePageProps) {
     { label: t('티어', 'Tier'), render: (s) => rankBadge(s) },
     { label: t('SAT 중간 50%', 'SAT middle 50%'), render: satCell },
     {
-      label: t('국제학생 합격률', 'Intl. accept rate'),
+      label: t('합격률 (국제학생)', 'Accept rate (intl.)'),
+      // 국제학생 합격률이 없으면 공식 전체 합격률을 표시
       render: (s) =>
-        s.intl_accept_rate === null ? <span className="text-gray-400">{t('미공개', 'Not disclosed')}</span> : `${s.intl_accept_rate}%`,
+        s.intl_accept_rate != null
+          ? `${s.intl_accept_rate}%`
+          : s.overall_accept_rate != null
+            ? <>{s.overall_accept_rate}% <span className="text-gray-400">{t('(전체)', '(overall)')}</span></>
+            : <span className="text-gray-400">{t('미공개', 'Not disclosed')}</span>,
     },
     { label: t('Need-blind (국제)', 'Need-blind (intl.)'), render: (s) => boolCell(s.need_blind_intl, t('예', 'Yes'), t('아니오 (need-aware)', 'No (need-aware)')) },
     {
