@@ -69,6 +69,7 @@ const REGION_BY_ID: Record<number, Region> = {
   141: 'northeast', // Cooper Union (NYC)
   142: 'midwest', // SAIC (Chicago)
   143: 'northeast', // SVA (NYC)
+  144: 'northeast', // FIT (NYC)
 }
 
 // 신규 학교 폴백 — intro/location_note의 주(州)·도시 표기(한/영)에서 유도

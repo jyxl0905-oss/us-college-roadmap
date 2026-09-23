@@ -69,6 +69,7 @@ const domains: Record<number, string> = {
   141: 'cooper.edu',
   142: 'saic.edu',
   143: 'sva.edu',
+  144: 'fitnyc.edu',
 }
 
 // 고해상도 공식 마크 — 각 대학 영문 위키피디아 인포박스의 현행 인장/방패 — 표시 크기(≤52px, 2x)에 맞춘 120px 썸네일로 전송량 최소화 (2026-08-10 63곳 전수 검증)

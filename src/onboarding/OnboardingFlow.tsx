@@ -325,7 +325,7 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
           <ChoiceStep
             title={t('목표 학교가 정해져 있나요?', 'Do you have target schools?')}
             options={[
-              { value: 'schools', label: t('구체적인 학교가 있어요', 'Yes, specific schools'), description: t('종합대 톱100 + 리버럴 아츠 35곳 + 미술·디자인 전문학교 7곳에서 검색해요', 'Search the top 100 universities + 35 LACs + 7 art & design schools') },
+              { value: 'schools', label: t('구체적인 학교가 있어요', 'Yes, specific schools'), description: t('종합대 톱100 + 리버럴 아츠 35곳 + 미술·디자인 전문학교 8곳에서 검색해요', 'Search the top 100 universities + 35 LACs + 8 art & design schools') },
               { value: 'tier', label: t('대략적인 순위대만 있어요', 'Just a rank range'), description: t('Top 20 / 21-40위 / 41위 이하', 'Top 20 / 21–40 / 41+') },
               { value: 'undecided', label: t('아직 미정이에요', 'Undecided') },
             ]}

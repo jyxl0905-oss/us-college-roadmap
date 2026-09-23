@@ -1,4 +1,4 @@
-// 사이트맵 생성 — 정적 경로 + 학교 143곳 + 전공 58개 (빌드마다 자동 재생성)
+// 사이트맵 생성 — 정적 경로 + 학교 144곳 + 전공 58개 (빌드마다 자동 재생성)
 import { readFileSync, writeFileSync } from 'node:fs'
 
 const BASE = 'https://www.uscollegeroadmap.com'

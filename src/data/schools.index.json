@@ -2065,7 +2065,12 @@
   "name_ko": "쿠퍼 유니언",
   "usnews_rank": null,
   "tier": null,
-  "direct_admit_majors": [],
+  "direct_admit_majors": [
+   "arts",
+   "architecture",
+   "engineering",
+   "cs"
+  ],
   "kind": "art",
   "overall_accept_rate": 16.4,
   "art_programs": [
@@ -2104,6 +2109,24 @@
    "graphic_design",
    "film",
    "interior_design"
+  ]
+ },
+ {
+  "id": 144,
+  "name": "Fashion Institute of Technology",
+  "name_ko": "패션 인스티튜트 오브 테크놀로지 (FIT, SUNY)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "art",
+  "overall_accept_rate": 67.0,
+  "art_programs": [
+   "arts",
+   "graphic_design",
+   "fashion_design",
+   "interior_design",
+   "film",
+   "game_design"
   ]
  }
 ]
