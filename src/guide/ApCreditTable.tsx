@@ -3,6 +3,7 @@ import { Search } from 'lucide-react'
 import { t, getLang } from '../i18n'
 import { navigate, slugify } from '../lib/router'
 import schoolsIndex from '../data/schools.index.json'
+import SchoolLogo from '../browse/SchoolLogo'
 import { loadApCredit, AP_SUBJECTS, POLICY, type ApCredit, type ApPolicy, type ApSubjectKey } from '../browse/ApCreditBlock'
 
 // 대학별 AP 학점 인정 비교 — 과목을 고르면 학교마다 몇 점부터 무엇을 인정하는지
@@ -54,7 +55,8 @@ export default function ApCreditTable() {
           const sub = subject === 'all' ? null : r.subjects[subject]
           return (
             <li key={s.id} className="rounded-xl bg-white px-3.5 py-2.5 ring-1 ring-gray-200">
-              <div className="flex items-start gap-2">
+              <div className="flex items-start gap-2.5">
+                <SchoolLogo schoolId={s.id} name={s.name} size={32} />
                 <button onClick={() => navigate(`/schools/${slugify(s.name)}`)} className="min-w-0 flex-1 text-left">
                   <span className="block truncate text-sm font-semibold text-gray-900">{getLang() === 'en' ? s.name : s.name_ko || s.name}</span>
                   {P && <span className={`mt-0.5 inline-block rounded-full px-2 py-0.5 text-[10.5px] font-semibold ring-1 ${P.cls}`}>{t(P.ko, P.en)}</span>}
