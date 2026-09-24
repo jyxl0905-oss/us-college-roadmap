@@ -2969,7 +2969,8 @@
    "statement_en": "MIT Admissions says there is no required summer program: spend summers in whatever way fits your own needs and goals — there is no right or wrong answer.",
    "quote_en": "spend your summers in the way that best suits your personal needs and goals",
    "programs_mentioned": [],
-   "url": "https://mitadmissions.org/apply/prepare/summer/"
+   "url": "https://mitadmissions.org/apply/prepare/summer/",
+   "group": "no_required"
   },
   {
    "college": "MIT",
@@ -3003,7 +3004,8 @@
     "SUMaC (Stanford)",
     "HSMC (Honors Summer Math Camp)"
    ],
-   "url": "https://mitadmissions.org/apply/prepare/summer/"
+   "url": "https://mitadmissions.org/apply/prepare/summer/",
+   "group": "lists"
   },
   {
    "college": "MIT",
@@ -3036,7 +3038,8 @@
     "IOL (NACLO)",
     "IOAA (USAAAO)"
    ],
-   "url": "https://mitadmissions.org/apply/prepare/stem/"
+   "url": "https://mitadmissions.org/apply/prepare/stem/",
+   "group": "no_required"
   },
   {
    "college": "MIT",
@@ -3052,7 +3055,8 @@
     "Young Scholars Program in Discrete Mathematics",
     "State Governor's schools"
    ],
-   "url": "https://mitadmissions.org/blogs/entry/juniors_mit_and_other_summer_p/"
+   "url": "https://mitadmissions.org/blogs/entry/juniors_mit_and_other_summer_p/",
+   "group": "life"
   },
   {
    "college": "Caltech",
@@ -3061,7 +3065,8 @@
    "statement_en": "Caltech Admissions says students who work, care for family or rest can be just as good a fit as those doing research or internships; there is no formula for a perfect summer and such activities are never required.",
    "quote_en": "There's no formula calculating the \"perfect\" summer.",
    "programs_mentioned": [],
-   "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/summer-preparation"
+   "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/summer-preparation",
+   "group": "no_required"
   },
   {
    "college": "Caltech",
@@ -3089,7 +3094,8 @@
     "PROMYS",
     "Ross Math"
    ],
-   "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness"
+   "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness",
+   "group": "lists"
   },
   {
    "college": "Yale",
@@ -3098,7 +3104,8 @@
    "statement_en": "On Yale's official admissions podcast (Feb 2026), officers said a single summer experience rarely decides an application, and that claims that paid programs give an edge deserve skepticism.",
    "quote_en": "you should be appropriately skeptical of any claims that any programs",
    "programs_mentioned": [],
-   "url": "https://admissions.yale.edu/posts/episode-52"
+   "url": "https://admissions.yale.edu/posts/episode-52",
+   "group": "skeptical"
   },
   {
    "college": "Yale",
@@ -3107,7 +3114,8 @@
    "statement_en": "On the same Yale Admissions podcast, officers said doing a Yale summer program does not help in Yale admissions; the office is not connected to those programs and does not treat them as a feeder.",
    "quote_en": "we don’t treat those summer programs as any kind of feeder into the admissions process",
    "programs_mentioned": [],
-   "url": "https://admissions.yale.edu/posts/episode-52"
+   "url": "https://admissions.yale.edu/posts/episode-52",
+   "group": "precollege"
   },
   {
    "college": "Yale (Yale Young Global Scholars)",
@@ -3118,7 +3126,8 @@
    "programs_mentioned": [
     "Yale Young Global Scholars (YYGS)"
    ],
-   "url": "https://globalscholars.yale.edu/common-questions"
+   "url": "https://globalscholars.yale.edu/common-questions",
+   "group": "precollege"
   },
   {
    "college": "Harvard (Harvard Summer School Pre-College)",
@@ -3129,7 +3138,8 @@
    "programs_mentioned": [
     "Harvard Pre-College Program"
    ],
-   "url": "https://summer.harvard.edu/high-school-programs/pre-college-program/common-questions/"
+   "url": "https://summer.harvard.edu/high-school-programs/pre-college-program/common-questions/",
+   "group": "precollege"
   },
   {
    "college": "Harvard",
@@ -3138,7 +3148,8 @@
    "statement_en": "Harvard College's application tips recognize that students spend summers working, caring for siblings, taking courses, travelling or interning, and ask applicants to show how they used the opportunities they had.",
    "quote_en": "working, babysitting siblings, enrolling in courses, traveling, playing sports, holding internships",
    "programs_mentioned": [],
-   "url": "https://college.harvard.edu/guides/application-tips"
+   "url": "https://college.harvard.edu/guides/application-tips",
+   "group": "life"
   },
   {
    "college": "Stanford (Pre-Collegiate Studies)",
@@ -3150,7 +3161,8 @@
     "SUMaC",
     "Stanford Pre-Collegiate Summer Institutes"
    ],
-   "url": "https://sumac.spcs.stanford.edu/questions-application-sumac"
+   "url": "https://sumac.spcs.stanford.edu/questions-application-sumac",
+   "group": "precollege"
   },
   {
    "college": "Stanford",
@@ -3159,7 +3171,8 @@
    "statement_en": "Stanford Admission says depth in one or two activities can show more than light involvement in many, and that work and family responsibilities count as much as any other activity.",
    "quote_en": "These are as important as any other extracurricular activity.",
    "programs_mentioned": [],
-   "url": "https://admission.stanford.edu/apply/overview/index.html"
+   "url": "https://admission.stanford.edu/apply/overview/index.html",
+   "group": "life"
   },
   {
    "college": "Columbia (Pre-College Programs)",
@@ -3170,7 +3183,8 @@
    "programs_mentioned": [
     "Columbia University Pre-College Programs"
    ],
-   "url": "https://precollege.sps.columbia.edu/frequently-asked-questions"
+   "url": "https://precollege.sps.columbia.edu/frequently-asked-questions",
+   "group": "precollege"
   },
   {
    "college": "Brown (Pre-College)",
@@ -3181,7 +3195,8 @@
    "programs_mentioned": [
     "Brown Pre-College Program"
    ],
-   "url": "https://precollege.brown.edu/frequently-asked-questions-faq"
+   "url": "https://precollege.brown.edu/frequently-asked-questions-faq",
+   "group": "precollege"
   },
   {
    "college": "Carnegie Mellon (Pre-College)",
@@ -3192,7 +3207,8 @@
    "programs_mentioned": [
     "CMU Pre-College Programs"
    ],
-   "url": "https://www.cmu.edu/pre-college/admission/index.html"
+   "url": "https://www.cmu.edu/pre-college/admission/index.html",
+   "group": "precollege"
   },
   {
    "college": "Penn (SAS High School Programs)",
@@ -3203,7 +3219,8 @@
    "programs_mentioned": [
     "Penn SAS High School Programs (Pre-College, Summer Academies)"
    ],
-   "url": "https://hs.sas.upenn.edu/summer-programs/faq"
+   "url": "https://hs.sas.upenn.edu/summer-programs/faq",
+   "group": "precollege"
   },
   {
    "college": "Northwestern (Pre-College Online)",
@@ -3215,7 +3232,8 @@
     "Northwestern Pre-College Online Program",
     "Northwestern College Preparation Program (CPP)"
    ],
-   "url": "https://precollege.northwestern.edu/faq"
+   "url": "https://precollege.northwestern.edu/faq",
+   "group": "precollege"
   },
   {
    "college": "UChicago (Summer Session)",
@@ -3227,7 +3245,8 @@
     "UChicago Pre-College Summer Session",
     "SSEN (Summer Student Early Notification)"
    ],
-   "url": "https://summer.uchicago.edu/pre-college/admitted-students/ssen/"
+   "url": "https://summer.uchicago.edu/pre-college/admitted-students/ssen/",
+   "group": "exceptions"
   },
   {
    "college": "Duke (Duke Pre-College)",
@@ -3238,7 +3257,8 @@
    "programs_mentioned": [
     "Duke Pre-College"
    ],
-   "url": "https://learnmore.duke.edu/precollege/faq"
+   "url": "https://learnmore.duke.edu/precollege/faq",
+   "group": "exceptions"
   },
   {
    "college": "University of California (UC system)",
@@ -3247,7 +3267,8 @@
    "statement_en": "The UC application lets you enter up to 20 activities and awards across 6 categories; UC says quality matters more than quantity and that it does not value any activity over another.",
    "quote_en": "UC does not value any activity over another.",
    "programs_mentioned": [],
-   "url": "https://admission.universityofcalifornia.edu/counselors/_files/documents/presenting-yourself-on-the-uc-application-first-year.pdf"
+   "url": "https://admission.universityofcalifornia.edu/counselors/_files/documents/presenting-yourself-on-the-uc-application-first-year.pdf",
+   "group": "life"
   },
   {
    "college": "University of California (UC system)",
@@ -3256,7 +3277,8 @@
    "statement_en": "UC lists special talents, achievements and awards in a particular field as one of its official comprehensive review factors.",
    "quote_en": "Special talents, achievements and awards in a particular field",
    "programs_mentioned": [],
-   "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/how-applications-are-reviewed.html"
+   "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/how-applications-are-reviewed.html",
+   "group": "honors"
   },
   {
    "college": "Common App",
@@ -3265,7 +3287,8 @@
    "statement_en": "Common App lets you list up to 5 academic honors (with grade level and recognition level) and, separately, up to 10 activities — including family responsibilities, jobs and hobbies.",
    "quote_en": "You can include up to 5 academic honors you received during high school.",
    "programs_mentioned": [],
-   "url": "https://www.commonapp.org/static/b3bf7d597fc06144ea6e0ff4673eb6b2/Resource_FY_GatherMaterials_ENG_2025.06.25_1.pdf"
+   "url": "https://www.commonapp.org/static/b3bf7d597fc06144ea6e0ff4673eb6b2/Resource_FY_GatherMaterials_ENG_2025.06.25_1.pdf",
+   "group": "honors"
   },
   {
    "college": "Georgia Tech",
@@ -3274,7 +3297,8 @@
    "statement_en": "In a 2016 Georgia Tech admission blog post, the dean of admission named work as a great summer choice, in any setting, and suggested local volunteering if paid work isn't available.",
    "quote_en": "working in any setting is a good thing",
    "programs_mentioned": [],
-   "url": "https://sites.gatech.edu/admission-blog/2016/05/04/make-it-a-summer/"
+   "url": "https://sites.gatech.edu/admission-blog/2016/05/04/make-it-a-summer/",
+   "group": "life"
   }
  ]
 }

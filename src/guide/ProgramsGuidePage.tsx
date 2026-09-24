@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { ChevronDown, Pin, Search, Trophy, Sun, CalendarDays, Landmark, ExternalLink, Quote } from 'lucide-react'
+import { ChevronDown, Pin, Search, Trophy, Sun, CalendarDays, Landmark, ExternalLink, Monitor, MapPin, Shuffle } from 'lucide-react'
 import { t, getLang } from '../i18n'
 import { goBack, navigate, slugify } from '../lib/router'
 import type { ProfileRow } from '../lib/profile'
@@ -7,6 +7,7 @@ import { majorClusters, majorParent } from '../data/majors'
 import schoolsIndex from '../data/schools.index.json'
 import data from '../data/programs.json'
 import VerifiedBadge from '../ui/VerifiedBadge'
+import AdmissionsTakeaways, { type Statement } from './AdmissionsTakeaways'
 
 // 대회·서머 프로그램 가이드 — 공식 출처만 (각 프로그램 공식 사이트·운영 대학·입학처 페이지), 2026-09-23 확인, 사용자 승인
 export interface Mention { college: string; college_en?: string; relation: 'host' | 'admissions_mention'; note_ko: string; note_en: string; url: string; school_id?: number }
@@ -18,16 +19,28 @@ export interface Program {
   format: 'online' | 'in_person' | 'hybrid' | null; official_url: string; eligibility_url: string | null
   official_mentions: Mention[]; area: string
 }
-interface Statement { college: string; topic: string; statement_ko: string; statement_en: string; quote_en: string | null; url: string }
 
 export const programs = (data as { programs: Program[] }).programs
 const statements = (data as { statements: Statement[] }).statements
 const schoolName = new Map((schoolsIndex as { id: number; name: string }[]).map((s) => [s.id, s.name]))
 
-// 입학처 공식 입장 — 맨 위에 먼저 보여줄 것
-const TOP_STATEMENTS = ['MIT|summer_no_advantage', 'Caltech|summer_no_advantage', 'Yale|precollege_disclaimer']
 
 type Kind = 'all' | 'competition' | 'summer'
+type Fmt = 'all' | 'online' | 'hybrid' | 'in_person'
+
+// 참가 방식 — 한국에서 온라인으로 할 수 있는지가 핵심
+const FORMAT = {
+  online: { icon: Monitor, cls: 'bg-sky-50 text-sky-700 ring-sky-200', ko: '온라인', en: 'Online', headKo: '온라인으로 참가', headEn: 'Online', subKo: '온라인으로 진행돼 한국에서도 할 수 있어요 (참가 자격은 배지 확인)', subEn: 'Runs online, so you can join from Korea (check the eligibility badge)' },
+  hybrid: { icon: Shuffle, cls: 'bg-violet-50 text-violet-700 ring-violet-200', ko: '온라인+현장', en: 'Online + in person', headKo: '온라인 + 현장', headEn: 'Online + in person', subKo: '온라인 예선·과정이 있고, 본선이나 일부 과정은 현장이에요 (또는 둘 중 선택)', subEn: 'Online rounds or options, with in-person finals or sessions (or a choice of either)' },
+  in_person: { icon: MapPin, cls: 'bg-orange-50 text-orange-700 ring-orange-200', ko: '현장', en: 'In person', headKo: '현장에 가야 해요', headEn: 'In person', subKo: '대회장·캠퍼스에 직접 가야 해요 (한국에서 열리는 대회 포함)', subEn: 'You go to the venue or campus (includes events held in Korea)' },
+} as const
+
+function FormatBadge({ f }: { f: Program['format'] }) {
+  if (!f) return null
+  const m = FORMAT[f]
+  const Icon = m.icon
+  return <span className={`inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold ring-1 ${m.cls}`}><Icon size={11} strokeWidth={2.2} />{t(m.ko, m.en)}</span>
+}
 
 export function IntlBadge({ v }: { v: Program['intl_eligibility'] }) {
   const map = {
@@ -59,7 +72,7 @@ export default function ProgramsGuidePage({ profile }: { profile: ProfileRow | n
   const [hideUs, setHideUs] = useState(true)
   const [q, setQ] = useState('')
   const [open, setOpen] = useState<string | null>(null)
-  const [allStatements, setAllStatements] = useState(false)
+  const [fmt, setFmt] = useState<Fmt>('all')
 
   useEffect(() => {
     document.title = t('미국 대입 대회·서머 프로그램 가이드 — 전공별 추천, 국제학생 참가 자격 | 미국 대입 로드맵', 'Competitions & summer programs by major — international eligibility | US College Roadmap')
@@ -74,69 +87,15 @@ export default function ProgramsGuidePage({ profile }: { profile: ProfileRow | n
       .filter((p) => !vals || p.majors.some((m) => vals.has(m)))
       .filter((p) => kind === 'all' || p.type === kind || (kind === 'summer' && p.type === 'event'))
       .filter((p) => !hideUs || p.intl_eligibility !== 'us_only')
+      .filter((p) => fmt === 'all' || p.format === fmt)
       .filter((p) => !needle || `${p.name} ${p.host} ${p.what_ko} ${p.what_en}`.toLowerCase().includes(needle))
       // 내 전공에 딱 맞는 것 먼저, 그다음 국제학생 참가 쉬운 순
       .sort((a, b) => (startMajor ? Number(!a.majors.includes(startMajor)) - Number(!b.majors.includes(startMajor)) : 0) || order[a.intl_eligibility ?? 'null'] - order[b.intl_eligibility ?? 'null'])
-  }, [cluster, kind, hideUs, q, startMajor])
+  }, [cluster, kind, hideUs, q, startMajor, fmt])
 
   const usOnlyCount = programs.filter((p) => p.intl_eligibility === 'us_only').length
-  const top = TOP_STATEMENTS.map((k) => statements.find((s) => `${s.college}|${s.topic}` === k)).filter(Boolean) as Statement[]
-  const shownStatements = allStatements ? statements : top
 
-  const chip = (on: boolean, label: string, onClick: () => void) => (
-    <button onClick={onClick} className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium ${on ? 'bg-gray-900 text-white' : 'border border-gray-200 bg-white text-gray-600'}`}>{label}</button>
-  )
-
-  return (
-    <div className="min-h-dvh bg-gray-50">
-      <div className="mx-auto max-w-md px-5 py-6 pb-16 lg:max-w-3xl">
-        <div className="flex items-center gap-3">
-          <button onClick={() => goBack('/')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
-          <h1 className="text-xl font-bold text-gray-900">{t('대회·서머 프로그램', 'Competitions & summer programs')}</h1>
-        </div>
-        <VerifiedBadge className="mt-3" date={(data as { verified_at: string }).verified_at} sources={t('각 프로그램 공식 사이트 · 대학 입학처', 'Program sites · college admissions pages')} />
-
-        {/* 입학처 공식 입장 */}
-        <div className="mt-4 rounded-2xl bg-gray-900 px-5 py-5 text-white">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-200">{t('먼저 알아둘 것 — 입학처 공식 입장', 'First — what admissions offices officially say')}</p>
-          <p className="mt-2 text-[15px] font-semibold leading-snug">{t('비싼 서머 프로그램은 필수가 아니에요. 무엇을 했는지보다 그 경험으로 어떻게 성장했는지가 중요해요.', 'Expensive summer programs are not required. What matters is how you grew, not where you went.')}</p>
-          <div className="mt-3 flex flex-col gap-2 md:grid md:grid-cols-3 md:gap-2.5">
-            {shownStatements.map((s, i) => (
-              <div key={i} className="rounded-xl bg-white/5 px-3.5 py-3 ring-1 ring-white/10">
-                <p className="flex items-center gap-1.5 text-xs font-semibold text-blue-200"><Quote size={12} />{s.college}</p>
-                <p className={`mt-1 text-[13px] leading-relaxed text-blue-50/90 ${allStatements ? '' : 'line-clamp-2'}`}>{t(s.statement_ko, s.statement_en)}</p>
-                {s.quote_en && <p className="mt-1.5 text-[12px] italic text-blue-100/60">“{s.quote_en}”</p>}
-                <a href={s.url} target="_blank" rel="noreferrer" className="mt-1.5 inline-flex items-center gap-0.5 text-[11px] text-blue-200 underline">{t('공식 출처', 'Official source')}<ExternalLink size={10} /></a>
-              </div>
-            ))}
-          </div>
-          <button onClick={() => setAllStatements((v) => !v)} className="mt-3 flex items-center gap-1 text-xs font-semibold text-blue-200">
-            {allStatements ? t('접기', 'Show less') : t(`전문 보기 · 대학 공식 입장 ${statements.length}개`, `Read in full · all ${statements.length} statements`)} <ChevronDown size={14} className={allStatements ? 'rotate-180' : ''} />
-          </button>
-        </div>
-
-        {/* 필터 */}
-        <div className="relative mt-5">
-          <Search size={16} className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
-          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder={t('이름으로 찾기 (예: USACO, RISD)', 'Search by name (e.g. USACO, RISD)')} className="w-full rounded-xl border-2 border-gray-200 bg-white py-2.5 pl-10 pr-3 text-sm focus:border-blue-600 focus:outline-none" />
-        </div>
-        <div className="no-scrollbar -mx-5 mt-3 flex gap-1.5 overflow-x-auto px-5 pb-1">
-          {chip(cluster === -1, t('전체 전공', 'All majors'), () => setCluster(-1))}
-          {majorClusters.map((c, i) => programs.some((p) => p.majors.some((m) => c.values.includes(m))) && chip(cluster === i, t(c.ko, c.en), () => setCluster(i)))}
-        </div>
-        <div className="mt-2 flex flex-wrap items-center gap-1.5">
-          {chip(kind === 'all', t('전체', 'All'), () => setKind('all'))}
-          {chip(kind === 'competition', t('대회', 'Competitions'), () => setKind('competition'))}
-          {chip(kind === 'summer', t('서머 프로그램', 'Summer programs'), () => setKind('summer'))}
-          <label className="ml-auto flex cursor-pointer items-center gap-1.5 text-xs text-gray-600">
-            <input type="checkbox" checked={hideUs} onChange={(e) => setHideUs(e.target.checked)} className="h-4 w-4 accent-blue-600" />
-            {t(`미국 시민권·거주 필요한 것 숨기기 (${usOnlyCount})`, `Hide US-only (${usOnlyCount})`)}
-          </label>
-        </div>
-
-        <p className="mt-3 text-xs text-gray-500">{t(`${rows.length}개`, `${rows.length} items`)}</p>
-        <div className="mt-1.5 flex flex-col gap-2">
-          {rows.map((p) => {
+  const card = (p: Program) => {
             const isOpen = open === p.key
             const hosts = p.official_mentions.filter((m) => m.relation === 'host')
             const mentions = p.official_mentions.filter((m) => m.relation === 'admissions_mention')
@@ -151,6 +110,7 @@ export default function ProgramsGuidePage({ profile }: { profile: ProfileRow | n
                     <div className="mt-1 flex flex-wrap items-center gap-1.5">
                       <span className="text-[11px] text-gray-500">{typeLabel(p.type)}</span>
                       <IntlBadge v={p.intl_eligibility} />
+                      <FormatBadge f={p.format} />
                       {mentions.length > 0 && <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-semibold text-blue-700"><Landmark size={11} />{[...new Set(mentions.map((m) => t(m.college, m.college_en ?? m.college)))].join('·')}{t(' 입학처 언급', ' admissions')}</span>}
                     </div>
                     <p className="mt-1.5 text-[13px] leading-relaxed text-gray-600">{t(p.what_ko, p.what_en)}</p>
@@ -192,6 +152,72 @@ export default function ProgramsGuidePage({ profile }: { profile: ProfileRow | n
                   </div>
                 )}
               </div>
+            )
+          }
+
+  const chip = (on: boolean, label: string, onClick: () => void) => (
+    <button onClick={onClick} className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium ${on ? 'bg-gray-900 text-white' : 'border border-gray-200 bg-white text-gray-600'}`}>{label}</button>
+  )
+
+  return (
+    <div className="min-h-dvh bg-gray-50">
+      <div className="mx-auto max-w-md px-5 py-6 pb-16 lg:max-w-3xl">
+        <div className="flex items-center gap-3">
+          <button onClick={() => goBack('/')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
+          <h1 className="text-xl font-bold text-gray-900">{t('대회·서머 프로그램', 'Competitions & summer programs')}</h1>
+        </div>
+        <VerifiedBadge className="mt-3" date={(data as { verified_at: string }).verified_at} sources={t('각 프로그램 공식 사이트 · 대학 입학처', 'Program sites · college admissions pages')} />
+
+        {/* 입학처 공식 입장 — 핵심 한 줄씩 */}
+        <AdmissionsTakeaways statements={statements} />
+
+        {/* 필터 */}
+        <div className="relative mt-5">
+          <Search size={16} className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+          <input value={q} onChange={(e) => setQ(e.target.value)} placeholder={t('이름으로 찾기 (예: USACO, RISD)', 'Search by name (e.g. USACO, RISD)')} className="w-full rounded-xl border-2 border-gray-200 bg-white py-2.5 pl-10 pr-3 text-sm focus:border-blue-600 focus:outline-none" />
+        </div>
+        <div className="no-scrollbar -mx-5 mt-3 flex gap-1.5 overflow-x-auto px-5 pb-1">
+          {chip(cluster === -1, t('전체 전공', 'All majors'), () => setCluster(-1))}
+          {majorClusters.map((c, i) => programs.some((p) => p.majors.some((m) => c.values.includes(m))) && chip(cluster === i, t(c.ko, c.en), () => setCluster(i)))}
+        </div>
+        <div className="mt-2 flex flex-wrap items-center gap-1.5">
+          {chip(kind === 'all', t('전체', 'All'), () => setKind('all'))}
+          {chip(kind === 'competition', t('대회', 'Competitions'), () => setKind('competition'))}
+          {chip(kind === 'summer', t('서머 프로그램', 'Summer programs'), () => setKind('summer'))}
+          <label className="ml-auto flex cursor-pointer items-center gap-1.5 text-xs text-gray-600">
+            <input type="checkbox" checked={hideUs} onChange={(e) => setHideUs(e.target.checked)} className="h-4 w-4 accent-blue-600" />
+            {t(`미국 시민권·거주 필요한 것 숨기기 (${usOnlyCount})`, `Hide US-only (${usOnlyCount})`)}
+          </label>
+        </div>
+
+        <div className="no-scrollbar -mx-5 mt-2 flex items-center gap-1.5 overflow-x-auto px-5 pb-1">
+          <span className="shrink-0 text-[11px] font-semibold text-gray-400">{t('참가 방식', 'Format')}</span>
+          {chip(fmt === 'all', t('전체', 'All'), () => setFmt('all'))}
+          {chip(fmt === 'online', t('온라인', 'Online'), () => setFmt('online'))}
+          {chip(fmt === 'hybrid', t('온라인+현장', 'Online + in person'), () => setFmt('hybrid'))}
+          {chip(fmt === 'in_person', t('현장', 'In person'), () => setFmt('in_person'))}
+        </div>
+
+        <p className="mt-3 text-xs text-gray-500">{t(`${rows.length}개`, `${rows.length} items`)}</p>
+        <div className="mt-1.5 flex flex-col gap-2">
+          {(fmt === 'all' ? (['online', 'hybrid', 'in_person'] as const) : [fmt]).map((f) => {
+            const list = rows.filter((p) => p.format === f)
+            if (list.length === 0) return null
+            const m = FORMAT[f]
+            const Icon = m.icon
+            return (
+              <section key={f} className="mt-3 first:mt-0">
+                {fmt === 'all' && (
+                  <div className="mb-2 mt-2 flex items-start gap-2">
+                    <span className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ring-1 ${m.cls}`}><Icon size={15} strokeWidth={2} /></span>
+                    <div>
+                      <p className="text-sm font-bold text-gray-900">{t(m.headKo, m.headEn)} <span className="font-normal text-gray-400">{list.length}</span></p>
+                      <p className="text-[11px] text-gray-500">{t(m.subKo, m.subEn)}</p>
+                    </div>
+                  </div>
+                )}
+                <div className="flex flex-col gap-2">{list.map(card)}</div>
+              </section>
             )
           })}
           {rows.length === 0 && <p className="rounded-xl bg-white px-4 py-6 text-center text-sm text-gray-500 ring-1 ring-gray-200">{t('조건에 맞는 항목이 없어요.', 'Nothing matches.')}</p>}
