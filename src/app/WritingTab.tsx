@@ -33,7 +33,7 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
   const [ws, setWs] = useState<WorkspaceTarget | null>(null)
 
   useEffect(() => {
-    loadAppRecords(userId).then((r) => setEssays(r.essays))
+    loadAppRecords(userId).then((r) => setEssays(r.essays)).catch(() => { /* 전역 안내 띠가 표시함 */ })
     loadSchools().then((all) =>
       setSchools(
         profile.target_mode === 'schools'

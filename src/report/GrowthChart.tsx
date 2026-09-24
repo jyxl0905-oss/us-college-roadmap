@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { axisOrder, axisKo, type Axis, type AxisScores } from '../lib/score'
 import { t, bilingual } from '../i18n'
 
+// (현재 화면에서 사용 안 함 — 리포트에서 섹션을 뺐지만 스냅샷은 계속 쌓이므로 재사용 대비 보관)
 // 시즌별 성장 그래프 — reports 스냅샷(6축 점수·완료율)을 시즌 순으로 선 그래프. SVG 직접 렌더(라이브러리 없음)
 export interface SeasonPoint {
   season_label: string // '2026-fall'

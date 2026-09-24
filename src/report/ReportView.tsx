@@ -272,12 +272,20 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         else next.delete(itemId)
         return next
       })
-      await supabase.from('user_checks').upsert({
+      const r = await supabase.from('user_checks').upsert({
         user_id: userId,
         item_id: itemId,
         season_label: seasonLabel,
         status: wasChecked ? 'carried' : 'done',
       })
+      if (r.error) {
+        // 저장 실패 → 화면도 원래대로 (체크·이월·누적 완료)
+        const undo = (prev: Set<number>, add: boolean) => { const n = new Set(prev); if (add) n.add(itemId); else n.delete(itemId); return n }
+        setCheckedIds((prev) => undo(prev, wasChecked))
+        setAllDoneIds((prev) => undo(prev, wasChecked))
+        setCarriedIds((prev) => undo(prev, !wasChecked))
+        alert(t('저장에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.', 'Save failed. Check your connection and try again.'))
+      }
       return
     }
     const result = wasChecked
@@ -291,6 +299,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           .from('user_checks')
           .upsert({ user_id: userId, item_id: itemId, season_label: seasonLabel, status: 'done' })
     if (result.error) {
+      alert(t('저장에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.', 'Save failed. Check your connection and try again.'))
       setAllDoneIds((prev) => {
         const next = new Set(prev)
         if (wasChecked) next.add(itemId)
@@ -406,7 +415,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       )}
       {graduated && (
         <p className="mt-3 rounded-xl bg-gray-100 px-4 py-3 text-sm text-gray-600">
-          {t('졸업 축하해요! 체크리스트는 닫혔고, 4년 기록(성장 그래프·내 원서)은 그대로 보관돼요.', 'Congratulations on graduating! The checklist is closed; your four-year record (growth chart, application) stays saved.')}
+          {t('졸업 축하해요! 체크리스트는 닫혔고, 4년 기록(시즌별 리포트·내 원서)은 그대로 보관돼요.', 'Congratulations on graduating! The checklist is closed; your four-year record (season reports, application) stays saved.')}
         </p>
       )}
 

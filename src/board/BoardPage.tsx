@@ -75,11 +75,13 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
       supabase.from('custom_tasks').select('id, school_id, title, done').eq('user_id', userId),
       loadAppRecords(userId),
     ]).then(([sc, ap, ct, rec]) => {
+      // 지원 현황·할 일을 못 불러오면 빈 보드로 보여주지 않음 (재입력으로 인한 중복 방지)
+      if (ap.error || ct.error) { window.dispatchEvent(new CustomEvent('app:load-error')); return }
       setSchools(localizeRows((sc.data ?? []) as School[]))
       setApps(((ap.data ?? []) as ApplicationRow[]).map((a) => ({ ...a, fit: normalizeFit(a.fit as string | null) })))
       setTasks((ct.data ?? []) as CustomTask[])
       setRecords(rec)
-    })
+    }).catch(() => { /* 전역 안내 띠가 표시함 */ })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, profile.target_mode, profile.target_tier, profile.target_school_ids.join(',')])
 

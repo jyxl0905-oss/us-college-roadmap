@@ -8,3 +8,6 @@
 -- 실제 SQL은 supabase_migrations.schema_migrations의
 --   is_admin_rpc, stash_onboarding_token, records_upload_count_limit,
 --   rls_initplan_and_fk_indexes, harden_admin_functions, drop_unused_table_name 항목 참고
+-- 7) (2026-09-24 추가) clarity_responses (user_id, season_label, item_id) 유니크 인덱스,
+--    feedback 1인 1시간 10건 / analytics_events 1인 1분 60건 제한 트리거 (limit_user_inserts)
+--    → 마이그레이션 clarity_unique_and_spam_limits

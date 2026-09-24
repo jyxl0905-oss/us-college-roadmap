@@ -13,6 +13,7 @@ import ComparePage from './browse/ComparePage'
 import { usePath, navigate, redirect } from './lib/router'
 import { logout } from './lib/logout'
 import ErrorBoundary from './ErrorBoundary'
+import LoadErrorBanner from './LoadErrorBanner'
 import { demoProfile, DEMO_USER_ID } from './demo/demoProfile'
 import { getLang, t } from './i18n'
 import TopNav from './nav/TopNav'
@@ -190,8 +191,11 @@ function GateFlow({ userId, profile, onDone }: { userId: string; profile: Profil
 
 // 구글 로그인 직후: 온보딩 없이 최소 프로필(스텁) 자동 생성 → 바로 메인
 function StubCreator({ userId, onDone }: { userId: string; onDone: (p: ProfileRow) => void }) {
+  const [failed, setFailed] = useState(false)
+  const [attempt, setAttempt] = useState(0)
   useEffect(() => {
     let cancelled = false
+    setFailed(false)
     ;(async () => {
       const { data } = await supabase!.auth.getUser()
       const meta = (data.user?.user_metadata ?? {}) as { full_name?: string; name?: string }
@@ -217,12 +221,25 @@ function StubCreator({ userId, onDone }: { userId: string; onDone: (p: ProfileRo
         logEvent(userId, 'signup')
         if (!cancelled) onDone({ ...row, user_id: userId })
       } catch {
-        // 저장 실패 시 로딩 화면 유지 대신 재시도 여지를 두고 로그아웃 안내는 profileError 경로에 맡김
-        if (!cancelled) setTimeout(() => { if (!cancelled) onDone(row) }, 0)
+        // 저장 안 된 프로필로 진행하면 이후 저장이 조용히 0건이 됨 → 재시도 화면
+        if (!cancelled) setFailed(true)
       }
     })()
     return () => { cancelled = true }
-  }, [userId]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [userId, attempt]) // eslint-disable-line react-hooks/exhaustive-deps
+  if (failed) {
+    return (
+      <Screen>
+        <div className="py-16 text-center">
+          <p className="text-4xl">⚠️</p>
+          <h1 className="mt-4 text-xl font-bold text-gray-900">{t('가입을 마무리하지 못했어요', "Couldn't finish signing you up")}</h1>
+          <p className="mt-3 text-sm text-gray-500">{t('네트워크 상태를 확인하고 다시 시도해 주세요.', 'Check your connection and try again.')}</p>
+          <button onClick={() => setAttempt((n) => n + 1)} className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700">{t('다시 시도', 'Retry')}</button>
+          <button onClick={() => logout()} className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50">{t('로그아웃', 'Log out')}</button>
+        </div>
+      </Screen>
+    )
+  }
   return <LoadingScreen />
 }
 
@@ -253,6 +270,7 @@ export default function App() {
     <ErrorBoundary>
       <Suspense fallback={<LoadingScreen />}>
         <TopNav key={`nav-${langKey}`} />
+        <LoadErrorBanner />
         <AppRoutes key={langKey} />
       </Suspense>
     </ErrorBoundary>
@@ -283,6 +301,8 @@ function AppRoutes() {
   // 마지막 리포트 시즌 — 현재 시즌과 다르면 체크인 플로우부터
   // undefined = 아직 조회 전 (조회가 끝나기 전에 리포트를 먼저 그리면 안 됨)
   const [lastSeason, setLastSeason] = useState<string | null | undefined>(undefined)
+  const [seasonError, setSeasonError] = useState(false) // 조회 실패를 '리포트 없음'(null)으로 오인하면 시즌 체크인을 건너뜀 → 재시도 화면
+  const [seasonRetry, setSeasonRetry] = useState(0)
   // TopNav 링크 구성용 — 온보딩 미완료 유저는 '홈'/'리포트' 분리
   useEffect(() => {
     // 프로필 로딩 중(null)에는 보내지 않음 — 기존 유저 상단바가 잠깐 '홈/리포트'로 갈라지는 깜빡임 방지
@@ -360,16 +380,33 @@ function AppRoutes() {
       setLastSeason(undefined)
       return
     }
+    setSeasonError(false)
     supabase
       .from('reports')
       .select('season_label')
       .eq('user_id', userId)
       .order('created_at', { ascending: false })
       .limit(1)
-      .then(({ data }) => {
+      .then(({ data, error }) => {
+        if (error) { setSeasonError(true); return }
         setLastSeason(data && data.length > 0 ? data[0].season_label : null)
-      })
-  }, [userId, profile])
+      }, () => setSeasonError(true))
+  }, [userId, profile, seasonRetry])
+
+  if (session && profile && lastSeason === undefined && seasonError) {
+    return (
+      <Screen>
+        <div className="py-16 text-center">
+          <p className="text-4xl">⚠️</p>
+          <h1 className="mt-4 text-xl font-bold text-gray-900">{t('불러오지 못했어요', "Couldn't load")}</h1>
+          <p className="mt-3 text-sm text-gray-500">{t('네트워크 상태를 확인하고 다시 시도해 주세요.', 'Check your connection and try again.')}</p>
+          <button onClick={() => setSeasonRetry((n) => n + 1)} className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700">
+            {t('다시 시도', 'Retry')}
+          </button>
+        </div>
+      </Screen>
+    )
+  }
 
   if (sessionLoading || profileLoading || (session && profile && lastSeason === undefined)) {
     return (

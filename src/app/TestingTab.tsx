@@ -30,7 +30,7 @@ export default function TestingTab({ userId, profile, onProfileChange }: Testing
   const busyRef = useRef(false) // 저장·삭제 중복 요청 방지 (더블탭)
 
   useEffect(() => {
-    loadAppRecords(userId).then((r) => setTests(r.tests))
+    loadAppRecords(userId).then((r) => setTests(r.tests)).catch(() => { /* 전역 안내 띠가 표시함 */ })
   }, [userId])
 
   // 기록 → 프로필 파생 (sat_status/sat_band, toefl_status, ap_completed)

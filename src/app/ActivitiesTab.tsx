@@ -38,7 +38,7 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
     loadAppRecords(userId).then((r) => {
       setActivities(r.activities)
       setHonors(r.honors)
-    })
+    }).catch(() => { /* 전역 안내 띠가 표시함 */ })
   }, [userId])
 
   if (!activities) return <AppShell tab="activities" title={t('활동 · 수상', 'Activities · Honors')}><p className="mt-10 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p></AppShell>

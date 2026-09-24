@@ -34,7 +34,7 @@ export default function AppHome({ userId, profile }: AppHomeProps) {
   const [guideOpen, setGuideOpen] = useState(() => localStorage.getItem(GUIDE_KEY) !== '1')
 
   useEffect(() => {
-    loadAppRecords(userId).then(setRec)
+    loadAppRecords(userId).then(setRec).catch(() => { /* 전역 안내 띠가 표시함 */ })
     loadPlans(userId).then(setPlans)
     if (supabase) {
       supabase

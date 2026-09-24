@@ -32,7 +32,7 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
   const toggleGrade = (g: number) => setOpenGrades((prev) => { const n = new Set(prev); if (n.has(g)) n.delete(g); else n.add(g); return n })
 
   useEffect(() => {
-    loadAppRecords(userId).then((r) => setCourses(r.courses))
+    loadAppRecords(userId).then((r) => setCourses(r.courses)).catch(() => { /* 전역 안내 띠가 표시함 */ })
   }, [userId])
 
   const patchProfile = async (patch: Partial<ProfileRow>) => {

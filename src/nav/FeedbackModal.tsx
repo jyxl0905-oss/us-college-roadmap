@@ -16,7 +16,13 @@ export default function FeedbackModal({ onClose }: { onClose: () => void }) {
     const uid = data.session?.user.id
     if (!uid) { setError(t('로그인 후 보낼 수 있어요.', 'Please log in to send feedback.')); setState('edit'); return }
     const { error } = await supabase.from('feedback').insert({ user_id: uid, message: message.trim().slice(0, 2000), page: window.location.pathname })
-    if (error) { setError(error.message); setState('edit'); return }
+    if (error) {
+      setError(error.message.includes('too many')
+        ? t('잠시 후 다시 보내 주세요 — 1시간에 10건까지 보낼 수 있어요.', 'Please try again later — up to 10 messages per hour.')
+        : t('보내지 못했어요. 네트워크를 확인하고 다시 시도해 주세요.', 'Couldn’t send. Check your connection and try again.'))
+      setState('edit')
+      return
+    }
     setState('done')
   }
 

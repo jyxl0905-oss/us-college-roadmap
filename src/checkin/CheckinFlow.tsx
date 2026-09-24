@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { ChecklistItem, ClarityItem, Tier } from '../lib/types'
 import { supabase } from '../lib/supabase'
 import { filterChecklist, saveProfile, type ProfileRow } from '../lib/profile'
@@ -89,18 +89,26 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
     })
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+  const decidingRef = useRef<Set<number>>(new Set()) // 같은 항목 연타 방지
   const decide = async (item: ChecklistItem, carry: boolean) => {
-    if (!supabase) return
+    if (!supabase || decidingRef.current.has(item.id)) return
+    decidingRef.current.add(item.id)
+    // 저장이 성공한 뒤에 목록에서 뺌 — 실패했는데 사라지면 이월·건너뛰기 기록 없이 넘어가게 됨
+    const { error } = await supabase.from('user_checks').upsert(
+      carry
+        ? { user_id: userId, item_id: item.id, season_label: currentLabel, status: 'carried' }
+        : { user_id: userId, item_id: item.id, season_label: prevSeasonLabel, status: 'skipped' },
+    )
+    decidingRef.current.delete(item.id)
+    if (error) {
+      alert(t('저장에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.', 'Save failed. Check your connection and try again.'))
+      return
+    }
     setIncomplete((prev) => {
       const next = prev.filter((i) => i.id !== item.id)
       if (next.length === 0) setScreen(openPlans.length > 0 ? 'plans' : 'changes')
       return next
     })
-    await supabase.from('user_checks').upsert(
-      carry
-        ? { user_id: userId, item_id: item.id, season_label: currentLabel, status: 'carried' }
-        : { user_id: userId, item_id: item.id, season_label: prevSeasonLabel, status: 'skipped' },
-    )
   }
 
   const patch = (fields: Partial<ProfileRow>) => setDraft((d) => ({ ...d, ...fields }))
@@ -132,7 +140,8 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
     const d = finalDraft ?? draft
     if (supabase && clarityItems.length > 0) {
       // 전원에게 표시하되 연구 동의 여부를 플래그로 분리 저장
-      await supabase.from('clarity_responses').insert(
+      // (user_id, season_label, item_id) 유니크 — 다시 제출해도 중복 행 없음
+      await supabase.from('clarity_responses').upsert(
         clarityItems.map((item) => ({
           user_id: userId,
           item_id: item.id,
@@ -140,6 +149,7 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
           score: clarityScores[item.id],
           research_ok: profile.research_consent ?? false,
         })),
+        { onConflict: 'user_id,season_label,item_id', ignoreDuplicates: true },
       )
     }
     await saveAndDone(d)

@@ -117,6 +117,12 @@ export async function loadAppRecords(userId: string): Promise<AppRecords> {
     supabase.from('courses').select('*').eq('user_id', userId).order('grade'),
     supabase.from('essays').select('*').eq('user_id', userId).order('id'),
   ])
+  // 하나라도 실패하면 빈 목록으로 보여주지 않음 (학생이 기록이 사라진 줄 알고 다시 입력해 중복이 생김) → 전역 안내 띠 + 거부
+  const failed = [a, h, t, c, e].find((r) => r.error)
+  if (failed) {
+    try { window.dispatchEvent(new CustomEvent('app:load-error')) } catch { /* ignore */ }
+    throw new Error(failed.error!.message)
+  }
   return {
     activities: (a.data ?? []) as Activity[],
     honors: (h.data ?? []) as Honor[],
@@ -141,15 +147,26 @@ export async function insertRow<T extends { id: number }>(table: Table, userId: 
   return (data as T) ?? null
 }
 
+// 현재 로그인 사용자 id (세션 캐시에서 — 네트워크 요청 없음)
+async function currentUid(): Promise<string | null> {
+  const { data } = await supabase!.auth.getSession()
+  return data.session?.user.id ?? null
+}
+
+// 수정·삭제는 id와 본인 user_id를 함께 조건으로 (DB 권한 정책에 더한 이중 안전장치)
 export async function updateRow<T extends { id: number }>(table: Table, id: number, patch: Partial<T>): Promise<void> {
   if (!supabase) return
-  const { error } = await supabase.from(table).update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id)
+  const uid = await currentUid()
+  if (!uid) fail(t('저장', 'Save'), 'not signed in')
+  const { error } = await supabase.from(table).update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id).eq('user_id', uid)
   if (error) fail(t('저장', 'Save'), error.message)
 }
 
 export async function deleteRow(table: Table, id: number): Promise<void> {
   if (!supabase) return
-  const { error } = await supabase.from(table).delete().eq('id', id)
+  const uid = await currentUid()
+  if (!uid) fail(t('삭제', 'Delete'), 'not signed in')
+  const { error } = await supabase.from(table).delete().eq('id', id).eq('user_id', uid)
   if (error) fail(t('삭제', 'Delete'), error.message)
 }
 
