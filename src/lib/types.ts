@@ -137,9 +137,11 @@ export interface School {
   intl_aid_year?: string | null
   meets_full_need_intl?: boolean | null
   merit_intl?: string | null
+  merit_intl_en?: string | null
   meets_full_need_all?: boolean | null
   no_loan?: boolean | null
   merit_note?: string | null
+  merit_note_en?: string | null // 영어 모드에서 localizeRow가 merit_note를 덮어씀
   aid_source_url?: string | null
   // 보충 에세이 요구사항 (공식 입학처 확인분, null=미조사)
   essay_req?: string | null

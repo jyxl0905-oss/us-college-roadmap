@@ -379,6 +379,8 @@ create table public.schools (
   essay_req_en text,
   essay_change text,
   essay_change_en text,
+  merit_note_en text,
+  merit_intl_en text,
   essay_cycle text,
   essay_source_url text,
   avg_gpa numeric,
