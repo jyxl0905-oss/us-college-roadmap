@@ -13,6 +13,7 @@ import ComparePage from './browse/ComparePage'
 import { usePath, navigate, redirect } from './lib/router'
 import { logout } from './lib/logout'
 import ErrorBoundary from './ErrorBoundary'
+import { demoProfile, DEMO_USER_ID } from './demo/demoProfile'
 import { getLang, t } from './i18n'
 import TopNav from './nav/TopNav'
 
@@ -93,6 +94,24 @@ function StashFetcher({ userId, onDone }: { userId: string; onDone: (r: { answer
     return () => { cancelled = true; window.clearTimeout(timer) }
   }, [userId]) // eslint-disable-line react-hooks/exhaustive-deps
   return <LoadingScreen />
+}
+
+// 체험 모드 화면 — 상단 안내 띠 + 가상 학생 리포트 (기본기·용어집도 열람 가능)
+function DemoReport() {
+  const [profile] = useState(demoProfile)
+  const [guide, setGuide] = useState(false)
+  if (guide) return <Screen><GuideView onBack={() => setGuide(false)} /></Screen>
+  return (
+    <>
+      <div className="no-print border-b border-amber-200 bg-amber-50 px-4 py-2 text-center text-xs text-amber-900">
+        👀 {t('체험 모드 — 가상의 예시 학생(11학년·CS 지망)이에요. 체크해 봐도 저장되지 않아요.', 'Demo mode — a fictional sample student (grade 11, CS). Checks are not saved.')}{' '}
+        <button onClick={() => navigate('/')} className="font-semibold underline">{t('내 리포트 만들기', 'Make mine')}</button>
+      </div>
+      <WideScreen>
+        <ReportView userId={DEMO_USER_ID} profile={profile} demo onLogout={() => navigate('/')} onOpenGuide={() => setGuide(true)} />
+      </WideScreen>
+    </>
+  )
 }
 
 // 없는 주소 — 검색엔진 수집 제외(noindex) + 주요 페이지로 안내
@@ -429,6 +448,10 @@ function AppRoutes() {
   // 전공 로드맵 (비로그인도 열람 가능, 계획 담기는 로그인 필요)
   if (path === '/majors' || path === '/majors/') {
     return <MajorsIndexPage />
+  }
+  // 체험 모드: 로그인 없이 가상 학생의 리포트 전체를 둘러봄 (저장·기록 없음)
+  if (path === '/demo' || path === '/demo/') {
+    return <DemoReport />
   }
   // 수업 난이도 가이드 (비로그인도 열람 가능, 로그인 시 '지금 여기' 표시)
   if (path === '/guide/courses' || path === '/guide/courses/') {

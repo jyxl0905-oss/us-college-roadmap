@@ -64,10 +64,11 @@ interface ReportViewProps {
   onLogout: () => void
   onOpenGuide: () => void
   onProfileChange?: (p: ProfileRow) => void
+  demo?: boolean // 체험 모드: 가상 학생, 개인 기록 조회·저장·이벤트 기록 없음 (체크는 화면에서만)
 }
 
 // 로그인 후 메인 화면 — 시즌 리포트 (차트·학교·체크리스트·내보내기)
-export default function ReportView({ userId, profile, onLogout, onOpenGuide, onProfileChange }: ReportViewProps) {
+export default function ReportView({ userId, profile, onLogout, onOpenGuide, onProfileChange, demo = false }: ReportViewProps) {
   const [items, setItems] = useState<ChecklistItem[]>([])
   const [allItems, setAllItems] = useState<ChecklistItem[]>([])
   const [schools, setSchools] = useState<School[]>([])
@@ -87,7 +88,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   const [plans, setPlans] = useState<Plan[]>([]) // F6 내 계획 → 6축 점선
 
   useEffect(() => {
-    if (!supabase) return
+    if (!supabase || demo) return
     supabase
       .from('applications')
       .select('school_id, round, student_deadline')
@@ -108,15 +109,15 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   const grade = profileGrade(profile)
   const graduated = !!profile.graduated
   const [isAdmin, setIsAdmin] = useState(false)
-  useEffect(() => { supabase?.auth.getUser().then(({ data }) => setIsAdmin(isAdminEmail(data.user?.email))) }, [])
+  useEffect(() => { if (!demo) supabase?.auth.getUser().then(({ data }) => setIsAdmin(isAdminEmail(data.user?.email))) }, [demo])
   // 결과 설문: 졸업 모드이거나, 12학년 3~7월(결과 발표 이후)
   const surveyMonth = new Date().getMonth() + 1
   const showSurvey = graduated || (grade === 12 && surveyMonth >= 3 && surveyMonth <= 7)
   const isIntl = profile.applicant_status !== 'domestic'
 
   useEffect(() => {
-    logEvent(userId, 'report_view')
-  }, [userId])
+    if (!demo) logEvent(userId, 'report_view')
+  }, [userId, demo])
 
   // F1: 학교 상세 CTA(/#school-{id})로 들어오면 해당 카드로 스크롤
   useEffect(() => {
@@ -138,30 +139,37 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
 
     Promise.all([
       supabase.from('checklist_items').select('*'),
-      supabase
+      demo ? Promise.resolve({ data: [] as { item_id: number; status: string }[], error: null }) : supabase
         .from('user_checks')
         .select('item_id,status')
         .eq('user_id', userId)
         .eq('season_label', seasonLabel),
       schoolsQuery ?? Promise.resolve({ data: [], error: null }),
-      supabase
+      demo ? Promise.resolve({ data: [] as unknown[], error: null }) : supabase
         .from('reports')
         .select('season_label,snapshot,created_at')
         .eq('user_id', userId)
         .order('created_at', { ascending: true }),
       supabase.from('prescriptions').select('*'),
       supabase.from('appeal_strategies').select('*'),
-      supabase.from('user_checks').select('item_id').eq('user_id', userId).eq('status', 'done'),
+      demo ? Promise.resolve({ data: [] as { item_id: number }[], error: null }) : supabase.from('user_checks').select('item_id').eq('user_id', userId).eq('status', 'done'),
     ]).then(([itemsRes, checksRes, schoolsRes, prevRes, presRes, appealRes, allDoneRes]) => {
       // 체크·지난 리포트 중 하나라도 못 불러오면 오류 화면 — 빈 체크 상태로 이번 시즌 스냅샷을 덮어쓰지 않도록
       const failed = itemsRes.error ?? checksRes.error ?? prevRes.error ?? allDoneRes.error
       if (failed) setError(failed.message)
       else {
         const all = localizeRows(itemsRes.data as ChecklistItem[])
+        const filtered = filterChecklist(all, profile)
         setAllItems(all)
-        setItems(filterChecklist(all, profile))
+        setItems(filtered)
+        // 체험 모드: 이번 시즌 항목 약 1/3을 완료한 상태로 시작 (진행률·레이더가 비어 보이지 않게)
+        if (demo) {
+          const done = filtered.slice(0, Math.ceil(filtered.length / 3)).map((i) => i.id)
+          setCheckedIds(new Set(done))
+          setAllDoneIds(new Set(done))
+        }
       }
-      if (checksRes.data) {
+      if (checksRes.data && !demo) {
         setCheckedIds(new Set(checksRes.data.filter((c) => c.status === 'done').map((c) => c.item_id)))
         setCarriedIds(new Set(checksRes.data.filter((c) => c.status === 'carried').map((c) => c.item_id)))
       }
@@ -178,7 +186,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       }
       if (presRes.data) setPrescriptions(localizeRows(presRes.data as Prescription[]))
       if (appealRes.data) setAppeals(localizeRows(appealRes.data as Appeal[]))
-      if (allDoneRes.data) setAllDoneIds(new Set(allDoneRes.data.map((c) => c.item_id)))
+      if (allDoneRes.data && !demo) setAllDoneIds(new Set(allDoneRes.data.map((c) => c.item_id)))
       setLoading(false)
     })
   }, [userId, seasonLabel]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -217,7 +225,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   // 저장은 직렬화(chain)해서 순서 보장
   const snapshotChain = useRef<Promise<void>>(Promise.resolve())
   useEffect(() => {
-    if (!supabase || loading || error) return
+    if (!supabase || loading || error || demo) return
     const seasonPlans = plans.filter((p) => p.season_label === seasonLabel)
     const snapshot = {
       done: doneCount, total: totalCount, scores,
@@ -234,6 +242,13 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   const toggle = async (itemId: number) => {
     if (!supabase) return
     const wasChecked = checkedIds.has(itemId)
+    if (demo) {
+      // 체험 모드: 화면에서만 토글 (저장 안 함)
+      const flip = (prev: Set<number>) => { const n = new Set(prev); if (wasChecked) n.delete(itemId); else n.add(itemId); return n }
+      setCheckedIds(flip)
+      setAllDoneIds(flip)
+      return
+    }
     if (!wasChecked) logEvent(userId, 'check')
     // 누적 완료 집합도 동기화 (스토리 준비 점수 즉시 반영)
     setAllDoneIds((prev) => {
@@ -351,7 +366,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           <p className="mt-0.5 text-xs text-gray-400">{targetText}</p>
         </div>
         <button onClick={onLogout} className="no-print shrink-0 text-sm text-gray-400 underline">
-          {t('로그아웃', 'Log out')}
+          {demo ? t('체험 끝내기', 'Exit demo') : t('로그아웃', 'Log out')}
         </button>
       </div>
 
@@ -375,10 +390,10 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       <InstallPrompt />
 
       {/* 11학년 봄~12학년 '꼭 체크' 마일스톤 */}
-      {!graduated && (grade === 12 || (grade === 11 && currentSeason() !== 'fall')) && <MustDoCard userId={userId} grade={grade} />}
+      {!demo && !graduated && (grade === 12 || (grade === 11 && currentSeason() !== 'fall')) && <MustDoCard userId={userId} grade={grade} />}
 
       {/* 졸업 후 결과 설문 (12학년 봄 이후·졸업 모드) */}
-      {showSurvey && (
+      {showSurvey && !demo && (
         <div className="no-print mt-4">
           <OutcomeSurvey userId={userId} profile={profile} />
         </div>
@@ -591,6 +606,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       )}
 
       {/* 하단: 친구 공유만 — 내 원서·마감·기본기는 상단 바와 바로 가기로 이동 */}
+      {!demo && (<>
       <div className="no-print mt-8 flex flex-col gap-2">
         <ShareInvite userId={userId} className="w-full rounded-xl border-2 border-green-200 bg-green-50 px-4 py-3 text-left font-medium text-green-800 active:bg-green-100" />
       </div>
@@ -638,6 +654,8 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           {t('📅 폰 캘린더에 추가 (.ics) — 다음 체크인', '📅 Add to calendar (.ics) — next check-in')}{assignedRounds.some((a) => a.student_deadline) ? t(' + 내가 입력한 마감일', ' + my entered deadlines') : ''}
         </button>
       </div>
+      </>)}
+      {demo && <DemoCta className="no-print mt-8" />}
 
       {/* 8. 푸터 */}
       <div className="mt-8 border-t border-gray-200 pt-4 text-center text-xs text-gray-400">
@@ -657,6 +675,9 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
     </div>
 
     {/* 데스크톱 사이드 패널 — 리포트 옆에서 내 원서를 바로 (모바일은 기존 흐름 그대로) */}
+    {demo ? (
+      <aside className="no-print hidden lg:sticky lg:top-16 lg:block"><DemoCta /></aside>
+    ) : (
     <aside className="no-print hidden lg:sticky lg:top-16 lg:block">
       <QuickAppPanel userId={userId} />
       <div className="mt-3 rounded-2xl border border-gray-100 bg-white p-4 text-sm">
@@ -676,6 +697,22 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         <p className="mt-3 border-t border-gray-100 pt-2 text-xs text-gray-400">{t('다음 체크인', 'Next check-in')}: {nextCheckinKo()}</p>
       </div>
     </aside>
+    )}
+    </div>
+  )
+}
+
+// 체험 모드 안내 — 가입(구글 로그인)은 첫 화면 버튼으로
+function DemoCta({ className = '' }: { className?: string }) {
+  return (
+    <div className={`rounded-2xl border-2 border-blue-200 bg-blue-50 p-4 ${className}`}>
+      <p className="font-semibold text-gray-900">{t('👀 예시 학생의 리포트였어요', '👀 That was a sample student’s report')}</p>
+      <p className="mt-1 text-sm leading-relaxed text-gray-600">
+        {t('가입하면 내 학년·전공·목표 학교로 이 리포트가 만들어지고, 체크·활동·에세이 기록이 저장돼요. 전 기능 무료예요.', 'Sign up and this report is built from your own grade, major and target schools, with your checks, activities and essays saved. Everything is free.')}
+      </p>
+      <button onClick={() => navigate('/')} className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white active:bg-blue-700">
+        {t('내 리포트 만들기 (무료)', 'Make my report (free)')}
+      </button>
     </div>
   )
 }

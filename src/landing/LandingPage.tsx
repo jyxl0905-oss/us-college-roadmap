@@ -55,6 +55,12 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white"><GoogleIcon /></span>
         {t('Google로 시작하기', 'Start with Google')}
       </button>
+      <button
+        onClick={() => navigate('/demo')}
+        className="mt-2 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 active:bg-gray-50"
+      >
+        👀 {t('로그인 없이 예시 리포트 먼저 보기', 'See a sample report first — no login')}
+      </button>
       {error && <p className="mt-2 text-center text-sm text-red-600">{error}</p>}
     </>
   )
