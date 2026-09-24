@@ -5,10 +5,20 @@ import { navigate } from '../lib/router'
 import SchoolLogo from '../browse/SchoolLogo'
 import schoolsIndex from '../data/schools.index.json'
 import type { School } from '../lib/types'
+import { majorCategories } from '../data/majors'
+import apData from '../data/ap.json'
+import RadarChart from '../report/RadarChart'
+import type { AxisScores } from '../lib/score'
+import { Check, Eye, ShieldCheck, ClipboardCheck, FileText, Landmark, Compass, Share2 } from 'lucide-react'
 
 // 훅 랜딩 — 비로그인 첫 화면. 원칙: 유학원 광고처럼 보이면 실패 (과장·그라디언트·카운트다운 금지).
-// 수치는 전부 실데이터(공식 출처 시드)에서만. CTA는 구글 로그인 하나.
+// 수치는 전부 실데이터(공식 출처 시드)에서만. CTA는 구글 로그인 + 로그인 없는 체험.
+// 2026-09 리디자인: 좌(메시지·버튼) / 우(리포트 미리보기) + 숫자 띠 + 기능 3개
 const schools = schoolsIndex as School[]
+const majorCount = majorCategories.length
+const apCount = (apData as { courses: { status: string }[] }).courses.filter((c) => c.status !== 'pilot').length
+// 미리보기 차트: 체험 모드(/demo) 예시 학생과 같은 점수 — '예시' 라벨로만 표시
+const SAMPLE_SCORES: AxisScores = { rigor: 77, testing: 55, spike: 45, leadership: 45, validation: 20, story: 0 }
 
 function GoogleIcon() {
   return (
@@ -48,19 +58,22 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
 
   const cta = (
     <>
-      <button
-        onClick={() => void googleLogin()}
-        className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-gray-900 px-4 py-4 font-semibold text-white active:bg-gray-700"
-      >
-        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white"><GoogleIcon /></span>
-        {t('Google로 시작하기', 'Start with Google')}
-      </button>
-      <button
-        onClick={() => navigate('/demo')}
-        className="mt-2 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 active:bg-gray-50"
-      >
-        👀 {t('로그인 없이 예시 리포트 먼저 보기', 'See a sample report first — no login')}
-      </button>
+      <div className="flex flex-col gap-2.5 sm:flex-row">
+        <button
+          onClick={() => void googleLogin()}
+          className="flex flex-1 items-center justify-center gap-2.5 rounded-2xl bg-gray-900 px-5 py-4 text-[15px] font-bold text-white active:bg-gray-800"
+        >
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white"><GoogleIcon /></span>
+          {t('Google로 시작하기', 'Start with Google')}
+        </button>
+        <button
+          onClick={() => navigate('/demo')}
+          className="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-5 py-4 text-[15px] font-bold text-gray-900 active:bg-gray-50"
+        >
+          <Eye size={18} strokeWidth={1.9} />
+          {t('로그인 없이 예시 보기', 'See a sample — no login')}
+        </button>
+      </div>
       {error && <p className="mt-2 text-center text-sm text-red-600">{error}</p>}
     </>
   )
@@ -68,85 +81,134 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
   // 실데이터 미리보기: 둘러보기와 동일한 시드에서 상위 3곳
   const preview = schools.filter((s) => (s.kind ?? 'university') === 'university').sort((a, b) => (a.usnews_rank ?? 9999) - (b.usnews_rank ?? 9999)).slice(0, 3)
 
+  const stats: [string, string, string][] = [
+    [String(schools.length), t('대학 공식 데이터', 'colleges, official data'), '/schools'],
+    [String(majorCount), t('전공 가이드', 'major guides'), '/majors'],
+    [String(apCount), t('AP 과목 가이드', 'AP course guides'), '/guide/ap'],
+    [t('0원', '$0'), t('전 기능 무료', 'everything free'), ''],
+  ]
+
   return (
     <div className="min-h-dvh bg-gray-50">
-      <div className="mx-auto max-w-md px-5 py-10 md:max-w-lg">
-        {/* 0. 무료 라인 — 최상단, 제일 잘 보이게 */}
-        <p className="rounded-xl bg-blue-50 px-4 py-2.5 text-center text-sm font-bold text-blue-700">
-          {t('전 기능 무료 · 광고 없음 · 유료 전환 없음', 'Everything free · no ads · no paid tier')}
-        </p>
+      <div className="mx-auto max-w-md px-5 pb-12 pt-8 md:max-w-6xl md:px-10 md:pt-14">
+        {/* 1. 히어로 — 좌: 메시지·버튼 / 우: 리포트 미리보기 */}
+        <div className="md:grid md:grid-cols-[1.05fr_1fr] md:items-center md:gap-14">
+          <div>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1.5 text-[13px] font-semibold text-blue-700">
+              <Check size={14} strokeWidth={2.4} />
+              {t('전 기능 무료 · 광고 없음 · 유료 전환 없음', 'Everything free · no ads · no paid tier')}
+            </span>
+            <h1 className="mt-5 text-[32px] font-extrabold leading-[1.2] tracking-[-0.035em] text-gray-900 md:text-[52px] md:leading-[1.15]">
+              {t('카운슬러 없이도,', 'No counselor needed —')}
+              <br />
+              <span className="text-blue-600">{t('4년 입시', 'four years of admissions')}</span>{t('를', '')}
+              <br />
+              {t('혼자 관리할 수 있게.', 'managed on your own.')}
+            </h1>
+            <p className="mt-4 text-[15px] leading-relaxed text-gray-600 md:mt-5 md:max-w-lg md:text-[17px]">
+              {t('학년·전공·목표 학교에 맞춘 시즌별 체크리스트와 리포트. 활동·수상은 지금부터 기록해 두고, 12학년엔 옮겨 적기만 하면 돼요.', 'Season-by-season checklists and reports tailored to your grade, major and target schools. Log activities and honors from today — in senior year, just copy them over.')}
+            </p>
+            <div className="mt-6 md:mt-8">{cta}</div>
+            <p className="mt-4 flex items-start gap-1.5 text-[13px] leading-relaxed text-gray-500">
+              <ShieldCheck size={16} strokeWidth={1.9} className="mt-px shrink-0" />
+              {t('대학 데이터는 Common Data Set·College Board·각 대학 입학처 공식 자료만 사용해요. 컨설팅은 비싸고 합격을 보장하지 않아요 — 필요한 건 정보와 기록이에요.', 'College data comes only from Common Data Sets, the College Board and official admissions pages. Consulting is expensive and guarantees nothing — what you need is information and a record.')}
+            </p>
+          </div>
 
-        {/* 1. 헤드라인 */}
-        <img src="/icons/icon-192.png" alt="" width={56} height={56} className="mt-6 h-14 w-14 rounded-2xl shadow-sm" />
-        <h1 className="mt-5 text-[26px] font-bold leading-snug text-gray-900">
-          {t('활동·수상, 지금부터 기록해두세요.', 'Log your activities and honors from today.')}
-          <br />
-          {t('12학년엔 옮겨 적기만 하면 됩니다.', 'Senior year, you just copy them over.')}
-        </h1>
-
-        {/* 2. 대비 문구 */}
-        <p className="mt-4 font-medium text-gray-700">{t('고액 컨설팅 없이도, 혼자서도 관리할 수 있게 만들었어요.', 'Built so you can manage it yourself — no expensive consulting required.')}</p>
-        <p className="mt-1 text-sm text-gray-500">
-          {t('컨설팅은 비싸고, 합격을 보장하지도 않습니다. 필요한 건 정보와 기록입니다.', "Consulting is expensive and guarantees nothing. What you need is information and a record.")}
-        </p>
-
-        {/* 공유 요청 — 첫 화면에서 바로 보이게 */}
-        <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/60 px-4 py-3 text-sm leading-relaxed text-blue-900">
-          {t('혼자 미국 대입을 준비하는 학생들을 위한 툴입니다.', 'A tool for students preparing for US college admissions on their own.')}
-          <br />
-          {t('주변에 필요한 학생이 있다면 이 페이지를 공유해주세요.', 'If you know a student who needs this, please share this page.')}{' '}
-          <button onClick={() => void share()} className="mt-1.5 inline-flex items-center gap-1 rounded-full border border-blue-300 bg-white px-3 py-1 text-xs font-semibold text-blue-700 active:bg-blue-50">
-            {shared ? t('링크 복사됨 ✓', 'Link copied ✓') : t('🔗 공유하기', '🔗 Share')}
-          </button>
+          {/* 리포트 미리보기 (예시 학생) */}
+          <div className="relative mt-8 md:mt-0">
+            <div className="rounded-2xl border-2 border-gray-200 bg-white p-5">
+              <div className="flex items-baseline justify-between">
+                <p className="font-bold text-gray-900">{t('6축 밸런스 리포트', '6-axis balance report')}</p>
+                <p className="text-xs text-gray-400">{t('예시 학생 · 11학년 · 컴퓨터과학', 'Sample student · grade 11 · CS')}</p>
+              </div>
+              <RadarChart scores={SAMPLE_SCORES} />
+            </div>
+            <div className="absolute -right-3 -top-5 hidden w-48 rounded-2xl border-2 border-gray-200 bg-white px-4 py-3 md:block">
+              <p className="text-[11px] font-semibold text-gray-400">{t('이번 시즌 체크리스트', "This season's checklist")}</p>
+              <p className="mt-0.5 text-[22px] font-extrabold text-gray-900">3 / 9</p>
+              <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-gray-100"><div className="h-full w-1/3 rounded-full bg-blue-500" /></div>
+            </div>
+            <div className="absolute -left-8 bottom-6 hidden w-52 rounded-2xl border-2 border-gray-200 bg-white px-4 py-3 md:block">
+              <p className="text-[11px] font-semibold text-gray-400">{t('목표 학교', 'Target schools')}</p>
+              <p className="mt-0.5 text-[22px] font-extrabold text-gray-900">{t('5곳', '5')}</p>
+              <p className="truncate text-[11px] text-gray-400">CMU · UCLA · Georgia Tech …</p>
+            </div>
+          </div>
         </div>
 
-        <div className="mt-5">{cta}</div>
+        {/* 2. 숫자 띠 — 전부 실제 데이터 개수 */}
+        <div className="mt-10 grid grid-cols-2 gap-y-5 rounded-3xl bg-gray-900 px-2 py-6 text-center text-white md:mt-16 md:grid-cols-4 md:py-7">
+          {stats.map(([n, label, to], i) => (
+            <button key={i} onClick={to ? () => navigate(to) : undefined} disabled={!to} className={`${i % 2 === 1 ? 'border-l border-white/10' : ''} ${i >= 1 ? 'md:border-l md:border-white/10' : ''} px-2`}>
+              <span className="block text-[28px] font-extrabold tracking-tight md:text-[34px]">{n}</span>
+              <span className="text-xs text-blue-100/70 md:text-[13px]">{label}</span>
+            </button>
+          ))}
+        </div>
 
         {/* 3. 핵심 기능 3개 */}
-        <div className="mt-10 flex flex-col gap-4">
-          <div className="rounded-2xl border border-gray-200 bg-white p-4">
-            <p className="font-semibold text-gray-900">📋 {t('내 원서 (가상 Common App)', 'My App (a practice Common App)')}</p>
-            <p className="mt-0.5 text-sm text-gray-500">{t("실제 원서 형식 그대로 미리 기록해 두세요 — '9학년 때 뭐 했더라?'를 막아드려요.", "Log everything in the real application's format — no more \"what did I even do in 9th grade?\"")}</p>
-            <div className="mt-3 rounded-xl border border-gray-100 bg-gray-50 p-3 text-left">
+        <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-3">
+          <div className="rounded-2xl border-2 border-gray-200 bg-white p-5">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600"><ClipboardCheck size={20} strokeWidth={1.9} /></span>
+            <p className="mt-3.5 font-bold text-gray-900">{t('시즌별 체크리스트·리포트', 'Seasonal checklist & report')}</p>
+            <p className="mt-1 text-sm leading-relaxed text-gray-500">{t('가을·봄·여름마다 학년과 전공에 맞춰 지금 해야 할 일만 보여주고, 6축 밸런스로 약한 부분을 짚어줘요.', 'Each fall, spring and summer you see only what to do now for your grade and major, with a 6-axis balance check.')}</p>
+          </div>
+
+          <div className="rounded-2xl border-2 border-gray-200 bg-white p-5">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600"><FileText size={20} strokeWidth={1.9} /></span>
+            <p className="mt-3.5 font-bold text-gray-900">{t('내 원서 (가상 Common App)', 'My App (a practice Common App)')}</p>
+            <p className="mt-1 text-sm leading-relaxed text-gray-500">{t("실제 원서 형식 그대로 미리 기록해 두세요 — '9학년 때 뭐 했더라?'를 막아드려요.", "Log everything in the real application's format — no more \"what did I even do in 9th grade?\"")}</p>
+            <div className="mt-3 rounded-xl bg-gray-50 p-3 text-left">
               <p className="text-[11px] text-gray-400">{t('활동 (Activities) · 예시', 'Activities · example')}</p>
               <p className="mt-1 text-sm font-semibold text-gray-800">{t('부회장 — 학교 로봇공학 동아리', 'Vice president — school robotics club')}</p>
               <p className="text-xs text-gray-500">{t('10·11학년 · 주 4시간 · 지역 대회 준비', 'Grades 10–11 · 4 hrs/wk · regional competition prep')}</p>
-              <div className="mt-2 h-1.5 w-2/3 rounded bg-gray-200" />
-              <div className="mt-1 h-1.5 w-1/2 rounded bg-gray-200" />
             </div>
           </div>
 
-          <div className="rounded-2xl border border-gray-200 bg-white p-4">
-            <p className="font-semibold text-gray-900">🎓 {t(`대학 ${schools.length}+ 공식 데이터`, `Official data on ${schools.length}+ colleges`)}</p>
-            <p className="mt-0.5 text-sm text-gray-500">{t('합격률·SAT·ED·마감일을 전부 공식 출처(CDS)로만 정리했어요.', 'Acceptance rates, SAT, ED, deadlines — official sources (CDS) only.')}</p>
-            <div className="mt-3 divide-y divide-gray-100 rounded-xl border border-gray-100">
+          <div className="rounded-2xl border-2 border-gray-200 bg-white p-5">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600"><Landmark size={20} strokeWidth={1.9} /></span>
+            <p className="mt-3.5 font-bold text-gray-900">{t(`대학 ${schools.length}곳 공식 데이터`, `Official data on ${schools.length} colleges`)}</p>
+            <p className="mt-1 text-sm leading-relaxed text-gray-500">{t('합격률·SAT·ED·마감·장학금을 공식 출처로만 정리하고, 비교·지도로 볼 수 있어요.', 'Acceptance rates, SAT, ED, deadlines and aid — official sources only, with compare and map views.')}</p>
+            <div className="mt-3 divide-y divide-gray-100 rounded-xl bg-gray-50">
               {preview.map((s) => (
-                <div key={s.id} className="flex items-center gap-2.5 px-3 py-2">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-md border border-gray-100 bg-white">
-                    <SchoolLogo schoolId={s.id} name={s.name} size={26} />
+                <button key={s.id} onClick={() => navigate('/schools')} className="flex w-full items-center gap-2.5 px-3 py-2 text-left">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden rounded-md bg-white">
+                    <SchoolLogo schoolId={s.id} name={s.name} size={22} />
                   </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-sm font-semibold text-gray-800">{s.name}</span>
-                    <span className="block text-[11px] text-gray-400">US News #{s.usnews_rank}{s.overall_accept_rate != null ? t(` · 합격률 ${s.overall_accept_rate}%`, ` · ${s.overall_accept_rate}% accepted`) : ''}</span>
-                  </span>
-                </div>
+                  <span className="min-w-0 flex-1 truncate text-[13px] font-semibold text-gray-800">{s.name}</span>
+                  {s.overall_accept_rate != null && <span className="text-[12px] text-gray-500">{s.overall_accept_rate}%</span>}
+                </button>
               ))}
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-gray-200 bg-white p-4">
-            <p className="font-semibold text-gray-900">🧭 {t('전공 70+ 가이드 + 대학 지도', '70+ major guides + the college map')}</p>
-            <p className="mt-0.5 text-sm text-gray-500">{t('전공별 추천 AP·4년 로드맵·직업 전망(미 노동통계국)에 미국 지도 위 대학 위치까지 볼 수 있어요.', 'Per-major APs, 4-year roadmaps, career outlooks (BLS) — and every college on a US map.')}</p>
-            <div className="mt-2 flex gap-1.5">
-              <button onClick={() => navigate('/majors')} className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-600 active:bg-gray-50">{t('전공 구경하기', 'Browse majors')}</button>
-              <button onClick={() => navigate('/schools')} className="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs text-gray-600 active:bg-gray-50">{t('대학 구경하기', 'Browse colleges')}</button>
             </div>
           </div>
         </div>
 
-        {/* 4. 신뢰 라인 + 공유 요청 + 5. CTA */}
-        <div className="mt-10 text-center">
-          <p className="text-sm font-semibold text-gray-700">{t('전 기능 무료 · 광고 없음 · 유료 전환 없음', 'Everything free · no ads · no paid tier')}</p>
+        {/* 4. 전공·가이드 바로가기 + 공유 */}
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <div className="rounded-2xl border-2 border-gray-200 bg-white p-5">
+            <p className="flex items-center gap-2 font-bold text-gray-900"><Compass size={18} strokeWidth={1.9} className="text-blue-600" />{t('전공·과목 가이드', 'Major & course guides')}</p>
+            <p className="mt-1 text-sm leading-relaxed text-gray-500">{t('전공별 추천 AP·4년 로드맵·직업 전망(미 노동통계국), 학년별 수업 난이도와 AP 과목 가이드까지.', 'Per-major APs, 4-year roadmaps and career outlooks (BLS), plus course-rigor and AP guides.')}</p>
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              <button onClick={() => navigate('/majors')} className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 active:bg-gray-50">{t('전공 알아보기', 'Majors')}</button>
+              <button onClick={() => navigate('/guide/ap')} className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 active:bg-gray-50">{t('AP 가이드', 'AP guide')}</button>
+              <button onClick={() => navigate('/guide/courses')} className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 active:bg-gray-50">{t('수업 난이도', 'Course rigor')}</button>
+              <button onClick={() => navigate('/map')} className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 active:bg-gray-50">{t('대학 지도', 'College map')}</button>
+            </div>
+          </div>
+          <div className="rounded-2xl border-2 border-gray-200 bg-white p-5">
+            <p className="font-bold text-gray-900">{t('혼자 미국 대입을 준비하는 학생들을 위한 툴이에요', 'Built for students preparing on their own')}</p>
+            <p className="mt-1 text-sm leading-relaxed text-gray-500">{t('주변에 필요한 학생이 있다면 이 페이지를 공유해 주세요.', 'If you know a student who needs this, please share this page.')}</p>
+            <button onClick={() => void share()} className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-gray-800 active:bg-gray-50">
+              {shared ? <Check size={14} strokeWidth={2.4} /> : <Share2 size={14} strokeWidth={2} />}
+              {shared ? t('링크 복사됨', 'Link copied') : t('공유하기', 'Share')}
+            </button>
+          </div>
+        </div>
+
+        {/* 5. 마지막 CTA */}
+        <div className="mx-auto mt-12 max-w-xl text-center">
+          <p className="text-lg font-extrabold tracking-tight text-gray-900 md:text-2xl">{t('지금 학년에 맞는 체크리스트부터 받아보세요', 'Start with the checklist for your grade')}</p>
           <div className="mt-5">{cta}</div>
           <button onClick={onEmailLogin} className="mt-5 text-xs text-gray-400 underline">
             {t('기존 이메일 계정으로 로그인', 'Log in with an existing email account')}
