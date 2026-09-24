@@ -1,4 +1,5 @@
 import { PageSkeleton } from '../ui/Skeleton'
+import { isDemoUser, demoStore } from '../demo/demoData'
 import { Lock, Lightbulb } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import type { ProfileRow } from '../lib/profile'
@@ -38,7 +39,10 @@ export default function AppHome({ userId, profile }: AppHomeProps) {
   useEffect(() => {
     loadAppRecords(userId).then(setRec).catch(() => { /* 전역 안내 띠가 표시함 */ })
     loadPlans(userId).then(setPlans)
-    if (supabase) {
+    if (isDemoUser(userId)) {
+      const rows = demoStore().applications
+      setAppCount({ total: rows.length, assigned: rows.filter((r) => r.round).length })
+    } else if (supabase) {
       supabase
         .from('applications')
         .select('school_id, round')

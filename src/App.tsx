@@ -123,9 +123,33 @@ function DemoReport() {
         <Eye size={14} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('체험 모드 — 가상의 예시 학생(11학년·CS 지망)이에요. 체크해 봐도 저장되지 않아요.', 'Demo mode — a fictional sample student (grade 11, CS). Checks are not saved.')}{' '}
         <button onClick={() => navigate('/')} className="font-semibold underline">{t('내 리포트 만들기', 'Make mine')}</button>
       </div>
+      <div className="no-print mx-auto mt-3 max-w-md px-5 md:max-w-2xl lg:max-w-5xl">
+        <button onClick={() => navigate('/demo/app')} className="flex w-full items-center gap-3 rounded-2xl border-2 border-blue-200 bg-blue-50 px-4 py-3 text-left active:bg-blue-100">
+          <ClipboardList size={22} strokeWidth={2} className="shrink-0 text-blue-600" />
+          <span className="min-w-0 flex-1">
+            <span className="block text-sm font-bold text-gray-900">{t('예시 학생의 "내 원서"도 둘러보기', 'Explore the sample student’s “My App”')}</span>
+            <span className="block text-xs text-gray-600">{t('과목·수업 난이도 분석 · 활동 · 시험 · 에세이 · 지원 학교 · 추천서 · 관심 표현 · 계획', 'Courses & rigor analysis · activities · tests · essays · colleges · recs · interest · plans')}</span>
+          </span>
+          <span className="shrink-0 text-blue-600">→</span>
+        </button>
+      </div>
       <WideScreen>
         <ReportView userId={DEMO_USER_ID} profile={profile} demo onLogout={() => navigate('/')} onOpenGuide={() => setGuide(true)} />
       </WideScreen>
+    </>
+  )
+}
+
+function DemoApp({ path }: { path: string }) {
+  const [profile, setProfile] = useState(demoProfile)
+  return (
+    <>
+      <div className="no-print border-b border-amber-200 bg-amber-50 px-4 py-2 text-center text-xs text-amber-900">
+        <Eye size={14} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('체험 모드 — 가상의 예시 학생 기록이에요. 바꿔 봐도 저장되지 않아요.', 'Demo mode — a fictional sample student. Changes are not saved.')}{' '}
+        <button onClick={() => navigate('/demo')} className="font-semibold underline">{t('예시 리포트', 'Sample report')}</button>{' · '}
+        <button onClick={() => navigate('/')} className="font-semibold underline">{t('내 리포트 만들기', 'Make mine')}</button>
+      </div>
+      <AppRouter path={path} userId={DEMO_USER_ID} profile={profile} onProfileChange={setProfile} />
     </>
   )
 }
@@ -488,6 +512,10 @@ function AppRoutes() {
   // F2: 학교 비교 (?ids=1,2,3)
   if (path === '/compare' || path === '/compare/') {
     return <ComparePage key={window.location.search} profile={profile} />
+  }
+  // 체험 모드의 내 원서: 가상 학생 예시 기록으로 모든 탭을 둘러봄 (저장 안 됨)
+  if (path === '/demo/app' || path.startsWith('/demo/app/')) {
+    return <DemoApp path={path.slice(5)} />
   }
   // F5: 내 원서 (가상 Common App) — 로그인 전용, 9학년부터
   if (path === '/app' || path.startsWith('/app/')) {

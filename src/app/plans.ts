@@ -2,6 +2,7 @@ import type { Axis, AxisScores } from '../lib/score'
 import { axisOrder } from '../lib/score'
 import { supabase } from '../lib/supabase'
 import { t, bilingual } from '../i18n'
+import { isDemoUser, demoStore } from '../demo/demoData'
 
 // F6 내 계획 — 시즌별 계획 항목(축 태그). 리포트 6축에 "계획 반영 시" 점선으로 반영.
 // 규칙: 계획 항목 1개당 해당 축 +10 (체크리스트 체크 가산과 동일), 완료(done)는 이미 실선에 반영된 것으로 보고 점선에서 제외
@@ -53,6 +54,7 @@ export function plannedScores(current: AxisScores, plans: Plan[]): AxisScores {
 }
 
 export async function loadPlans(userId: string): Promise<Plan[]> {
+  if (isDemoUser(userId)) return [...demoStore().plans]
   if (!supabase) return []
   const { data } = await supabase.from('plans').select('id,title,axis,season_label,status,notes,ref').eq('user_id', userId).order('id')
   return (data ?? []) as Plan[]

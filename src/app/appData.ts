@@ -1,5 +1,6 @@
 import { supabase } from '../lib/supabase'
 import { t, bilingual } from '../i18n'
+import { isDemoUser, demoStore, demoTable, demoId } from '../demo/demoData'
 
 // F5 가상 Common App — 학생 본인 기록 타입·CRUD (전부 본인 행만, RLS)
 
@@ -109,6 +110,8 @@ export interface AppRecords {
 }
 
 export async function loadAppRecords(userId: string): Promise<AppRecords> {
+  // 체험 모드: 예시 기록 (화면 안에서만 바뀜)
+  if (isDemoUser(userId)) { const s = demoStore(); return { activities: [...s.activities], honors: [...s.honors], tests: [...s.tests], courses: [...s.courses], essays: [...s.essays] } }
   if (!supabase) return { activities: [], honors: [], tests: [], courses: [], essays: [] }
   const [a, h, t, c, e] = await Promise.all([
     supabase.from('activities').select('*').eq('user_id', userId).order('sort_order'),
@@ -141,6 +144,11 @@ function fail(action: string, message: string): never {
 }
 
 export async function insertRow<T extends { id: number }>(table: Table, userId: string, row: Omit<T, 'id'>): Promise<T | null> {
+  if (isDemoUser(userId)) {
+    const saved = { id: demoId(), ...row } as unknown as T
+    demoTable(table)?.push(saved)
+    return saved
+  }
   if (!supabase) return null
   const { data, error } = await supabase.from(table).insert({ user_id: userId, ...row }).select('*').single()
   if (error) fail(t('저장', 'Save'), error.message)
@@ -155,6 +163,7 @@ async function currentUid(): Promise<string | null> {
 
 // 수정·삭제는 id와 본인 user_id를 함께 조건으로 (DB 권한 정책에 더한 이중 안전장치)
 export async function updateRow<T extends { id: number }>(table: Table, id: number, patch: Partial<T>): Promise<void> {
+  if (id < 0) { const list = demoTable(table); const i = list?.findIndex((r) => r.id === id) ?? -1; if (list && i >= 0) list[i] = { ...list[i], ...patch }; return } // 체험 모드 행
   if (!supabase) return
   const uid = await currentUid()
   if (!uid) fail(t('저장', 'Save'), 'not signed in')
@@ -163,6 +172,7 @@ export async function updateRow<T extends { id: number }>(table: Table, id: numb
 }
 
 export async function deleteRow(table: Table, id: number): Promise<void> {
+  if (id < 0) { const list = demoTable(table); const i = list?.findIndex((r) => r.id === id) ?? -1; if (list && i >= 0) list.splice(i, 1); return } // 체험 모드 행
   if (!supabase) return
   const uid = await currentUid()
   if (!uid) fail(t('삭제', 'Delete'), 'not signed in')

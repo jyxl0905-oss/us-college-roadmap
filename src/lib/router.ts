@@ -19,7 +19,14 @@ export function usePath(): string {
 
 const currentUrl = () => window.location.pathname + window.location.search + window.location.hash
 
+// 체험 모드(/demo/…) 안에서 '내 원서'(/app…)로 가는 이동은 체험용 주소(/demo/app…)로 바꿔 체험을 이어감
+export const inDemo = () => window.location.pathname.startsWith('/demo')
+function demoAware(to: string): string {
+  return inDemo() && /^\/app(\/|\?|$)/.test(to) ? `/demo${to}` : to
+}
+
 export function navigate(to: string): void {
+  to = demoAware(to)
   // 지금 보고 있는 화면과 같은 주소면 기록을 쌓지 않음 — 같은 탭·메뉴를 다시 눌렀을 때 뒤로가기가 두 번 필요해지는 문제 방지
   if (to === currentUrl()) { window.scrollTo(0, 0); return }
   // 앱 내 이동 깊이를 항목 state에 기록 — goBack()이 '직전 화면이 앱 안'인지 판단하는 근거

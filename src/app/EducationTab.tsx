@@ -9,6 +9,7 @@ import { supabase } from '../lib/supabase'
 import { computeGpa, courseLetter, gpaToBand, LETTERS } from './gpa'
 import { recommendCourses, subjectOf, rungOf, coursePosition } from '../lib/courseRecs'
 import RigorTrendBox from './RigorTrendBox'
+import { isDemoUser } from '../demo/demoData'
 import { ladders, subjectLabel, gradeGuide } from '../data/courseGuide'
 import { navigate } from '../lib/router'
 
@@ -337,6 +338,7 @@ function RecordsVault({ userId, grade }: { userId: string; grade: number }) {
 
   const upload = async (file: File) => {
     if (!supabase || busy) return
+    if (isDemoUser(userId)) { alert(t('체험 모드에서는 파일을 올릴 수 없어요.', 'File upload is off in demo mode.')); return }
     if ((files?.length ?? 0) >= VAULT_MAX_PER_GRADE) {
       alert(t(`학년당 ${VAULT_MAX_PER_GRADE}개까지 보관할 수 있어요. 안 쓰는 파일을 지우고 올려 주세요.`, `Up to ${VAULT_MAX_PER_GRADE} files per grade. Delete one you no longer need first.`))
       return

@@ -3,6 +3,7 @@ import { PenLine, SquarePen, Pin, RefreshCw, AlertTriangle } from 'lucide-react'
 import { tierSchoolsFrom } from '../lib/tierSchools'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { isDemoUser, demoStore, demoId } from '../demo/demoData'
 import AppShell from './AppShell'
 import { supabase } from '../lib/supabase'
 import { t } from '../i18n'
@@ -288,7 +289,13 @@ function EssayWorkspace({
     let ok = false
     setState('saving')
     try {
-      if (!rowRef.current) {
+      if (isDemoUser(userId)) {
+        // 체험 모드: 화면 안에서만 저장
+        if (!rowRef.current && !data.prompt && !data.body && !data.notes) { setState('idle'); return }
+        rowRef.current = { ...(rowRef.current ?? { id: demoId() }), ...data } as Essay
+        const list = demoStore().essays; const i = list.findIndex((e) => e.id === rowRef.current!.id)
+        if (i >= 0) list[i] = rowRef.current; else list.push(rowRef.current)
+      } else if (!rowRef.current) {
         // 아무것도 안 썼으면 행을 만들지 않음 (빈 항목 방지)
         if (!data.prompt && !data.body && !data.notes) { setState('idle'); return }
         const { data: created, error } = await supabase.from('essays').insert({ user_id: userId, ...data }).select('*').single()
@@ -395,7 +402,8 @@ function EssayWorkspace({
     if (!supabase || !rowRef.current) { onClose({ row: null, deletedId: null }); return }
     if (!confirm(t('이 에세이 항목을 삭제할까요? 본문까지 지워지고 되돌릴 수 없어요.', 'Delete this essay? The saved text is deleted too and cannot be recovered.'))) return
     const id = rowRef.current.id
-    const { error } = await supabase.from('essays').delete().eq('id', id)
+    const { error } = id < 0 ? { error: null } : await supabase.from('essays').delete().eq('id', id)
+    if (id < 0) { const list = demoStore().essays; const i = list.findIndex((e) => e.id === id); if (i >= 0) list.splice(i, 1) }
     if (error) {
       alert(t(`삭제에 실패했어요. 네트워크를 확인해 주세요.\n(${error.message})`, `Delete failed. Check your connection.\n(${error.message})`))
       return

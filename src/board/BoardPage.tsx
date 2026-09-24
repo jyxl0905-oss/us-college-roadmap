@@ -1,4 +1,6 @@
 import { PageSkeleton } from '../ui/Skeleton'
+import { isDemoUser, demoStore, demoId } from '../demo/demoData'
+import { loadSchools } from '../lib/schoolsCache'
 import { Target, AlertTriangle, PartyPopper, X } from 'lucide-react'
 import { tierSchoolsQuery } from '../lib/tierSchools'
 import { useEffect, useState } from 'react'
@@ -62,7 +64,19 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
     logEvent(userId, 'board_view')
   }, [userId])
 
+  const demo = isDemoUser(userId)
+  const db = demo ? null : supabase // 체험 모드: 쓰기는 화면 안에서만
   useEffect(() => {
+    if (demo) {
+      // 체험 모드: 목표 학교 + 예시 지원 현황
+      Promise.all([loadSchools(), loadAppRecords(userId)]).then(([all, rec]) => {
+        setSchools(all.filter((s) => profile.target_school_ids.includes(s.id)))
+        setApps([...demoStore().applications])
+        setTasks([])
+        setRecords(rec)
+      })
+      return
+    }
     if (!supabase || !hasTarget) {
       setSchools([])
       return
@@ -106,6 +120,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
     }
     const before = apps
     setApps((list) => [...list.filter((a) => a.school_id !== schoolId), row])
+    if (demo) { const list = demoStore().applications; const i = list.findIndex((a) => a.school_id === schoolId); if (i >= 0) list[i] = row; else list.push(row); return }
     if (supabase) {
       const { error } = await supabase.from('applications').upsert({ user_id: userId, ...row })
       if (error) {
@@ -121,8 +136,8 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
   const toggleTask = async (task: CustomTask) => {
     const done = !task.done
     setTasks((l) => l.map((t) => (t.id === task.id ? { ...t, done } : t)))
-    if (!supabase) return
-    const { error } = await supabase.from('custom_tasks').update({ done }).eq('id', task.id)
+    if (!db) return
+    const { error } = await db.from('custom_tasks').update({ done }).eq('id', task.id)
     if (error) {
       setTasks((l) => l.map((t) => (t.id === task.id ? { ...t, done: task.done } : t))) // 실패 시 되돌림
       saveFailed(error.message)
@@ -135,6 +150,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
     if (existing) {
       await toggleTask(existing)
     } else {
+      if (demo) { setTasks((l) => [...l, { id: demoId(), school_id: schoolId, title, done: true }]); return }
       if (!supabase || taskBusy) return
       setTaskBusy(true)
       const { data, error } = await supabase
@@ -151,6 +167,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
   const addCustomTask = async (schoolId: number) => {
     const title = newTask.trim()
     if (!title || !supabase || taskBusy) return
+    if (demo) { setTasks((l) => [...l, { id: demoId(), school_id: schoolId, title, done: false }]); setNewTask(''); return }
     setTaskBusy(true)
     const { data, error } = await supabase
       .from('custom_tasks')
@@ -166,8 +183,8 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
   const deleteTask = async (id: number) => {
     const before = tasks
     setTasks((l) => l.filter((t) => t.id !== id))
-    if (!supabase) return
-    const { error } = await supabase.from('custom_tasks').delete().eq('id', id)
+    if (!db) return
+    const { error } = await db.from('custom_tasks').delete().eq('id', id)
     if (error) {
       setTasks(before) // 실패 시 되돌림
       alert(t(`삭제에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.\n(${error.message})`, `Delete failed. Check your connection and try again.\n(${error.message})`))

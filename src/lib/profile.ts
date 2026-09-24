@@ -88,6 +88,7 @@ function readRefSource(a: OnboardingAnswers): string | null {
 }
 
 export async function saveProfile(userId: string, row: ProfileRow): Promise<void> {
+  if (userId === '00000000-0000-0000-0000-000000000000') return // 체험 모드: 저장 안 함 (화면에서만 반영)
   if (!supabase) throw new Error('Supabase 미설정')
   const { error } = await supabase.from('profiles').upsert({ ...row, user_id: userId })
   if (error) throw error

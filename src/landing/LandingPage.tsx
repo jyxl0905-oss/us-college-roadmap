@@ -72,9 +72,10 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
           className="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-5 py-4 text-[15px] font-bold text-gray-900 active:bg-gray-50"
         >
           <Eye size={18} strokeWidth={1.9} />
-          {t('로그인 없이 예시 보기', 'See a sample — no login')}
+          {t('로그인 없이 전체 체험하기', 'Try it all — no login')}
         </button>
       </div>
+      <p className="mt-2 text-center text-xs text-gray-500">{t('예시 학생(11학년·CS 지망)의 리포트와 내 원서 전체를 로그인 없이 둘러볼 수 있어요.', 'Browse a sample student’s full report and application workspace (grade 11, CS) without signing in.')}</p>
       {error && <p className="mt-2 text-center text-sm text-red-600">{error}</p>}
     </>
   )
@@ -231,7 +232,7 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
             </button>
             <button onClick={() => navigate('/demo')} className="flex flex-1 items-center justify-center gap-2 rounded-full border border-white/25 px-5 py-3.5 text-[15px] font-semibold text-white active:bg-white/10">
               <Eye size={18} strokeWidth={1.9} />
-              {t('예시 보기', 'See a sample')}
+              {t('로그인 없이 체험하기', 'Try it — no login')}
             </button>
           </div>
           {error && <p className="mt-3 text-sm text-red-300">{error}</p>}
