@@ -13,7 +13,11 @@ try {
   if (ref && !localStorage.getItem('ref_source')) {
     localStorage.setItem('ref_source', ref.slice(0, 40).replace(/[^\w-]/g, ''))
   }
-  if (ref) {
+  // 로그인 링크의 온보딩 보관 토큰(?st=) — 로그인 후 take_onboarding에 쓰도록 옮겨두고 주소에서 제거
+  const st = params.get('st')
+  if (st && /^[a-f0-9]{20,64}$/i.test(st)) sessionStorage.setItem('stash_token', st)
+  if (st) params.delete('st')
+  if (ref || st) {
     params.delete('ref')
     const rest = params.toString()
     window.history.replaceState(null, '', window.location.pathname + (rest ? `?${rest}` : '') + window.location.hash)

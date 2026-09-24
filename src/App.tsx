@@ -31,10 +31,12 @@ const MajorsIndexPage = lazy(() => import('./major/MajorsIndexPage'))
 const CourseGuidePage = lazy(() => import('./guide/CourseGuidePage'))
 const MapPage = lazy(() => import('./browse/MapPage'))
 // 개발용: /admin?demo=1 → 샘플 데이터로 레이아웃 확인 (프로덕션 빌드에서 제거됨)
-const AdminDemo = lazy(async () => {
-  const [{ default: Page }, { default: demo }] = await Promise.all([import('./admin/AdminPage'), import('./admin/demo-stats.json')])
-  return { default: () => <Page email="demo" demo={demo as unknown as Parameters<typeof Page>[0]['demo']} /> }
-})
+const AdminDemo = import.meta.env.DEV
+  ? lazy(async () => {
+      const [{ default: Page }, { default: demo }] = await Promise.all([import('./admin/AdminPage'), import('./admin/demo-stats.json')])
+      return { default: () => <Page email="demo" demo={demo as unknown as Parameters<typeof Page>[0]['demo']} /> }
+    })
+  : () => null
 import LandingPage from './landing/LandingPage'
 import MainHome from './home/MainHome'
 import ReportGate from './report/ReportGate'
@@ -84,9 +86,11 @@ function StashFetcher({ userId, onDone }: { userId: string; onDone: (r: { answer
   useEffect(() => {
     let cancelled = false
     const finish = (r: { answers: OnboardingAnswers; research_consent: boolean } | null) => { if (!cancelled) onDone(r) }
-    if (!supabase) { finish(null); return }
+    let token: string | null = null
+    try { token = sessionStorage.getItem('stash_token'); sessionStorage.removeItem('stash_token') } catch { /* ignore */ }
+    if (!supabase || !token) { finish(null); return }
     const timer = window.setTimeout(() => finish(null), 6000)
-    supabase.rpc('take_onboarding').then(({ data }) => {
+    supabase.rpc('take_onboarding', { p_token: token }).then(({ data }) => {
       window.clearTimeout(timer)
       const d = data as { answers?: Partial<OnboardingAnswers>; research_consent?: boolean } | null
       finish(d?.answers ? { answers: { ...emptyAnswers, ...d.answers }, research_consent: !!d.research_consent } : null)

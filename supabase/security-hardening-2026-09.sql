@@ -1,0 +1,10 @@
+-- 2026-09-24 대회 전 보안·성능 보강 (Supabase 마이그레이션으로 적용 완료, 기록용)
+-- 1) is_admin(): 관리자 화이트리스트를 DB에만 (클라이언트 번들에서 이메일 제거)
+-- 2) stash_onboarding / take_onboarding: 로그인 링크의 무작위 토큰(p_token) 일치 시에만 꺼냄, 보관 1일
+-- 3) storage 'records': 업로드 정책에 1인 30개 제한 추가 (용량 5MB·이미지/PDF 제한은 버킷 설정에 이미 있음)
+-- 4) RLS 정책 auth.uid() → (select auth.uid()) 일괄 변경, 사용자별·외래키 인덱스 17개
+-- 5) admin_* 함수 anon 실행 권한 제거, take_stats_snapshot은 service_role 전용, search_path 고정
+-- 6) 미사용 빈 테이블 public.table_name 삭제
+-- 실제 SQL은 supabase_migrations.schema_migrations의
+--   is_admin_rpc, stash_onboarding_token, records_upload_count_limit,
+--   rls_initplan_and_fk_indexes, harden_admin_functions, drop_unused_table_name 항목 참고

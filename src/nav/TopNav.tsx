@@ -4,7 +4,7 @@ import { supabase } from '../lib/supabase'
 import { t } from '../i18n'
 import LangToggle from '../i18n/LangToggle'
 import ThemeToggle from './ThemeToggle'
-import { isAdminEmail } from '../lib/admin'
+import { checkIsAdmin } from '../lib/admin'
 import FeedbackModal from './FeedbackModal'
 
 // 전역 상단 바 — 어느 화면에서든 주요 기능(리포트·내 원서·학교·마감)과 언어 토글이 항상 보이게.
@@ -21,11 +21,11 @@ export default function TopNav() {
     if (!supabase) return
     supabase.auth.getSession().then(({ data }) => {
       setLoggedIn(!!data.session)
-      setAdmin(isAdminEmail(data.session?.user.email))
+      void checkIsAdmin(data.session?.user.id).then(setAdmin)
     })
     const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
       setLoggedIn(!!s)
-      setAdmin(isAdminEmail(s?.user.email))
+      void checkIsAdmin(s?.user.id).then(setAdmin)
     })
     const onOb = (e: Event) => setOnboarded((e as CustomEvent<boolean>).detail)
     window.addEventListener('app:onboarded', onOb)

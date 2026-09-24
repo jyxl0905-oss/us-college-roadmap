@@ -43,15 +43,20 @@ export default function EmailStep({ redirectPath = '/', title, minimal = false }
     setError(null)
     // 로그인 후 돌아갈 경로 (같은 브라우저에서 링크를 열었을 때만 유효)
     try { if (redirectPath !== '/') localStorage.setItem('post_login_path', redirectPath); else localStorage.removeItem('post_login_path') } catch { /* ignore */ }
-    // 온보딩 답변을 이메일 키로 서버에 잠깐 보관 — 링크를 다른 브라우저/앱에서 열어도 질문을 다시 안 해도 되게
+    // 온보딩 답변을 서버에 잠깐 보관 — 링크를 다른 브라우저/앱에서 열어도 질문을 다시 안 해도 되게.
+    // 꺼낼 때는 로그인 링크에 실린 무작위 토큰이 필요 (남이 내 이메일로 답변을 심어둘 수 없음)
+    let stashToken: string | null = null
     try {
       const raw = localStorage.getItem('pending_answers')
-      if (raw) await supabase.rpc('stash_onboarding', { p_email: email.trim(), p_answers: { ...JSON.parse(raw), refSource: localStorage.getItem('ref_source') ?? undefined }, p_research: localStorage.getItem(RESEARCH_CONSENT_KEY) === '1' })
-    } catch { /* 보관 실패해도 로그인은 진행 (같은 브라우저면 localStorage로 이어짐) */ }
+      if (raw) {
+        stashToken = crypto.randomUUID().replace(/-/g, '')
+        await supabase.rpc('stash_onboarding', { p_email: email.trim(), p_answers: { ...JSON.parse(raw), refSource: localStorage.getItem('ref_source') ?? undefined }, p_research: localStorage.getItem(RESEARCH_CONSENT_KEY) === '1', p_token: stashToken })
+      }
+    } catch { stashToken = null /* 보관 실패해도 로그인은 진행 (같은 브라우저면 localStorage로 이어짐) */ }
     const { error } = await supabase.auth.signInWithOtp({
       email: email.trim(),
       // 메일 링크는 항상 실제 사이트로 돌아오게 고정 — 개발용 localhost에서 요청해도 꺼진 서버로 돌아가는 일 방지
-      options: { emailRedirectTo: 'https://uscollegeroadmap.com' },
+      options: { emailRedirectTo: stashToken ? `https://uscollegeroadmap.com/?st=${stashToken}` : 'https://uscollegeroadmap.com' },
     })
     setSending(false)
     if (error)

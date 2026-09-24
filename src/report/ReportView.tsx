@@ -22,7 +22,7 @@ import OutcomeSurvey from './OutcomeSurvey'
 import MustDoCard from './MustDoCard'
 import QuickAppPanel from './QuickAppPanel'
 import ShareInvite from './ShareInvite'
-import { isAdminEmail } from '../lib/admin'
+import { checkIsAdmin } from '../lib/admin'
 import { t, localizeRows } from '../i18n'
 import { downloadIcs, nextCheckinDate } from '../lib/ics'
 import { saveProfile } from '../lib/profile'
@@ -109,7 +109,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   const grade = profileGrade(profile)
   const graduated = !!profile.graduated
   const [isAdmin, setIsAdmin] = useState(false)
-  useEffect(() => { if (!demo) supabase?.auth.getUser().then(({ data }) => setIsAdmin(isAdminEmail(data.user?.email))) }, [demo])
+  useEffect(() => { if (!demo) supabase?.auth.getUser().then(({ data }) => checkIsAdmin(data.user?.id)).then(setIsAdmin) }, [demo])
   // 결과 설문: 졸업 모드이거나, 12학년 3~7월(결과 발표 이후)
   const surveyMonth = new Date().getMonth() + 1
   const showSurvey = graduated || (grade === 12 && surveyMonth >= 3 && surveyMonth <= 7)
