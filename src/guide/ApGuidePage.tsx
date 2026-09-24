@@ -74,21 +74,66 @@ const METRICS: { key: Metric; ko: string; en: string; value: (s: number[]) => nu
 
 const SCORE_COLORS = ['#16a34a', '#65a30d', '#ca8a04', '#ea580c', '#dc2626'] // 5→1
 
-function ScoreBar({ scores }: { scores: number[] }) {
+// College Board 공식 점수 의미 (AP score scale)
+const SCORE_MEANING: [string, string][] = [
+  ['매우 우수', 'Extremely well qualified'],
+  ['우수', 'Very well qualified'],
+  ['자격 있음', 'Qualified'],
+  ['가능성 있음', 'Possibly qualified'],
+  ['권장 안 함', 'No recommendation'],
+]
+
+// 범례 — 목록 위에 한 번만
+function ScoreLegend() {
   return (
-    <div>
-      <div className="flex h-3 w-full overflow-hidden rounded-full" role="img" aria-label={t(`점수 분포: 5점 ${scores[0]}%, 4점 ${scores[1]}%, 3점 ${scores[2]}%, 2점 ${scores[3]}%, 1점 ${scores[4]}%`, `Score distribution: 5 ${scores[0]}%, 4 ${scores[1]}%, 3 ${scores[2]}%, 2 ${scores[3]}%, 1 ${scores[4]}%`)}>
-        {scores.map((p, i) => (
-          <div key={i} style={{ width: `${p}%`, background: SCORE_COLORS[i] }} />
+    <div className="mt-3 rounded-xl bg-white px-3.5 py-3 ring-1 ring-gray-200">
+      <p className="text-[11px] font-semibold text-gray-500">{t('색 = 점수 (College Board 공식 의미)', 'Colors = score (College Board meaning)')}</p>
+      <div className="mt-1.5 grid grid-cols-5 gap-1">
+        {SCORE_MEANING.map(([ko, en], i) => (
+          <div key={i} className="min-w-0">
+            <div className="flex h-6 items-center justify-center rounded-md text-xs font-bold text-white" style={{ background: SCORE_COLORS[i] }}>{5 - i}</div>
+            <p className="mt-1 text-center text-[10px] leading-tight text-gray-500">{t(ko, en)}</p>
+          </div>
         ))}
-      </div>
-      <div className="mt-1 flex flex-wrap gap-x-2.5 gap-y-0.5 text-[11px] text-gray-500">
-        {scores.map((p, i) => (
-          <span key={i}><span className="mr-0.5 inline-block h-2 w-2 rounded-sm align-middle" style={{ background: SCORE_COLORS[i] }} />{5 - i}{t('점', '')} {p}%</span>
-        ))}
-        <span className="font-semibold text-gray-700">{t(`3점 이상 ${scores[0] + scores[1] + scores[2]}%`, `3+ ${scores[0] + scores[1] + scores[2]}%`)}</span>
       </div>
     </div>
+  )
+}
+
+// 과목 카드용 — 큰 숫자 2개(5점·3점 이상) + 칸 안에 %가 적힌 굵은 막대
+function ScoreBar({ scores }: { scores: number[] }) {
+  const threePlus = scores[0] + scores[1] + scores[2]
+  return (
+    <div>
+      <div className="flex items-end gap-4">
+        <p><span className="text-xl font-extrabold tabular-nums" style={{ color: SCORE_COLORS[0] }}>{scores[0]}%</span> <span className="text-[11px] text-gray-500">{t('5점', 'scored 5')}</span></p>
+        <p><span className="text-xl font-extrabold tabular-nums text-gray-900">{threePlus}%</span> <span className="text-[11px] text-gray-500">{t('3점 이상', 'scored 3+')}</span></p>
+      </div>
+      <div className="mt-1.5 flex h-7 w-full overflow-hidden rounded-lg" role="img" aria-label={t(`점수 분포: 5점 ${scores[0]}%, 4점 ${scores[1]}%, 3점 ${scores[2]}%, 2점 ${scores[3]}%, 1점 ${scores[4]}%`, `Score distribution: 5 ${scores[0]}%, 4 ${scores[1]}%, 3 ${scores[2]}%, 2 ${scores[3]}%, 1 ${scores[4]}%`)}>
+        {scores.map((p, i) => (
+          <div key={i} className="flex items-center justify-center overflow-hidden text-[11px] font-bold text-white" style={{ width: `${p}%`, background: SCORE_COLORS[i] }} title={`${5 - i}${t('점', '')}: ${p}%`}>
+            {p >= 9 ? `${p}%` : ''}
+          </div>
+        ))}
+      </div>
+      <div className="mt-1 flex w-full text-[10px] text-gray-400">
+        {scores.map((p, i) => (
+          <span key={i} className="overflow-hidden whitespace-nowrap text-center" style={{ width: `${p}%` }}>{p >= 6 ? `${5 - i}${t('점', '')}` : ''}</span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// 순위 탭 — 전체 분포를 한 줄로, 고른 기준에 해당하는 칸만 진하게
+function RankBar({ scores, metric }: { scores: number[]; metric: Metric }) {
+  const on = (i: number) => (metric === 'five' ? i === 0 : metric === 'fourFive' ? i <= 1 : metric === 'threePlus' ? i <= 2 : i === 4)
+  return (
+    <span className="mt-1 flex h-2.5 w-full overflow-hidden rounded-full">
+      {scores.map((p, i) => (
+        <span key={i} className="block h-full" style={{ width: `${p}%`, background: SCORE_COLORS[i], opacity: on(i) ? 1 : 0.18 }} />
+      ))}
+    </span>
   )
 }
 
@@ -177,6 +222,8 @@ export default function ApGuidePage() {
               )}
             </p>
 
+            <ScoreLegend />
+
             <div className="mt-3 flex flex-col gap-2.5">
               {courses.length === 0 && <p className="py-8 text-center text-sm text-gray-400">{t('검색 결과가 없어요', 'No results')}</p>}
               {courses.map((c) => (
@@ -214,7 +261,6 @@ export default function ApGuidePage() {
               .filter((c) => c.scores && (!noLang || c.category !== 'World Languages and Cultures'))
               .map((c) => ({ c, v: m.value(c.scores!) }))
               .sort((a, b) => b.v - a.v || a.c.name.localeCompare(b.c.name))
-            const max = Math.max(...rows.map((r) => r.v), 1)
             return (
               <>
                 <div className="mt-3 flex gap-1.5 overflow-x-auto pb-1">
@@ -232,6 +278,7 @@ export default function ApGuidePage() {
                     `Official May ${data.scores_year} score percentages (all students worldwide), sorted. This is not a difficulty rating — rates depend heavily on who takes each exam (prerequisites, schools, native speakers). Choose courses by your major, interests and what your school offers.`,
                   )}
                 </p>
+                <ScoreLegend />
                 <ol className="mt-3 flex flex-col gap-1.5">
                   {rows.map(({ c, v }, i) => (
                     <li key={c.key}>
@@ -242,9 +289,7 @@ export default function ApGuidePage() {
                         <span className="w-6 shrink-0 text-right text-xs font-semibold text-gray-400">{i + 1}</span>
                         <span className="min-w-0 flex-1">
                           <span className="block truncate text-sm text-gray-900">{c.name.replace(/^AP /, '')}</span>
-                          <span className="mt-1 block h-1.5 rounded-full bg-gray-100">
-                            <span className="block h-1.5 rounded-full" style={{ width: `${(v / max) * 100}%`, background: metric === 'one' ? SCORE_COLORS[4] : SCORE_COLORS[metric === 'five' ? 0 : metric === 'fourFive' ? 1 : 2] }} />
-                          </span>
+                          <RankBar scores={c.scores!} metric={metric} />
                         </span>
                         <span className="w-11 shrink-0 text-right text-sm font-semibold text-gray-800">{v}%</span>
                       </button>
