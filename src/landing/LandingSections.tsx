@@ -120,7 +120,7 @@ const k = (n: number) => `$${Math.round(n / 1000)}K`
 
 export function Facts() {
   const facts: { big: ReactNode; cap: string; src: string; to: string }[] = [
-    { big: t('불가', 'No'), cap: t('국제학생(F-1)의 연방 학자금 — Pell Grant·연방 근로장학·연방 대출', 'Federal student aid for F-1 international students — Pell, Work-Study, federal loans'), src: 'U.S. Dept. of Education', to: '/guide/cost?tab=aid' },
+    { big: t('불가', 'Ineligible'), cap: t('국제학생(F-1)의 연방 학자금 — Pell Grant·연방 근로장학·연방 대출', 'Federal student aid for F-1 international students — Pell, Work-Study, federal loans'), src: 'U.S. Dept. of Education', to: '/guide/cost?tab=aid' },
     { big: `${(costMax / costMin).toFixed(1)}×`, cap: t(`국제학생 1년 비용, 가장 낮은 곳 ${k(costMin)}와 가장 높은 곳 ${k(costMax)}의 차이`, `Gap in yearly cost for international students: ${k(costMin)} vs ${k(costMax)}`), src: t(`${totals.length}개교 공식 COA`, `Official COA, ${totals.length} schools`), to: '/guide/cost' },
     { big: <>{needBlind}<span className="text-[0.45em] font-normal text-gray-400">/{schools.length}</span></>, cap: t('국제학생 재정지원 신청을 합격 심사에 반영하지 않는(need-blind) 학교', 'Schools that are need-blind for international applicants'), src: t('각 대학 공식 발표', 'Each college’s official policy'), to: '/schools' },
     ...(apTop ? [{ big: `${apTop.scores![0]}%`, cap: t(`${apTop.name} 응시자 중 5점 비율 — 외국어 제외 1위`, `Share of ${apTop.name} takers scoring a 5 — highest outside world languages`), src: `College Board ${scoresYear}`, to: '/guide/ap' }] : []),
@@ -149,10 +149,10 @@ export function Facts() {
 export function PainAndFaq() {
   const pains: [string, string, () => void][] = [
     [t('"9학년 때 뭐 했더라?"', '"What did I even do in 9th grade?"'), t('내 원서에 지금부터 기록', 'Log it in My App from today'), () => document.getElementById('feature-app')?.scrollIntoView({ behavior: 'smooth', block: 'center' })],
-    [t('"내 SAT, 목표 학교에선 어느 정도?"', '"Where does my SAT sit at my targets?"'), t('합격자 중간 50% 범위 위 내 위치', 'Your spot on the admitted middle-50% range'), () => navigate('/demo')],
+    [t('"내 SAT, 목표 학교에선 어느 정도?"', '"How does my SAT compare at my target schools?"'), t('합격자 중간 50% 범위 위 내 위치', 'Your spot on the admitted middle-50% range'), () => navigate('/demo')],
     [t('"AP는 뭘 들어야 하지?"', '"Which APs should I take?"'), t('전공별 추천 AP · 점수 분포', 'APs by major · score distributions'), () => navigate('/guide/ap')],
     [t('"국제학생이면 1년에 얼마 들지?"', '"What does a year cost as an international student?"'), t(`${totals.length}개교 비용·재정지원 비교`, `Costs and aid across ${totals.length} schools`), () => navigate('/guide/cost')],
-    [t('"ED·EA 마감이 언제였지?"', '"When were ED and EA deadlines?"'), t('학교별 지원 시기·마감 캘린더', 'Deadlines by school and calendar'), () => navigate('/schools')],
+    [t('"ED·EA 마감이 언제였지?"', '"When are the ED and EA deadlines?"'), t('학교별 지원 시기·마감 캘린더', 'Deadlines by school and calendar'), () => navigate('/schools')],
   ]
   const faqs: [string, string][] = [
     [t('정말 전부 무료예요?', 'Is it really all free?'), t('네. 모든 기능이 무료이고, 광고도 유료 전환도 없어요.', 'Yes. Every feature is free, with no ads and no paid tier.')],

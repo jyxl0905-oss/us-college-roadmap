@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { t } from '../i18n'
 import { goBack, navigate } from '../lib/router'
-import { COURSE_GUIDE_VERIFIED, SUBJECTS, gradeGuide, subjectLabel, majorCores, rigorSources, type Subject } from '../data/courseGuide'
+import { COURSE_GUIDE_VERIFIED, cellText, SUBJECTS, gradeGuide, subjectLabel, majorCores, rigorSources, type Subject } from '../data/courseGuide'
 import { profileGrade, type ProfileRow } from '../lib/profile'
 import { Pin, BookOpen, GraduationCap } from 'lucide-react'
 import VerifiedBadge from '../ui/VerifiedBadge'
@@ -96,7 +96,7 @@ export default function CourseGuidePage({ profile }: { profile: ProfileRow | nul
                     const here = g === grade && i === hereTier
                     return (
                       <td key={i} className={`px-2 py-2.5 leading-snug text-gray-800 sm:px-3 ${here ? 'font-semibold' : ''}`}>
-                        {cell}
+                        {cellText(cell)}
                         {here && <span className="ml-1.5 whitespace-nowrap rounded-full bg-amber-400 px-1.5 py-0.5 text-[10px] font-bold text-white">{t('지금 여기', 'You are here')}</span>}
                       </td>
                     )

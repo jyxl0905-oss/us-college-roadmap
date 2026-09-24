@@ -41,8 +41,22 @@ export const seasonLabelKo: Record<Season, string> = bilingual<Season>(
 
 // 마감 시기 문자열('11월 초') → 언어별 표시 ('early Nov'). 형식이 다르면 원문 그대로
 const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+// 영어 시기 표기만 필요할 때 (롤링 안내 문구 등)
+function timingLabelEn(raw: string): string {
+  const m = raw.match(/^(\d{1,2})월\s*(초|중순|말)?$/)
+  const month = m ? MONTHS_EN[Number(m[1]) - 1] : undefined
+  if (!m || !month) return raw
+  const part = m[2] === '초' ? 'early ' : m[2] === '중순' ? 'mid-' : m[2] === '말' ? 'late ' : ''
+  return `${part}${month}`
+}
+
 export function timingLabel(raw: string | null | undefined): string | null {
   if (!raw) return null
+  // 롤링 (예: '롤링 (마감일 없음, 12월 초 장학금 우선 검토)')
+  if (raw.startsWith('롤링')) {
+    const inner = raw.match(/(\d{1,2})월\s*(초|중순|말)/)
+    return t(raw, inner ? `Rolling (no deadline; scholarship priority review ${timingLabelEn(inner[0])})` : 'Rolling (no deadline)')
+  }
   const m = raw.match(/^(\d{1,2})월\s*(초|중순|말)?$/)
   if (!m) return raw
   const month = MONTHS_EN[Number(m[1]) - 1]

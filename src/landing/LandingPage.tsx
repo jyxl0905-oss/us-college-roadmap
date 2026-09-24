@@ -100,9 +100,9 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
               {t('전 기능 무료 · 광고 없음 · 유료 전환 없음', 'Everything free · no ads · no paid tier')}
             </span>
             <h1 className="mt-5 text-[32px] font-extrabold leading-[1.2] tracking-[-0.035em] text-gray-900 md:text-[52px] md:leading-[1.15]">
-              {t('카운슬러 없이도,', 'No counselor needed —')}
+              {t('카운슬러 없이도,', 'No counselor? No problem —')}
               <br />
-              <span className="text-blue-600">{t('4년 입시', 'four years of admissions')}</span>{t('를', '')}
+              <span className="text-blue-600">{t('4년 입시', 'four years of admissions')}</span>{t('를', ',')}
               <br />
               {t('혼자 관리할 수 있게.', 'managed on your own.')}
             </h1>

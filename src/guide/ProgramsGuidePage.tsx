@@ -9,9 +9,9 @@ import data from '../data/programs.json'
 import VerifiedBadge from '../ui/VerifiedBadge'
 
 // 대회·서머 프로그램 가이드 — 공식 출처만 (각 프로그램 공식 사이트·운영 대학·입학처 페이지), 2026-09-23 확인, 사용자 승인
-export interface Mention { college: string; relation: 'host' | 'admissions_mention'; note_ko: string; note_en: string; url: string; school_id?: number }
+export interface Mention { college: string; college_en?: string; relation: 'host' | 'admissions_mention'; note_ko: string; note_en: string; url: string; school_id?: number }
 export interface Program {
-  key: string; name: string; type: 'competition' | 'summer' | 'event'; majors: string[]; host: string
+  key: string; name: string; type: 'competition' | 'summer' | 'event'; majors: string[]; host: string; host_en?: string
   what_ko: string; what_en: string; do_ko: string; do_en: string; grades_ko: string | null; grades_en: string | null
   intl_eligibility: 'open' | 'restricted' | 'us_only' | null; intl_note_ko: string | null; intl_note_en: string | null
   cost_ko: string | null; cost_en: string | null; timing_ko: string | null; timing_en: string | null
@@ -151,7 +151,7 @@ export default function ProgramsGuidePage({ profile }: { profile: ProfileRow | n
                     <div className="mt-1 flex flex-wrap items-center gap-1.5">
                       <span className="text-[11px] text-gray-500">{typeLabel(p.type)}</span>
                       <IntlBadge v={p.intl_eligibility} />
-                      {mentions.length > 0 && <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-semibold text-blue-700"><Landmark size={11} />{[...new Set(mentions.map((m) => m.college))].join('·')}{t(' 입학처 언급', ' admissions')}</span>}
+                      {mentions.length > 0 && <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-semibold text-blue-700"><Landmark size={11} />{[...new Set(mentions.map((m) => t(m.college, m.college_en ?? m.college)))].join('·')}{t(' 입학처 언급', ' admissions')}</span>}
                     </div>
                     <p className="mt-1.5 text-[13px] leading-relaxed text-gray-600">{t(p.what_ko, p.what_en)}</p>
                   </div>
@@ -161,7 +161,7 @@ export default function ProgramsGuidePage({ profile }: { profile: ProfileRow | n
                   <div className="border-t border-gray-100 px-4 py-3.5 text-[13px] leading-relaxed">
                     <dl className="grid grid-cols-[5.5rem_1fr] gap-x-3 gap-y-2">
                       <dt className="text-gray-400">{t('뭘 하나요', 'What you do')}</dt><dd className="text-gray-800">{t(p.do_ko, p.do_en)}</dd>
-                      <dt className="text-gray-400">{t('주최', 'Run by')}</dt><dd className="text-gray-800">{p.host}</dd>
+                      <dt className="text-gray-400">{t('주최', 'Run by')}</dt><dd className="text-gray-800">{t(p.host, p.host_en ?? p.host)}</dd>
                       {p.grades_ko && <><dt className="text-gray-400">{t('대상', 'Who')}</dt><dd className="text-gray-800">{t(p.grades_ko, p.grades_en ?? p.grades_ko)}</dd></>}
                       <dt className="text-gray-400">{t('국제학생', 'Intl. students')}</dt><dd className="text-gray-800">{t(p.intl_note_ko ?? '공식 페이지에 명시돼 있지 않아요 — 주최 측에 직접 확인하세요.', p.intl_note_en ?? 'Not stated officially — check with the organizer.')}</dd>
                       {p.timing_ko && <><dt className="text-gray-400">{t('시기', 'Timing')}</dt><dd className="text-gray-800">{t(p.timing_ko, p.timing_en ?? p.timing_ko)}</dd></>}
@@ -177,7 +177,7 @@ export default function ProgramsGuidePage({ profile }: { profile: ProfileRow | n
                               <span className={`mr-1.5 rounded px-1.5 py-0.5 text-[10px] font-semibold ${m.relation === 'host' ? 'bg-gray-200 text-gray-700' : 'bg-blue-100 text-blue-800'}`}>{m.relation === 'host' ? t('운영', 'Runs it') : t('입학처 언급', 'Admissions')}</span>
                               {m.school_id && schoolName.has(m.school_id)
                                 ? <button onClick={() => navigate(`/schools/${slugify(schoolName.get(m.school_id!)!)}`)} className="font-semibold text-gray-900 underline decoration-gray-300 underline-offset-2">{m.college}</button>
-                                : <span className="font-semibold text-gray-900">{m.college}</span>}
+                                : <span className="font-semibold text-gray-900">{t(m.college, m.college_en ?? m.college)}</span>}
                               {' — '}{t(m.note_ko, m.note_en)}{' '}
                               <a href={m.url} target="_blank" rel="noreferrer" className="text-blue-600 underline">{t('출처', 'source')}</a>
                             </li>

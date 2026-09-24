@@ -32,6 +32,7 @@
    }
   ],
   "outlook_note_ko": "세 직업 모두 평균보다 훨씬 빠른 성장 전망 (BLS)",
+  "outlook_note_en": "All three jobs are projected to grow much faster than average (BLS)",
   "grad_note_ko": null
  },
  "engineering": {
@@ -67,6 +68,7 @@
    }
   ],
   "outlook_note_ko": "기계·전기전자는 평균보다 훨씬 빠른, 토목은 평균보다 빠른 성장 전망 (BLS)",
+  "outlook_note_en": "Mechanical and electrical/electronics are projected to grow much faster than average, civil faster than average (BLS)",
   "grad_note_ko": null
  },
  "industrial_eng": {
@@ -93,6 +95,7 @@
    }
   ],
   "outlook_note_ko": "두 직업 모두 평균보다 훨씬 빠른 성장 전망 (BLS)",
+  "outlook_note_en": "Both jobs are projected to grow much faster than average (BLS)",
   "grad_note_ko": null
  },
  "math_data": {
@@ -106,7 +109,8 @@
     "outlook": "+8%",
     "window": "2024-34",
     "url": "https://www.bls.gov/ooh/math/mathematicians-and-statisticians.htm",
-    "note": "BLS 기준 일반적 입직 학력은 석사 (Typical Entry-Level Education: Master's degree)"
+    "note": "BLS 기준 일반적 입직 학력은 석사 (Typical Entry-Level Education: Master's degree)",
+    "note_en": "BLS typical entry-level education: Master's degree"
    },
    {
     "title": "Actuaries",
@@ -119,6 +123,7 @@
    }
   ],
   "outlook_note_ko": "두 직업 모두 평균보다 훨씬 빠른 성장 전망 (BLS)",
+  "outlook_note_en": "Both jobs are projected to grow much faster than average (BLS)",
   "grad_note_ko": null
  },
  "data_science": {
@@ -145,6 +150,7 @@
    }
   ],
   "outlook_note_ko": "두 직업 모두 평균보다 훨씬 빠른 성장 전망 (BLS)",
+  "outlook_note_en": "Both jobs are projected to grow much faster than average (BLS)",
   "grad_note_ko": null
  },
  "applied_math": {
@@ -176,10 +182,12 @@
     "outlook": "+8%",
     "window": "2024-34",
     "url": "https://www.bls.gov/ooh/math/mathematicians-and-statisticians.htm",
-    "note": "BLS 기준 일반적 입직 학력은 석사 (Typical Entry-Level Education: Master's degree)"
+    "note": "BLS 기준 일반적 입직 학력은 석사 (Typical Entry-Level Education: Master's degree)",
+    "note_en": "BLS typical entry-level education: Master's degree"
    }
   ],
   "outlook_note_ko": "세 직업 모두 평균보다 훨씬 빠른 성장 전망 (BLS)",
+  "outlook_note_en": "All three jobs are projected to grow much faster than average (BLS)",
   "grad_note_ko": null
  },
  "natural_sci": {
@@ -206,6 +214,7 @@
    }
   ],
   "outlook_note_ko": "평균 수준에서 평균보다 빠른 수준의 성장 전망 (BLS)",
+  "outlook_note_en": "Projected growth ranges from about average to faster than average (BLS)",
   "grad_note_ko": null
  },
  "biology": {
@@ -241,6 +250,7 @@
    }
   ],
   "outlook_note_ko": "직업별로 평균 수준 또는 평균보다 느린 성장 전망 (BLS)",
+  "outlook_note_en": "Depending on the job, projected growth is about average or slower than average (BLS)",
   "grad_note_ko": null
  },
  "chemistry": {
@@ -267,6 +277,7 @@
    }
   ],
   "outlook_note_ko": "화학자는 평균보다 빠른, 법과학 기술자는 평균보다 훨씬 빠른 성장 전망 (BLS)",
+  "outlook_note_en": "Chemists are projected to grow faster than average, forensic science technicians much faster than average (BLS)",
   "grad_note_ko": null
  },
  "physics": {
@@ -280,7 +291,8 @@
     "outlook": "+4%",
     "window": "2024-34",
     "url": "https://www.bls.gov/ooh/life-physical-and-social-science/physicists-and-astronomers.htm",
-    "note": "BLS 기준 일반적 입직 학력은 박사·전문학위 (Typical Entry-Level Education: Doctoral or professional degree)"
+    "note": "BLS 기준 일반적 입직 학력은 박사·전문학위 (Typical Entry-Level Education: Doctoral or professional degree)",
+    "note_en": "BLS typical entry-level education: Doctoral or professional degree"
    },
    {
     "title": "Aerospace Engineers",
@@ -293,6 +305,7 @@
    }
   ],
   "outlook_note_ko": "평균 수준에서 평균보다 빠른 수준의 성장 전망 (BLS)",
+  "outlook_note_en": "Projected growth ranges from about average to faster than average (BLS)",
   "grad_note_ko": null
  },
  "premed": {
@@ -306,10 +319,12 @@
     "outlook": "+3%",
     "window": "2024-34",
     "url": "https://www.bls.gov/ooh/healthcare/physicians-and-surgeons.htm",
-    "note": "의사가 되려면 학부(프리메드) 이후 의학전문대학원(MD)과 레지던시 과정이 필요 (BLS: Doctoral or professional degree + Internship/residency)"
+    "note": "의사가 되려면 학부(프리메드) 이후 의학전문대학원(MD)과 레지던시 과정이 필요 (BLS: Doctoral or professional degree + Internship/residency)",
+    "note_en": "Becoming a physician requires medical school (MD) and residency after undergrad (pre-med) (BLS: Doctoral or professional degree + Internship/residency)"
    }
   ],
   "outlook_note_ko": "평균 수준의 성장 전망, 단 의대(MD)·레지던시 필수 (BLS)",
+  "outlook_note_en": "Projected growth about as fast as average, but medical school (MD) and residency are required (BLS)",
   "grad_note_ko": null
  },
  "nursing": {
@@ -332,10 +347,12 @@
     "outlook": "+35%",
     "window": "2024-34",
     "url": "https://www.bls.gov/ooh/healthcare/nurse-anesthetists-nurse-midwives-and-nurse-practitioners.htm",
-    "note": "BLS 기준 일반적 입직 학력은 석사 (Typical Entry-Level Education: Master's degree)"
+    "note": "BLS 기준 일반적 입직 학력은 석사 (Typical Entry-Level Education: Master's degree)",
+    "note_en": "BLS typical entry-level education: Master's degree"
    }
   ],
   "outlook_note_ko": "RN은 평균보다 빠른, 상급 전문간호사(APRN)는 평균보다 훨씬 빠른 성장 전망 (BLS)",
+  "outlook_note_en": "RNs are projected to grow faster than average, advanced practice registered nurses (APRNs) much faster than average (BLS)",
   "grad_note_ko": null
  },
  "architecture": {
@@ -362,6 +379,7 @@
    }
   ],
   "outlook_note_ko": "평균 수준의 성장 전망 (BLS)",
+  "outlook_note_en": "Projected growth about as fast as average (BLS)",
   "grad_note_ko": null
  },
  "environmental": {
@@ -397,6 +415,7 @@
    }
   ],
   "outlook_note_ko": "평균 수준의 성장 전망 (BLS)",
+  "outlook_note_en": "Projected growth about as fast as average (BLS)",
   "grad_note_ko": null
  },
  "business": {
@@ -423,6 +442,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 경영 분석가(9%)와 시장조사 분석가(7%) 모두 2024-34년 전체 평균보다 훨씬 빠른(much faster than average) 성장 전망입니다.",
+  "outlook_note_en": "Per BLS, management analysts (9%) and market research analysts (7%) are both projected to grow much faster than the average for all occupations in 2024-34.",
   "grad_note_ko": null
  },
  "finance": {
@@ -449,6 +469,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 금융 분석가는 평균보다 빠른(faster than average) 6%, 개인 재무 상담사는 훨씬 빠른(much faster than average) 10% 성장 전망입니다(2024-34).",
+  "outlook_note_en": "Per BLS, financial analysts are projected to grow 6%, faster than average, and personal financial advisors 10%, much faster than average (2024-34).",
   "grad_note_ko": null
  },
  "social_sci": {
@@ -484,7 +505,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 정치학자는 -3% 감소(decline), 경제학자는 평균보다 느린(slower than average) 1% 전망이며, 학부 졸업 후 많이 가는 시장조사 분석가는 7%로 훨씬 빠른 성장 전망입니다(2024-34).",
-  "grad_note_ko": "정치학자·경제학자로 일하려면 보통 석사 이상 학위가 필요합니다(BLS 기준 진입 학력: 석사)."
+  "outlook_note_en": "Per BLS, political scientists are projected at -3% (decline) and economists at 1%, slower than average; market research analysts, a common path after college, are projected to grow 7%, much faster than average (2024-34).",
+  "grad_note_ko": "정치학자·경제학자로 일하려면 보통 석사 이상 학위가 필요합니다(BLS 기준 진입 학력: 석사).",
+  "grad_note_en": "Working as a political scientist or economist usually requires a master's degree or higher (BLS typical entry-level education: master's)."
  },
  "prelaw": {
   "desc_ko": "'법학과'가 아니라 로스쿨 준비 경로예요 — 보통 정치·철학·경제를 전공하며 논증과 글쓰기를 훈련해요. 변호사는 대학원(로스쿨, JD)을 거쳐야 해요.",
@@ -510,7 +533,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 변호사는 전체 평균 수준(as fast as average)인 4%, 패러리걸은 거의 변화 없음(little or no change)인 0% 전망입니다(2024-34).",
-  "grad_note_ko": "변호사가 되려면 학부 졸업 후 로스쿨(JD)과 변호사 시험 합격이 필요합니다."
+  "outlook_note_en": "Per BLS, lawyers are projected at 4%, as fast as average, and paralegals at 0%, little or no change (2024-34).",
+  "grad_note_ko": "변호사가 되려면 학부 졸업 후 로스쿨(JD)과 변호사 시험 합격이 필요합니다.",
+  "grad_note_en": "Becoming a lawyer requires law school (JD) after college and passing the bar exam."
  },
  "psychology": {
   "desc_ko": "사람의 마음과 행동을 과학으로 배워요 — 실험 설계와 통계가 절반이에요. 상담·임상은 대학원이 필요하고, 학사로는 HR·리서치·UX로도 가요.",
@@ -536,7 +561,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 심리학자와 HR 스페셜리스트 모두 평균보다 빠른(faster than average) 6% 성장 전망입니다(2024-34).",
-  "grad_note_ko": "임상·상담 심리학자가 되려면 학부 이후 대학원(박사 또는 석사)과 면허가 필요합니다. HR 등은 학사로 진입 가능합니다."
+  "outlook_note_en": "Per BLS, psychologists and HR specialists are both projected to grow 6%, faster than average (2024-34).",
+  "grad_note_ko": "임상·상담 심리학자가 되려면 학부 이후 대학원(박사 또는 석사)과 면허가 필요합니다. HR 등은 학사로 진입 가능합니다.",
+  "grad_note_en": "Clinical and counseling psychologists need graduate school (doctoral or master's) after college, plus a license. Jobs like HR are open with a bachelor's."
  },
  "humanities": {
   "desc_ko": "문학·역사·철학을 깊이 읽고, 생각을 글로 정확하게 표현하는 법을 배워요. 글쓰기 힘은 언론, 출판, 교육, 로스쿨 등 어디서나 무기가 돼요.",
@@ -571,6 +598,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 작가는 평균 수준(4%), 에디터는 평균보다 느린 1%, 고등학교 교사는 -2% 감소(decline) 전망입니다(2024-34).",
+  "outlook_note_en": "Per BLS, writers are projected at about average (4%), editors at 1%, slower than average, and high school teachers at -2% (decline) (2024-34).",
   "grad_note_ko": null
  },
  "arts": {
@@ -597,6 +625,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 그래픽 디자이너는 평균보다 느린(slower than average) 2%, 아트 디렉터는 평균 수준(as fast as average)인 4% 성장 전망입니다(2024-34). 아트 디렉터는 보통 5년 이상 경력이 필요합니다.",
+  "outlook_note_en": "Per BLS, graphic designers are projected to grow 2%, slower than average, and art directors 4%, as fast as average (2024-34). Art directors usually need 5 or more years of experience.",
   "grad_note_ko": null
  },
  "media": {
@@ -623,6 +652,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 기자·저널리스트는 -4% 감소(decline) 전망이지만, PR 스페셜리스트는 평균보다 빠른(faster than average) 5% 성장 전망입니다(2024-34).",
+  "outlook_note_en": "Per BLS, reporters and journalists are projected at -4% (decline), but PR specialists are projected to grow 5%, faster than average (2024-34).",
   "grad_note_ko": null
  },
  "cognitive_science": {
@@ -658,7 +688,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 UX 인접 직군인 웹 개발자·디지털 디자이너(7%)와 시장조사 분석가(7%), 연구 직군인 컴퓨터·정보 연구과학자(20%) 모두 평균보다 훨씬 빠른(much faster than average) 성장 전망입니다(2024-34).",
-  "grad_note_ko": "컴퓨터·정보 연구과학자 등 연구 직군은 보통 석사 이상 학위가 필요합니다(BLS 기준 진입 학력: 석사)."
+  "outlook_note_en": "Per BLS, UX-adjacent web developers and digital designers (7%), market research analysts (7%), and, on the research side, computer and information research scientists (20%) are all projected to grow much faster than average (2024-34).",
+  "grad_note_ko": "컴퓨터·정보 연구과학자 등 연구 직군은 보통 석사 이상 학위가 필요합니다(BLS 기준 진입 학력: 석사).",
+  "grad_note_en": "Research roles like computer and information research scientists usually require a master's degree or higher (BLS typical entry-level education: master's)."
  },
  "actuarial": {
   "desc_ko": "수학·통계로 미래의 위험(사고, 수명, 재해)에 가격을 매기는 법을 배워요. 보험·금융사의 보험계리사로 이어지는, 아는 사람만 아는 고연봉 트랙이에요.",
@@ -675,6 +707,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 보험계리사는 2024-34년 22%로 전체 평균보다 훨씬 빠른(much faster than average) 성장 전망입니다. 학사로 진입하되 자격시험(SOA/CAS) 통과가 장기간 이어집니다.",
+  "outlook_note_en": "Per BLS, actuaries are projected to grow 22% in 2024-34, much faster than the average for all occupations. You can enter with a bachelor's, but passing the credential exams (SOA/CAS) goes on for years.",
   "grad_note_ko": null
  },
  "public_health": {
@@ -701,7 +734,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 역학조사관(epidemiologist)은 16%로 평균보다 훨씬 빠른(much faster than average) 성장, 보건교육 전문가는 평균 수준(as fast as average)인 4% 전망입니다(2024-34).",
-  "grad_note_ko": "역학조사관은 보통 석사(MPH 등) 학위가 필요합니다(BLS 기준 진입 학력: 석사). 보건교육 전문가는 학사로 진입 가능합니다."
+  "outlook_note_en": "Per BLS, epidemiologists are projected to grow 16%, much faster than average, and health education specialists 4%, as fast as average (2024-34).",
+  "grad_note_ko": "역학조사관은 보통 석사(MPH 등) 학위가 필요합니다(BLS 기준 진입 학력: 석사). 보건교육 전문가는 학사로 진입 가능합니다.",
+  "grad_note_en": "Epidemiologists usually need a master's degree (e.g., MPH) (BLS typical entry-level education: master's). Health education specialists can start with a bachelor's."
  },
  "linguistics": {
   "desc_ko": "언어가 어떻게 만들어지고 작동하는지 과학적으로 배워요 — 음성, 문법, 의미. 요즘은 AI 언어모델·번역 기술과 연결되며 주목받는 분야예요.",
@@ -727,7 +762,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 통·번역사(2%)와 테크니컬 라이터(1%) 모두 평균보다 느린(slower than average) 성장 전망입니다(2024-34).",
-  "grad_note_ko": "언어학 연구자(대학·연구소)가 되려면 보통 대학원(석사·박사) 진학이 필요합니다. 통·번역 등 실무 직군은 학사로 진입 가능합니다."
+  "outlook_note_en": "Per BLS, interpreters and translators (2%) and technical writers (1%) are both projected to grow slower than average (2024-34).",
+  "grad_note_ko": "언어학 연구자(대학·연구소)가 되려면 보통 대학원(석사·박사) 진학이 필요합니다. 통·번역 등 실무 직군은 학사로 진입 가능합니다.",
+  "grad_note_en": "Becoming a linguistics researcher (at a university or institute) usually means grad school (master's or doctorate). Practical roles like interpreting and translation are open with a bachelor's."
  },
  "economics": {
   "desc_ko": "돈·시장·사람의 선택을 데이터와 모델로 분석하는 법을 배워요 — 사회과학 중 가장 수학적이에요. 금융, 컨설팅, 정책, 로스쿨 준비까지 폭넓게 이어져요.",
@@ -753,7 +790,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Economists 고용은 2024–34년 1% 성장(평균보다 느림) 전망이며, Market Research Analysts는 7% 성장(평균보다 훨씬 빠름) 전망입니다.",
-  "grad_note_ko": "BLS에 따르면 Economists는 일반적으로 최소 석사(Master's) 학위가 필요하며, 일부 정부 직위는 학사로도 진입 가능하고 일부는 박사(Ph.D.)가 필요합니다."
+  "outlook_note_en": "Per BLS, employment of Economists is projected to grow 1% in 2024–34 (slower than average), and Market Research Analysts 7% (much faster than average).",
+  "grad_note_ko": "BLS에 따르면 Economists는 일반적으로 최소 석사(Master's) 학위가 필요하며, 일부 정부 직위는 학사로도 진입 가능하고 일부는 박사(Ph.D.)가 필요합니다.",
+  "grad_note_en": "According to BLS, Economists typically need at least a master's degree; some government positions are open with a bachelor's, and some require a Ph.D."
  },
  "accounting": {
   "desc_ko": "기업의 돈 흐름을 기록하고 검증하는 법을 배워요 — 회계 원리, 감사, 세무. 졸업 후 CPA 자격으로 이어지는, 취업이 탄탄한 실용 전공이에요.",
@@ -779,6 +818,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Accountants and Auditors 고용은 2024–34년 5% 성장(평균보다 빠름) 전망이며, Financial Managers는 15% 성장(평균보다 훨씬 빠름) 전망입니다.",
+  "outlook_note_en": "Per BLS, employment of Accountants and Auditors is projected to grow 5% in 2024–34 (faster than average), and Financial Managers 15% (much faster than average).",
   "grad_note_ko": null
  },
  "neuroscience": {
@@ -805,7 +845,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Medical Scientists 고용은 2024–34년 9% 성장(평균보다 훨씬 빠름), Biochemists and Biophysicists는 6% 성장(평균보다 빠름) 전망입니다.",
-  "grad_note_ko": "BLS에 따르면 Medical Scientists는 일반적으로 박사(Ph.D., 보통 생물학 등 생명과학 분야) 학위가 필요하며, Biochemists and Biophysicists도 독립 연구·개발직에는 Ph.D.가 필요합니다."
+  "outlook_note_en": "Per BLS, employment of Medical Scientists is projected to grow 9% in 2024–34 (much faster than average), and Biochemists and Biophysicists 6% (faster than average).",
+  "grad_note_ko": "BLS에 따르면 Medical Scientists는 일반적으로 박사(Ph.D., 보통 생물학 등 생명과학 분야) 학위가 필요하며, Biochemists and Biophysicists도 독립 연구·개발직에는 Ph.D.가 필요합니다.",
+  "grad_note_en": "According to BLS, Medical Scientists typically need a Ph.D. (usually in biology or another life science), and Biochemists and Biophysicists also need a Ph.D. for independent research and development jobs."
  },
  "biomedical_eng": {
   "desc_ko": "공학 기술로 의료 문제를 풀어요 — 인공장기, 의료기기, 헬스 데이터. 수학·물리에 생물을 얹은 전공으로, 의료기기 산업과 대학원 연구로 이어져요.",
@@ -822,6 +864,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Bioengineers and Biomedical Engineers 고용은 2024–34년 5% 성장(평균보다 빠름) 전망입니다.",
+  "outlook_note_en": "Per BLS, employment of Bioengineers and Biomedical Engineers is projected to grow 5% in 2024–34 (faster than average).",
   "grad_note_ko": null
  },
  "chemical_eng": {
@@ -839,6 +882,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Chemical Engineers 고용은 2024–34년 3% 성장(평균 수준) 전망입니다.",
+  "outlook_note_en": "Per BLS, employment of Chemical Engineers is projected to grow 3% in 2024–34 (about as fast as average).",
   "grad_note_ko": null
  },
  "aerospace_eng": {
@@ -856,6 +900,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Aerospace Engineers 고용은 2024–34년 6% 성장(평균보다 빠름) 전망입니다.",
+  "outlook_note_en": "Per BLS, employment of Aerospace Engineers is projected to grow 6% in 2024–34 (faster than average).",
   "grad_note_ko": null
  },
  "education": {
@@ -891,7 +936,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 High School Teachers와 Kindergarten and Elementary School Teachers 고용은 2024–34년 각각 2% 감소 전망이지만, 은퇴·이직 대체 수요로 매년 다수의 채용 기회가 예상됩니다. School and Career Counselors and Advisors는 4% 성장(평균 수준) 전망입니다.",
-  "grad_note_ko": "BLS에 따르면 School and Career Counselors and Advisors 진입에는 일반적으로 석사(Master's) 학위가 필요합니다. 교사(초·중·고)는 학사 학위와 주(州) 발급 교사 자격이 기본입니다."
+  "outlook_note_en": "Per BLS, employment of High School Teachers and of Kindergarten and Elementary School Teachers is each projected to decline 2% in 2024–34, but many openings are expected each year to replace workers who retire or leave. School and Career Counselors and Advisors are projected to grow 4% (about as fast as average).",
+  "grad_note_ko": "BLS에 따르면 School and Career Counselors and Advisors 진입에는 일반적으로 석사(Master's) 학위가 필요합니다. 교사(초·중·고)는 학사 학위와 주(州) 발급 교사 자격이 기본입니다.",
+  "grad_note_en": "According to BLS, School and Career Counselors and Advisors typically need a master's degree to enter. Teachers (elementary through high school) need a bachelor's degree and a state-issued teaching license."
  },
  "film": {
   "desc_ko": "이야기를 영상으로 만드는 전 과정을 배워요 — 시나리오, 연출, 촬영, 편집. 영화·방송·스트리밍·광고 산업으로 이어지고, 포트폴리오(완성작)가 핵심이에요.",
@@ -917,6 +964,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Producers and Directors 고용은 2024–34년 5% 성장(평균보다 빠름), Film and Video Editors and Camera Operators는 3% 성장(평균 수준) 전망입니다.",
+  "outlook_note_en": "Per BLS, employment of Producers and Directors is projected to grow 5% in 2024–34 (faster than average), and Film and Video Editors and Camera Operators 3% (about as fast as average).",
   "grad_note_ko": null
  },
  "music": {
@@ -943,6 +991,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Musicians and Singers 고용은 2024–34년 1% 성장(평균보다 느림), Music Directors and Composers는 거의 변동 없음(0%) 전망입니다. 두 직업 모두 파트타임 근무가 흔합니다.",
+  "outlook_note_en": "Per BLS, employment of Musicians and Singers is projected to grow 1% in 2024–34 (slower than average), and Music Directors and Composers to see little or no change (0%). Part-time work is common in both.",
   "grad_note_ko": null
  },
  "kinesiology": {
@@ -978,7 +1027,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Exercise Physiologists 고용은 2024–34년 9% 성장, Athletic Trainers와 Physical Therapists는 각각 11% 성장(모두 평균보다 훨씬 빠름) 전망입니다.",
-  "grad_note_ko": "BLS에 따르면 Athletic Trainers는 보통 석사(Master's) 학위로 진입하며, Physical Therapists는 DPT(Doctor of Physical Therapy) 박사급 학위와 주(州) 면허가 필요합니다."
+  "outlook_note_en": "Per BLS, employment of Exercise Physiologists is projected to grow 9% in 2024–34, and Athletic Trainers and Physical Therapists 11% each (all much faster than average).",
+  "grad_note_ko": "BLS에 따르면 Athletic Trainers는 보통 석사(Master's) 학위로 진입하며, Physical Therapists는 DPT(Doctor of Physical Therapy) 박사급 학위와 주(州) 면허가 필요합니다.",
+  "grad_note_en": "According to BLS, Athletic Trainers usually enter with a master's degree, and Physical Therapists need a DPT (Doctor of Physical Therapy) doctoral degree plus a state license."
  },
  "sport_management": {
   "desc_ko": "스포츠를 산업으로 배워요 — 구단 운영, 마케팅, 이벤트, 스포츠 데이터. 구단·리그·에이전시·스포츠 브랜드로 이어져요.",
@@ -1004,6 +1055,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Coaches and Scouts 고용은 2024–34년 6% 성장(평균보다 빠름), Meeting, Convention, and Event Planners는 5% 성장(평균보다 빠름) 전망입니다.",
+  "outlook_note_en": "Per BLS, employment of Coaches and Scouts is projected to grow 6% in 2024–34 (faster than average), and Meeting, Convention, and Event Planners 5% (faster than average).",
   "grad_note_ko": null
  },
  "sport_psychology": {
@@ -1021,7 +1073,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Psychologists 전체 고용은 2024–34년 6% 성장(평균보다 빠름) 전망입니다.",
-  "grad_note_ko": "BLS에 따르면 Psychologists는 보통 석사 또는 박사 수준의 대학원 학위가 필요하며, 주(州)·직위별로 면허(자격) 요건이 있습니다. 스포츠 심리학자로 활동하려면 대학원 과정과 자격 취득이 사실상 필수입니다."
+  "outlook_note_en": "Per BLS, overall employment of Psychologists is projected to grow 6% in 2024–34 (faster than average).",
+  "grad_note_ko": "BLS에 따르면 Psychologists는 보통 석사 또는 박사 수준의 대학원 학위가 필요하며, 주(州)·직위별로 면허(자격) 요건이 있습니다. 스포츠 심리학자로 활동하려면 대학원 과정과 자격 취득이 사실상 필수입니다.",
+  "grad_note_en": "According to BLS, Psychologists usually need a graduate degree at the master's or doctoral level, and licensing (credential) requirements vary by state and position. Working as a sport psychologist effectively requires graduate study and a credential."
  },
  "genetics": {
   "desc_ko": "유전자가 형질과 질병을 어떻게 결정하는지 배워요 — 유전체 분석, 유전공학. 의약·바이오·연구로 이어지고 연구자는 보통 대학원(PhD)까지 가요.",
@@ -1047,7 +1101,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 의과학자(+9%)는 평균보다 훨씬 빠른, 생화학자(+6%)는 빠른 성장 전망입니다.",
-  "grad_note_ko": "유전학 연구자는 대학원(PhD)이 일반적이에요 — 학부는 생명과학·유전학으로 시작해요."
+  "outlook_note_en": "Per BLS, medical scientists (+9%) are projected to grow much faster than average, and biochemists (+6%) faster than average.",
+  "grad_note_ko": "유전학 연구자는 대학원(PhD)이 일반적이에요 — 학부는 생명과학·유전학으로 시작해요.",
+  "grad_note_en": "Genetics researchers usually go on to grad school (PhD) — start with life sciences or genetics in college."
  },
  "molecular_bio": {
   "desc_ko": "세포 안에서 DNA·단백질이 어떻게 작동하는지 분자 수준에서 배워요 — 실험 중심. 신약·바이오 산업, 대학원 연구로 이어져요.",
@@ -1082,7 +1138,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 생화학자(+6%)·의과학자(+9%)는 평균 이상 성장 전망입니다.",
-  "grad_note_ko": "독립 연구자는 대학원(PhD)이 일반적이에요."
+  "outlook_note_en": "Per BLS, biochemists (+6%) and medical scientists (+9%) are projected to grow above average.",
+  "grad_note_ko": "독립 연구자는 대학원(PhD)이 일반적이에요.",
+  "grad_note_en": "Independent researchers usually have a graduate degree (PhD)."
  },
  "microbiology": {
   "desc_ko": "세균·바이러스 같은 미생물의 세계를 배워요 — 배양·실험 중심. 제약, 식품, 방역, 연구소로 이어져요.",
@@ -1108,6 +1166,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 미생물학자는 2024-34년 +4%로 평균 수준의 성장 전망입니다.",
+  "outlook_note_en": "Per BLS, microbiologists are projected to grow +4% in 2024-34, about as fast as average.",
   "grad_note_ko": null
  },
  "culinary": {
@@ -1134,7 +1193,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Chefs and Head Cooks 고용은 2024–34년 7% 성장(평균보다 훨씬 빠름), Food Service Managers는 6% 성장(평균보다 빠름) 전망입니다.",
-  "grad_note_ko": "셰프는 학위보다 주방 경력·수련이 핵심이에요. 대학 진학 시엔 호스피탈리티 경영(예: Cornell 호텔스쿨 계열)과 전문 요리학교(CIA 등) 두 갈래를 비교해 보세요."
+  "outlook_note_en": "Per BLS, employment of Chefs and Head Cooks is projected to grow 7% in 2024–34 (much faster than average), and Food Service Managers 6% (faster than average).",
+  "grad_note_ko": "셰프는 학위보다 주방 경력·수련이 핵심이에요. 대학 진학 시엔 호스피탈리티 경영(예: Cornell 호텔스쿨 계열)과 전문 요리학교(CIA 등) 두 갈래를 비교해 보세요.",
+  "grad_note_en": "For chefs, kitchen experience and training matter more than a degree. If you're going to college, compare two paths: hospitality management (e.g., Cornell's hotel school and similar) and professional culinary schools (e.g., CIA)."
  },
  "nutrition": {
   "desc_ko": "음식과 몸의 관계를 과학으로 배워요 — 영양소 대사, 식단 설계, 임상 영양, 식품 과학. 병원·스포츠팀의 영양사, 공중보건, 식품 회사 연구직으로 이어져요. 미국에서 임상 영양사(RD)는 학위+인턴십+면허가 필요해요.",
@@ -1160,7 +1221,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Dietitians and Nutritionists 고용은 2024–34년 6% 성장(평균보다 빠름), Agricultural and Food Scientists도 6% 성장(평균보다 빠름) 전망입니다.",
-  "grad_note_ko": "임상 영양사(RD/RDN)가 목표라면 학부에서 영양학(DPD 인증 과정)을 듣고 졸업 후 인턴십·자격시험까지 이어지는 경로를 확인하세요. 2024년부터 RD 시험 응시에 석사 학위가 요구돼요."
+  "outlook_note_en": "Per BLS, employment of Dietitians and Nutritionists is projected to grow 6% in 2024–34 (faster than average), and Agricultural and Food Scientists also 6% (faster than average).",
+  "grad_note_ko": "임상 영양사(RD/RDN)가 목표라면 학부에서 영양학(DPD 인증 과정)을 듣고 졸업 후 인턴십·자격시험까지 이어지는 경로를 확인하세요. 2024년부터 RD 시험 응시에 석사 학위가 요구돼요.",
+  "grad_note_en": "If your goal is clinical dietitian (RD/RDN), check the path: study nutrition in college (a DPD-accredited program), then an internship and the credential exam after graduation. Since 2024, a master's degree is required to take the RD exam."
  },
  "pharmacy": {
   "desc_ko": "약이 몸에서 어떻게 작용하는지 배워요 — 약물학, 화학, 생리학, 환자 상담. 약국·병원 약사, 제약회사 연구·개발로 이어져요. 미국 약사는 학부 후 약대(PharmD)까지 가야 해요.",
@@ -1177,7 +1240,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Pharmacists 고용은 2024–34년 5% 성장(평균보다 빠름) 전망입니다.",
-  "grad_note_ko": "미국 약사는 PharmD(4년 전문 학위)+면허가 필요해요. 학부는 프리파마시·화학·생물 계열을 거쳐 약대로 진학하는 경로가 일반적이에요."
+  "outlook_note_en": "Per BLS, employment of Pharmacists is projected to grow 5% in 2024–34 (faster than average).",
+  "grad_note_ko": "미국 약사는 PharmD(4년 전문 학위)+면허가 필요해요. 학부는 프리파마시·화학·생물 계열을 거쳐 약대로 진학하는 경로가 일반적이에요.",
+  "grad_note_en": "Pharmacists in the US need a PharmD (a 4-year professional degree) plus a license. The usual path is pre-pharmacy, chemistry, or biology in college, then pharmacy school."
  },
  "pre_dental": {
   "desc_ko": "치의예는 학부 단계의 준비 트랙이에요 — 생물·화학 중심으로 공부하고 DAT 시험을 거쳐 치의학대학원(DDS/DMD)으로 진학해요. 치과의사, 교정·구강외과 전문의로 이어져요.",
@@ -1194,7 +1259,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Dentists 고용은 2024–34년 4% 성장(평균 수준) 전망입니다.",
-  "grad_note_ko": "치과의사는 학부(전공 자유, 생물·화학 선수과목 필수) 후 치의학대학원 4년+면허 경로예요. 학부 성적과 DAT가 핵심이에요."
+  "outlook_note_en": "Per BLS, employment of Dentists is projected to grow 4% in 2024–34 (about as fast as average).",
+  "grad_note_ko": "치과의사는 학부(전공 자유, 생물·화학 선수과목 필수) 후 치의학대학원 4년+면허 경로예요. 학부 성적과 DAT가 핵심이에요.",
+  "grad_note_en": "Dentists go through college (any major, with required biology and chemistry prerequisites), then 4 years of dental school plus a license. College grades and the DAT are key."
  },
  "nuclear_eng": {
   "desc_ko": "원자로, 방사선, 핵연료 주기를 다뤄요 — 원자력 발전, 의료 방사선, 핵추진. 발전사·국립연구소·규제기관으로 이어져요. 학부 개설 학교가 적어 기계·물리로 시작해 대학원에서 전공하는 경로도 흔해요.",
@@ -1220,6 +1287,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Nuclear Engineers 고용은 2024–34년 1% 감소 전망이에요(직군 규모가 작음). 다만 Mechanical Engineers 등 인접 직군은 9% 성장 전망이라 진로 폭을 넓게 보는 게 좋아요.",
+  "outlook_note_en": "Per BLS, employment of Nuclear Engineers is projected to decline 1% in 2024–34 (a small occupation). But related jobs like Mechanical Engineers are projected to grow 9%, so it's worth keeping your career options broad.",
   "grad_note_ko": null
  },
  "robotics": {
@@ -1246,6 +1314,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Mechanical Engineers 고용은 2024–34년 9% 성장, Electrical and Electronics Engineers는 7% 성장 전망입니다.",
+  "outlook_note_en": "Per BLS, employment of Mechanical Engineers is projected to grow 9% in 2024–34, and Electrical and Electronics Engineers 7%.",
   "grad_note_ko": null
  },
  "pilot": {
@@ -1263,7 +1332,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Airline and Commercial Pilots 고용은 2024–34년 4% 성장(평균 수준) 전망입니다.",
-  "grad_note_ko": "국제학생은 주의: 미국 항공사 취업은 영주권·시민권을 요구하는 경우가 많아요. 훈련 비자(F-1/M-1)와 졸업 후 취업 경로를 미리 확인하세요."
+  "outlook_note_en": "Per BLS, employment of Airline and Commercial Pilots is projected to grow 4% in 2024–34 (about as fast as average).",
+  "grad_note_ko": "국제학생은 주의: 미국 항공사 취업은 영주권·시민권을 요구하는 경우가 많아요. 훈련 비자(F-1/M-1)와 졸업 후 취업 경로를 미리 확인하세요.",
+  "grad_note_en": "Note for international students: US airlines often require a green card or citizenship. Check training visas (F-1/M-1) and post-graduation job paths early."
  },
  "political_sci": {
   "desc_ko": "권력과 제도가 어떻게 작동하는지 배워요 — 비교정치, 국제정치, 정치이론, 데이터 분석. 외교관, 정책 분석가, 로스쿨, 언론으로 이어져요.",
@@ -1289,6 +1360,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Political Scientists 고용은 2024–34년 3% 감소 전망(작은 직군)이지만, 로스쿨·정책·언론 등 진로 폭이 넓은 전공이에요. Lawyers는 4% 성장 전망입니다.",
+  "outlook_note_en": "Per BLS, employment of Political Scientists is projected to decline 3% in 2024–34 (a small occupation), but the major leads to a wide range of paths — law school, policy, media. Lawyers are projected to grow 4%.",
   "grad_note_ko": null
  },
  "intl_relations": {
@@ -1315,6 +1387,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Political Scientists 고용은 2024–34년 3% 감소, Economists는 1% 성장 전망이에요. 국제기구·외교 등 BLS 통계 밖 진로가 많은 전공이에요.",
+  "outlook_note_en": "Per BLS, employment of Political Scientists is projected to decline 3% in 2024–34, and Economists to grow 1%. Many paths from this major — international organizations, diplomacy — fall outside BLS statistics.",
   "grad_note_ko": null
  },
  "criminology": {
@@ -1341,7 +1414,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Police and Detectives 고용은 2024–34년 3% 성장, Forensic Science Technicians는 13% 성장(매우 빠름) 전망입니다.",
-  "grad_note_ko": "국제학생은 주의: 미국 경찰·연방수사기관은 대부분 시민권이 필요해요. 연구·정책·민간 보안 쪽 진로를 함께 보세요."
+  "outlook_note_en": "Per BLS, employment of Police and Detectives is projected to grow 3% in 2024–34, and Forensic Science Technicians 13% (very fast).",
+  "grad_note_ko": "국제학생은 주의: 미국 경찰·연방수사기관은 대부분 시민권이 필요해요. 연구·정책·민간 보안 쪽 진로를 함께 보세요.",
+  "grad_note_en": "Note for international students: most US police and federal law enforcement agencies require citizenship. Look at research, policy, and private security paths too."
  },
  "criminal_psych": {
   "desc_ko": "범죄 행동의 심리를 배워요 — 이상심리, 프로파일링, 법정 심리 평가. 법정 심리학자, 프로파일러, 교정·상담으로 이어져요. 심리학 학부 위에 대학원까지 가는 경로가 일반적이에요.",
@@ -1367,7 +1442,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Psychologists 고용은 2024–34년 6% 성장, Forensic Science Technicians는 13% 성장 전망입니다.",
-  "grad_note_ko": "법정 심리학자(forensic psychologist)는 보통 심리학 석·박사와 면허까지 필요해요. 학부는 심리학 전공+범죄학 부전공 조합이 흔해요."
+  "outlook_note_en": "Per BLS, employment of Psychologists is projected to grow 6% in 2024–34, and Forensic Science Technicians 13%.",
+  "grad_note_ko": "법정 심리학자(forensic psychologist)는 보통 심리학 석·박사와 면허까지 필요해요. 학부는 심리학 전공+범죄학 부전공 조합이 흔해요.",
+  "grad_note_en": "Forensic psychologists usually need a master's or doctorate in psychology plus a license. A psychology major with a criminology minor is a common undergrad combo."
  },
  "philosophy": {
   "desc_ko": "생각하는 법 자체를 배워요 — 논리, 윤리, 인식론, 글쓰기. 논증과 글이 강해져서 로스쿨 준비 전공으로 널리 쓰이고, 정책·테크 윤리·학계로도 이어져요.",
@@ -1393,6 +1470,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Lawyers 고용은 2024–34년 4% 성장, Postsecondary Teachers는 7% 성장 전망입니다.",
+  "outlook_note_en": "Per BLS, employment of Lawyers is projected to grow 4% in 2024–34, and Postsecondary Teachers 7%.",
   "grad_note_ko": null
  },
  "graphic_design": {
@@ -1419,6 +1497,7 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Graphic Designers 고용은 2024–34년 2% 성장, Web Developers and Digital Designers는 7% 성장 전망입니다.",
+  "outlook_note_en": "Per BLS, employment of Graphic Designers is projected to grow 2% in 2024–34, and Web Developers and Digital Designers 7%.",
   "grad_note_ko": null
  },
  "zoology": {
@@ -1445,7 +1524,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Zoologists and Wildlife Biologists 고용은 2024–34년 2% 성장(평균보다 느림, 작은 직군), Veterinarians는 10% 성장(매우 빠름) 전망입니다.",
-  "grad_note_ko": "연구직은 대부분 석·박사까지 이어져요. 학부에서 현장 조사·연구실 경험을 쌓는 게 핵심이에요."
+  "outlook_note_en": "Per BLS, employment of Zoologists and Wildlife Biologists is projected to grow 2% in 2024–34 (slower than average, a small occupation), and Veterinarians 10% (very fast).",
+  "grad_note_ko": "연구직은 대부분 석·박사까지 이어져요. 학부에서 현장 조사·연구실 경험을 쌓는 게 핵심이에요.",
+  "grad_note_en": "Most research jobs continue on to a master's or doctorate. Building field research and lab experience in college is key."
  },
  "animal_science": {
   "desc_ko": "가축과 반려동물을 과학으로 다뤄요 — 동물 영양, 번식, 유전, 사육 관리. 수의대(pre-vet) 진학의 대표 경로이고, 축산·사료·동물 헬스케어 산업으로도 이어져요.",
@@ -1471,7 +1552,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Veterinarians 고용은 2024–34년 10% 성장(매우 빠름), Agricultural and Food Scientists는 6% 성장(평균보다 빠름) 전망입니다.",
-  "grad_note_ko": "수의사(DVM)는 학부 후 수의학대학원 4년+면허 경로예요. 동물과학 전공은 수의대 선수과목을 자연스럽게 채울 수 있어 pre-vet로 많이 선택해요."
+  "outlook_note_en": "Per BLS, employment of Veterinarians is projected to grow 10% in 2024–34 (very fast), and Agricultural and Food Scientists 6% (faster than average).",
+  "grad_note_ko": "수의사(DVM)는 학부 후 수의학대학원 4년+면허 경로예요. 동물과학 전공은 수의대 선수과목을 자연스럽게 채울 수 있어 pre-vet로 많이 선택해요.",
+  "grad_note_en": "Veterinarians (DVM) go through college, then 4 years of veterinary school plus a license. An animal science major naturally covers vet school prerequisites, so many choose it as pre-vet."
  },
  "animal_behavior": {
   "desc_ko": "동물이 왜 그렇게 행동하는지 배워요 — 행동 관찰·실험, 학습과 인지, 진화와 생태. 야생동물 연구, 동물원 행동 풍부화, 동물 훈련·복지, 대학원 연구로 이어져요.",
@@ -1488,7 +1571,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Zoologists and Wildlife Biologists 고용은 2024–34년 2% 성장(평균보다 느림, 작은 직군) 전망입니다.",
-  "grad_note_ko": "동물행동학을 학부 전공으로 개설한 학교는 소수라, 보통 생물학 전공+행동생태 연구실 경험으로 준비해요. 연구자 경로는 대학원이 사실상 필수예요."
+  "outlook_note_en": "Per BLS, employment of Zoologists and Wildlife Biologists is projected to grow 2% in 2024–34 (slower than average, a small occupation).",
+  "grad_note_ko": "동물행동학을 학부 전공으로 개설한 학교는 소수라, 보통 생물학 전공+행동생태 연구실 경험으로 준비해요. 연구자 경로는 대학원이 사실상 필수예요.",
+  "grad_note_en": "Few schools offer animal behavior as an undergrad major, so students usually prepare with a biology major plus experience in a behavioral ecology lab. For a research career, grad school is effectively required."
  },
  "cybersecurity": {
   "desc_ko": "시스템과 데이터를 공격으로부터 지키는 법을 배워요 — 네트워크 보안, 암호학, 해킹·방어 실습, 디지털 포렌식. 보안 분석가, 화이트해커(모의 침투), 정부·금융·테크 기업 보안팀으로 이어져요.",
@@ -1505,7 +1590,9 @@
    }
   ],
   "outlook_note_ko": "BLS 기준 Information Security Analysts 고용은 2024–34년 29% 성장(전 직군 최상위권) 전망입니다.",
-  "grad_note_ko": "학부 전공은 사이버보안 또는 CS+보안 동아리·CTF(해킹 대회) 조합이 일반적이에요. 자격증(Security+ 등)과 실전 CTF 경력이 취업에 크게 작용해요."
+  "outlook_note_en": "Per BLS, employment of Information Security Analysts is projected to grow 29% in 2024–34 (among the highest of all occupations).",
+  "grad_note_ko": "학부 전공은 사이버보안 또는 CS+보안 동아리·CTF(해킹 대회) 조합이 일반적이에요. 자격증(Security+ 등)과 실전 CTF 경력이 취업에 크게 작용해요.",
+  "grad_note_en": "The usual undergrad path is a cybersecurity major, or CS plus a security club and CTFs (hacking competitions). Certifications (e.g., Security+) and real CTF experience count a lot in hiring."
  },
  "marine_biology": {
   "desc_ko": "바다의 생물과 생태계를 배워요 — 해양 생물의 생리·행동, 산호초와 연안 생태, 어류·포유류 연구, 해양 오염과 기후 영향. 현장 잠수·승선 조사와 실험실 분석을 함께 하고, 해양 연구소·수족관·환경 기관·수산 관련 기관으로 이어져요.",
@@ -1531,7 +1618,9 @@
    }
   ],
   "outlook_note_ko": "BLS는 해양생물학자를 별도 직군으로 집계하지 않고 Zoologists and Wildlife Biologists에 포함합니다. 이 직군 고용은 2024–34년 2% 성장(평균보다 느림, 규모가 작은 직군), Environmental Scientists and Specialists는 4% 성장 전망입니다.",
-  "grad_note_ko": "연구직은 석·박사가 사실상 필수예요. 해안에 있는 학교(해양 연구소·승선 실습 보유)인지, 학부 때 현장 조사와 연구실 경험을 쌓을 수 있는지가 학교 선택의 핵심이에요."
+  "outlook_note_en": "BLS doesn't count marine biologists as a separate occupation; they're included in Zoologists and Wildlife Biologists. Employment in this occupation is projected to grow 2% in 2024–34 (slower than average, a small occupation), and Environmental Scientists and Specialists 4%.",
+  "grad_note_ko": "연구직은 석·박사가 사실상 필수예요. 해안에 있는 학교(해양 연구소·승선 실습 보유)인지, 학부 때 현장 조사와 연구실 경험을 쌓을 수 있는지가 학교 선택의 핵심이에요.",
+  "grad_note_en": "Research jobs effectively require a master's or doctorate. When choosing a school, the key is whether it's on the coast (with a marine research station and ship-based training) and whether you can build field and lab experience as an undergrad."
  },
  "statistics": {
   "desc_ko": "데이터에서 결론을 끌어내는 방법을 배워요 — 확률론, 통계적 추론, 실험 설계, 회귀분석, 베이즈 통계. 수학과 코딩(R·Python)을 함께 쓰고, 데이터 사이언스·금융·보험계리·연구직 등 데이터가 있는 모든 분야로 이어져요.",
@@ -1544,7 +1633,8 @@
     "outlook": "+8%",
     "window": "2024-34",
     "url": "https://www.bls.gov/ooh/math/mathematicians-and-statisticians.htm",
-    "note": "BLS 기준 일반적 입직 학력은 석사 (Typical Entry-Level Education: Master's degree)"
+    "note": "BLS 기준 일반적 입직 학력은 석사 (Typical Entry-Level Education: Master's degree)",
+    "note_en": "BLS typical entry-level education: Master's degree"
    },
    {
     "title": "Actuaries",
@@ -1557,7 +1647,9 @@
    }
   ],
   "outlook_note_ko": "BLS는 통계학자를 Mathematicians and Statisticians 직군으로 집계합니다. 이 직군은 2024–34년 8% 성장 전망(평균보다 빠름)이며, 일반적 입직 학력은 석사입니다.",
-  "grad_note_ko": "학부 통계학 + 석사가 일반적인 경로예요. 데이터 사이언스 쪽으로 가면 학사로도 취업이 열려 있고, 코딩 과목을 함께 듣는 게 큰 차이를 만들어요."
+  "outlook_note_en": "BLS counts statisticians under the Mathematicians and Statisticians occupation. It's projected to grow 8% in 2024–34 (faster than average), and the typical entry-level education is a master's.",
+  "grad_note_ko": "학부 통계학 + 석사가 일반적인 경로예요. 데이터 사이언스 쪽으로 가면 학사로도 취업이 열려 있고, 코딩 과목을 함께 듣는 게 큰 차이를 만들어요.",
+  "grad_note_en": "The usual path is a bachelor's in statistics plus a master's. In data science, jobs are open with a bachelor's too, and taking coding courses alongside makes a big difference."
  },
  "ai": {
   "desc_ko": "기계가 배우고 판단하게 만드는 방법을 배워요 — 머신러닝, 딥러닝, 자연어 처리, 컴퓨터 비전. 수학(선형대수·확률)과 코딩이 기반이고, 대부분 CS 학과 안의 AI 트랙으로 개설돼요. AI 엔지니어·연구직으로 이어져요.",
@@ -1583,7 +1675,9 @@
    }
   ],
   "outlook_note_ko": "BLS는 AI를 별도 직군으로 집계하지 않고 소프트웨어 개발자 등 기존 직군에 포함합니다. 학부 단계에선 대부분 CS로 지원한 뒤 AI 트랙·석사로 세분화해요.",
-  "grad_note_ko": "연구·모델 개발 쪽은 석·박사 비중이 높아요. 학부에서는 CS 기본기(자료구조·수학)가 곧 AI 준비예요."
+  "outlook_note_en": "BLS doesn't count AI as a separate occupation; it's included in existing ones like software developers. At the undergrad level, most students apply as CS, then specialize through an AI track or a master's.",
+  "grad_note_ko": "연구·모델 개발 쪽은 석·박사 비중이 높아요. 학부에서는 CS 기본기(자료구조·수학)가 곧 AI 준비예요.",
+  "grad_note_en": "Research and model development roles have a high share of master's and doctoral degree holders. In college, CS fundamentals (data structures, math) are your AI prep."
  },
  "game_design": {
   "desc_ko": "게임을 기획하고 만드는 법을 배워요 — 게임 프로그래밍, 레벨 디자인, 그래픽스, 스토리텔링. CS 기반 프로그램과 아트 기반 프로그램으로 갈리고, 게임 스튜디오·인터랙티브 미디어로 이어져요.",
@@ -1609,7 +1703,9 @@
    }
   ],
   "outlook_note_ko": "BLS는 게임 디자이너를 별도 집계하지 않습니다 — 프로그래밍 쪽은 Software Developers, 아트·애니메이션 쪽은 Special Effects Artists and Animators에 포함돼요.",
-  "grad_note_ko": "포트폴리오(직접 만든 게임)가 학위보다 중요한 분야예요. 학부 때 게임잼 참가와 개인 프로젝트 배포 경험이 핵심이에요."
+  "outlook_note_en": "BLS doesn't count game designers separately — programming roles fall under Software Developers, and art and animation roles under Special Effects Artists and Animators.",
+  "grad_note_ko": "포트폴리오(직접 만든 게임)가 학위보다 중요한 분야예요. 학부 때 게임잼 참가와 개인 프로젝트 배포 경험이 핵심이에요.",
+  "grad_note_en": "In this field, a portfolio (games you've made yourself) matters more than a degree. Joining game jams and releasing personal projects in college is key."
  },
  "astronomy": {
   "desc_ko": "우주를 물리학으로 이해해요 — 천체물리, 행성과학, 우주론, 관측 기술. 물리학·수학이 사실상 전공의 몸통이고, 연구소·우주 산업·데이터 분야로 이어져요.",
@@ -1622,11 +1718,14 @@
     "outlook": "+4%",
     "window": "2024-34",
     "url": "https://www.bls.gov/ooh/life-physical-and-social-science/physicists-and-astronomers.htm",
-    "note": "BLS 기준 일반적 입직 학력은 박사·전문학위 (Typical Entry-Level Education: Doctoral or professional degree)"
+    "note": "BLS 기준 일반적 입직 학력은 박사·전문학위 (Typical Entry-Level Education: Doctoral or professional degree)",
+    "note_en": "BLS typical entry-level education: Doctoral or professional degree"
    }
   ],
   "outlook_note_ko": "BLS는 천문학자를 Physicists and Astronomers 직군으로 집계합니다. 규모가 작은 직군이라 연구직 자리는 경쟁이 세요.",
-  "grad_note_ko": "연구직은 박사가 사실상 필수예요. 학부는 물리학과로 가서 천문학 트랙을 밟는 경우도 많아요 — 학교 선택 시 관측소·연구 참여 기회를 보세요."
+  "outlook_note_en": "BLS counts astronomers under the Physicists and Astronomers occupation. It's a small occupation, so research positions are competitive.",
+  "grad_note_ko": "연구직은 박사가 사실상 필수예요. 학부는 물리학과로 가서 천문학 트랙을 밟는 경우도 많아요 — 학교 선택 시 관측소·연구 참여 기회를 보세요.",
+  "grad_note_en": "Research jobs effectively require a doctorate. Many students major in physics and follow an astronomy track — when choosing a school, look at observatory and research opportunities."
  },
  "pre_vet": {
   "desc_ko": "수의대(DVM) 진학을 준비하는 트랙이에요 — 생물·화학 중심 과학 수업, 동물 관련 경험(동물병원·농장·보호소) 시간이 핵심이에요. 학부 전공은 동물과학·생물학이 일반적이고, 수의대는 별도 대학원 과정이에요.",
@@ -1652,7 +1751,9 @@
    }
   ],
   "outlook_note_ko": "수의사(Veterinarians)는 2024–34년 10% 성장 전망으로 평균보다 빠릅니다. 다만 미국 수의대는 의대만큼 경쟁이 세고 학비 부담도 커요.",
-  "grad_note_ko": "수의대 입학엔 동물 관련 경험 시간(수백 시간)이 사실상 필수예요 — 고등학교·학부 내내 동물병원 봉사와 새도잉을 쌓는 게 핵심이에요."
+  "outlook_note_en": "Veterinarians are projected to grow 10% in 2024–34, faster than average. But US vet schools are as competitive as med schools, and the tuition burden is heavy.",
+  "grad_note_ko": "수의대 입학엔 동물 관련 경험 시간(수백 시간)이 사실상 필수예요 — 고등학교·학부 내내 동물병원 봉사와 새도잉을 쌓는 게 핵심이에요.",
+  "grad_note_en": "Vet school admission effectively requires animal-related experience hours (several hundred) — building volunteer work and shadowing at animal hospitals throughout high school and college is key."
  },
  "history": {
   "desc_ko": "과거를 통해 현재를 읽는 법을 배워요 — 사료 분석, 논증적 글쓰기, 세계사·미국사·지역사 세미나. 읽고 쓰는 훈련이 몸통이라 로스쿨·언론·정책·교육으로 폭넓게 이어져요.",
@@ -1678,7 +1779,9 @@
    }
   ],
   "outlook_note_ko": "Historians 직군 자체는 규모가 작지만, 역사학 전공자는 대부분 법·언론·정책·교육 등 다른 직군으로 진출합니다.",
-  "grad_note_ko": "역사학은 로스쿨 진학률이 높은 전공 중 하나예요. 글쓰기 샘플과 리서치 경험이 대학원·취업 모두에서 무기가 돼요."
+  "outlook_note_en": "Historians is a small occupation in itself, but most history majors go into other fields like law, media, policy, and education.",
+  "grad_note_ko": "역사학은 로스쿨 진학률이 높은 전공 중 하나예요. 글쓰기 샘플과 리서치 경험이 대학원·취업 모두에서 무기가 돼요.",
+  "grad_note_en": "History is one of the majors with a high rate of going on to law school. Writing samples and research experience are strong assets for both grad school and jobs."
  },
  "english": {
   "desc_ko": "문학을 읽고 분석하고, 글을 쓰는 전공이에요 — 영미문학, 비평 이론, 문예창작(Creative Writing). 글쓰기 역량이 핵심 자산이라 출판·미디어·마케팅·로스쿨로 이어져요.",
@@ -1704,7 +1807,9 @@
    }
   ],
   "outlook_note_ko": "작가·편집자 직군은 규모가 크지 않지만, 영문학 전공자는 마케팅·PR·교육·법 등으로 폭넓게 진출합니다.",
-  "grad_note_ko": "교내 문예지·신문 활동과 글쓰기 수상(Scholastic 등)이 이 전공 지원의 대표 스펙이에요."
+  "outlook_note_en": "Writer and editor jobs aren't a large occupation group, but English majors go into a wide range of fields — marketing, PR, education, law.",
+  "grad_note_ko": "교내 문예지·신문 활동과 글쓰기 수상(Scholastic 등)이 이 전공 지원의 대표 스펙이에요.",
+  "grad_note_en": "School literary magazine and newspaper work, plus writing awards (e.g., Scholastic), are the signature credentials for applying to this major."
  },
  "sociology": {
   "desc_ko": "사회가 어떻게 움직이는지 데이터를 갖고 연구해요 — 불평등, 교육, 도시, 가족, 조사방법론과 통계. 사회 문제에 관심 있는 학생에게 맞고, 정책·비영리·시장조사·로스쿨로 이어져요.",
@@ -1730,7 +1835,9 @@
    }
   ],
   "outlook_note_ko": "Sociologists 직군은 규모가 작고 석사가 일반적이지만, 학부 전공자는 조사·정책·마케팅 분야로 폭넓게 진출합니다.",
-  "grad_note_ko": "통계 과목을 함께 들으면 진로 폭이 확 넓어져요 — 사회학+데이터 조합이 요즘 강해요."
+  "outlook_note_en": "Sociologists is a small occupation that usually requires a master's, but undergrad majors go on widely into survey research, policy, and marketing.",
+  "grad_note_ko": "통계 과목을 함께 들으면 진로 폭이 확 넓어져요 — 사회학+데이터 조합이 요즘 강해요.",
+  "grad_note_en": "Taking statistics courses too opens up your options a lot — sociology + data is a strong combo these days."
  },
  "journalism": {
   "desc_ko": "취재하고 검증하고 쓰는 법을 배워요 — 기사 작성, 인터뷰, 팩트체킹, 방송·디지털 미디어 제작. 학생 기자 경험이 곧 포트폴리오가 되고, 언론사·방송·콘텐츠 분야로 이어져요.",
@@ -1756,7 +1863,9 @@
    }
   ],
   "outlook_note_ko": "기자 직군은 고용이 줄어드는 추세라 디지털 역량(데이터·영상)을 함께 갖추는 게 중요해요.",
-  "grad_note_ko": "교내 신문·방송 활동과 기사 포트폴리오가 이 전공의 입시·취업 스펙 그 자체예요. Northwestern(Medill) 등은 저널리즘 스쿨로 직접 지원해요."
+  "outlook_note_en": "Reporter jobs are on a declining trend, so it's important to build digital skills (data, video) as well.",
+  "grad_note_ko": "교내 신문·방송 활동과 기사 포트폴리오가 이 전공의 입시·취업 스펙 그 자체예요. Northwestern(Medill) 등은 저널리즘 스쿨로 직접 지원해요.",
+  "grad_note_en": "School newspaper and broadcasting work plus a portfolio of articles are the core credentials for both admissions and jobs in this major. At schools like Northwestern (Medill), you apply directly to the journalism school."
  },
  "fashion_design": {
   "desc_ko": "옷과 컬렉션을 기획·제작해요 — 드로잉, 패턴·재봉, 텍스타일, 패션 일러스트와 포트폴리오. 실기 중심이라 포트폴리오가 입시의 몸통이고, 디자이너·브랜드·머천다이징으로 이어져요.",
@@ -1773,7 +1882,9 @@
    }
   ],
   "outlook_note_ko": "Fashion Designers 고용은 2025–35년 큰 변화가 없을 전망(0%)이에요 — 규모가 작고 경쟁이 센 분야라 포트폴리오 차별화가 중요해요.",
-  "grad_note_ko": "Parsons·FIT·RISD 같은 디자인 스쿨은 포트폴리오 요건이 별도예요 — 고등학교 때부터 작품을 쌓는 게 핵심이에요. (이런 특수 미대는 톱 순위 리스트와 별개로 알아봐야 해요)"
+  "outlook_note_en": "Employment of Fashion Designers is projected to see little change in 2025–35 (0%) — it's a small, competitive field, so a distinctive portfolio matters.",
+  "grad_note_ko": "Parsons·FIT·RISD 같은 디자인 스쿨은 포트폴리오 요건이 별도예요 — 고등학교 때부터 작품을 쌓는 게 핵심이에요. (이런 특수 미대는 톱 순위 리스트와 별개로 알아봐야 해요)",
+  "grad_note_en": "Design schools like Parsons, FIT, and RISD have separate portfolio requirements — building a body of work starting in high school is key. (Specialized art schools like these need to be researched separately from top-ranking lists.)"
  },
  "hospitality": {
   "desc_ko": "호텔·리조트·외식 비즈니스를 경영하는 법을 배워요 — 호텔 운영, 서비스 경영, 수익 관리, 이벤트·관광. 실습(인턴십)이 커리큘럼에 들어가 있고, 글로벌 호텔 체인·리조트·외식 기업으로 이어져요.",
@@ -1786,7 +1897,8 @@
     "outlook": "+4%",
     "window": "2025–35",
     "url": "https://www.bls.gov/ooh/management/lodging-managers.htm",
-    "note": "BLS 기준 일반 입직 학력은 고졸이지만, 대형 체인·럭셔리 호텔 매니지먼트 트랙은 호텔경영 학사를 선호"
+    "note": "BLS 기준 일반 입직 학력은 고졸이지만, 대형 체인·럭셔리 호텔 매니지먼트 트랙은 호텔경영 학사를 선호",
+    "note_en": "BLS typical entry-level education is a high school diploma, but management tracks at large chains and luxury hotels prefer a bachelor's in hospitality management"
    },
    {
     "title": "Management Analysts",
@@ -1799,7 +1911,9 @@
    }
   ],
   "outlook_note_ko": "Lodging Managers는 2025–35년 4% 성장 전망이에요. BLS 기준 일반 입직 학력은 고졸이지만, 체인 호텔 매니지먼트 트랙은 호텔경영 학사 채용이 일반적이에요.",
-  "grad_note_ko": "Cornell(Nolan School) 등 호텔스쿨은 별도 단과대로 직접 지원해요 — 서비스업 아르바이트·이벤트 운영 경험이 좋은 스펙이 돼요."
+  "outlook_note_en": "Lodging Managers are projected to grow 4% in 2025–35. BLS lists a high school diploma as the typical entry-level education, but chain hotel management tracks usually hire graduates with a bachelor's in hotel management.",
+  "grad_note_ko": "Cornell(Nolan School) 등 호텔스쿨은 별도 단과대로 직접 지원해요 — 서비스업 아르바이트·이벤트 운영 경험이 좋은 스펙이 돼요.",
+  "grad_note_en": "Hotel schools like Cornell (Nolan School) are separate colleges you apply to directly — part-time service jobs and event operations experience make good credentials."
  },
  "geology": {
   "desc_ko": "지구의 물질과 역사를 연구해요 — 암석·광물, 판구조론, 화산·지진, 지하수와 자원 탐사. 야외 조사(필드워크)가 커리큘럼의 핵심이고, 에너지·자원 기업, 환경 컨설팅, 지질조사기관, 연구직으로 이어져요.",
@@ -1825,7 +1939,9 @@
    }
   ],
   "outlook_note_ko": "Geoscientists는 2025–35년 5% 성장 전망(평균보다 빠름)이고 학사로 입직 가능한 이과 연구 직군이에요. 에너지 전환(지열·탄소 저장·핵심 광물)으로 수요가 유지되고 있어요.",
-  "grad_note_ko": "필드 캠프(야외 실습) 경험이 이 전공의 핵심 스펙이에요. 지질학이 강한 학교는 근처 지형(산맥·해안)을 끼고 있는 경우가 많아요."
+  "outlook_note_en": "Geoscientists are projected to grow 5% in 2025–35 (faster than average), and it's a science research occupation you can enter with a bachelor's. Demand is holding up thanks to the energy transition (geothermal, carbon storage, critical minerals).",
+  "grad_note_ko": "필드 캠프(야외 실습) 경험이 이 전공의 핵심 스펙이에요. 지질학이 강한 학교는 근처 지형(산맥·해안)을 끼고 있는 경우가 많아요.",
+  "grad_note_en": "Field camp (outdoor fieldwork) experience is the key credential for this major. Schools strong in geology are often located near terrain like mountain ranges or coastlines."
  },
  "earth_science": {
   "desc_ko": "지구 시스템 전체를 배워요 — 지질, 대기, 해양, 기후가 어떻게 맞물려 도는지. 지질학보다 폭이 넓고 기후과학 쪽으로도 이어져요. 환경 기관, 기상·해양 분야, 에너지·환경 컨설팅, 연구직으로 진출해요.",
@@ -1851,7 +1967,9 @@
    }
   ],
   "outlook_note_ko": "BLS는 지구과학 계열을 Geoscientists(+5%)와 Environmental Scientists(+4%) 직군으로 집계해요. 기후 관련 수요가 늘고 있는 분야예요.",
-  "grad_note_ko": "학교마다 Earth Science / Geoscience / Earth & Planetary Science 등 이름이 달라요 — 커리큘럼(기후 쪽인지 지질 쪽인지)을 보고 고르는 게 중요해요."
+  "outlook_note_en": "BLS counts earth science fields under the Geoscientists (+5%) and Environmental Scientists (+4%) occupations. It's a field where climate-related demand is growing.",
+  "grad_note_ko": "학교마다 Earth Science / Geoscience / Earth & Planetary Science 등 이름이 달라요 — 커리큘럼(기후 쪽인지 지질 쪽인지)을 보고 고르는 게 중요해요.",
+  "grad_note_en": "Schools use different names — Earth Science / Geoscience / Earth & Planetary Science — so it's important to choose based on the curriculum (climate-focused or geology-focused)."
  },
  "archaeology": {
   "desc_ko": "발굴과 유물로 과거 인류를 연구해요 — 발굴 방법론, 유물 분석, 고대 문명, 인류학 이론. 미국 대학에선 대부분 인류학(Anthropology)과 안의 트랙이에요. 발굴 현장 경험이 핵심이고, 문화재 관리(CRM)·박물관·연구직으로 이어져요.",
@@ -1877,6 +1995,8 @@
    }
   ],
   "outlook_note_ko": "Anthropologists and Archeologists는 2025–35년 6% 성장 전망이지만 규모가 작은 직군이고, 일반적 입직 학력은 석사예요. 미국엔 건설 전 문화재 조사(CRM) 산업이 있어 현장직 수요가 꾸준해요.",
-  "grad_note_ko": "여름 발굴 현장(field school) 참가가 이 전공의 대표 스펙이에요 — 고등학생 참가 프로그램도 있어요. 지원은 보통 Anthropology 전공으로 해요."
+  "outlook_note_en": "Anthropologists and Archeologists are projected to grow 6% in 2025–35, but it's a small occupation and the typical entry-level education is a master's. The US has a cultural resource management (CRM) industry that surveys sites before construction, so demand for field jobs is steady.",
+  "grad_note_ko": "여름 발굴 현장(field school) 참가가 이 전공의 대표 스펙이에요 — 고등학생 참가 프로그램도 있어요. 지원은 보통 Anthropology 전공으로 해요.",
+  "grad_note_en": "Joining a summer excavation (field school) is the signature credential for this major — there are programs for high school students too. You usually apply as an Anthropology major."
  }
 }

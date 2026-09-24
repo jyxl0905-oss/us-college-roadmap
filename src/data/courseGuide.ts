@@ -1,6 +1,8 @@
 // 수업 난이도(rigor) 가이드 — 2026-09-23 사용자 승인 초안 그대로
 // 학년별 표·과목 단계는 편집 가이드(학교마다 다름), 전공별 핵심 과목·rigor 원칙은 대학 공식 입학처 문구 근거
 
+import { t } from '../i18n'
+
 // 콘텐츠 확인·승인일 (입학처 공식 권장 근거)
 export const COURSE_GUIDE_VERIFIED = '2026-09-23'
 
@@ -17,6 +19,13 @@ export const subjectLabel: Record<Subject, { ko: string; en: string }> = {
 
 // ① 학년별 가이드 표 — [일반, 심화, 최상위]
 export type Tier3 = [string, string, string]
+// 'AP Calc BC 이후 / Beyond BC'처럼 한/영 병기 칸은 언어에 맞는 쪽만 표시
+export const cellText = (cell: string): string => {
+  const paren = cell.match(/^\((.*)\)$/)
+  if (paren) return `(${cellText(paren[1])})`
+  const m = cell.match(/^(.*[가-힣].*?)\s*\/\s*([^가-힣]+)$/)
+  return m ? t(m[1].trim(), m[2].trim()) : cell
+}
 export const gradeGuide: Record<Subject, Record<9 | 10 | 11 | 12, Tier3>> = {
   math: {
     9: ['Algebra 1', 'Geometry', 'Algebra 2'],

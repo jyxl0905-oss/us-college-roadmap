@@ -19,8 +19,8 @@ import { slugify } from '../lib/router'
 import { Wrench, Lightbulb, BookOpen, Activity, AlertTriangle, Briefcase, GraduationCap, Trophy, Palette, Landmark, Compass } from 'lucide-react'
 import VerifiedBadge from '../ui/VerifiedBadge'
 
-interface Occupation { title: string; pay: string | null; pay_year: number | null; outlook: string | null; window: string | null; url: string | null; note?: string | null }
-interface CareerInfo { desc_ko: string | null; desc_en: string | null; occupations: Occupation[]; outlook_note_ko: string | null; grad_note_ko?: string | null }
+interface Occupation { title: string; pay: string | null; pay_year: number | null; outlook: string | null; window: string | null; url: string | null; note?: string | null; note_en?: string | null }
+interface CareerInfo { desc_ko: string | null; desc_en: string | null; occupations: Occupation[]; outlook_note_ko: string | null; outlook_note_en?: string | null; grad_note_ko?: string | null; grad_note_en?: string | null }
 const CAREERS = careersData as Record<string, CareerInfo>
 interface IdxSchool { id: number; name: string; direct_admit_majors?: string[] }
 const IDX = schoolsIndex as IdxSchool[]
@@ -262,8 +262,8 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
               </span>
             </summary>
             <VerifiedBadge className="mt-2" date="2026-08-20" sources={t('미 노동통계국(BLS) OOH', 'U.S. BLS Occupational Outlook')} />
-            {CAREERS[majorKey].outlook_note_ko && getLang() === 'ko' && (
-              <p className="mt-1 text-xs text-gray-500">{CAREERS[majorKey].outlook_note_ko}</p>
+            {CAREERS[majorKey].outlook_note_ko && (
+              <p className="mt-1 text-xs text-gray-500">{t(CAREERS[majorKey].outlook_note_ko!, CAREERS[majorKey].outlook_note_en ?? '')}</p>
             )}
             <div className="mt-2 flex flex-col gap-2">
               {CAREERS[majorKey].occupations.map((o) => (
@@ -278,14 +278,14 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
                   </div>
                   <p className="mt-0.5 text-xs text-gray-500">
                     {o.pay && <>{t('중간 연봉', 'Median pay')} <strong className="text-gray-700">{o.pay}</strong> ({o.pay_year})</>}
-                    {o.note && <span className="ml-1 text-amber-700">· {o.note}</span>}
+                    {o.note && <span className="ml-1 text-amber-700">· {getLang() === 'en' ? (o.note_en ?? o.note) : o.note}</span>}
                     {o.url && <a href={o.url} target="_blank" rel="noreferrer" className="ml-1 text-blue-600 underline">BLS ↗</a>}
                   </p>
                 </div>
               ))}
             </div>
-            {CAREERS[majorKey].grad_note_ko && getLang() === 'ko' && (
-              <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800"><GraduationCap size={14} strokeWidth={2} className="mr-1 inline -mt-0.5" />{CAREERS[majorKey].grad_note_ko}</p>
+            {CAREERS[majorKey].grad_note_ko && (getLang() === 'ko' || CAREERS[majorKey].grad_note_en) && (
+              <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800"><GraduationCap size={14} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t(CAREERS[majorKey].grad_note_ko!, CAREERS[majorKey].grad_note_en ?? '')}</p>
             )}
             <p className="mt-2 text-[11px] text-gray-400">
               {t('연봉은 미국 전체 중간값(경력 전체 포함) 기준이며 지역·경력에 따라 크게 달라요. 출처: 미국 노동통계국(BLS) Occupational Outlook Handbook.', 'Pay figures are US-wide medians across all experience levels and vary widely by region and seniority. Source: US Bureau of Labor Statistics, Occupational Outlook Handbook.')}

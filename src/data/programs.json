@@ -1423,7 +1423,8 @@
    "official_mentions": [],
    "area": "bio_health",
    "grades_ko": "10–11학년",
-   "grades_en": "Grades 10–11"
+   "grades_en": "Grades 10–11",
+   "host_en": "Korean Biology Olympiad Committee; IBO = International Biology Olympiad"
   },
   {
    "key": "brain_bee",
@@ -1436,7 +1437,7 @@
    ],
    "host": "International Brain Bee; 한국 대회는 서울대학교 학습과학연구소",
    "what_ko": "13~19세 청소년 대상 뇌과학 대회예요. 각 나라 National Brain Bee 우승자가 International Brain Bee World Championship에 나가요. 한국은 '한국뇌캠프'가 국가 대회 역할을 해요.",
-   "what_en": "A neuroscience competition for teens (typically ages 13-19). Each National Brain Bee champion goes to the International Brain Bee World Championship; in Korea the national round is the Korea Brain Bee camp (한국뇌캠프).",
+   "what_en": "A neuroscience competition for teens (typically ages 13-19). Each National Brain Bee champion goes to the International Brain Bee World Championship; in Korea the national round is the Korea Brain Bee camp.",
    "do_ko": "뇌과학 강의·자료로 공부한 뒤 캠프 성취도 평가를 봐요. 대상 수상자가 한국 대표로 World Championship에 나가고, 세계대회는 신경해부학·조직학, 필기, 환자 진단, 라이브 문답으로 구성돼요.",
    "do_en": "Study neuroscience lectures/materials and take the camp assessment; the grand-prize winner represents Korea. The World Championship includes neuroanatomy/histology, a written test, patient diagnosis, and live judging.",
    "intl_eligibility": "restricted",
@@ -1454,13 +1455,15 @@
      "college": "Seoul National University (서울대학교)",
      "relation": "host",
      "note_ko": "서울대학교 학습과학연구소가 한국뇌캠프(Korea Brain Bee)를 주최해요.",
-     "note_en": "SNU's Learning Science Institute hosts the Korea Brain Bee (한국뇌캠프).",
-     "url": "https://www.braincamp.kr/sub_introduce/greeting.php"
+     "note_en": "SNU's Learning Science Institute hosts the Korea Brain Bee.",
+     "url": "https://www.braincamp.kr/sub_introduce/greeting.php",
+     "college_en": "Seoul National University"
     }
    ],
    "area": "bio_health",
    "grades_ko": "10학년",
-   "grades_en": "Grade 10"
+   "grades_en": "Grade 10",
+   "host_en": "International Brain Bee; the Korea round is run by the Learning Sciences Research Institute, Seoul National University"
   },
   {
    "key": "igem_high_school",
@@ -2083,7 +2086,8 @@
      "relation": "host",
      "note_ko": "하버드 학부생 단체(Harvard College Model Congress Asia)가 운영해요. 대학 본부가 아니라 학생 단체 주관이에요.",
      "note_en": "Run by Harvard College Model Congress Asia, a Harvard student organization (not the university administration).",
-     "url": "https://www.hmcasia.org/about-hmca"
+     "url": "https://www.hmcasia.org/about-hmca",
+     "college_en": "Harvard Model Congress (Harvard student organization)"
     }
    ],
    "area": "biz_social",
@@ -2463,7 +2467,8 @@
    "official_mentions": [],
    "area": "hum_arts",
    "grades_ko": "6–11학년 (한국 소재 중·고등학교 재학)",
-   "grades_en": "Grades 6–11 (enrolled at a secondary school in Korea)"
+   "grades_en": "Grades 6–11 (enrolled at a secondary school in Korea)",
+   "host_en": "Korea Linguistics Olympiad (KLO) — selects Korea’s IOL team"
   },
   {
    "key": "national-history-day-korea",
