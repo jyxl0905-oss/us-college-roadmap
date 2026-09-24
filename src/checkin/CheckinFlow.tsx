@@ -470,7 +470,8 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
           ]}
           selected={draft.target_mode}
           onSelect={(v) => {
-            patch({ target_mode: v, target_school_ids: [], target_tier: null })
+            // 학교 선택으로 가면 기존 목표 학교를 유지한 채 추가·삭제 (처음부터 다시 고르지 않도록)
+            patch({ target_mode: v, target_school_ids: v === 'schools' ? draft.target_school_ids : [], target_tier: v === 'tier' ? draft.target_tier : null })
             if (v === 'schools') setFormStep(2)
             else if (v === 'tier') setFormStep(3)
             else finish({ ...draft, target_mode: v, target_school_ids: [], target_tier: null })
@@ -482,6 +483,7 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
         <TargetSchoolsStep
           selectedIds={draft.target_school_ids}
           onChange={(ids) => patch({ target_school_ids: ids })}
+          majors={[draft.major_primary, draft.major_secondary]}
           onNext={() => finish(draft)}
         />,
       )

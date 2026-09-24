@@ -134,7 +134,8 @@ export function boardWarnings(apps: ApplicationRow[], profile: ProfileRow): Boar
 // §3-D C7 행동 변환 — 고정 매핑 (이 표만 사용, 임의 추가 금지)
 // key = 한국어 원문(저장 키, custom_tasks.title로 저장됨 — 변경 금지), text = 표시 문구(언어별)
 export interface DerivedItem { key: string; text: string }
-const di = (ko: string, en: string): DerivedItem => ({ key: ko, text: t(ko, en) })
+// text는 getter — 파일 로드 시점이 아니라 표시 시점의 언어로 (언어 전환 후 새로고침 없이 반영)
+const di = (ko: string, en: string): DerivedItem => ({ key: ko, get text() { return t(ko, en) } })
 
 const C7_ACTION_MAP: Record<string, DerivedItem> = {
   essay: di('이 학교는 에세이를 very important로 공시 — 보충 에세이에 시간을 최우선 배분할 것', 'This school lists essays as very important — put supplemental essays first in your time budget'),

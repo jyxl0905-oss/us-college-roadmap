@@ -40,8 +40,8 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
 
   // 검색·공유용 페이지 제목 — 훅은 조기 return보다 위에 있어야 함 (훅 순서 고정)
   useEffect(() => {
-    if (school && school !== 'loading') document.title = `${school.name} 합격률·SAT·합격 전략 (${school.name_ko}) — 미국 대입 로드맵`
-    return () => { document.title = '미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴' }
+    if (school && school !== 'loading') document.title = t(`${school.name} 합격률·SAT·합격 전략 (${school.name_ko}) — 미국 대입 로드맵`, `${school.name} — acceptance rate, SAT & admissions | US College Roadmap`)
+    return () => { document.title = t('미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴', 'US College Roadmap — free US college admissions planner') }
   }, [school])
 
   if (school === 'loading')
@@ -213,13 +213,13 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
                 {t('공식 출처 보기 ↗', 'View official source ↗')}
               </a>
             )}
+          </div>
+        )}
 
-        {/* 💰 재정지원 — 지원 신분에 맞는 부분만 */}
+        {/* 💰 재정지원 — 지원 신분에 맞는 부분만 (인재상 카드와 별개로 항상 표시) */}
         <div className="mt-4">
           <AidBlock school={s} status={profile ? (profile.applicant_status === 'domestic' ? 'domestic' : 'intl') : null} />
         </div>
-          </div>
-        )}
 
         {/* 데이터 블록 */}
         <div className="mt-5 divide-y divide-gray-100 rounded-xl border-2 border-gray-200 bg-white">

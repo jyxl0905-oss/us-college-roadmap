@@ -62,5 +62,6 @@ export function downloadIcs(filename: string, events: IcsEvent[]): void {
   document.body.appendChild(a)
   a.click()
   a.remove()
-  URL.revokeObjectURL(url)
+  // iOS Safari는 클릭 직후 URL을 해제하면 다운로드가 실패함 → 잠시 뒤 해제
+  window.setTimeout(() => URL.revokeObjectURL(url), 1500)
 }

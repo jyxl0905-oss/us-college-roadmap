@@ -28,9 +28,9 @@ export async function downloadDocx(
   const children: InstanceType<typeof Paragraph>[] = [
     new Paragraph({
       heading: HeadingLevel.HEADING_1,
-      children: [new TextRun(t(`${profile.nickname}님의 시즌 리포트`, `${profile.nickname}’s Season Report`))],
+      children: [new TextRun(profile.nickname ? t(`${profile.nickname}님의 시즌 리포트`, `${profile.nickname}’s Season Report`) : t('시즌 리포트', 'Season Report'))],
     }),
-    p(`${t(`${grade}학년`, `Grade ${grade}`)} · ${majorLabel(profile.major_primary)} · ${seasonLabelKo[currentSeason()]}`),
+    p(`${profile.graduated ? t('졸업 · 기록 보관', 'Graduated · archive') : t(`${grade}학년`, `Grade ${grade}`)} · ${majorLabel(profile.major_primary)} · ${seasonLabelKo[currentSeason()]}`),
 
     h(t('6축 밸런스', '6-Axis Balance')),
     ...axisOrder.map((a) => p(`${axisKo[a]}: ${scores[a]} / 100`)),
@@ -67,6 +67,9 @@ export async function downloadDocx(
   const a = document.createElement('a')
   a.href = url
   a.download = `${t('시즌리포트', 'season-report')}_${profile.nickname ?? ''}_${new Date().toISOString().slice(0, 10)}.docx`
+  document.body.appendChild(a)
   a.click()
-  URL.revokeObjectURL(url)
+  a.remove()
+  // iOS Safari는 클릭 직후 URL을 해제하면 다운로드가 실패함 → 잠시 뒤 해제
+  window.setTimeout(() => URL.revokeObjectURL(url), 1500)
 }

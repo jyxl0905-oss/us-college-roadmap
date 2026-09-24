@@ -47,8 +47,8 @@ interface MajorRoadmapPageProps {
 export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoadmapPageProps) {
   // 검색·공유용 페이지 제목
   useEffect(() => {
-    document.title = `${majorLabel(majorKey)} 전공 — 미국 대학 진로·추천 AP 가이드 | 미국 대입 로드맵`
-    return () => { document.title = '미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴' }
+    document.title = t(`${majorLabel(majorKey)} 전공 — 미국 대학 진로·추천 AP 가이드 | 미국 대입 로드맵`, `${majorLabel(majorKey)} — careers & recommended APs | US College Roadmap`)
+    return () => { document.title = t('미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴', 'US College Roadmap — free US college admissions planner') }
   }, [majorKey])
 
   // 세부 전공(유전학 등)은 자체 로드맵이 없으면 상위 전공 로드맵을 사용

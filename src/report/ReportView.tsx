@@ -291,6 +291,12 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           .from('user_checks')
           .upsert({ user_id: userId, item_id: itemId, season_label: seasonLabel, status: 'done' })
     if (result.error) {
+      setAllDoneIds((prev) => {
+        const next = new Set(prev)
+        if (wasChecked) next.add(itemId)
+        else next.delete(itemId)
+        return next
+      })
       setCheckedIds((prev) => {
         const next = new Set(prev)
         if (wasChecked) next.add(itemId)

@@ -1,3 +1,4 @@
+import { schoolMatches } from '../data/schoolAliases'
 import { useState } from 'react'
 import { t } from '../i18n'
 import type { School } from '../lib/types'
@@ -27,7 +28,7 @@ export default function TargetSchoolsStep({ selectedIds, onChange, onNext, major
   const q = query.trim().toLowerCase()
   // 검색 중엔 종합대·LAC 전체에서 찾고, 평소엔 탭으로 나눠 보여줌 (순위순)
   const filtered = (q
-    ? schools.filter((s) => s.name.toLowerCase().includes(q) || s.name_ko.includes(query.trim()))
+    ? schools.filter((s) => schoolMatches(s, q))
     : schools.filter((s) => (s.kind ?? 'university') === kind)
   ).slice().sort((a, b) =>
     (a.kind ?? 'university') !== (b.kind ?? 'university')

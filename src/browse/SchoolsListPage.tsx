@@ -1,3 +1,4 @@
+import { schoolMatches } from '../data/schoolAliases'
 import { directAdmitParent, majorLabel } from '../data/majors'
 import { isArtMajor } from '../data/artSchools'
 import { useEffect, useMemo, useState } from 'react'
@@ -78,8 +79,8 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
 
   // 검색용 페이지 제목
   useEffect(() => {
-    document.title = '미국 명문대 합격률·합격 전략 — 대학 147+ 공식 데이터 | 미국 대입 로드맵'
-    return () => { document.title = '미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴' }
+    document.title = t('미국 명문대 합격률·합격 전략 — 대학 147+ 공식 데이터 | 미국 대입 로드맵', 'US college acceptance rates — official data on 147+ colleges | US College Roadmap')
+    return () => { document.title = t('미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴', 'US College Roadmap — free US college admissions planner') }
   }, [])
 
   // 긴 목록 스크롤 보조: 위로 가기 버튼 표시 여부
@@ -97,7 +98,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
 
   // 종합대/LAC 외의 조건은 공통 — 탭 전환 판단에도 같은 기준을 씀
   const passesFilters = (s: School, q: string) => {
-    if (q && !s.name.toLowerCase().includes(q) && !s.name_ko.toLowerCase().includes(q)) return false
+    if (q && !schoolMatches(s, q)) return false
     if (needBlindOnly && s.need_blind_intl !== true) return false
     if (testPolicy !== 'all' && s.test_policy !== testPolicy) return false
     if (region !== 'all' && schoolRegion(s) !== region) return false

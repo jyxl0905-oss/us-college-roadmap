@@ -36,8 +36,8 @@ export default function CourseGuidePage({ profile }: { profile: ProfileRow | nul
   const hereTier = subject === 'math' && profile ? mathTierNow(grade, profile.math_course) : -1
 
   useEffect(() => {
-    document.title = '미국 대학 입시 수업 난이도(rigor) 가이드 — 학년별 추천 과목 | 미국 대입 로드맵'
-    return () => { document.title = '미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴' }
+    document.title = t('미국 대학 입시 수업 난이도(rigor) 가이드 — 학년별 추천 과목 | 미국 대입 로드맵', 'Course rigor guide — recommended courses by grade | US College Roadmap')
+    return () => { document.title = t('미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴', 'US College Roadmap — free US college admissions planner') }
   }, [])
 
   return (

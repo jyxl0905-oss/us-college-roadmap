@@ -426,7 +426,7 @@ function AppRoutes() {
   }
   // F2: 학교 비교 (?ids=1,2,3)
   if (path === '/compare' || path === '/compare/') {
-    return <ComparePage profile={profile} />
+    return <ComparePage key={window.location.search} profile={profile} />
   }
   // F5: 내 원서 (가상 Common App) — 로그인 전용, 9학년부터
   if (path === '/app' || path.startsWith('/app/')) {
@@ -510,7 +510,7 @@ function AppRoutes() {
   if (path.startsWith('/schools/')) {
     return (
       <SchoolDetailPage
-        slug={path.slice('/schools/'.length).replace(/\/+$/, '')}
+        slug={(() => { const raw = path.slice('/schools/'.length).replace(/\/+$/, ''); try { return decodeURIComponent(raw).toLowerCase() } catch { return raw.toLowerCase() } })()}
         userId={session?.user.id ?? null}
         profile={profile}
         onProfileChange={setProfile}

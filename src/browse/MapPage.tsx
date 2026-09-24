@@ -1,3 +1,4 @@
+import { schoolMatches } from '../data/schoolAliases'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { geoAlbersUsa } from 'd3-geo'
 import { feature } from 'topojson-client'
@@ -300,7 +301,7 @@ export default function MapPage({ profile }: MapPageProps) {
   const suggestions = useMemo(() => {
     if (!q) return []
     return schools
-      .filter((s) => s.name.toLowerCase().includes(q) || s.name_ko.toLowerCase().includes(q))
+      .filter((s) => schoolMatches(s, q))
       .sort((a, b) => (a.kind === 'lac' ? 1 : a.kind === 'art' ? 2 : 0) - (b.kind === 'lac' ? 1 : b.kind === 'art' ? 2 : 0) || rankSortKey(a) - rankSortKey(b))
       .slice(0, 6)
   }, [schools, q])

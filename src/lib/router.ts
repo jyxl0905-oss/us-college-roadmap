@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 
 // 초경량 라우터 — /schools, /schools/:slug 등 고유 URL 직접 접근 지원
 export function usePath(): string {
-  const [path, setPath] = useState(window.location.pathname)
+  // 경로 + 쿼리를 함께 추적 — /compare?ids= 처럼 쿼리만 바뀌어도(뒤로·앞으로) 다시 그림. 반환은 경로만
+  const [loc, setLoc] = useState(window.location.pathname + window.location.search)
+  const path = loc.split('?')[0]
   useEffect(() => {
-    const update = () => setPath(window.location.pathname)
+    const update = () => setLoc(window.location.pathname + window.location.search)
     window.addEventListener('popstate', update)
     window.addEventListener('app:navigate', update)
     return () => {

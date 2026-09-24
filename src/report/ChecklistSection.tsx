@@ -37,6 +37,7 @@ export default function ChecklistSection({ items, checkedIds, onToggle }: Checkl
             key={item.id}
             onClick={onToggle ? () => onToggle(item.id) : undefined}
             disabled={!onToggle}
+            aria-pressed={checked}
             className={`w-full rounded-xl border-2 px-4 py-3.5 text-left transition-all ${
               checked ? 'border-green-500 bg-green-50 hover:bg-green-100' : 'border-gray-200 bg-white'
             } ${onToggle && !checked ? 'hover:-translate-y-0.5 hover:border-blue-300 hover:bg-blue-50/60 hover:shadow-md active:bg-gray-50' : ''}`}
