@@ -125,45 +125,128 @@ export function recommendCourses(courses: CourseInput[], currentGrade: number, m
 // ── 내 위치 분석: 올해(현재 학년) 과목 기록 → 학년별 가이드 표의 [일반·심화·최상위] 중 어디인지 ──
 // 표 칸이 편집 가이드이므로 판정도 같은 기준의 근사치 (학교마다 개설 과목이 다름)
 export type Tier = 0 | 1 | 2
-export interface Position { subject: Subject; tier: Tier | null; status: 'ok' | 'none' | 'unrecognized'; course: string | null }
+export interface Position {
+  subject: Subject
+  tier: Tier | null
+  rowGrade: number // 비교한 표 줄 (외국어 늦게 시작하면 학년과 다름)
+  merged: boolean // 표에서 심화=최상위가 같은 칸인 경우 (둘 다 해당)
+  status: 'ok' | 'none' | 'unrecognized'
+  course: string | null // 판정 기준이 된 과목
+  courses: { name: string; level: string }[] // 이 과목 분류로 인식된 올해 과목 전부
+  reason_ko: string; reason_en: string
+}
 
 const cellRank = (subject: Subject, cell: string): number => {
   if (subject === 'language') { if (/선택|optional/i.test(cell)) return -1; if (/\bAP\b/.test(cell)) return 4; const m = cell.match(/Level\s*(\d)/); return m ? Number(m[1]) - 1 : -1 }
   return rungOf(subject, { grade: 0, name: cell, level: /\bAP\b/.test(cell) ? 'ap' : 'regular' })
 }
 
-export function coursePosition(courses: CourseInput[], grade: number, row: (s: Subject) => [string, string, string]): Position[] {
+export function coursePosition(courses: CourseInput[], grade: number, rowOf: (s: Subject, g: number) => [string, string, string]): Position[] {
   const g = Math.min(12, Math.max(9, grade))
   const thisYear = courses.filter((c) => c.grade === g)
+  // 외국어는 시작 학년 반영 — 이전 학년 기록은 있는데 외국어가 없으면 늦게 시작한 것으로 보고, 학년 대신 '몇 년차' 줄과 비교
+  const langGrades = courses.filter((c) => subjectOf(c) === 'language').map((c) => c.grade)
+  const langStart = langGrades.length ? Math.min(...langGrades) : 9
+  const lateStart = langStart > 9 && langStart <= g && courses.some((c) => c.grade < langStart)
+  const langRowGrade = lateStart ? 9 + (g - langStart) : g
   return SUBJECTS.map((subject): Position => {
     const list = thisYear.filter((c) => subjectOf(c) === subject)
-    if (list.length === 0) return { subject, tier: null, status: 'none', course: null }
+    const listed = list.map((c) => ({ name: c.name, level: c.level }))
+    const rowGrade = subject === 'language' ? langRowGrade : g
+    const r3 = rowOf(subject, rowGrade)
+    const merged = r3[1] === r3[2]
+    const base = { subject, merged, courses: listed, rowGrade }
+    if (list.length === 0) return { ...base, tier: null, status: 'none', course: null, reason_ko: '올해 기록이 없어요', reason_en: 'No course recorded this year' }
     const lv = (c: CourseInput) => levelRank[c.level] ?? 0
-    const apCount = list.filter((c) => lv(c) === 2 && c.level !== 'ib').length
-    const best = [...list].sort((a, b) => rungOf(subject, b) - rungOf(subject, a) || lv(b) - lv(a))[0]
-    let tier: Tier | null = null
+    const aps = list.filter((c) => c.level === 'ap')
+    const ibs = list.filter((c) => c.level === 'ib')
+    const honors = list.filter((c) => c.level === 'honors')
+    const best = [...list].sort((a, b) => lv(b) - lv(a) || rungOf(subject, b) - rungOf(subject, a))[0]
+    let tier: Tier = 0
+    let reason_ko = ''
+    let reason_en = ''
+
     if (subject === 'math' || subject === 'language') {
-      const ib = list.find((c) => c.level === 'ib')
-      if (subject === 'math' && ib) tier = /(aa|analysis).*\bhl\b|\bhl\b.*(aa|analysis)/i.test(ib.name) ? 2 : /(aa|analysis)/i.test(ib.name) ? 1 : 0
-      else {
-        const r = Math.max(...list.map((c) => rungOf(subject, c)))
-        if (r < 0) return { subject, tier: null, status: 'unrecognized', course: best.name }
-        const cells = row(subject).map((c) => cellRank(subject, c))
-        tier = 0
+      const ib = ibs[0]
+      if (subject === 'math' && ib) {
+        tier = /(aa|analysis).*\bhl\b|\bhl\b.*(aa|analysis)/i.test(ib.name) ? 2 : /(aa|analysis)/i.test(ib.name) ? 1 : 0
+        reason_ko = `IB 수학 ${ib.name} 기준`; reason_en = `Based on IB ${ib.name}`
+      } else {
+        const top = [...list].sort((a, b) => rungOf(subject, b) - rungOf(subject, a))[0]
+        const r = rungOf(subject, top)
+        if (r < 0) return { ...base, tier: null, status: 'unrecognized', course: top.name, reason_ko: '과목 단계를 알아보지 못했어요', reason_en: 'Couldn’t read the course level' }
+        const cells = r3.map((c) => cellRank(subject, c))
         cells.forEach((cr, i) => { if (cr >= 0 && r >= cr) tier = i as Tier })
+        // 같은 단계라도 Honors면 한 칸 위로 (예: Honors Precalculus)
+        if (tier < 2 && top.level === 'honors' && subject === 'math') tier = (tier + 1) as Tier
+        const step = subject === 'math' ? ladders.math[r]?.name : ladders.language[r]?.name
+        if (subject === 'language' && lateStart) {
+          const yr = g - langStart + 1
+          reason_ko = `${top.name} → ${step} 단계 (${langStart}학년 시작 · ${yr}년차 → 9학년 시작 기준 ${yr}년차 줄과 비교)`
+          reason_en = `${top.name} → ${step} level (started grade ${langStart} · year ${yr} → compared with year ${yr} of a grade-9 start)`
+        } else {
+          reason_ko = `${top.name} → ${step} 단계 (${g}학년 표와 비교)`; reason_en = `${top.name} → ${step} level (vs the grade ${g} row)`
+        }
+        if (subject === 'math' && top.level === 'honors' && tier > 0) { reason_ko += ' · Honors 반영'; reason_en += ' · Honors counted' }
+        return { ...base, tier, merged: merged && tier >= 1, status: 'ok', course: top.name, reason_ko, reason_en }
       }
     } else {
-      const top = Math.max(...list.map(lv))
-      const hasLit = list.some((c) => lv(c) === 2 && /lit/i.test(c.name))
+      // 영어·과학·사회: 레벨 중심 — Honors는 최소 심화, AP는 개수와 학년 표 기준
+      const nAp = aps.length + ibs.length
       const physC = list.some((c) => /physics\s*c\b/i.test(c.name))
-      if (subject === 'english') tier = top === 2 ? (g >= 11 ? (g === 12 && !hasLit ? 1 : 2) : 1) : top === 1 ? 1 : 0
-      if (subject === 'social') tier = g <= 10 ? (top === 2 ? (g === 10 ? 2 : 1) : top === 1 ? 1 : 0) : g === 11 ? (top === 2 ? 1 : 0) : apCount >= 2 ? 2 : apCount === 1 ? 1 : 0
-      if (subject === 'science') tier = g === 9 ? (top >= 1 ? 1 : 0) : g === 10 ? (top === 2 ? 2 : top === 1 ? 1 : 0) : g === 11 ? (apCount >= 2 ? 2 : apCount === 1 ? 1 : 0) : (physC || apCount >= 2 ? 2 : apCount === 1 ? 1 : 0)
-      if (top === 2 && list.every((c) => c.level === 'ib')) tier = Math.max(tier ?? 0, 1) as Tier // IB 과목은 심화 이상으로 봄
+      const hasLit = aps.some((c) => /lit/i.test(c.name))
+      if (nAp === 0) tier = honors.length > 0 ? 1 : 0
+      else if (subject === 'english') tier = g <= 10 ? 1 : g === 12 && !hasLit ? 1 : 2
+      else if (subject === 'social') tier = g === 9 ? 1 : g === 10 ? 2 : g === 11 ? 2 : nAp >= 2 ? 2 : 1
+      else if (subject === 'science') tier = g === 9 ? 1 : g === 10 ? 2 : g === 11 ? (nAp >= 2 ? 2 : 1) : (physC || nAp >= 2 ? 2 : 1)
+      const lvName = (c: CourseInput) => (c.level === 'ap' ? 'AP' : c.level === 'ib' ? 'IB' : c.level === 'honors' ? 'Honors' : t_ko_regular)
+      reason_ko = list.map((c) => `${c.name}(${lvName(c)})`).join(' · ') + (nAp > 0 ? ` → AP·IB ${nAp}개` : honors.length > 0 ? ' → Honors 있음' : ' → 모두 일반 레벨')
+      reason_en = list.map((c) => `${c.name} (${c.level === 'regular' ? 'regular' : lvName(c)})`).join(' · ') + (nAp > 0 ? ` → ${nAp} AP/IB` : honors.length > 0 ? ' → Honors' : ' → all regular')
     }
-    // 표에서 심화=최상위 같은 칸이면 둘 다 같은 위치로 취급
-    const r3 = row(subject)
-    if (tier === 2 && r3[1] === r3[2]) tier = 1
-    return { subject, tier, status: 'ok', course: best.name }
+    // 표에서 심화=최상위 같은 칸이면 '심화·최상위'로 묶어서 보여줌
+    const isMerged = merged && tier >= 1
+    if (isMerged) tier = 1
+    return { ...base, tier, merged: isMerged, status: 'ok', course: best.name, reason_ko, reason_en }
   })
+}
+const t_ko_regular = '일반'
+
+// ── 리거 추이: 학년별 AP·IB·Honors 개수 → 지난 학년보다 늘었는지 ──
+// 기준은 이 사이트의 참고용 (학교마다 개설 과목·상한이 달라 절대 기준 아님)
+export interface RigorYear { grade: number; total: number; ap: number; honors: number; adv: number }
+export interface RigorTrend {
+  years: RigorYear[]
+  verdict: 'strong_up' | 'up' | 'steady_high' | 'steady' | 'down' | 'no_prev' | 'none'
+  delta: number
+  ko: string; en: string
+}
+export function rigorTrend(courses: CourseInput[], grade: number): RigorTrend {
+  const g = Math.min(12, Math.max(9, grade))
+  const years: RigorYear[] = []
+  for (let y = 9; y <= g; y++) {
+    const list = courses.filter((c) => c.grade === y)
+    if (list.length === 0) continue
+    const ap = list.filter((c) => c.level === 'ap' || c.level === 'ib').length
+    const honors = list.filter((c) => c.level === 'honors').length
+    years.push({ grade: y, total: list.length, ap, honors, adv: ap + honors })
+  }
+  const cur = years.find((y) => y.grade === g)
+  const prev = [...years].reverse().find((y) => y.grade < g)
+  if (!cur) return { years, verdict: 'none', delta: 0, ko: `${g}학년 과목을 적으면 지난 학년과 비교해 드려요.`, en: `Add your grade ${g} courses to compare with last year.` }
+  if (!prev) return { years, verdict: 'no_prev', delta: 0, ko: '비교할 이전 학년 기록이 없어요 — 지난 학년 과목도 적으면 추이를 보여드려요.', en: 'No earlier year to compare — add last year’s courses to see the trend.' }
+  const delta = cur.adv - prev.adv
+  const apDelta = cur.ap - prev.ap
+  const share = (y: RigorYear) => y.adv / y.total
+  const shareUp = share(cur) - share(prev)
+  const diff = `${prev.grade}학년 AP·IB ${prev.ap} + Honors ${prev.honors} → ${g}학년 AP·IB ${cur.ap} + Honors ${cur.honors}`
+  const diffEn = `Grade ${prev.grade}: ${prev.ap} AP/IB + ${prev.honors} Honors → grade ${g}: ${cur.ap} AP/IB + ${cur.honors} Honors`
+  if (delta >= 2 || (delta >= 1 && apDelta >= 1 && shareUp >= 0.2))
+    return { years, verdict: 'strong_up', delta, ko: `${diff}. 심화 과목이 ${delta}개 늘어 '난이도를 올렸다'고 말할 수 있는 뚜렷한 흐름이에요.`, en: `${diffEn}. ${delta} more advanced courses — a clear upward rigor trend.` }
+  if (delta === 1 || (delta === 0 && apDelta >= 1))
+    return { years, verdict: 'up', delta, ko: `${diff}. 한 단계 올라갔어요 — 상승 흐름이지만 폭은 작아요. 다음 학년에 하나 더 올리면 추이가 분명해져요.`, en: `${diffEn}. One step up — an upward trend, but a small one. One more next year makes it clear.` }
+  if (delta === 0 && share(cur) >= 0.5)
+    return { years, verdict: 'steady_high', delta, ko: `${diff}. 이미 절반 이상이 심화 과목이고 그 수준을 유지하고 있어요.`, en: `${diffEn}. Over half your courses are already advanced, and you’re holding that level.` }
+  if (delta === 0)
+    return { years, verdict: 'steady', delta, ko: `${diff}. 지난 학년과 같아요 — 상승 추이로 보이려면 Honors·AP를 하나 이상 늘려보세요.`, en: `${diffEn}. Same as last year — add at least one Honors/AP to show an upward trend.` }
+  return { years, verdict: 'down', delta, ko: `${diff}. 지난 학년보다 ${-delta}개 줄었어요 — 학교 개설 사정 같은 이유가 있다면 카운슬러가 추천서에서 설명할 수 있어요.`, en: `${diffEn}. ${-delta} fewer than last year — if your school’s offerings are the reason, your counselor can explain it.` }
 }

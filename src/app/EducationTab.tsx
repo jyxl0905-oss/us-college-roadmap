@@ -8,6 +8,7 @@ import { insertRow, updateRow, deleteRow, loadAppRecords, courseLevelKo, type Co
 import { supabase } from '../lib/supabase'
 import { computeGpa, courseLetter, gpaToBand, LETTERS } from './gpa'
 import { recommendCourses, subjectOf, rungOf, coursePosition } from '../lib/courseRecs'
+import RigorTrendBox from './RigorTrendBox'
 import { ladders, subjectLabel, gradeGuide } from '../data/courseGuide'
 import { navigate } from '../lib/router'
 
@@ -185,13 +186,13 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
           <div className="mt-3 rounded-xl border-2 border-amber-200 bg-amber-50/60 px-4 py-3.5">
             <p className="flex items-center gap-1.5 text-sm font-semibold text-gray-900"><Compass size={15} strokeWidth={2} />{t(`${Math.min(12, myGrade + 1)}학년 수강 추천`, `Suggestions for grade ${Math.min(12, myGrade + 1)}`)}</p>
             {courses.some((c) => c.grade === myGrade) && (() => {
-              const pos = coursePosition(courses, myGrade, (sb) => gradeGuide[sb][myGrade as 9 | 10 | 11 | 12])
+              const pos = coursePosition(courses, myGrade, (sb, g) => gradeGuide[sb][g as 9 | 10 | 11 | 12])
               return (
                 <p className="mt-1.5 flex flex-wrap gap-1">
                   <span className="text-[11px] text-gray-500">{t(`${myGrade}학년 내 위치:`, `Grade ${myGrade} position:`)}</span>
                   {pos.map((p) => (
-                    <span key={p.subject} className={`rounded-full px-1.5 py-0.5 text-[10.5px] font-semibold ${p.status !== 'ok' ? 'bg-white text-gray-400' : p.tier === 2 ? 'bg-emerald-100 text-emerald-800' : p.tier === 1 ? 'bg-blue-100 text-blue-800' : 'bg-white text-amber-800'}`}>
-                      {t(subjectLabel[p.subject].ko, subjectLabel[p.subject].en)} {p.status === 'none' ? '—' : p.status === 'unrecognized' ? '?' : [t('일반', 'Std'), t('심화', 'Adv'), t('최상위', 'Top')][p.tier ?? 0]}
+                    <span key={p.subject} title={t(p.reason_ko, p.reason_en)} className={`rounded-full px-1.5 py-0.5 text-[10.5px] font-semibold ${p.status !== 'ok' ? 'bg-white text-gray-400' : p.tier === 2 ? 'bg-emerald-100 text-emerald-800' : p.tier === 1 ? 'bg-blue-100 text-blue-800' : 'bg-white text-amber-800'}`}>
+                      {t(subjectLabel[p.subject].ko, subjectLabel[p.subject].en)} {p.status === 'none' ? '—' : p.status === 'unrecognized' ? '?' : p.merged ? t('심화·최상위', 'Adv·Top') : [t('일반', 'Std'), t('심화', 'Adv'), t('최상위', 'Top')][p.tier ?? 0]}
                     </span>
                   ))}
                 </p>
@@ -218,6 +219,7 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
           </div>
         )
       })()}
+      {courses && courses.length > 0 && <div className="mt-3"><RigorTrendBox courses={courses} grade={myGrade} /></div>}
 
 
       <div className="mt-3 rounded-xl border-2 border-gray-200 bg-white px-4 py-3">

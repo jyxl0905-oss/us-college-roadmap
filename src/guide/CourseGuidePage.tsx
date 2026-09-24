@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { loadAppRecords } from '../app/appData'
-import { coursePosition, type Position } from '../lib/courseRecs'
+import { coursePosition, type Position, type CourseInput } from '../lib/courseRecs'
+import RigorTrendBox from '../app/RigorTrendBox'
 import { t } from '../i18n'
 import { goBack, navigate } from '../lib/router'
 import { COURSE_GUIDE_VERIFIED, cellText, SUBJECTS, gradeGuide, subjectLabel, majorCores, rigorSources, type Subject } from '../data/courseGuide'
@@ -38,12 +39,14 @@ export default function CourseGuidePage({ profile, userId }: { profile: ProfileR
   const [subject, setSubject] = useState<Subject>('math')
   const grade = profile ? profileGrade(profile) : 0
   const [positions, setPositions] = useState<Position[] | null>(null)
+  const [myCourses, setMyCourses] = useState<CourseInput[]>([])
 
   // 내 과목 기록이 있으면 올해 과목으로 과목별 위치 분석 (없으면 온보딩 수학 과목만 사용)
   useEffect(() => {
     if (!userId || grade < 9 || grade > 12) return
     loadAppRecords(userId).then((r) => {
-      if (r.courses.length > 0) setPositions(coursePosition(r.courses, grade, (s) => gradeGuide[s][grade as 9 | 10 | 11 | 12]))
+      setMyCourses(r.courses)
+      if (r.courses.length > 0) setPositions(coursePosition(r.courses, grade, (s, g) => gradeGuide[s][g as 9 | 10 | 11 | 12]))
     }).catch(() => { /* 전역 안내 띠 */ })
   }, [userId, grade])
 
@@ -81,7 +84,7 @@ export default function CourseGuidePage({ profile, userId }: { profile: ProfileR
             <p className="text-sm font-semibold text-gray-900">{t(`내 위치 — ${grade}학년, 내가 적은 과목 기준`, `Where you are — grade ${grade}, from your courses`)}</p>
             <div className="mt-2 grid grid-cols-5 gap-1.5">
               {positions.map((p) => {
-                const label = p.status === 'none' ? t('기록 없음', 'None') : p.status === 'unrecognized' ? t('인식 안 됨', 'Unrecognized') : [t('일반', 'Standard'), t('심화', 'Advanced'), t('최상위', 'Top')][p.tier ?? 0]
+                const label = p.status === 'none' ? t('기록 없음', 'None') : p.status === 'unrecognized' ? t('인식 안 됨', 'Unrecognized') : p.merged ? t('심화·최상위', 'Adv.·Top') : [t('일반', 'Standard'), t('심화', 'Advanced'), t('최상위', 'Top')][p.tier ?? 0]
                 const cls = p.status !== 'ok' ? 'bg-gray-50 text-gray-400' : p.tier === 2 ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200' : p.tier === 1 ? 'bg-blue-50 text-blue-700 ring-1 ring-blue-200' : 'bg-amber-50 text-amber-800 ring-1 ring-amber-200'
                 return (
                   <button key={p.subject} onClick={() => setSubject(p.subject)} title={p.course ?? ''} className={`rounded-xl px-1 py-2 text-center ${cls} ${subject === p.subject ? 'outline outline-2 outline-gray-900' : ''}`}>
@@ -91,11 +94,24 @@ export default function CourseGuidePage({ profile, userId }: { profile: ProfileR
                 )
               })}
             </div>
-            {pos?.course && <p className="mt-2 text-[11px] text-gray-500">{t(`${subjectLabel[subject].ko}: "${pos.course}" 기준`, `${subjectLabel[subject].en}: based on “${pos.course}”`)}</p>}
+            {pos && (
+              <div className="mt-2.5 rounded-lg bg-gray-50 px-3 py-2">
+                <p className="text-[11px] font-semibold text-gray-500">{t(`${subjectLabel[subject].ko} — 판정 근거`, `${subjectLabel[subject].en} — why`)}</p>
+                {pos.courses.length > 0 && (
+                  <div className="mt-1 flex flex-wrap gap-1">
+                    {pos.courses.map((c, i) => (
+                      <span key={i} className="rounded-full bg-white px-2 py-0.5 text-[11px] text-gray-700 ring-1 ring-gray-200">{c.name} <span className="font-semibold">{c.level === 'ap' ? 'AP' : c.level === 'ib' ? 'IB' : c.level === 'honors' ? 'Honors' : t('일반', 'Regular')}</span></span>
+                    ))}
+                  </div>
+                )}
+                <p className="mt-1 text-[12px] text-gray-700">{t(pos.reason_ko, pos.reason_en)}</p>
+              </div>
+            )}
             <p className="mt-1 text-[11px] leading-relaxed text-gray-400">{t('편집 가이드 표에 대입한 대략적인 위치예요. "인식 안 됨"은 과목명을 표준 이름(예: AP Calculus BC)으로 고치면 돼요.', 'An approximate position against the editorial table. For “Unrecognized”, rename the course to a standard name (e.g., AP Calculus BC).')}</p>
             <button onClick={() => navigate('/app/education')} className="mt-1.5 text-xs font-medium text-blue-600 underline">{t('과목 수정·다음 학년 추천 보기 →', 'Edit courses & see next-year suggestions →')}</button>
           </div>
         )}
+        {myCourses.length > 0 && <div className="mt-3"><RigorTrendBox courses={myCourses} grade={grade} /></div>}
 
         {/* 과목 탭 */}
         <div className="mt-5 flex gap-1.5 overflow-x-auto pb-1">
@@ -131,7 +147,7 @@ export default function CourseGuidePage({ profile, userId }: { profile: ProfileR
                     // 심화와 최상위가 같은 과목이면 한 칸으로 합쳐 표시 (이 학년엔 그 단계가 최고)
                     if (i === 2 && row[1] === row[2]) return null
                     const merged = i === 1 && row[1] === row[2]
-                    const here = g === grade && i === hereTier
+                    const here = g === (pos ? pos.rowGrade : grade) && i === hereTier
                     return (
                       <td key={i} colSpan={merged ? 2 : 1} className={`px-2 py-2.5 leading-snug text-gray-800 sm:px-3 ${here ? 'font-semibold' : ''} ${merged ? 'text-center' : ''}`}>
                         {cellText(cell)}
