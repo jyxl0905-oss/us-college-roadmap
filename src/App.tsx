@@ -34,6 +34,7 @@ const TargetsPage = lazy(() => import('./report/TargetsPage'))
 const MajorsIndexPage = lazy(() => import('./major/MajorsIndexPage'))
 const CourseGuidePage = lazy(() => import('./guide/CourseGuidePage'))
 const ApGuidePage = lazy(() => import('./guide/ApGuidePage'))
+const CostGuidePage = lazy(() => import('./guide/CostGuidePage'))
 const MapPage = lazy(() => import('./browse/MapPage'))
 // 개발용: /admin?demo=1 → 샘플 데이터로 레이아웃 확인 (프로덕션 빌드에서 제거됨)
 const AdminDemo = import.meta.env.DEV
@@ -514,6 +515,9 @@ function AppRoutes() {
   // 수업 난이도 가이드 (비로그인도 열람 가능, 로그인 시 '지금 여기' 표시)
   if (path === '/guide/ap' || path === '/guide/ap/') {
     return <ApGuidePage />
+  }
+  if (path === '/guide/cost' || path === '/guide/cost/') {
+    return <CostGuidePage profile={profile} />
   }
   if (path === '/guide/courses' || path === '/guide/courses/') {
     return <CourseGuidePage profile={profile} />

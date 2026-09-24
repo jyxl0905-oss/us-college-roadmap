@@ -250,3 +250,7 @@ h1.text-xl, h1.text-2xl { font-weight: 800; }
     box-shadow: none !important;
   }
 }
+
+/* 가로 스크롤 칩 줄 — 스크롤바 숨김 */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }

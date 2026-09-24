@@ -1,0 +1,159 @@
+{
+ "verified_at": "2026-09-24",
+ "rules": [
+  {
+   "topic": "federal_aid_citizenship",
+   "statement_en": "To receive federal student aid (Pell Grant, FSEOG, Federal Work-Study, Direct Loans), a student must be a U.S. citizen or an eligible noncitizen, and must also have a valid Social Security number (except students from the Marshall Islands, Micronesia, or Palau).",
+   "statement_ko": "연방 학자금 지원(Pell Grant, FSEOG, Federal Work-Study, Direct Loan)을 받으려면 미국 시민권자 또는 '자격 있는 비시민권자(eligible noncitizen)'여야 하고, 유효한 사회보장번호(SSN)도 있어야 한다(마셜제도·미크로네시아·팔라우 출신 학생은 예외).",
+   "source_url": "https://studentaid.gov/understand-aid/eligibility/requirements",
+   "source_type": "gov"
+  },
+  {
+   "topic": "federal_aid_eligible_noncitizen_categories",
+   "statement_en": "Eligible noncitizens include: U.S. nationals; U.S. permanent residents with Form I-551/I-151 ('green card'); holders of an I-94 showing Refugee, Asylum Granted, Conditional Permanent Resident, Cuban-Haitian Entrant, Conditional Entrant (issued before April 1, 1980), or Parolee (paroled for at least one year, with modified rules for certain Ukrainian and Afghan parolees); T nonimmigrant status ('T-visa', trafficking victims) or a parent with T-1 status; 'battered immigrant-qualified aliens' under the Violence Against Women Act; and certain Jay Treaty Native Americans born in Canada. Citizens of Micronesia, the Marshall Islands, and Palau may receive only Pell Grants, FSEOG, and Federal Work-Study.",
+   "statement_ko": "자격 있는 비시민권자에는 다음이 포함된다: 미국 국민(U.S. national), I-551/I-151(영주권 카드, '그린카드')을 가진 영주권자, I-94에 난민(Refugee)·망명 허가(Asylum Granted)·조건부 영주권자·쿠바-아이티 입국자·조건부 입국자(1980년 4월 1일 이전 발급)·가석방 입국자(Parolee, 최소 1년 이상, 일부 우크라이나·아프가니스탄 가석방자는 별도 요건) 중 하나가 기재된 사람, T 비자(인신매매 피해자) 소지자 또는 부모가 T-1 신분인 사람, 여성폭력방지법(VAWA)상 학대 피해 이민자, 캐나다 출생 제이 조약(Jay Treaty) 원주민 일부. 미크로네시아·마셜제도·팔라우 시민은 Pell Grant·FSEOG·Federal Work-Study만 받을 수 있다.",
+   "source_url": "https://studentaid.gov/understand-aid/eligibility/requirements/non-us-citizens",
+   "source_type": "gov"
+  },
+  {
+   "topic": "federal_aid_eligible_noncitizen_categories_handbook",
+   "statement_en": "The 2026-27 FSA Handbook states the Department accepts these eligible noncitizen categories: lawful permanent residents, conditional permanent residents, conditional entrants, refugees, asylees, individuals paroled into the U.S. for at least one year (including certain Ukrainian and Afghan parolees), Cuban-Haitian entrants, victims of a severe form of trafficking, battered or abused spouses or children, and certain American Indians born in Canada (Jay Treaty). Title IV also requires such individuals to show they are in the U.S. 'for other than a temporary purpose with the intention of becoming a citizen or permanent resident.'",
+   "statement_ko": "2026-27 연방 학자금 핸드북(FSA Handbook)은 영주권자, 조건부 영주권자, 조건부 입국자, 난민, 망명자, 1년 이상 가석방 입국자(일부 우크라이나·아프가니스탄 가석방자 포함), 쿠바-아이티 입국자, 중대한 인신매매 피해자, 학대받은 배우자·자녀, 캐나다 출생 제이 조약 원주민 일부를 자격 있는 비시민권자로 인정한다고 명시한다. 또한 이들은 '일시적 목적이 아니라 시민권자나 영주권자가 될 의도로' 미국에 있다는 점을 증빙해야 한다.",
+   "source_url": "https://fsapartners.ed.gov/knowledge-center/fsa-handbook/2026-2027/vol1/ch2-us-citizenship-eligible-noncitizens",
+   "source_type": "gov"
+  },
+  {
+   "topic": "federal_aid_f1_j1_ineligible",
+   "statement_en": "Students in the U.S. on an F-1, F-2, or M-1 nonimmigrant student visa, or on a J-1 or J-2 Exchange Visitor visa, are NOT eligible noncitizens and cannot receive federal student aid. B-1/B-2, H or L series, G series, A-1/A-2/A-3, NATO, and U-visa holders, people with Temporary Protected Status, and people who have only an employment authorization document (I-766) are also ineligible.",
+   "statement_ko": "F-1·F-2·M-1 학생 비자나 J-1·J-2 교환방문 비자로 미국에 있는 학생은 자격 있는 비시민권자가 아니므로 연방 학자금을 받을 수 없다. B-1/B-2, H·L 계열, G 계열, A-1/A-2/A-3, NATO, U 비자 소지자와 임시보호신분(TPS) 보유자, 취업허가서(I-766)만 가진 사람도 자격이 없다.",
+   "source_url": "https://studentaid.gov/understand-aid/eligibility/requirements/non-us-citizens",
+   "source_type": "gov"
+  },
+  {
+   "topic": "federal_aid_daca_ineligible",
+   "statement_en": "Undocumented students, including Deferred Action for Childhood Arrivals (DACA) recipients, are not eligible for federal student aid but may still be eligible for other types of aid (state aid, school aid, or private scholarships).",
+   "statement_ko": "DACA(불법체류 청소년 추방 유예) 수혜자를 포함한 서류 미비 학생은 연방 학자금을 받을 수 없지만, 주 정부 지원·학교 지원·민간 장학금 같은 다른 지원은 받을 수도 있다.",
+   "source_url": "https://studentaid.gov/understand-aid/eligibility/requirements/non-us-citizens",
+   "source_type": "gov"
+  },
+  {
+   "topic": "federal_aid_daca_ineligible_handbook",
+   "statement_en": "The FSA Handbook states that students who received deferred action, including DACA recipients, are not eligible for Title IV aid, but may be eligible for state or institutional aid.",
+   "statement_ko": "연방 학자금 핸드북은 DACA를 포함해 추방 유예(deferred action)를 받은 학생은 Title IV(연방) 학자금 대상이 아니지만, 주 정부나 학교 자체 지원은 받을 수도 있다고 명시한다.",
+   "source_url": "https://fsapartners.ed.gov/knowledge-center/fsa-handbook/2026-2027/vol1/ch2-us-citizenship-eligible-noncitizens",
+   "source_type": "gov"
+  },
+  {
+   "topic": "us_citizens_abroad_fafsa",
+   "statement_en": "Federal basic eligibility criteria are based on citizenship/eligible-noncitizen status (plus a valid SSN, enrollment in an eligible program, etc.); U.S. residence is not among the listed basic criteria. The FAFSA explicitly accommodates applicants abroad: 'If you live in a foreign country, select Foreign Country (FC)' for state of residence.",
+   "statement_ko": "연방 학자금의 기본 자격 요건은 시민권·자격 있는 비시민권 신분(그리고 유효한 SSN, 인정된 과정 등록 등)을 기준으로 하며, 나열된 기본 요건에 미국 거주는 포함되어 있지 않다. FAFSA도 해외 거주 신청자를 명시적으로 수용해, 거주 주(state of residence) 항목에서 '외국에 거주한다면 Foreign Country(FC)를 선택하라'고 안내한다.",
+   "source_url": "https://studentaid.gov/help/state-legal-residence",
+   "source_type": "gov"
+  },
+  {
+   "topic": "us_citizens_abroad_foreign_income_pell",
+   "statement_en": "FAFSA asks whether the student (and contributors) earned income in a foreign country. Beginning with the 2026-27 award year, the foreign earned income exclusion reported on the FAFSA form is added to AGI when determining Pell Grant eligibility (a change from the One Big Beautiful Bill Act).",
+   "statement_ko": "FAFSA는 학생(및 부모 등 정보 제공자)이 외국에서 소득을 올렸는지 묻는다. 2026-27 학년도부터는 FAFSA에 신고한 해외 근로소득 공제(foreign earned income exclusion) 금액이 Pell Grant 자격 판정 시 AGI(조정총소득)에 다시 더해진다(One Big Beautiful Bill Act에 따른 변경).",
+   "source_url": "https://fsapartners.ed.gov/knowledge-center/fsa-handbook/2026-2027/application-and-verification-guide",
+   "source_type": "gov"
+  },
+  {
+   "topic": "fafsa_purpose",
+   "statement_en": "Federal student aid (grants, work-study, and loans) is applied for using the FAFSA form; the FAFSA form should correspond to the school year for which aid is sought.",
+   "statement_ko": "연방 학자금(보조금·근로장학·대출)은 FAFSA로 신청하며, 지원받으려는 학년도에 해당하는 FAFSA 양식을 제출해야 한다.",
+   "source_url": "https://studentaid.gov/understand-aid/types",
+   "source_type": "gov"
+  },
+  {
+   "topic": "css_profile_purpose",
+   "statement_en": "The CSS Profile is an online application used by colleges and scholarship programs to award non-federal institutional aid; for federal aid, students must complete the FAFSA.",
+   "statement_ko": "CSS Profile은 대학과 장학 프로그램이 연방 외 학교 자체(institutional) 지원을 결정할 때 쓰는 온라인 신청서이며, 연방 학자금을 받으려면 FAFSA를 따로 작성해야 한다.",
+   "source_url": "https://cssprofile.collegeboard.org/about",
+   "source_type": "college_board"
+  },
+  {
+   "topic": "css_profile_international",
+   "statement_en": "Yes, international students can file the CSS Profile. College Board states that many colleges provide institutional financial aid to international students and need to understand the family's finances in the context of the local economy; the CSS Profile collects family income, assets, and expenses, which can be entered in the home currency.",
+   "statement_ko": "국제학생도 CSS Profile을 제출할 수 있다. 칼리지보드는 많은 대학이 국제학생에게 학교 자체 재정 지원을 제공하며, 이를 위해 현지 경제 맥락에서 가정의 재정 상황을 파악해야 한다고 설명한다. CSS Profile은 가족의 소득·자산·지출을 묻고, 금액은 자국 통화로 입력할 수 있다.",
+   "source_url": "https://cssprofile.collegeboard.org/international-applicants",
+   "source_type": "college_board"
+  },
+  {
+   "topic": "isfaa",
+   "statement_en": "The International Student Financial Aid Application (ISFAA) is a form some colleges use for international aid applicants. Dartmouth, for example, says international applicants for whom the CSS Profile fee would be a serious financial hardship should submit the ISFAA directly to its Financial Aid Office, and that completing it is considered equivalent to completing the CSS Profile.",
+   "statement_ko": "ISFAA(International Student Financial Aid Application)는 일부 대학이 국제학생 재정 지원 신청자에게 받는 양식이다. 예를 들어 다트머스는 CSS Profile 수수료가 큰 부담이 되는 국제학생은 ISFAA를 재정지원처에 직접 제출하라고 안내하며, ISFAA 제출은 CSS Profile 제출과 동등하게 취급된다고 밝힌다.",
+   "source_url": "https://admissions.dartmouth.edu/glossary-term/international-student-financial-aid-application-isfaa",
+   "source_type": "college"
+  },
+  {
+   "topic": "state_aid_residency",
+   "statement_en": "Each state determines residency differently; most states require at least 12 months of residency before classes begin for a student to be considered a state resident. Students should contact the college's financial aid office with residency questions.",
+   "statement_ko": "주(state) 거주자 판정 기준은 주마다 다르며, 대부분의 주는 수업 시작 전 최소 12개월 이상 그 주에 거주해야 주 거주자로 인정한다. 거주 요건 관련 질문은 대학 재정지원처에 문의해야 한다.",
+   "source_url": "https://studentaid.gov/help/state-legal-residence",
+   "source_type": "gov"
+  },
+  {
+   "topic": "state_aid_source",
+   "statement_en": "Besides federal aid, students might be eligible for financial assistance from their state and should contact their state grant agency.",
+   "statement_ko": "연방 지원 외에 주 정부의 재정 지원을 받을 수도 있으며, 해당 주의 장학(grant) 기관에 문의해야 한다.",
+   "source_url": "https://studentaid.gov/understand-aid/types",
+   "source_type": "gov"
+  },
+  {
+   "topic": "institutional_aid",
+   "statement_en": "Many schools offer financial aid from their own grant and/or scholarship funds; students should check the school's financial aid page, ask their academic department, and fill out any applications the school requires for its own aid by the school's deadlines.",
+   "statement_ko": "많은 대학이 자체 보조금·장학금 재원으로 재정 지원을 제공한다. 학생은 학교 재정지원 페이지를 확인하고, 전공 학과에도 문의하며, 학교 자체 지원에 필요한 신청서를 학교 마감일까지 제출해야 한다.",
+   "source_url": "https://studentaid.gov/understand-aid/types",
+   "source_type": "gov"
+  },
+  {
+   "topic": "institutional_aid_noncitizens",
+   "statement_en": "Students who are neither citizens nor eligible noncitizens should ask the college they plan to attend whether it offers aid for students like them.",
+   "statement_ko": "시민권자도 자격 있는 비시민권자도 아닌 학생은 진학하려는 대학에 자신과 같은 학생을 위한 지원이 있는지 문의해야 한다.",
+   "source_url": "https://studentaid.gov/understand-aid/eligibility/requirements/non-us-citizens",
+   "source_type": "gov"
+  },
+  {
+   "topic": "college_example_penn",
+   "statement_en": "Penn is need-blind for citizens and permanent residents of the United States, Canada, and Mexico, and need-aware for other international applicants, who are still eligible to receive financial aid.",
+   "statement_ko": "펜실베이니아대(Penn)는 미국·캐나다·멕시코 시민권자와 영주권자에게는 need-blind, 그 밖의 국제학생에게는 need-aware로 심사하며, 국제학생도 재정 지원을 받을 수 있다.",
+   "source_url": "https://admissions.upenn.edu/affording-penn/financial-aid",
+   "source_type": "college"
+  },
+  {
+   "topic": "college_example_jhu",
+   "statement_en": "Johns Hopkins is need-aware for international citizens (who do not hold U.S. citizenship or permanent resident status) who apply for financial aid; students with U.S. citizenship or permanent residency living outside the U.S. are still reviewed need-blind.",
+   "statement_ko": "존스홉킨스는 미국 시민권·영주권이 없는 국제학생이 재정 지원을 신청하면 need-aware로 심사하지만, 미국 시민권자·영주권자는 해외에 거주하더라도 need-blind로 심사한다.",
+   "source_url": "https://apply.jhu.edu/international-applicants/",
+   "source_type": "college"
+  },
+  {
+   "topic": "college_example_stanford_abroad",
+   "statement_en": "Stanford considers U.S. citizens and permanent residents living and attending school abroad to be domestic applicants for financial aid purposes and is need-blind for all U.S. citizens, permanent residents, undocumented students, and eligible noncitizens regardless of where they attend high school; for international citizens, a financial aid request is a factor in admission.",
+   "statement_ko": "스탠퍼드는 해외에 거주하며 해외 학교에 다니는 미국 시민권자·영주권자를 재정 지원상 국내 지원자로 보며, 미국 시민권자·영주권자·서류 미비 학생·자격 있는 비시민권자에게는 고등학교 소재지와 관계없이 need-blind로 심사한다. 반면 국제학생의 재정 지원 신청은 입학 심사에 반영된다.",
+   "source_url": "https://admission.stanford.edu/apply/international/index.html",
+   "source_type": "college"
+  },
+  {
+   "topic": "f1_on_campus_work",
+   "statement_en": "F-1 students may work on campus up to 20 hours per week while school is in session, and full-time when school is not in session or during the annual vacation.",
+   "statement_ko": "F-1 학생은 학기 중에는 교내에서 주 20시간까지 일할 수 있고, 방학이나 학기가 없는 기간에는 풀타임으로 일할 수 있다.",
+   "source_url": "https://www.ice.gov/sevis/employment",
+   "source_type": "gov"
+  },
+  {
+   "topic": "f1_off_campus_work",
+   "statement_en": "Off-campus employment for F-1 students requires authorization: USCIS authorizes off-campus work (e.g., for severe economic hardship) only after the student has been enrolled for at least one full academic year, in status and in good academic standing; practical training (CPT, OPT) is a separate authorized category.",
+   "statement_ko": "F-1 학생의 교외 근무는 별도 허가가 필요하다. 이민국(USCIS)은 학생이 최소 1학년(1 academic year) 이상 신분을 유지하며 학업 성적이 양호한 경우에만 교외 근무(예: 심각한 경제적 어려움)를 허가하며, 실습 훈련(CPT·OPT)은 별도의 허가 범주다.",
+   "source_url": "https://www.ice.gov/sevis/employment",
+   "source_type": "gov"
+  },
+  {
+   "topic": "f1_unauthorized_work",
+   "statement_en": "If a DSO knows an F-1 student is working without permission, the DSO must report it through SEVIS and the student's SEVIS record will be terminated, meaning the student will have to leave the United States immediately and may not be allowed to return.",
+   "statement_ko": "F-1 학생이 허가 없이 일하는 사실을 학교 담당자(DSO)가 알게 되면 SEVIS에 보고해야 하고, 학생의 SEVIS 기록은 종료된다. 이 경우 즉시 미국을 떠나야 하며 재입국이 허용되지 않을 수도 있다.",
+   "source_url": "https://studyinthestates.dhs.gov/students/work/working-in-the-united-states",
+   "source_type": "gov"
+  }
+ ]
+}

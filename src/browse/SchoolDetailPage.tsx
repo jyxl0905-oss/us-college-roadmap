@@ -6,6 +6,7 @@ import { navigate, slugify, goBack } from '../lib/router'
 import { majorLabel } from '../data/majors'
 import { saveProfile, type ProfileRow } from '../lib/profile'
 import AidBlock from './AidBlock'
+import CostBlock from './CostBlock'
 import { setPrefillSchoolIds } from './prefill'
 import FitPicker from './FitPicker'
 import { schoolWebsite } from './logos'
@@ -244,6 +245,9 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         {/* 💰 재정지원 — 지원 신분에 맞는 부분만 (인재상 카드와 별개로 항상 표시) */}
         <div className="mt-4">
           <AidBlock school={s} status={profile ? (profile.applicant_status === 'domestic' ? 'domestic' : 'intl') : null} />
+        </div>
+        <div className="mt-3">
+          <CostBlock schoolId={s.id} />
         </div>
 
         {/* 데이터 블록 */}

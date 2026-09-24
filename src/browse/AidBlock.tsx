@@ -1,5 +1,6 @@
 import type { School } from '../lib/types'
 import { t } from '../i18n'
+import { navigate } from '../lib/router'
 import { Wallet, Medal } from 'lucide-react'
 
 // 💰 재정지원·장학금 — 지원 신분(status)에 맞는 부분만 표시. 데이터 없으면 아무것도 렌더하지 않음.
@@ -65,7 +66,7 @@ export default function AidBlock({ school: s, status, compact = false }: { schoo
             {s.meets_full_need_all && <span className="rounded-full bg-green-100 px-2 py-0.5 font-medium text-green-800">{t('need 100% 충족', 'meets 100% need')}</span>}
             {s.no_loan && <span className="rounded-full bg-green-100 px-2 py-0.5 font-medium text-green-800">{t('무대출(no-loan)', 'no-loan')}</span>}
           </div>
-          <p className="text-xs text-gray-500">{t('시민권·영주권자는 FAFSA로 연방·주정부 지원도 받을 수 있어요.', 'Citizens/PRs can also access federal and state aid via FAFSA.')}</p>
+          <p className="text-xs text-gray-500">{t('시민권·영주권자는 FAFSA로 연방 지원도 받을 수 있어요 (주 정부 지원은 그 주 거주 요건을 채워야 해요).', 'Citizens/PRs can also get federal aid via FAFSA (state aid requires meeting that state’s residency rules).')}</p>
           {s.merit_note && (
             <p className="text-xs text-gray-600"><Medal size={13} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('주요 메리트 장학금: ', 'Major merit scholarships: ')}<span className="text-gray-800">{s.merit_note}</span></p>
           )}
@@ -75,6 +76,7 @@ export default function AidBlock({ school: s, status, compact = false }: { schoo
       <p className="mt-2 text-[11px] text-gray-400">
         {t('금액은 학교가 공표한 CDS 기준이고 매년 달라져요 — 지원 전 공식 페이지에서 확인하세요.', 'Figures come from the school’s published CDS and change yearly — confirm on the official page before applying.')}
         {s.aid_source_url && <> <a href={s.aid_source_url} target="_blank" rel="noreferrer" className="text-blue-600 underline">{t('공식 페이지 ↗', 'Official page ↗')}</a></>}
+        {' '}<button onClick={() => navigate('/guide/cost?tab=aid')} className="text-blue-600 underline">{t('신분별로 받을 수 있는 지원 →', 'Aid you can get by status →')}</button>
       </p>
     </div>
   )
