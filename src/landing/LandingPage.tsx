@@ -10,6 +10,7 @@ import apData from '../data/ap.json'
 import RadarChart from '../report/RadarChart'
 import type { AxisScores } from '../lib/score'
 import { Check, Eye, ShieldCheck, ClipboardCheck, FileText, Landmark, Compass, Share2 } from 'lucide-react'
+import { GradePeek, Facts, PainAndFaq, StickyCta } from './LandingSections'
 
 // 훅 랜딩 — 비로그인 첫 화면. 원칙: 유학원 광고처럼 보이면 실패 (과장·그라디언트·카운트다운 금지).
 // 수치는 전부 실데이터(공식 출처 시드)에서만. CTA는 구글 로그인 + 로그인 없는 체험.
@@ -82,9 +83,9 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
   const preview = schools.filter((s) => (s.kind ?? 'university') === 'university').sort((a, b) => (a.usnews_rank ?? 9999) - (b.usnews_rank ?? 9999)).slice(0, 3)
 
   const stats: [string, string, string][] = [
-    [String(schools.length), t('대학 공식 데이터', 'colleges, official data'), '/schools'],
-    [String(majorCount), t('전공 가이드', 'major guides'), '/majors'],
-    [String(apCount), t('AP 과목 가이드', 'AP course guides'), '/guide/ap'],
+    [`${schools.length}+`, t('대학 공식 데이터', 'colleges, official data'), '/schools'],
+    [`${majorCount}+`, t('전공 가이드', 'major guides'), '/majors'],
+    [`${apCount}+`, t('AP 과목 가이드', 'AP course guides'), '/guide/ap'],
     [t('0원', '$0'), t('전 기능 무료', 'everything free'), ''],
   ]
 
@@ -108,7 +109,7 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
             <p className="mt-4 text-[15px] leading-relaxed text-gray-600 md:mt-5 md:max-w-lg md:text-[17px]">
               {t('학년·전공·목표 학교에 맞춘 시즌별 체크리스트와 리포트. 활동·수상은 지금부터 기록해 두고, 12학년엔 옮겨 적기만 하면 돼요.', 'Season-by-season checklists and reports tailored to your grade, major and target schools. Log activities and honors from today — in senior year, just copy them over.')}
             </p>
-            <div className="mt-6 md:mt-8">{cta}</div>
+            <div id="hero-cta" className="mt-6 md:mt-8">{cta}</div>
             <p className="mt-4 flex items-start gap-1.5 text-[13px] leading-relaxed text-gray-500">
               <ShieldCheck size={16} strokeWidth={1.9} className="mt-px shrink-0" />
               {t('대학 데이터는 Common Data Set·College Board·각 대학 입학처 공식 자료만 사용해요. 컨설팅은 비싸고 합격을 보장하지 않아요 — 필요한 건 정보와 기록이에요.', 'College data comes only from Common Data Sets, the College Board and official admissions pages. Consulting is expensive and guarantees nothing — what you need is information and a record.')}
@@ -147,15 +148,19 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
           ))}
         </div>
 
+        {/* 새 섹션 01·02 — 내 학년 맛보기 + 알고 계셨나요 (2026-09) */}
+        <div className="mt-16 md:mt-24"><GradePeek onStart={() => void googleLogin()} /></div>
+        <div className="mt-16 md:mt-24"><Facts /></div>
+
         {/* 3. 핵심 기능 3개 */}
-        <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-4 md:mt-24 md:grid-cols-3">
           <div className="rounded-2xl border-2 border-gray-200 bg-white p-5">
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600"><ClipboardCheck size={20} strokeWidth={1.9} /></span>
             <p className="mt-3.5 font-bold text-gray-900">{t('시즌별 체크리스트·리포트', 'Seasonal checklist & report')}</p>
             <p className="mt-1 text-sm leading-relaxed text-gray-500">{t('가을·봄·여름마다 학년과 전공에 맞춰 지금 해야 할 일만 보여주고, 6축 밸런스로 약한 부분을 짚어줘요.', 'Each fall, spring and summer you see only what to do now for your grade and major, with a 6-axis balance check.')}</p>
           </div>
 
-          <div className="rounded-2xl border-2 border-gray-200 bg-white p-5">
+          <div id="feature-app" className="rounded-2xl border-2 border-gray-200 bg-white p-5">
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-600"><FileText size={20} strokeWidth={1.9} /></span>
             <p className="mt-3.5 font-bold text-gray-900">{t('내 원서 (가상 Common App)', 'My App (a practice Common App)')}</p>
             <p className="mt-1 text-sm leading-relaxed text-gray-500">{t("실제 원서 형식 그대로 미리 기록해 두세요 — '9학년 때 뭐 했더라?'를 막아드려요.", "Log everything in the real application's format — no more \"what did I even do in 9th grade?\"")}</p>
@@ -184,8 +189,11 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
           </div>
         </div>
 
+        {/* 새 섹션 03·04 — 이런 고민이라면 + 자주 묻는 질문 */}
+        <div className="mt-16 md:mt-24"><PainAndFaq /></div>
+
         {/* 4. 전공·가이드 바로가기 + 공유 */}
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
+        <div className="mt-16 grid grid-cols-1 md:mt-24 gap-4 md:grid-cols-2">
           <div className="rounded-2xl border-2 border-gray-200 bg-white p-5">
             <p className="flex items-center gap-2 font-bold text-gray-900"><Compass size={18} strokeWidth={1.9} className="text-blue-600" />{t('전공·과목 가이드', 'Major & course guides')}</p>
             <p className="mt-1 text-sm leading-relaxed text-gray-500">{t('전공별 추천 AP·4년 로드맵·직업 전망(미 노동통계국), 학년별 수업 난이도와 AP 과목 가이드까지.', 'Per-major APs, 4-year roadmaps and career outlooks (BLS), plus course-rigor and AP guides.')}</p>
@@ -207,15 +215,29 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
           </div>
         </div>
 
-        {/* 5. 마지막 CTA */}
-        <div className="mx-auto mt-12 max-w-xl text-center">
-          <p className="text-lg font-extrabold tracking-tight text-gray-900 md:text-2xl">{t('지금 학년에 맞는 체크리스트부터 받아보세요', 'Start with the checklist for your grade')}</p>
-          <div className="mt-5">{cta}</div>
-          <button onClick={onEmailLogin} className="mt-5 text-xs text-gray-400 underline">
+        {/* 5. 마지막 CTA — 남색 블록 */}
+        <div id="final-cta" className="mt-16 rounded-3xl bg-gray-900 px-6 py-12 text-center text-white md:mt-24 md:py-16">
+          <p className="text-[26px] font-bold leading-tight tracking-[-0.035em] md:text-[38px]">
+            {t('4년의 입시,', 'Four years of admissions,')} <span className="font-light text-blue-200/80">{t('이번 시즌부터.', 'starting this season.')}</span>
+          </p>
+          <p className="mt-3 text-sm text-blue-100/70 md:text-base">{t('지금 학년에 맞는 체크리스트를 무료로 받아보세요.', 'Get the checklist for your grade — free.')}</p>
+          <div className="mx-auto mt-7 flex max-w-md flex-col gap-2.5 sm:flex-row">
+            <button onClick={() => void googleLogin()} className="flex flex-1 items-center justify-center gap-2.5 rounded-full bg-white px-5 py-3.5 text-[15px] font-bold text-gray-900 active:bg-gray-100">
+              <GoogleIcon />
+              {t('Google로 시작하기', 'Start with Google')}
+            </button>
+            <button onClick={() => navigate('/demo')} className="flex flex-1 items-center justify-center gap-2 rounded-full border border-white/25 px-5 py-3.5 text-[15px] font-semibold text-white active:bg-white/10">
+              <Eye size={18} strokeWidth={1.9} />
+              {t('예시 보기', 'See a sample')}
+            </button>
+          </div>
+          {error && <p className="mt-3 text-sm text-red-300">{error}</p>}
+          <button onClick={onEmailLogin} className="mt-6 text-xs text-blue-100/60 underline">
             {t('기존 이메일 계정으로 로그인', 'Log in with an existing email account')}
           </button>
         </div>
       </div>
+      <StickyCta anchorId="hero-cta" endId="final-cta" onStart={() => void googleLogin()} googleIcon={<GoogleIcon />} />
     </div>
   )
 }

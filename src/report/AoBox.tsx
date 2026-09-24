@@ -47,8 +47,13 @@ const aoCopyEn: Record<number, string[]> = {
   ],
 }
 
+// 첫 화면(랜딩)의 '내 학년 눌러보기'에서도 같은 문구를 씀
+export function aoLines(grade: number): string[] {
+  return (getLang() === 'en' ? aoCopyEn : aoCopy)[Math.min(12, Math.max(9, grade))]
+}
+
 export default function AoBox({ grade }: { grade: number }) {
-  const lines = (getLang() === 'en' ? aoCopyEn : aoCopy)[Math.min(12, Math.max(9, grade))]
+  const lines = aoLines(grade)
   return (
     <div className="rounded-xl bg-blue-600 px-4 py-4 text-white">
       <p className="text-xs font-semibold uppercase tracking-wide text-blue-200">
