@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Moon, Sun } from 'lucide-react'
 import { t } from '../i18n'
 
 // 다크 모드 토글 — html에 .dark 클래스만 켜고 끔 (색은 index.css의 다크 오버라이드가 담당)
@@ -25,9 +26,9 @@ export default function ThemeToggle() {
       onClick={toggle}
       title={dark ? t('라이트 모드', 'Light mode') : t('다크 모드', 'Dark mode')}
       aria-label={dark ? t('라이트 모드로 전환', 'Switch to light mode') : t('다크 모드로 전환', 'Switch to dark mode')}
-      className="rounded-full px-2 py-1 text-sm hover:bg-gray-100"
+      className="flex h-8 w-8 items-center justify-center rounded-full text-gray-500 hover:bg-gray-100"
     >
-      {dark ? '☀️' : '🌙'}
+      {dark ? <Sun size={17} strokeWidth={1.9} /> : <Moon size={17} strokeWidth={1.9} />}
     </button>
   )
 }

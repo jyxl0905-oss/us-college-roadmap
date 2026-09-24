@@ -1,5 +1,75 @@
 @import "tailwindcss";
 
+/* ── 2026-09 리디자인 (되돌리기: git 태그 classic-design-2026-09) ──
+   색 체계를 테마 단에서 교체 → 컴포넌트 수정 없이 전 화면에 적용
+   gray = 남색 기운의 중립색(900 = 브랜드 남색), blue = 포인트 색 하나 */
+@theme {
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+
+  --color-gray-50: #f6f7fb;
+  --color-gray-100: #eef0f6;
+  --color-gray-200: #e3e7f0;
+  --color-gray-300: #cdd3e1;
+  --color-gray-400: #98a1bb;
+  --color-gray-500: #737d9c;
+  --color-gray-600: #566081;
+  --color-gray-700: #3c476a;
+  --color-gray-800: #263154;
+  --color-gray-900: #0b1633;
+
+  --color-blue-50: #eef1ff;
+  --color-blue-100: #e0e6ff;
+  --color-blue-200: #c6d0ff;
+  --color-blue-300: #a0b1ff;
+  --color-blue-400: #748cfe;
+  --color-blue-500: #516dfd;
+  --color-blue-600: #3b5bfd;
+  --color-blue-700: #2f48d8;
+  --color-blue-800: #283aac;
+  --color-blue-900: #22318a;
+
+  --radius-xl: 0.875rem;
+  --radius-2xl: 1.125rem;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.005em;
+  font-variant-numeric: tabular-nums;
+}
+h1, h2 { letter-spacing: -0.025em; }
+h1.text-xl, h1.text-2xl { font-weight: 800; }
+
+/* 채운 파랑(주요 버튼·강조 카드) → 브랜드 남색, 파랑은 링크·옅은 강조에만 */
+.bg-blue-600 { background-color: var(--color-gray-900); }
+.hover\:bg-blue-700:hover, .active\:bg-blue-700:active { background-color: var(--color-gray-800); }
+.border-blue-600 { border-color: var(--color-gray-900); }
+@media screen {
+  html.dark .bg-blue-600 { background-color: #3b5bfd; }
+  html.dark .hover\:bg-blue-700:hover, html.dark .active\:bg-blue-700:active { background-color: #2f48d8; }
+  html.dark .border-blue-600 { border-color: #3b5bfd; }
+}
+
+/* 카드: 두꺼운 회색 테두리 → 얇은 선 + 은은한 그림자 (점선 박스는 그대로) */
+.rounded-xl.border-2:not(.border-dashed),
+.rounded-2xl.border-2:not(.border-dashed) { border-width: 1px; }
+.rounded-xl.border-2.border-gray-200:not(.border-dashed),
+.rounded-2xl.border-2.border-gray-200:not(.border-dashed) {
+  border-color: var(--color-gray-100);
+  box-shadow: 0 1px 2px rgb(11 22 51 / 0.04), 0 6px 20px -10px rgb(11 22 51 / 0.16);
+}
+@media screen {
+  html.dark .rounded-xl.border-2.border-gray-200:not(.border-dashed),
+  html.dark .rounded-2xl.border-2.border-gray-200:not(.border-dashed) {
+    border-color: #262d3b;
+    box-shadow: 0 1px 0 rgb(255 255 255 / 0.03);
+  }
+}
+@media print {
+  .rounded-xl.border-2, .rounded-2xl.border-2 { box-shadow: none !important; }
+}
+
 /* 마우스 사용 기기에서 모든 인터랙티브 요소에 공통 호버 하이라이트
    (터치 기기는 제외 — hover가 탭에 들러붙는 것 방지) */
 @media (hover: hover) and (pointer: fine) {

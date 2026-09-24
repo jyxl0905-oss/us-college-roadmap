@@ -1,3 +1,4 @@
+import { MessageCircle, BarChart3 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { navigate, usePath } from '../lib/router'
 import { supabase } from '../lib/supabase'
@@ -71,13 +72,13 @@ export default function TopNav() {
         ))}
         {admin && (
           <button onClick={() => navigate('/admin')} aria-label={t('관리자', 'Admin')} className={`shrink-0 rounded-full px-3 py-1 text-sm ${path.startsWith('/admin') ? 'bg-gray-900 font-semibold text-white' : 'text-gray-600 hover:bg-gray-100'}`}>
-            📊
+            <BarChart3 size={16} strokeWidth={1.9} />
           </button>
         )}
         </div>
         <div className="flex shrink-0 items-center gap-1 pl-1">
           {loggedIn && (
-            <button onClick={() => setFeedbackOpen(true)} title={t('의견 보내기', 'Send feedback')} className="rounded-full px-2 py-1 text-sm text-gray-500 hover:bg-gray-100">💬</button>
+            <button onClick={() => setFeedbackOpen(true)} title={t('의견 보내기', 'Send feedback')} aria-label={t('의견 보내기', 'Send feedback')} className="flex h-8 w-8 items-center justify-center rounded-full text-gray-500 hover:bg-gray-100"><MessageCircle size={17} strokeWidth={1.9} /></button>
           )}
           <LangToggle />
           <ThemeToggle />
