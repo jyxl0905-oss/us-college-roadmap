@@ -447,3 +447,19 @@ create index recommenders_user_id_idx on public.recommenders (user_id);
 alter table public.recommenders enable row level security;
 create policy "own recommenders" on public.recommenders for all to public using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
 -- 트리거 recommenders_limit: 사용자당 15명 (security definer, 실행 권한 회수)
+
+-- 2026-09-24 관심 표현 기록 + 계획↔대회·서머 연결 (migration interest_logs_and_plan_ref)
+create table public.interest_logs (
+  id bigint generated always as identity primary key,
+  user_id uuid not null references auth.users(id) on delete cascade,
+  school_id bigint not null,
+  kind text not null check (kind in ('mailing_list','info_session','campus_visit','hs_visit','college_fair','email','interview','other')),
+  happened_on date,
+  note text check (char_length(note) <= 300),
+  created_at timestamptz not null default now()
+);
+create index interest_logs_user_id_idx on public.interest_logs (user_id);
+alter table public.interest_logs enable row level security;
+create policy "own interest logs" on public.interest_logs for all to public using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
+-- 트리거 interest_logs_limit: 사용자당 300건 (security definer, 실행 권한 회수)
+alter table public.plans add column ref text check (char_length(ref) <= 80); -- 예: 'program:usaco'

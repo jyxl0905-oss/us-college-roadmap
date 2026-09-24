@@ -14,6 +14,7 @@ export interface Plan {
   season_label: string
   status: PlanStatus
   notes: string | null
+  ref?: string | null // 연결된 대회·서머 프로그램 (예: 'program:usaco')
 }
 
 export const PLAN_BONUS = 10
@@ -53,6 +54,6 @@ export function plannedScores(current: AxisScores, plans: Plan[]): AxisScores {
 
 export async function loadPlans(userId: string): Promise<Plan[]> {
   if (!supabase) return []
-  const { data } = await supabase.from('plans').select('id,title,axis,season_label,status,notes').eq('user_id', userId).order('id')
+  const { data } = await supabase.from('plans').select('id,title,axis,season_label,status,notes,ref').eq('user_id', userId).order('id')
   return (data ?? []) as Plan[]
 }

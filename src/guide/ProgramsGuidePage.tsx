@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { ChevronDown, Pin, Search, Trophy, Sun, CalendarDays, Landmark, ExternalLink, Monitor, MapPin, Shuffle } from 'lucide-react'
+import { ChevronDown, Pin, Search, Trophy, Sun, CalendarDays, Landmark, ExternalLink, Monitor, MapPin, Shuffle, CalendarPlus, Check } from 'lucide-react'
 import { t, getLang } from '../i18n'
 import { goBack, navigate, slugify } from '../lib/router'
 import type { ProfileRow } from '../lib/profile'
@@ -8,6 +8,10 @@ import schoolsIndex from '../data/schools.index.json'
 import data from '../data/programs.json'
 import VerifiedBadge from '../ui/VerifiedBadge'
 import AdmissionsTakeaways, { type Statement } from './AdmissionsTakeaways'
+import { loadPlans, cycleSeasons, type Plan } from '../app/plans'
+import { insertRow } from '../app/appData'
+import { programPlanRow, programRef } from '../app/programPlan'
+import { DEMO_USER_ID } from '../demo/demoProfile'
 
 // 대회·서머 프로그램 가이드 — 공식 출처만 (각 프로그램 공식 사이트·운영 대학·입학처 페이지), 2026-09-23 확인, 사용자 승인
 export interface Mention { college: string; college_en?: string; relation: 'host' | 'admissions_mention'; note_ko: string; note_en: string; url: string; school_id?: number }
@@ -63,15 +67,39 @@ export const programName = (name: string) => (getLang() === 'en' ? name.replace(
 
 const typeLabel = (type: Program['type']) => (type === 'competition' ? t('대회', 'Competition') : type === 'summer' ? t('서머 프로그램', 'Summer program') : t('행사', 'Event'))
 
-export default function ProgramsGuidePage({ profile }: { profile: ProfileRow | null }) {
+export default function ProgramsGuidePage({ profile, userId }: { profile: ProfileRow | null; userId?: string | null }) {
   const params = new URLSearchParams(window.location.search)
+  const openParam = params.get('open') // 계획 탭에서 넘어온 프로그램 — 필터 없이 펼쳐서 보여줌
   const startMajor = params.get('major') ?? profile?.major_primary ?? null
-  const startCluster = majorClusters.findIndex((c) => c.values.includes(majorParent(startMajor) ?? '') || c.values.includes(startMajor ?? ''))
+  const startCluster = openParam ? -1 : majorClusters.findIndex((c) => c.values.includes(majorParent(startMajor) ?? '') || c.values.includes(startMajor ?? ''))
   const [cluster, setCluster] = useState<number>(startCluster)
   const [kind, setKind] = useState<Kind>('all')
-  const [hideUs, setHideUs] = useState(true)
+  const [hideUs, setHideUs] = useState(!openParam)
   const [q, setQ] = useState('')
-  const [open, setOpen] = useState<string | null>(null)
+  const [open, setOpen] = useState<string | null>(openParam)
+  const [plans, setPlans] = useState<Plan[]>([])
+  const [saving, setSaving] = useState<string | null>(null)
+  const demo = userId === DEMO_USER_ID
+
+  useEffect(() => {
+    if (userId && !demo) loadPlans(userId).then(setPlans)
+  }, [userId, demo])
+  useEffect(() => {
+    if (openParam) setTimeout(() => document.getElementById(`p-${openParam}`)?.scrollIntoView({ block: 'center' }), 300)
+  }, [openParam])
+
+  // 내 계획에 담기 — 시즌을 골라 한 번에 (서머는 가을·봄 = 지원 준비, 여름 = 참가)
+  const addPlan = async (p: Program, season: string) => {
+    if (!userId) { navigate('/'); return }
+    const k = `${p.key}|${season}`
+    if (saving === k) return
+    setSaving(k)
+    try {
+      const row = programPlanRow(p, season)
+      const saved = demo ? { id: -Date.now(), ...row } : await insertRow<Plan>('plans', userId, row)
+      if (saved) setPlans((prev) => [...prev, saved])
+    } catch { /* insertRow가 알림 */ } finally { setSaving(null) }
+  }
   const [fmt, setFmt] = useState<Fmt>('all')
 
   useEffect(() => {
@@ -94,6 +122,32 @@ export default function ProgramsGuidePage({ profile }: { profile: ProfileRow | n
   }, [cluster, kind, hideUs, q, startMajor, fmt])
 
   const usOnlyCount = programs.filter((p) => p.intl_eligibility === 'us_only').length
+
+  const PlanPicker = ({ p }: { p: Program }) => {
+    const mine = plans.filter((x) => x.ref === programRef(p.key))
+    if (!userId) return (
+      <button onClick={() => navigate('/')} className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-gray-500 underline"><CalendarPlus size={13} />{t('가입하면 내 계획에 담을 수 있어요', 'Sign up to add this to your plans')}</button>
+    )
+    return (
+      <div className="mt-3 rounded-lg border border-blue-100 bg-blue-50/60 px-3 py-2.5">
+        <p className="flex items-center gap-1 text-xs font-semibold text-blue-900"><CalendarPlus size={13} />{t('내 계획에 담기', 'Add to my plans')}
+          <span className="font-normal text-blue-700/80">{p.type === 'competition' ? t('· 교외 인정 축', '· Validation axis') : t('· 가을·봄 = 지원 준비, 여름 = 참가', '· Fall/Spring = apply, Summer = attend')}</span>
+        </p>
+        <div className="mt-1.5 flex flex-wrap gap-1.5">
+          {cycleSeasons().map((s) => {
+            const has = mine.some((x) => x.season_label === s.label)
+            return (
+              <button key={s.label} disabled={has || saving === `${p.key}|${s.label}`} onClick={() => addPlan(p, s.label)}
+                className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold ${has ? 'bg-blue-600 text-white' : 'border border-blue-200 bg-white text-blue-700 active:bg-blue-100'}`}>
+                {has && <Check size={12} strokeWidth={2.5} />}{s.ko}
+              </button>
+            )
+          })}
+          {mine.length > 0 && <button onClick={() => navigate('/app/plans')} className="text-xs font-medium text-blue-700 underline">{t('내 계획 보기 →', 'View my plans →')}</button>}
+        </div>
+      </div>
+    )
+  }
 
   const card = (p: Program) => {
             const isOpen = open === p.key
@@ -145,6 +199,7 @@ export default function ProgramsGuidePage({ profile }: { profile: ProfileRow | n
                         </ul>
                       </div>
                     )}
+                    <PlanPicker p={p} />
                     <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs">
                       <a href={p.official_url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-0.5 font-semibold text-blue-600 underline">{t('공식 사이트', 'Official site')}<ExternalLink size={11} /></a>
                       {p.eligibility_url && p.eligibility_url !== p.official_url && <a href={p.eligibility_url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-0.5 text-blue-600 underline">{t('참가 자격 원문', 'Eligibility page')}<ExternalLink size={11} /></a>}
@@ -156,7 +211,7 @@ export default function ProgramsGuidePage({ profile }: { profile: ProfileRow | n
           }
 
   const chip = (on: boolean, label: string, onClick: () => void) => (
-    <button onClick={onClick} className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium ${on ? 'bg-gray-900 text-white' : 'border border-gray-200 bg-white text-gray-600'}`}>{label}</button>
+    <button key={label} onClick={onClick} className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium ${on ? 'bg-gray-900 text-white' : 'border border-gray-200 bg-white text-gray-600'}`}>{label}</button>
   )
 
   return (

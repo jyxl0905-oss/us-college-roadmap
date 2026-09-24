@@ -1,5 +1,5 @@
 import { PageSkeleton } from '../ui/Skeleton'
-import { Compass, X } from 'lucide-react'
+import { Compass, X, Trophy, ExternalLink, Sun } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import AppShell from './AppShell'
 import { t } from '../i18n'
@@ -8,6 +8,10 @@ import { loadPlans, cycleSeasons, axisShort, planStatusKo, nextStatus, PLAN_BONU
 import { axisOrder, type Axis } from '../lib/score'
 import { currentSeasonLabel } from '../lib/academics'
 import { navigate } from '../lib/router'
+import { programPlanRow, programKeyOf, type ProgramLite } from './programPlan'
+import { majorParent } from '../data/majors'
+
+interface ProgramSuggest extends ProgramLite { majors: string[]; intl_eligibility: string | null; what_ko: string; what_en: string }
 
 interface PlansTabProps {
   userId: string
@@ -26,8 +30,12 @@ export default function PlansTab({ userId, majorKey }: PlansTabProps) {
     return seasons.some((s) => s.label === cur) ? cur : seasons[0].label
   })
 
+  const [programs, setPrograms] = useState<ProgramSuggest[]>([])
+
   useEffect(() => {
     loadPlans(userId).then(setPlans)
+    // 여름 계획 추천용 — 대회·서머 가이드 데이터 (필요할 때만 불러옴)
+    import('../data/programs.json').then((m) => setPrograms((m.default as { programs: ProgramSuggest[] }).programs))
   }, [userId])
 
   if (!plans) return <AppShell tab="plans" title={t('내 계획', 'My plans')}><PageSkeleton compact /></AppShell>
@@ -59,6 +67,24 @@ export default function PlansTab({ userId, majorKey }: PlansTabProps) {
     } catch { /* deleteRow가 이미 alert */ }
   }
 
+  const addProgram = async (p: ProgramLite, seasonLabel: string) => {
+    if (busyRef.current) return
+    busyRef.current = true
+    try {
+      const row = await insertRow<Plan>('plans', userId, programPlanRow(p, seasonLabel))
+      if (row) setPlans([...plans, row])
+    } catch { /* insertRow가 알림 */ } finally { busyRef.current = false }
+  }
+  // 내 전공에 맞는 서머 프로그램 (국제학생 참가 가능한 것 먼저, 이미 담은 것 제외) — 최대 3개
+  const parent = majorParent(majorKey ?? null)
+  const summerLabel = seasons[2].label
+  const summerSuggest = programs
+    .filter((p) => p.type === 'summer' && p.intl_eligibility !== 'us_only')
+    .filter((p) => !majorKey || majorKey === 'undecided' || p.majors.includes(majorKey) || (parent != null && p.majors.includes(parent)))
+    .filter((p) => !plans.some((x) => programKeyOf(x.ref) === p.key))
+    .sort((a, b) => Number(a.intl_eligibility !== 'open') - Number(b.intl_eligibility !== 'open'))
+    .slice(0, 3)
+
   const active = plans.filter((p) => p.status !== 'done')
   const chip = (on: boolean) =>
     `rounded-full border-2 px-2.5 py-1 text-xs font-medium ${on ? 'border-blue-600 bg-blue-600 text-white' : 'border-gray-200 bg-white text-gray-600'}`
@@ -73,6 +99,12 @@ export default function PlansTab({ userId, majorKey }: PlansTabProps) {
         className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-2.5 text-sm font-semibold text-blue-700 active:bg-blue-100"
       >
         <Compass size={16} strokeWidth={2} />{t('전공 가이드 맵에서 골라 담기', 'Pick from the major guide map')}
+      </button>
+      <button
+        onClick={() => navigate(`/guide/programs${majorKey ? `?major=${majorKey}` : ''}`)}
+        className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-xl border-2 border-amber-200 bg-amber-50 px-4 py-2.5 text-sm font-semibold text-amber-800 active:bg-amber-100"
+      >
+        <Trophy size={16} strokeWidth={2} />{t('대회·서머 프로그램에서 골라 담기', 'Pick competitions & summer programs')}
       </button>
 
       {/* 입력 */}
@@ -109,7 +141,24 @@ export default function PlansTab({ userId, majorKey }: PlansTabProps) {
               <span className="text-xs text-gray-400">{list.filter((p) => p.status === 'done').length}/{list.length}</span>
             </div>
             <div className="mt-2 flex flex-col gap-1.5">
-              {list.length === 0 && <p className="text-xs text-gray-300">—</p>}
+              {list.length === 0 && s.label !== summerLabel && <p className="text-xs text-gray-300">—</p>}
+              {s.label === summerLabel && !list.some((p) => p.status !== 'done') && summerSuggest.length > 0 && (
+                <div className="rounded-xl border-2 border-dashed border-amber-200 bg-amber-50/50 px-3 py-2.5">
+                  <p className="flex items-center gap-1 text-xs font-semibold text-amber-900"><Sun size={13} />{t('여름 계획이 비어 있어요 — 내 전공 서머 프로그램', 'Your summer is empty — summer programs for your major')}</p>
+                  <ul className="mt-1.5 flex flex-col gap-1.5">
+                    {summerSuggest.map((p) => (
+                      <li key={p.key} className="flex items-start gap-2">
+                        <button onClick={() => navigate(`/guide/programs?open=${p.key}`)} className="min-w-0 flex-1 text-left">
+                          <span className="block truncate text-[13px] font-semibold text-gray-900">{p.name}</span>
+                          <span className="line-clamp-1 text-[11px] text-gray-500">{t(p.what_ko, p.what_en)}</span>
+                        </button>
+                        <button onClick={() => addProgram(p, summerLabel)} className="shrink-0 rounded-full border border-amber-300 bg-white px-2.5 py-1 text-[11px] font-semibold text-amber-800 active:bg-amber-100">{t('＋ 여름에 담기', '＋ Add')}</button>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-1.5 text-[10.5px] text-gray-400">{t('지원 시기·국제학생 참가 조건은 프로그램 이름을 눌러 확인하세요. 지원 준비는 가을·봄에 따로 담을 수 있어요.', 'Tap a name for application timing and international eligibility. You can add the application step to fall or spring separately.')}</p>
+                </div>
+              )}
               {list.map((p) => (
                 <div key={p.id} className={`flex items-center gap-2 rounded-xl border-2 bg-white px-3 py-2 ${p.status === 'done' ? 'border-gray-100' : 'border-gray-200'}`}>
                   <button
@@ -122,6 +171,9 @@ export default function PlansTab({ userId, majorKey }: PlansTabProps) {
                     {planStatusKo[p.status]}
                   </button>
                   <span className={`min-w-0 flex-1 truncate text-sm ${p.status === 'done' ? 'text-gray-400 line-through' : 'text-gray-900'}`}>{p.title}</span>
+                  {programKeyOf(p.ref) && (
+                    <button onClick={() => navigate(`/guide/programs?open=${programKeyOf(p.ref)}`)} aria-label={t('프로그램 정보 보기', 'View program')} title={p.notes ?? undefined} className="shrink-0 text-amber-600 active:text-amber-800"><ExternalLink size={14} strokeWidth={2} /></button>
+                  )}
                   <span className="shrink-0 text-[11px] text-gray-400">{axisShort[p.axis]}</span>
                   <button onClick={() => remove(p.id)} aria-label={t('삭제', 'Delete')} className="shrink-0 text-gray-300 active:text-red-500"><X size={16} strokeWidth={2} /></button>
                 </div>

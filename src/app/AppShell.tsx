@@ -1,8 +1,8 @@
 import { navigate, goBack } from '../lib/router'
 import { t } from '../i18n'
-import { ClipboardList, CalendarRange, Activity, PencilLine, BookOpen, Target, PenSquare, UserCheck } from 'lucide-react'
+import { ClipboardList, CalendarRange, Activity, PencilLine, BookOpen, Target, PenSquare, UserCheck, Heart } from 'lucide-react'
 
-export type AppTab = 'home' | 'plans' | 'activities' | 'testing' | 'education' | 'colleges' | 'writing' | 'recommenders'
+export type AppTab = 'home' | 'plans' | 'activities' | 'testing' | 'education' | 'colleges' | 'writing' | 'recommenders' | 'interest'
 
 export const appTabs: { key: AppTab; label: string; path: string }[] = [
   { key: 'home', get label() { return t('홈', 'Home') }, path: '/app' },
@@ -13,10 +13,11 @@ export const appTabs: { key: AppTab; label: string; path: string }[] = [
   { key: 'colleges', get label() { return t('지원', 'Colleges') }, path: '/app/colleges' },
   { key: 'writing', get label() { return t('에세이', 'Essays') }, path: '/app/writing' },
   { key: 'recommenders', get label() { return t('추천서', 'Recs') }, path: '/app/recommenders' },
+  { key: 'interest', get label() { return t('관심 표현', 'Interest') }, path: '/app/interest' },
 ]
 
 export const TAB_ICONS: Record<AppTab, typeof ClipboardList> = {
-  home: ClipboardList, plans: CalendarRange, activities: Activity, testing: PencilLine, education: BookOpen, colleges: Target, writing: PenSquare, recommenders: UserCheck,
+  home: ClipboardList, plans: CalendarRange, activities: Activity, testing: PencilLine, education: BookOpen, colleges: Target, writing: PenSquare, recommenders: UserCheck, interest: Heart,
 }
 
 interface AppShellProps {

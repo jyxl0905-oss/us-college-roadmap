@@ -23,6 +23,8 @@ import { Eye, Compass, AlertTriangle, ClipboardList, CalendarDays, RefreshCw, Pe
 
 // 무거운 화면(차트·리포트·보드·온보딩)은 필요할 때만 내려받음 — 둘러보기 첫 로딩을 가볍게
 const OnboardingFlow = lazy(() => import('./onboarding/OnboardingFlow'))
+const DevInterestTest = lazy(() => import('./app/InterestTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} profile={d.demoProfile()} /> } }))
+const DevPlansTest = lazy(() => import('./app/PlansTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} majorKey="cs" /> } }))
 const DevRecTest = lazy(() => import('./app/RecommendersTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} profile={d.demoProfile()} /> } }))
 const ReportView = lazy(() => import('./report/ReportView'))
 const CheckinFlow = lazy(() => import('./checkin/CheckinFlow'))
@@ -527,7 +529,7 @@ function AppRoutes() {
     return <EnglishGuidePage profile={profile} />
   }
   if (path === '/guide/programs' || path === '/guide/programs/') {
-    return <ProgramsGuidePage profile={profile} />
+    return <ProgramsGuidePage profile={profile} userId={session?.user.id ?? null} />
   }
   if (path === '/guide/cost' || path === '/guide/cost/') {
     return <CostGuidePage profile={profile} />
@@ -601,6 +603,8 @@ function AppRoutes() {
   if (import.meta.env.DEV && window.location.search.includes('obtest')) return <OnboardingFlow />
   // 개발 전용: ?rectest 로 추천서 탭 화면 확인 (로그인 없이 — 저장은 실패함, 프로덕션 빌드에서 제거됨)
   if (import.meta.env.DEV && window.location.search.includes('rectest')) return <DevRecTest />
+  if (import.meta.env.DEV && window.location.search.includes('interesttest')) return <DevInterestTest />
+  if (import.meta.env.DEV && window.location.search.includes('planstest')) return <DevPlansTest />
 
   if (profileErrorScreen) return profileErrorScreen
 
