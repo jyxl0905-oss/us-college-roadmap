@@ -10,6 +10,7 @@ import { computeGpa, courseLetter, gpaToBand, LETTERS } from './gpa'
 import { recommendCourses, subjectOf, rungOf, coursePosition } from '../lib/courseRecs'
 import RigorTrendBox from './RigorTrendBox'
 import CourseNameInput from './CourseNameInput'
+import MajorCourseRecs from './MajorCourseRecs'
 import { isDemoUser } from '../demo/demoData'
 import { ladders, ibMathLadder, subjectLabel, gradeGuide } from '../data/courseGuide'
 import { navigate } from '../lib/router'
@@ -215,6 +216,11 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
                   </li>
                 ))}
               </ul>
+            )}
+            {courses.length > 0 && (
+              <div className="mt-3 border-t border-amber-200 pt-3">
+                <MajorCourseRecs courses={courses} grade={myGrade} major={profile.major_primary} />
+              </div>
             )}
             <p className="mt-2 text-[11px] text-gray-500">{t('학교에 개설된 과목 안에서, 성적 유지가 먼저예요.', 'Within your school’s offerings — keeping grades up comes first.')}</p>
             <button onClick={() => navigate('/guide/courses')} className="mt-1.5 text-xs font-medium text-blue-600 underline">{t('학년별 수업 난이도 가이드 보기 →', 'See the course rigor guide by grade →')}</button>

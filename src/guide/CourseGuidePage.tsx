@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { loadAppRecords } from '../app/appData'
-import { coursePosition, type Position, type CourseInput } from '../lib/courseRecs'
+import { coursePosition, recommendCourses, type Position, type CourseInput } from '../lib/courseRecs'
 import RigorTrendBox from '../app/RigorTrendBox'
+import MajorCourseRecs from '../app/MajorCourseRecs'
 import { t } from '../i18n'
 import { goBack, navigate } from '../lib/router'
 import { COURSE_GUIDE_VERIFIED, cellText, SUBJECTS, gradeGuide, subjectLabel, majorCores, rigorSources, type Subject } from '../data/courseGuide'
@@ -88,6 +89,34 @@ export default function CourseGuidePage({ profile, userId }: { profile: ProfileR
             )}
           </div>
         )}
+
+        {/* 다음 학년 추천 — 과목을 적은 학생에게 맨 위에 (일반 추천 + 전공 맞춤) */}
+        {positions && profile && (() => {
+          const recs = recommendCourses(myCourses, grade, profile.major_primary)
+          return (
+            <div className="mt-4 rounded-2xl border-2 border-blue-600 bg-white px-4 py-4">
+              <p className="flex items-center gap-1.5 text-[15px] font-bold text-gray-900"><Sparkles size={17} strokeWidth={2} className="text-blue-600" />{grade >= 12 ? t('12학년 수업 점검', 'Grade 12 course check') : t(`${grade + 1}학년 수업 추천`, `Course suggestions for grade ${grade + 1}`)}</p>
+              {grade >= 12 ? (
+                <p className="mt-1 text-sm text-gray-700">{t('12학년은 지금 듣는 과목의 성적 유지가 가장 중요해요.', 'In 12th grade, keeping your current grades up matters most.')}</p>
+              ) : recs.length > 0 ? (
+                <ul className="mt-1.5 flex flex-col gap-1.5">
+                  {recs.map((r, i) => (
+                    <li key={i} className="text-sm leading-relaxed text-gray-800">
+                      {i + 1}. {t(r.ko, r.en)}
+                      {r.url && <a href={r.url} target="_blank" rel="noreferrer" className="ml-1 text-[11px] text-blue-600 underline">{t('근거 ↗', 'Source ↗')}</a>}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-1 text-sm text-gray-700">{t('지금 기록으로는 추가로 올릴 과목이 보이지 않아요 — 현재 흐름을 유지하세요.', 'Nothing to step up based on your current record — keep the momentum.')}</p>
+              )}
+              <div className="mt-3 border-t border-gray-100 pt-3">
+                <MajorCourseRecs courses={myCourses} grade={grade} major={profile.major_primary} />
+              </div>
+              <button onClick={() => navigate('/app/education')} className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-bold text-white active:bg-blue-700">{t('내 과목 수정·추가하기 →', 'Edit or add my courses →')}</button>
+            </div>
+          )
+        })()}
 
         {/* 내 위치 — 학업 탭에 적은 올해 과목 기준 */}
         {positions && (
@@ -228,12 +257,6 @@ export default function CourseGuidePage({ profile, userId }: { profile: ProfileR
           ))}
         </div>
 
-        <button
-          onClick={() => navigate(profile ? '/app/education' : '/')}
-          className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white active:bg-blue-700"
-        >
-          {profile ? t('내 과목 넣고 다음 학년 추천 받기 →', 'Add my courses & get next-year suggestions →') : t('가입하고 내 과목 기준 추천 받기', 'Sign up for suggestions based on your courses')}
-        </button>
       </div>
     </div>
   )
