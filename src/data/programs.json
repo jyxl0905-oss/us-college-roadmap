@@ -1,0 +1,3200 @@
+{
+ "verified_at": "2026-09-23",
+ "programs": [
+  {
+   "key": "usaco",
+   "name": "USA Computing Olympiad (USACO)",
+   "type": "competition",
+   "majors": [
+    "cs",
+    "ai",
+    "data_science",
+    "applied_math"
+   ],
+   "host": "USA Computing Olympiad (USACO)",
+   "what_ko": "알고리즘 문제를 코드로 푸는 온라인 프로그래밍 대회예요. Bronze·Silver·Gold·Platinum 단계(division)로 나뉘어 있어요.",
+   "what_en": "An online programming contest where students solve algorithmic problems in code, organized into Bronze, Silver, Gold, and Platinum divisions.",
+   "do_ko": "대회 기간 안에 원하는 시간대를 골라 보통 3~4문제를 C, C++, Java, Python 중 하나로 풀어 제출해요. 시즌 사이에는 무료 온라인 트레이닝 자료와 기출문제로 연습할 수 있어요.",
+   "do_en": "Within the contest window, students pick their own time block and submit programs (C, C++, Java, or Python) for typically 3-4 problems; free online training materials and past problems are available year-round.",
+   "grades": "pre-college (high school) students",
+   "intl_eligibility": "open",
+   "intl_note_ko": "온라인 대회와 트레이닝은 누구나 참가할 수 있어요. 단, 트레이닝 캠프 결선 진출자 선발과 미국 IOI/EGOI 대표팀 선발은 미국 내 pre-college 학생만 대상이에요.",
+   "intl_note_en": "All are welcome in the online contests and training; only pre-college students in the USA are eligible to be selected as training-camp finalists or for the USA IOI/EGOI teams.",
+   "cost_ko": "참가비가 전혀 없어요(무료).",
+   "cost_en": "Free - there is never any fee for participation.",
+   "timing_ko": "겨울~초봄에 온라인 대회가 열려요(2025-26 시즌은 2026년 초 온라인 대회 3회 + 초청제 US Open).",
+   "timing_en": "Online contests in winter to early spring (the 2025-26 season had three online contests in early 2026 plus an invitational proctored US Open).",
+   "format": "online",
+   "official_url": "https://usaco.org/",
+   "eligibility_url": "https://usaco.org/index.php?page=instructions",
+   "official_mentions": [
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 'STEM programs' 페이지가 미국 학생의 IOI(국제정보올림피아드) 예선 대회로 USACO를 소개해요. 같은 페이지에 특정 프로그램 참여를 기대하거나 요구하지 않는다고 적혀 있어요.",
+     "note_en": "MIT Admissions' 'STEM programs' page lists USACO as the US qualifying competition for the IOI, and states MIT does not expect or require participation in specific STEM programs.",
+     "url": "https://mitadmissions.org/apply/prepare/stem/",
+     "school_id": 2
+    }
+   ],
+   "area": "cs_math"
+  },
+  {
+   "key": "amc_aime_usamo",
+   "name": "AMC 10/12 → AIME → USAMO (MAA American Mathematics Competitions)",
+   "type": "competition",
+   "majors": [
+    "math_data",
+    "applied_math",
+    "statistics",
+    "actuarial",
+    "cs",
+    "data_science"
+   ],
+   "host": "Mathematical Association of America (MAA)",
+   "what_ko": "미국수학협회(MAA)가 여는 수학 경시 시리즈예요. AMC 10/12 성적이 좋으면 AIME, 그다음 USAMO/USAJMO로 이어져요.",
+   "what_en": "The MAA's math competition series: strong AMC 10/12 scores lead to the AIME, and then to the USAMO/USAJMO.",
+   "do_ko": "AMC 10/12는 25문항 75분 객관식 시험이에요. AIME는 답이 0~999 정수인 15문항 시험이고, USAMO/USAJMO는 이틀 동안 증명형 문제를 풀어요.",
+   "do_en": "AMC 10/12 are 25-question, 75-minute multiple-choice tests; the AIME is a 15-question exam with integer answers 0-999; USAMO/USAJMO are two-day proof-based olympiads.",
+   "grades": "AMC 10: grade 10 and below (under 17.5 years); AMC 12: grade 12 and below",
+   "intl_eligibility": "restricted",
+   "intl_note_ko": "미국·캐나다 밖에 사는 학생은 MAA가 지정한 자기 거주 국가의 International Group Leader(IGL)를 통해서만 응시할 수 있어요. 한국(South Korea)도 IGL 명단에 있어요. AIME 등 다음 단계도 해당 IGL 정책을 따르라고 안내해요.",
+   "intl_note_en": "Students outside the USA/Canada must register through the MAA International Group Leader (IGL) for their country of residence; South Korea is on the 2025-26 IGL list. International-program participants follow their IGL's policies for AIME and later stages.",
+   "cost_ko": null,
+   "cost_en": null,
+   "timing_ko": "AMC 10/12는 가을(11월), AIME는 겨울(2월)에 열려요. USAMO/USAJMO는 그 뒤 봄에 열려요.",
+   "timing_en": "AMC 10/12 in fall (November); AIME in winter (February); USAMO/USAJMO follow in spring.",
+   "format": "in_person",
+   "official_url": "https://maa.org/student-programs/amc/",
+   "eligibility_url": "https://maa.org/amc-international/",
+   "official_mentions": [
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 'STEM programs' 페이지가 미국 학생의 IMO(국제수학올림피아드) 예선 대회로 AMC를 소개해요. 같은 페이지에 특정 프로그램 참여를 기대하거나 요구하지 않는다고 적혀 있어요.",
+     "note_en": "MIT Admissions' 'STEM programs' page lists the AMC as the US qualifying route to the IMO, and states MIT does not expect or require participation in specific STEM programs.",
+     "url": "https://mitadmissions.org/apply/prepare/stem/",
+     "school_id": 2
+    },
+    {
+     "college": "Caltech",
+     "relation": "admissions_mention",
+     "note_ko": "Caltech 입학처 'STEM 준비도' 페이지에 예시로 나와요(준비 방법에 선호는 없다고 함께 밝혀요).",
+     "note_en": "Given as an example on Caltech Admissions' STEM-preparedness page (which says Caltech has no preferred method).",
+     "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness",
+     "school_id": 11
+    }
+   ],
+   "area": "cs_math"
+  },
+  {
+   "key": "himcm",
+   "name": "High School Mathematical Contest in Modeling (HiMCM)",
+   "type": "competition",
+   "majors": [
+    "applied_math",
+    "math_data",
+    "statistics",
+    "data_science",
+    "actuarial"
+   ],
+   "host": "COMAP (Consortium for Mathematics and Its Applications)",
+   "what_ko": "COMAP이 여는 국제 수학 모델링 팀 대회예요. 실제 세상의 문제를 수학 모델로 풀고 보고서로 써서 내요.",
+   "what_en": "COMAP's international team math-modeling contest: teams model a real-world problem mathematically and submit a written solution.",
+   "do_ko": "최대 4명이 한 팀이 되어 14일 동안 문제를 하나 골라 모델을 만들고 해결 보고서를 온라인으로 제출해요. 팀마다 학교(또는 인정된 프로그램)의 지도교사가 있어야 해요.",
+   "do_en": "Teams of up to four choose one problem, build a model, and submit a solution document online within a 14-day window; each team needs a faculty advisor from its school or approved program.",
+   "grades": "high school grades or below",
+   "intl_eligibility": "open",
+   "intl_note_ko": "공식적으로 '국제 대회'라고 소개하고, 미국 외 학년·나이 기준은 고등학교 수준에 맞으면 돼요. 같은 학교(또는 승인된 프로그램) 소속 학생끼리 팀을 만들고 지도교사가 등록해야 해요.",
+   "intl_note_en": "Described officially as an international contest; non-U.S. grade levels must align with the secondary-level definition. Teams must be from the same school/institution or approved program, registered by a faculty advisor.",
+   "cost_ko": "팀당 등록비 $100이에요(환불 불가).",
+   "cost_en": "$100 registration fee per team (non-refundable).",
+   "timing_ko": "가을(11월)에 2주 동안 열려요.",
+   "timing_en": "Fall (a two-week window in November).",
+   "format": "online",
+   "official_url": "https://www.contest.comap.com/highschool/contests/himcm/",
+   "eligibility_url": "https://www.contest.comap.com/highschool/contests/himcm/instructions.html",
+   "official_mentions": [],
+   "area": "cs_math"
+  },
+  {
+   "key": "m3_challenge",
+   "name": "MathWorks Math Modeling Challenge (M3 Challenge)",
+   "type": "competition",
+   "majors": [
+    "applied_math",
+    "math_data",
+    "statistics",
+    "data_science"
+   ],
+   "host": "SIAM (Society for Industrial and Applied Mathematics), sponsored by MathWorks",
+   "what_ko": "SIAM이 운영하고 MathWorks가 후원하는 인터넷 기반 수학 모델링 팀 대회예요.",
+   "what_en": "An internet-based team math-modeling contest run by SIAM and sponsored by MathWorks.",
+   "do_ko": "3~5명 팀이 대회 주말 중 연속 14시간을 골라 사전에 공개되지 않은 실제 사회 문제를 수학·데이터로 모델링하고 해결 보고서를 제출해요.",
+   "do_en": "Teams of 3-5 students pick a continuous 14-hour window during Challenge weekend to model an unannounced real-world problem with math and data, then upload a solution paper.",
+   "grades": "U.S. high school juniors/seniors; sixth form students (age 16-19) in England and Wales",
+   "intl_eligibility": "restricted",
+   "intl_note_ko": "미국 고등학교(미국령·DoDEA 포함) 또는 잉글랜드·웨일스의 sixth form 학교(British Schools Overseas 포함)에 다니는 학생만 참가할 수 있어요. 한국의 일반 국제학교 학생은 대부분 해당하지 않아요.",
+   "intl_note_en": "Only students at U.S. high schools (incl. territories and DoDEA) or at schools with sixth form students in England and Wales (incl. British Schools Overseas) are eligible; most students at Korean international schools will not qualify.",
+   "cost_ko": "등록비·참가비가 없어요.",
+   "cost_en": "No registration or participation fees.",
+   "timing_ko": "등록은 가을~겨울(11~2월), 대회 주말은 늦겨울~초봄(2월 말~3월 초)이에요.",
+   "timing_en": "Registration fall to winter (Nov-Feb); Challenge weekend in late winter/early spring (late Feb-early Mar).",
+   "format": "online",
+   "official_url": "https://m3challenge.siam.org/",
+   "eligibility_url": "https://m3challenge.siam.org/the-challenge/rules-and-guidelines/",
+   "official_mentions": [],
+   "area": "cs_math"
+  },
+  {
+   "key": "picoctf",
+   "name": "picoCTF (CyLab Security Academy, Carnegie Mellon University)",
+   "type": "competition",
+   "majors": [
+    "cybersecurity",
+    "cs"
+   ],
+   "host": "Carnegie Mellon University CyLab Security and Privacy Institute",
+   "what_ko": "카네기멜런대(CMU) CyLab이 만든 무료 사이버보안 CTF(Capture the Flag) 대회이자 학습 플랫폼이에요. 2026년에 이름이 CyLab Security Academy로 바뀌었어요.",
+   "what_en": "A free cybersecurity capture-the-flag (CTF) competition and learning platform built by Carnegie Mellon's CyLab; picoctf.org became CyLab Security Academy in 2026.",
+   "do_ko": "프로그램 역분석, 암호 해독, 취약점 찾기 같은 문제를 풀어 숨겨진 flag를 찾아요. 대회 기간이 아닐 때도 문제 라이브러리와 학습 경로로 혼자 연습할 수 있어요.",
+   "do_en": "Students reverse-engineer programs, decrypt messages, and exploit vulnerabilities to find hidden flags; outside event windows, a challenge library and learning paths stay open for self-paced practice.",
+   "grades": "middle school, high school, and college students (competition designed for these groups)",
+   "intl_eligibility": "restricted",
+   "intl_note_ko": "누구나 학습 목적으로 대회에 참가할 수 있지만, 상금 자격은 대회마다 달라요. 연례 대표 대회는 미국 중·고등학생을 대상으로 한다고 안내해요.",
+   "intl_note_en": "Anyone can compete for learning and self-improvement, but prize eligibility varies by event; the annual flagship event is described as for US middle and high school students.",
+   "cost_ko": "무료예요.",
+   "cost_en": "Free.",
+   "timing_ko": "연례 대표 대회는 봄(2026년은 3월)에 열렸어요. 연중 미니 대회도 있어요.",
+   "timing_en": "Annual flagship competition in spring (March in 2026); mini-competitions throughout the year.",
+   "format": "online",
+   "official_url": "https://cylabacademy.org/competitors.html",
+   "eligibility_url": "https://cylabacademy.org/competitors.html",
+   "official_mentions": [
+    {
+     "college": "Carnegie Mellon University",
+     "relation": "host",
+     "note_ko": "CMU CyLab 공식 뉴스에서 picoCTF 2026 대회를 CyLab이 주최하는 무료 온라인 대회로 소개해요.",
+     "note_en": "CMU CyLab's official news post announces picoCTF 2026 as a free online competition run by CyLab.",
+     "url": "https://www.cylab.cmu.edu/news/2026/02/26-picoctf.html",
+     "school_id": 20
+    }
+   ],
+   "area": "cs_math"
+  },
+  {
+   "key": "cyberpatriot",
+   "name": "CyberPatriot (National Youth Cyber Defense Competition)",
+   "type": "competition",
+   "majors": [
+    "cybersecurity",
+    "cs"
+   ],
+   "host": "Air & Space Forces Association (AFA)",
+   "what_ko": "미국 Air & Space Forces Association이 운영하는 청소년 사이버 방어 팀 대회예요.",
+   "what_en": "A youth cyber-defense team competition run by the Air & Space Forces Association.",
+   "do_ko": "2~6명 팀이 온라인 라운드에서 주어진 컴퓨터 시스템의 보안 취약점을 찾아 고치며 점수를 얻어요. 점수에 따라 State Round, Semifinals, National Finals로 올라가요.",
+   "do_en": "Teams of 2-6 students compete in online rounds, finding and fixing security vulnerabilities in provided systems; scores determine advancement to the State Round, Semifinals, and National Finals.",
+   "grades": "middle school and high school students (Open Division for high school teams; separate Middle School Division)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "참가 학생에게 미국 시민권 요건은 없어요. 미국 밖 팀은 'At-Large' 그룹으로 묶여 경쟁해요. 다만 학교·기관 소속 성인 코치가 팀을 등록해야 해요(기술 멘토·보조 역할은 미국 SSN이 필요해요).",
+   "intl_note_en": "There is no U.S. citizenship requirement for competitors; teams located in other nations compete in the 'At-Large' group. An adult coach from the school/organization must register the team (optional technical mentors/team assistants need a U.S. SSN for background checks).",
+   "cost_ko": "Open Division(고등학생) 팀당 $225예요(2025-26 규정 기준, 7월까지 등록하면 20% 할인).",
+   "cost_en": "Open Division: $225 per team (2025-26 rules; 20% off if registered by July).",
+   "timing_ko": "팀 등록은 봄~10월 초, 온라인 라운드는 가을~겨울에 진행돼요.",
+   "timing_en": "Team registration spring to early October; online competition rounds in fall and winter.",
+   "format": "hybrid",
+   "official_url": "https://www.uscyberpatriot.org/",
+   "eligibility_url": "https://author.uscyberpatriot.org/Documents/CP18_RulesBook_FINAL.pdf",
+   "official_mentions": [],
+   "area": "cs_math"
+  },
+  {
+   "key": "technovation",
+   "name": "Technovation Challenge",
+   "type": "competition",
+   "majors": [
+    "cs",
+    "ai",
+    "data_science"
+   ],
+   "host": "Technovation (U.S. 501(c)(3) nonprofit)",
+   "what_ko": "8~18세가 팀을 이뤄 지역 사회 문제를 해결하는 앱이나 AI 솔루션을 만드는 글로벌 대회예요. 160개국에서 운영된다고 해요.",
+   "what_en": "A global challenge where teams of ages 8-18 build a working tech or AI solution to a problem in their community; runs in 160 countries.",
+   "do_ko": "팀이 해결할 문제를 찾고, 멘토와 함께 앱·AI 프로토타입을 만들고, 심사위원 앞에서 아이디어를 발표해요. 연령별로 Beginner, Junior, Senior 부문이 있어요.",
+   "do_en": "Teams identify a problem, build a working app/AI prototype with mentors, and pitch it to judges; divisions are Beginner, Junior, and Senior by age.",
+   "grades": "ages 8-18",
+   "intl_eligibility": "open",
+   "intl_note_ko": "전 세계 학생이 참가할 수 있어요. 2027 시즌부터는 성별과 관계없이 제출할 수 있는 co-ed 트랙이 새로 생겨요.",
+   "intl_note_en": "Open worldwide; for the 2027 season a new co-ed track lets all students regardless of gender submit to the global competition.",
+   "cost_ko": "커리큘럼은 100% 무료라고 안내해요(대회 참가비는 공식 페이지에 따로 적혀 있지 않아요).",
+   "cost_en": "The curriculum is stated to be 100% free (no separate competition fee is stated on the official pages).",
+   "timing_ko": "시즌은 가을~봄(10월~5월)이에요.",
+   "timing_en": "Season runs fall to spring (October-May).",
+   "format": "online",
+   "official_url": "https://www.technovation.org/accelerator-pipeline",
+   "eligibility_url": "https://www.technovation.org/curriculum",
+   "official_mentions": [],
+   "area": "cs_math"
+  },
+  {
+   "key": "promys",
+   "name": "PROMYS (Program in Mathematics for Young Scientists)",
+   "type": "summer",
+   "majors": [
+    "math_data",
+    "applied_math",
+    "cs"
+   ],
+   "host": "PROMYS, held at Boston University",
+   "what_ko": "보스턴대(BU) 캠퍼스에서 6주 동안 열리는 기숙형 수학 프로그램이에요. 미국과 전 세계에서 선발된 고등학생이 참가해요.",
+   "what_en": "A six-week residential summer mathematics program on the Boston University campus for high school students selected from the U.S. and around the world.",
+   "do_ko": "어려운 문제 세트를 풀고, 강의를 듣고, 동료들과 함께 수학 탐구를 해요. 강의·토론·문제는 모두 영어로 진행돼요.",
+   "do_en": "Students work on challenging problem sets, attend lectures, and collaborate on mathematical investigations, all in English.",
+   "grades": "completed at least 9th grade; ages 14-18",
+   "intl_eligibility": "open",
+   "intl_note_ko": "국제학생도 지원할 수 있지만 자리가 한정돼 있어요. 학점 과정이 아니어서 방문 비자로 참가해요. TOEFL 점수는 요구하지 않아요.",
+   "intl_note_en": "International students are welcome to apply, though space is limited; participants come on a visitor's visa (not F-1). TOEFL scores are not required.",
+   "cost_ko": "6주 기숙 비용은 재정지원에 따라 최대 $8,000이에요. 국제학생 재정지원은 사례별로 검토하고, 전액 장학금인 Breakout Fellowship은 국제학생도 대상이에요.",
+   "cost_en": "Up to $8,000 for the six-week residential program depending on aid; aid for international students is case-by-case, and all applicants (incl. international) are considered for the full-scholarship Breakout Fellowship.",
+   "timing_ko": "지원은 겨울(2월 말 마감), 프로그램은 여름(6월 말~8월 초, 6주)이에요.",
+   "timing_en": "Apply in winter (deadline end of February); program in summer (late June-early August, six weeks).",
+   "format": "in_person",
+   "official_url": "https://promys.org/programs/promys/for-students/",
+   "eligibility_url": "https://promys.org/programs/promys/for-students/for-international-students/",
+   "official_mentions": [
+    {
+     "college": "Boston University",
+     "relation": "host",
+     "note_ko": "PROMYS 공식 페이지에 프로그램이 보스턴대 캠퍼스에서 열린다고 적혀 있어요.",
+     "note_en": "The official PROMYS page states the program runs on the Boston University campus.",
+     "url": "https://promys.org/programs/promys/for-students/",
+     "school_id": 42
+    },
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 'Summer programs' 페이지가 MIT 학생들이 유익했다고 한 수학 여름 프로그램 목록에 PROMYS를 넣었어요. 같은 페이지에 여름을 보내는 데 '정답'은 없다고 적혀 있어요.",
+     "note_en": "MIT Admissions' 'Summer programs' page lists PROMYS among math programs MIT students have found enriching, while stating there are no 'right' or 'wrong' answers for how to spend summers.",
+     "url": "https://mitadmissions.org/apply/prepare/summer/",
+     "school_id": 2
+    },
+    {
+     "college": "Caltech",
+     "relation": "admissions_mention",
+     "note_ko": "Caltech 입학처 'STEM 준비도' 페이지에 예시로 나와요(준비 방법에 선호는 없다고 함께 밝혀요).",
+     "note_en": "Given as an example on Caltech Admissions' STEM-preparedness page (which says Caltech has no preferred method).",
+     "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness",
+     "school_id": 11
+    }
+   ],
+   "area": "cs_math"
+  },
+  {
+   "key": "ross",
+   "name": "Ross Mathematics Program",
+   "type": "summer",
+   "majors": [
+    "math_data",
+    "applied_math",
+    "cs"
+   ],
+   "host": "Ross Mathematics Foundation (2026 sites: Otterbein University, Rose-Hulman Institute of Technology)",
+   "what_ko": "6주 동안 정수론(number theory)을 깊이 파고드는 기숙형 수학 프로그램이에요. 경시대회 준비가 아니라 독립적인 수학 연구의 첫걸음을 목표로 해요.",
+   "what_en": "A six-week residential program that dives deeply into number theory, aimed at a first step toward independent mathematical research rather than math contests.",
+   "do_ko": "하루 대부분을 추상적인 수학 문제 세트를 풀며 보내고, 모든 주장을 증명으로 쓰고 설명하는 법을 배워요.",
+   "do_en": "Students spend most of each day on challenging problem sets about abstract concepts, learning to communicate ideas clearly and write convincing proofs.",
+   "grades": "pre-college students; first-year students typically ages 15-18",
+   "intl_eligibility": "open",
+   "intl_note_ko": "매년 미국 밖 학생 여러 명이 합격해요(한국 학생도 참가 사례가 있다고 FAQ에 적혀 있어요). 영어를 꽤 유창하게 해야 하고, 관광 비자(B-2)로 참가할 수 있어요.",
+   "intl_note_en": "Every year several students from outside the U.S. are accepted (FAQ lists South Korea among home countries); reasonable English fluency is required, and a tourist (B-2) visa may be used.",
+   "cost_ko": "프로그램비 $7,500(수업료·숙소·식사 포함)이에요. 재정지원이 있고 국제학생도 일부 받을 수 있지만 항공료 지원은 드물어요.",
+   "cost_en": "Program fee $7,500 (tuition, housing, meals); financial aid available, some for international students, but travel support is rarely provided.",
+   "timing_ko": "지원은 겨울~초봄(3월 초 마감), 프로그램은 여름(6월 중순~7월 말, 6주)이에요.",
+   "timing_en": "Apply in winter to early spring (deadline early March); program in summer (mid-June to late July, six weeks).",
+   "format": "in_person",
+   "official_url": "https://rossprogram.org/participants/",
+   "eligibility_url": "https://rossprogram.org/participants/faq/",
+   "official_mentions": [
+    {
+     "college": "Otterbein University / Rose-Hulman Institute of Technology",
+     "relation": "host",
+     "note_ko": "Ross 공식 홈페이지에 2026년 프로그램이 오하이오 Otterbein University와 인디애나 Rose-Hulman Institute of Technology 두 곳에서 열린다고 적혀 있어요.",
+     "note_en": "The Ross homepage states the 2026 program runs at two sites: Otterbein University (Columbus, OH) and Rose-Hulman Institute of Technology (Terre Haute, IN).",
+     "url": "https://rossprogram.org/"
+    },
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 'Summer programs' 페이지가 MIT 학생들이 유익했다고 한 수학 여름 프로그램 목록에 Ross Program을 넣었어요. 같은 페이지에 여름을 보내는 데 '정답'은 없다고 적혀 있어요.",
+     "note_en": "MIT Admissions' 'Summer programs' page lists The Ross Program among math programs MIT students have found enriching, while stating there are no 'right' or 'wrong' answers.",
+     "url": "https://mitadmissions.org/apply/prepare/summer/",
+     "school_id": 2
+    },
+    {
+     "college": "Caltech",
+     "relation": "admissions_mention",
+     "note_ko": "Caltech 입학처 'STEM 준비도' 페이지에 예시로 나와요(준비 방법에 선호는 없다고 함께 밝혀요).",
+     "note_en": "Given as an example on Caltech Admissions' STEM-preparedness page (which says Caltech has no preferred method).",
+     "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness",
+     "school_id": 11
+    }
+   ],
+   "area": "cs_math"
+  },
+  {
+   "key": "mathcamp",
+   "name": "Canada/USA Mathcamp",
+   "type": "summer",
+   "majors": [
+    "math_data",
+    "applied_math",
+    "cs"
+   ],
+   "host": "Canada/USA Mathcamp (2026 venue: Champlain College, Burlington, Vermont)",
+   "what_ko": "전 세계의 수학 재능 있는 13~18세 학생이 모이는 5주짜리 기숙형 여름 수학 캠프예요.",
+   "what_en": "A five-week residential summer math program for mathematically talented students ages 13-18 from all over the world.",
+   "do_ko": "대학 수준의 다양한 수학 수업을 골라 듣고 동료들과 함께 탐구해요. 지원할 때 Qualifying Quiz 문제를 풀어서 내야 해요.",
+   "do_en": "Students choose from a wide range of advanced math classes and explore with peers; applicants must submit solutions to the Qualifying Quiz.",
+   "grades": "ages 13-18 (high school and middle school students; Precalculus completed expected)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "전 세계에서 지원할 수 있고, 학생의 약 10~15%가 미국·캐나다 밖에서 와요(최근 한국 학생도 있었어요). TOEFL은 필요 없지만 영어로 공부하고 생활하는 게 편해야 해요. 관광 비자 신청을 도와줘요.",
+   "intl_note_en": "Applications welcome from around the world; about 10-15% of students are from outside the U.S./Canada (recent campers include South Korea). No TOEFL required, but students must be comfortable in English; Mathcamp helps with tourist visas.",
+   "cost_ko": "2026년 기본 비용은 $7,500이고, 재정지원 후 $0~$7,500이에요. 지원비는 없어요. 국제학생도 전액 장학금과 항공료 지원을 받을 수 있어요.",
+   "cost_en": "2026 base cost $7,500; after aid the fee is $0-$7,500. No application fee. International students are eligible for aid, including full scholarships and travel grants.",
+   "timing_ko": "지원은 겨울(1월 오픈, 2월 말 마감), 프로그램은 여름(6월 말~8월 초, 5주)이에요.",
+   "timing_en": "Apply in winter (opens January, deadline late February); program in summer (late June-early August, five weeks).",
+   "format": "in_person",
+   "official_url": "https://www.mathcamp.org/admission",
+   "eligibility_url": "https://www.mathcamp.org/admission/international",
+   "official_mentions": [
+    {
+     "college": "Champlain College",
+     "relation": "host",
+     "note_ko": "Mathcamp 공식 Fast Facts 페이지에 2026년 프로그램 장소가 버몬트주 Champlain College라고 적혀 있어요.",
+     "note_en": "Mathcamp's official Fast Facts page lists Champlain College in Burlington, Vermont as the 2026 program location.",
+     "url": "https://www.mathcamp.org/admission/fast_facts"
+    },
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 'Summer programs' 페이지가 MIT 학생들이 유익했다고 한 수학 여름 프로그램 목록에 Canada/USA Mathcamp를 넣었어요. 같은 페이지에 여름을 보내는 데 '정답'은 없다고 적혀 있어요.",
+     "note_en": "MIT Admissions' 'Summer programs' page lists Canada/USA Mathcamp among math programs MIT students have found enriching, while stating there are no 'right' or 'wrong' answers.",
+     "url": "https://mitadmissions.org/apply/prepare/summer/",
+     "school_id": 2
+    }
+   ],
+   "area": "cs_math"
+  },
+  {
+   "key": "hcssim",
+   "name": "Hampshire College Summer Studies in Mathematics (HCSSiM)",
+   "type": "summer",
+   "majors": [
+    "math_data",
+    "applied_math",
+    "cs"
+   ],
+   "host": "HCSSiM (legally separate from Hampshire College; held at Hampshire College through 2026)",
+   "what_ko": "재능 있는 고등학생이 6주 동안 대학 수준의 수학을 직접 '해 보는' 기숙형 여름 프로그램이에요.",
+   "what_en": "An intensive six-week residential encounter with college-level mathematics for talented, highly motivated high school students.",
+   "do_ko": "월~토 오전 4시간 수업, 저녁 문제 풀이 세션, 'Prime Time Theorem' 강연에 참여해요. 성적이나 학점 대신 본인 요청 시 평가 보고서를 받을 수 있어요.",
+   "do_en": "Four hours of morning classes (Mon-Sat), the pre-supper Prime Time Theorem, and evening problem sessions; no grades or credit, but an evaluative report is available on request.",
+   "grades": "high school students (most attend after sophomore or junior year)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "국제학생도 지원할 수 있고, 매년 몇 명씩 국제학생이 참가해요. 국제학생도 재정지원 대상이에요.",
+   "intl_note_en": "International students are welcome to apply and every summer there are a few; international students are also eligible for financial aid.",
+   "cost_ko": "2026년 비용은 $7,208(수업료·숙소·식사 포함)이에요. 지원은 무료이고, 국제학생 재정지원 규모는 사례별로 정해요.",
+   "cost_en": "2026 fee $7,208 (tuition, room, meals); applying is free, and aid for international students is decided case by case.",
+   "timing_ko": "지원은 봄까지(2026년은 4월 중순 마감, 'Interesting Test' 제출 필요), 프로그램은 여름(6월 말~8월 초, 6주)이에요.",
+   "timing_en": "Apply through spring (mid-April deadline in 2026, with the 'Interesting Test'); program in summer (late June-early August, six weeks).",
+   "format": "in_person",
+   "official_url": "https://hcssim.org/",
+   "eligibility_url": "https://hcssim.org/faq/",
+   "official_mentions": [
+    {
+     "college": "Hampshire College",
+     "relation": "host",
+     "note_ko": "HCSSiM 홈페이지에 2026년까지 Hampshire College 캠퍼스에서 열리고, 대학 폐교 발표에 따라 2027년부터 새 캠퍼스로 옮긴다고 적혀 있어요.",
+     "note_en": "The HCSSiM homepage says the 2026 session is on Hampshire's campus and that, following the College's announced closure, HCSSiM will continue at a new campus in 2027.",
+     "url": "https://hcssim.org/"
+    },
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 'Summer programs' 페이지가 MIT 학생들이 유익했다고 한 수학 여름 프로그램 목록에 HCSSiM을 넣었어요. 같은 페이지에 여름을 보내는 데 '정답'은 없다고 적혀 있어요.",
+     "note_en": "MIT Admissions' 'Summer programs' page lists HCSSiM among math programs MIT students have found enriching, while stating there are no 'right' or 'wrong' answers.",
+     "url": "https://mitadmissions.org/apply/prepare/summer/",
+     "school_id": 2
+    }
+   ],
+   "area": "cs_math"
+  },
+  {
+   "key": "sumac",
+   "name": "Stanford University Mathematics Camp (SUMaC)",
+   "type": "summer",
+   "majors": [
+    "math_data",
+    "applied_math",
+    "cs"
+   ],
+   "host": "Stanford Pre-Collegiate Studies, Stanford University",
+   "what_ko": "스탠퍼드대 Pre-Collegiate Studies가 운영하는 고급 수학 여름 프로그램이에요. 온라인과 기숙형 중 선택할 수 있어요.",
+   "what_en": "An advanced summer mathematics program run by Stanford Pre-Collegiate Studies, offered online and residentially.",
+   "do_ko": "Program I(추상대수·정수론)이나 Program II(대수적 위상수학) 중 한 과정에서 강의, 매일 문제 세트, 게스트 강연에 참여해요. 학점이나 성적은 없어요.",
+   "do_en": "Students take one course - Program I (Abstract Algebra & Number Theory) or Program II (Algebraic Topology) - with daily problem sets and guest lectures; not for credit or grade.",
+   "grades": "grades 10-11 at time of application; at least 15 during the program",
+   "intl_eligibility": "open",
+   "intl_note_ko": "국제학생도 지원할 수 있고 시험 점수는 선택 사항이에요. 재정지원도 국내·국제학생 모두 받을 수 있어요.",
+   "intl_note_en": "International applicants may apply (test scores optional for both international and domestic applicants), and financial aid can be awarded to both domestic and international participants.",
+   "cost_ko": "2026년 기준 온라인 $3,750, 기숙형 $8,950이에요. 지원비 $65이고 재정지원이 있어요.",
+   "cost_en": "2026 tuition: online $3,750, residential $8,950; $65 application fee; need-based financial aid available.",
+   "timing_ko": "지원은 겨울(2월 초 마감, 입학 시험 포함), 프로그램은 여름(온라인 3주 / 기숙형 4주, 6~7월)이에요.",
+   "timing_en": "Apply in winter (early-February deadline, includes an admission exam); program in summer (3 weeks online / 4 weeks residential, June-July).",
+   "format": "hybrid",
+   "official_url": "https://sumac.spcs.stanford.edu/",
+   "eligibility_url": "https://sumac.spcs.stanford.edu/sumac-admissions",
+   "official_mentions": [
+    {
+     "college": "Stanford University",
+     "relation": "host",
+     "note_ko": "스탠퍼드대 Pre-Collegiate Studies가 직접 운영해요.",
+     "note_en": "Run directly by Stanford Pre-Collegiate Studies.",
+     "url": "https://sumac.spcs.stanford.edu/",
+     "school_id": 4
+    },
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 'Summer programs' 페이지가 MIT 학생들이 유익했다고 한 수학 여름 프로그램 목록에 SUMaC을 넣었어요. 같은 페이지에 여름을 보내는 데 '정답'은 없다고 적혀 있어요.",
+     "note_en": "MIT Admissions' 'Summer programs' page lists SUMaC among math programs MIT students have found enriching, while stating there are no 'right' or 'wrong' answers.",
+     "url": "https://mitadmissions.org/apply/prepare/summer/",
+     "school_id": 2
+    }
+   ],
+   "area": "cs_math"
+  },
+  {
+   "key": "stanford_ai4all",
+   "name": "Stanford AI4ALL",
+   "type": "summer",
+   "majors": [
+    "ai",
+    "cs",
+    "data_science"
+   ],
+   "host": "Stanford Institute for Human-Centered AI (HAI) & Stanford Pre-Collegiate Studies",
+   "what_ko": "스탠퍼드 HAI와 Pre-Collegiate Studies가 함께 운영하는 9학년 대상 2주짜리 AI 입문 프로그램이에요. 온라인과 기숙형이 있어요.",
+   "what_en": "A two-week AI program for 9th graders run by Stanford HAI and Stanford Pre-Collegiate Studies, offered online or residentially.",
+   "do_ko": "CS·AI 분야 대학원생과 박사후연구원이 이끄는 소그룹 연구 프로젝트(컴퓨터 비전, 의료 AI, 자연어처리, 로보틱스 중 선택)에 참여해요. AI나 프로그래밍 경험이 없어도 지원할 수 있어요.",
+   "do_en": "Students join small-group research projects (Computer Vision, Medical AI, NLP, or Robotics) led by graduate students and postdocs in CS and AI; no previous AI or programming experience is required to apply.",
+   "grades": "grade 9 at time of application; older than 14 and younger than 16 during the program",
+   "intl_eligibility": "open",
+   "intl_note_ko": "공식 페이지에 '전 세계 또래와 함께 배운다'고 적혀 있고, 국제학생 지원자에게 시험 점수는 선택이에요. 재정지원도 국제학생이 받을 수 있어요.",
+   "intl_note_en": "The official page says students learn alongside peers from around the globe; test scores are optional for international applicants, and aid can be awarded to international participants.",
+   "cost_ko": "2026년 기준 온라인 $4,120, 기숙형 $9,800이에요. 재정지원이 있어요.",
+   "cost_en": "2026 tuition: online $4,120, residential $9,800; need-based financial aid available.",
+   "timing_ko": "지원은 겨울(2월 초 마감), 프로그램은 여름(2주)이에요.",
+   "timing_en": "Apply in winter (early-February deadline); program in summer (two weeks).",
+   "format": "hybrid",
+   "official_url": "https://ai4all.spcs.stanford.edu/",
+   "eligibility_url": "https://ai4all.spcs.stanford.edu/ai4all-admissions",
+   "official_mentions": [
+    {
+     "college": "Stanford University",
+     "relation": "host",
+     "note_ko": "스탠퍼드 HAI와 Pre-Collegiate Studies가 공동으로 운영해요.",
+     "note_en": "Hosted jointly by Stanford HAI and Stanford Pre-Collegiate Studies.",
+     "url": "https://ai4all.spcs.stanford.edu/",
+     "school_id": 4
+    }
+   ],
+   "area": "cs_math"
+  },
+  {
+   "key": "rsi",
+   "name": "Research Science Institute (RSI)",
+   "type": "summer",
+   "majors": [
+    "ai",
+    "applied_math",
+    "astronomy",
+    "chemistry",
+    "cs",
+    "data_science",
+    "earth_science",
+    "engineering",
+    "environmental",
+    "math_data",
+    "natural_sci",
+    "physics"
+   ],
+   "host": "Center for Excellence in Education (CEE), held at MIT",
+   "what_ko": "CEE가 MIT에서 여는 무료 여름 연구 프로그램이에요. 수업과 실제 연구 인턴십을 합친 형태예요.",
+   "what_en": "A free summer research program run by the Center for Excellence in Education at MIT, combining coursework with a hands-on research internship.",
+   "do_ko": "첫 주에 집중 STEM 수업을 듣고, 5주 동안 멘토 지도 아래 개인 연구 프로젝트를 한 뒤 마지막 주에 학회처럼 구두·서면 발표를 해요.",
+   "do_en": "A week of intensive STEM classes, then a five-week research internship with a mentor, ending with conference-style oral and written presentations.",
+   "grades": "high school juniors (one year before graduation); at least 16 by July",
+   "intl_eligibility": "restricted",
+   "intl_note_ko": "미국 시민권자·영주권자(해외 거주 미국 시민 포함)는 CEE에 직접 지원해요. 국제학생은 '참여 국가' 학생만 지원할 수 있고 나라별 선발 절차를 따라요. 한국 참여 여부는 CEE에 직접 문의해야 해요.",
+   "intl_note_en": "U.S. citizens/permanent residents (incl. U.S. citizens studying overseas) apply directly to CEE; international students may apply only from participating countries, each with its own selection procedure - contact RSI to learn whether your country participates.",
+   "cost_ko": "참가자 전원 무료예요(교육·숙소·식사 포함). 미국 지원 경로는 지원비 $75(감면 가능)가 있어요.",
+   "cost_en": "Cost-free for all participants (education, housing, dining covered); the U.S. application has a $75 fee (waivers possible).",
+   "timing_ko": "미국 지원 경로는 겨울(12월 초중순 마감)이에요. 국제 지원 일정은 나라별로 달라요. 프로그램은 여름(6주)이에요.",
+   "timing_en": "U.S. applications due in winter (early-mid December); international timelines vary by country; program in summer (six weeks).",
+   "format": "in_person",
+   "official_url": "https://www.cee.org/programs/research-science-institute",
+   "eligibility_url": "https://www.cee.org/programs/research-science-institute-rsi/rsi-application-faqs",
+   "official_mentions": [
+    {
+     "college": "MIT",
+     "relation": "host",
+     "note_ko": "CEE 공식 페이지에 RSI가 매년 여름 MIT에서 열린다고 적혀 있어요.",
+     "note_en": "CEE's official page states RSI gathers students at MIT each summer.",
+     "url": "https://www.cee.org/programs/research-science-institute",
+     "school_id": 2
+    },
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 'Summer programs' 페이지가 RSI를 MIT와 협력해 캠퍼스에서 열리는 프로그램으로 소개하고, 선발된 학생에게 무료라고 적었어요.",
+     "note_en": "MIT Admissions' 'Summer programs' page describes RSI as a CEE program hosted in partnership with MIT and free for those selected.",
+     "url": "https://mitadmissions.org/apply/prepare/summer/",
+     "school_id": 2
+    },
+    {
+     "college": "Caltech",
+     "relation": "admissions_mention",
+     "note_ko": "Caltech 입학처 'STEM 준비도' 페이지에 예시로 나와요(준비 방법에 선호는 없다고 함께 밝혀요).",
+     "note_en": "Given as an example on Caltech Admissions' STEM-preparedness page (which says Caltech has no preferred method).",
+     "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness",
+     "school_id": 11
+    }
+   ],
+   "area": "cs_math"
+  },
+  {
+   "key": "mit_bwsi",
+   "name": "MIT Beaver Works Summer Institute (BWSI)",
+   "type": "summer",
+   "majors": [
+    "cs",
+    "ai"
+   ],
+   "host": "MIT Beaver Works",
+   "what_ko": "MIT Beaver Works가 운영하는 4주짜리 STEM 여름 프로그램이에요. 먼저 온라인 선수 과정을 이수해야 여름 프로그램에 지원할 수 있어요.",
+   "what_en": "A four-week STEM summer program run by MIT Beaver Works; completing an online prerequisite course is required before applying to the summer program.",
+   "do_ko": "온라인 선수 과정으로 기초를 쌓고, 여름에는 팀으로 대학 수준 프로젝트(예: 자율주행 RACECAR 등)를 진행해요.",
+   "do_en": "Students build a foundation through online prerequisite courses, then work in teams on college-level projects (e.g., the RACECAR autonomous vehicle course) in the summer.",
+   "grades": "grades 10-11 (accepted students are generally rising seniors); no current seniors",
+   "intl_eligibility": "restricted",
+   "intl_note_ko": "온라인 선수 과정은 누구나 들을 수 있어요. 하지만 7월 여름 프로그램은 미국에 살면서 미국 고등학교에 실제로 다니는 학생만 지원할 수 있어요. 한국 거주 학생은 개인 지원이 안 되고, 학교 단위 원격/국제 팀 참여는 BWSI에 따로 문의해야 해요.",
+   "intl_note_en": "Everyone can take the online courses, but the July summer program is limited to students residing in and physically attending high school in the U.S.; students living outside the U.S. cannot apply individually, and school-based remote/international team participation requires contacting BWSI.",
+   "cost_ko": "가구 소득·자산 $200,000 미만은 무료, 초과는 $3,000이에요(숙소 미포함). 이 기준은 미국 거주 지원자 대상이에요.",
+   "cost_en": "Free for family income/assets under $200,000; $3,000 above that (housing not included) - applies to U.S.-resident applicants.",
+   "timing_ko": "온라인 선수 과정은 겨울(1월)부터 열리고, 여름 프로그램은 7월(4주)이에요.",
+   "timing_en": "Online prerequisite content opens in winter (January); summer program in July (four weeks).",
+   "format": "hybrid",
+   "official_url": "https://bwsi.mit.edu/",
+   "eligibility_url": "https://bwsi.mit.edu/faq/",
+   "official_mentions": [
+    {
+     "college": "MIT",
+     "relation": "host",
+     "note_ko": "MIT Beaver Works가 직접 운영하는 프로그램이에요.",
+     "note_en": "Run directly by MIT Beaver Works.",
+     "url": "https://bwsi.mit.edu/",
+     "school_id": 2
+    },
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 'Summer programs' 페이지가 BWSI를 캠퍼스에서 열리는 4주 프로그램으로 소개해요.",
+     "note_en": "MIT Admissions' 'Summer programs' page describes BWSI as an intensive four-week program on campus.",
+     "url": "https://mitadmissions.org/apply/prepare/summer/",
+     "school_id": 2
+    },
+    {
+     "college": "Caltech",
+     "relation": "admissions_mention",
+     "note_ko": "Caltech 입학처 'STEM 준비도' 페이지에 예시로 나와요(준비 방법에 선호는 없다고 함께 밝혀요).",
+     "note_en": "Given as an example on Caltech Admissions' STEM-preparedness page (which says Caltech has no preferred method).",
+     "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness",
+     "school_id": 11
+    }
+   ],
+   "area": "cs_math"
+  },
+  {
+   "key": "cmu_precollege_summer_session",
+   "name": "Carnegie Mellon Pre-College Summer Session",
+   "type": "summer",
+   "majors": [
+    "cs"
+   ],
+   "host": "Carnegie Mellon University Pre-College Programs",
+   "what_ko": "카네기멜런대(CMU)의 실제 학부 과목을 6주 동안 듣고 대학 학점을 받는 여름 프로그램이에요. 컴퓨터 과학 과목도 개설돼요.",
+   "what_en": "A six-week summer program where high school students take actual Carnegie Mellon undergraduate courses for college credit, including computer science.",
+   "do_ko": "CMU 학부생과 같은 수준의 과목을 기숙생은 2과목 수강해요(주당 과목별 약 21시간 이상 공부). 과목은 합격 후 봄에 신청해요.",
+   "do_en": "Residential students take two CMU undergraduate courses (about 21+ hours per course per week); courses are requested after admission in spring.",
+   "grades": "current sophomores or juniors at application; at least 16 by program start",
+   "intl_eligibility": "open",
+   "intl_note_ko": "해외에서 오는 국제학생은 Summer Session 기숙 프로그램으로만 I-20(F-1 비자)을 받을 수 있어요. 영어가 모국어가 아니면 TOEFL iBT 102·IELTS 7.5·DET 135 이상 등이 필요해요. CMU의 무료 프로그램(AI Scholars, CS Scholars, SAMS)은 국제학생이 지원할 수 없어요.",
+   "intl_note_en": "International students coming from abroad can receive an I-20 (F-1) only for the residential Summer Session; non-native English speakers need e.g. TOEFL iBT 102+, IELTS 7.5+, or DET 135+. CMU's no-cost programs (AI Scholars, CS Scholars, SAMS) are not open to international students.",
+   "cost_ko": "2026년 기준 기숙 2과목 $14,688이에요. 지원비 $50, 등록 예치금 $800(환불 불가)이에요.",
+   "cost_en": "2026: residential with two courses $14,688; $50 application fee and $800 enrollment deposit (non-refundable).",
+   "timing_ko": "지원은 겨울(국제학생은 조기 마감까지 지원, I-20 서류는 4월까지), 프로그램은 여름(6월 말~8월 초, 6주)이에요.",
+   "timing_en": "Apply in winter (international applicants must meet the early deadline; I-20 materials by April); program in summer (late June-early August, six weeks).",
+   "format": "in_person",
+   "official_url": "https://www.cmu.edu/pre-college/academic-programs/summer-session.html",
+   "eligibility_url": "https://www.cmu.edu/pre-college/admission/international-applicants.html",
+   "official_mentions": [
+    {
+     "college": "Carnegie Mellon University",
+     "relation": "host",
+     "note_ko": "CMU Pre-College Programs가 직접 운영하고, 수업은 CMU 정규 학부 과목이에요.",
+     "note_en": "Run by CMU Pre-College Programs; courses are regular CMU undergraduate courses.",
+     "url": "https://www.cmu.edu/pre-college/academic-programs/summer-session.html",
+     "school_id": 20
+    }
+   ],
+   "area": "cs_math"
+  },
+  {
+   "key": "regeneron-isef",
+   "name": "Regeneron International Science and Engineering Fair (ISEF)",
+   "type": "competition",
+   "majors": [
+    "engineering",
+    "industrial_eng",
+    "chemical_eng",
+    "aerospace_eng",
+    "nuclear_eng",
+    "robotics",
+    "natural_sci",
+    "chemistry",
+    "physics",
+    "astronomy",
+    "environmental",
+    "geology",
+    "earth_science"
+   ],
+   "host": "Society for Science",
+   "what_ko": "Society for Science가 주최하는 고등학생 대상 국제 과학·공학 연구 경진대회예요. 전 세계 약 400개 제휴(affiliated) 과학경진대회에서 입상한 학생만 본선에 나갈 수 있어요.",
+   "what_en": "An international pre-college science and engineering research competition run by Society for Science. Only students who win at one of roughly 400 Society-affiliated fairs worldwide advance to ISEF.",
+   "do_ko": "직접 연구 프로젝트(최대 12개월 연속 연구)를 수행하고, 제휴 대회에서 입상하면 본선에서 박사급 심사위원 앞에서 발표해요. 실험 시작 전에 소속 제휴 대회의 Scientific Review Committee 승인을 받아야 해요.",
+   "do_en": "Students complete an independent research project (no more than 12 months of continuous research), win at an affiliated fair, then present to doctoral-level judges at ISEF. Experimentation requires prior clearance from the affiliated fair's Scientific Review Committee.",
+   "grades": "9-12",
+   "intl_eligibility": "open",
+   "intl_note_ko": "ISEF에 직접 지원할 수는 없고, 미국 50개 주와 75개 이상 국가·지역에 있는 Society 제휴 대회에서 입상해야 참가할 수 있어요. 한국의 제휴 대회는 공식 'Find a Fair'에서 확인하세요.",
+   "intl_note_en": "Students cannot enter ISEF directly; they must win at a Society-affiliated fair (in all 50 states and 75+ countries, regions, and territories). Check the official 'Find a Fair' tool for affiliated fairs in Korea.",
+   "cost_ko": null,
+   "cost_en": null,
+   "timing_ko": "제휴 대회: 가을~봄(지역별 상이) / ISEF 본선: 5월",
+   "timing_en": "Affiliated fairs: fall to spring (varies by fair) / ISEF finals: May",
+   "format": "in_person",
+   "official_url": "https://www.societyforscience.org/isef/",
+   "eligibility_url": "https://www.societyforscience.org/isef/faq/",
+   "official_mentions": [
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 'STEM 프로그램' 페이지에 소개돼 있어요(특정 프로그램 참여를 기대·요구하지 않는다고 함께 밝혀요).",
+     "note_en": "Mentioned on MIT Admissions' STEM programs page (which also says MIT doesn't expect or require specific programs).",
+     "url": "https://mitadmissions.org/apply/prepare/stem/",
+     "school_id": 2
+    },
+    {
+     "college": "Caltech",
+     "relation": "admissions_mention",
+     "note_ko": "Caltech 입학처 'STEM 준비도' 페이지에 예시로 나와요(준비 방법에 선호는 없다고 함께 밝혀요).",
+     "note_en": "Given as an example on Caltech Admissions' STEM-preparedness page (which says Caltech has no preferred method).",
+     "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness",
+     "school_id": 11
+    }
+   ],
+   "area": "eng_sci"
+  },
+  {
+   "key": "first-tech-challenge",
+   "name": "FIRST Tech Challenge (FTC)",
+   "type": "competition",
+   "majors": [
+    "engineering",
+    "robotics",
+    "aerospace_eng",
+    "industrial_eng"
+   ],
+   "host": "FIRST",
+   "what_ko": "FIRST가 운영하는 7~12학년 팀 로봇 대회예요. 매년 9월에 새 게임 과제가 공개되고, 81개국에서 약 10만 9천 명이 참가했어요(2024-25 시즌).",
+   "what_en": "A team robotics competition for grades 7-12 run by FIRST. A new game is released every September; about 109,000 students in 81 countries took part in the 2024-25 season.",
+   "do_ko": "팀이 직접 로봇을 설계·제작·프로그래밍해서 게임 과제로 경쟁하고, 지역사회 아웃리치 활동도 함께 해요.",
+   "do_en": "Teams design, build, and program robots to compete in the season's game, and also carry out community outreach.",
+   "grades": "7-12 (ages 12-18)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "81개국에서 운영돼요. 미국·캐나다·멕시코 밖의 팀은 자국 FIRST Program Delivery Partner를 통해 등록해야 하고, 한국에서는 대전에서 South Korea Championship이 열린 기록이 공식 이벤트 페이지에 있어요.",
+   "intl_note_en": "Runs in 81 countries. Teams outside the U.S., Canada, and Mexico register through their country's FIRST Program Delivery Partner; the official FTC events site lists a South Korea Championship held in Daejeon.",
+   "cost_ko": "미국 기준 팀 시즌 등록비 $350(로봇 키트는 별도, 약 $1,500 예상)이에요. 한국 팀 비용은 국가 파트너에게 문의해야 해요.",
+   "cost_en": "U.S. team season registration is $350 (robot kit extra, estimated ~$1,500). Teams in Korea must contact the country's delivery partner for pricing.",
+   "timing_ko": "시즌 과제 공개: 가을(9월) / 지역 대회: 겨울 / 한국 챔피언십: 겨울(1월 개최 기록)",
+   "timing_en": "Game release: fall (September) / qualifiers: winter / South Korea Championship: winter (held in January)",
+   "format": "in_person",
+   "official_url": "https://www.firstinspires.org/robotics/ftc",
+   "eligibility_url": "https://www.firstinspires.org/programs/cost-and-registration",
+   "official_mentions": [
+    {
+     "college": "Worcester Polytechnic Institute (WPI)",
+     "relation": "admissions_mention",
+     "note_ko": "WPI 입학처가 FRC·FTC·FGC 팀 활동 중인 12학년 학생을 대상으로 한 FIRST 장학금을 공식 안내해요(국제학생 자격은 페이지에 명시 없음).",
+     "note_en": "WPI Admissions lists FIRST scholarships for final-year students active on FRC, FTC, or FGC teams (international eligibility not stated).",
+     "url": "https://www.wpi.edu/admissions/tuition-aid/types-of-aid/scholarships-grants/wpi-merit/first-scholarships",
+     "school_id": 121
+    }
+   ],
+   "area": "eng_sci"
+  },
+  {
+   "key": "first-robotics-competition",
+   "name": "FIRST Robotics Competition (FRC)",
+   "type": "competition",
+   "majors": [
+    "engineering",
+    "robotics",
+    "industrial_eng",
+    "aerospace_eng"
+   ],
+   "host": "FIRST",
+   "what_ko": "FIRST의 9~12학년 대상 대형 로봇 대회예요. 매년 1월에 새 과제가 공개되고, 35개국에서 약 9만 3천 명이 참가했어요(2024-25 시즌).",
+   "what_en": "FIRST's program for grades 9-12 built around industrial-sized robots. A new challenge is released each January; about 93,000 students in 35 countries took part in 2024-25.",
+   "do_ko": "팀이 산업용 크기의 로봇을 설계·제작·프로그래밍해서 3팀 연합(alliance)으로 경기하고, 팀 운영·모금·STEM 홍보 활동도 직접 해요.",
+   "do_en": "Teams design, build, and program an industrial-sized robot and compete in three-team alliances, while also running team branding, fundraising, and STEM outreach.",
+   "grades": "9-12 (ages 14-18)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "35개국에서 운영돼요. 미국·캐나다·멕시코 밖의 팀은 자국 FIRST Program Delivery Partner에게 등록 방법을 문의해야 하고, 한국 내 FRC 대회 운영 여부는 공식 페이지에서 확인되지 않았어요.",
+   "intl_note_en": "Runs in 35 countries. Teams outside the U.S., Canada, and Mexico must contact their country's FIRST Program Delivery Partner; whether FRC events are held in Korea was not confirmed on official pages.",
+   "cost_ko": "미국 기준 팀 시즌 등록비 $6,500(Kit of Parts와 지역 대회 참가 포함)이에요. 해외 팀은 국가 파트너에게 문의해야 해요.",
+   "cost_en": "U.S. team season registration is $6,500 (includes Kit of Parts and regional/district event participation). Teams abroad must contact their delivery partner.",
+   "timing_ko": "과제 공개: 겨울(1월) / 제작·대회 시즌: 겨울~봄",
+   "timing_en": "Challenge release: winter (January) / build and competition season: winter to spring",
+   "format": "in_person",
+   "official_url": "https://www.firstinspires.org/robotics/frc",
+   "eligibility_url": "https://www.firstinspires.org/programs/cost-and-registration",
+   "official_mentions": [
+    {
+     "college": "Worcester Polytechnic Institute (WPI)",
+     "relation": "admissions_mention",
+     "note_ko": "WPI 입학처가 FRC·FTC·FGC 팀 활동 중인 12학년 학생을 대상으로 한 FIRST 장학금을 공식 안내해요(국제학생 자격은 페이지에 명시 없음).",
+     "note_en": "WPI Admissions lists FIRST scholarships for final-year students active on FRC, FTC, or FGC teams (international eligibility not stated).",
+     "url": "https://www.wpi.edu/admissions/tuition-aid/types-of-aid/scholarships-grants/wpi-merit/first-scholarships",
+     "school_id": 121
+    },
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 'STEM 프로그램' 페이지에 소개돼 있어요(특정 프로그램 참여를 기대·요구하지 않는다고 함께 밝혀요).",
+     "note_en": "Mentioned on MIT Admissions' STEM programs page (which also says MIT doesn't expect or require specific programs).",
+     "url": "https://mitadmissions.org/apply/prepare/stem/",
+     "school_id": 2
+    },
+    {
+     "college": "Caltech",
+     "relation": "admissions_mention",
+     "note_ko": "Caltech 입학처 'STEM 준비도' 페이지에 예시로 나와요(준비 방법에 선호는 없다고 함께 밝혀요).",
+     "note_en": "Given as an example on Caltech Admissions' STEM-preparedness page (which says Caltech has no preferred method).",
+     "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness",
+     "school_id": 11
+    }
+   ],
+   "area": "eng_sci"
+  },
+  {
+   "key": "recf-achieve-vex-v5",
+   "name": "RECF Achieve Robotics Competition (formerly VEX V5 Robotics Competition)",
+   "type": "competition",
+   "majors": [
+    "engineering",
+    "robotics",
+    "industrial_eng"
+   ],
+   "host": "REC Foundation (RECF)",
+   "what_ko": "REC Foundation이 운영하는 중·고등학생 로봇 대회로, 2026-27 시즌부터 기존 VEX V5 Robotics Competition이 'RECF Achieve'라는 이름으로 운영돼요. RECF 프로그램 전체에는 70개국 학생이 참여해요.",
+   "what_en": "A middle and high school robotics competition run by the REC Foundation; from the 2026-27 season the program formerly known as the VEX V5 Robotics Competition runs as 'RECF Achieve'. RECF programs involve students in 70 countries.",
+   "do_ko": "학생 팀원이 로봇 설계·제작·프로그래밍을 모두 직접 결정하고, 드라이빙·코딩·연합 경기로 겨뤄요. 지역 예선 → 지역 챔피언십 → RECF STEM World Championship 순서로 진출해요.",
+   "do_en": "Student team members make all design, build, and programming decisions and compete in driving, coding, and alliance matches, advancing from local qualifiers to region championships to the RECF STEM World Championship.",
+   "grades": "High school division: age 19 or younger at season end and not yet graduated (U19)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "국적 제한은 공식 페이지에 없고 나이 기준(U19)만 있어요. 70개국에서 지역 대회가 열리니 한국 대회 일정은 공식 이벤트 사이트에서 확인하세요.",
+   "intl_note_en": "Official pages list age-based eligibility (U19) with no citizenship restriction; RECF runs programs in 70 countries, so check the official events site for events in Korea.",
+   "cost_ko": null,
+   "cost_en": null,
+   "timing_ko": "지역 예선: 가을~겨울 / 월드 챔피언십: 봄",
+   "timing_en": "Local qualifiers: fall to winter / World Championship: spring",
+   "format": "in_person",
+   "official_url": "https://recf.org/teams/recf-robotics-competition/",
+   "eligibility_url": "https://recf.org/teams/recf-robotics-competition/",
+   "official_mentions": [
+    {
+     "college": "Worcester Polytechnic Institute (WPI)",
+     "relation": "admissions_mention",
+     "note_ko": "WPI 입학처가 VEX V5RC·RECF Drone 팀 학생을 위한 장학금을 공식 안내해요(국제학생 자격은 페이지에 명시 없음).",
+     "note_en": "WPI Admissions lists scholarships for VEX V5RC and RECF Drone Program team members (international eligibility not stated).",
+     "url": "https://www.wpi.edu/admissions/tuition-aid/types-of-aid/scholarships-grants/wpi-merit/vex-scholarships",
+     "school_id": 121
+    },
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 'STEM 프로그램' 페이지에 소개돼 있어요(특정 프로그램 참여를 기대·요구하지 않는다고 함께 밝혀요).",
+     "note_en": "Mentioned on MIT Admissions' STEM programs page (which also says MIT doesn't expect or require specific programs).",
+     "url": "https://mitadmissions.org/apply/prepare/stem/",
+     "school_id": 2
+    },
+    {
+     "college": "Caltech",
+     "relation": "admissions_mention",
+     "note_ko": "Caltech 입학처 'STEM 준비도' 페이지에 예시로 나와요(준비 방법에 선호는 없다고 함께 밝혀요).",
+     "note_en": "Given as an example on Caltech Admissions' STEM-preparedness page (which says Caltech has no preferred method).",
+     "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness",
+     "school_id": 11
+    }
+   ],
+   "area": "eng_sci"
+  },
+  {
+   "key": "us-physics-team-fma-usapho",
+   "name": "F=ma Exam / USAPhO (U.S. Physics Team selection)",
+   "type": "competition",
+   "majors": [
+    "physics",
+    "engineering",
+    "aerospace_eng",
+    "nuclear_eng",
+    "natural_sci"
+   ],
+   "host": "AAPT (American Association of Physics Teachers) & AIP",
+   "what_ko": "International Physics Olympiad 미국 대표를 뽑는 선발 과정이에요. F=ma 시험 → USAPhO → 대표팀 캠프 순서로 진행돼요.",
+   "what_en": "The selection process for the U.S. team at the International Physics Olympiad: F=ma exam, then USAPhO, then the U.S. Physics Team camp.",
+   "do_ko": "학교 단위로 등록해서 역학 중심 F=ma 시험을 보고, 성적 우수자는 USAPhO에 진출해요.",
+   "do_en": "Students register through their school to take the mechanics-focused F=ma exam; top scorers advance to USAPhO.",
+   "grades": null,
+   "intl_eligibility": "us_only",
+   "intl_note_ko": "F=ma는 미국 시민권자·영주권자 또는 미국 학교 재학생만, 그리고 미국 안에서만 응시할 수 있어요. USAPhO는 시민권자·영주권자만 가능해서 한국 거주 국제학생은 참가할 수 없어요.",
+   "intl_note_en": "F=ma is limited to U.S. citizens, green card holders, or students currently attending a U.S. school, and must be taken inside the U.S.; USAPhO requires U.S. citizenship or a green card. Students living in Korea cannot participate.",
+   "cost_ko": "2026년 기준 학교당 $75(AAPT 회원 $37.50) + 학생 1인당 $15.50이에요.",
+   "cost_en": "For 2026: $75 per school ($37.50 for AAPT members) plus $15.50 per student.",
+   "timing_ko": "등록: 가을~겨울(10월 중순 오픈) / F=ma 시험: 겨울(2월)",
+   "timing_en": "Registration: fall to winter (opens mid-October) / F=ma exam: winter (February)",
+   "format": "online",
+   "official_url": "https://www.aapt.org/physicsteam/",
+   "eligibility_url": "https://aapt.org/physicsteam/PT-rules.cfm",
+   "official_mentions": [
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 'STEM 프로그램' 페이지에 소개돼 있어요(특정 프로그램 참여를 기대·요구하지 않는다고 함께 밝혀요).",
+     "note_en": "Mentioned on MIT Admissions' STEM programs page (which also says MIT doesn't expect or require specific programs).",
+     "url": "https://mitadmissions.org/apply/prepare/stem/",
+     "school_id": 2
+    },
+    {
+     "college": "Caltech",
+     "relation": "admissions_mention",
+     "note_ko": "Caltech 입학처 'STEM 준비도' 페이지에 예시로 나와요(준비 방법에 선호는 없다고 함께 밝혀요).",
+     "note_en": "Given as an example on Caltech Admissions' STEM-preparedness page (which says Caltech has no preferred method).",
+     "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness",
+     "school_id": 11
+    }
+   ],
+   "area": "eng_sci"
+  },
+  {
+   "key": "physicsbowl",
+   "name": "PhysicsBowl",
+   "type": "competition",
+   "majors": [
+    "physics",
+    "engineering",
+    "natural_sci"
+   ],
+   "host": "AAPT (American Association of Physics Teachers)",
+   "what_ko": "AAPT가 주최하는 국제 고등학교 물리 시험 대회예요. 물리를 처음 배우는 학생은 Division I, 두 번째 해 학생은 Division II로 나뉘어요.",
+   "what_en": "An international high school physics contest run by AAPT, with Division I for first-year physics students and Division II for second-year physics students.",
+   "do_ko": "학교에서 교사 감독 아래 40문항·45분 객관식 시험을 봐요.",
+   "do_en": "Students take a 40-question, 45-minute multiple-choice exam, normally at their own school under a school-affiliated proctor.",
+   "grades": "High school (Division I: first-year physics / Division II: second-year physics)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "전 세계 학교가 참가할 수 있고 2025년에는 한국 학교도 참가했어요. 한국 학교는 AAPT가 안내하는 아시아 지역 등록 창구(ASEEDER)를 통해 등록해요.",
+   "intl_note_en": "Schools worldwide may participate, and Korean schools took part in 2025. Schools in Korea register through the Asia regional channel (ASEEDER) designated on the AAPT page.",
+   "cost_ko": null,
+   "cost_en": null,
+   "timing_ko": "등록 마감: 겨울(2월 말) / 시험: 봄(3월 중순~4월 초)",
+   "timing_en": "Registration deadline: winter (late February) / exam window: spring (mid-March to early April)",
+   "format": "in_person",
+   "official_url": "https://aapt.org/programs/physicsbowl/",
+   "eligibility_url": "https://aapt.org/programs/physicsbowl/",
+   "official_mentions": [],
+   "area": "eng_sci"
+  },
+  {
+   "key": "stockholm-junior-water-prize",
+   "name": "Stockholm Junior Water Prize",
+   "type": "competition",
+   "majors": [
+    "environmental",
+    "chemical_eng",
+    "earth_science",
+    "chemistry",
+    "engineering",
+    "natural_sci"
+   ],
+   "host": "Stockholm Water Foundation (SWF)",
+   "what_ko": "물 문제를 해결하는 연구 프로젝트로 겨루는 국제 대회예요. 각국 국가 대회 우승 프로젝트가 스톡홀름 World Water Week 국제 결선에 나가요.",
+   "what_en": "An international competition for research projects that tackle water challenges. National winners compete in the international final during World Water Week in Stockholm.",
+   "do_ko": "수질·수자원 관리·폐수 처리 등 물과 관련된 연구를 과학적 방법으로 수행하고, 영어 보고서(A4 20쪽 이내)와 포스터로 발표해요. 개인 또는 팀(결선 대표 최대 2명)으로 참가해요.",
+   "do_en": "Students carry out research on water quality, water resources, wastewater treatment, and similar topics using scientific methods, and present an English report (max 20 A4 pages) and a poster, individually or in teams (max two finalists).",
+   "grades": "Ages 15-20, currently in secondary school (university students not eligible)",
+   "intl_eligibility": "restricted",
+   "intl_note_ko": "각 참가국의 국가 주최기관(national organizer)이 추천한 프로젝트만 국제 결선에 나갈 수 있어요. 한국에 현재 국가 대회가 있는지는 공식 지도에서 확인해야 해요.",
+   "intl_note_en": "Only projects nominated by the national organizer of a participating country can compete internationally; check the official map for whether Korea currently has a national competition.",
+   "cost_ko": null,
+   "cost_en": null,
+   "timing_ko": "국가 대회 결선: 겨울~초여름(1-6월) / 국제 결선: 여름(8월 말)",
+   "timing_en": "National finals: winter to early summer (January-June) / international final: summer (late August)",
+   "format": "in_person",
+   "official_url": "https://stockholmwaterfoundation.org/stockholm-junior-water-prize/",
+   "eligibility_url": "https://stockholmwaterfoundation.org/stockholm-junior-water-prize/engage/enter-competition",
+   "official_mentions": [],
+   "area": "eng_sci"
+  },
+  {
+   "key": "nasa-herc",
+   "name": "NASA Human Exploration Rover Challenge (HERC)",
+   "type": "competition",
+   "majors": [
+    "aerospace_eng",
+    "engineering",
+    "robotics",
+    "industrial_eng"
+   ],
+   "host": "NASA",
+   "what_ko": "NASA가 주최하는 로버(탐사차) 설계·제작 대회로, 미국과 해외의 중·고등학교·대학 팀이 참가할 수 있어요.",
+   "what_en": "A NASA rover design-and-build challenge open to U.S. and international teams from middle school, high school, and college.",
+   "do_ko": "팀이 약 9개월 동안 사람이 페달로 움직이는 로버 또는 원격조종 로버를 설계·제작하고, NASA식 설계 검토 4단계를 거친 뒤 모의 달 지형 코스에서 미션을 수행해요.",
+   "do_en": "Over about nine months, teams design and build a human-powered or remote-controlled rover, pass four NASA-style design reviews, and complete mission tasks on simulated lunar terrain.",
+   "grades": "Grades 6-12 and college (high school team members ages 14-19)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "공식 페이지에 '미국 및 국제 학생에게 개방'이라고 명시돼 있어요. 학교뿐 아니라 과학관·청소년 단체 등 기관 소속 팀도 참가할 수 있어요.",
+   "intl_note_en": "The official page states it is open to U.S. and international students; teams may come from schools or informal education organizations such as science centers and youth organizations.",
+   "cost_ko": null,
+   "cost_en": null,
+   "timing_ko": "제안서 마감: 가을(9월) / 본선: 봄(4월, 미국 Alabama주 Huntsville)",
+   "timing_en": "Proposal deadline: fall (September) / competition: spring (April, Huntsville, Alabama)",
+   "format": "in_person",
+   "official_url": "https://www.nasa.gov/learning-resources/nasa-human-exploration-rover-challenge/",
+   "eligibility_url": "https://www.nasa.gov/learning-resources/how-to-apply-to-the-herc-challenge/",
+   "official_mentions": [],
+   "area": "eng_sci"
+  },
+  {
+   "key": "nasa-space-apps-challenge",
+   "name": "NASA International Space Apps Challenge",
+   "type": "competition",
+   "majors": [
+    "aerospace_eng",
+    "astronomy",
+    "earth_science",
+    "environmental",
+    "engineering",
+    "physics"
+   ],
+   "host": "NASA",
+   "what_ko": "NASA가 여는 세계 최대 규모의 연례 해커톤이에요. 나이·실력·배경과 상관없이 누구나 참가할 수 있어요.",
+   "what_en": "NASA's annual global hackathon, open to all ages, skill levels, and backgrounds.",
+   "do_ko": "이틀 동안 팀을 이뤄 NASA와 파트너 우주기관의 공개 데이터를 활용해 NASA 전문가가 낸 과제(천체물리·지구과학·농업 등)에 대한 해결책을 만들어 제출해요.",
+   "do_en": "Over two days, teams use open data from NASA and partner space agencies to build solutions to challenges written by NASA experts (astrophysics, Earth science, agriculture, and more).",
+   "grades": "All ages (under 18 must be registered by a parent or guardian)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "전 세계 누구나 참가할 수 있고, 근처 오프라인·온라인 지역 이벤트나 온라인 Universal Event로 참여해요. 18세 미만은 보호자가 등록해야 하고, 지역 이벤트별 추가 조건이 있을 수 있어요.",
+   "intl_note_en": "Open worldwide via in-person or virtual Local Events or the virtual Universal Event. Participants under 18 must be registered by a parent or legal guardian, and Local Events may have additional requirements.",
+   "cost_ko": "참가비 없어요(공식 FAQ 기준).",
+   "cost_en": "Free to participate (per the official FAQ).",
+   "timing_ko": "가을(2026년은 11월 개최)",
+   "timing_en": "Fall (the 2026 hackathon is in November)",
+   "format": "hybrid",
+   "official_url": "https://www.spaceappschallenge.org/",
+   "eligibility_url": "https://www.spaceappschallenge.org/resources/participant-faqs/",
+   "official_mentions": [],
+   "area": "eng_sci"
+  },
+  {
+   "key": "ssp",
+   "name": "Summer Science Program (SSP)",
+   "type": "summer",
+   "majors": [
+    "astronomy",
+    "biology",
+    "chemistry",
+    "genetics",
+    "microbiology",
+    "molecular_bio",
+    "natural_sci",
+    "physics"
+   ],
+   "host": "SSP International",
+   "what_ko": "고등학교 11학년(주니어)을 위한 5주 기숙형 연구 프로그램이에요. Astrophysics, Biochemistry, Bacterial Genomics, Cell Biology 분야가 있어요.",
+   "what_en": "A five-week residential research program for high school juniors, offered in Astrophysics, Biochemistry, Bacterial Genomics, and Cell Biology.",
+   "do_ko": "Astrophysics 과정에서는 근지구 소행성을 관측하고 궤도를 계산하는 연구를 해요. 대학 캠퍼스 연구실에서 교수진 지도 아래 실제 장비로 팀 연구를 수행해요.",
+   "do_en": "In Astrophysics, students observe near-Earth asteroids and calculate their orbits; all programs run hands-on team research with faculty on a university campus.",
+   "grades": "11th grade (must be 15-18 during all program dates)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "미국 밖 학교 재학생이거나 미국 시민권·영주권이 없으면 국제 지원자로 분류돼 지원할 수 있어요. 국제 지원자는 마감이 더 이르고, 영어 능력 점수를 제출할 수 있어요.",
+   "intl_note_en": "Students attending school outside the U.S. or without U.S. citizenship/permanent residency apply as international applicants; the international deadline is earlier, and English proficiency scores may be included.",
+   "cost_ko": "2026년 프로그램 비용은 $11,800(숙식·수업 포함)이에요. 합격자의 재정 필요를 100% 지원하고, 국제학생도 재정지원을 신청할 수 있어요.",
+   "cost_en": "The 2026 fee is $11,800 (all-inclusive). SSP meets 100% of demonstrated need for admitted students, and international students may request financial aid.",
+   "timing_ko": "지원: 겨울(12월 말 오픈, 국제학생은 1월 말 마감) / 프로그램: 여름(6월 중순~말 시작, 5주)",
+   "timing_en": "Application: winter (opens late December; international deadline late January) / program: summer (starts mid-to-late June, five weeks)",
+   "format": "in_person",
+   "official_url": "https://ssp.org/",
+   "eligibility_url": "https://ssp.org/faqs/",
+   "official_mentions": [
+    {
+     "college": "Purdue University",
+     "relation": "host",
+     "note_ko": "2026년 SSP Biochemistry 호스트 캠퍼스 중 하나예요.",
+     "note_en": "One of the 2026 SSP Biochemistry host campuses.",
+     "url": "https://ssp.org/biochemistry/",
+     "school_id": 48
+    },
+    {
+     "college": "Indiana University",
+     "relation": "host",
+     "note_ko": "2026년 SSP Biochemistry 호스트 캠퍼스 중 하나예요.",
+     "note_en": "One of the 2026 SSP Biochemistry host campuses.",
+     "url": "https://ssp.org/biochemistry/",
+     "school_id": 99
+    },
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 '여름 프로그램' 페이지의 'MIT 학생들이 유익했다고 느낀 프로그램' 목록에 있어요.",
+     "note_en": "Listed on MIT Admissions' summer page among programs MIT students found valuable.",
+     "url": "https://mitadmissions.org/apply/prepare/summer/",
+     "school_id": 2
+    },
+    {
+     "college": "Caltech",
+     "relation": "admissions_mention",
+     "note_ko": "Caltech 입학처 'STEM 준비도' 페이지에 예시로 나와요(준비 방법에 선호는 없다고 함께 밝혀요).",
+     "note_en": "Given as an example on Caltech Admissions' STEM-preparedness page (which says Caltech has no preferred method).",
+     "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness",
+     "school_id": 11
+    }
+   ],
+   "area": "eng_sci"
+  },
+  {
+   "key": "mit-mites-summer",
+   "name": "MIT MITES Summer",
+   "type": "summer",
+   "majors": [
+    "engineering",
+    "physics",
+    "chemistry",
+    "natural_sci",
+    "robotics"
+   ],
+   "host": "MIT Office of Engineering Outreach Programs",
+   "what_ko": "MIT에서 열리는 11학년 대상 6주 기숙형 STEM 프로그램이에요.",
+   "what_en": "A six-week residential STEM program at MIT for 11th graders.",
+   "do_ko": "평일 하루 약 7시간씩 5개 과목 수업과 활동에 참여해요(학점·성적은 부여되지 않아요). 온라인 과정인 MITES Semester도 있어요.",
+   "do_en": "Students take five courses and activities for about seven hours each weekday (no credit or formal grades). An online MITES Semester option also exists.",
+   "grades": "11",
+   "intl_eligibility": "us_only",
+   "intl_note_ko": "미국 시민권자 또는 유효한 영주권(green card) 소지자만 지원할 수 있고, 비자는 대체 자격으로 인정되지 않아요.",
+   "intl_note_en": "Only U.S. citizens or permanent residents with a current green card may apply; visas of any type do not qualify.",
+   "cost_ko": "프로그램 비용은 모두 후원으로 충당되고, 학생은 MIT 왕복 교통비만 부담해요.",
+   "cost_en": "All program costs are covered by funders; students pay only for travel to and from MIT.",
+   "timing_ko": "지원: 가을~겨울(2월 마감) / 결과: 4월 / 프로그램: 여름(6월 말~7월 말)",
+   "timing_en": "Application: fall to winter (deadline February) / decisions: April / program: summer (late June to late July)",
+   "format": "in_person",
+   "official_url": "https://mites.mit.edu/discover-mites/mites-summer/",
+   "eligibility_url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+   "official_mentions": [
+    {
+     "college": "MIT",
+     "relation": "host",
+     "note_ko": "MIT가 직접 운영하는 프로그램이에요.",
+     "note_en": "Run by MIT.",
+     "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+     "school_id": 2
+    },
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 '여름 프로그램' 페이지의 'MIT 학생들이 유익했다고 느낀 프로그램' 목록에 있어요.",
+     "note_en": "Listed on MIT Admissions' summer page among programs MIT students found valuable.",
+     "url": "https://mitadmissions.org/apply/prepare/summer/",
+     "school_id": 2
+    }
+   ],
+   "area": "eng_sci"
+  },
+  {
+   "key": "stony-brook-garcia-summer",
+   "name": "Garcia Summer Research Program (Stony Brook University)",
+   "type": "summer",
+   "majors": [
+    "chemical_eng",
+    "chemistry",
+    "engineering",
+    "physics",
+    "natural_sci"
+   ],
+   "host": "Stony Brook University – Garcia Center for Polymers at Engineered Interfaces",
+   "what_ko": "Stony Brook University Garcia Center가 여는 고등학생 대상 여름 재료과학(폴리머) 연구 프로그램이에요.",
+   "what_en": "A summer materials science (polymer) research program for high school students at Stony Brook University's Garcia Center.",
+   "do_ko": "대학 연구실에서 폴리머 등 재료 연구를 직접 수행하고, 결과를 학회 발표나 논문 형태로 정리해요.",
+   "do_en": "Students conduct hands-on materials research (e.g., polymers) in university labs and work toward conference presentations or publications.",
+   "grades": "High school, age 16+ by early July; unweighted GPA 3.8/4.0 (95/100) or higher",
+   "intl_eligibility": "restricted",
+   "intl_note_ko": "국제학생도 받지만 비자 발급은 지원하지 않아요. 프로그램 기간 동안 미국에 합법적으로 체류할 수 있는 서류를 이미 갖고 있어야 지원할 수 있어요.",
+   "intl_note_en": "International students are accepted, but the program cannot support visa applications; applicants must already hold documents to be legally present in the U.S. for the program period.",
+   "cost_ko": "실험실 사용료 $4,000(숙식 제외)이고, 교내 숙식은 선택 시 약 $2,665~$3,265+예요. 재정지원·장학금은 없어요.",
+   "cost_en": "Laboratory usage fee $4,000 (excluding housing and meals); optional campus room and board about $2,665-$3,265+. No financial aid or scholarships.",
+   "timing_ko": "결과 발표: 봄(보통 4월 초) / 프로그램: 여름(6월 말~8월 초)",
+   "timing_en": "Decisions: spring (typically early April) / program: summer (late June to early August)",
+   "format": "in_person",
+   "official_url": "https://www.stonybrook.edu/garcia/summer-program/",
+   "eligibility_url": "https://www.stonybrook.edu/garcia/summer-program/eligibility.html",
+   "official_mentions": [
+    {
+     "college": "Stony Brook University",
+     "relation": "host",
+     "note_ko": "Stony Brook University Garcia Center가 운영해요.",
+     "note_en": "Run by Stony Brook University's Garcia Center.",
+     "url": "https://www.stonybrook.edu/garcia/summer-program/",
+     "school_id": 62
+    },
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 '여름 프로그램' 페이지의 'MIT 학생들이 유익했다고 느낀 프로그램' 목록에 있어요.",
+     "note_en": "Listed on MIT Admissions' summer page among programs MIT students found valuable.",
+     "url": "https://mitadmissions.org/apply/prepare/summer/",
+     "school_id": 2
+    },
+    {
+     "college": "Caltech",
+     "relation": "admissions_mention",
+     "note_ko": "Caltech 입학처 'STEM 준비도' 페이지에 예시로 나와요(준비 방법에 선호는 없다고 함께 밝혀요).",
+     "note_en": "Given as an example on Caltech Admissions' STEM-preparedness page (which says Caltech has no preferred method).",
+     "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness",
+     "school_id": 11
+    }
+   ],
+   "area": "eng_sci"
+  },
+  {
+   "key": "ucsb-research-mentorship-program",
+   "name": "UCSB Research Mentorship Program (RMP)",
+   "type": "summer",
+   "majors": [
+    "engineering",
+    "physics",
+    "chemistry",
+    "earth_science",
+    "environmental",
+    "natural_sci"
+   ],
+   "host": "University of California, Santa Barbara – Summer Sessions",
+   "what_ko": "UC Santa Barbara가 전 세계 고등학생을 대상으로 여는 여름 연구 멘토링 프로그램이에요. Engineering, Physics, Chemistry, Earth Science, Environmental Policy 등 여러 분야가 있어요.",
+   "what_en": "A competitive UC Santa Barbara summer research program for high school students from around the world, with fields including Engineering, Physics, Chemistry, Earth Science, and Environmental Policy.",
+   "do_ko": "대학원생·포닥·교수 멘토와 짝을 이뤄 대학 수준의 연구 프로젝트를 수행하고, 강연 시리즈에도 참여해요.",
+   "do_en": "Students are paired with a mentor (graduate student, postdoc, or faculty) to carry out university-level research and attend a lecture series.",
+   "grades": "10-11 (exceptional 9th graders considered); weighted GPA 3.80+",
+   "intl_eligibility": "open",
+   "intl_note_ko": "전 세계 고등학생을 대상으로 하고, 국제 지원자는 TOEFL 등 영어 시험 점수를 내지 않아도 돼요. 비자 관련 안내는 공식 페이지에서 확인되지 않았어요.",
+   "intl_note_en": "Open to students from all over the world; international applicants do not need TOEFL or other English test scores. Visa information was not found on the official pages.",
+   "cost_ko": "2026년 기준 수업·프로그램비 $5,600, 기숙사·식비 $7,599(기숙생만), 지원비 $75예요. 장학금은 제한적이고 캘리포니아 거주자가 우선이에요.",
+   "cost_en": "2026: tuition and program fees $5,600, housing and meals $7,599 (residential only), $75 application fee. Limited need-based scholarships with priority for California residents.",
+   "timing_ko": "지원: 겨울~초봄(12월 중순~3월 초, 수시 심사) / 프로그램: 여름(6월 중순~7월 말)",
+   "timing_en": "Application: winter to early spring (mid-December to early March, rolling) / program: summer (mid-June to late July)",
+   "format": "in_person",
+   "official_url": "https://www.summer.ucsb.edu/programs/research-mentorship-program/overview",
+   "eligibility_url": "https://www.summer.ucsb.edu/programs/research-mentorship-program/admissions",
+   "official_mentions": [
+    {
+     "college": "University of California, Santa Barbara",
+     "relation": "host",
+     "note_ko": "UCSB Summer Sessions가 운영해요.",
+     "note_en": "Run by UCSB Summer Sessions.",
+     "url": "https://www.summer.ucsb.edu/programs/research-mentorship-program/overview",
+     "school_id": 40
+    }
+   ],
+   "area": "eng_sci"
+  },
+  {
+   "key": "cmu-precollege-architecture",
+   "name": "Carnegie Mellon Pre-College Architecture",
+   "type": "summer",
+   "majors": [
+    "architecture"
+   ],
+   "host": "Carnegie Mellon University – Pre-College Programs",
+   "what_ko": "Carnegie Mellon University가 여는 고등학생 대상 5주 건축 여름 프로그램이에요.",
+   "what_en": "A five-week summer architecture program for high school students at Carnegie Mellon University.",
+   "do_ko": "디자인 스튜디오 중심으로 드로잉·디지털 미디어·세미나·워크숍을 하고, 개인·그룹 설계 과제를 수행해요. 금요일에는 건축 현장과 제작 랩을 견학하고, 결과물은 포트폴리오에 활용할 수 있어요.",
+   "do_en": "Centered on design studio, with drawing, digital media, seminars, and workshops on individual and group design problems, plus Friday field trips to architectural sites and fabrication labs; work can be used for a portfolio.",
+   "grades": "Current sophomores or juniors; at least 16 by program start",
+   "intl_eligibility": "open",
+   "intl_note_ko": "유료 프로그램이라 국제학생도 지원할 수 있어요. 비영어권 국적자는 영어 점수(TOEFL iBT 102, IELTS 7.5, Duolingo 135 등)가 필요하고, 국제학생은 장학금 대상이 아니에요. I-20은 Summer Session 기숙 프로그램에만 발급돼요.",
+   "intl_note_en": "International students may apply (it is a paid program). Citizens of non-English-speaking countries need English scores (TOEFL iBT 102, IELTS 7.5, Duolingo 135, etc.); international applicants are not eligible for scholarships; I-20s are issued only for the Summer Session residential program.",
+   "cost_ko": "2026년 기준 기숙 $10,744, 통학 $8,253, 지원비 $50이에요.",
+   "cost_en": "2026: residential $10,744, commuter $8,253, $50 application fee.",
+   "timing_ko": "지원: 겨울(국제학생·장학금 조기 마감 2월, 최종 마감 3월) / 프로그램: 여름(6월 말~7월 말)",
+   "timing_en": "Application: winter (early deadline Feb for international and scholarship applicants; final deadline Mar) / program: summer (late June to late July)",
+   "format": "in_person",
+   "official_url": "https://www.cmu.edu/pre-college/academic-programs/architecture.html",
+   "eligibility_url": "https://www.cmu.edu/pre-college/admission/international-applicants.html",
+   "official_mentions": [
+    {
+     "college": "Carnegie Mellon University",
+     "relation": "host",
+     "note_ko": "CMU Pre-College Programs가 운영해요.",
+     "note_en": "Run by CMU Pre-College Programs.",
+     "url": "https://www.cmu.edu/pre-college/academic-programs/architecture.html",
+     "school_id": 20
+    }
+   ],
+   "area": "eng_sci"
+  },
+  {
+   "key": "cornell-precollege-architecture",
+   "name": "Cornell Introduction to Architecture and Design Precollege Program",
+   "type": "summer",
+   "majors": [
+    "architecture"
+   ],
+   "host": "Cornell University – College of Architecture, Art, and Planning (AAP) / Cornell SCE Precollege Studies",
+   "what_ko": "Cornell 건축대학(AAP)이 여는 고등학생 대상 6주 건축·디자인 여름 프로그램이에요.",
+   "what_en": "A six-week summer architecture and design program for high school students run by Cornell's College of Architecture, Art, and Planning (AAP).",
+   "do_ko": "디자인 스튜디오와 서베이 강의 두 과목을 듣고, 오브제·도시 설치물·건물·조경까지 여러 스케일의 설계 원리를 배워요. 교수진·외부 평론가 리뷰를 거쳐 최종 프로젝트를 발표해요.",
+   "do_en": "Students take a design studio and a survey lecture course, learning design principles at scales from objects and urban installations to buildings and landscapes, culminating in a final project reviewed by faculty and guests.",
+   "grades": "High school",
+   "intl_eligibility": "open",
+   "intl_note_ko": "국제학생은 캠퍼스 프로그램 참가 시 F-1 학생비자가 필요하고, 최소 6주·6학점 이상 수강해야 해요. 영어는 '말하기·쓰기가 유창해야 한다'고만 안내돼 있어요.",
+   "intl_note_en": "International students attending on campus must obtain an F-1 student visa and enroll for at least six weeks and six credits; the page asks for fluency in written and spoken English.",
+   "cost_ko": "Cornell Precollege 6주 기숙 프로그램은 6학점 기준 총 $18,402(수업료·기숙·건강비 포함)이고, 미국 밖 거주자는 건강보험 $676이 추가돼요. 건축 프로그램의 정확한 학점 수는 공식 페이지에서 확인해 주세요.",
+   "cost_en": "Cornell Precollege six-week residential total is $18,402 for 6 credits (tuition, residential fee, health fee); students living outside the U.S. are also charged the $676 Student Health Plan. Confirm the architecture program's exact credit load on the official page.",
+   "timing_ko": "지원 마감: 봄(5월 초, 비자 준비 때문에 국제학생은 일찍 지원 권장) / 프로그램: 여름(6월 말~7월 말, 6주)",
+   "timing_en": "Application deadline: spring (early May; international students advised to apply early for visa processing) / program: summer (late June to late July, six weeks)",
+   "format": "in_person",
+   "official_url": "https://aap.cornell.edu/academics/architecture/architecture-summer-programs",
+   "eligibility_url": "https://sce.cornell.edu/precollege/admission/international-students/international-applicants",
+   "official_mentions": [
+    {
+     "college": "Cornell University",
+     "relation": "host",
+     "note_ko": "Cornell AAP 건축학과 교수진이 가르치는 프로그램이에요.",
+     "note_en": "Taught by Cornell AAP's Department of Architecture.",
+     "url": "https://aap.cornell.edu/academics/architecture/architecture-summer-programs",
+     "school_id": 12
+    }
+   ],
+   "area": "eng_sci"
+  },
+  {
+   "key": "usabo",
+   "name": "USA Biolympiad (USABO)",
+   "type": "competition",
+   "majors": [
+    "biology",
+    "genetics",
+    "molecular_bio",
+    "microbiology",
+    "zoology",
+    "marine_biology",
+    "animal_behavior",
+    "neuroscience",
+    "premed",
+    "pre_vet"
+   ],
+   "host": "Center for Excellence in Education (CEE)",
+   "what_ko": "미국 고등학생 대상 생물 올림피아드예요. 온라인 Open Exam → Semifinal Exam → National Finals를 거쳐 International Biology Olympiad(IBO) 미국 대표를 뽑아요.",
+   "what_en": "The US high school biology olympiad run by CEE. Students advance from an online Open Exam to a Semifinal Exam and National Finals, which selects the US team for the International Biology Olympiad (IBO).",
+   "do_ko": "학교가 등록하고 교사가 감독하는 50분 온라인 객관식 Open Exam을 봐요. 상위 10%가 120분짜리 Semifinal(객관식·참/거짓·서술형)에 가고, 상위 50명 안에 들면 National Finals로 이어져요.",
+   "do_en": "Take a 50-minute online multiple-choice Open Exam through a registered school with a teacher proctor. The top 10% take a 120-minute Semifinal (multiple choice, true/false, short answer); top scorers advance to National Finals.",
+   "grades": "9-12",
+   "intl_eligibility": "us_only",
+   "intl_note_ko": "공식 규정상 미국 시민권자 또는 영주권자(green card)만 참가할 수 있어요. 한국 국적 국제학생은 참가 대상이 아니에요.",
+   "intl_note_en": "Official rules: students must be U.S. citizens or legal permanent residents (green card holders). Non-US-citizen international students are not eligible.",
+   "cost_ko": "학교 등록비 $125(학교 단위). FAQ에 따르면 학생 본인 참가비는 없어요.",
+   "cost_en": "$125 registration fee per school; the FAQ states the USABO and IBO programs are cost-free to students.",
+   "timing_ko": "가을에 학교 등록, 겨울(2월) Open Exam, 봄(3월) Semifinal, 초여름(6월) National Finals, 여름(7월) IBO",
+   "timing_en": "School registration in fall; Open Exam in winter (Feb); Semifinal in spring (Mar); National Finals in early summer (Jun); IBO in summer (Jul)",
+   "format": "hybrid",
+   "official_url": "https://usabo-trc.org/",
+   "eligibility_url": "https://usabo-trc.org/usabo-guidelines-and-eligibility",
+   "official_mentions": [
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 'STEM 프로그램' 페이지에 소개돼 있어요(특정 프로그램 참여를 기대·요구하지 않는다고 함께 밝혀요).",
+     "note_en": "Mentioned on MIT Admissions' STEM programs page (which also says MIT doesn't expect or require specific programs).",
+     "url": "https://mitadmissions.org/apply/prepare/stem/",
+     "school_id": 2
+    },
+    {
+     "college": "Caltech",
+     "relation": "admissions_mention",
+     "note_ko": "Caltech 입학처 'STEM 준비도' 페이지에 예시로 나와요(준비 방법에 선호는 없다고 함께 밝혀요).",
+     "note_en": "Given as an example on Caltech Admissions' STEM-preparedness page (which says Caltech has no preferred method).",
+     "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness",
+     "school_id": 11
+    }
+   ],
+   "area": "bio_health"
+  },
+  {
+   "key": "kbo_ibo",
+   "name": "Korean Biology Olympiad (한국생물올림피아드) → International Biology Olympiad (IBO)",
+   "type": "competition",
+   "majors": [
+    "biology",
+    "genetics",
+    "molecular_bio",
+    "microbiology",
+    "zoology",
+    "marine_biology",
+    "animal_behavior",
+    "neuroscience",
+    "premed",
+    "pre_vet"
+   ],
+   "host": "한국생물올림피아드위원회 (Korean Biology Olympiad Committee); IBO는 International Biology Olympiad",
+   "what_ko": "IBO에 나갈 한국 국가대표를 뽑는 국내 선발 과정이에요. IBO 규정상 대표 자격은 국적이 아니라 '다니는 학교의 위치'로 정해지기 때문에, 한국에 있는 학교 학생은 한국 선발을 거쳐야 해요.",
+   "what_en": "Korea's national selection process for the International Biology Olympiad. Under IBO rules, eligibility is determined by the location of the student's school (not nationality), so students at schools in Korea go through the Korean selection.",
+   "do_ko": "웹사이트로 접수한 뒤 원격교육(선택)과 1차 지필시험을 봐요. 이후 겨울학교에서 2차·최종 지필·실험 평가와 면접을 거쳐 IBO 대표를 선발해요.",
+   "do_en": "Register online, take optional remote coursework and a first written exam, then attend winter schools with further written and lab evaluations and final interviews to select the IBO team.",
+   "grades": "10-11",
+   "intl_eligibility": "restricted",
+   "intl_note_ko": "2027 IBO 선발 요강상 국내 일반고·과학고·영재고 1·2학년 재학생이 대상이고, 국제학교·외국인학교는 '교육부 인가 학교만' 지원할 수 있어요. 요강에 국적 조건은 적혀 있지 않아요. 내 학교가 교육부 인가 학교인지 먼저 확인해 보세요.",
+   "intl_note_en": "The 2027 selection guidelines cover 1st/2nd-year students at Korean general, science, and gifted high schools; international and foreign schools qualify only if they are authorized by the Ministry of Education. No nationality condition is stated. Check whether your school is MOE-authorized.",
+   "cost_ko": "공식 안내상 전형료·서류전형 없음",
+   "cost_en": "No application fee or document screening per the official guidelines",
+   "timing_ko": "봄(3월) 접수, 봄~여름 원격교육, 여름 1차 시험, 겨울 겨울학교·최종 선발, 다음 해 여름 IBO",
+   "timing_en": "Registration in spring (Mar); remote coursework spring-summer; first exam in summer; winter schools and final selection in winter; IBO the following summer",
+   "format": "hybrid",
+   "official_url": "https://kbo.bioedu.kr/",
+   "eligibility_url": "https://kbo.bioedu.kr/%EB%8C%80%ED%9A%8C-%EC%95%88%EB%82%B4/",
+   "official_mentions": [],
+   "area": "bio_health"
+  },
+  {
+   "key": "brain_bee",
+   "name": "Brain Bee (한국뇌캠프 Korea Brain Bee → International Brain Bee)",
+   "type": "competition",
+   "majors": [
+    "neuroscience",
+    "biology",
+    "premed"
+   ],
+   "host": "International Brain Bee; 한국 대회는 서울대학교 학습과학연구소",
+   "what_ko": "13~19세 청소년 대상 뇌과학 대회예요. 각 나라 National Brain Bee 우승자가 International Brain Bee World Championship에 나가요. 한국은 '한국뇌캠프'가 국가 대회 역할을 해요.",
+   "what_en": "A neuroscience competition for teens (typically ages 13-19). Each National Brain Bee champion goes to the International Brain Bee World Championship; in Korea the national round is the Korea Brain Bee camp (한국뇌캠프).",
+   "do_ko": "뇌과학 강의·자료로 공부한 뒤 캠프 성취도 평가를 봐요. 대상 수상자가 한국 대표로 World Championship에 나가고, 세계대회는 신경해부학·조직학, 필기, 환자 진단, 라이브 문답으로 구성돼요.",
+   "do_en": "Study neuroscience lectures/materials and take the camp assessment; the grand-prize winner represents Korea. The World Championship includes neuroanatomy/histology, a written test, patient diagnosis, and live judging.",
+   "grades": "10",
+   "intl_eligibility": "restricted",
+   "intl_note_ko": "IBB 규정상 학생은 '거주 국가'의 Brain Bee에 참가해요. 한국 대회(2026 요강)는 '국내 소재 고등학교 1학년에 재학 중인 대한민국 국민'이 대상이고, 국제학교는 10학년 학생이 신청할 수 있어요. 대한민국 국적이 없으면 한국 대회에는 참가할 수 없어요.",
+   "intl_note_en": "IBB rules: students compete in the Brain Bee of their country of residence. The Korea Brain Bee (2026 guidelines) is open to Republic of Korea citizens enrolled in the first year of a high school located in Korea; international-school students in grade 10 may apply. Students without Korean citizenship cannot enter the Korean round.",
+   "cost_ko": "한국 대회 참가비 20만원(특강자료집·평가 전형료 포함, 수수료 별도, 2026 요강 기준)",
+   "cost_en": "Korea Brain Bee fee KRW 200,000 (includes lecture materials and assessment; transaction fee extra; 2026 guidelines)",
+   "timing_ko": "가을(11월) 한국 대회 접수, 겨울(1월) 캠프·평가, 세계대회는 가을(11월경)",
+   "timing_en": "Korea round registration in fall (Nov), camp and assessment in winter (Jan); World Championship in fall (around Nov)",
+   "format": "in_person",
+   "official_url": "https://www.thebrainbee.org/",
+   "eligibility_url": "https://www.braincamp.kr/sub_business/guideline.php",
+   "official_mentions": [
+    {
+     "college": "Seoul National University (서울대학교)",
+     "relation": "host",
+     "note_ko": "서울대학교 학습과학연구소가 한국뇌캠프(Korea Brain Bee)를 주최해요.",
+     "note_en": "SNU's Learning Science Institute hosts the Korea Brain Bee (한국뇌캠프).",
+     "url": "https://www.braincamp.kr/sub_introduce/greeting.php"
+    }
+   ],
+   "area": "bio_health"
+  },
+  {
+   "key": "igem_high_school",
+   "name": "iGEM High School Competition",
+   "type": "competition",
+   "majors": [
+    "biology",
+    "genetics",
+    "molecular_bio",
+    "microbiology",
+    "biomedical_eng"
+   ],
+   "host": "iGEM Foundation",
+   "what_ko": "합성생물학(synthetic biology) 팀 프로젝트 대회예요. 고등학생 팀이 한 시즌 동안 프로젝트를 설계·실험하고, 파리에서 열리는 Grand Jamboree에서 발표·심사를 받아요.",
+   "what_en": "A team-based synthetic biology competition. High school teams design and carry out a project over a season and present it for judging at the Grand Jamboree in Paris.",
+   "do_ko": "학교 교사가 PI(책임자)가 되어 팀을 등록하고, iGEM White List에 있는 생물·부품만으로 프로젝트를 진행해요. Wiki 등 정해진 deliverables를 제출하고 Jamboree(현장 또는 원격 심사)에서 발표해요.",
+   "do_en": "A teacher at the school registers the team as PI; projects must use only organisms/parts on the iGEM White List. Teams submit required deliverables (e.g., wiki) and present at the Jamboree (in person or via remote judging).",
+   "grades": "9-12",
+   "intl_eligibility": "open",
+   "intl_note_ko": "전 세계 팀이 참가하는 국제 대회예요. 고등학생 부문은 팀원 전원이 3월 기준 고등학생이어야 하고, 최소 13세 이상이어야 해요. 개인이 아니라 팀 단위로 등록해요.",
+   "intl_note_en": "An international competition open to teams worldwide. In the High School Competition, all team members must be high school students as of March and at least 13 years old. Registration is by team, not individual.",
+   "cost_ko": "2026년 기준 팀 단위 Program Fee Stage I €4,950~5,950 + Stage II €2,750, 현장 참가 시 1인당 Jamboree 티켓 €525~645 (Collegiate·High School 공통 안내)",
+   "cost_en": "2026: per-team Program Fee Stage I EUR 4,950-5,950 plus Stage II EUR 2,750; Jamboree ticket EUR 525-645 per person for in-person attendees (fees page applies to Collegiate & High School teams)",
+   "timing_ko": "겨울~봄 팀 등록, 봄~가을 프로젝트 진행, 가을(10~11월) 파리 Grand Jamboree",
+   "timing_en": "Team registration winter-spring; project season spring-fall; Grand Jamboree in Paris in fall (Oct-Nov)",
+   "format": "hybrid",
+   "official_url": "https://competition.igem.org/high-school",
+   "eligibility_url": "https://competition.igem.org/registration/team-roster",
+   "official_mentions": [],
+   "area": "bio_health"
+  },
+  {
+   "key": "hosa",
+   "name": "HOSA – Future Health Professionals",
+   "type": "competition",
+   "majors": [
+    "premed",
+    "nursing",
+    "public_health",
+    "kinesiology",
+    "nutrition",
+    "pharmacy",
+    "pre_dental",
+    "biomedical_eng"
+   ],
+   "host": "HOSA (HOSA-Future Health Professionals)",
+   "what_ko": "보건·의료 진로 학생 단체로, 학교 chapter 단위로 활동하며 보건 관련 competitive events(시험·실기·발표 등)에 참가해요. 지역/국가 대회를 거쳐 International Leadership Conference(ILC)로 이어져요.",
+   "what_en": "A student organization for future health professionals. Students join through a school chapter and compete in health-related competitive events, advancing from state/country conferences to the International Leadership Conference (ILC).",
+   "do_ko": "학교에 HOSA chapter와 지도교사(advisor)가 있어야 해요. 회원 등록 후 보건 관련 종목에 출전하고, 리더십 활동에도 참여해요.",
+   "do_en": "Your school needs an affiliated HOSA chapter with an advisor. Members register, compete in health-science events, and take part in leadership activities.",
+   "grades": "9-12",
+   "intl_eligibility": "restricted",
+   "intl_note_ko": "개인 지원이 아니라 학교 chapter를 통해서만 참가할 수 있어요. HOSA 공식 발표에 따르면 2025 ILC에 한국(Korea) 등 해외 chapter가 참가했어요. 내 학교에 chapter가 있는지 먼저 확인해 보세요.",
+   "intl_note_en": "Participation is only through an affiliated school chapter, not as an individual. HOSA's official 2025 ILC recap lists international chapters including Korea. Check whether your school has a chapter.",
+   "cost_ko": null,
+   "cost_en": null,
+   "timing_ko": "학년 초 chapter 가입, 학기 중 지역/국가 대회, 여름(6월경) ILC",
+   "timing_en": "Chapter affiliation at the start of the school year; state/country conferences during the year; ILC in summer (around June)",
+   "format": "in_person",
+   "official_url": "https://hosa.org/",
+   "eligibility_url": "https://hosa.org/about-hosa/",
+   "official_mentions": [],
+   "area": "bio_health"
+  },
+  {
+   "key": "stanford_simr",
+   "name": "Stanford Institutes of Medicine Summer Research Program (SIMR)",
+   "type": "summer",
+   "majors": [
+    "biology",
+    "genetics",
+    "molecular_bio",
+    "neuroscience",
+    "biomedical_eng",
+    "premed"
+   ],
+   "host": "Stanford University School of Medicine",
+   "what_ko": "스탠퍼드 의대 연구실에서 8주간 기초 의생명 연구를 하는 고등학생 연구 프로그램이에요.",
+   "what_en": "An eight-week program in which high school students do hands-on basic biomedical research with Stanford faculty, postdocs, and researchers.",
+   "do_ko": "스탠퍼드 연구진과 함께 실제 연구 프로젝트에 참여해요.",
+   "do_en": "Work on hands-on research alongside Stanford researchers.",
+   "grades": "11-12",
+   "intl_eligibility": "us_only",
+   "intl_note_ko": "미국에 거주하며 미국 고등학교에 다니고, 미국 시민권자 또는 영주권자여야 해요. 선발은 Bay Area 학생을 크게 우대한다고 공식 안내돼 있어요. 한국 거주 국제학생은 지원 대상이 아니에요.",
+   "intl_note_en": "Students must live in and attend high school in the U.S. AND be U.S. citizens or permanent residents; selection 'will heavily favor local (Bay Area) students.' International students in Korea are not eligible.",
+   "cost_ko": "선발된 학생은 참가비 없음. 필요 기반 stipend가 소수 있어요.",
+   "cost_en": "No cost for selected students; a very limited number of need-based stipends.",
+   "timing_ko": "겨울 지원(마감 늦겨울), 여름 8주 프로그램",
+   "timing_en": "Apply in winter (deadline late winter); eight-week summer program",
+   "format": "in_person",
+   "official_url": "https://simr.stanford.edu/",
+   "eligibility_url": "https://simr.stanford.edu/",
+   "official_mentions": [
+    {
+     "college": "Stanford University",
+     "relation": "host",
+     "note_ko": "스탠퍼드 의대가 직접 운영하는 여름 연구 프로그램이에요.",
+     "note_en": "Run by Stanford School of Medicine.",
+     "url": "https://simr.stanford.edu/",
+     "school_id": 4
+    },
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 '여름 프로그램' 페이지의 'MIT 학생들이 유익했다고 느낀 프로그램' 목록에 있어요.",
+     "note_en": "Listed on MIT Admissions' summer page among programs MIT students found valuable.",
+     "url": "https://mitadmissions.org/apply/prepare/summer/",
+     "school_id": 2
+    }
+   ],
+   "area": "bio_health"
+  },
+  {
+   "key": "rockefeller_ssrp",
+   "name": "Rockefeller University Summer Science Research Program (SSRP)",
+   "type": "summer",
+   "majors": [
+    "biology",
+    "genetics",
+    "molecular_bio",
+    "microbiology",
+    "neuroscience",
+    "premed"
+   ],
+   "host": "The Rockefeller University (RockEDU Science Outreach)",
+   "what_ko": "뉴욕 록펠러대학교에서 7주간 팀 단위로 의생명 연구를 하는 고등학생 연구 프로그램이에요.",
+   "what_en": "A seven-week mentored biomedical research program for high school students at The Rockefeller University in New York City.",
+   "do_ko": "8~10명 연구팀에서 멘토와 함께 실험 기법을 배우고, 연구 질문을 정해 실험·데이터 분석을 한 뒤 마지막에 포스터 발표를 해요. 주 5일 약 35시간 풀타임이에요.",
+   "do_en": "Work in research teams of 8-10 with mentors: learn lab techniques, choose a research question, run experiments and analyze data, and present a poster at a final symposium. Full-time, about 35 hours/week.",
+   "grades": "11-12",
+   "intl_eligibility": "open",
+   "intl_note_ko": "해외 거주 학생도 지원할 수 있다고 FAQ에 나와 있어요. 다만 교통·숙소·비자는 전혀 지원하지 않고, 숙소도 제공하지 않아요. 만 16세 이상이어야 해요.",
+   "intl_note_en": "The FAQ says students outside the U.S. may apply, but RockEDU cannot assist with transportation, accommodations, or visa applications, and no housing is provided. Must be at least 16 at program start.",
+   "cost_ko": "지원·참가 모두 무료. 재정적 어려움이 있는 학생에게 stipend가 지급될 수 있어요(보장 아님).",
+   "cost_en": "Free to apply and attend; stipends may be awarded for financial hardship but are not guaranteed.",
+   "timing_ko": "가을~초겨울 지원, 봄 인터뷰·발표, 여름 7주 프로그램",
+   "timing_en": "Apply fall to early winter; interviews and decisions in spring; seven-week summer program",
+   "format": "in_person",
+   "official_url": "https://www.rockefeller.edu/outreach/ssrp/",
+   "eligibility_url": "https://www.rockefeller.edu/outreach/ssrp/faqs/",
+   "official_mentions": [
+    {
+     "college": "The Rockefeller University",
+     "relation": "host",
+     "note_ko": "록펠러대학교 RockEDU가 운영하고, Rockefeller·MSK·Weill Cornell 연구 인력이 멘토로 참여해요.",
+     "note_en": "Run by Rockefeller's RockEDU; research teams are guided by trainees from Rockefeller, MSK, and Weill Cornell.",
+     "url": "https://www.rockefeller.edu/outreach/ssrp/"
+    }
+   ],
+   "area": "bio_health"
+  },
+  {
+   "key": "bu_rise",
+   "name": "Boston University RISE Internship/Practicum",
+   "type": "summer",
+   "majors": [
+    "biology",
+    "neuroscience",
+    "biomedical_eng",
+    "public_health",
+    "premed"
+   ],
+   "host": "Boston University Summer Term",
+   "what_ko": "보스턴대학교에서 6주간 진행하는 고등학생 연구 프로그램이에요. 개인 연구(Internship)와 그룹 연구(Practicum) 트랙이 있어요.",
+   "what_en": "A six-week research program at Boston University with an Internship track (individual lab research) and a Practicum track (structured group research).",
+   "do_ko": "Internship은 주 40시간 대학 연구실에서 멘토와 연구하고(생물, 생체공학, 신경과학, 보건 등 분야), Practicum은 강의+그룹 연구로 진행돼요. 마지막에 포스터 발표를 해요.",
+   "do_en": "Internship students work ~40 hours/week in a university lab with mentors (fields include biology, biomedical engineering, neuroscience, public health); Practicum combines lectures with group research. Both end with a poster session.",
+   "grades": "11",
+   "intl_eligibility": "us_only",
+   "intl_note_ko": "공식 FAQ에 미국 시민권자와 영주권자만 참가할 수 있다고 명시돼 있어요. 국제학생은 지원 대상이 아니에요.",
+   "intl_note_en": "Official FAQ: only US citizens and legal permanent residents are eligible to participate in RISE.",
+   "cost_ko": null,
+   "cost_en": null,
+   "timing_ko": "겨울 지원 시작, 여름 6주 프로그램",
+   "timing_en": "Applications open in winter; six-week summer program",
+   "format": "in_person",
+   "official_url": "https://www.bu.edu/summer/high-school-programs/rise-internship-practicum/",
+   "eligibility_url": "https://www.bu.edu/summer/high-school-programs/rise-internship-practicum/faq/",
+   "official_mentions": [
+    {
+     "college": "Boston University",
+     "relation": "host",
+     "note_ko": "보스턴대학교 Summer Term이 운영하는 프로그램이에요.",
+     "note_en": "Run by Boston University Summer Term.",
+     "url": "https://www.bu.edu/summer/high-school-programs/rise-internship-practicum/",
+     "school_id": 42
+    },
+    {
+     "college": "MIT",
+     "relation": "admissions_mention",
+     "note_ko": "MIT 입학처 '여름 프로그램' 페이지의 'MIT 학생들이 유익했다고 느낀 프로그램' 목록에 있어요.",
+     "note_en": "Listed on MIT Admissions' summer page among programs MIT students found valuable.",
+     "url": "https://mitadmissions.org/apply/prepare/summer/",
+     "school_id": 2
+    }
+   ],
+   "area": "bio_health"
+  },
+  {
+   "key": "nih_sip",
+   "name": "NIH Summer Internship Program (SIP)",
+   "type": "summer",
+   "majors": [
+    "biology",
+    "genetics",
+    "molecular_bio",
+    "microbiology",
+    "neuroscience",
+    "biomedical_eng",
+    "premed",
+    "nursing",
+    "public_health",
+    "pharmacy"
+   ],
+   "host": "National Institutes of Health (NIH) Office of Intramural Training & Education",
+   "what_ko": "미국 국립보건원(NIH) 연구실에서 여름 동안 풀타임 연구 인턴을 하는 프로그램이에요. 고등학생은 졸업반(senior)만 지원할 수 있어요.",
+   "what_en": "A full-time summer research internship in NIH Intramural Research Program labs. Among high schoolers, only graduating seniors can apply.",
+   "do_ko": "지원서를 낸 뒤 관심 있는 NIH 연구책임자(PI)에게 직접 연락하고, PI가 인턴을 선발해요. 선발되면 연구 그룹에서 풀타임으로 일해요.",
+   "do_en": "Submit an application, contact NIH PIs whose work interests you; individual PIs select interns, who then work full-time in their research groups.",
+   "grades": "12",
+   "intl_eligibility": "us_only",
+   "intl_note_ko": "미국 시민권자 또는 영주권자만 지원할 수 있고, 영주권자는 미국 교육기관에 재학·합격 상태여야 해요. 고등학생은 졸업반이면서 9월까지 만 18세가 되어야 하고, 17세면 NIH 캠퍼스 40마일 이내 거주 조건이 붙어요.",
+   "intl_note_en": "Must be a U.S. citizen or permanent resident (permanent residents must attend/be accepted to U.S. institutions). High schoolers must be graduating seniors who turn 18 by Sept; those 17 on June must live within 40 miles of an NIH campus.",
+   "cost_ko": "stipend 지급(교육 단계별로 매년 조정). 숙소는 제공하지 않아요.",
+   "cost_en": "Stipend provided (adjusted annually by education level); housing not provided.",
+   "timing_ko": "가을~겨울 지원, 겨울~봄 PI 선발, 여름 인턴십",
+   "timing_en": "Apply fall-winter; PI selection winter-spring; summer internship",
+   "format": "in_person",
+   "official_url": "https://www.training.nih.gov/research-training/pb/sip/",
+   "eligibility_url": "https://www.training.nih.gov/research-training/pb/sip/",
+   "official_mentions": [],
+   "area": "bio_health"
+  },
+  {
+   "key": "jhu_precollege_medicine",
+   "name": "Johns Hopkins Summer at Hopkins Pre-College Programs (Medicine & Health)",
+   "type": "summer",
+   "majors": [
+    "biology",
+    "genetics",
+    "neuroscience",
+    "premed",
+    "public_health",
+    "nursing",
+    "kinesiology"
+   ],
+   "host": "Johns Hopkins University (Summer at Hopkins)",
+   "what_ko": "존스홉킨스대학교의 2주짜리 학점 인정 pre-college 프로그램이에요. 의학·보건 분야로 Medical School Intensive, Introduction to Surgery, 해부생리, 신경생물학, 역학, 공중보건 과목 등이 있어요.",
+   "what_en": "Two-week, credit-bearing pre-college programs at Johns Hopkins. Medicine and health options include Medical School Intensive, Introduction to Surgery, anatomy/physiology, neurobiology, epidemics, and public health courses.",
+   "do_ko": "대학 강의를 듣고, 과목에 따라 실험·시뮬레이션·해부 실습 등을 해요. 캠퍼스(볼티모어) 참가 또는 온라인 참가 중 선택할 수 있어요. 대학 수준의 수업이며 교육 과정 체험 성격이에요.",
+   "do_en": "Attend college-level lectures with labs, simulations, or dissections depending on the program; choose on-campus (Baltimore) or online. These are coursework programs, not research placements.",
+   "grades": "10-12",
+   "intl_eligibility": "open",
+   "intl_note_ko": "국제학생 지원 가능해요. 캠퍼스 참가는 F-1 비자가 필요하고, 영어성적(TOEFL iBT 100 등)이 필요하지만 영어로 수업하는 학교를 2년 이상 다녔으면 면제돼요. GPA 3.0 이상, 9학년 이수가 필요해요.",
+   "intl_note_en": "International students may apply. On-campus attendance requires an F-1 visa; English proficiency (e.g., TOEFL iBT 100) is required but waived after 2+ years at an English-speaking school. Requires GPA 3.0+ and completion of 9th grade.",
+   "cost_ko": "2026년 기준 캠퍼스 기숙 프로그램당 $6,140, 온라인 프로그램당 $1,950, 지원비 $85",
+   "cost_en": "2026: $6,140 per residential on-campus program; $1,950 per online program; $85 application fee",
+   "timing_ko": "겨울~봄 지원(국제학생은 비자 때문에 이른 지원 권장), 여름 2주 세션(3회)",
+   "timing_en": "Apply winter-spring (internationals encouraged to apply early for visas); three two-week summer sessions",
+   "format": "hybrid",
+   "official_url": "https://summer.jhu.edu/areas-of-study/foundations-medicine-health/",
+   "eligibility_url": "https://summer.jhu.edu/international-students/",
+   "official_mentions": [
+    {
+     "college": "Johns Hopkins University",
+     "relation": "host",
+     "note_ko": "존스홉킨스대학교가 직접 운영하는 pre-college 프로그램이에요.",
+     "note_en": "Run directly by Johns Hopkins University.",
+     "url": "https://summer.jhu.edu/programs-courses/pre-college-programs/",
+     "school_id": 8
+    }
+   ],
+   "area": "bio_health"
+  },
+  {
+   "key": "harvard-pre-college",
+   "name": "Harvard Summer School Pre-College Program",
+   "type": "summer",
+   "majors": [
+    "biology",
+    "business",
+    "economics",
+    "political_sci",
+    "prelaw",
+    "premed",
+    "psychology"
+   ],
+   "host": "Harvard Summer School",
+   "what_ko": "하버드 서머스쿨의 2주짜리 기숙형 pre-college 프로그램이에요. 생물(Biology) 등 여러 과목 중 하나를 골라 들어요.",
+   "what_en": "A two-week residential pre-college program at Harvard Summer School; students take one course from many subjects, including biology.",
+   "do_ko": "하루 약 3시간 수업과 2~4시간 과제를 하며 기숙사 생활을 해요. 학점은 없고(non-credit) 서면 평가를 받아요.",
+   "do_en": "About three hours of class plus 2-4 hours of homework per day while living on campus. Non-credit; students receive a written evaluation.",
+   "grades": "10-11",
+   "intl_eligibility": "open",
+   "intl_note_ko": "국제학생 지원 가능해요. 학점이 없는 과정이라 F-1이 아니라 관광비자(B1/B2) 또는 ESTA로 입국한다고 안내돼 있어요. 만 16세 이상이고, 2027·2028년에 고교를 졸업할 학생(rising junior·senior)이 대상이에요.",
+   "intl_note_en": "International students welcome. Because it is non-credit, students enter on a B1/B2 tourist visa or ESTA rather than F-1. Must be 16+ and graduating high school in 2027 or 2028 (rising juniors/seniors).",
+   "cost_ko": "2026년 세션당 $6,100(수업료·기숙사·식사·활동·보험 포함) + 지원비 $75. 재정 필요가 있는 학생에게 제한적 장학금이 있어요.",
+   "cost_en": "2026: $6,100 per session (tuition, room, meals, activities, insurance) plus $75 application fee; limited need-based scholarships.",
+   "timing_ko": "겨울~봄 지원, 여름 2주 세션(3회 중 선택)",
+   "timing_en": "Apply winter-spring; choose one of three two-week summer sessions",
+   "format": "in_person",
+   "official_url": "https://summer.harvard.edu/high-school-programs/pre-college-program/",
+   "eligibility_url": "https://summer.harvard.edu/registration-enrollment-requirements/course-registration/international-student-registration/",
+   "official_mentions": [
+    {
+     "college": "Harvard University",
+     "relation": "host",
+     "note_ko": "하버드 서머스쿨이 운영해요.",
+     "note_en": "Run by Harvard Summer School.",
+     "url": "https://summer.harvard.edu/high-school-programs/pre-college-program/",
+     "school_id": 3
+    }
+   ],
+   "area": "bio_health"
+  },
+  {
+   "key": "penn_biomedical_academy",
+   "name": "Penn Summer Academies – Biomedical Research Academy",
+   "type": "summer",
+   "majors": [
+    "biology",
+    "genetics",
+    "molecular_bio",
+    "microbiology",
+    "premed"
+   ],
+   "host": "University of Pennsylvania, School of Arts & Sciences",
+   "what_ko": "펜실베이니아대학교의 3주짜리 기숙형 생명과학 아카데미예요. 세포·분자·유전 생물학의 실험적 기초를 질병과 연결해 배워요.",
+   "what_en": "A three-week residential academy at Penn introducing the experimental basis of cellular, molecular, and genetic biology with a focus on disease.",
+   "do_ko": "오전 강의와 연구자 초청 강연을 듣고, wet lab에서 PCR·전기영동·박테리아 형질전환·ELISA 등을 직접 해보고, computational lab에서 DNA 데이터도 분석해요.",
+   "do_en": "Morning lectures and faculty research talks, wet-lab work (PCR, gel electrophoresis, restriction analysis, bacterial transformation, ELISA), and computational labs analyzing DNA.",
+   "grades": "9-11",
+   "intl_eligibility": "open",
+   "intl_note_ko": "국제학생 지원 가능하고, 관광비자(B-2)가 필요해요. 영어가 모국어가 아니면 영어성적이 필요하지만, 영어로 수업하는 학교를 2년 이상 다녔으면 면제돼요. 고교 생물 1년 이수가 필요해요.",
+   "intl_note_en": "International students welcome; a tourist/B-2 visa is required. Non-native speakers need TOEFL/IELTS/Duolingo unless they attended an English-medium school for 2+ years. One year of high school biology required.",
+   "cost_ko": "2026년 3주 아카데미 $10,050(기숙사·식사 포함) + 지원비 $100. 공식 FAQ상 재정 지원은 없어요(필라델피아 공립학교 학생 대상 장학금만 있음).",
+   "cost_en": "2026: $10,050 for 3-week academies (includes housing and meals) plus $100 application fee. Official FAQ: no financial aid (limited scholarships only for School District of Philadelphia students).",
+   "timing_ko": "겨울~봄 rolling 지원(정원 차면 마감), 여름 3주",
+   "timing_en": "Rolling applications winter-spring until full; three weeks in summer",
+   "format": "in_person",
+   "official_url": "https://hs.sas.upenn.edu/summer-programs/academies/3-week/biomedical",
+   "eligibility_url": "https://hs.sas.upenn.edu/summer-programs/faq",
+   "official_mentions": [
+    {
+     "college": "University of Pennsylvania",
+     "relation": "host",
+     "note_ko": "펜실베이니아대학교 School of Arts & Sciences가 운영해요.",
+     "note_en": "Run by Penn's School of Arts & Sciences.",
+     "url": "https://hs.sas.upenn.edu/summer-programs/academies/3-week/biomedical",
+     "school_id": 10
+    }
+   ],
+   "area": "bio_health"
+  },
+  {
+   "key": "stanford_cnix",
+   "name": "Stanford Clinical Neuroscience Immersion Experience (CNI-X / CNV-X)",
+   "type": "summer",
+   "majors": [
+    "neuroscience",
+    "premed",
+    "public_health"
+   ],
+   "host": "Stanford Medicine, Department of Psychiatry and Behavioral Sciences",
+   "what_ko": "스탠퍼드 의대 정신의학·행동과학과가 여는 2주(10일) 임상 신경과학 세미나 프로그램이에요. 캠퍼스 참가(CNI-X)와 Zoom 온라인(CNV-X)이 있어요.",
+   "what_en": "A two-week (10-day) clinical neuroscience seminar program from Stanford's Department of Psychiatry and Behavioral Sciences, offered in person (CNI-X) or virtually via Zoom (CNV-X).",
+   "do_ko": "신경과학·정신의학·심리학 강의를 듣고 교수진과 토론해요. 소그룹으로 정신건강 문제 해결 아이디어를 만드는 capstone 프로젝트를 발표해요. 실험실 연구나 환자 진료 참여는 없어요.",
+   "do_en": "Attend lectures and discussions on neuroscience, psychiatry, and psychology, and present a small-group capstone project on a mental-health problem. No lab work or direct patient contact.",
+   "grades": "10-12",
+   "intl_eligibility": "open",
+   "intl_note_ko": "국제학생도 받는다고 FAQ에 명시돼 있어요. 다만 숙소·교통은 제공하지 않아 캠퍼스 참가 시 비자·항공·숙소를 직접 해결해야 해요. 온라인(CNV-X)은 미국 태평양 시간 기준으로 진행돼요. 만 14~18세만 참가할 수 있어요.",
+   "intl_note_en": "The FAQ states international students are accepted, but no housing or transportation is provided; in-person participants must arrange visas, airfare, and lodging themselves. The virtual CNV-X runs on Pacific Time. Ages 14-18 only.",
+   "cost_ko": "2026년 온라인(CNV-X) $1,725, 캠퍼스(CNI-X) $3,325. 국제학생 포함 필요 기반 장학금(최대 90% 감면)이 있어요.",
+   "cost_en": "2026: virtual CNV-X $1,725; in-person CNI-X $3,325. Need-based scholarships (up to 90% off) available, including for international applicants.",
+   "timing_ko": "겨울~초봄 rolling 지원, 여름 2주 세션",
+   "timing_en": "Rolling applications winter to early spring; two-week summer sessions",
+   "format": "hybrid",
+   "official_url": "https://med.stanford.edu/psychiatry/special-initiatives/CNIX.html",
+   "eligibility_url": "https://med.stanford.edu/content/dam/sm/psychiatry/documents/cnix/CNIX2026InpersonFAQs.pdf",
+   "official_mentions": [
+    {
+     "college": "Stanford University",
+     "relation": "host",
+     "note_ko": "스탠퍼드 의대 정신의학·행동과학과가 운영해요.",
+     "note_en": "Run by Stanford Medicine's Department of Psychiatry and Behavioral Sciences.",
+     "url": "https://med.stanford.edu/psychiatry/special-initiatives/CNIX.html",
+     "school_id": 4
+    }
+   ],
+   "area": "bio_health"
+  },
+  {
+   "key": "wharton-investment-competition",
+   "name": "Wharton Global High School Investment Competition",
+   "type": "competition",
+   "majors": [
+    "finance",
+    "business",
+    "economics",
+    "accounting"
+   ],
+   "host": "Wharton Global Youth Program, The Wharton School, University of Pennsylvania",
+   "what_ko": "와튼 스쿨이 여는 고등학생 팀 투자 대회예요. 매년 나오는 케이스 스터디(가상의 고객)를 바탕으로 투자 전략을 세우고 가상 포트폴리오를 운용해요.",
+   "what_en": "A free team investment competition run by Wharton. Teams build an investment strategy for an annual case-study client and manage a simulated portfolio.",
+   "do_ko": "같은 학교 학생 4~6명이 교사 어드바이저 1명과 팀을 만들어 등록해요. Wharton Investment Simulator에서 가상 자금으로 포트폴리오를 운용하고, 가을~겨울 사이 과제 4개를 제출해요. 수익률보다 투자 전략의 질로 평가돼요.",
+   "do_en": "Form a team of 4-6 students from the same high school with one teacher advisor. Manage a virtual portfolio in the Wharton Investment Simulator and submit required deliverables during the fall. Judging focuses on the quality of the investment strategy, not returns.",
+   "grades": "9-12",
+   "intl_eligibility": "open",
+   "intl_note_ko": "공식 FAQ에 전 세계 고등학생이 참가할 수 있다고 나와 있어요. 단, 팀원과 어드바이저 교사가 모두 같은 학교 소속이어야 하고, 팀 리더는 16세 이상이어야 해요.",
+   "intl_note_en": "Official FAQ says high school students around the world may participate. All team members and the advisor must be from the same high school; the team leader must be at least 16.",
+   "cost_ko": "참가비 무료예요. 결선(필라델피아) 참석 시 교통·숙박비는 본인 부담이고, 이동이 어려우면 온라인으로 참여할 수 있어요.",
+   "cost_en": "Free, no registration fee. Travel and lodging for the in-person finale are paid by participants; finalists may join virtually.",
+   "timing_ko": "가을에 시작해 봄에 끝나요 (가을~겨울 과제 제출, 봄 결선).",
+   "timing_en": "Runs fall through spring (deliverables in fall, Global Finale in spring).",
+   "format": "hybrid",
+   "official_url": "https://globalyouth.wharton.upenn.edu/investment-competition/",
+   "eligibility_url": "https://globalyouth.wharton.upenn.edu/investment-competition/faq/",
+   "official_mentions": [
+    {
+     "college": "University of Pennsylvania (Wharton School)",
+     "relation": "host",
+     "note_ko": "와튼 스쿨의 Wharton Global Youth Program이 직접 주최해요.",
+     "note_en": "Hosted by the Wharton School's Global Youth Program.",
+     "url": "https://globalyouth.wharton.upenn.edu/investment-competition/",
+     "school_id": 10
+    }
+   ],
+   "area": "biz_social"
+  },
+  {
+   "key": "wharton-global-youth-summer",
+   "name": "Wharton Global Youth Summer Programs",
+   "type": "summer",
+   "majors": [
+    "business",
+    "finance",
+    "economics",
+    "sport_management"
+   ],
+   "host": "Wharton Global Youth Program, The Wharton School, University of Pennsylvania",
+   "what_ko": "와튼 스쿨의 고등학생 대상 여름 프로그램이에요. 캠퍼스 과정(Essentials of Finance, Leadership in the Business World 등)과 온라인 과정(Sports Business Academy 등)이 있어요.",
+   "what_en": "Wharton's summer programs for high school students, with on-campus options (e.g., Essentials of Finance, Leadership in the Business World) and online options (e.g., Sports Business Academy).",
+   "do_ko": "과정별로 지원서를 내고 합격하면 2~3주가량 금융·경영·리더십·스포츠 비즈니스 등을 배워요. 캠퍼스 과정은 펜실베이니아대 기숙사에서 지내요.",
+   "do_en": "Apply to a specific program; admitted students study finance, business, leadership, sports business and more. On-campus students live in Penn residence halls.",
+   "grades": "온라인: 9-11학년 재학 / 캠퍼스: 대부분 11·12학년 진학 예정자 (online: grades 9-11; on-campus: mostly rising juniors and seniors)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "국제학생도 지원할 수 있고 장학금 대상이 될 수 있어요. 영어가 모국어가 아니면 TOEFL iBT 100 / IELTS 7 이상(대안으로 Duolingo 130)이 필요해요. 캠퍼스 과정은 관광비자 준비 시간을 위해 우선 마감에 맞춰 지원하라고 안내해요. 캠퍼스 과정은 비가중 GPA 3.3 이상(일부 과정 3.5 이상)을 요구해요.",
+   "intl_note_en": "International students may apply and are eligible for scholarships. Non-native English speakers need TOEFL iBT 100 / IELTS 7 (Duolingo 130 as alternative). International applicants are encouraged to apply by the priority deadline for tourist-visa processing. On-campus programs require a 3.3+ unweighted GPA (3.5+ for some).",
+   "cost_ko": "2026년 기준 캠퍼스 과정 $8,299~$11,899(숙식 포함), 온라인 과정 대부분 $2,099~$4,799예요. 연도별로 바뀌니 공식 페이지를 확인하세요.",
+   "cost_en": "2026: on-campus $8,299-$11,899 (incl. housing and meals); most online programs $2,099-$4,799. Check the official page for the current year.",
+   "timing_ko": "겨울에 지원(우선 마감이 겨울), 여름에 진행해요.",
+   "timing_en": "Apply in winter (priority deadline), programs run in summer.",
+   "format": "hybrid",
+   "official_url": "https://globalyouth.wharton.upenn.edu/summer-high-school-programs/",
+   "eligibility_url": "https://globalyouth.wharton.upenn.edu/summer-high-school-programs/on-campus-programs/application-information/",
+   "official_mentions": [
+    {
+     "college": "University of Pennsylvania (Wharton School)",
+     "relation": "host",
+     "note_ko": "와튼 스쿨이 직접 운영하는 고등학생 여름 프로그램이에요.",
+     "note_en": "Run directly by the Wharton School.",
+     "url": "https://globalyouth.wharton.upenn.edu/summer-high-school-programs/",
+     "school_id": 10
+    }
+   ],
+   "area": "biz_social"
+  },
+  {
+   "key": "diamond-challenge",
+   "name": "Diamond Challenge",
+   "type": "competition",
+   "majors": [
+    "business",
+    "economics",
+    "social_sci"
+   ],
+   "host": "Horn Entrepreneurship, University of Delaware",
+   "what_ko": "델라웨어대학교 Horn Entrepreneurship이 여는 고등학생 창업 대회예요. Business Innovation과 Social Innovation 두 트랙이 있어요.",
+   "what_en": "A high school entrepreneurship competition run by the University of Delaware's Horn Entrepreneurship, with Business Innovation and Social Innovation tracks.",
+   "do_ko": "2~4명 팀(성인 어드바이저 1명 필수)이 3~5쪽 사업 개요와 60초 영상을 제출해요. 통과하면 현지 피치 행사나 온라인 영상 피치를 하고, 결선 진출팀은 델라웨어 Summit에 직접 참석해요.",
+   "do_en": "Teams of 2-4 students (plus one adult advisor) submit a 3-5 page narrative and a 60-second video. Advancing teams pitch live at partner events or virtually; finalists attend the in-person Summit.",
+   "grades": "만 14~18세 고등학생 (high school students aged 14-18)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "공식 페이지에 'Any Idea, Any Team, Any Country'라고 나와 있어 전 세계 고등학생이 참가할 수 있어요. 결선은 현장 참석이 필요해요.",
+   "intl_note_en": "Official page states \"Any Idea, Any Team, Any Country\"; open to high school students worldwide. The final round requires in-person attendance.",
+   "cost_ko": null,
+   "cost_en": null,
+   "timing_ko": "가을에 접수 시작, 겨울에 제출 마감, 봄에 결선이에요.",
+   "timing_en": "Submissions open in fall, deadline in winter, finals in spring.",
+   "format": "hybrid",
+   "official_url": "https://diamondchallenge.org/",
+   "eligibility_url": "https://diamondchallenge.org/competition/",
+   "official_mentions": [
+    {
+     "college": "University of Delaware",
+     "relation": "host",
+     "note_ko": "델라웨어대학교 Horn Entrepreneurship이 만들고 운영하는 대회예요.",
+     "note_en": "Created and run by Horn Entrepreneurship at the University of Delaware.",
+     "url": "https://www.udel.edu/research-innovation/horn/pre-college-programs/diamond-challenge/",
+     "school_id": 130
+    }
+   ],
+   "area": "biz_social"
+  },
+  {
+   "key": "john-locke",
+   "name": "John Locke Institute Global Essay Prize",
+   "type": "competition",
+   "majors": [
+    "economics",
+    "history",
+    "humanities",
+    "intl_relations",
+    "philosophy",
+    "political_sci",
+    "prelaw",
+    "psychology",
+    "social_sci"
+   ],
+   "host": "John Locke Institute",
+   "what_ko": "경제학·정치·국제관계·법·심리학·공공정책 등 10개 분야 중 하나를 골라 영어 에세이를 쓰는 국제 대회예요.",
+   "what_en": "An international essay competition with ten subject categories including Economics, Politics, International Relations, Law, Psychology and Public Policy.",
+   "do_ko": "분야별로 나오는 3개 질문 중 하나를 골라 2,000단어 이내 에세이를 써요. 먼저 등록한 뒤 제출하고, 학교 선생님 등 academic referee의 이메일 확인이 필요해요. 여러 분야에 낼 수도 있어요.",
+   "do_en": "Pick one of three prompts in a category and write an essay of up to 2,000 words. Register first, then submit; an academic referee must verify by email. Multiple categories are allowed.",
+   "grades": "제출 마감일 기준 만 19세 미만 (under 19 at the submission deadline)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "어느 나라 학생이든 참가할 수 있어요. 나이 조건(마감일 기준 19세 미만)만 맞으면 돼요.",
+   "intl_note_en": "Open to students from any country who are under 19 at the submission deadline.",
+   "cost_ko": "참가비 무료예요. 마감 연장을 신청할 때만 수수료(£25/£75)가 있어요.",
+   "cost_en": "Free to enter; late-submission extensions cost £25 or £75.",
+   "timing_ko": "봄에 등록·제출, 여름에 결과 발표, 가을에 시상식이 있어요.",
+   "timing_en": "Registration and submission in spring, shortlist in summer, awards in fall.",
+   "format": "online",
+   "official_url": "https://www.johnlockeinstitute.com/essay-competition",
+   "eligibility_url": "https://www.johnlockeinstitute.com/essay-competition",
+   "official_mentions": [],
+   "area": "biz_social"
+  },
+  {
+   "key": "yygs",
+   "name": "Yale Young Global Scholars (YYGS)",
+   "type": "summer",
+   "majors": [
+    "political_sci",
+    "prelaw",
+    "economics",
+    "intl_relations",
+    "social_sci"
+   ],
+   "host": "Yale University",
+   "what_ko": "예일대학교가 운영하는 2주 기숙형 여름 프로그램이에요. 사회과학 계열 학생에게는 Politics, Law & Economics(PLE)와 Solving Global Challenges(SGC) 세션이 잘 맞아요.",
+   "what_en": "A two-week residential summer program at Yale. Politics, Law & Economics (PLE) and Solving Global Challenges (SGC) fit social-science students.",
+   "do_ko": "세션 하나를 골라 지원하고, 합격하면 예일 캠퍼스에서 2주간 강의·세미나·캡스톤 프로젝트에 참여해요.",
+   "do_en": "Apply to one session; admitted students spend two weeks at Yale in lectures, seminars and a capstone project.",
+   "grades": "10·11학년 재학(또는 국제 동등 학년), 만 16~18세 (current sophomores or juniors, ages 16-18)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "공식 페이지에 모든 나라에서 지원할 수 있고, 모든 나라 학생이 need-based 재정지원을 신청할 수 있다고 나와 있어요. 영어로 진행되는 수업을 따라갈 수 있어야 하고, 처음 참가하는 학생만 지원할 수 있어요.",
+   "intl_note_en": "Official page: YYGS accepts applications from ALL countries and need-based aid is available to students from ALL countries. Must handle a rigorous curriculum in English; first-time participants only.",
+   "cost_ko": "2주 세션 1회 수업료 $7,500(숙식 포함, 항공료 제외)예요. 수업료 전액까지 need-based 재정지원이 가능해요.",
+   "cost_en": "$7,500 per two-week session (housing and meals included, travel excluded). Need-based aid up to full tuition.",
+   "timing_ko": "가을에 지원 시작, 겨울 초에 마감, 여름(6~7월)에 진행해요.",
+   "timing_en": "Application opens in fall, closes in early winter; sessions run in summer.",
+   "format": "in_person",
+   "official_url": "https://globalscholars.yale.edu/",
+   "eligibility_url": "https://globalscholars.yale.edu/eligibility",
+   "official_mentions": [
+    {
+     "college": "Yale University",
+     "relation": "host",
+     "note_ko": "예일대학교가 직접 운영하는 프로그램이에요.",
+     "note_en": "Run by Yale University.",
+     "url": "https://globalscholars.yale.edu/",
+     "school_id": 5
+    }
+   ],
+   "area": "biz_social"
+  },
+  {
+   "key": "harvard-model-congress-asia",
+   "name": "Harvard Model Congress Asia (HMCA)",
+   "type": "competition",
+   "majors": [
+    "political_sci",
+    "prelaw",
+    "intl_relations"
+   ],
+   "host": "Harvard College Model Congress Asia (Harvard University student organization)",
+   "what_ko": "하버드 학부생 단체가 운영하는 아시아 지역 모의의회 컨퍼런스예요. 2027년 대회는 서울시립대학교에서 열려요.",
+   "what_en": "An Asia-region government simulation conference run by Harvard undergraduates. HMCA 2027 is held at the University of Seoul.",
+   "do_ko": "3일간 위원회에 배정돼 법안·조약을 작성하고 연설·토론을 해요. 학교 단체(4명 이상) 또는 개인(Independent Delegate)으로 등록할 수 있어요.",
+   "do_en": "Over three days, delegates draft bills and treaties, give speeches and debate in committees. Register as a school delegation (4+) or as an independent delegate.",
+   "grades": "중·고등학교 재학, 만 14~19세 (enrolled in secondary school, ages 14-19)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "아시아·전 세계 고등학생 대상이고, 학교가 참가하지 않아도 개인으로 등록할 수 있어요. 한국에서 열려 이동 부담이 적어요.",
+   "intl_note_en": "Aimed at students from Asia and around the world; individual (independent) registration is available. Held in Seoul for 2027.",
+   "cost_ko": "2027년 기준 개인 등록 $390(마감 후 $415), 학교 등록은 학교비 $200 + 학생 1인당 $350예요. 전액·부분 장학금이 있어요.",
+   "cost_en": "2027: independent delegate $390 ($415 late); schools $200 school fee + $350 per delegate. Full and partial scholarships available.",
+   "timing_ko": "가을에 등록 마감, 겨울(1월)에 대회가 열려요.",
+   "timing_en": "Registration closes in fall; conference in winter (January).",
+   "format": "in_person",
+   "official_url": "https://www.hmcasia.org/",
+   "eligibility_url": "https://www.hmcasia.org/registration-information",
+   "official_mentions": [
+    {
+     "college": "Harvard Model Congress (하버드 학부생 단체)",
+     "relation": "host",
+     "note_ko": "하버드 학부생 단체(Harvard College Model Congress Asia)가 운영해요. 대학 본부가 아니라 학생 단체 주관이에요.",
+     "note_en": "Run by Harvard College Model Congress Asia, a Harvard student organization (not the university administration).",
+     "url": "https://www.hmcasia.org/about-hmca"
+    }
+   ],
+   "area": "biz_social"
+  },
+  {
+   "key": "thimun",
+   "name": "THIMUN (The Hague International Model United Nations)",
+   "type": "competition",
+   "majors": [
+    "intl_relations",
+    "political_sci"
+   ],
+   "host": "THIMUN Foundation",
+   "what_ko": "네덜란드 헤이그에 본부를 둔 대표적인 국제 모의유엔(MUN) 재단이에요. 헤이그 본대회와 싱가포르 대회 등을 열어요.",
+   "what_en": "A leading international Model UN foundation based in The Hague, running THIMUN The Hague and THIMUN Singapore.",
+   "do_ko": "학교 MUN 클럽 단위로 대표단을 꾸려 참가해요. 국가 대표로 위원회에서 결의안을 쓰고 토론해요.",
+   "do_en": "Students attend as part of a school MUN delegation, representing countries and debating resolutions in committees.",
+   "grades": "중·고등학생 (secondary school students)",
+   "intl_eligibility": "restricted",
+   "intl_note_ko": "국적 제한은 없지만 학교 단위 참가예요. 처음 참가하는 학교는 교장이나 MUN 지도교사 서명이 담긴 공식 신청 절차를 거쳐야 하고, 참가는 초청제예요. 개인 등록은 공식 페이지에서 확인되지 않았어요.",
+   "intl_note_en": "No nationality restriction, but participation is school-based. New schools must apply formally (letter signed by principal or MUN Director); participation is by invitation. Individual registration not confirmed on official pages.",
+   "cost_ko": null,
+   "cost_en": null,
+   "timing_ko": "싱가포르 대회는 가을(10월), 헤이그 본대회는 겨울(1월 말)이에요.",
+   "timing_en": "THIMUN Singapore in fall (October); THIMUN The Hague in winter (late January).",
+   "format": "in_person",
+   "official_url": "https://www.thimun.org/",
+   "eligibility_url": "https://foundation.thimun.org/participation/new-schools/",
+   "official_mentions": [],
+   "area": "biz_social"
+  },
+  {
+   "key": "nsda",
+   "name": "National Speech & Debate Association (NSDA)",
+   "type": "competition",
+   "majors": [
+    "prelaw",
+    "political_sci",
+    "intl_relations"
+   ],
+   "host": "National Speech & Debate Association",
+   "what_ko": "미국 최대 규모의 고등학생 스피치·토론 협회예요. 국제 회원 학교도 온라인 대회 등을 통해 전미 대회(National Tournament) 출전 자격을 얻을 수 있어요.",
+   "what_en": "The largest US high school speech and debate association. International member schools can qualify students for the National Tournament through online pathways.",
+   "do_ko": "학교가 NSDA 회원이 되면 학생도 회원 등록 후 대회에 나갈 수 있어요. NSDA 지구(district)가 없는 나라의 학교는 Tabroom.com 온라인 대회로 예선을 치러요. World Schools Debate 국가 대표팀 참가는 별도로 신청해요.",
+   "do_en": "Once a school joins, students register as members and compete. Schools in countries without an NSDA district qualify via an online competition on Tabroom.com. Country teams for World Schools Debate apply separately.",
+   "grades": "고등학생 (high school; middle school division also exists)",
+   "intl_eligibility": "restricted",
+   "intl_note_ko": "해외 학교도 회원이 될 수 있고 국제 회원은 같은 자료를 이용할 수 있어요. 다만 학교 회원 가입이 전제예요. World Schools 국가팀 참가는 자리가 한정돼 보장되지 않아요.",
+   "intl_note_en": "Schools outside the US can join as international members with the same resources, but school membership is required. World Schools country-team entry is limited and not guaranteed.",
+   "cost_ko": "공식 페이지 기준 고등학교 회원비 연 $149, 학생 1회 가입비 $20예요.",
+   "cost_en": "Per official page: high school membership $149/year; one-time student fee $20.",
+   "timing_ko": "학년 내내 대회 시즌이 이어져요. 국제 학교 World Schools 참가 의향은 겨울 전에 알려야 해요.",
+   "timing_en": "Competition season runs through the school year; World Schools interest from international schools is due before winter.",
+   "format": "hybrid",
+   "official_url": "https://www.speechanddebate.org/",
+   "eligibility_url": "https://www.speechanddebate.org/international-programs/",
+   "official_mentions": [],
+   "area": "biz_social"
+  },
+  {
+   "key": "launchx",
+   "name": "LaunchX Entrepreneurship Programs",
+   "type": "summer",
+   "majors": [
+    "business"
+   ],
+   "host": "LaunchX",
+   "what_ko": "고등학생이 팀을 꾸려 실제 스타트업을 만들어 보는 창업 프로그램이에요. 여름 샌디에이고 현장 과정과 여러 온라인 과정이 있어요.",
+   "what_en": "An entrepreneurship program where high school students build a real startup in teams, with in-person summer programs in San Diego and several online options.",
+   "do_ko": "지원서를 내고 합격하면 팀을 이뤄 아이디어 발굴부터 시장 검증, 피치까지 창업 과정을 직접 해봐요.",
+   "do_en": "Apply and, if admitted, work in a team through ideation, market validation and pitching.",
+   "grades": "만 14~18세 고등학생 (high school students ages 14-18)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "해외 거주 학생도 참가할 수 있어요. 현장 과정은 국제학생 수수료 $250이 추가되고, 공식 FAQ는 관광비자(B1 등)로 충분하다고 안내해요.",
+   "intl_note_en": "Students outside the US may attend; on-site programs add a $250 international fee, and the official FAQ says a tourist/B1 visa is typically sufficient.",
+   "cost_ko": "공식 페이지 기준 샌디에이고 Flagship $11,495, 샌디에이고 Exploration $6,495, 온라인 Flagship $6,495, 온라인 BootCamp $1,995예요. 현장 과정은 국제학생 수수료 $250이 더해져요. 지원료는 라운드별 $45~$75예요.",
+   "cost_en": "Per official page: San Diego Flagship $11,495, San Diego Exploration $6,495, Online Flagship $6,495, Online BootCamp $1,995; +$250 international fee for on-site. Application fee $45-$75 by round.",
+   "timing_ko": "대표 과정은 여름이에요. 온라인 BootCamp 등은 봄·가을·겨울에도 열려요.",
+   "timing_en": "Flagship programs run in summer; online bootcamps also run in spring, fall and winter.",
+   "format": "hybrid",
+   "official_url": "https://www.launchx.com/",
+   "eligibility_url": "https://www.launchx.com/admissions",
+   "official_mentions": [],
+   "area": "biz_social"
+  },
+  {
+   "key": "ieo",
+   "name": "International Economics Olympiad (IEO)",
+   "type": "competition",
+   "majors": [
+    "economics",
+    "finance",
+    "business"
+   ],
+   "host": "International Economics Olympiad",
+   "what_ko": "경제·금융 지식과 비즈니스 케이스 발표를 겨루는 고등학생 국제 올림피아드예요. 나라별 대표팀(최대 5명)이 참가해요.",
+   "what_en": "An international olympiad for high school students in economics and finance, including a business case presentation. Countries send teams of up to 5.",
+   "do_ko": "자기 나라 국가 선발 과정을 통과해 대표팀에 들어가야 해요. 본선은 객관식 40문항, 서술형 문제, 영어 비즈니스 케이스 발표로 구성돼요.",
+   "do_en": "Qualify for your country's national team via its national selection. The olympiad includes a 40-question multiple-choice test, open-ended problems and an English business case presentation.",
+   "grades": "대회 연도 6월 기준 만 20세 미만 고등학생 (high school students under 20 on June of the olympiad year)",
+   "intl_eligibility": "restricted",
+   "intl_note_ko": "개인 지원이 아니라 국가별 주관 기관을 통한 대표팀 참가예요. 공식 페이지에 Republic of Korea가 3년 협약 파트너로 올라 있어요. 국제학교 학생이 한국 선발에 응시할 수 있는지는 한국 주관 기관에 확인해야 해요.",
+   "intl_note_en": "Participation is via national teams through each country's organizer, not individual application. Republic of Korea is listed as a 3-year agreement partner; whether international-school students can enter Korea's selection must be confirmed with the Korean organizer.",
+   "cost_ko": "대회 참가비는 무료이고, 이동 경비는 각 팀이 부담해요.",
+   "cost_en": "Participation is free; travel costs are each team's responsibility.",
+   "timing_ko": "연 1회 열려요. 국가 선발 일정은 나라마다 달라요.",
+   "timing_en": "Held annually; national selection schedules vary by country.",
+   "format": "in_person",
+   "official_url": "https://www.ieo-official.org/",
+   "eligibility_url": "https://www.ieo-official.org/",
+   "official_mentions": [],
+   "area": "biz_social"
+  },
+  {
+   "key": "deca",
+   "name": "DECA",
+   "type": "competition",
+   "majors": [
+    "business",
+    "finance",
+    "hospitality"
+   ],
+   "host": "DECA Inc.",
+   "what_ko": "마케팅·금융·호스피탈리티·경영 분야의 고등학생 비즈니스 단체이자 대회예요. 약 60개 롤플레이·발표·온라인 종목이 있어요.",
+   "what_en": "A high school business student organization and competition in marketing, finance, hospitality and management, with nearly 60 role-play, prepared and online events.",
+   "do_ko": "학교 DECA 챕터에 가입해 지역(chartered association) 대회에 나가고, 성적이 좋으면 봄에 열리는 국제 대회 ICDC에 진출해요.",
+   "do_en": "Join your school's DECA chapter, compete at the chartered association level, and qualify for the International Career Development Conference (ICDC) in spring.",
+   "grades": "고등학생 (high school)",
+   "intl_eligibility": "restricted",
+   "intl_note_ko": "반드시 학교 챕터를 통해서만 참여할 수 있어요. 챕터는 학생 10명 이상과 지도교사 1명이 필요하고, 지역 chartered association 소속이어야 해요. 공식 협회 목록에서 한국 협회 페이지는 확인되지 않았으니, 먼저 학교 DECA 담당 선생님께 챕터가 있는지 물어보세요.",
+   "intl_note_en": "Participation only through a school chapter (min. 10 students + 1 advisor) under a chartered association. A Korea association page was not found in DECA's official directory; check with your school's DECA advisor first.",
+   "cost_ko": "DECA Inc. 회비 1인당 $8에 지역 협회 회비가 추가돼요.",
+   "cost_en": "DECA Inc. dues are $8 per person plus chartered association dues.",
+   "timing_ko": "학년 중 지역 대회를 거쳐 봄(4월)에 국제 대회 ICDC가 열려요.",
+   "timing_en": "Association competitions during the school year; ICDC in spring (April).",
+   "format": "in_person",
+   "official_url": "https://www.deca.org/high-school-programs",
+   "eligibility_url": "https://www.deca.org/start",
+   "official_mentions": [],
+   "area": "biz_social"
+  },
+  {
+   "key": "world-scholars-cup",
+   "name": "World Scholar's Cup",
+   "type": "competition",
+   "majors": [
+    "social_sci",
+    "political_sci",
+    "intl_relations"
+   ],
+   "host": "World Scholar's Cup",
+   "what_ko": "사회학(Social Studies)·역사·과학기술·특별 주제를 다루는 3인 팀 학술 대회예요. 지역 라운드 → Global Round → Tournament of Champions 순서로 진행돼요.",
+   "what_en": "A three-person team academic tournament covering Social Studies, History, Science & Technology and a Special Area, progressing from regional rounds to Global Rounds and the Tournament of Champions.",
+   "do_ko": "팀 토론, 공동 에세이(Collaborative Writing), 객관식 시험(Scholar's Challenge), 퀴즈(Scholar's Bowl) 4개 종목에 참가해요. 지역 라운드에서 자격을 얻으면 Global Round에 나갈 수 있어요.",
+   "do_en": "Compete in Team Debate, Collaborative Writing, Scholar's Challenge and Scholar's Bowl. Regional qualifiers may advance to a Global Round.",
+   "grades": "Junior(만 13세 이하)·Senior(만 14세 이상) 부문 (junior up to 13, senior 14+)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "70여 개국에서 열리고 South Korea도 참가국 목록에 있어요. 팀이 없어도 개인으로 등록해 팀원을 매칭받을 수 있어요.",
+   "intl_note_en": "Runs in ~70 countries; South Korea appears in the participating-country list. Students may register individually and be matched with teammates.",
+   "cost_ko": "라운드마다 소액 참가비가 있고 금액은 라운드별로 달라요(대부분 식사 포함).",
+   "cost_en": "A small tournament fee that varies by round (usually includes meals).",
+   "timing_ko": "지역 라운드는 연중 열리고, Tournament of Champions는 가을(11월)이에요.",
+   "timing_en": "Regional rounds year-round; Tournament of Champions in fall (November).",
+   "format": "in_person",
+   "official_url": "https://www.scholarscup.org/",
+   "eligibility_url": "https://www.scholarscup.org/faq/",
+   "official_mentions": [],
+   "area": "biz_social"
+  },
+  {
+   "key": "stanford-summer-institutes",
+   "name": "Stanford Pre-Collegiate Summer Institutes",
+   "type": "summer",
+   "majors": [
+    "psychology",
+    "economics"
+   ],
+   "host": "Stanford Pre-Collegiate Studies, Stanford University",
+   "what_ko": "스탠퍼드 Pre-Collegiate Studies가 운영하는 2주 온라인 여름 과정이에요. 심리학·거시경제학 등 75개 이상 과목 중 하나를 깊게 공부해요.",
+   "what_en": "A two-week online summer program by Stanford Pre-Collegiate Studies with 75+ single-subject courses, including psychology and macroeconomics.",
+   "do_ko": "과목 하나를 골라 지원하고, 합격하면 2주 동안 매일 실시간 온라인 수업에 참여해요. 성적이 매겨지지 않는 비학점 과정이에요.",
+   "do_en": "Apply for one course; admitted students attend live online classes daily for two weeks. Courses are ungraded and non-credit.",
+   "grades": "8-11학년 재학 (currently in grades 8-11)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "보통 50개국 이상 학생이 참가하고, 재정지원도 국내·국제 학생 모두 받을 수 있어요. 온라인이라 비자가 필요 없어요.",
+   "intl_note_en": "Typically 50+ countries represented; financial aid can be awarded to domestic and international participants. Fully online.",
+   "cost_ko": "수업료 $3,200예요(교재비 별도, $100 이하).",
+   "cost_en": "Tuition $3,200 (course materials extra, up to $100).",
+   "timing_ko": "여름(6~7월)에 2주 세션 2개가 열려요. 지원은 그 전 겨울~봄에 해요.",
+   "timing_en": "Two 2-week sessions in summer; applications close before summer.",
+   "format": "online",
+   "official_url": "https://summerinstitutes.spcs.stanford.edu/",
+   "eligibility_url": "https://summerinstitutes.spcs.stanford.edu/",
+   "official_mentions": [
+    {
+     "college": "Stanford University",
+     "relation": "host",
+     "note_ko": "스탠퍼드 Pre-Collegiate Studies가 운영해요.",
+     "note_en": "Run by Stanford Pre-Collegiate Studies.",
+     "url": "https://spcs.stanford.edu/programs/stanford-pre-collegiate-summer-institutes",
+     "school_id": 4
+    },
+    {
+     "college": "Caltech",
+     "relation": "admissions_mention",
+     "note_ko": "Caltech 입학처 'STEM 준비도' 페이지에 예시로 나와요(준비 방법에 선호는 없다고 함께 밝혀요).",
+     "note_en": "Given as an example on Caltech Admissions' STEM-preparedness page (which says Caltech has no preferred method).",
+     "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness",
+     "school_id": 11
+    }
+   ],
+   "area": "biz_social"
+  },
+  {
+   "key": "georgetown-summer-academies",
+   "name": "Georgetown Summer Academies (High School)",
+   "type": "summer",
+   "majors": [
+    "intl_relations",
+    "political_sci",
+    "prelaw",
+    "business",
+    "economics",
+    "sport_management",
+    "criminology"
+   ],
+   "host": "Georgetown University Summer Programs for High School Students",
+   "what_ko": "조지타운대학교의 1~3주 고등학생 여름 아카데미예요. International Relations, Law, American Politics, Foreign Policy, Global Business, Economics Policy, Sports Industry Management 등 과정이 있어요.",
+   "what_en": "Georgetown's 1-3 week non-credit summer academies for high schoolers, including International Relations, Law, American Politics, Foreign Policy, Global Business, Economics Policy and Sports Industry Management.",
+   "do_ko": "한 번 지원해 합격하면 원하는 아카데미에 선착순으로 등록해요. 강의·토론·시뮬레이션(예: 국제 위기 시뮬레이션)에 참여해요.",
+   "do_en": "One application; once admitted, register for academies first-come, first-served. Lectures, discussions and simulations (e.g., an international crisis simulation).",
+   "grades": "8-12학년 재학, GPA 2.0 이상 (current grades 8-12, GPA 2.0+)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "국제학생은 아카데미 참가에 TOEFL 점수나 학생비자가 필요 없어요. 대신 학교는 비자 지원을 해주지 않고, 국제학생 건강보험이 의무예요.",
+   "intl_note_en": "International students in Academies need no TOEFL or student visa; Georgetown provides no visa assistance for non-credit Academies, and international health insurance is mandatory.",
+   "cost_ko": "공식 페이지 기준 1주 비의료 과정 기숙형 $3,725 / 통학형 $3,095, 2주·3주 과정은 더 비싸요. 지원료 $50(얼리버드 마감 전 면제)예요.",
+   "cost_en": "Per official page: 1-week non-medical residential $3,725 / commuter $3,095; longer academies cost more. $50 application fee (waived by the early-bird deadline).",
+   "timing_ko": "늦가을부터 심사 시작, 겨울 얼리버드 마감·봄 최종 마감, 여름에 진행해요.",
+   "timing_en": "Review starts late fall; early-bird deadline in winter, final deadline in spring; programs in summer.",
+   "format": "in_person",
+   "official_url": "https://summer.georgetown.edu/pre-college-programs/academies/",
+   "eligibility_url": "https://summer.georgetown.edu/programs/SHS14/international-relations-academy/how-to-apply/",
+   "official_mentions": [
+    {
+     "college": "Georgetown University",
+     "relation": "host",
+     "note_ko": "조지타운대학교가 직접 운영하는 고등학생 여름 프로그램이에요.",
+     "note_en": "Run by Georgetown University.",
+     "url": "https://summer.georgetown.edu/",
+     "school_id": 25
+    }
+   ],
+   "area": "biz_social"
+  },
+  {
+   "key": "scholastic-art-writing-awards",
+   "name": "Scholastic Art & Writing Awards",
+   "type": "competition",
+   "majors": [
+    "arts",
+    "english",
+    "graphic_design",
+    "film",
+    "journalism"
+   ],
+   "host": "Alliance for Young Artists & Writers",
+   "what_ko": "미국에서 오래된 청소년 미술·글쓰기 공모전이에요. 지역(regional) 심사를 거쳐 전국(national) 단위로 시상해요.",
+   "what_en": "A long-running US art and writing awards program for teens, with regional judging leading to national recognition.",
+   "do_ko": "온라인 포털에 작품을 올려 20개가 넘는 카테고리 중 하나로 출품해요. 12학년은 portfolio로도 낼 수 있어요.",
+   "do_en": "Upload work to the online portal in one of 20+ categories; seniors may also submit a portfolio.",
+   "grades": "7-12 (age 13+)",
+   "intl_eligibility": "us_only",
+   "intl_note_ko": "미국·미국령·미군기지·캐나다(퀘벡 제외)에서 학교를 다니고 거주해야 해요. 미국 밖에 있는 미국 인증 학교(U.S.-accredited school) 재학생은 국적과 관계없이 참가할 수 없다고 공식 규정에 명시돼 있어요. 한국 국제학교 학생은 해당되지 않아요.",
+   "intl_note_en": "Must attend school and reside in the US, US territories/military bases, or Canada (excluding Quebec). Students at U.S.-accredited schools outside these areas are ineligible regardless of citizenship, including U.S. Department of State Overseas Schools.",
+   "cost_ko": "개별 작품 $15, portfolio $40이에요. fee waiver가 있어요.",
+   "cost_en": "$15 per individual entry, $40 per portfolio; fee waivers available.",
+   "timing_ko": "가을에 접수가 열리고, 지역별 마감은 겨울(12월부터)에 시작해요.",
+   "timing_en": "Opens in the fall; regional deadlines begin in winter (from December).",
+   "format": "online",
+   "official_url": "https://www.artandwriting.org/",
+   "eligibility_url": "https://www.artandwriting.org/participation-terms/",
+   "official_mentions": [],
+   "area": "hum_arts"
+  },
+  {
+   "key": "youngarts",
+   "name": "YoungArts National Arts Competition",
+   "type": "competition",
+   "majors": [
+    "arts",
+    "music",
+    "film",
+    "english",
+    "graphic_design"
+   ],
+   "host": "National YoungArts Foundation",
+   "what_ko": "10개 예술 분야(Classical Music, Dance, Design, Film, Jazz, Photography, Theater, Visual Arts, Voice, Writing)의 15-18세 아티스트를 뽑는 공모전이에요.",
+   "what_en": "A competition for artists ages 15-18 across 10 disciplines: Classical Music, Dance, Design, Film, Jazz, Photography, Theater, Visual Arts, Voice, and Writing.",
+   "do_ko": "원하는 분야에 온라인으로 작품을 제출해요. 수상자는 대면 행사인 National YoungArts Week에 참여해요.",
+   "do_en": "Apply online in a chosen discipline; winners take part in the in-person National YoungArts Week.",
+   "grades": "10-12 (ages 15-18)",
+   "intl_eligibility": "us_only",
+   "intl_note_ko": "미국 시민권자, 영주권자, 또는 미국에서 과세 소득을 합법적으로 받을 수 있는 사람만 지원할 수 있고, 미국에 기반(based in the United States)을 두어야 해요. 한국 거주 국제학생은 대상이 아니에요.",
+   "intl_note_en": "Applicants must be a US citizen, permanent resident, or legally able to receive taxable income in the US, and be based in the United States.",
+   "cost_ko": "지원서 1건당 $35예요. 추천인 편지로 fee waiver를 받을 수 있어요.",
+   "cost_en": "$35 per application; fee waiver available with a letter from a parent, teacher, counselor, or principal.",
+   "timing_ko": "가을(10월 초)에 지원이 마감돼요.",
+   "timing_en": "Applications close in early fall (October).",
+   "format": "hybrid",
+   "official_url": "https://youngarts.org/competition/",
+   "eligibility_url": "https://youngarts.org/faq/",
+   "official_mentions": [],
+   "area": "hum_arts"
+  },
+  {
+   "key": "concord-review",
+   "name": "The Concord Review",
+   "type": "competition",
+   "majors": [
+    "history",
+    "humanities"
+   ],
+   "host": "The Concord Review",
+   "what_ko": "고등학생이 쓴 역사 연구 논문을 싣는 계간 학술지예요. 투고해서 게재되는 방식이에요.",
+   "what_en": "A quarterly journal that publishes academic history research papers written by secondary school students.",
+   "do_ko": "역사 연구 논문을 써서 온라인으로 투고해요. 4,000단어보다 짧아도 되지만, 더 긴 논문과 함께 심사받는다고 안내돼 있어요.",
+   "do_en": "Write a history research paper and submit it online; papers under 4,000 words are accepted but compete with longer ones.",
+   "grades": "secondary school (must complete the paper before finishing secondary school; not yet in college)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "공식 안내에 미국과 해외의 공립·사립·홈스쿨 학생 모두 지원할 수 있다고 나와 있어요.",
+   "intl_note_en": "Public, private, and home school students from both the U.S. and internationally are eligible.",
+   "cost_ko": "투고 1건당 $70예요.",
+   "cost_en": "$70 per submission.",
+   "timing_ko": "연 4회(겨울·봄·여름·가을 호) 분기별 마감이 있어요. 한 번 낸 논문은 다음 3개 호까지 심사 대상이에요.",
+   "timing_en": "Four quarterly deadlines a year; a submitted paper is eligible for the next three issues.",
+   "format": "online",
+   "official_url": "https://www.tcr.org/",
+   "eligibility_url": "https://www.tcr.org/Submitting-papers-to-TCR",
+   "official_mentions": [],
+   "area": "hum_arts"
+  },
+  {
+   "key": "korea-linguistics-olympiad",
+   "name": "Korea Linguistics Olympiad (KLO) → International Linguistics Olympiad (IOL)",
+   "type": "competition",
+   "majors": [
+    "linguistics"
+   ],
+   "host": "한국언어학올림피아드 (KLO) — IOL 한국 대표 선발",
+   "what_ko": "처음 보는 언어의 자료를 논리로 풀어내는 언어학 퍼즐 대회예요. IOL 공식 사이트에서 한국 대표팀은 KLO로 뽑는다고 안내해요.",
+   "what_en": "A linguistics problem-solving olympiad; the IOL site states Team Republic of Korea is chosen through KLO.",
+   "do_ko": "온라인(화상 감독)으로 2시간 동안 6-8문제를 풀어요. 수상하면 봄의 APLO에 나갈 수 있고, 여기서 IOL 대표 기회가 주어져요. 언어학 사전 지식은 필요 없어요.",
+   "do_en": "Solve 6-8 problems in 2 hours online with video proctoring; awardees advance to APLO in spring, which leads to IOL selection. No prior linguistics knowledge needed.",
+   "grades": "6-11 (enrolled at a secondary institution in Korea)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "한국에 거주하면 국적과 관계없이 참가할 수 있다고 공식 영문 페이지에 나와 있어요. 다만 문제는 한국어로 출제돼요. 참고로 미국 NACLO는 미국·캐나다 시민이거나 미국·캐나다 학교 재학생만 참가할 수 있어요.",
+   "intl_note_en": "Non-citizens residing in South Korea are eligible per the official English page; problems are given in Korean. (NACLO requires US/Canadian citizenship or enrollment in a US/Canadian secondary school.)",
+   "cost_ko": null,
+   "cost_en": null,
+   "timing_ko": "가을에 KLO 예선, 봄에 APLO, 여름에 IOL이 열려요.",
+   "timing_en": "KLO in fall, APLO in spring, IOL in summer.",
+   "format": "online",
+   "official_url": "https://krlo.kr/english/",
+   "eligibility_url": "https://krlo.kr/english/",
+   "official_mentions": [],
+   "area": "hum_arts"
+  },
+  {
+   "key": "national-history-day-korea",
+   "name": "National History Day (NHD Korea affiliate)",
+   "type": "competition",
+   "majors": [
+    "history",
+    "humanities",
+    "film",
+    "media"
+   ],
+   "host": "National History Day / NHD Korea (Seoul International School)",
+   "what_ko": "매년 주제에 맞춰 역사 연구 프로젝트를 만드는 대회예요. 한국에도 공식 지역 대회(NHD Korea)가 있어요.",
+   "what_en": "An annual history research project competition; Korea has an official NHD affiliate contest.",
+   "do_ko": "Paper, Exhibit, Documentary, Performance, Website 중 하나로 혼자 또는 팀으로 프로젝트를 만들어요. 지역 대회 각 부문 상위 2팀이 전국 대회에 초청돼요.",
+   "do_en": "Create a paper, exhibit, documentary, performance, or website individually or in a group; the top two entries per category at affiliate contests are invited to the National Contest.",
+   "grades": "Junior 6-8, Senior 9-12",
+   "intl_eligibility": null,
+   "intl_note_ko": "NHD 공식 사이트에 한국 지역 대회(NHD Korea, Seoul International School 주관)가 있고, 전국 대회 참가 지역에 Korea가 포함돼 있어요. 다만 어떤 학교·학생이 참가할 수 있는지는 공식 페이지에 적혀 있지 않아서, 학교나 NHD Korea 담당자에게 확인해 주세요.",
+   "intl_note_en": "NHD lists an official Korea affiliate (sponsored by Seoul International School), and Korea is among National Contest participants, but school/student eligibility for the Korea affiliate is not stated on the official page.",
+   "cost_ko": null,
+   "cost_en": null,
+   "timing_ko": "한국 지역 대회는 봄, 전국 대회는 여름(6월) University of Maryland에서 열려요.",
+   "timing_en": "Korea affiliate contest in spring; National Contest in summer (June) at the University of Maryland.",
+   "format": "in_person",
+   "official_url": "https://nhd.org/en/affiliates/nhd-korea/",
+   "eligibility_url": null,
+   "official_mentions": [
+    {
+     "college": "University of Maryland, College Park",
+     "relation": "host",
+     "note_ko": "NHD 전국 대회가 University of Maryland, College Park에서 열린다고 NHD 공식 페이지에 나와 있어요.",
+     "note_en": "NHD's official page states the National Contest is held at the University of Maryland, College Park.",
+     "url": "https://nhd.org/en/contest/national-contest/",
+     "school_id": 44
+    }
+   ],
+   "area": "hum_arts"
+  },
+  {
+   "key": "bennington-young-writers-awards",
+   "name": "Bennington Young Writers Awards",
+   "type": "competition",
+   "majors": [
+    "english",
+    "humanities"
+   ],
+   "host": "Bennington College",
+   "what_ko": "Bennington College가 여는 고등학생 글쓰기 공모전이에요. Poetry, Fiction, Nonfiction 세 부문이 있어요.",
+   "what_en": "A writing competition for high school students run by Bennington College, with Poetry, Fiction, and Nonfiction categories.",
+   "do_ko": "한 부문을 골라 1,500단어 이내(시는 1-3편 합산)로 제출해요. 고등학교 담당 교사(sponsor teacher)의 확인이 필요하고, AI는 어떤 방식으로도 쓸 수 없어요.",
+   "do_en": "Enter one category (max 1,500 words; poetry 1-3 poems combined). A high school sponsor teacher must approve the entry, and AI may not be used in any way.",
+   "grades": "9-12",
+   "intl_eligibility": "open",
+   "intl_note_ko": "공식 페이지에 전 세계(worldwide) 9-12학년 학생에게 열려 있다고 나와 있어요.",
+   "intl_note_en": "Open to students in grades 9-12 worldwide.",
+   "cost_ko": "참가비는 없어요.",
+   "cost_en": "No entry fee.",
+   "timing_ko": "가을(9월-11월 초)에 접수해요.",
+   "timing_en": "Submissions accepted in the fall (September to early November).",
+   "format": "online",
+   "official_url": "https://www.bennington.edu/events/bennington-young-creators-awards/bennington-young-writers-awards",
+   "eligibility_url": "https://www.bennington.edu/events/bennington-young-creators-awards/bennington-young-writers-awards",
+   "official_mentions": [
+    {
+     "college": "Bennington College",
+     "relation": "host",
+     "note_ko": "Bennington College가 직접 주최하고, 수상자가 Bennington에 입학하면 장학금 기회가 있다고 안내해요.",
+     "note_en": "Hosted by Bennington College; the page notes scholarship opportunities for recognized students who enroll at Bennington.",
+     "url": "https://www.bennington.edu/events/bennington-young-creators-awards/bennington-young-writers-awards"
+    }
+   ],
+   "area": "hum_arts"
+  },
+  {
+   "key": "kenyon-review-young-writers",
+   "name": "Kenyon Review Young Writers Workshops",
+   "type": "summer",
+   "majors": [
+    "english"
+   ],
+   "host": "The Kenyon Review (Kenyon College)",
+   "what_ko": "문예지 The Kenyon Review가 여는 고등학생 창작 워크숍이에요. 여름 Residential(캠퍼스 2주)과 Online 과정이 있어요.",
+   "what_en": "Creative writing workshops for high school students run by The Kenyon Review, with a two-week summer residential program on Kenyon College's campus and online sessions.",
+   "do_ko": "비슷한 관심을 가진 또래와 함께 워크숍 형식으로 글을 쓰고 피드백을 주고받아요.",
+   "do_en": "Write and workshop pieces with peers in a literary community setting.",
+   "grades": "residential: ages 16-18, rising juniors/seniors",
+   "intl_eligibility": "open",
+   "intl_note_ko": "국제학생도 지원할 수 있고, 캠퍼스 과정 참가에는 B-2 또는 B-1/B-2 비자가 필요하다고 안내돼 있어요.",
+   "intl_note_en": "International students are eligible; they need a B-2 or B-1/B-2 visa to attend the residential program.",
+   "cost_ko": "Residential 과정 총비용 $2,575예요(수업·숙박·식사·활동 포함, 항공권 제외). need-based financial aid가 있어요.",
+   "cost_en": "Residential total $2,575 (tuition, housing, meals, activities; travel not included); need-based aid available.",
+   "timing_ko": "여름 Residential은 겨울-초봄(3월)에 마감해요. Winter Online은 늦가을에 지원해요.",
+   "timing_en": "Summer residential applications due in late winter (around March); Winter Online applications in late fall.",
+   "format": "hybrid",
+   "official_url": "https://kenyonreview.org/workshops/young-writers/",
+   "eligibility_url": "https://kenyonreview.org/event/young-writers-summer-residential-workshops/",
+   "official_mentions": [
+    {
+     "college": "Kenyon College",
+     "relation": "host",
+     "note_ko": "Residential 과정이 Kenyon College 캠퍼스에서 열려요.",
+     "note_en": "The residential sessions are held on Kenyon College's campus.",
+     "url": "https://kenyonreview.org/workshops/young-writers/"
+    }
+   ],
+   "area": "hum_arts"
+  },
+  {
+   "key": "iowa-young-writers-studio",
+   "name": "Iowa Young Writers' Studio",
+   "type": "summer",
+   "majors": [
+    "english"
+   ],
+   "host": "University of Iowa",
+   "what_ko": "University of Iowa의 고등학생 창작 프로그램이에요. 2주 여름 Residential 과정과 6주 온라인 과정이 있어요.",
+   "what_en": "The University of Iowa's creative writing program for high school students, with a 2-week summer residential program and 6-week online courses.",
+   "do_ko": "창작 수업을 듣고 글을 써요. 온라인 과정은 비동기(asynchronous)라 한국 시간대에서도 들을 수 있어요.",
+   "do_en": "Take creative writing courses; online courses are asynchronous so students can work in their own time zones.",
+   "grades": "residential: 10-12; online: high school students with GPA 3.0+ (summer online: incoming 9th grade+)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "Residential·온라인 모두 미국 밖 학생의 지원을 환영한다고 공식 페이지에 나와 있어요.",
+   "intl_note_en": "Both the residential program and online courses welcome applicants from outside the US.",
+   "cost_ko": "Residential 참가비 $2,500(지원 시 reading fee $10, 면제 가능), 온라인 과정 1개당 $475(지원비 없음)예요.",
+   "cost_en": "Residential $2,500 (plus $10 reading fee, waivable); online $475 per course (no application fee).",
+   "timing_ko": "여름 Residential은 겨울(1-2월)에 짧게 접수해요. 겨울 온라인 과정은 가을에 지원해요.",
+   "timing_en": "Summer residential applications open for a short window in winter (Jan-Feb); winter online courses apply in fall.",
+   "format": "hybrid",
+   "official_url": "https://iyws.program.uiowa.edu/",
+   "eligibility_url": "https://iyws.program.uiowa.edu/how-to-apply/summer-residential-program",
+   "official_mentions": [
+    {
+     "college": "University of Iowa",
+     "relation": "host",
+     "note_ko": "University of Iowa가 직접 운영하는 프로그램이에요.",
+     "note_en": "Run by the University of Iowa.",
+     "url": "https://iyws.program.uiowa.edu/"
+    }
+   ],
+   "area": "hum_arts"
+  },
+  {
+   "key": "stanford-summer-humanities-institute",
+   "name": "Stanford Summer Humanities Institute",
+   "type": "summer",
+   "majors": [
+    "humanities",
+    "history",
+    "philosophy",
+    "english"
+   ],
+   "host": "Stanford Pre-Collegiate Studies (Stanford University)",
+   "what_ko": "Stanford 교수와 박사과정생이 이끄는 3주 인문학 Residential 프로그램이에요. 정치·문학·철학·역사 등 다양한 주제를 다뤄요.",
+   "what_en": "A 3-week residential humanities program led by Stanford faculty and Ph.D. students, covering topics from politics and literature to philosophy and history.",
+   "do_ko": "한 과목을 골라 세미나에서 깊이 공부하고, 개인 연구 주제를 탐구해요. 주말에는 견학과 활동이 있어요.",
+   "do_en": "Study one course in depth through seminars and pursue a personal research topic; weekends include field trips and activities.",
+   "grades": "10-11 at time of application (ages 15-17 during program)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "국적과 관계없이 지원할 수 있고, TOEFL·IELTS는 요구하지 않지만 영어가 유창해야 해요. 학점 과정이 아니라서 B-2 비자로 참가하라고 안내해요.",
+   "intl_note_en": "Open regardless of citizenship; TOEFL/IELTS not required but English fluency is expected. Since it is not for credit, B-2 visa is advised.",
+   "cost_ko": "2026년 여름 기준 $8,850예요(숙박·식사·활동·견학 포함). 지원비 $65(면제 가능), 국제학생도 financial aid를 받을 수 있어요.",
+   "cost_en": "$8,850 for Summer 2026 (housing, meals, activities, field trips); $65 application fee (waivable); aid open to international participants.",
+   "timing_ko": "겨울(2월 초)에 지원 마감, 여름에 3주간 진행돼요.",
+   "timing_en": "Applications due in winter (early February); 3-week program in summer.",
+   "format": "in_person",
+   "official_url": "https://summerhumanities.spcs.stanford.edu/",
+   "eligibility_url": "https://summerhumanities.spcs.stanford.edu/admissions-humanities",
+   "official_mentions": [
+    {
+     "college": "Stanford University",
+     "relation": "host",
+     "note_ko": "Stanford Pre-Collegiate Studies가 Stanford 캠퍼스에서 운영해요.",
+     "note_en": "Run by Stanford Pre-Collegiate Studies on Stanford's campus.",
+     "url": "https://summerhumanities.spcs.stanford.edu/",
+     "school_id": 4
+    }
+   ],
+   "area": "hum_arts"
+  },
+  {
+   "key": "risd-pre-college",
+   "name": "RISD Pre-College (On-Campus)",
+   "type": "summer",
+   "majors": [
+    "arts",
+    "graphic_design",
+    "fashion_design",
+    "architecture"
+   ],
+   "host": "Rhode Island School of Design",
+   "what_ko": "RISD 캠퍼스에서 5주간 진행되는 고등학생 미술·디자인 프로그램이에요. 실력과 관계없이 누구나 지원할 수 있다고 안내해요.",
+   "what_en": "A five-week on-campus art and design program for high school students at RISD, open regardless of prior training.",
+   "do_ko": "전공 스튜디오 수업을 들으며 작품을 만들어요.",
+   "do_en": "Take studio courses and make work on RISD's campus.",
+   "grades": "ages 16-18; between 10th-11th or 11th-12th grade during the summer",
+   "intl_eligibility": "open",
+   "intl_note_ko": "미국 시민권·영주권이 없으면 보통 B-2 비자나 ESTA로 참가해요. 영어가 모국어가 아니면 TOEFL(5.0 또는 93)·IELTS 6.5·Duolingo 115 이상 점수를 내야 해요.",
+   "intl_note_en": "Non-US citizens/permanent residents typically attend on a B-2 visa or ESTA; ESL applicants must submit TOEFL (5.0 or 93), IELTS 6.5, or Duolingo 115.",
+   "cost_ko": "2026년 기준 Residential $12,495, Commuter $9,595예요. 지원비 $60(장학금 지원자는 면제)이에요.",
+   "cost_en": "2026: Residential $12,495, Commuter $9,595; $60 application fee (waived for scholarship applicants).",
+   "timing_ko": "가을(11월)에 접수가 열리고 rolling으로 심사해요. 장학금 마감은 겨울이에요.",
+   "timing_en": "Applications open in fall (November) with rolling decisions; scholarship deadline in winter.",
+   "format": "in_person",
+   "official_url": "https://precollege.risd.edu/on-campus/application-information",
+   "eligibility_url": "https://precollege.risd.edu/on-campus/application-information",
+   "official_mentions": [
+    {
+     "college": "Rhode Island School of Design (RISD)",
+     "relation": "host",
+     "note_ko": "RISD가 직접 운영하는 여름 프로그램이에요.",
+     "note_en": "Run by RISD.",
+     "url": "https://precollege.risd.edu/on-campus/application-information",
+     "school_id": 139
+    }
+   ],
+   "area": "hum_arts"
+  },
+  {
+   "key": "parsons-summer-intensive-new-york",
+   "name": "Parsons New York Summer Intensives (Pre-College)",
+   "type": "summer",
+   "majors": [
+    "arts",
+    "graphic_design",
+    "fashion_design"
+   ],
+   "host": "Parsons School of Design, The New School",
+   "what_ko": "뉴욕 Parsons 캠퍼스에서 3주간 종일 진행되는 고등학생 미술·디자인 집중 과정이에요.",
+   "what_en": "A three-week, full-day art and design intensive for high school students at Parsons' Greenwich Village campus.",
+   "do_ko": "평일 종일 스튜디오 수업을 들으며 작품을 만들어요.",
+   "do_en": "Attend full-day studio classes on weekdays.",
+   "grades": "ages 16-18 (must be 16 by the start date)",
+   "intl_eligibility": "open",
+   "intl_note_ko": "미국 시민권·영주권자가 아니면 student visa로 입국해야 해요. 영어 점수(TOEFL iBT 4.5 이상, IELTS 7 이상, PTE 63 이상 등)가 필요해요.",
+   "intl_note_en": "Non-US citizens/permanent residents must enter on a student visa; English proficiency required (e.g., TOEFL iBT 4.5+, IELTS 7+, PTE 63+).",
+   "cost_ko": "$5,805 + university fee $274, 지원비 $55(환불 불가)예요. 재료비는 수업마다 약 $200-300예요.",
+   "cost_en": "$5,805 plus $274 university fee and $55 non-refundable application fee; supplies about $200-300.",
+   "timing_ko": "비자가 필요한 국제학생은 봄(4월 초), 일반 지원은 봄(5월 초) 마감이에요. 여름에 진행돼요.",
+   "timing_en": "Spring deadlines (early April for students needing a visa, early May general); runs in summer.",
+   "format": "in_person",
+   "official_url": "https://cpe.newschool.edu/youth-and-pre-college/parsons-new-york-summer-intensive-studies/",
+   "eligibility_url": "https://cpe.newschool.edu/youth-and-pre-college/parsons-new-york-summer-intensive-studies/",
+   "official_mentions": [
+    {
+     "college": "Parsons School of Design (The New School)",
+     "relation": "host",
+     "note_ko": "Parsons가 직접 운영하는 과정이에요.",
+     "note_en": "Run by Parsons / The New School.",
+     "url": "https://www.newschool.edu/parsons/youth-precollege-summer/",
+     "school_id": 138
+    }
+   ],
+   "area": "hum_arts"
+  },
+  {
+   "key": "saic-early-college-summer-institute",
+   "name": "SAIC Early College Program Summer Institute",
+   "type": "summer",
+   "majors": [
+    "arts",
+    "graphic_design",
+    "fashion_design"
+   ],
+   "host": "School of the Art Institute of Chicago",
+   "what_ko": "시카고 SAIC에서 여는 고등학생 Residential 미술 프로그램이에요. 1주 참여마다 대학 학점 1점을 받아요.",
+   "what_en": "A residential art program for high school students at SAIC in Chicago; students earn one college credit per week attended.",
+   "do_ko": "여러 분야 스튜디오 수업을 들으며 포트폴리오용 작품을 만들고, Art Institute of Chicago 미술관 소장품을 활용해요.",
+   "do_en": "Take studio courses across disciplines, develop portfolio pieces, and access the Art Institute of Chicago's collection.",
+   "grades": "ages 15-18, completed sophomore year",
+   "intl_eligibility": "open",
+   "intl_note_ko": "SAIC가 이 프로그램 합격자에게 I-20를 발급할 수 있다고 안내해요. 영어 증빙(TOEFL, SAT/ACT, 또는 미국 인증 고교 성적표)이 필요해요. need-based aid는 미국 거주자만, merit scholarship은 누구나 지원할 수 있어요.",
+   "intl_note_en": "SAIC can issue I-20s for this program; English proof via TOEFL, SAT/ACT, or a US-accredited high school transcript. Need-based aid is for US residents only; all students may apply for merit scholarships.",
+   "cost_ko": "등록금은 1주 $1,908, 2주 $3,816, 4주 $7,632이고 숙식비가 따로 있어요(4주 $2,620). merit scholarship은 최대 $1,200예요.",
+   "cost_en": "Tuition $1,908 (1 week), $3,816 (2 weeks), $7,632 (4 weeks) plus housing/meals ($2,620 for 4 weeks); merit scholarships up to $1,200.",
+   "timing_ko": "가을(11월)에 등록이 열리고 여름에 진행돼요.",
+   "timing_en": "Registration opens in fall (November); runs in summer.",
+   "format": "in_person",
+   "official_url": "https://www.saic.edu/high-school-programs/early-college-program-summer-institute",
+   "eligibility_url": "https://www.saic.edu/high-school-programs/early-college-program-summer-institute/international-students",
+   "official_mentions": [
+    {
+     "college": "School of the Art Institute of Chicago (SAIC)",
+     "relation": "host",
+     "note_ko": "SAIC가 직접 운영하는 여름 프로그램이에요.",
+     "note_en": "Run by SAIC.",
+     "url": "https://www.saic.edu/high-school-programs/early-college-program-summer-institute",
+     "school_id": 142
+    }
+   ],
+   "area": "hum_arts"
+  },
+  {
+   "key": "interlochen-arts-camp",
+   "name": "Interlochen Arts Camp (High School Programs)",
+   "type": "summer",
+   "majors": [
+    "music",
+    "arts",
+    "film",
+    "english"
+   ],
+   "host": "Interlochen Center for the Arts",
+   "what_ko": "미시간주 Interlochen에서 열리는 Residential 여름 예술 캠프예요. 9-12학년 대상으로 Music, Theatre, Dance, Visual Arts, Film, Creative Writing 과정이 있어요.",
+   "what_en": "A residential summer arts camp in Interlochen, Michigan, with high school programs in music, theatre, dance, visual arts, film, and creative writing.",
+   "do_ko": "선택한 분야에서 1-6주 동안 집중 수업과 공연·전시를 해요. 일부 과정은 오디션이나 portfolio가 필요해요.",
+   "do_en": "Train intensively in a chosen discipline for 1-6 weeks; some programs require an audition or portfolio.",
+   "grades": "9-12",
+   "intl_eligibility": "open",
+   "intl_note_ko": "전 세계 학생을 받고, 국제학생도 국내 학생과 같은 need-based·merit 장학금 대상이에요(1주 과정 제외). 지원 사이트는 한국어도 지원해요.",
+   "intl_note_en": "Welcomes students worldwide; international students are eligible for the same need- and merit-based aid as domestic students (not for 1-week programs). The application site supports Korean.",
+   "cost_ko": "2027년 고등부 기준 1주 $2,125부터 6주 $10,500까지예요(2주 $5,300, 4주 $8,400). 지원비 $65예요.",
+   "cost_en": "2027 high school tuition from $2,125 (1 week) to $10,500 (6 weeks); 2 weeks $5,300, 4 weeks $8,400. $65 application fee.",
+   "timing_ko": "우선 마감은 겨울(1월 중순)이고, 오디션 없는 과정은 가을부터 rolling으로 심사해요.",
+   "timing_en": "Priority deadline in winter (mid-January); non-audition programs reviewed on a rolling basis from fall.",
+   "format": "in_person",
+   "official_url": "https://www.interlochen.org/art-summer-camp/high-school",
+   "eligibility_url": "https://www.interlochen.org/summer-camp/admission/how-to-apply-to-arts-camp",
+   "official_mentions": [],
+   "area": "hum_arts"
+  },
+  {
+   "key": "boston-university-tanglewood-institute",
+   "name": "Boston University Tanglewood Institute (BUTI)",
+   "type": "summer",
+   "majors": [
+    "music"
+   ],
+   "host": "Boston University College of Fine Arts",
+   "what_ko": "Boston University의 여름 음악 프로그램으로, 매사추세츠주 Lenox의 Tanglewood에서 열려요. 기악·성악·작곡 과정이 있어요.",
+   "what_en": "Boston University's summer music program at Tanglewood in Lenox, Massachusetts, offering instrumental, vocal, and composition study.",
+   "do_ko": "오디션(대면 또는 녹화, 동일하게 평가)을 거쳐 2-8주 동안 레슨·앙상블·공연을 해요.",
+   "do_en": "After a live or recorded audition (evaluated equally), study and perform for 2-8 weeks.",
+   "grades": "ages 14-20",
+   "intl_eligibility": "open",
+   "intl_note_ko": "국제학생 지원을 환영해요. 다만 F-1·J-1 학생비자 대상이 아니라 방문자(visitor) 신분으로 입국해야 하고, BU가 I-20를 발급하지 않아요. 대신 초청장을 보내줘요.",
+   "intl_note_en": "International students welcome; participants do not qualify for F-1/J-1 sponsorship and should enter in visitor status. BU issues no I-20 but sends an invitation letter.",
+   "cost_ko": "2026년 기준 2주 $4,055, 4주 $6,995, 6주 $8,865, 8주 $10,205예요(등록금·숙식·필수비 포함).",
+   "cost_en": "2026 totals (tuition, room & board, required fees): 2 weeks $4,055, 4 weeks $6,995, 6 weeks $8,865, 8 weeks $10,205.",
+   "timing_ko": "겨울(1월 하순)에 지원 마감, 봄에 결과가 나오고 여름에 진행돼요.",
+   "timing_en": "Applications due in winter (late January); decisions in spring; program in summer.",
+   "format": "in_person",
+   "official_url": "https://www.bu.edu/cfa/tanglewood/",
+   "eligibility_url": "https://www.bu.edu/cfa/tanglewood/faq/",
+   "official_mentions": [
+    {
+     "college": "Boston University",
+     "relation": "host",
+     "note_ko": "Boston University College of Fine Arts가 운영해요.",
+     "note_en": "Run by Boston University's College of Fine Arts.",
+     "url": "https://www.bu.edu/cfa/tanglewood/",
+     "school_id": 42
+    }
+   ],
+   "area": "hum_arts"
+  },
+  {
+   "key": "nyu-tisch-summer-high-school",
+   "name": "NYU Tisch Summer High School Residential Program",
+   "type": "summer",
+   "majors": [
+    "film",
+    "media",
+    "music",
+    "arts",
+    "english"
+   ],
+   "host": "NYU Tisch School of the Arts",
+   "what_ko": "Tisch 학부 커리큘럼을 바탕으로 한 4주 Residential 프로그램이에요. Filmmaking, Animation, Dramatic Writing, Photography, Game Design, Recorded Music 등 9개 트랙이 있어요.",
+   "what_en": "A 4-week residential pre-college program based on the Tisch undergraduate curriculum, with 9 tracks including Filmmaking, Animation, Dramatic Writing, Photography, Game Design, and Recorded Music.",
+   "do_ko": "한 트랙을 골라 프로젝트 중심으로 공부하고 최종 발표·상영을 해요. 4-6 대학 학점을 받아요.",
+   "do_en": "Study one track through projects ending in final presentations/screenings; earn 4-6 college credits.",
+   "grades": "10-11 with cumulative GPA 3.0+",
+   "intl_eligibility": "open",
+   "intl_note_ko": "전 세계 10-11학년 학생에게 열려 있어요. 미국 시민이 아니면 여권, 영어가 모국어가 아니면 영어 능력 증빙이 필요해요. 장학금은 미국 연방 세금 신고를 한 보호자 조건이 있어서 국제학생은 사실상 대상이 아니에요.",
+   "intl_note_en": "Open to sophomores and juniors from around the world; non-US citizens submit a passport and non-native speakers submit English proficiency proof. Scholarships require a parent/guardian who filed US federal tax returns.",
+   "cost_ko": "2027년 기준 6학점 트랙 $12,552, 4학점 트랙(Animation, Filmmakers, Photography) $8,368이고, 기숙사·식비·프로그램비가 따로 있어요.",
+   "cost_en": "Summer 2027 tuition: $12,552 (6-unit tracks) or $8,368 (4-unit: Animation, Filmmakers, Photography), plus housing, meals, and fees.",
+   "timing_ko": "초겨울(12월)에 지원 마감, 여름에 4주간 진행돼요.",
+   "timing_en": "Applications due in early winter (around December); 4-week program in summer.",
+   "format": "in_person",
+   "official_url": "https://tisch.nyu.edu/special-programs/high-school-programs/tisch-summer-high-school.html",
+   "eligibility_url": "https://www.nyu.edu/admissions/high-school-and-middle-school-programs/high-school-programs/tisch-summer-high-school.html",
+   "official_mentions": [
+    {
+     "college": "New York University (Tisch School of the Arts)",
+     "relation": "host",
+     "note_ko": "NYU Tisch가 직접 운영하고, 전원 NYU 기숙사에 살아요.",
+     "note_en": "Run by NYU Tisch; all students live in NYU housing.",
+     "url": "https://tisch.nyu.edu/special-programs/high-school-programs/tisch-summer-high-school.html",
+     "school_id": 33
+    }
+   ],
+   "area": "hum_arts"
+  },
+  {
+   "key": "cmu-pre-college-art-drama-music",
+   "name": "Carnegie Mellon Pre-College: Art, Drama, Music",
+   "type": "summer",
+   "majors": [
+    "arts",
+    "music"
+   ],
+   "host": "Carnegie Mellon University",
+   "what_ko": "CMU School of Art·Drama·Music 교수진과 함께하는 여름 예술 프로그램이에요(3주 또는 6주).",
+   "what_en": "Summer arts programs at Carnegie Mellon in Art, Drama, and Music (3 or 6 weeks).",
+   "do_ko": "Art 과정은 스튜디오 수업과 CMU School of Art 교수진의 1:1 portfolio review가 있어요.",
+   "do_en": "The Art program includes studio courses and optional one-on-one portfolio reviews with School of Art faculty.",
+   "grades": "age 16 by program start; between 10th-11th or 11th-12th grade",
+   "intl_eligibility": "restricted",
+   "intl_note_ko": "국제학생도 지원은 가능하지만, CMU는 Summer Session 과정에만 I-20를 발급해요. Art·Drama·Music은 이미 다른 신분으로 미국에 있거나 미국 고교에 F-1으로 다니는 경우에만 참가할 수 있고, 관광비자·ESTA 참가는 권하지 않아요. 한국 거주 학생에게는 사실상 어려워요. 국제학생은 장학금 대상도 아니에요.",
+   "intl_note_en": "CMU issues I-20s only for the Summer Session residential program; for Art/Drama/Music, international students may participate only if already in the US in another status or attending a US high school on F-1. CMU advises against B-1/B-2 or Visa Waiver attendance. International students are not eligible for scholarships.",
+   "cost_ko": "2026년 기준 Art 6주 Residential $12,204(3주 $7,945), Drama 6주 $12,303, Music 6주 $11,640(3주 $7,927)이에요. 지원비 $50예요.",
+   "cost_en": "2026 residential: Art $12,204 (6 wk) / $7,945 (3 wk); Drama $12,303 (6 wk); Music $11,640 (6 wk) / $7,927 (3 wk). $50 application fee.",
+   "timing_ko": "겨울(2월) 조기 마감(국제학생 적용), 봄(3월) 최종 마감이에요.",
+   "timing_en": "Early deadline in winter (Feb, applies to international applicants); final deadline March.",
+   "format": "in_person",
+   "official_url": "https://www.cmu.edu/pre-college/academic-programs/art.html",
+   "eligibility_url": "https://www.cmu.edu/pre-college/admission/international-applicants.html",
+   "official_mentions": [
+    {
+     "college": "Carnegie Mellon University",
+     "relation": "host",
+     "note_ko": "CMU Pre-College Programs가 운영해요.",
+     "note_en": "Run by CMU Pre-College Programs.",
+     "url": "https://www.cmu.edu/pre-college/",
+     "school_id": 20
+    }
+   ],
+   "area": "hum_arts"
+  },
+  {
+   "key": "national-portfolio-day",
+   "name": "National Portfolio Day",
+   "type": "event",
+   "majors": [
+    "arts",
+    "graphic_design",
+    "fashion_design",
+    "architecture",
+    "film"
+   ],
+   "host": "National Portfolio Day Association (NPDA)",
+   "what_ko": "100개가 넘는 인증 미술·디자인 대학 모임(NPDA)이 여는 무료 portfolio 상담 행사예요. 대회도 합격 심사도 아니에요.",
+   "what_en": "Free portfolio review events run by the National Portfolio Day Association, a group of 100+ accredited art and design institutions. Not a competition or admissions decision.",
+   "do_ko": "portfolio를 가져가서 여러 대학 담당자에게 1:1 피드백을 받고 프로그램·장학금·지원 요건을 물어봐요.",
+   "do_en": "Bring your portfolio for one-on-one feedback from college representatives and ask about programs, scholarships, and requirements.",
+   "grades": null,
+   "intl_eligibility": "open",
+   "intl_note_ko": "전 세계 어디서든 무료로 참가할 수 있다고 공식 사이트에 나와 있어요. 북미·유럽·아시아에서 대면으로, 그리고 온라인으로도 열려요.",
+   "intl_note_en": "Free for students anywhere in the world; events are held in person in North America, Europe, and Asia, and virtually.",
+   "cost_ko": "무료예요.",
+   "cost_en": "Free.",
+   "timing_ko": "연중 여러 도시에서 열려요. 공식 schedule 페이지에서 일정을 확인해 주세요.",
+   "timing_en": "Held throughout the year in many locations; see the official schedule.",
+   "format": "hybrid",
+   "official_url": "https://nationalportfolioday.org/",
+   "eligibility_url": "https://nationalportfolioday.org/about-national-portfolio-days",
+   "official_mentions": [
+    {
+     "college": "Rhode Island School of Design (RISD)",
+     "relation": "admissions_mention",
+     "note_ko": "RISD 입학처가 National Portfolio Day에서 피드백을 준다고 안내하면서, 행사 중 합격 결정은 하지 않고 참여가 필수도 아니라고 밝혀요.",
+     "note_en": "RISD admissions says it gives feedback at Portfolio Day events but does not make admissions decisions or accept portfolios there, and participation is not required.",
+     "url": "https://www.risd.edu/admissions/first-year/portfolio-reviews",
+     "school_id": 139
+    },
+    {
+     "college": "School of the Art Institute of Chicago (SAIC)",
+     "relation": "admissions_mention",
+     "note_ko": "SAIC 입학처가 모든 National Portfolio Day에 참여해 10-15분 portfolio review를 해준다고 안내해요.",
+     "note_en": "SAIC admissions says it participates in all National Portfolio Days, offering 10-15 minute portfolio reviews.",
+     "url": "https://www.saic.edu/admissions/undergraduate/meet-saic",
+     "school_id": 142
+    }
+   ],
+   "area": "hum_arts"
+  }
+ ],
+ "statements": [
+  {
+   "college": "MIT",
+   "topic": "summer_no_advantage",
+   "statement_ko": "MIT 입학처는 '지원 준비를 위해 꼭 해야 하는 여름 프로그램이 있느냐'는 질문에 늘 '자신의 필요와 목표에 가장 잘 맞는 방식으로 여름을 보내라'고 답한다고 해요. 과외활동을 볼 때와 마찬가지로 여름 활동에도 '정답'이나 '오답'은 전혀 없다고 밝히고 있어요.",
+   "statement_en": "MIT Admissions says there is no required summer program: spend summers in whatever way fits your own needs and goals — there is no right or wrong answer.",
+   "quote_en": "spend your summers in the way that best suits your personal needs and goals",
+   "programs_mentioned": [],
+   "url": "https://mitadmissions.org/apply/prepare/summer/"
+  },
+  {
+   "college": "MIT",
+   "topic": "program_list",
+   "statement_ko": "MIT 입학처 여름 프로그램 페이지에서 MIT는 STEM 여름 프로그램을 찾는 학생을 위해 'MIT 학생들이 유익했다고 느낀 프로그램의 불완전한 목록'을 제공해요. 모두 선발제이고, 무료이거나 MIT처럼 넉넉한 필요 기반 재정지원을 주는 프로그램이라고 설명해요. MIT는 아무 고등학생이나 등록해 캠퍼스에서 수업을 듣는 오픈 등록형 여름 프로그램은 운영하지 않는다고도 밝혀요.",
+   "statement_en": "MIT Admissions' summer page offers an incomplete list of selective programs MIT students found valuable, all free or with generous need-based aid, and notes MIT runs no open-enrollment summer program.",
+   "quote_en": "MIT does not offer open-enrollment summer programs",
+   "programs_mentioned": [
+    "MITES Summer",
+    "MITES Semester",
+    "√mathroots",
+    "RSI (Research Science Institute)",
+    "WTP (Women's Technology Program)",
+    "BWSI (Beaver Works Summer Institute)",
+    "SSP (Summer Science Program)",
+    "BU RISE",
+    "Clark Scholar Program",
+    "Garcia Summer Scholars",
+    "HSHSP (Michigan State)",
+    "SSTP (Iowa)",
+    "SIMR (Stanford)",
+    "SSTP (Florida)",
+    "SPARC",
+    "AwesomeMath",
+    "Canada/USA Mathcamp",
+    "HCSSiM",
+    "MathILy",
+    "PROMYS",
+    "Prove It! Math Academy",
+    "Ross Program",
+    "SUMaC (Stanford)",
+    "HSMC (Honors Summer Math Camp)"
+   ],
+   "url": "https://mitadmissions.org/apply/prepare/summer/"
+  },
+  {
+   "college": "MIT",
+   "topic": "competition_mention",
+   "statement_ko": "MIT 입학처의 'STEM programs' 준비 페이지는 학생들이 성장에 도움이 됐다고 느낀 프로그램·대회를 나열하면서도, 학생마다 환경이 달라 접근이 어려울 수 있다는 걸 이해하며 MIT든 다른 곳이든 특정 STEM 프로그램 참여를 기대하거나 요구하지 않는다고 분명히 말해요. 국제 올림피아드(IMO·IPhO·IChO·IBO·IOI 등)와 미국 내 예선 대회, 과학 경시·로봇 대회를 소개하고, 미국 밖 학생은 자기 나라의 예선·훈련 과정을 알아보라고 안내해요.",
+   "statement_en": "MIT Admissions' STEM page lists programs and competitions students found helpful, but says MIT does not expect or require any specific STEM program, and points students outside the US to their own country's olympiad routes.",
+   "quote_en": "We don’t expect or require applicants to participate in specific STEM programs",
+   "programs_mentioned": [
+    "HMMT (Harvard-MIT Mathematics Tournament)",
+    "MIT THINK",
+    "PRIMES-USA",
+    "MIT PRIMES",
+    "MIT Model UN",
+    "MIT Blueprint",
+    "Regeneron ISEF",
+    "Regeneron STS",
+    "International Young Physicists' Tournament",
+    "Davidson Fellows",
+    "Lemelson-MIT InvenTeams",
+    "FIRST Robotics",
+    "VEX Robotics",
+    "Botball",
+    "Zero Robotics",
+    "Bebras Computing Challenge",
+    "IMO (qualify via AMC)",
+    "IPhO (USAPhO)",
+    "IChO (USNCO)",
+    "IBO (USABO)",
+    "IOI (USACO)",
+    "IOL (NACLO)",
+    "IOAA (USAAAO)"
+   ],
+   "url": "https://mitadmissions.org/apply/prepare/stem/"
+  },
+  {
+   "college": "MIT",
+   "topic": "summer_no_advantage",
+   "statement_ko": "MIT 입학처 블로그(2008년 글)에서 입학사정관은 여름 프로그램을 '대학 지원서에 좋아 보이려고' 하는 것은 권하지 않으며 개인의 성장을 위한 것이어야 한다고 했어요. 학생들이 이런 프로그램을 하리라 기대하지 않고, 일하고 가족·친구와 시간을 보내는 여름도 훌륭한 선택이라고 적었어요.",
+   "statement_en": "In a 2008 MIT Admissions blog post, an officer said summer programs should be for personal growth, not to look good on applications — and that working or time with family and friends is a fine summer too.",
+   "quote_en": "We do not expect that students do these programs.",
+   "programs_mentioned": [
+    "COSMOS",
+    "NIH Summer Internship Program",
+    "Shad Valley",
+    "Simons Summer Research Program",
+    "Young Scholars Program in Discrete Mathematics",
+    "State Governor's schools"
+   ],
+   "url": "https://mitadmissions.org/blogs/entry/juniors_mit_and_other_summer_p/"
+  },
+  {
+   "college": "Caltech",
+   "topic": "summer_no_advantage",
+   "statement_ko": "Caltech 입학처는 가족을 돌보거나 아르바이트를 하거나 쉬면서 재충전하는 학생도, 여름 내내 공부·봉사·인턴십을 하는 학생도 모두 Caltech에 잘 맞을 수 있다고 말해요. '완벽한' 여름을 계산하는 공식은 없고, 어떤 활동도 그것 하나로 합격이나 적합성을 보장하지 않는다고 밝혀요. 연구 기회에 접근하기 어려운 학생도 있다는 걸 알며 이런 활동은 결코 입학 요건이 아니니 '가진 것으로 할 수 있는 것을 하라'고 해요.",
+   "statement_en": "Caltech Admissions says students who work, care for family or rest can be just as good a fit as those doing research or internships; there is no formula for a perfect summer and such activities are never required.",
+   "quote_en": "There's no formula calculating the \"perfect\" summer.",
+   "programs_mentioned": [],
+   "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/summer-preparation"
+  },
+  {
+   "college": "Caltech",
+   "topic": "competition_mention",
+   "statement_ko": "Caltech은 수강 과목 외에도 연구, 학술 대회, 여름 프로그램, 인턴십으로 STEM 준비도를 보여줄 수 있다고 안내해요. 대회 예시로 AMC·IMO·Putnam(수학), ISEF·STS·IChO·USAPhO·EuPhO·USABO(과학), FIRST·VEX 로봇 대회를, 여름 프로그램 예시로 RSI·Garcia·SSP(연구), BWSI·스탠퍼드 Pre-Collegiate Summer Institutes(공학), PROMYS·Ross(수학)를 들어요. 다만 STEM 준비도를 보여주는 방법에 대해 Caltech은 선호하는 방식이 없다고 먼저 밝혀요.",
+   "statement_en": "Caltech says STEM preparedness can be shown through research, competitions, summer programs or internships, and lists examples — while stating it has no preference among these methods.",
+   "quote_en": "Caltech does not have a preference in the methods that a student pursues STEM preparedness",
+   "programs_mentioned": [
+    "AMC",
+    "IMO",
+    "Putnam",
+    "ISEF",
+    "STS",
+    "IChO",
+    "USAPhO",
+    "EuPhO",
+    "USABO",
+    "FIRST Robotics Competition",
+    "VEX Robotics Competition",
+    "RSI",
+    "Garcia Research",
+    "SSP",
+    "BWSI",
+    "Stanford Pre-Collegiate Summer Institutes",
+    "PROMYS",
+    "Ross Math"
+   ],
+   "url": "https://admissions.caltech.edu/apply/preparing-for-caltech/demonstrating-stem-preparedness"
+  },
+  {
+   "college": "Yale",
+   "topic": "summer_no_advantage",
+   "statement_ko": "예일 입학처 공식 팟캐스트(2026년 2월)에서 사정관들은, 노벨상이나 올림픽 금메달 수준이 아니라면 여름 경험 하나가 지원서를 결정짓는 경우는 매우 드물다고 했어요. 또 비싼 돈을 받는 프로그램이 입시에서 유리하게 해준다는 주장은 '적절히 의심하라'고 하면서 그 통념을 깨고 싶다고 말했어요.",
+   "statement_en": "On Yale's official admissions podcast (Feb 2026), officers said a single summer experience rarely decides an application, and that claims that paid programs give an edge deserve skepticism.",
+   "quote_en": "you should be appropriately skeptical of any claims that any programs",
+   "programs_mentioned": [],
+   "url": "https://admissions.yale.edu/posts/episode-52"
+  },
+  {
+   "college": "Yale",
+   "topic": "precollege_disclaimer",
+   "statement_ko": "예일 입학처 공식 팟캐스트(2026년 2월)에서 사정관은 '예일 여름 프로그램을 하면 나중에 예일 입시에 유리하냐'는 질문에 '아니요'라고 답했어요. 입학처는 그런 프로그램과 전혀 연결돼 있지 않고, 여름 프로그램을 입시의 '피더(feeder)'로 취급하지 않는다고 했어요. 캠퍼스를 경험해 보는 좋은 방법일 수는 있다고 덧붙였어요.",
+   "statement_en": "On the same Yale Admissions podcast, officers said doing a Yale summer program does not help in Yale admissions; the office is not connected to those programs and does not treat them as a feeder.",
+   "quote_en": "we don’t treat those summer programs as any kind of feeder into the admissions process",
+   "programs_mentioned": [],
+   "url": "https://admissions.yale.edu/posts/episode-52"
+  },
+  {
+   "college": "Yale (Yale Young Global Scholars)",
+   "topic": "precollege_disclaimer",
+   "statement_ko": "YYGS는 'YYGS 참가가 예일 입학에 영향을 주냐'는 질문에, YYGS는 예일로 가는 피더 프로그램이 아니며 수익 사업으로 만든 것도 아니라고 답해요. 수료증은 예일을 포함해 어느 대학 지원서에든 추가할 수 있는 자격(credential)이라고 설명해요.",
+   "statement_en": "YYGS says it is not a feeder program for Yale and was not founded to make money; completing it is a credential students can list when applying to any college.",
+   "quote_en": "not a feeder program for Yale nor was it founded to be a revenue generator",
+   "programs_mentioned": [
+    "Yale Young Global Scholars (YYGS)"
+   ],
+   "url": "https://globalscholars.yale.edu/common-questions"
+  },
+  {
+   "college": "Harvard (Harvard Summer School Pre-College)",
+   "topic": "precollege_disclaimer",
+   "statement_ko": "하버드 서머스쿨 Pre-College Program FAQ는 '참가하면 하버드 입학이 보장되냐'는 질문에 '아니요'라고 답해요. 다만 서머스쿨에 다니며 좋은 성적을 내면 어느 대학 지원서든 강화될 것이라고 적고 있어요.",
+   "statement_en": "Harvard Pre-College's FAQ says attending does not guarantee admission to Harvard, while claiming that doing well can strengthen any college application (this is the program's view, not the admissions office's).",
+   "quote_en": "attending Harvard Summer School and performing well will strengthen your application",
+   "programs_mentioned": [
+    "Harvard Pre-College Program"
+   ],
+   "url": "https://summer.harvard.edu/high-school-programs/pre-college-program/common-questions/"
+  },
+  {
+   "college": "Harvard",
+   "topic": "summer_no_advantage",
+   "statement_ko": "하버드 칼리지 입학처의 지원 팁은 학생들이 학기 중과 여름에 일하기, 동생 돌보기, 수업 듣기, 여행, 운동, 인턴십 등 다양하게 활동한다는 걸 안다며, 학기 중·여름 활동을 구분해 적으면 시간을 어떻게 쓰고 주어진 기회를 어떻게 활용했는지 이해하는 데 도움이 된다고 해요. 또 하버드 서머스쿨 등 하버드 관련 이력도 지원서의 맥락 정보로 기록해 달라고 요청해요.",
+   "statement_en": "Harvard College's application tips recognize that students spend summers working, caring for siblings, taking courses, travelling or interning, and ask applicants to show how they used the opportunities they had.",
+   "quote_en": "working, babysitting siblings, enrolling in courses, traveling, playing sports, holding internships",
+   "programs_mentioned": [],
+   "url": "https://college.harvard.edu/guides/application-tips"
+  },
+  {
+   "college": "Stanford (Pre-Collegiate Studies)",
+   "topic": "precollege_disclaimer",
+   "statement_ko": "스탠퍼드 Pre-Collegiate Studies(SUMaC 등)는 '참가하면 스탠퍼드 합격 가능성이 높아지냐'는 질문에, 어떤 프로그램에 참가했다는 사실 자체가 대학 지원서의 가치를 더하는 건 아니며 그 경험을 통해 어떻게 배우고 성장했는지가 가장 중요하다고 답해요. 스탠퍼드 학부 입시는 이 프로그램들과 별개·독립적으로 진행되며, 다른 과외활동처럼 좋은 지원자로 보이는 데 도움은 될 수 있어도 합격을 보장하지는 않는다고 해요.",
+   "statement_en": "Stanford Pre-Collegiate Studies says participating in a program is not itself what adds value to an application — what you learned and how you grew matters most; Stanford admission is separate and independent.",
+   "quote_en": "is not in and of itself the value-add to their college application",
+   "programs_mentioned": [
+    "SUMaC",
+    "Stanford Pre-Collegiate Summer Institutes"
+   ],
+   "url": "https://sumac.spcs.stanford.edu/questions-application-sumac"
+  },
+  {
+   "college": "Stanford",
+   "topic": "summer_no_advantage",
+   "statement_ko": "스탠퍼드 입학처는 학생들이 활동 개수를 가장 중요하게 볼 거라 생각하지만, 실제로는 한두 가지 활동에서의 깊은 경험이 대여섯 개 동아리에 조금씩 참여한 것보다 열정을 더 잘 보여줄 수 있다고 해요. 일이나 가족 돌봄도 다른 과외활동만큼 중요하다고 밝혀요.",
+   "statement_en": "Stanford Admission says depth in one or two activities can show more than light involvement in many, and that work and family responsibilities count as much as any other activity.",
+   "quote_en": "These are as important as any other extracurricular activity.",
+   "programs_mentioned": [],
+   "url": "https://admission.stanford.edu/apply/overview/index.html"
+  },
+  {
+   "college": "Columbia (Pre-College Programs)",
+   "topic": "precollege_disclaimer",
+   "statement_ko": "컬럼비아 Pre-College Programs FAQ는 이 프로그램이 학부인 컬럼비아 칼리지와 별개이며, 참가 전에 '참가가 컬럼비아 칼리지의 현재 또는 향후 지원·입학 절차에 아무 영향도 주지 않는다'는 점을 이해해야 한다고 밝혀요.",
+   "statement_en": "Columbia's Pre-College Programs FAQ says the programs are separate from Columbia College and that participating has no influence on any current or future application.",
+   "quote_en": "their participation will have no influence on any ongoing or future application",
+   "programs_mentioned": [
+    "Columbia University Pre-College Programs"
+   ],
+   "url": "https://precollege.sps.columbia.edu/frequently-asked-questions"
+  },
+  {
+   "college": "Brown (Pre-College)",
+   "topic": "precollege_disclaimer",
+   "statement_ko": "브라운 Pre-College FAQ는 '참가가 브라운 학부 지원에 도움이 되냐'는 질문에 Pre-College는 학부 입시를 위한 인재 발굴(prospecting) 프로그램이 아니라고 답해요. 과정을 잘 마치면 어느 대학 입학처에든 해당 분야에 대한 관심을 보여줄 수 있다고 덧붙여요.",
+   "statement_en": "Brown Pre-College's FAQ says it is not a prospecting program for Brown undergraduate admissions, though completing it can show interest in a field to any college.",
+   "quote_en": "Pre-College is not a prospecting program for University undergraduate admissions.",
+   "programs_mentioned": [
+    "Brown Pre-College Program"
+   ],
+   "url": "https://precollege.brown.edu/frequently-asked-questions-faq"
+  },
+  {
+   "college": "Carnegie Mellon (Pre-College)",
+   "topic": "precollege_disclaimer",
+   "statement_ko": "카네기멜런 Pre-College 입학 안내 페이지는 'Important to Know' 항목에서 Pre-College 프로그램에 합격하는 것이 CMU 학부 지원에 아무 영향도 주지 않는다고 밝혀요.",
+   "statement_en": "Carnegie Mellon's Pre-College admission page says being admitted to a Pre-College program has no influence on a student's undergraduate application to CMU.",
+   "quote_en": "has no influence on a student's undergraduate application to the university",
+   "programs_mentioned": [
+    "CMU Pre-College Programs"
+   ],
+   "url": "https://www.cmu.edu/pre-college/admission/index.html"
+  },
+  {
+   "college": "Penn (SAS High School Programs)",
+   "topic": "precollege_disclaimer",
+   "statement_ko": "펜실베이니아대 고등학생 여름 프로그램 FAQ는 '여름 프로그램 출신이 학부 입시에서 우대받냐'는 질문에, 프로그램 합격이 펜 학부 입학을 보장하지 않으며 펜 입시는 매우 경쟁적이고 여러 요소로 결정된다고 답해요. 다만 좋은 고교 성적과 함께라면 학업 역량에 대한 정보를 사정관에게 줄 수 있다고 적고 있어요.",
+   "statement_en": "Penn's high school summer programs FAQ says admission to a summer program does not guarantee admission to Penn, whose undergraduate admission is highly competitive and holistic.",
+   "quote_en": "does not guarantee admission to a Penn undergraduate program",
+   "programs_mentioned": [
+    "Penn SAS High School Programs (Pre-College, Summer Academies)"
+   ],
+   "url": "https://hs.sas.upenn.edu/summer-programs/faq"
+  },
+  {
+   "college": "Northwestern (Pre-College Online)",
+   "topic": "precollege_disclaimer",
+   "statement_ko": "노스웨스턴 Pre-College Online Program FAQ는 '참가하면 합격 가능성이 높아지냐'는 질문에 '아니요, 노스웨스턴 입시에서 어떤 우대도 받지 않는다'고 답해요. 대신 정규 교과 밖의 어려운 주제를 탐구하려는 의지를 보여주는 비학점 과목 하나가 지원서에 추가된다고 설명해요.",
+   "statement_en": "Northwestern's Pre-College Online FAQ says participating gives no preferential treatment in Northwestern admissions.",
+   "quote_en": "will not afford you any preferential treatment in the Northwestern admissions process",
+   "programs_mentioned": [
+    "Northwestern Pre-College Online Program",
+    "Northwestern College Preparation Program (CPP)"
+   ],
+   "url": "https://precollege.northwestern.edu/faq"
+  },
+  {
+   "college": "UChicago (Summer Session)",
+   "topic": "precollege_disclaimer",
+   "statement_ko": "예외적인 경우예요. 시카고대는 자체 Pre-College Summer Session(및 일부 파트너 프로그램) 수료생에게 구속력 있는(binding) 조기 지원 옵션 'Summer Student Early Notification(SSEN)'을 열어줘요. 9월~10월에 지원하면 3주 안에(11월 전) 결과를 받아요. 공식 FAQ의 '이 옵션에 이점이 있냐'는 질문에는 결과를 빨리 받는다는 점만 답하고 합격률상의 이점은 언급하지 않아요. 시카고대가 절대적 1지망이고 합격 시 반드시 등록할 학생에게만 적합하다고 밝혀요.",
+   "statement_en": "An exception: UChicago offers a binding early option (SSEN) to students who completed its Pre-College Summer Session, with a decision within about three weeks; its FAQ cites the quick decision, not higher admission odds, as the benefit, and says it suits only students certain UChicago is their first choice.",
+   "quote_en": "best for students who have identified UChicago as their absolute first choice",
+   "programs_mentioned": [
+    "UChicago Pre-College Summer Session",
+    "SSEN (Summer Student Early Notification)"
+   ],
+   "url": "https://summer.uchicago.edu/pre-college/admitted-students/ssen/"
+  },
+  {
+   "college": "Duke (Duke Pre-College)",
+   "topic": "precollege_disclaimer",
+   "statement_ko": "듀크 Pre-College FAQ에는 '2026년 여름 프로그램의 모든 운영은 제3자 기관인 EngageU가 맡는다'는 고지가 있어요. 대학 이름이 붙은 여름 프로그램이라도 학부 입학처와는 운영 주체가 다를 수 있다는 걸 보여주는 사례예요. 이 페이지에서 듀크 학부 입학과의 관계를 설명하는 문장은 찾지 못했어요.",
+   "statement_en": "Duke Pre-College's FAQ notes that its 2026 summer programs are run entirely by a third-party company (EngageU) — a reminder that a university-branded program may not be run by the university itself.",
+   "quote_en": "all aspects of Duke University Pre-College are managed by EngageU",
+   "programs_mentioned": [
+    "Duke Pre-College"
+   ],
+   "url": "https://learnmore.duke.edu/precollege/faq"
+  },
+  {
+   "college": "University of California (UC system)",
+   "topic": "honors_reporting",
+   "statement_ko": "UC 지원서의 'Activities & Awards' 섹션에는 최대 20개 항목을 6개 분류(수상·영예, 교육 준비 프로그램, 과외활동, 기타 과목, 봉사, 근로 경험)로 입력해요. UC는 양보다 질을 본다며 20개를 다 채울 필요가 없고, 동생·가족 돌봄 같은 집안일도 빠뜨리지 말라고 해요. 또 'UC는 어떤 활동도 다른 활동보다 더 높게 평가하지 않는다'고 명시해요.",
+   "statement_en": "The UC application lets you enter up to 20 activities and awards across 6 categories; UC says quality matters more than quantity and that it does not value any activity over another.",
+   "quote_en": "UC does not value any activity over another.",
+   "programs_mentioned": [],
+   "url": "https://admission.universityofcalifornia.edu/counselors/_files/documents/presenting-yourself-on-the-uc-application-first-year.pdf"
+  },
+  {
+   "college": "University of California (UC system)",
+   "topic": "competition_mention",
+   "statement_ko": "UC가 공개한 지원서 평가 요소 중 하나로 '특정 분야(예술, 커뮤니케이션, 운동 등)의 특별한 재능·성취·수상'이 들어 있어요. 수상은 여러 평가 요소 중 하나로 공식 명시돼 있다는 뜻이에요.",
+   "statement_en": "UC lists special talents, achievements and awards in a particular field as one of its official comprehensive review factors.",
+   "quote_en": "Special talents, achievements and awards in a particular field",
+   "programs_mentioned": [],
+   "url": "https://admission.universityofcalifornia.edu/how-to-apply/applying-as-a-first-year/how-applications-are-reviewed.html"
+  },
+  {
+   "college": "Common App",
+   "topic": "honors_reporting",
+   "statement_ko": "Common App 공식 준비 자료에 따르면 고등학교 기간 받은 학업 관련 수상(academic honors)을 최대 5개까지 적을 수 있어요. 항목마다 수상명, 받은 시기, 인정 수준(예: 지역·전국)을 입력해요. 활동(Activities)은 따로 최대 10개까지 적을 수 있고, 가족 돌봄·아르바이트·봉사·동아리·운동·취미 등이 모두 포함될 수 있어요.",
+   "statement_en": "Common App lets you list up to 5 academic honors (with grade level and recognition level) and, separately, up to 10 activities — including family responsibilities, jobs and hobbies.",
+   "quote_en": "You can include up to 5 academic honors you received during high school.",
+   "programs_mentioned": [],
+   "url": "https://www.commonapp.org/static/b3bf7d597fc06144ea6e0ff4673eb6b2/Resource_FY_GatherMaterials_ENG_2025.06.25_1.pdf"
+  },
+  {
+   "college": "Georgia Tech",
+   "topic": "summer_no_advantage",
+   "statement_ko": "조지아텍 입학처 블로그(2016년, 입학처장 Rick Clark)는 여름에 할 일로 '일'을 꼽으며, 유급 일자리를 못 구해도 지역 업체·단체에서 주 10~15시간 봉사하는 방법이 있다고 해요. 동네 요거트 가게든 식당 서빙이든 어떤 환경에서 일하든 좋은 일이라고 적었어요.",
+   "statement_en": "In a 2016 Georgia Tech admission blog post, the dean of admission named work as a great summer choice, in any setting, and suggested local volunteering if paid work isn't available.",
+   "quote_en": "working in any setting is a good thing",
+   "programs_mentioned": [],
+   "url": "https://sites.gatech.edu/admission-blog/2016/05/04/make-it-a-summer/"
+  }
+ ]
+}

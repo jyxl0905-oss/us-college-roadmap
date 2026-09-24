@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { BarChart3, Target, FileText, Search, Menu, Compass, CalendarDays, BookOpen, GraduationCap, Map, MessageCircle, X, Home, Shield, Wallet } from 'lucide-react'
+import { BarChart3, Target, FileText, Search, Menu, Compass, CalendarDays, BookOpen, GraduationCap, Map, MessageCircle, X, Home, Shield, Wallet, Trophy } from 'lucide-react'
 import { navigate, usePath } from '../lib/router'
 import { t } from '../i18n'
 import LangToggle from '../i18n/LangToggle'
@@ -44,6 +44,7 @@ export default function AppNav() {
     { to: '/majors', label: t('전공 가이드', 'Major guides'), icon: Compass, active: (p) => p.startsWith('/major') },
     { to: '/guide/ap', label: t('AP 가이드', 'AP guide'), icon: BookOpen, active: (p) => p === '/guide/ap' },
     { to: '/guide/courses', label: t('수업 난이도', 'Course rigor'), icon: GraduationCap, active: (p) => p === '/guide/courses' },
+    { to: '/guide/programs', label: t('대회·서머', 'Programs'), icon: Trophy, active: (p) => p === '/guide/programs' },
     { to: '/guide/cost', label: t('비용·재정지원', 'Cost & aid'), icon: Wallet, active: (p) => p === '/guide/cost' },
     { to: '/map', label: t('대학 지도', 'College map'), icon: Map, active: (p) => p === '/map' },
     ...(admin ? [{ to: '/admin', label: t('관리자', 'Admin'), icon: Shield, active: (p: string) => p.startsWith('/admin') }] : []),

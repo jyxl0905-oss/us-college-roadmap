@@ -217,6 +217,18 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
           </details>
         )}
 
+        {/* 대회·서머 프로그램 바로가기 */}
+        {full && (
+          <button onClick={() => navigate(`/guide/programs?major=${encodeURIComponent(majorKey)}`)} className="mt-4 flex w-full items-center gap-3 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 text-left active:bg-gray-50">
+            <Trophy size={18} strokeWidth={2} className="shrink-0 text-blue-600" />
+            <span className="min-w-0 flex-1">
+              <span className="block font-semibold text-gray-900">{t('이 전공 대회·서머 프로그램', 'Competitions & summer programs for this major')}</span>
+              <span className="block text-xs text-gray-500">{t('뭘 하는지·국제학생 참가 자격·공식 언급 대학', 'What they are, intl. eligibility, colleges that name them')}</span>
+            </span>
+            <span className="text-gray-400">→</span>
+          </button>
+        )}
+
         {/* 활동 가이드 — 접힘 기본 */}
         {full && <div className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
           <button onClick={() => setGuideOpen(!guideOpen)} className="flex w-full items-center justify-between text-left">

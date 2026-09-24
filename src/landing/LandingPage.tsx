@@ -201,6 +201,7 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
               <button onClick={() => navigate('/majors')} className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 active:bg-gray-50">{t('전공 알아보기', 'Majors')}</button>
               <button onClick={() => navigate('/guide/ap')} className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 active:bg-gray-50">{t('AP 가이드', 'AP guide')}</button>
               <button onClick={() => navigate('/guide/courses')} className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 active:bg-gray-50">{t('수업 난이도', 'Course rigor')}</button>
+              <button onClick={() => navigate('/guide/programs')} className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 active:bg-gray-50">{t('대회·서머', 'Programs')}</button>
               <button onClick={() => navigate('/guide/cost')} className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 active:bg-gray-50">{t('비용·재정지원', 'Cost & aid')}</button>
               <button onClick={() => navigate('/map')} className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 active:bg-gray-50">{t('대학 지도', 'College map')}</button>
             </div>

@@ -85,6 +85,7 @@ npm run dev
 - 지원 신분(국제학생 / 시민권·영주권)에 따라 해당 파트만 표시. 시드: `supabase/seed-aid.sql`, 검토: `docs/i18n-review/aid-review.md`. 연 1회 갱신 대상.
 - 1년 비용(`src/data/cost.json`): 각 대학 공식 Cost of Attendance(국제학생 예산이 있으면 그 금액, 주립대는 타주 기준). 147개교, 매년 여름 갱신.
 - 신분별 지원 자격(`src/data/aidRules.json`): studentaid.gov·FSA Handbook·ICE/DHS·College Board·대학 공식 페이지 인용만. `/guide/cost`에서 표시.
+- 대회·서머 프로그램(`src/data/programs.json`): 75개, 각 프로그램 공식 사이트·운영 대학·입학처 페이지만 출처로 사용. 국제학생 참가 자격은 공식 자격 페이지 기준. 입학처 공식 입장 24개 포함. `/guide/programs`에서 표시, 매년 여름 갱신.
 
 ## 학교 데이터 범위
 - 종합대학 63개교(US News National Universities 기준 Top 60권) + 리버럴 아츠 칼리지 35개교(US News 2026 National Liberal Arts Colleges Top 35, 사관학교 제외·37위 공동 포함). `schools.kind` = university | lac, LAC는 `lac_rank`로 티어 매핑(1-12→1, 13-24→2, 25-35→3).

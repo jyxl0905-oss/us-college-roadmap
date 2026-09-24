@@ -7,6 +7,7 @@ import { majorLabel } from '../data/majors'
 import { saveProfile, type ProfileRow } from '../lib/profile'
 import AidBlock from './AidBlock'
 import CostBlock from './CostBlock'
+import SchoolPrograms from './SchoolPrograms'
 import { setPrefillSchoolIds } from './prefill'
 import FitPicker from './FitPicker'
 import { schoolWebsite } from './logos'
@@ -248,6 +249,9 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         </div>
         <div className="mt-3">
           <CostBlock schoolId={s.id} />
+        </div>
+        <div className="mt-3 empty:hidden">
+          <SchoolPrograms schoolId={s.id} />
         </div>
 
         {/* 데이터 블록 */}
