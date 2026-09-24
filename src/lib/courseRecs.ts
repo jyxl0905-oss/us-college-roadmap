@@ -54,8 +54,10 @@ export function recommendCourses(courses: CourseInput[], currentGrade: number, m
     // 수학이 아직 Precalculus 전이면 미적분은 한 해 만에 못 감 → 전공 추천에서 빼고 ②의 수학 다음 칸이 대신 안내
     const mathTopNow = Math.max(-1, ...courses.filter((c) => subjectOf(c) === 'math').map((c) => rungOf('math', c)))
     const hasIbMath = courses.some((c) => c.level === 'ib' && subjectOf(c) === 'math')
+    const hasIbCalc = courses.some((c) => subjectOf(c) === 'math' && /(aa|analysis)/i.test(c.name)) // IB Math AA(SL·HL)는 미적분 포함
     const missing = core.needs
       .filter((need) => !names.some((n) => need.match.test(n)))
+      .filter((need) => !(need.label === 'Calculus' && hasIbCalc))
       .filter((need) => !(need.label === 'Calculus' && !hasIbMath && mathTopNow < 3))
     if (missing.length > 0) {
       const list = missing.map((m) => m.label).join(', ')
@@ -118,4 +120,50 @@ export function recommendCourses(courses: CourseInput[], currentGrade: number, m
   }
 
   return recs.slice(0, 2)
+}
+
+// ── 내 위치 분석: 올해(현재 학년) 과목 기록 → 학년별 가이드 표의 [일반·심화·최상위] 중 어디인지 ──
+// 표 칸이 편집 가이드이므로 판정도 같은 기준의 근사치 (학교마다 개설 과목이 다름)
+export type Tier = 0 | 1 | 2
+export interface Position { subject: Subject; tier: Tier | null; status: 'ok' | 'none' | 'unrecognized'; course: string | null }
+
+const cellRank = (subject: Subject, cell: string): number => {
+  if (subject === 'language') { if (/선택|optional/i.test(cell)) return -1; if (/\bAP\b/.test(cell)) return 4; const m = cell.match(/Level\s*(\d)/); return m ? Number(m[1]) - 1 : -1 }
+  return rungOf(subject, { grade: 0, name: cell, level: /\bAP\b/.test(cell) ? 'ap' : 'regular' })
+}
+
+export function coursePosition(courses: CourseInput[], grade: number, row: (s: Subject) => [string, string, string]): Position[] {
+  const g = Math.min(12, Math.max(9, grade))
+  const thisYear = courses.filter((c) => c.grade === g)
+  return SUBJECTS.map((subject): Position => {
+    const list = thisYear.filter((c) => subjectOf(c) === subject)
+    if (list.length === 0) return { subject, tier: null, status: 'none', course: null }
+    const lv = (c: CourseInput) => levelRank[c.level] ?? 0
+    const apCount = list.filter((c) => lv(c) === 2 && c.level !== 'ib').length
+    const best = [...list].sort((a, b) => rungOf(subject, b) - rungOf(subject, a) || lv(b) - lv(a))[0]
+    let tier: Tier | null = null
+    if (subject === 'math' || subject === 'language') {
+      const ib = list.find((c) => c.level === 'ib')
+      if (subject === 'math' && ib) tier = /(aa|analysis).*\bhl\b|\bhl\b.*(aa|analysis)/i.test(ib.name) ? 2 : /(aa|analysis)/i.test(ib.name) ? 1 : 0
+      else {
+        const r = Math.max(...list.map((c) => rungOf(subject, c)))
+        if (r < 0) return { subject, tier: null, status: 'unrecognized', course: best.name }
+        const cells = row(subject).map((c) => cellRank(subject, c))
+        tier = 0
+        cells.forEach((cr, i) => { if (cr >= 0 && r >= cr) tier = i as Tier })
+      }
+    } else {
+      const top = Math.max(...list.map(lv))
+      const hasLit = list.some((c) => lv(c) === 2 && /lit/i.test(c.name))
+      const physC = list.some((c) => /physics\s*c\b/i.test(c.name))
+      if (subject === 'english') tier = top === 2 ? (g >= 11 ? (g === 12 && !hasLit ? 1 : 2) : 1) : top === 1 ? 1 : 0
+      if (subject === 'social') tier = g <= 10 ? (top === 2 ? (g === 10 ? 2 : 1) : top === 1 ? 1 : 0) : g === 11 ? (top === 2 ? 1 : 0) : apCount >= 2 ? 2 : apCount === 1 ? 1 : 0
+      if (subject === 'science') tier = g === 9 ? (top >= 1 ? 1 : 0) : g === 10 ? (top === 2 ? 2 : top === 1 ? 1 : 0) : g === 11 ? (apCount >= 2 ? 2 : apCount === 1 ? 1 : 0) : (physC || apCount >= 2 ? 2 : apCount === 1 ? 1 : 0)
+      if (top === 2 && list.every((c) => c.level === 'ib')) tier = Math.max(tier ?? 0, 1) as Tier // IB 과목은 심화 이상으로 봄
+    }
+    // 표에서 심화=최상위 같은 칸이면 둘 다 같은 위치로 취급
+    const r3 = row(subject)
+    if (tier === 2 && r3[1] === r3[2]) tier = 1
+    return { subject, tier, status: 'ok', course: best.name }
+  })
 }

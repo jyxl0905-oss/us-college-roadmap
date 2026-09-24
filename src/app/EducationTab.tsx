@@ -7,7 +7,8 @@ import { gpaBandLabels } from '../onboarding/labels'
 import { insertRow, updateRow, deleteRow, loadAppRecords, courseLevelKo, type Course, type CourseLevel } from './appData'
 import { supabase } from '../lib/supabase'
 import { computeGpa, courseLetter, gpaToBand, LETTERS } from './gpa'
-import { recommendCourses } from '../lib/courseRecs'
+import { recommendCourses, subjectOf, rungOf, coursePosition } from '../lib/courseRecs'
+import { ladders, subjectLabel, gradeGuide } from '../data/courseGuide'
 import { navigate } from '../lib/router'
 
 interface EducationTabProps {
@@ -183,6 +184,19 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
         return (
           <div className="mt-3 rounded-xl border-2 border-amber-200 bg-amber-50/60 px-4 py-3.5">
             <p className="flex items-center gap-1.5 text-sm font-semibold text-gray-900"><Compass size={15} strokeWidth={2} />{t(`${Math.min(12, myGrade + 1)}학년 수강 추천`, `Suggestions for grade ${Math.min(12, myGrade + 1)}`)}</p>
+            {courses.some((c) => c.grade === myGrade) && (() => {
+              const pos = coursePosition(courses, myGrade, (sb) => gradeGuide[sb][myGrade as 9 | 10 | 11 | 12])
+              return (
+                <p className="mt-1.5 flex flex-wrap gap-1">
+                  <span className="text-[11px] text-gray-500">{t(`${myGrade}학년 내 위치:`, `Grade ${myGrade} position:`)}</span>
+                  {pos.map((p) => (
+                    <span key={p.subject} className={`rounded-full px-1.5 py-0.5 text-[10.5px] font-semibold ${p.status !== 'ok' ? 'bg-white text-gray-400' : p.tier === 2 ? 'bg-emerald-100 text-emerald-800' : p.tier === 1 ? 'bg-blue-100 text-blue-800' : 'bg-white text-amber-800'}`}>
+                      {t(subjectLabel[p.subject].ko, subjectLabel[p.subject].en)} {p.status === 'none' ? '—' : p.status === 'unrecognized' ? '?' : [t('일반', 'Std'), t('심화', 'Adv'), t('최상위', 'Top')][p.tier ?? 0]}
+                    </span>
+                  ))}
+                </p>
+              )
+            })()}
             {courses.length === 0 ? (
               <p className="mt-1 text-xs text-gray-600">{t('아래에 지금까지 들은 과목을 적으면, 다음 학년에 어떤 과목을 올리면 좋을지 추천해 드려요.', 'Add the courses you’ve taken below and we’ll suggest what to step up next year.')}</p>
             ) : myGrade >= 12 ? (
@@ -242,6 +256,15 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
                   <span className="min-w-0 break-words text-gray-900">
                     {c.name}
                     {c.level !== 'regular' && <span className="ml-2 rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700">{courseLevelKo[c.level]}</span>}
+                    {(() => {
+                      // 추천·위치 분석에 어떻게 인식됐는지 (과목명이 달라 못 알아보면 바로 고칠 수 있게)
+                      const sub = subjectOf(c)
+                      const r = sub ? rungOf(sub, c) : -1
+                      const txt = !sub ? t('기타 과목 · 추천엔 안 쓰여요', 'Elective · not used for suggestions')
+                        : r >= 0 ? `${t(subjectLabel[sub].ko, subjectLabel[sub].en)} · ${ladders[sub][r].name}`
+                        : t(`${subjectLabel[sub].ko} · 단계 미인식 (예: AP Calculus BC처럼 적어 주세요)`, `${subjectLabel[sub].en} · level not recognized (use names like AP Calculus BC)`)
+                      return <span className={`mt-0.5 block text-[10.5px] ${sub && r < 0 && sub !== 'english' ? 'text-amber-700' : 'text-gray-400'}`}>{txt}</span>
+                    })()}
                   </span>
                   <span className="ml-2 flex shrink-0 items-center gap-1.5">
                     <input

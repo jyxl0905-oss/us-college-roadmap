@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { loadAppRecords } from '../app/appData'
+import { coursePosition, type Position } from '../lib/courseRecs'
 import { t } from '../i18n'
 import { goBack, navigate } from '../lib/router'
 import { COURSE_GUIDE_VERIFIED, cellText, SUBJECTS, gradeGuide, subjectLabel, majorCores, rigorSources, type Subject } from '../data/courseGuide'
@@ -32,10 +34,21 @@ function mathTierNow(grade: number, mathCourse: string | null): number {
 }
 
 // 수업 난이도 가이드 — 학년×과목×3단계 표 + 공식 근거 (편집 가이드 라벨)
-export default function CourseGuidePage({ profile }: { profile: ProfileRow | null }) {
+export default function CourseGuidePage({ profile, userId }: { profile: ProfileRow | null; userId?: string | null }) {
   const [subject, setSubject] = useState<Subject>('math')
   const grade = profile ? profileGrade(profile) : 0
-  const hereTier = subject === 'math' && profile ? mathTierNow(grade, profile.math_course) : -1
+  const [positions, setPositions] = useState<Position[] | null>(null)
+
+  // 내 과목 기록이 있으면 올해 과목으로 과목별 위치 분석 (없으면 온보딩 수학 과목만 사용)
+  useEffect(() => {
+    if (!userId || grade < 9 || grade > 12) return
+    loadAppRecords(userId).then((r) => {
+      if (r.courses.length > 0) setPositions(coursePosition(r.courses, grade, (s) => gradeGuide[s][grade as 9 | 10 | 11 | 12]))
+    }).catch(() => { /* 전역 안내 띠 */ })
+  }, [userId, grade])
+
+  const pos = positions?.find((p) => p.subject === subject)
+  const hereTier = pos ? (pos.tier ?? -1) : subject === 'math' && profile ? mathTierNow(grade, profile.math_course) : -1
 
   useEffect(() => {
     document.title = t('미국 대학 입시 수업 난이도(rigor) 가이드 — 학년별 추천 과목 | 미국 대입 로드맵', 'Course rigor guide — recommended courses by grade | US College Roadmap')
@@ -61,6 +74,28 @@ export default function CourseGuidePage({ profile }: { profile: ProfileRow | nul
             )}
           </p>
         </div>
+
+        {/* 내 위치 — 학업 탭에 적은 올해 과목 기준 */}
+        {positions && (
+          <div className="mt-4 rounded-2xl border-2 border-gray-200 bg-white px-4 py-3.5">
+            <p className="text-sm font-semibold text-gray-900">{t(`내 위치 — ${grade}학년, 내가 적은 과목 기준`, `Where you are — grade ${grade}, from your courses`)}</p>
+            <div className="mt-2 grid grid-cols-5 gap-1.5">
+              {positions.map((p) => {
+                const label = p.status === 'none' ? t('기록 없음', 'None') : p.status === 'unrecognized' ? t('인식 안 됨', 'Unrecognized') : [t('일반', 'Standard'), t('심화', 'Advanced'), t('최상위', 'Top')][p.tier ?? 0]
+                const cls = p.status !== 'ok' ? 'bg-gray-50 text-gray-400' : p.tier === 2 ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200' : p.tier === 1 ? 'bg-blue-50 text-blue-700 ring-1 ring-blue-200' : 'bg-amber-50 text-amber-800 ring-1 ring-amber-200'
+                return (
+                  <button key={p.subject} onClick={() => setSubject(p.subject)} title={p.course ?? ''} className={`rounded-xl px-1 py-2 text-center ${cls} ${subject === p.subject ? 'outline outline-2 outline-gray-900' : ''}`}>
+                    <span className="block text-[11px] font-medium opacity-80">{t(subjectLabel[p.subject].ko, subjectLabel[p.subject].en)}</span>
+                    <span className="block text-[13px] font-bold">{label}</span>
+                  </button>
+                )
+              })}
+            </div>
+            {pos?.course && <p className="mt-2 text-[11px] text-gray-500">{t(`${subjectLabel[subject].ko}: "${pos.course}" 기준`, `${subjectLabel[subject].en}: based on “${pos.course}”`)}</p>}
+            <p className="mt-1 text-[11px] leading-relaxed text-gray-400">{t('편집 가이드 표에 대입한 대략적인 위치예요. "인식 안 됨"은 과목명을 표준 이름(예: AP Calculus BC)으로 고치면 돼요.', 'An approximate position against the editorial table. For “Unrecognized”, rename the course to a standard name (e.g., AP Calculus BC).')}</p>
+            <button onClick={() => navigate('/app/education')} className="mt-1.5 text-xs font-medium text-blue-600 underline">{t('과목 수정·다음 학년 추천 보기 →', 'Edit courses & see next-year suggestions →')}</button>
+          </div>
+        )}
 
         {/* 과목 탭 */}
         <div className="mt-5 flex gap-1.5 overflow-x-auto pb-1">
@@ -92,11 +127,15 @@ export default function CourseGuidePage({ profile }: { profile: ProfileRow | nul
                   <td className="whitespace-nowrap px-2 py-2.5 text-xs font-semibold text-gray-700 sm:px-3">
                     {t(`${g}학년`, `Grade ${g}`)}{g === grade && <span className="ml-1 text-amber-600">●</span>}
                   </td>
-                  {gradeGuide[subject][g].map((cell, i) => {
+                  {gradeGuide[subject][g].map((cell, i, row) => {
+                    // 심화와 최상위가 같은 과목이면 한 칸으로 합쳐 표시 (이 학년엔 그 단계가 최고)
+                    if (i === 2 && row[1] === row[2]) return null
+                    const merged = i === 1 && row[1] === row[2]
                     const here = g === grade && i === hereTier
                     return (
-                      <td key={i} className={`px-2 py-2.5 leading-snug text-gray-800 sm:px-3 ${here ? 'font-semibold' : ''}`}>
+                      <td key={i} colSpan={merged ? 2 : 1} className={`px-2 py-2.5 leading-snug text-gray-800 sm:px-3 ${here ? 'font-semibold' : ''} ${merged ? 'text-center' : ''}`}>
                         {cellText(cell)}
+                        {merged && <span className="block text-[10px] font-normal text-gray-400">{t('심화·최상위 같음 — 이 학년엔 이게 최고 단계', 'Same for advanced & most rigorous')}</span>}
                         {here && <span className="ml-1.5 whitespace-nowrap rounded-full bg-amber-400 px-1.5 py-0.5 text-[10px] font-bold text-white">{t('지금 여기', 'You are here')}</span>}
                       </td>
                     )

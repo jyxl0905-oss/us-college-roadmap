@@ -66,9 +66,9 @@ export const ladders: Record<Subject, Rung[]> = {
     { name: 'Algebra 1', match: /algebra\s*(1|i)\b(?!i)|대수\s*1/i },
     { name: 'Geometry', match: /geometry|기하/i },
     { name: 'Algebra 2', match: /algebra\s*(2|ii)\b|대수\s*2/i },
-    { name: 'Precalculus', match: /pre-?\s*calc|프리\s*캘/i },
-    { name: 'AP Calculus AB', match: /calc(ulus)?\s*ab\b|^(ap\s*|honors\s*)?calculus$|미적분/i },
-    { name: 'AP Calculus BC', match: /calc(ulus)?\s*bc\b/i },
+    { name: 'Precalculus', match: /pre-?\s*cal(c(ulus)?)?\b|프리\s*캘/i },
+    { name: 'AP Calculus AB', match: /\bcal(c(ulus)?)?\.?\s*ab\b|(?<!pre[-\s]?)\bcal(c(ulus)?)?\b(?!\.?\s*(ab|bc)\b)|미적분/i },
+    { name: 'AP Calculus BC', match: /\bcal(c(ulus)?)?\.?\s*bc\b/i },
     { name: 'Multivariable · Linear Algebra', match: /multivariable|linear algebra|differential eq/i },
   ],
   science: [
@@ -92,21 +92,21 @@ export const ladders: Record<Subject, Rung[]> = {
     { name: 'AP Gov · Macro · Micro · Psych', match: /ap\s*(gov|macro|micro|psych|comparative|human geo)/i },
   ],
   language: [
-    { name: 'Level 1', match: /\b(1|i)\b/i },
-    { name: 'Level 2', match: /\b(2|ii)\b/i },
-    { name: 'Level 3', match: /\b(3|iii)\b/i },
-    { name: 'Level 4', match: /\b(4|iv)\b/i },
+    { name: 'Level 1', match: /(\b|[a-z])(1|i)\b/i },
+    { name: 'Level 2', match: /(\b|[a-z])(2|ii)\b/i },
+    { name: 'Level 3', match: /(\b|[a-z])(3|iii)\b/i },
+    { name: 'Level 4', match: /(\b|[a-z])(4|iv)\b/i },
     { name: 'AP', match: /\bap\b/i },
   ],
 }
 
 // 과목명 → 과목 분류 (사다리 판별 전 1차 분류)
 export const subjectMatch: Record<Subject, RegExp> = {
-  math: /algebra|geometry|calc|statistic|math|trig|대수|기하|미적|수학|통계/i,
+  math: /algebra|geometry|\bcal(c|culus)?\b|precal|statistic|math|trig|대수|기하|미적|수학|통계/i,
   science: /biology|chemistry|physics|science|\bbio\b|\bchem\b|environmental|생물|화학|물리|과학/i,
   english: /english|literature|\blit\b|composition|영어|문학/i,
-  social: /history|gov|econ|psych|geograph|social|civics|sociology|세계사|미국사|역사|경제|사회|정치/i,
-  language: /spanish|french|chinese|mandarin|japanese|korean|german|latin|italian|arabic|스페인어|프랑스어|중국어|일본어|한국어|독일어|라틴어/i,
+  social: /history|gov|econ|psych|geograph|social|civics|sociology|global stud|world stud|humanities|세계사|미국사|역사|경제|사회|정치/i,
+  language: /span|spain|espa|french|fren|chinese|mandarin|japanese|korean|german|latin|italian|arabic|스페인어|프랑스어|중국어|일본어|한국어|독일어|라틴어/i,
 }
 
 // IB 수학 — 별도 사다리 (AI SL → AA SL → AA HL)
@@ -124,7 +124,7 @@ export const majorCores: MajorCore[] = [
     groups: ['engineering', 'aerospace_eng', 'physics'],
     ko: '공학', en: 'Engineering',
     needs: [
-      { label: 'Calculus', match: /calc|미적/i },
+      { label: 'Calculus', match: /(?<!pre[-\s]?)\bcal(c(ulus)?)?\b|미적/i },
       { label: 'Physics', match: /physics|물리/i },
       { label: 'Chemistry', match: /chemistry|\bchem\b|화학/i },
     ],
@@ -134,7 +134,7 @@ export const majorCores: MajorCore[] = [
     groups: ['cs', 'math_data'],
     ko: '컴퓨터과학·수학', en: 'CS · Math',
     needs: [
-      { label: 'Calculus', match: /calc|미적/i },
+      { label: 'Calculus', match: /(?<!pre[-\s]?)\bcal(c(ulus)?)?\b|미적/i },
       { label: 'AP Computer Science A', match: /computer science a|\bcs\s*a\b|ap\s*cs(a)?\b/i },
     ],
     source: 'Harvard', url: 'https://college.harvard.edu/resources/faq/are-there-secondary-school-course-requirements-admission',
@@ -152,7 +152,7 @@ export const majorCores: MajorCore[] = [
     groups: ['business'],
     ko: '경영·경제', en: 'Business · Economics',
     needs: [
-      { label: 'Calculus', match: /calc|미적/i },
+      { label: 'Calculus', match: /(?<!pre[-\s]?)\bcal(c(ulus)?)?\b|미적/i },
       { label: 'Economics', match: /econ|경제/i },
     ],
     source: 'Penn (Wharton)', url: 'https://admissions.upenn.edu/how-to-apply/preparing-your-application/academics',

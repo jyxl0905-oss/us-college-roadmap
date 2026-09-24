@@ -529,7 +529,7 @@ function AppRoutes() {
     return <CostGuidePage profile={profile} />
   }
   if (path === '/guide/courses' || path === '/guide/courses/') {
-    return <CourseGuidePage profile={profile} />
+    return <CourseGuidePage profile={profile} userId={session?.user.id ?? null} />
   }
   if (path.startsWith('/major/')) {
     return (
