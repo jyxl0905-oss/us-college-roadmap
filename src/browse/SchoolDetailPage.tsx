@@ -344,7 +344,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
       </div>
 
       {/* 하단 고정 전환 CTA */}
-      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-gray-200 bg-white/95 px-5 py-3 backdrop-blur">
+      <div className="bottom-nav-offset fixed inset-x-0 bottom-0 z-20 border-t border-gray-200 bg-white/95 px-5 py-3 backdrop-blur">
         <button
           onClick={cta}
           className="mx-auto block w-full max-w-md rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"

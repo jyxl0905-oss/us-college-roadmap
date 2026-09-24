@@ -17,6 +17,7 @@ import LoadErrorBanner from './LoadErrorBanner'
 import { demoProfile, DEMO_USER_ID } from './demo/demoProfile'
 import { getLang, t } from './i18n'
 import TopNav from './nav/TopNav'
+import AppNav from './nav/AppNav'
 
 // 무거운 화면(차트·리포트·보드·온보딩)은 필요할 때만 내려받음 — 둘러보기 첫 로딩을 가볍게
 const OnboardingFlow = lazy(() => import('./onboarding/OnboardingFlow'))
@@ -271,8 +272,11 @@ export default function App() {
     <ErrorBoundary>
       <Suspense fallback={<LoadingScreen />}>
         <TopNav key={`nav-${langKey}`} />
-        <LoadErrorBanner />
-        <AppRoutes key={langKey} />
+        <AppNav key={`appnav-${langKey}`} />
+        <div id="app-main">
+          <LoadErrorBanner />
+          <AppRoutes key={langKey} />
+        </div>
       </Suspense>
     </ErrorBoundary>
   )

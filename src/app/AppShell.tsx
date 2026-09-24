@@ -1,5 +1,6 @@
 import { navigate, goBack } from '../lib/router'
 import { t } from '../i18n'
+import { ClipboardList, CalendarRange, Activity, PencilLine, BookOpen, Target, PenSquare } from 'lucide-react'
 
 export type AppTab = 'home' | 'plans' | 'activities' | 'testing' | 'education' | 'colleges' | 'writing'
 
@@ -12,6 +13,10 @@ export const appTabs: { key: AppTab; label: string; path: string; emoji: string 
   { key: 'colleges', get label() { return t('지원', 'Colleges') }, path: '/app/colleges', emoji: '🎯' },
   { key: 'writing', get label() { return t('에세이', 'Essays') }, path: '/app/writing', emoji: '📝' },
 ]
+
+const TAB_ICONS: Record<AppTab, typeof ClipboardList> = {
+  home: ClipboardList, plans: CalendarRange, activities: Activity, testing: PencilLine, education: BookOpen, colleges: Target, writing: PenSquare,
+}
 
 interface AppShellProps {
   tab: AppTab
@@ -26,7 +31,7 @@ interface AppShellProps {
 export default function AppShell({ tab, title, children, onBack, headerExtra, wide }: AppShellProps) {
   return (
     <div className="min-h-dvh bg-gray-50">
-      <div className={`mx-auto max-w-md px-5 py-6 pb-28 md:max-w-2xl ${wide ? "lg:max-w-5xl" : ""}`}>
+      <div className={`mx-auto max-w-md px-5 py-6 pb-12 md:max-w-2xl ${wide ? "lg:max-w-5xl" : ""}`}>
         <div className="flex items-center gap-3">
           <button onClick={onBack ?? (() => goBack('/'))} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">
             ←
@@ -39,26 +44,26 @@ export default function AppShell({ tab, title, children, onBack, headerExtra, wi
             {t('가상 원서 · 실제 제출 아님', 'Practice app · not a real submission')}
           </span>
         </div>
+        {/* 내 원서 세부 탭 — 전체 하단 탭 바와 겹치지 않도록 제목 아래 가로 탭으로 (2026-09 리디자인) */}
+        <nav className="-mx-5 mt-4 flex gap-1.5 overflow-x-auto px-5 pb-1 [scrollbar-width:none]" aria-label={t('내 원서 메뉴', 'My App sections')}>
+          {appTabs.map((it) => {
+            const Icon = TAB_ICONS[it.key]
+            const on = tab === it.key
+            return (
+              <button
+                key={it.key}
+                onClick={() => navigate(it.path)}
+                aria-current={on ? 'page' : undefined}
+                className={`flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-semibold ${on ? 'bg-gray-900 text-white' : 'border border-gray-200 bg-white text-gray-600'}`}
+              >
+                <Icon size={15} strokeWidth={2} />
+                {it.label}
+              </button>
+            )
+          })}
+        </nav>
         {children}
       </div>
-
-      {/* 하단 탭 */}
-      <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-gray-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex max-w-md justify-between px-2 py-1.5">
-          {appTabs.map((it) => (
-            <button
-              key={it.key}
-              onClick={() => navigate(it.path)}
-              className={`flex flex-1 flex-col items-center rounded-lg px-1 py-1.5 text-[11px] ${
-                tab === it.key ? 'font-semibold text-blue-700' : 'text-gray-500'
-              }`}
-            >
-              <span className="text-base leading-none">{it.emoji}</span>
-              <span className="mt-1">{it.label}</span>
-            </button>
-          ))}
-        </div>
-      </nav>
     </div>
   )
 }

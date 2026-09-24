@@ -41,6 +41,17 @@ body {
 h1, h2 { letter-spacing: -0.025em; }
 h1.text-xl, h1.text-2xl { font-weight: 800; }
 
+/* 로그인 후 내비게이션 (AppNav): 폰 하단 탭 바 / 컴퓨터 왼쪽 메뉴 */
+@media screen and (max-width: 767px) {
+  html.has-bottom-nav #app-main { padding-bottom: calc(4rem + env(safe-area-inset-bottom)); }
+  html.has-bottom-nav .bottom-nav-offset { bottom: calc(4rem + env(safe-area-inset-bottom)); }
+}
+@media screen and (min-width: 768px) {
+  html.has-side-nav #app-main { padding-left: 15rem; }
+  html.has-side-nav header.topnav { display: none; }
+  html.has-side-nav .bottom-nav-offset { left: 15rem; }
+}
+
 /* 채운 파랑(주요 버튼·강조 카드) → 브랜드 남색, 파랑은 링크·옅은 강조에만 */
 .bg-blue-600 { background-color: var(--color-gray-900); }
 .hover\:bg-blue-700:hover, .active\:bg-blue-700:active { background-color: var(--color-gray-800); }

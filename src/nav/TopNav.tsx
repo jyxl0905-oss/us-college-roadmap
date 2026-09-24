@@ -1,37 +1,18 @@
 import { MessageCircle, BarChart3 } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { navigate, usePath } from '../lib/router'
-import { supabase } from '../lib/supabase'
 import { t } from '../i18n'
 import LangToggle from '../i18n/LangToggle'
 import ThemeToggle from './ThemeToggle'
-import { checkIsAdmin } from '../lib/admin'
+import { useNavState } from './navState'
 import FeedbackModal from './FeedbackModal'
 
 // 전역 상단 바 — 어느 화면에서든 주요 기능(리포트·내 원서·학교·마감)과 언어 토글이 항상 보이게.
 // "스크롤해야/눌러봐야 기능이 보인다"는 피드백에 대한 답: 내비게이션을 화면 상단에 상시 노출.
 export default function TopNav() {
   const path = usePath()
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [onboarded, setOnboarded] = useState(true) // 기본 true = 기존 유저 동작 그대로
-
-  const [admin, setAdmin] = useState(false)
+  const { loggedIn, onboarded, admin } = useNavState()
   const [feedbackOpen, setFeedbackOpen] = useState(false)
-
-  useEffect(() => {
-    if (!supabase) return
-    supabase.auth.getSession().then(({ data }) => {
-      setLoggedIn(!!data.session)
-      void checkIsAdmin(data.session?.user.id).then(setAdmin)
-    })
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
-      setLoggedIn(!!s)
-      void checkIsAdmin(s?.user.id).then(setAdmin)
-    })
-    const onOb = (e: Event) => setOnboarded((e as CustomEvent<boolean>).detail)
-    window.addEventListener('app:onboarded', onOb)
-    return () => { sub.subscription.unsubscribe(); window.removeEventListener('app:onboarded', onOb) }
-  }, [])
 
   const links = loggedIn
     ? [
@@ -54,14 +35,14 @@ export default function TopNav() {
       ]
 
   return (
-    <header className="no-print sticky top-0 z-40 border-b border-gray-200 bg-white/90 backdrop-blur">
+    <header className="topnav no-print sticky top-0 z-40 border-b border-gray-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center gap-1 px-3 py-2">
         {/* 메뉴 링크만 가로 스크롤 — 오른쪽 언어·테마 버튼은 좁은 폰에서도 항상 보이게 스크롤 영역 밖에 둠 */}
         <div className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto [scrollbar-width:none]">
         <button onClick={() => navigate('/')} aria-label={t('홈', 'Home')} className="mr-1 flex shrink-0 items-center gap-1.5 rounded-lg px-1.5 py-1 text-sm font-bold text-gray-900">
-          <img src="/icons/favicon-64.png" alt="" width={20} height={20} className="h-5 w-5 rounded-md" /> <span className="hidden sm:inline">{t('미국 대입 로드맵', 'US College Roadmap')}</span>
+          <img src="/icons/favicon-64.png" alt="" width={20} height={20} className="h-5 w-5 rounded-md" /> <span className={loggedIn ? '' : 'hidden sm:inline'}>{t('미국 대입 로드맵', 'US College Roadmap')}</span>
         </button>
-        {links.map((l) => (
+        {!loggedIn && links.map((l) => (
           <button
             key={l.to}
             onClick={() => navigate(l.to)}
@@ -70,7 +51,7 @@ export default function TopNav() {
             {l.label}
           </button>
         ))}
-        {admin && (
+        {admin && !loggedIn && (
           <button onClick={() => navigate('/admin')} aria-label={t('관리자', 'Admin')} className={`shrink-0 rounded-full px-3 py-1 text-sm ${path.startsWith('/admin') ? 'bg-gray-900 font-semibold text-white' : 'text-gray-600 hover:bg-gray-100'}`}>
             <BarChart3 size={16} strokeWidth={1.9} />
           </button>

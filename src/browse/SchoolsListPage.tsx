@@ -382,7 +382,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
         const ps = schools.find((x) => x.id === fitPromptId)
         if (!ps) return null
         return (
-          <div className="fixed inset-x-0 bottom-0 z-30 border-t border-gray-200 bg-white/95 px-5 py-3 backdrop-blur">
+          <div className="bottom-nav-offset fixed inset-x-0 bottom-0 z-30 border-t border-gray-200 bg-white/95 px-5 py-3 backdrop-blur">
             <div className="mx-auto max-w-md">
               <div className="flex items-center justify-between gap-2">
                 <p className="min-w-0 truncate text-sm font-medium text-gray-800">
@@ -410,7 +410,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
 
       {/* F2: 비교하기 바 */}
       {compareIds.length > 0 && (
-        <div className="fixed inset-x-0 bottom-0 z-20 border-t border-gray-200 bg-white/95 px-5 py-3 backdrop-blur">
+        <div className="bottom-nav-offset fixed inset-x-0 bottom-0 z-20 border-t border-gray-200 bg-white/95 px-5 py-3 backdrop-blur">
           <div className="mx-auto flex max-w-md items-center gap-3">
             <button onClick={() => setCompareIds([])} className="shrink-0 text-sm text-gray-400 underline">
               {t('선택 해제', 'Clear')}

@@ -123,7 +123,7 @@ export default function TargetSchoolsStep({ selectedIds, onChange, onNext, major
       </div>
       {/* 선택 완료 — 하나라도 고르면 화면 하단에 고정 (긴 목록을 끝까지 스크롤할 필요 없음) */}
       {selectedIds.length > 0 && (
-        <div className="fixed inset-x-0 bottom-0 z-20 border-t border-gray-200 bg-white/95 px-5 py-3 backdrop-blur">
+        <div className="bottom-nav-offset fixed inset-x-0 bottom-0 z-20 border-t border-gray-200 bg-white/95 px-5 py-3 backdrop-blur">
           <button
             onClick={onNext}
             className="mx-auto block w-full max-w-md rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
