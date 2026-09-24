@@ -1,3 +1,4 @@
+-- ⚠️ Phase 1 초기 설계본 — 이후 추가된 테이블·컬럼·정책은 반영돼 있지 않음. 현재 운영 DB 구조는 schema-live.sql 참고
 -- 미국 대입 로드맵 툴 — Supabase 스키마
 -- Supabase SQL Editor에 붙여넣어 실행 (Phase 2에서 적용 예정)
 
