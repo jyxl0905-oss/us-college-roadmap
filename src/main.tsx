@@ -20,6 +20,17 @@ try {
   }
 } catch { /* ignore */ }
 
+// 배포 직후 열려 있던 탭: 옛 코드 조각(assets/*.js)이 사라져 지연 로드가 실패하면 흰 화면 대신 1회 새로고침
+window.addEventListener('vite:preloadError', (e) => {
+  try {
+    const last = Number(sessionStorage.getItem('chunk_reload_at') ?? 0)
+    if (Date.now() - last < 10_000) return // 새로고침 반복 방지
+    sessionStorage.setItem('chunk_reload_at', String(Date.now()))
+  } catch { /* ignore */ }
+  e.preventDefault()
+  window.location.reload()
+})
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />

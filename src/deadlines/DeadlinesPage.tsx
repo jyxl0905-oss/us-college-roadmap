@@ -1,3 +1,4 @@
+import { tierSchoolsQuery } from '../lib/tierSchools'
 import { timingLabel } from '../lib/academics'
 import { useEffect, useState } from 'react'
 import type { School } from '../lib/types'
@@ -85,7 +86,7 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
     const query =
       profile.target_mode === 'schools'
         ? supabase.from('schools').select('*').in('id', profile.target_school_ids)
-        : supabase.from('schools').select('*').eq('tier', profile.target_tier)
+        : tierSchoolsQuery(profile.target_tier)
     Promise.all([
       query,
       supabase.from('glossary').select('term, definition_ko, term_en, definition_en'),

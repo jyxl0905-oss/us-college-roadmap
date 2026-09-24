@@ -1,3 +1,4 @@
+import { tierSchoolsQuery } from '../lib/tierSchools'
 import { useEffect, useState } from 'react'
 import type { School } from '../lib/types'
 import { supabase } from '../lib/supabase'
@@ -67,7 +68,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
     const schoolsQuery =
       profile.target_mode === 'schools'
         ? supabase.from('schools').select('*').in('id', profile.target_school_ids)
-        : supabase.from('schools').select('*').eq('tier', profile.target_tier)
+        : tierSchoolsQuery(profile.target_tier)
     Promise.all([
       schoolsQuery,
       supabase.from('applications').select('school_id, round, status, updated_at, student_deadline, fit').eq('user_id', userId),

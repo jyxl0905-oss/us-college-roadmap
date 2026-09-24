@@ -1,3 +1,4 @@
+import { tierSchoolsQuery } from '../lib/tierSchools'
 import { useEffect, useRef, useState } from 'react'
 import type { ChecklistItem, School } from '../lib/types'
 import { supabase } from '../lib/supabase'
@@ -132,7 +133,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       profile.target_mode === 'schools'
         ? supabase.from('schools').select('*').in('id', profile.target_school_ids)
         : profile.target_mode === 'tier' && profile.target_tier
-          ? supabase.from('schools').select('*').eq('tier', profile.target_tier)
+          ? tierSchoolsQuery(profile.target_tier)
           : null
 
     Promise.all([
@@ -152,7 +153,9 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       supabase.from('appeal_strategies').select('*'),
       supabase.from('user_checks').select('item_id').eq('user_id', userId).eq('status', 'done'),
     ]).then(([itemsRes, checksRes, schoolsRes, prevRes, presRes, appealRes, allDoneRes]) => {
-      if (itemsRes.error) setError(itemsRes.error.message)
+      // 체크·지난 리포트 중 하나라도 못 불러오면 오류 화면 — 빈 체크 상태로 이번 시즌 스냅샷을 덮어쓰지 않도록
+      const failed = itemsRes.error ?? checksRes.error ?? prevRes.error ?? allDoneRes.error
+      if (failed) setError(failed.message)
       else {
         const all = localizeRows(itemsRes.data as ChecklistItem[])
         setAllItems(all)
@@ -211,8 +214,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   const totalCount = trackedItems.length
 
   // 시즌 스냅샷 저장 (reports) — 리포트를 볼 때마다 최신으로 갱신
-  // reports에 (user_id, season_label) 유니크 제약이 없어 select→insert가 동시에 돌면 중복 행이 생김.
-  // 저장을 직렬화(chain)하고, 이미 여러 행이 있어도 첫 행을 갱신하도록 limit(1) 사용
+  // 저장은 직렬화(chain)해서 순서 보장
   const snapshotChain = useRef<Promise<void>>(Promise.resolve())
   useEffect(() => {
     if (!supabase || loading || error) return
@@ -223,16 +225,8 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
     }
     snapshotChain.current = snapshotChain.current
       .then(async () => {
-        const { data } = await supabase!
-          .from('reports')
-          .select('id')
-          .eq('user_id', userId)
-          .eq('season_label', seasonLabel)
-          .order('created_at', { ascending: true })
-          .limit(1)
-        const id = data?.[0]?.id
-        if (id) await supabase!.from('reports').update({ snapshot }).eq('id', id)
-        else await supabase!.from('reports').insert({ user_id: userId, season_label: seasonLabel, snapshot })
+        // (user_id, season_label) 유니크 인덱스 기준 upsert — 두 탭이 동시에 저장해도 중복 행 없음
+        await supabase!.from('reports').upsert({ user_id: userId, season_label: seasonLabel, snapshot }, { onConflict: 'user_id,season_label' })
       })
       .catch(() => {})
   }, [loading, doneCount, totalCount, plans, overrides]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -320,7 +314,14 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
   ].slice(0, 3)
 
   if (loading) return <p className="mt-20 text-center text-gray-400">{t('리포트 만드는 중…', 'Building your report…')}</p>
-  if (error) return <p className="mt-20 text-center text-sm text-red-600">{t('불러오기 실패', 'Load failed')}: {error}</p>
+  if (error)
+    return (
+      <div className="mt-20 px-6 text-center">
+        <p className="text-sm text-red-600">{t('리포트를 불러오지 못했어요. 네트워크를 확인해 주세요.', 'Couldn’t load your report. Check your connection.')}</p>
+        <p className="mt-1 text-[11px] text-gray-400">{error}</p>
+        <button onClick={() => window.location.reload()} className="mt-4 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white active:bg-blue-700">{t('다시 시도', 'Try again')}</button>
+      </div>
+    )
 
   return (
     <div className="pb-10 lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start lg:gap-8">

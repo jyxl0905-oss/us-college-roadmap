@@ -87,7 +87,8 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
 
   const cta = () => {
     if (profile) {
-      navigate(`/#school-${s.id}`) // 내 리포트의 해당 학교 카드로
+      // 목표 학교면 목표 학교 페이지의 해당 카드로, 아니면 목표 학교 페이지로 (리포트의 학교 카드는 인쇄 전용이라 화면에 없음)
+      navigate(isTargeted ? `/targets#school-${s.id}` : '/targets')
     } else {
       setPrefillSchoolIds([s.id])
       navigate('/')
@@ -349,7 +350,9 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
           className="mx-auto block w-full max-w-md rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
         >
           {profile
-            ? t('내 리포트에서 이 학교 보기', 'See this school in my report')
+            ? isTargeted
+              ? t('내 목표 학교에서 이 학교 보기', 'See this school in my targets')
+              : t('내 목표 학교 보기', 'See my target schools')
             : t('가입하고 더 많은 정보 보기', 'Sign up to see more')}
         </button>
       </div>

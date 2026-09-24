@@ -119,10 +119,10 @@ export default async function handler(req, res) {
   const gmailPass = process.env.GMAIL_APP_PASSWORD
   const cronSecret = process.env.CRON_SECRET
 
-  // 호출자 검증 — CRON_SECRET이 설정돼 있으면 Vercel Cron(또는 그 값을 아는 운영자)만 실행 가능
+  // 호출자 검증 — Vercel Cron(또는 CRON_SECRET을 아는 운영자)만 실행 가능. 시크릿 미설정 시에도 거부 (공개 URL로 발송·스냅샷 유발 방지)
   const authHeader = req.headers?.authorization ?? ''
   const authorized = Boolean(cronSecret) && authHeader === `Bearer ${cronSecret}`
-  if (cronSecret && !authorized) {
+  if (!authorized) {
     res.status(401).json({ ok: false, error: 'unauthorized' })
     return
   }

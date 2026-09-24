@@ -107,8 +107,13 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
 
   const saveAndDone = async (d: ProfileRow) => {
     setSaving(true)
-    await saveProfile(userId, d)
-    onDone(d)
+    try {
+      await saveProfile(userId, d)
+      onDone(d)
+    } catch {
+      setSaving(false)
+      alert(t('저장에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.', 'Save failed. Check your connection and try again.'))
+    }
   }
 
   // ③ 목표 확인 완료 → 명확성 척도(R1-B)를 거쳐 새 리포트 발급
@@ -122,6 +127,8 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
   }
 
   const submitClarity = async () => {
+    if (saving) return // 연타로 응답이 중복 저장되지 않도록
+    setSaving(true)
     const d = finalDraft ?? draft
     if (supabase && clarityItems.length > 0) {
       // 전원에게 표시하되 연구 동의 여부를 플래그로 분리 저장

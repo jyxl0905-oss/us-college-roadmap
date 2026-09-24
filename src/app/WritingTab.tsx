@@ -1,3 +1,4 @@
+import { tierSchoolsFrom } from '../lib/tierSchools'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import AppShell from './AppShell'
@@ -38,7 +39,7 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
         profile.target_mode === 'schools'
           ? all.filter((s) => profile.target_school_ids.includes(s.id))
           : profile.target_mode === 'tier'
-            ? all.filter((s) => s.tier === profile.target_tier)
+            ? tierSchoolsFrom(all, profile.target_tier)
             : [],
       ),
     )
@@ -255,6 +256,7 @@ function EssayWorkspace({
   const savedSnapRef = useRef(essay ? snap({ prompt: essay.prompt, status: essay.status, limit: essay.word_limit?.toString() ?? defaultLimit?.toString() ?? '', notes: essay.notes ?? '', body: essay.body ?? '' }) : '')
   const timerRef = useRef<number | null>(null)
   const busyRef = useRef(false)
+  const againRef = useRef(false) // 저장 중에 들어온 저장 요청 — 끝나면 한 번 더 저장
   const leftPctRef = useRef(leftPct)
   leftPctRef.current = leftPct
   const containerRef = useRef<HTMLDivElement>(null)
@@ -264,7 +266,8 @@ function EssayWorkspace({
   const limitBad = limitNum !== null && (!Number.isInteger(limitNum) || limitNum <= 0)
 
   const persist = useCallback(async (): Promise<void> => {
-    if (!supabase || busyRef.current) return
+    if (!supabase) return
+    if (busyRef.current) { againRef.current = true; return }
     const f = { ...fieldsRef.current }
     if (snap(f) === savedSnapRef.current) return
     const ln = f.limit.trim() === '' ? null : Number(f.limit)
@@ -280,6 +283,7 @@ function EssayWorkspace({
       updated_at: now,
     }
     busyRef.current = true
+    let ok = false
     setState('saving')
     try {
       if (!rowRef.current) {
@@ -294,12 +298,39 @@ function EssayWorkspace({
         rowRef.current = { ...rowRef.current, ...data } as Essay
       }
       savedSnapRef.current = snap(f)
+      ok = true
       if (f.body) setSavedAt(now)
       setState(snap(fieldsRef.current) === savedSnapRef.current ? 'idle' : 'dirty')
     } finally {
       busyRef.current = false
+      // 저장 도중 더 입력했거나 저장 요청이 겹쳤으면 바로 이어서 저장 (마지막 글자 유실 방지)
+      // (실패했을 땐 재시도 반복하지 않음 — 다음 입력이나 화면 이탈 때 다시 시도)
+      const pending = againRef.current
+      againRef.current = false
+      if ((ok || pending) && snap(fieldsRef.current) !== savedSnapRef.current) {
+        window.setTimeout(() => { void persistRef.current?.() }, 400)
+      }
     }
   }, [schoolId, userId])
+  const persistRef = useRef<(() => Promise<void>) | null>(null)
+  persistRef.current = persist
+
+  // 편집기를 닫거나(메뉴 이동·뒤로가기·언어 전환) 앱이 백그라운드로 가면 대기 중인 내용을 즉시 저장
+  useEffect(() => {
+    const flush = () => {
+      if (snap(fieldsRef.current) === savedSnapRef.current) return
+      if (timerRef.current) window.clearTimeout(timerRef.current)
+      void persistRef.current?.()
+    }
+    const onVis = () => { if (document.visibilityState === 'hidden') flush() }
+    document.addEventListener('visibilitychange', onVis)
+    window.addEventListener('pagehide', flush)
+    return () => {
+      document.removeEventListener('visibilitychange', onVis)
+      window.removeEventListener('pagehide', flush)
+      flush()
+    }
+  }, [])
 
   // 입력 1.2초 후 자동 저장 (문항·상태·메모·본문 전부)
   useEffect(() => {

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { OnboardingAnswers } from '../lib/types'
 import { t } from '../i18n'
 import { gradeFromGradYear, currentSeason, seasonLabelKo } from '../lib/academics'
@@ -6,12 +7,13 @@ import { summaryRows } from './labels'
 interface SummaryStepProps {
   answers: OnboardingAnswers
   onRestart: () => void
-  onComplete?: () => void
+  onComplete?: () => void | Promise<void>
 }
 
 // 온보딩 완료 요약 — Phase 3에서 리포트 프리뷰(차트+블러)로 교체 예정
 export default function SummaryStep({ answers, onRestart, onComplete }: SummaryStepProps) {
   const grade = answers.gradYear ? gradeFromGradYear(answers.gradYear) : null
+  const [busy, setBusy] = useState(false) // 저장 중 표시 + 연타 방지
 
   return (
     <div>
@@ -29,10 +31,15 @@ export default function SummaryStep({ answers, onRestart, onComplete }: SummaryS
       </div>
       {onComplete ? (
         <button
-          onClick={onComplete}
-          className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
+          disabled={busy}
+          onClick={async () => {
+            if (busy) return
+            setBusy(true)
+            try { await onComplete() } catch { /* 호출부에서 이미 안내 */ } finally { setBusy(false) }
+          }}
+          className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700 disabled:opacity-60"
         >
-          {t('내 리포트 보기', 'See my report')}
+          {busy ? t('저장 중…', 'Saving…') : t('내 리포트 보기', 'See my report')}
         </button>
       ) : (
         <p className="mt-6 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900">

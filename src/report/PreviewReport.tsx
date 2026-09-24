@@ -1,3 +1,4 @@
+import { tierSchoolsQuery } from '../lib/tierSchools'
 import { useEffect, useState } from 'react'
 import { t, localizeRows } from '../i18n'
 import type { ChecklistItem, OnboardingAnswers, School } from '../lib/types'
@@ -46,7 +47,7 @@ export default function PreviewReport({ answers, onContinue }: PreviewReportProp
       profile.target_mode === 'schools'
         ? supabase.from('schools').select('*').in('id', profile.target_school_ids)
         : profile.target_mode === 'tier' && profile.target_tier
-          ? supabase.from('schools').select('*').eq('tier', profile.target_tier)
+          ? tierSchoolsQuery(profile.target_tier)
           : null
     schoolsQuery?.then(({ data }) => {
       if (data) setSchools(localizeRows(data as School[]).sort((a, b) => (a.usnews_rank ?? 9999) - (b.usnews_rank ?? 9999)))

@@ -1,3 +1,4 @@
+import { tierSchoolsQuery } from '../lib/tierSchools'
 import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { navigate } from '../lib/router'
@@ -53,11 +54,20 @@ export default function TargetsPage({ userId, profile }: { userId: string; profi
       profile.target_mode === 'schools' && profile.target_school_ids.length > 0
         ? supabase.from('schools').select('*').in('id', profile.target_school_ids)
         : profile.target_mode === 'tier' && profile.target_tier
-          ? supabase.from('schools').select('*').eq('tier', profile.target_tier)
+          ? tierSchoolsQuery(profile.target_tier)
           : null
     if (!q) { setSchools([]); return }
     q.then(({ data }) => setSchools(localizeRows((data ?? []) as School[]).sort((a, b) => (a.usnews_rank ?? 9999) - (b.usnews_rank ?? 9999))))
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // 학교 상세에서 /targets#school-{id}로 오면 해당 카드로 스크롤
+  useEffect(() => {
+    if (!schools || schools.length === 0) return
+    const hash = window.location.hash
+    if (!hash.startsWith('#school-')) return
+    window.setTimeout(() => document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50)
+    window.history.replaceState(window.history.state, '', window.location.pathname)
+  }, [schools])
 
   if (schools === null) return <p className="mt-20 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
 
@@ -72,6 +82,12 @@ export default function TargetsPage({ userId, profile }: { userId: string; profi
               : t(`${schools.length}개`, `${schools.length} school${schools.length === 1 ? '' : 's'}`)}
           </span>
         </div>
+
+        {profile.target_mode === 'tier' && profile.target_tier && schools.length > 0 && (
+          <p className="mt-1 text-xs text-gray-500">
+            {t('이 순위대 종합대 중 상위 10곳을 보여줘요. 구체적인 학교를 고르려면 대학 둘러보기에서 ＋로 담아보세요.', 'Showing the top 10 universities in this rank range. To pick specific schools, add them with ＋ from Browse colleges.')}
+          </p>
+        )}
 
         <ArtSchoolRecs profile={profile} className="mt-3" />
 

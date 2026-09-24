@@ -11,6 +11,8 @@ import SchoolsListPage from './browse/SchoolsListPage'
 import SchoolDetailPage from './browse/SchoolDetailPage'
 import ComparePage from './browse/ComparePage'
 import { usePath, navigate, redirect } from './lib/router'
+import { logout } from './lib/logout'
+import ErrorBoundary from './ErrorBoundary'
 import { getLang, t } from './i18n'
 import TopNav from './nav/TopNav'
 
@@ -93,6 +95,32 @@ function StashFetcher({ userId, onDone }: { userId: string; onDone: (r: { answer
   return <LoadingScreen />
 }
 
+// 없는 주소 — 검색엔진 수집 제외(noindex) + 주요 페이지로 안내
+function NotFound() {
+  useEffect(() => {
+    const meta = document.createElement('meta')
+    meta.name = 'robots'
+    meta.content = 'noindex'
+    document.head.appendChild(meta)
+    const prev = document.title
+    document.title = t('페이지를 찾을 수 없어요 | 미국 대입 로드맵', 'Page not found | US College Roadmap')
+    return () => { meta.remove(); document.title = prev }
+  }, [])
+  return (
+    <Screen>
+      <div className="py-16 text-center">
+        <p className="text-4xl">🧭</p>
+        <h1 className="mt-4 text-xl font-bold text-gray-900">{t('페이지를 찾을 수 없어요', 'Page not found')}</h1>
+        <p className="mt-2 text-sm text-gray-500">{t('주소가 바뀌었거나 잘못 입력됐을 수 있어요.', 'The address may have changed or been mistyped.')}</p>
+        <div className="mt-6 flex flex-col gap-2">
+          <button onClick={() => navigate('/')} className="w-full rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white active:bg-blue-700">{t('홈으로', 'Go home')}</button>
+          <button onClick={() => navigate('/schools')} className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 font-semibold text-gray-700 active:bg-gray-50">{t('대학 둘러보기', 'Browse colleges')}</button>
+        </div>
+      </div>
+    </Screen>
+  )
+}
+
 // 렌더 중 이동 대신 effect에서 이동. 기록을 쌓지 않고 바꿔치기(redirect) — 뒤로가기 시 다시 튕기지 않도록
 function Redirect({ to }: { to: string }) {
   useEffect(() => { redirect(to) }, [to])
@@ -126,7 +154,7 @@ function GateFlow({ userId, profile, onDone }: { userId: string; profile: Profil
           await saveProfile(userId, row)
         } catch {
           alert(t('저장에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.', 'Could not save. Check your connection and try again.'))
-          return
+          throw new Error('save failed') // 온보딩 초안이 지워지지 않도록 실패를 알림
         }
         markSeenGrade(userId, row.grad_year)
         localStorage.removeItem(PENDING_KEY)
@@ -199,10 +227,12 @@ export default function App() {
     return () => window.removeEventListener('app:lang', on)
   }, [])
   return (
-    <Suspense fallback={<LoadingScreen />}>
-      <TopNav key={`nav-${langKey}`} />
-      <AppRoutes key={langKey} />
-    </Suspense>
+    <ErrorBoundary>
+      <Suspense fallback={<LoadingScreen />}>
+        <TopNav key={`nav-${langKey}`} />
+        <AppRoutes key={langKey} />
+      </Suspense>
+    </ErrorBoundary>
   )
 }
 
@@ -342,7 +372,7 @@ function AppRoutes() {
             {t('다시 시도', 'Retry')}
           </button>
           <button
-            onClick={() => supabase!.auth.signOut()}
+            onClick={() => logout()}
             className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 font-semibold text-gray-700 active:bg-gray-50"
           >
             {t('로그아웃', 'Log out')}
@@ -461,6 +491,9 @@ function AppRoutes() {
     )
   }
 
+  // 위에서 처리하지 않은 주소 = 없는 페이지 (조용히 홈을 보여주지 않고 안내)
+  if (path !== '/' && path !== '') return <NotFound />
+
   // .env 미설정 → 로컬 전용 모드 (온보딩 체험만)
   if (!isSupabaseConfigured) return <OnboardingFlow />
 
@@ -481,7 +514,12 @@ function AppRoutes() {
           <button
             onClick={async () => {
               const row = answersToRow(pending, profile.nickname ?? '', profile.research_consent)
-              await saveProfile(session.user.id, row)
+              try {
+                await saveProfile(session.user.id, row)
+              } catch {
+                alert(t('저장에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.', 'Save failed. Check your connection and try again.'))
+                return
+              }
               markSeenGrade(session.user.id, row.grad_year)
               localStorage.removeItem(PENDING_KEY)
               setPendingAnswers(null)
@@ -549,7 +587,7 @@ function AppRoutes() {
             <ReportView
               userId={session.user.id}
               profile={profile}
-              onLogout={() => supabase!.auth.signOut()}
+              onLogout={() => logout()}
               onOpenGuide={() => setShowGuide(true)}
               onProfileChange={setProfile}
             />

@@ -54,25 +54,28 @@ export default function TopNav() {
 
   return (
     <header className="no-print sticky top-0 z-40 border-b border-gray-200 bg-white/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center gap-1 overflow-x-auto px-3 py-2">
-        <button onClick={() => navigate('/')} className="mr-1 flex shrink-0 items-center gap-1.5 rounded-lg px-1.5 py-1 text-sm font-bold text-gray-900">
+      <div className="mx-auto flex max-w-6xl items-center gap-1 px-3 py-2">
+        {/* 메뉴 링크만 가로 스크롤 — 오른쪽 언어·테마 버튼은 좁은 폰에서도 항상 보이게 스크롤 영역 밖에 둠 */}
+        <div className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto [scrollbar-width:none]">
+        <button onClick={() => navigate('/')} aria-label={t('홈', 'Home')} className="mr-1 flex shrink-0 items-center gap-1.5 rounded-lg px-1.5 py-1 text-sm font-bold text-gray-900">
           <img src="/icons/favicon-64.png" alt="" width={20} height={20} className="h-5 w-5 rounded-md" /> <span className="hidden sm:inline">{t('미국 대입 로드맵', 'US College Roadmap')}</span>
         </button>
         {links.map((l) => (
           <button
             key={l.to}
             onClick={() => navigate(l.to)}
-            className={`shrink-0 rounded-full px-3 py-1 text-sm ${l.active ? 'bg-gray-900 font-semibold text-white' : 'text-gray-600 hover:bg-gray-100'}`}
+            className={`shrink-0 rounded-full px-2.5 py-1 text-sm sm:px-3 ${l.active ? 'bg-gray-900 font-semibold text-white' : 'text-gray-600 hover:bg-gray-100'}`}
           >
             {l.label}
           </button>
         ))}
         {admin && (
-          <button onClick={() => navigate('/admin')} className={`shrink-0 rounded-full px-3 py-1 text-sm ${path.startsWith('/admin') ? 'bg-gray-900 font-semibold text-white' : 'text-gray-600 hover:bg-gray-100'}`}>
+          <button onClick={() => navigate('/admin')} aria-label={t('관리자', 'Admin')} className={`shrink-0 rounded-full px-3 py-1 text-sm ${path.startsWith('/admin') ? 'bg-gray-900 font-semibold text-white' : 'text-gray-600 hover:bg-gray-100'}`}>
             📊
           </button>
         )}
-        <div className="ml-auto flex shrink-0 items-center gap-1 pl-2">
+        </div>
+        <div className="flex shrink-0 items-center gap-1 pl-1">
           {loggedIn && (
             <button onClick={() => setFeedbackOpen(true)} title={t('의견 보내기', 'Send feedback')} className="rounded-full px-2 py-1 text-sm text-gray-500 hover:bg-gray-100">💬</button>
           )}

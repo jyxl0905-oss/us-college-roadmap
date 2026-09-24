@@ -26,6 +26,18 @@ export default function RolloverGate({ userId, profile, onUpdateGradYear, onGrad
   const [acked, setAcked] = useState(false)
   const [editing, setEditing] = useState(false)
   const [saving, setSaving] = useState(false)
+  // 저장 실패 시 버튼이 영구 비활성화되지 않도록 항상 saving 해제 + 안내
+  const runSave = async (fn: () => Promise<void>) => {
+    setSaving(true)
+    try {
+      await fn()
+      setAcked(true)
+    } catch {
+      alert(t('저장에 실패했어요. 네트워크를 확인하고 다시 시도해 주세요.', 'Save failed. Check your connection and try again.'))
+    } finally {
+      setSaving(false)
+    }
+  }
 
   // 첫 방문이면 현재 학년만 기록 (팝업 없음)
   useEffect(() => {
@@ -54,12 +66,10 @@ export default function RolloverGate({ userId, profile, onUpdateGradYear, onGrad
                 <button
                   key={year}
                   disabled={saving}
-                  onClick={async () => {
-                    setSaving(true)
+                  onClick={() => runSave(async () => {
                     await onUpdateGradYear(year)
                     localStorage.setItem(key, String(gradeFromGradYear(year)))
-                    setAcked(true)
-                  }}
+                  })}
                   className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 text-left font-medium text-gray-900 active:bg-gray-50 disabled:opacity-50"
                 >
                   Class of {year}
@@ -80,12 +90,10 @@ export default function RolloverGate({ userId, profile, onUpdateGradYear, onGrad
               {rawGrade !== null && rawGrade > 12 && onGraduate && (
                 <button
                   disabled={saving}
-                  onClick={async () => {
-                    setSaving(true)
+                  onClick={() => runSave(async () => {
                     await onGraduate()
                     localStorage.setItem(key, String(rawGrade))
-                    setAcked(true)
-                  }}
+                  })}
                   className="w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700 disabled:opacity-50"
                 >
                   {t('🎓 졸업했어요 — 기록 보관 모드로', '🎓 I graduated — switch to archive mode')}

@@ -68,7 +68,7 @@ const bridgeText = (): Partial<Record<StepId, string>> => ({
 })
 
 interface OnboardingFlowProps {
-  onComplete?: (answers: OnboardingAnswers) => void
+  onComplete?: (answers: OnboardingAnswers) => void | Promise<void>
   onExit?: () => void // 첫 질문에서 ← → 홈으로 (게스트)
 }
 
@@ -128,10 +128,11 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
     setAnswers(initialAnswers())
     setStepIndex(0)
   }
-  const complete = () => {
+  const complete = async () => {
+    await onComplete?.(answers)
+    // 저장이 끝난 뒤에 초안 삭제 — 저장 실패 시 입력이 사라지지 않도록
     localStorage.removeItem(DRAFT_KEY)
     clearPrefill()
-    onComplete?.(answers)
   }
 
   const progress = stepIndex / (steps.length - 1)
