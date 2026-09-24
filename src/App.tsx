@@ -588,6 +588,8 @@ function AppRoutes() {
 
   // .env 미설정 → 로컬 전용 모드 (온보딩 체험만)
   if (!isSupabaseConfigured) return <OnboardingFlow />
+  // 개발 전용: ?obtest 로 로그인 없이 온보딩 화면 확인 (저장 안 함, 프로덕션 빌드에서 제거됨)
+  if (import.meta.env.DEV && window.location.search.includes('obtest')) return <OnboardingFlow />
 
   if (profileErrorScreen) return profileErrorScreen
 

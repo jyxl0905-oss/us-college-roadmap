@@ -17,6 +17,7 @@ import SchoolLogo from '../browse/SchoolLogo'
 import { artSchoolsForMajors } from '../data/artSchools'
 import { slugify } from '../lib/router'
 import { Wrench, Lightbulb, BookOpen, Activity, AlertTriangle, Briefcase, GraduationCap, Trophy, Palette, Landmark, Compass } from 'lucide-react'
+import VerifiedBadge from '../ui/VerifiedBadge'
 
 interface Occupation { title: string; pay: string | null; pay_year: number | null; outlook: string | null; window: string | null; url: string | null; note?: string | null }
 interface CareerInfo { desc_ko: string | null; desc_en: string | null; occupations: Occupation[]; outlook_note_ko: string | null; grad_note_ko?: string | null }
@@ -260,6 +261,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
                 {CAREERS[majorKey].occupations[0]?.title}{CAREERS[majorKey].occupations[0]?.pay ? ` ${CAREERS[majorKey].occupations[0].pay}` : ''}{CAREERS[majorKey].occupations.length > 1 ? t(' 외', ' +more') : ''}
               </span>
             </summary>
+            <VerifiedBadge className="mt-2" date="2026-08-20" sources={t('미 노동통계국(BLS) OOH', 'U.S. BLS Occupational Outlook')} />
             {CAREERS[majorKey].outlook_note_ko && getLang() === 'ko' && (
               <p className="mt-1 text-xs text-gray-500">{CAREERS[majorKey].outlook_note_ko}</p>
             )}

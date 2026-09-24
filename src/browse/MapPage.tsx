@@ -12,7 +12,7 @@ import SchoolLogo from './SchoolLogo'
 import { schoolLogoSources } from './logos'
 import { uniGroupOf, uniGroupTitles, uniGroups, rankSortKey, rankShort } from './rankGroups'
 import type { ProfileRow } from '../lib/profile'
-import { t } from '../i18n'
+import { t, getLang } from '../i18n'
 import { Map as MapIcon, Palette, Target, X } from 'lucide-react'
 
 // 🗺️ 대학 지도 — 미국 지도(자체 SVG, 외부 요청 없음) 위에 99개교 위치 표시.
@@ -360,7 +360,7 @@ export default function MapPage({ profile }: MapPageProps) {
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-sm font-semibold text-gray-900">{s.name}</span>
                     <span className="block truncate text-xs text-gray-400">
-                      {s.name_ko} · {rankShort(s)}
+                      {getLang() === 'ko' ? `${s.name_ko} · ` : ''}{rankShort(s)}
                       {targetIds.has(s.id) ? t(' · 내 목표', ' · my target') : ''}
                     </span>
                   </span>
@@ -523,7 +523,7 @@ export default function MapPage({ profile }: MapPageProps) {
               </span>
               <div className="min-w-0 flex-1">
                 <p className="truncate text-[15px] font-bold text-gray-900">{selected.name}</p>
-                <p className="truncate text-xs text-gray-400">{selected.name_ko}{selected.location_note ? ` · ${selected.location_note}` : ''}</p>
+                <p className="truncate text-xs text-gray-400">{[getLang() === 'ko' ? selected.name_ko : null, selected.location_note].filter(Boolean).join(' · ')}</p>
               </div>
               <button onClick={() => setSelectedId(null)} aria-label={t('닫기', 'Close')} className="shrink-0 px-1 text-gray-300"><X size={16} strokeWidth={2} /></button>
             </div>

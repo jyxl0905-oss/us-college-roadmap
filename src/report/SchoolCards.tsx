@@ -3,7 +3,7 @@ import { Palette, AlertTriangle } from 'lucide-react'
 import type { School } from '../lib/types'
 import { satBandMid } from '../lib/score'
 import SchoolLogo from '../browse/SchoolLogo'
-import { t } from '../i18n'
+import { t, getLang } from '../i18n'
 import AidBlock from '../browse/AidBlock'
 
 interface SchoolCardsProps {
@@ -40,7 +40,7 @@ export default function SchoolCards({ schools, satBand, majorPrimary, aidStatus 
                 <SchoolLogo schoolId={s.id} name={s.name} size={36} />
                 <span className="min-w-0">
                   <p className="font-semibold text-gray-900">{s.name}{s.kind === 'lac' && <span className="ml-1.5 rounded-full bg-purple-100 px-1.5 py-0.5 align-middle text-[10px] font-semibold text-purple-700">LAC #{s.lac_rank ?? '–'}</span>}{s.kind === 'art' && <span className="ml-1.5 rounded-full bg-pink-100 px-1.5 py-0.5 align-middle text-[10px] font-semibold text-pink-700"><Palette size={10} strokeWidth={2} className="mr-0.5 inline -mt-0.5" />{t('미술·디자인', 'Art & design')}</span>}</p>
-                  <p className="text-sm text-gray-500">{s.name_ko}</p>
+                  {getLang() === 'ko' && <p className="text-sm text-gray-500">{s.name_ko}</p>}
                 </span>
               </span>
               {s.usnews_rank != null && <p className="shrink-0 text-xs text-gray-400">#{s.usnews_rank}</p>}

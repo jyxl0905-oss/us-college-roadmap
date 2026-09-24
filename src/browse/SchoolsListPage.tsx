@@ -13,7 +13,7 @@ import { uniGroupOf, uniGroupTitles, uniGroups, rankBadge } from './rankGroups'
 import { saveProfile, type ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
 import FitPicker from './FitPicker'
-import { t, bilingual } from '../i18n'
+import { t, bilingual, getLang } from '../i18n'
 import { Map as MapIcon, Palette, GraduationCap, Scale } from 'lucide-react'
 
 const lacTierTitles: Record<Tier, string> = bilingual(
@@ -337,7 +337,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
                       </span>
                       <span className="min-w-0">
                         <p title={s.name} className="line-clamp-2 text-[15px] font-bold leading-5 text-gray-900">{s.name}</p>
-                        <p className="mt-0.5 truncate text-xs text-gray-400">{s.name_ko}</p>
+                        {getLang() === 'ko' && <p className="mt-0.5 truncate text-xs text-gray-400">{s.name_ko}</p>}
                       </span>
                     </span>
                     <span className="mt-2.5 flex flex-wrap gap-1 text-[11px]">

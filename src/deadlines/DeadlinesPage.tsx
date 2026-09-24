@@ -7,7 +7,7 @@ import { supabase } from '../lib/supabase'
 import { navigate, goBack } from '../lib/router'
 import type { ProfileRow } from '../lib/profile'
 import SchoolLogo from '../browse/SchoolLogo'
-import { t, localizeRows } from '../i18n'
+import { t, localizeRows, getLang } from '../i18n'
 import { CalendarDays, AlertTriangle } from 'lucide-react'
 
 // 시기 라벨("11월 초") → 정렬 키. 입시 사이클 기준 8월이 가장 이름
@@ -163,7 +163,7 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
                     <SchoolLogo schoolId={e.school.id} name={e.school.name} size={30} />
                     <div className="min-w-0">
                       <p className="truncate font-semibold text-gray-900">{e.school.name}</p>
-                      <p className="truncate text-xs text-gray-500">{e.school.name_ko}</p>
+                      {getLang() === 'ko' && <p className="truncate text-xs text-gray-500">{e.school.name_ko}</p>}
                     </div>
                   </div>
                   <div className="shrink-0 text-right">

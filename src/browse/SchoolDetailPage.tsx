@@ -14,9 +14,10 @@ import { schoolWebsite } from './logos'
 import SchoolLogo from './SchoolLogo'
 import { rankBadge } from './rankGroups'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
-import { t } from '../i18n'
+import { t, getLang } from '../i18n'
 import { timingLabel } from '../lib/academics'
 import { Globe, GraduationCap, Palette, Image as ImageIcon, PenLine, AlertTriangle } from 'lucide-react'
+import VerifiedBadge from '../ui/VerifiedBadge'
 
 
 interface SchoolDetailPageProps {
@@ -116,7 +117,8 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
           <SchoolLogo schoolId={s.id} name={s.name} size={52} />
           <div className="min-w-0">
             <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-gray-900">{s.name}</h1>
-            <p className="text-gray-500">{s.name_ko}</p>
+            {getLang() === 'ko' && <p className="text-gray-500">{s.name_ko}</p>}
+            {s.deadlines_verified_at && <VerifiedBadge className="mt-1.5" date={s.deadlines_verified_at} sources={t('CDS · 입학처', 'CDS · admissions office')} />}
             {schoolWebsite(s.id) && (
               <a
                 href={schoolWebsite(s.id)!}

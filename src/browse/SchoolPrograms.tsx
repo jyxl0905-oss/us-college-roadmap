@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Trophy } from 'lucide-react'
-import { t } from '../i18n'
+import { t, getLang } from '../i18n'
 import { navigate } from '../lib/router'
 
 interface Row { key: string; name: string; relation: 'host' | 'admissions_mention'; note_ko: string; note_en: string; url: string }
@@ -29,7 +29,7 @@ export default function SchoolPrograms({ schoolId }: { schoolId: number }) {
         {(more ? rows : rows.slice(0, 5)).map((r) => (
           <li key={r.key} className="text-sm leading-relaxed">
             <span className={`mr-1.5 rounded px-1.5 py-0.5 text-[10px] font-semibold ${r.relation === 'host' ? 'bg-gray-100 text-gray-700' : 'bg-blue-100 text-blue-800'}`}>{r.relation === 'host' ? t('운영', 'Runs it') : t('입학처 언급', 'Admissions')}</span>
-            <span className="font-semibold text-gray-900">{r.name}</span>
+            <span className="font-semibold text-gray-900">{getLang() === 'en' ? r.name.replace(/\s*\([^)]*[가-힣][^)]*\)/g, '') : r.name}</span>
             <span className="block text-xs text-gray-500">{t(r.note_ko, r.note_en)} <a href={r.url} target="_blank" rel="noreferrer" className="text-blue-600 underline">{t('출처', 'source')}</a></span>
           </li>
         ))}

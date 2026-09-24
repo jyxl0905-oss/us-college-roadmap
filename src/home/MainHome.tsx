@@ -3,7 +3,7 @@ import { FileText, Target, CalendarDays, BarChart3 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { navigate } from '../lib/router'
-import { t } from '../i18n'
+import { t, getLang } from '../i18n'
 import type { ProfileRow } from '../lib/profile'
 import SchoolLogo from '../browse/SchoolLogo'
 import schoolsIndex from '../data/schools.index.json'
@@ -109,7 +109,7 @@ export default function MainHome({ userId, profile }: { userId: string; profile:
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-sm font-semibold text-gray-800">{s.name}</span>
-                    <span className="block truncate text-[11px] text-gray-400">{s.name_ko}</span>
+                    {getLang() === 'ko' && <span className="block truncate text-[11px] text-gray-400">{s.name_ko}</span>}
                   </span>
                 </button>
               ))}

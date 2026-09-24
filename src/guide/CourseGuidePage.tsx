@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { t } from '../i18n'
 import { goBack, navigate } from '../lib/router'
-import { SUBJECTS, gradeGuide, subjectLabel, majorCores, rigorSources, type Subject } from '../data/courseGuide'
+import { COURSE_GUIDE_VERIFIED, SUBJECTS, gradeGuide, subjectLabel, majorCores, rigorSources, type Subject } from '../data/courseGuide'
 import { profileGrade, type ProfileRow } from '../lib/profile'
 import { Pin, BookOpen, GraduationCap } from 'lucide-react'
+import VerifiedBadge from '../ui/VerifiedBadge'
 
 const GRADES = [9, 10, 11, 12] as const
 const TIERS = [
@@ -48,6 +49,7 @@ export default function CourseGuidePage({ profile }: { profile: ProfileRow | nul
           <button onClick={() => goBack('/')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
           <h1 className="text-xl font-bold text-gray-900">{t('수업 난이도(Rigor) 가이드', 'Course rigor guide')}</h1>
         </div>
+        <VerifiedBadge className="mt-3" date={COURSE_GUIDE_VERIFIED} sources={t('대학 입학처 공식 권장', 'College admissions guidance')} />
 
         {/* 핵심 원칙: 학교 대비 평가 */}
         <div className="mt-4 rounded-xl border-2 border-blue-200 bg-blue-50/60 px-4 py-3.5">

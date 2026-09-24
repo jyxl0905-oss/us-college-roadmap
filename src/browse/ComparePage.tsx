@@ -9,7 +9,7 @@ import type { ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
 import SchoolLogo from './SchoolLogo'
 import { rankBadge } from './rankGroups'
-import { t } from '../i18n'
+import { t, getLang } from '../i18n'
 import { timingLabel } from '../lib/academics'
 import { AlertTriangle } from 'lucide-react'
 
@@ -197,7 +197,7 @@ export default function ComparePage({ profile }: ComparePageProps) {
                     <button onClick={() => navigate(`/schools/${slugify(s.name)}`)} className="text-left">
                       <SchoolLogo schoolId={s.id} name={s.name} size={28} />
                       <span className="mt-1 block font-semibold leading-snug text-gray-900">{s.name}</span>
-                      <span className="mt-0.5 block text-xs font-normal text-gray-500">{s.name_ko}</span>
+                      {getLang() === 'ko' && <span className="mt-0.5 block text-xs font-normal text-gray-500">{s.name_ko}</span>}
                     </button>
                   </th>
                 ))}

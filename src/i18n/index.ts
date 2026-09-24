@@ -10,7 +10,12 @@ let current: Lang = (() => {
   return nav.toLowerCase().startsWith('ko') ? 'ko' : 'en'
 })()
 // index.html은 lang="ko" 고정 — 저장된/감지된 언어가 영어면 첫 로딩부터 맞춰줌 (스크린리더·번역 확장 기준)
-if (typeof document !== 'undefined') document.documentElement.lang = current
+// 기본 탭 제목도 언어에 맞춤 (페이지별 제목이 없는 화면 — 체험 모드·리포트 등)
+const DEFAULT_TITLE = { ko: '미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴', en: 'US College Roadmap — free US college admissions planner' }
+function syncDefaultTitle() {
+  if (document.title === DEFAULT_TITLE.ko || document.title === DEFAULT_TITLE.en) document.title = DEFAULT_TITLE[current]
+}
+if (typeof document !== 'undefined') { document.documentElement.lang = current; syncDefaultTitle() }
 
 export function getLang(): Lang {
   return current
@@ -20,6 +25,7 @@ export function setLang(l: Lang): void {
   current = l
   localStorage.setItem(KEY, l)
   document.documentElement.lang = l
+  syncDefaultTitle()
   window.dispatchEvent(new Event('app:lang'))
 }
 

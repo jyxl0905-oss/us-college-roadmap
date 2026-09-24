@@ -15,6 +15,7 @@ import ApStep from './ApStep'
 import SummaryStep from './SummaryStep'
 import QuizStep from './QuizStep'
 import InfoSourcesStep from './InfoSourcesStep'
+import ActivityStep from './ActivityStep'
 
 const seedSchools = schoolsData as School[]
 const DRAFT_KEY = 'onboarding_draft' // R1-C-6: 이탈 복구용 임시 저장
@@ -35,12 +36,9 @@ type StepId =
   | 'gpa'
   | 'math'
   | 'sat'
-  | 'satBand'
   | 'ap'
   | 'toefl'
-  | 'actSpike'
-  | 'actLeadership'
-  | 'actValidation'
+  | 'activities'
   | 'quiz'
   | 'infoSources'
   | 'summary'
@@ -53,11 +51,9 @@ function stepList(a: OnboardingAnswers): StepId[] {
   if (a.targetMode === 'schools') steps.push('targetSchools')
   if (a.targetMode === 'tier') steps.push('targetTier')
   if (a.targetMode === 'schools' || a.targetMode === 'tier') steps.push('teaser') // R1-C-5: 미리보기 티저
-  steps.push('gpa', 'math', 'sat')
-  if (a.satStatus === 'taken') steps.push('satBand')
-  steps.push('ap')
+  steps.push('gpa', 'math', 'sat', 'ap') // Q9: SAT 상태+점수대는 한 화면
   if (a.applicantStatus !== 'domestic') steps.push('toefl') // 모름도 국제학생 처리
-  steps.push('actSpike', 'actLeadership', 'actValidation', 'quiz', 'infoSources', 'summary')
+  steps.push('activities', 'quiz', 'infoSources', 'summary') // Q12: 활동 자가진단 3그룹은 한 화면
   return steps
 }
 
@@ -65,22 +61,22 @@ function stepList(a: OnboardingAnswers): StepId[] {
 const bridgeText = (): Partial<Record<StepId, string>> => ({
   majorTrack: t('기본 정보는 끝! 이제 목표를 물어볼게요', 'Basics done! Now your goals'),
   gpa: t('이제 지금 상태를 확인할게요', "Now let's check where you are"),
-  actSpike: t('마지막 구간 — 활동 이야기예요', 'Last stretch — activities'),
+  activities: t('마지막 구간 — 활동 이야기예요', 'Last stretch — activities'),
 })
-const bridgeIcons: Partial<Record<StepId, LucideIcon>> = { majorTrack: Target, gpa: ClipboardList, actSpike: Activity }
+const bridgeIcons: Partial<Record<StepId, LucideIcon>> = { majorTrack: Target, gpa: ClipboardList, activities: Activity }
 
 interface OnboardingFlowProps {
   onComplete?: (answers: OnboardingAnswers) => void | Promise<void>
   onExit?: () => void // 첫 질문에서 ← → 홈으로 (게스트)
 }
 
-function loadDraft(): { answers: OnboardingAnswers; stepIndex: number } | null {
+function loadDraft(): { answers: OnboardingAnswers; stepIndex: number; step?: string } | null {
   try {
     const raw = localStorage.getItem(DRAFT_KEY)
     if (!raw) return null
     const d = JSON.parse(raw)
     if (!d || typeof d.stepIndex !== 'number' || d.stepIndex < 1) return null
-    return { answers: { ...emptyAnswers, ...d.answers }, stepIndex: d.stepIndex }
+    return { answers: { ...emptyAnswers, ...d.answers }, stepIndex: d.stepIndex, step: typeof d.step === 'string' ? d.step : undefined }
   } catch {
     return null
   }
@@ -107,7 +103,7 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
   useEffect(() => {
     if (resumeDraft) return // 이어서 하기 결정 전에는 덮어쓰지 않음
     if (stepIndex > 0 && step !== 'summary') {
-      localStorage.setItem(DRAFT_KEY, JSON.stringify({ answers, stepIndex }))
+      localStorage.setItem(DRAFT_KEY, JSON.stringify({ answers, stepIndex, step }))
     }
   }, [answers, stepIndex, resumeDraft, step])
 
@@ -150,7 +146,9 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
           <button
             onClick={() => {
               setAnswers(resumeDraft.answers)
-              setStepIndex(resumeDraft.stepIndex)
+              // 저장된 질문 id로 위치를 찾음 (질문 구성이 바뀌어도 같은 질문으로 복귀)
+              const at = resumeDraft.step ? stepList(resumeDraft.answers).indexOf(resumeDraft.step as StepId) : -1
+              setStepIndex(at >= 0 ? at : Math.min(resumeDraft.stepIndex, stepList(resumeDraft.answers).length - 1))
               setResumeDraft(null)
             }}
             className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700"
@@ -416,30 +414,34 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
         )
       case 'sat':
         return (
-          <ChoiceStep
-            title={t('SAT는 어떤 상태인가요?', 'Where are you with the SAT?')}
-            options={[
-              { value: 'none', label: t('아직 계획 없어요', 'No plans yet') },
-              { value: 'studying', label: t('공부 중이에요', 'Studying') },
-              { value: 'taken', label: t('응시했어요', 'Taken it'), description: t('점수대를 이어서 물어볼게요', "We'll ask your score range next") },
-            ]}
-            selected={answers.satStatus}
-            onSelect={(v) => answer({ satStatus: v, ...(v !== 'taken' ? { satBand: null } : {}) })}
-          />
-        )
-      case 'satBand':
-        return (
-          <ChoiceStep
-            title={t('SAT 점수대를 골라주세요', 'Pick your SAT score range')}
-            options={[
-              { value: '1500+', label: t('1500 이상', '1500 or above') },
-              { value: '1400-1490', label: '1400 ~ 1490' },
-              { value: '1300-1390', label: '1300 ~ 1390' },
-              { value: 'below1300', label: t('1300 미만', 'Below 1300') },
-            ]}
-            selected={answers.satBand}
-            onSelect={(v) => answer({ satBand: v })}
-          />
+          <div>
+            <ChoiceStep
+              title={t('SAT는 어떤 상태인가요?', 'Where are you with the SAT?')}
+              options={[
+                { value: 'none', label: t('아직 계획 없어요', 'No plans yet') },
+                { value: 'studying', label: t('공부 중이에요', 'Studying') },
+                { value: 'taken', label: t('응시했어요', 'Taken it'), description: t('아래에서 점수대를 골라주세요', 'Pick your score range below') },
+              ]}
+              selected={answers.satStatus}
+              onSelect={(v) => (v === 'taken' ? answer({ satStatus: v }, false) : answer({ satStatus: v, satBand: null }))}
+            />
+            {answers.satStatus === 'taken' && (
+              <div className="mt-6">
+                <p className="text-sm font-semibold text-gray-900">{t('점수대', 'Score range')}</p>
+                <div className="mt-2 grid grid-cols-2 gap-2">
+                  {([['1500+', t('1500 이상', '1500 or above')], ['1400-1490', '1400 ~ 1490'], ['1300-1390', '1300 ~ 1390'], ['below1300', t('1300 미만', 'Below 1300')]] as const).map(([v, label]) => (
+                    <button
+                      key={v}
+                      onClick={() => answer({ satBand: v })}
+                      className={`rounded-xl border-2 px-3 py-3 text-center font-medium text-gray-900 ${answers.satBand === v ? 'border-blue-600 bg-blue-50' : 'border-gray-200 bg-white active:bg-gray-50'}`}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         )
       case 'ap':
         return (
@@ -469,46 +471,14 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
             onSelect={(v) => answer({ toeflStatus: v })}
           />
         )
-      case 'actSpike':
+      case 'activities':
         return (
-          <ChoiceStep
-            title={t('나를 대표하는 활동이 있나요?', 'Do you have a signature activity?')}
-            subtitle={t('활동 자가진단 1/3 — 대표 활동 (Spike)', 'Self-check 1/3 — Spike')}
-            options={[
-              { value: 1, label: t('아직 없어요', 'Not yet') },
-              { value: 2, label: t('꾸준히 하는 활동은 있어요', 'I have a consistent activity') },
-              { value: 3, label: t('성과·결과물이 있는 대표 활동이 있어요', 'I have one with real results') },
-            ]}
-            selected={answers.activitySpike}
-            onSelect={(v) => answer({ activitySpike: v as 1 | 2 | 3 })}
-          />
-        )
-      case 'actLeadership':
-        return (
-          <ChoiceStep
-            title={t('리더 역할을 해본 적 있나요?', 'Have you held a leadership role?')}
-            subtitle={t('활동 자가진단 2/3 — 리더십 (Leadership)', 'Self-check 2/3 — Leadership')}
-            options={[
-              { value: 1, label: t('아직 없어요', 'Not yet') },
-              { value: 2, label: t('팀·동아리에서 맡은 역할이 있어요', 'I hold a role in a team/club') },
-              { value: 3, label: t('회장·창립 등 주도한 경험이 있어요', "I've led — president, founder, captain") },
-            ]}
-            selected={answers.activityLeadership}
-            onSelect={(v) => answer({ activityLeadership: v as 1 | 2 | 3 })}
-          />
-        )
-      case 'actValidation':
-        return (
-          <ChoiceStep
-            title={t('학교 밖에서 인정받은 적 있나요?', 'Any recognition outside school?')}
-            subtitle={t('활동 자가진단 3/3 — 교외 인정 (External Validation)', 'Self-check 3/3 — External validation')}
-            options={[
-              { value: 1, label: t('아직 없어요', 'Not yet') },
-              { value: 2, label: t('지역·소규모 대회 수상이 있어요', 'Regional / small competition awards') },
-              { value: 3, label: t('전국·국제 수준 수상이 있어요', 'National / international awards') },
-            ]}
-            selected={answers.activityValidation}
-            onSelect={(v) => answer({ activityValidation: v as 1 | 2 | 3 })}
+          <ActivityStep
+            spike={answers.activitySpike}
+            leadership={answers.activityLeadership}
+            validation={answers.activityValidation}
+            onChange={(patch) => answer(patch, false)}
+            onNext={goNext}
           />
         )
       case 'summary':

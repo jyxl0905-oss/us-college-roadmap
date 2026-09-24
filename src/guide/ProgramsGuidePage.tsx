@@ -1,17 +1,18 @@
 import { useEffect, useMemo, useState } from 'react'
 import { ChevronDown, Pin, Search, Trophy, Sun, CalendarDays, Landmark, ExternalLink, Quote } from 'lucide-react'
-import { t } from '../i18n'
+import { t, getLang } from '../i18n'
 import { goBack, navigate, slugify } from '../lib/router'
 import type { ProfileRow } from '../lib/profile'
 import { majorClusters, majorParent } from '../data/majors'
 import schoolsIndex from '../data/schools.index.json'
 import data from '../data/programs.json'
+import VerifiedBadge from '../ui/VerifiedBadge'
 
 // 대회·서머 프로그램 가이드 — 공식 출처만 (각 프로그램 공식 사이트·운영 대학·입학처 페이지), 2026-09-23 확인, 사용자 승인
 export interface Mention { college: string; relation: 'host' | 'admissions_mention'; note_ko: string; note_en: string; url: string; school_id?: number }
 export interface Program {
   key: string; name: string; type: 'competition' | 'summer' | 'event'; majors: string[]; host: string
-  what_ko: string; what_en: string; do_ko: string; do_en: string; grades: string | null
+  what_ko: string; what_en: string; do_ko: string; do_en: string; grades_ko: string | null; grades_en: string | null
   intl_eligibility: 'open' | 'restricted' | 'us_only' | null; intl_note_ko: string | null; intl_note_en: string | null
   cost_ko: string | null; cost_en: string | null; timing_ko: string | null; timing_en: string | null
   format: 'online' | 'in_person' | 'hybrid' | null; official_url: string; eligibility_url: string | null
@@ -43,6 +44,9 @@ function TypeIcon({ type }: { type: Program['type'] }) {
   const Icon = type === 'competition' ? Trophy : type === 'summer' ? Sun : CalendarDays
   return <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600"><Icon size={18} strokeWidth={1.9} /></span>
 }
+
+// 영어 모드에선 이름 속 한글 괄호 병기를 뺌 (예: Korean Biology Olympiad (한국생물올림피아드))
+export const programName = (name: string) => (getLang() === 'en' ? name.replace(/\s*\([^)]*[가-힣][^)]*\)/g, '') : name)
 
 const typeLabel = (type: Program['type']) => (type === 'competition' ? t('대회', 'Competition') : type === 'summer' ? t('서머 프로그램', 'Summer program') : t('행사', 'Event'))
 
@@ -90,6 +94,7 @@ export default function ProgramsGuidePage({ profile }: { profile: ProfileRow | n
           <button onClick={() => goBack('/')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
           <h1 className="text-xl font-bold text-gray-900">{t('대회·서머 프로그램', 'Competitions & summer programs')}</h1>
         </div>
+        <VerifiedBadge className="mt-3" date={(data as { verified_at: string }).verified_at} sources={t('각 프로그램 공식 사이트 · 대학 입학처', 'Program sites · college admissions pages')} />
 
         {/* 입학처 공식 입장 */}
         <div className="mt-4 rounded-2xl bg-gray-900 px-5 py-5 text-white">
@@ -141,7 +146,7 @@ export default function ProgramsGuidePage({ profile }: { profile: ProfileRow | n
                   <TypeIcon type={p.type} />
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-1.5">
-                      <p className="text-sm font-semibold leading-snug text-gray-900">{p.name}</p>
+                      <p className="text-sm font-semibold leading-snug text-gray-900">{programName(p.name)}</p>
                     </div>
                     <div className="mt-1 flex flex-wrap items-center gap-1.5">
                       <span className="text-[11px] text-gray-500">{typeLabel(p.type)}</span>
@@ -157,7 +162,7 @@ export default function ProgramsGuidePage({ profile }: { profile: ProfileRow | n
                     <dl className="grid grid-cols-[5.5rem_1fr] gap-x-3 gap-y-2">
                       <dt className="text-gray-400">{t('뭘 하나요', 'What you do')}</dt><dd className="text-gray-800">{t(p.do_ko, p.do_en)}</dd>
                       <dt className="text-gray-400">{t('주최', 'Run by')}</dt><dd className="text-gray-800">{p.host}</dd>
-                      {p.grades && <><dt className="text-gray-400">{t('대상', 'Who')}</dt><dd className="text-gray-800">{p.grades}</dd></>}
+                      {p.grades_ko && <><dt className="text-gray-400">{t('대상', 'Who')}</dt><dd className="text-gray-800">{t(p.grades_ko, p.grades_en ?? p.grades_ko)}</dd></>}
                       <dt className="text-gray-400">{t('국제학생', 'Intl. students')}</dt><dd className="text-gray-800">{t(p.intl_note_ko ?? '공식 페이지에 명시돼 있지 않아요 — 주최 측에 직접 확인하세요.', p.intl_note_en ?? 'Not stated officially — check with the organizer.')}</dd>
                       {p.timing_ko && <><dt className="text-gray-400">{t('시기', 'Timing')}</dt><dd className="text-gray-800">{t(p.timing_ko, p.timing_en ?? p.timing_ko)}</dd></>}
                       {p.cost_ko && <><dt className="text-gray-400">{t('비용', 'Cost')}</dt><dd className="text-gray-800">{t(p.cost_ko, p.cost_en ?? p.cost_ko)}</dd></>}

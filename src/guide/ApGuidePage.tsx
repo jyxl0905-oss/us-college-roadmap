@@ -3,6 +3,7 @@ import { t } from '../i18n'
 import { goBack, navigate } from '../lib/router'
 import apData from '../data/ap.json'
 import { Laptop, PenLine, FolderOpen, FileText, Sparkles, Banknote, BarChart3, type LucideIcon } from 'lucide-react'
+import VerifiedBadge from '../ui/VerifiedBadge'
 
 // AP 가이드 — 전 과목(배우는 내용·선수 과목·시험 형식·점수 분포) + 최근 정책 변화. 모든 내용 College Board 공식 출처 (2026-09-24 확인, 사용자 승인)
 interface ApCourse {
@@ -122,6 +123,7 @@ export default function ApGuidePage() {
           <button onClick={() => goBack('/guide/courses')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
           <h1 className="text-xl font-bold text-gray-900">{t('AP 과목 가이드', 'AP course guide')}</h1>
         </div>
+        <VerifiedBadge className="mt-3" date={data.verified_at} sources="College Board" />
         <p className="mt-2 text-sm text-gray-500">
           {t(`AP ${data.courses.length - newCourses.filter((c) => c.status === 'pilot').length}개 과목의 배우는 내용·시험 형식·점수 분포와 최근 정책 변화를 College Board 공식 자료로 정리했어요.`, `What you learn, exam format and score distribution for every AP course, plus recent policy changes — all from official College Board sources.`)}
         </p>

@@ -7,6 +7,8 @@ import schoolsIndex from '../data/schools.index.json'
 import aidData from '../data/aidRules.json'
 import SchoolLogo from '../browse/SchoolLogo'
 import { costRows, money, basisLabel, CostBreakdown, type CostRow } from '../browse/CostBlock'
+import VerifiedBadge from '../ui/VerifiedBadge'
+import costJson from '../data/cost.json'
 
 interface IndexRow { id: number; name: string; name_ko: string | null; usnews_rank: number | null }
 interface AidRule { topic: string; statement_en: string; statement_ko: string; source_url: string; source_type: string }
@@ -39,6 +41,7 @@ export default function CostGuidePage({ profile }: { profile: ProfileRow | null 
           <button onClick={() => goBack('/')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
           <h1 className="text-xl font-bold text-gray-900">{t('비용·재정지원 가이드', 'Cost & financial aid guide')}</h1>
         </div>
+        <VerifiedBadge className="mt-3" date={(costJson as { verified_at: string }).verified_at} sources={t('각 대학 공식 COA · 미 교육부', 'College COA pages · U.S. Dept. of Education')} />
         <div className="mt-4 grid grid-cols-2 gap-2">
           {tabBtn('cost', t('1년 비용 비교', 'Cost per year'))}
           {tabBtn('aid', t('재정지원 자격', 'Aid eligibility'))}

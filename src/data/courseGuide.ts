@@ -1,6 +1,9 @@
 // 수업 난이도(rigor) 가이드 — 2026-09-23 사용자 승인 초안 그대로
 // 학년별 표·과목 단계는 편집 가이드(학교마다 다름), 전공별 핵심 과목·rigor 원칙은 대학 공식 입학처 문구 근거
 
+// 콘텐츠 확인·승인일 (입학처 공식 권장 근거)
+export const COURSE_GUIDE_VERIFIED = '2026-09-23'
+
 export type Subject = 'math' | 'science' | 'english' | 'social' | 'language'
 export const SUBJECTS: Subject[] = ['math', 'science', 'english', 'social', 'language']
 
