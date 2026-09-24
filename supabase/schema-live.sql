@@ -425,3 +425,25 @@ create table public.user_checks (
 );
 alter table public.user_checks enable row level security;
 create policy "users manage own checks" on public.user_checks for ALL to public using ((( SELECT auth.uid() AS uid) = user_id)) with check ((( SELECT auth.uid() AS uid) = user_id));
+
+-- 2026-09-24 추천서 관리 (migration create_recommenders)
+create table public.recommenders (
+  id bigint generated always as identity primary key,
+  user_id uuid not null references auth.users(id) on delete cascade,
+  name text not null default '' check (char_length(name) <= 100),
+  role text not null default 'teacher' check (role in ('counselor','teacher','other')),
+  subject text check (char_length(subject) <= 100),
+  status text not null default 'planned' check (status in ('planned','asked','agreed','submitted','declined')),
+  asked_on date,
+  due_on date,
+  brag_sheet_sent boolean not null default false,
+  thank_you_sent boolean not null default false,
+  school_ids bigint[] not null default '{}',
+  notes text check (char_length(notes) <= 1000),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+create index recommenders_user_id_idx on public.recommenders (user_id);
+alter table public.recommenders enable row level security;
+create policy "own recommenders" on public.recommenders for all to public using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
+-- 트리거 recommenders_limit: 사용자당 15명 (security definer, 실행 권한 회수)

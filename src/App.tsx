@@ -23,6 +23,7 @@ import { Eye, Compass, AlertTriangle, ClipboardList, CalendarDays, RefreshCw, Pe
 
 // 무거운 화면(차트·리포트·보드·온보딩)은 필요할 때만 내려받음 — 둘러보기 첫 로딩을 가볍게
 const OnboardingFlow = lazy(() => import('./onboarding/OnboardingFlow'))
+const DevRecTest = lazy(() => import('./app/RecommendersTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} profile={d.demoProfile()} /> } }))
 const ReportView = lazy(() => import('./report/ReportView'))
 const CheckinFlow = lazy(() => import('./checkin/CheckinFlow'))
 const GuideView = lazy(() => import('./report/GuideView'))
@@ -594,6 +595,8 @@ function AppRoutes() {
   if (!isSupabaseConfigured) return <OnboardingFlow />
   // 개발 전용: ?obtest 로 로그인 없이 온보딩 화면 확인 (저장 안 함, 프로덕션 빌드에서 제거됨)
   if (import.meta.env.DEV && window.location.search.includes('obtest')) return <OnboardingFlow />
+  // 개발 전용: ?rectest 로 추천서 탭 화면 확인 (로그인 없이 — 저장은 실패함, 프로덕션 빌드에서 제거됨)
+  if (import.meta.env.DEV && window.location.search.includes('rectest')) return <DevRecTest />
 
   if (profileErrorScreen) return profileErrorScreen
 

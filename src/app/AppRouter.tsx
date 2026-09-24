@@ -6,6 +6,7 @@ import EducationTab from './EducationTab'
 import BoardPage from '../board/BoardPage'
 import WritingTab from './WritingTab'
 import PlansTab from './PlansTab'
+import RecommendersTab from './RecommendersTab'
 
 interface AppRouterProps {
   path: string
@@ -28,6 +29,8 @@ export default function AppRouter({ path, userId, profile, onProfileChange }: Ap
       return <EducationTab userId={userId} profile={profile} onProfileChange={onProfileChange} />
     case 'colleges':
       return <BoardPage userId={userId} profile={profile} />
+    case 'recommenders':
+      return <RecommendersTab userId={userId} profile={profile} />
     case 'writing':
       return <WritingTab userId={userId} profile={profile} />
     default:
