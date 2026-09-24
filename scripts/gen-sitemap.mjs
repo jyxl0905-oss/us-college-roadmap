@@ -9,7 +9,7 @@ const majorsTs = readFileSync('src/data/majors.ts', 'utf8')
 const majorValues = [...majorsTs.matchAll(/\{ value: '([^']+)', label:/g)].map((m) => m[1])
 
 const urls = [
-  '/', '/schools', '/majors', '/map', '/guide/courses', '/guide/ap', '/guide/cost', '/guide/programs', '/demo',
+  '/', '/schools', '/majors', '/map', '/guide/courses', '/guide/ap', '/guide/cost', '/guide/programs', '/guide/english', '/demo',
   ...schools.map((s) => `/schools/${slugify(s.name)}`),
   ...majorValues.map((v) => `/major/${v}`),
 ]
