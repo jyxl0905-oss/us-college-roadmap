@@ -4,6 +4,7 @@ import { goBack, navigate } from '../lib/router'
 import apData from '../data/ap.json'
 import { Laptop, PenLine, FolderOpen, FileText, Sparkles, Banknote, BarChart3, type LucideIcon } from 'lucide-react'
 import VerifiedBadge from '../ui/VerifiedBadge'
+import ApCreditTable from './ApCreditTable'
 
 // AP 가이드 — 전 과목(배우는 내용·선수 과목·시험 형식·점수 분포) + 최근 정책 변화. 모든 내용 College Board 공식 출처 (2026-09-24 확인, 사용자 승인)
 interface ApCourse {
@@ -140,7 +141,7 @@ function RankBar({ scores, metric }: { scores: number[]; metric: Metric }) {
 export default function ApGuidePage() {
   const [cat, setCat] = useState<string>('all')
   const [q, setQ] = useState('')
-  const [tab, setTab] = useState<'courses' | 'rank' | 'policy'>('courses')
+  const [tab, setTab] = useState<'courses' | 'rank' | 'policy' | 'credit'>(() => (new URLSearchParams(window.location.search).get('tab') === 'credit' ? 'credit' : 'courses'))
   const [metric, setMetric] = useState<Metric>('five')
   const [noLang, setNoLang] = useState(false)
 
@@ -193,13 +194,16 @@ export default function ApGuidePage() {
         </div>
 
         {/* 탭 */}
-        <div className="mt-5 grid grid-cols-3 gap-2">
+        <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
           <button onClick={() => setTab('courses')} className={`rounded-xl border-2 px-3 py-2 text-sm font-semibold ${tab === 'courses' ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-600'}`}>{t('과목별 보기', 'Courses')}</button>
           <button onClick={() => setTab('rank')} className={`rounded-xl border-2 px-3 py-2 text-sm font-semibold ${tab === 'rank' ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-600'}`}>{t('점수 순위', 'Score ranks')}</button>
           <button onClick={() => setTab('policy')} className={`rounded-xl border-2 px-3 py-2 text-sm font-semibold ${tab === 'policy' ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-600'}`}>{t('정책 변화', 'Policy changes')}</button>
+          <button onClick={() => setTab('credit')} className={`rounded-xl border-2 px-3 py-2 text-sm font-semibold ${tab === 'credit' ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-600'}`}>{t('대학별 학점 인정', 'College credit')}</button>
         </div>
 
-        {tab === 'courses' ? (
+        {tab === 'credit' ? (
+          <ApCreditTable />
+        ) : tab === 'courses' ? (
           <>
             <input
               value={q}

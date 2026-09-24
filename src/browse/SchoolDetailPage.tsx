@@ -9,6 +9,7 @@ import AidBlock from './AidBlock'
 import CostBlock from './CostBlock'
 import SchoolPrograms from './SchoolPrograms'
 import EnglishBlock from './EnglishBlock'
+import ApCreditBlock from './ApCreditBlock'
 import { setPrefillSchoolIds } from './prefill'
 import FitPicker from './FitPicker'
 import { schoolWebsite } from './logos'
@@ -255,6 +256,9 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         </div>
         <div className="mt-3 empty:hidden">
           <EnglishBlock schoolId={s.id} inUs={!!profile?.school_in_us} />
+        </div>
+        <div className="mt-3 empty:hidden">
+          <ApCreditBlock schoolId={s.id} />
         </div>
         <div className="mt-3 empty:hidden">
           <SchoolPrograms schoolId={s.id} />
