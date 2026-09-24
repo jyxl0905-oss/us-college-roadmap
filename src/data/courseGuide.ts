@@ -66,7 +66,7 @@ export const ladders: Record<Subject, Rung[]> = {
     { name: 'Algebra 1', match: /algebra\s*(1|i)\b(?!i)|대수\s*1/i },
     { name: 'Geometry', match: /geometry|기하/i },
     { name: 'Algebra 2', match: /algebra\s*(2|ii)\b|대수\s*2/i },
-    { name: 'Precalculus', match: /pre-?\s*cal(c(ulus)?)?\b|프리\s*캘/i },
+    { name: 'Precalculus', match: /pre-?\s*cal(c(ulus)?)?\b|trigonometry|프리\s*캘/i },
     { name: 'AP Calculus AB', match: /\bcal(c(ulus)?)?\.?\s*ab\b|(?<!pre[-\s]?)\bcal(c(ulus)?)?\b(?!\.?\s*(ab|bc)\b)|미적분/i },
     { name: 'AP Calculus BC', match: /\bcal(c(ulus)?)?\.?\s*bc\b/i },
     { name: 'Multivariable · Linear Algebra', match: /multivariable|linear algebra|differential eq/i },
@@ -88,7 +88,7 @@ export const ladders: Record<Subject, Rung[]> = {
   social: [
     { name: 'World History', match: /world history|세계사/i },
     { name: 'AP World / European History', match: /ap\s*(world|euro)/i },
-    { name: 'AP US History', match: /ap\s*us(\s*history)?\b|apush|u\.?s\.?\s*history|미국사/i },
+    { name: 'AP US History', match: /ap\s*us(\s*history)?\b|apush|u\.?s\.?\s*history|united states history|미국사/i },
     { name: 'AP Gov · Macro · Micro · Psych', match: /ap\s*(gov|macro|micro|psych|comparative|human geo)/i },
   ],
   language: [
@@ -103,9 +103,9 @@ export const ladders: Record<Subject, Rung[]> = {
 // 과목명 → 과목 분류 (사다리 판별 전 1차 분류)
 export const subjectMatch: Record<Subject, RegExp> = {
   math: /algebra|geometry|\bcal(c|culus)?\b|precal|statistic|math|trig|대수|기하|미적|수학|통계/i,
-  science: /biology|chemistry|physics|science|\bbio\b|\bchem\b|environmental|생물|화학|물리|과학/i,
+  science: /biology|chemistry|physics|science|\bbio\b|\bchem\b|environmental|anatomy|physiology|생물|화학|물리|과학/i,
   english: /english|literature|\blit\b|composition|영어|문학/i,
-  social: /history|gov|econ|psych|geograph|social|civics|sociology|global stud|world stud|humanities|세계사|미국사|역사|경제|사회|정치/i,
+  social: /history|gov|econ|psych|geograph|social|civics|sociology|global stud|world stud|humanities|politic|african american stud|세계사|미국사|역사|경제|사회|정치/i,
   language: /span|spain|espa|french|fren|chinese|mandarin|japanese|korean|german|latin|italian|arabic|스페인어|프랑스어|중국어|일본어|한국어|독일어|라틴어/i,
 }
 

@@ -6,7 +6,7 @@ import { t } from '../i18n'
 import { goBack, navigate } from '../lib/router'
 import { COURSE_GUIDE_VERIFIED, cellText, SUBJECTS, gradeGuide, subjectLabel, majorCores, rigorSources, type Subject } from '../data/courseGuide'
 import { profileGrade, type ProfileRow } from '../lib/profile'
-import { Pin, BookOpen, GraduationCap } from 'lucide-react'
+import { Pin, BookOpen, GraduationCap, Sparkles } from 'lucide-react'
 import VerifiedBadge from '../ui/VerifiedBadge'
 
 const GRADES = [9, 10, 11, 12] as const
@@ -40,11 +40,13 @@ export default function CourseGuidePage({ profile, userId }: { profile: ProfileR
   const grade = profile ? profileGrade(profile) : 0
   const [positions, setPositions] = useState<Position[] | null>(null)
   const [myCourses, setMyCourses] = useState<CourseInput[]>([])
+  const [loaded, setLoaded] = useState(!userId) // 비로그인은 바로, 로그인은 기록 불러온 뒤 판단
 
   // 내 과목 기록이 있으면 올해 과목으로 과목별 위치 분석 (없으면 온보딩 수학 과목만 사용)
   useEffect(() => {
     if (!userId || grade < 9 || grade > 12) return
     loadAppRecords(userId).then((r) => {
+      setLoaded(true)
       setMyCourses(r.courses)
       if (r.courses.length > 0) setPositions(coursePosition(r.courses, grade, (s, g) => gradeGuide[s][g as 9 | 10 | 11 | 12]))
     }).catch(() => { /* 전역 안내 띠 */ })
@@ -67,16 +69,25 @@ export default function CourseGuidePage({ profile, userId }: { profile: ProfileR
         </div>
         <VerifiedBadge className="mt-3" date={COURSE_GUIDE_VERIFIED} sources={t('대학 입학처 공식 권장', 'College admissions guidance')} />
 
-        {/* 핵심 원칙: 학교 대비 평가 */}
-        <div className="mt-4 rounded-xl border-2 border-blue-200 bg-blue-50/60 px-4 py-3.5">
-          <p className="text-sm font-semibold text-gray-900">{t('대학은 "우리 학교 안에서" 얼마나 도전했는지를 봐요', 'Colleges judge rigor relative to what your school offers')}</p>
-          <p className="mt-1 text-xs leading-relaxed text-gray-700">
-            {t(
-              'Common App 추천서에서 카운슬러는 "우리 학교의 다른 대입 준비 학생과 비교해" 과목 선택을 5단계로 평가해요. 학교에 없는 과목을 못 들은 건 불리하지 않아요 — 개설된 과목 안에서 해마다 한 단계씩 올라가는 흐름이 중요해요.',
-              'On the Common App School Report, counselors rate your course selection "in comparison with other college preparatory students at your school" on five levels. Not taking a course your school doesn’t offer is not held against you — what matters is stepping up year by year within what is available.',
+        {/* 맨 위: 내 과목으로 분석받기 (처음 들어온 사람도 바로 보이게) */}
+        {loaded && !positions && (
+          <div className="mt-4 rounded-2xl border-2 border-blue-600 bg-white px-4 py-4">
+            <p className="flex items-center gap-1.5 text-[15px] font-bold text-gray-900"><Sparkles size={17} strokeWidth={2} className="text-blue-600" />{t('내 과목을 넣으면 바로 분석해 드려요', 'Add your courses for an instant analysis')}</p>
+            <ul className="mt-1.5 flex flex-col gap-0.5 text-[13px] text-gray-700">
+              <li>• {t('과목별로 지금 일반·심화·최상위 중 어디인지', 'Where each subject sits: standard, advanced or most rigorous')}</li>
+              <li>• {t('다음 학년에 무엇을 올리면 좋을지 추천', 'What to step up next year')}</li>
+              <li>• {t('지난 학년보다 AP·Honors가 늘었는지 (난이도 추이)', 'Whether your AP/Honors load is rising year to year')}</li>
+            </ul>
+            {profile ? (
+              <button onClick={() => navigate('/app/education')} className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white active:bg-blue-700">{t('내 과목 넣고 추천 받기 →', 'Add my courses & get suggestions →')}</button>
+            ) : (
+              <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+                <button onClick={() => navigate('/')} className="flex-1 rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white active:bg-blue-700">{t('무료로 시작하기', 'Start free')}</button>
+                <button onClick={() => navigate('/demo/app/education')} className="flex-1 rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 active:bg-gray-50">{t('예시 학생으로 먼저 보기', 'See a sample student first')}</button>
+              </div>
             )}
-          </p>
-        </div>
+          </div>
+        )}
 
         {/* 내 위치 — 학업 탭에 적은 올해 과목 기준 */}
         {positions && (
@@ -112,6 +123,18 @@ export default function CourseGuidePage({ profile, userId }: { profile: ProfileR
           </div>
         )}
         {myCourses.length > 0 && <div className="mt-3"><RigorTrendBox courses={myCourses} grade={grade} /></div>}
+
+        {/* 핵심 원칙: 학교 대비 평가 */}
+        <div className="mt-4 rounded-xl border-2 border-blue-200 bg-blue-50/60 px-4 py-3.5">
+          <p className="text-sm font-semibold text-gray-900">{t('대학은 "우리 학교 안에서" 얼마나 도전했는지를 봐요', 'Colleges judge rigor relative to what your school offers')}</p>
+          <p className="mt-1 text-xs leading-relaxed text-gray-700">
+            {t(
+              'Common App 추천서에서 카운슬러는 "우리 학교의 다른 대입 준비 학생과 비교해" 과목 선택을 5단계로 평가해요. 학교에 없는 과목을 못 들은 건 불리하지 않아요 — 개설된 과목 안에서 해마다 한 단계씩 올라가는 흐름이 중요해요.',
+              'On the Common App School Report, counselors rate your course selection "in comparison with other college preparatory students at your school" on five levels. Not taking a course your school doesn’t offer is not held against you — what matters is stepping up year by year within what is available.',
+            )}
+          </p>
+        </div>
+
 
         {/* 과목 탭 */}
         <div className="mt-5 flex gap-1.5 overflow-x-auto pb-1">

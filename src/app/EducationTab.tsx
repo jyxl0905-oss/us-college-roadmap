@@ -9,8 +9,9 @@ import { supabase } from '../lib/supabase'
 import { computeGpa, courseLetter, gpaToBand, LETTERS } from './gpa'
 import { recommendCourses, subjectOf, rungOf, coursePosition } from '../lib/courseRecs'
 import RigorTrendBox from './RigorTrendBox'
+import CourseNameInput from './CourseNameInput'
 import { isDemoUser } from '../demo/demoData'
-import { ladders, subjectLabel, gradeGuide } from '../data/courseGuide'
+import { ladders, ibMathLadder, subjectLabel, gradeGuide } from '../data/courseGuide'
 import { navigate } from '../lib/router'
 
 interface EducationTabProps {
@@ -228,7 +229,14 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
           <select value={newCourse.grade} onChange={(e) => setNewCourse({ ...newCourse, grade: Number(e.target.value) })} className={field}>
             {GRADES.map((g) => <option key={g} value={g}>{t(`${g}학년`, `Grade ${g}`)}</option>)}
           </select>
-          <input value={newCourse.name} onChange={(e) => setNewCourse({ ...newCourse, name: e.target.value })} onKeyDown={(e) => { if (e.key === 'Enter' && !e.nativeEvent.isComposing) addCourse() }} placeholder={t('과목명 (예: Chemistry)', 'Course name (e.g. Chemistry)')} className={field} />
+          <CourseNameInput
+            value={newCourse.name}
+            onChange={(name) => setNewCourse({ ...newCourse, name })}
+            onPick={(name, level) => setNewCourse({ ...newCourse, name, level: level ?? (newCourse.level === 'ap' || newCourse.level === 'ib' ? 'regular' : newCourse.level) })}
+            onEnter={() => void addCourse()}
+            placeholder={t('과목명 (예: cal bc, chem)', 'Course name (e.g. cal bc, chem)')}
+            className={`${field} w-full`}
+          />
           <select value={newCourse.level} onChange={(e) => setNewCourse({ ...newCourse, level: e.target.value as CourseLevel })} className={field}>
             {(Object.keys(courseLevelKo) as CourseLevel[]).map((l) => <option key={l} value={l}>{courseLevelKo[l]}</option>)}
           </select>
@@ -263,10 +271,17 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
                       // 추천·위치 분석에 어떻게 인식됐는지 (과목명이 달라 못 알아보면 바로 고칠 수 있게)
                       const sub = subjectOf(c)
                       const r = sub ? rungOf(sub, c) : -1
+                      const ibMath = sub === 'math' && c.level === 'ib' ? [...ibMathLadder].reverse().find((x) => x.match.test(c.name)) : undefined
+                      const stats = sub === 'math' && /statistic|통계/i.test(c.name)
+                      const levelBased = sub === 'science' || sub === 'social' || sub === 'english' // 이 과목들은 레벨(Honors·AP)로 분석
+                      const warn = (sub === 'math' || sub === 'language') && r < 0 && !ibMath && !stats
                       const txt = !sub ? t('기타 과목 · 추천엔 안 쓰여요', 'Elective · not used for suggestions')
+                        : ibMath ? `${t(subjectLabel[sub].ko, subjectLabel[sub].en)} · IB ${ibMath.name}`
+                        : stats ? t('수학 · 통계 (미적분 단계와 별개 과목)', 'Math · Statistics (separate from the calculus track)')
                         : r >= 0 ? `${t(subjectLabel[sub].ko, subjectLabel[sub].en)} · ${ladders[sub][r].name}`
+                        : levelBased ? `${t(subjectLabel[sub].ko, subjectLabel[sub].en)} · ${courseLevelKo[c.level]}`
                         : t(`${subjectLabel[sub].ko} · 단계 미인식 (예: AP Calculus BC처럼 적어 주세요)`, `${subjectLabel[sub].en} · level not recognized (use names like AP Calculus BC)`)
-                      return <span className={`mt-0.5 block text-[10.5px] ${sub && r < 0 && sub !== 'english' ? 'text-amber-700' : 'text-gray-400'}`}>{txt}</span>
+                      return <span className={`mt-0.5 block text-[10.5px] ${warn ? 'text-amber-700' : 'text-gray-400'}`}>{txt}</span>
                     })()}
                   </span>
                   <span className="ml-2 flex shrink-0 items-center gap-1.5">

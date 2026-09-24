@@ -17,6 +17,8 @@ const effName = (c: CourseInput): string => {
 
 export const subjectOf = (c: CourseInput): Subject | null => {
   const n = c.name
+  // 컴퓨터 과목은 과학이 아님 (이름에 'Science'가 있어도) — 기타 과목으로
+  if (/computer science|\bcs\s*(a|p)?\b|programming|coding|cybersecurity|networking|컴퓨터/i.test(n)) return null
   // 외국어를 먼저 — 'AP Spanish Language'가 영어(language)로 잡히지 않도록
   if (subjectMatch.language.test(n)) return 'language'
   for (const s of SUBJECTS) if (s !== 'language' && subjectMatch[s].test(n)) return s
@@ -36,6 +38,8 @@ export function rungOf(subject: Subject, c: CourseInput): number {
   }
   if (subject === 'social' && c.level === 'ap' && idx < 1) idx = 1
   if (subject === 'language' && c.level === 'ap') idx = 4
+  // IB Language B: SL ≈ Level 4, HL ≈ AP 단계 (전공 핵심 과목 표와 같은 기준)
+  if (subject === 'language' && c.level === 'ib') idx = Math.max(idx, /\bhl\b/i.test(n) ? 4 : /\bsl\b/i.test(n) ? 3 : idx)
   return idx
 }
 
