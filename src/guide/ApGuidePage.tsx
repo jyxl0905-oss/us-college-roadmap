@@ -61,6 +61,15 @@ const KO_SEARCH: [RegExp, RegExp][] = [
   [/보안|사이버/, /cybersecurity/i], [/흑인|아프리카/, /african american/i], [/세미나/, /seminar/i], [/리서치|연구/, /research/i],
 ]
 
+// 점수 순위 — 공식 점수 분포를 정렬만 함 (난이도 등급 아님)
+type Metric = 'five' | 'fourFive' | 'threePlus' | 'one'
+const METRICS: { key: Metric; ko: string; en: string; value: (s: number[]) => number }[] = [
+  { key: 'five', ko: '5점 비율', en: '% scoring 5', value: (s) => s[0] },
+  { key: 'fourFive', ko: '4·5점 비율', en: '% scoring 4–5', value: (s) => s[0] + s[1] },
+  { key: 'threePlus', ko: '3점 이상 비율', en: '% scoring 3+', value: (s) => s[0] + s[1] + s[2] },
+  { key: 'one', ko: '1점 비율', en: '% scoring 1', value: (s) => s[4] },
+]
+
 const SCORE_COLORS = ['#16a34a', '#65a30d', '#ca8a04', '#ea580c', '#dc2626'] // 5→1
 
 function ScoreBar({ scores }: { scores: number[] }) {
@@ -84,7 +93,9 @@ function ScoreBar({ scores }: { scores: number[] }) {
 export default function ApGuidePage() {
   const [cat, setCat] = useState<string>('all')
   const [q, setQ] = useState('')
-  const [tab, setTab] = useState<'courses' | 'policy'>('courses')
+  const [tab, setTab] = useState<'courses' | 'rank' | 'policy'>('courses')
+  const [metric, setMetric] = useState<Metric>('five')
+  const [noLang, setNoLang] = useState(false)
 
   useEffect(() => {
     document.title = t('AP 과목 가이드 — 새 AP·정책 변화·점수 분포 | 미국 대입 로드맵', 'AP course guide — new APs, policy changes, score distributions | US College Roadmap')
@@ -134,8 +145,9 @@ export default function ApGuidePage() {
         </div>
 
         {/* 탭 */}
-        <div className="mt-5 grid grid-cols-2 gap-2">
+        <div className="mt-5 grid grid-cols-3 gap-2">
           <button onClick={() => setTab('courses')} className={`rounded-xl border-2 px-3 py-2 text-sm font-semibold ${tab === 'courses' ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-600'}`}>{t('과목별 보기', 'Courses')}</button>
+          <button onClick={() => setTab('rank')} className={`rounded-xl border-2 px-3 py-2 text-sm font-semibold ${tab === 'rank' ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-600'}`}>{t('점수 순위', 'Score ranks')}</button>
           <button onClick={() => setTab('policy')} className={`rounded-xl border-2 px-3 py-2 text-sm font-semibold ${tab === 'policy' ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-600'}`}>{t('정책 변화', 'Policy changes')}</button>
         </div>
 
@@ -192,6 +204,56 @@ export default function ApGuidePage() {
               {t('점수 분포 출처', 'Score source')}: <a href={data.scores_source} target="_blank" rel="noreferrer" className="underline">College Board — AP Score Distributions ↗</a> · {t(`${data.verified_at} 확인, 매년 바뀌어요`, `checked ${data.verified_at}, changes yearly`)}
             </p>
           </>
+        ) : tab === 'rank' ? (
+          (() => {
+            const m = METRICS.find((x) => x.key === metric)!
+            const rows = data.courses
+              .filter((c) => c.scores && (!noLang || c.category !== 'World Languages and Cultures'))
+              .map((c) => ({ c, v: m.value(c.scores!) }))
+              .sort((a, b) => b.v - a.v || a.c.name.localeCompare(b.c.name))
+            const max = Math.max(...rows.map((r) => r.v), 1)
+            return (
+              <>
+                <div className="mt-3 flex gap-1.5 overflow-x-auto pb-1">
+                  {METRICS.map((x) => (
+                    <button key={x.key} onClick={() => setMetric(x.key)} className={chip(metric === x.key)}>{t(x.ko, x.en)} {t('높은 순', '↓')}</button>
+                  ))}
+                </div>
+                <label className="mt-2 flex items-center gap-2 text-sm text-gray-700">
+                  <input type="checkbox" checked={noLang} onChange={(e) => setNoLang(e.target.checked)} className="h-4 w-4" />
+                  {t('외국어 과목 빼고 보기 (모국어 화자 응시 영향)', 'Hide world languages (native-speaker effect)')}
+                </label>
+                <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-[11px] leading-relaxed text-amber-900">
+                  {t(
+                    `${data.scores_year}년 5월 시험, 전 세계 응시자의 공식 점수 비율을 정렬한 거예요. 과목 난이도 등급이 아니에요 — 어떤 학생들이 응시하는지(선수 과목·학교·모국어 등)에 따라 비율이 크게 달라져요. 과목 선택은 전공·흥미·학교 개설 과목을 기준으로 하세요.`,
+                    `Official May ${data.scores_year} score percentages (all students worldwide), sorted. This is not a difficulty rating — rates depend heavily on who takes each exam (prerequisites, schools, native speakers). Choose courses by your major, interests and what your school offers.`,
+                  )}
+                </p>
+                <ol className="mt-3 flex flex-col gap-1.5">
+                  {rows.map(({ c, v }, i) => (
+                    <li key={c.key}>
+                      <button
+                        onClick={() => { setTab('courses'); setCat('all'); setQ(''); window.setTimeout(() => document.getElementById(`ap-${c.key}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50) }}
+                        className="flex w-full items-center gap-2.5 rounded-lg bg-white px-3 py-2 text-left ring-1 ring-gray-200 active:bg-gray-50"
+                      >
+                        <span className="w-6 shrink-0 text-right text-xs font-semibold text-gray-400">{i + 1}</span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block truncate text-sm text-gray-900">{c.name.replace(/^AP /, '')}</span>
+                          <span className="mt-1 block h-1.5 rounded-full bg-gray-100">
+                            <span className="block h-1.5 rounded-full" style={{ width: `${(v / max) * 100}%`, background: metric === 'one' ? SCORE_COLORS[4] : SCORE_COLORS[metric === 'five' ? 0 : metric === 'fourFive' ? 1 : 2] }} />
+                          </span>
+                        </span>
+                        <span className="w-11 shrink-0 text-right text-sm font-semibold text-gray-800">{v}%</span>
+                      </button>
+                    </li>
+                  ))}
+                </ol>
+                <p className="mt-3 text-[11px] text-gray-400">
+                  {t('출처', 'Source')}: <a href={data.scores_source} target="_blank" rel="noreferrer" className="underline">College Board — AP Score Distributions ↗</a> · {t(`${data.verified_at} 확인`, `checked ${data.verified_at}`)}
+                </p>
+              </>
+            )
+          })()
         ) : (
           <div className="mt-3 flex flex-col gap-4">
             {POLICY_GROUPS.map((g, gi) => {
