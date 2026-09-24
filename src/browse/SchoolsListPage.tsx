@@ -1,3 +1,4 @@
+import { PageSkeleton } from '../ui/Skeleton'
 import { schoolMatches } from '../data/schoolAliases'
 import { directAdmitParent, majorLabel } from '../data/majors'
 import { isArtMajor } from '../data/artSchools'
@@ -13,6 +14,7 @@ import { saveProfile, type ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
 import FitPicker from './FitPicker'
 import { t, bilingual } from '../i18n'
+import { Map as MapIcon, Palette, GraduationCap, Scale } from 'lucide-react'
 
 const lacTierTitles: Record<Tier, string> = bilingual(
   { 1: 'LAC Top 12', 2: 'LAC 13–24위', 3: 'LAC 25–35위' },
@@ -166,7 +168,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
             </button>
             {hasArt && (
               <button onClick={() => setKind('art')} className={`rounded-xl border-2 px-3 py-2.5 text-sm font-semibold ${kind === 'art' ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-700'}`}>
-                🎨 {t('미술·디자인', 'Art & Design')} <span className="ml-1 text-xs font-normal opacity-70">{schools.filter((s) => s.kind === 'art').length}</span>
+                <Palette size={14} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('미술·디자인', 'Art & Design')} <span className="ml-1 text-xs font-normal opacity-70">{schools.filter((s) => s.kind === 'art').length}</span>
               </button>
             )}
           </div>
@@ -174,7 +176,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
         {/* 창작 계열 전공 학생: 전문학교 탭 자동 추천 */}
         {hasArt && kind !== 'art' && artMajor && (
           <button onClick={() => setKind('art')} className="mt-2 w-full rounded-xl border border-pink-200 bg-pink-50 px-3.5 py-2.5 text-left text-sm font-medium text-pink-900 active:bg-pink-100">
-            🎨 {t(`${majorLabel(artMajor)} 전공이라면 미술·디자인 전문학교도 함께 보세요 →`, `Studying ${majorLabel(artMajor)}? See art & design schools too →`)}
+            <Palette size={16} strokeWidth={2} className="mr-1.5 inline -mt-0.5" />{t(`${majorLabel(artMajor)} 전공이라면 미술·디자인 전문학교도 함께 보세요 →`, `Studying ${majorLabel(artMajor)}? See art & design schools too →`)}
           </button>
         )}
         {kind === 'art' && (
@@ -185,7 +187,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
         {schools.some((s) => s.kind === 'lac') && kind !== 'art' && (
           <div className="mt-2 rounded-xl border border-gray-200 bg-white">
             <button onClick={() => setLacInfoOpen((v) => !v)} className="flex w-full items-center justify-between px-3.5 py-2.5 text-left text-sm font-medium text-gray-800">
-              <span>🎓 {t('종합대학 vs 리버럴 아츠 칼리지 — 뭐가 다른가요?', 'Universities vs Liberal Arts Colleges — what’s the difference?')}</span>
+              <span className="flex items-center gap-1.5"><GraduationCap size={16} strokeWidth={2} className="shrink-0 text-blue-600" />{t('종합대학 vs 리버럴 아츠 칼리지 — 뭐가 다른가요?', 'Universities vs Liberal Arts Colleges — what’s the difference?')}</span>
               <span className="text-gray-400">{lacInfoOpen ? '▴' : '▾'}</span>
             </button>
             {lacInfoOpen && (
@@ -250,18 +252,18 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
             onClick={() => navigate('/map')}
             className="shrink-0 rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-sm font-medium text-gray-600 active:bg-gray-50"
           >
-            🗺️ {t('지도로 보기', 'Map view')}
+            <MapIcon size={14} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('지도로 보기', 'Map view')}
           </button>
         </div>
 
         {/* F2 안내: 비교 진입점 */}
         {schools.length > 0 && compareIds.length === 0 && (
           <p className="mt-3 rounded-xl bg-blue-50 px-3.5 py-2.5 text-xs text-blue-800">
-            ⚖️ {t('카드의', 'Tap')} <span className="font-semibold">{t('[＋ 비교]', '[＋ Compare]')}</span>{t('를 눌러 2~3개 학교를 나란히 비교할 수 있어요.', ' on a card to compare 2–3 schools side by side.')}
+            <Scale size={14} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('카드의', 'Tap')} <span className="font-semibold">{t('[＋ 비교]', '[＋ Compare]')}</span>{t('를 눌러 2~3개 학교를 나란히 비교할 수 있어요.', ' on a card to compare 2–3 schools side by side.')}
           </p>
         )}
 
-        {schools.length === 0 && <p className="mt-10 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>}
+        {schools.length === 0 && <PageSkeleton compact />}
 
         {schools.length > 0 && filtered.length > 0 && (
           <div className="mt-3 flex gap-1.5 overflow-x-auto">

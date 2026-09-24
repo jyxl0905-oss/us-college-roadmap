@@ -1,4 +1,5 @@
-import { Suspense, lazy, useEffect, useState } from 'react'
+import { PageSkeleton } from './ui/Skeleton'
+import { Suspense, lazy, useEffect, useRef, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
 import { emptyAnswers, type OnboardingAnswers } from './lib/types'
 import { supabase, isSupabaseConfigured } from './lib/supabase'
@@ -18,6 +19,7 @@ import { demoProfile, DEMO_USER_ID } from './demo/demoProfile'
 import { getLang, t } from './i18n'
 import TopNav from './nav/TopNav'
 import AppNav from './nav/AppNav'
+import { Eye, Compass, AlertTriangle, ClipboardList, CalendarDays, RefreshCw, PenLine } from 'lucide-react'
 
 // 무거운 화면(차트·리포트·보드·온보딩)은 필요할 때만 내려받음 — 둘러보기 첫 로딩을 가볍게
 const OnboardingFlow = lazy(() => import('./onboarding/OnboardingFlow'))
@@ -111,7 +113,7 @@ function DemoReport() {
   return (
     <>
       <div className="no-print border-b border-amber-200 bg-amber-50 px-4 py-2 text-center text-xs text-amber-900">
-        👀 {t('체험 모드 — 가상의 예시 학생(11학년·CS 지망)이에요. 체크해 봐도 저장되지 않아요.', 'Demo mode — a fictional sample student (grade 11, CS). Checks are not saved.')}{' '}
+        <Eye size={14} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('체험 모드 — 가상의 예시 학생(11학년·CS 지망)이에요. 체크해 봐도 저장되지 않아요.', 'Demo mode — a fictional sample student (grade 11, CS). Checks are not saved.')}{' '}
         <button onClick={() => navigate('/')} className="font-semibold underline">{t('내 리포트 만들기', 'Make mine')}</button>
       </div>
       <WideScreen>
@@ -135,7 +137,7 @@ function NotFound() {
   return (
     <Screen>
       <div className="py-16 text-center">
-        <p className="text-4xl">🧭</p>
+        <p className="flex justify-center text-blue-600"><Compass size={40} strokeWidth={1.9} /></p>
         <h1 className="mt-4 text-xl font-bold text-gray-900">{t('페이지를 찾을 수 없어요', 'Page not found')}</h1>
         <p className="mt-2 text-sm text-gray-500">{t('주소가 바뀌었거나 잘못 입력됐을 수 있어요.', 'The address may have changed or been mistyped.')}</p>
         <div className="mt-6 flex flex-col gap-2">
@@ -233,7 +235,7 @@ function StubCreator({ userId, onDone }: { userId: string; onDone: (p: ProfileRo
     return (
       <Screen>
         <div className="py-16 text-center">
-          <p className="text-4xl">⚠️</p>
+          <p className="flex justify-center text-amber-500"><AlertTriangle size={40} strokeWidth={1.9} /></p>
           <h1 className="mt-4 text-xl font-bold text-gray-900">{t('가입을 마무리하지 못했어요', "Couldn't finish signing you up")}</h1>
           <p className="mt-3 text-sm text-gray-500">{t('네트워크 상태를 확인하고 다시 시도해 주세요.', 'Check your connection and try again.')}</p>
           <button onClick={() => setAttempt((n) => n + 1)} className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700">{t('다시 시도', 'Retry')}</button>
@@ -248,12 +250,22 @@ function StubCreator({ userId, onDone }: { userId: string; onDone: (p: ProfileRo
 function LoadingScreen() {
   return (
     <Screen>
-      <p className="mt-20 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
+      <PageSkeleton />
     </Screen>
   )
 }
 
 export default function App() {
+  // 페이지 전환 애니메이션 — 경로가 바뀔 때만 클래스를 다시 붙임 (컴포넌트는 다시 만들지 않음)
+  const pathForAnim = usePath()
+  const mainRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const el = mainRef.current
+    if (!el) return
+    el.classList.remove('page-enter')
+    void el.offsetWidth
+    el.classList.add('page-enter')
+  }, [pathForAnim])
   // 언어 전환 시 전체 리마운트 (t()가 모듈 변수 기반이라 key로 갱신)
   const [langKey, setLangKey] = useState(getLang())
   useEffect(() => {
@@ -273,7 +285,7 @@ export default function App() {
       <Suspense fallback={<LoadingScreen />}>
         <TopNav key={`nav-${langKey}`} />
         <AppNav key={`appnav-${langKey}`} />
-        <div id="app-main">
+        <div id="app-main" ref={mainRef}>
           <LoadErrorBanner />
           <AppRoutes key={langKey} />
         </div>
@@ -402,7 +414,7 @@ function AppRoutes() {
     return (
       <Screen>
         <div className="py-16 text-center">
-          <p className="text-4xl">⚠️</p>
+          <p className="flex justify-center text-amber-500"><AlertTriangle size={40} strokeWidth={1.9} /></p>
           <h1 className="mt-4 text-xl font-bold text-gray-900">{t('불러오지 못했어요', "Couldn't load")}</h1>
           <p className="mt-3 text-sm text-gray-500">{t('네트워크 상태를 확인하고 다시 시도해 주세요.', 'Check your connection and try again.')}</p>
           <button onClick={() => setSeasonRetry((n) => n + 1)} className="mt-6 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700">
@@ -416,7 +428,7 @@ function AppRoutes() {
   if (sessionLoading || profileLoading || (session && profile && lastSeason === undefined)) {
     return (
       <Screen>
-        <p className="mt-20 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
+        <PageSkeleton />
       </Screen>
     )
   }
@@ -426,7 +438,7 @@ function AppRoutes() {
     session && profileError ? (
       <Screen>
         <div className="py-16 text-center">
-          <p className="text-4xl">⚠️</p>
+          <p className="flex justify-center text-amber-500"><AlertTriangle size={40} strokeWidth={1.9} /></p>
           <h1 className="mt-4 text-xl font-bold text-gray-900">{t('프로필을 불러오지 못했어요', "Couldn't load your profile")}</h1>
           <p className="mt-3 text-sm text-gray-500">{t('네트워크 상태를 확인하고 다시 시도해 주세요.', 'Check your connection and try again.')}</p>
           <p className="mt-2 text-xs text-gray-400">{profileError}</p>
@@ -478,7 +490,7 @@ function AppRoutes() {
     return (
       <Screen>
         <div className="py-16 text-center">
-          <p className="text-4xl">📋</p>
+          <p className="flex justify-center text-blue-600"><ClipboardList size={40} strokeWidth={1.9} /></p>
           <h1 className="mt-4 text-xl font-bold text-gray-900">{t('내 원서', 'My Application')}</h1>
           <p className="mt-3 text-sm text-gray-500">{t('로그인하면 바로 기록을 시작할 수 있어요 — 질문 없이.', 'Log in and start recording right away — no questions asked.')}</p>
           <button
@@ -537,7 +549,7 @@ function AppRoutes() {
     return (
       <Screen>
         <div className="py-16 text-center">
-          <p className="text-4xl">🗓️</p>
+          <p className="flex justify-center text-blue-600"><CalendarDays size={40} strokeWidth={1.9} /></p>
           <h1 className="mt-4 text-xl font-bold text-gray-900">{t('마감 캘린더', 'Deadline Calendar')}</h1>
           <p className="mt-3 text-sm text-gray-500">
             {t('로그인하면 목표 학교 기준 마감 캘린더를 바로 볼 수 있어요.', 'Log in to see the deadline calendar for your target schools.')}
@@ -577,7 +589,7 @@ function AppRoutes() {
     return (
       <Screen>
         <div className="py-12 text-center">
-          <p className="text-4xl">🔄</p>
+          <p className="flex justify-center text-blue-600"><RefreshCw size={40} strokeWidth={1.9} /></p>
           <h1 className="mt-4 text-xl font-bold text-gray-900">{t('방금 입력한 답변으로 업데이트할까요?', 'Update your profile with the new answers?')}</h1>
           <p className="mt-3 text-sm leading-relaxed text-gray-500">
             {t(`이미 저장된 프로필(${profile.nickname}님)이 있어요. 새 답변으로 바꾸면 목표 학교·전공·성적 정보가 갱신되고, 체크 기록·내 원서 기록은 그대로 유지돼요.`,
@@ -718,7 +730,7 @@ function AppRoutes() {
         </button>
         {pendingAnswers && (
           <p className="mb-4 rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-900">
-            {t('✍️ 예전에 작성해 둔 답변이 있어요 — 로그인하면 이어서 저장돼요.', '✍️ You have saved answers — log in and they will be saved.')}
+            <PenLine size={14} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('예전에 작성해 둔 답변이 있어요 — 로그인하면 이어서 저장돼요.', 'You have saved answers — log in and they will be saved.')}
           </p>
         )}
         <EmailStep />

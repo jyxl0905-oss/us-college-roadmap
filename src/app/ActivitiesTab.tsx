@@ -1,3 +1,5 @@
+import { PageSkeleton } from '../ui/Skeleton'
+import { FileText, Lightbulb } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import AppShell from './AppShell'
@@ -41,7 +43,7 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
     }).catch(() => { /* 전역 안내 띠가 표시함 */ })
   }, [userId])
 
-  if (!activities) return <AppShell tab="activities" title={t('활동 · 수상', 'Activities · Honors')}><p className="mt-10 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p></AppShell>
+  if (!activities) return <AppShell tab="activities" title={t('활동 · 수상', 'Activities · Honors')}><PageSkeleton compact /></AppShell>
 
   // 중복 요청 방지 래퍼 — 진행 중이면 무시, 실패(alert 후 throw)해도 busy 해제
   const guarded = async (fn: () => Promise<void>) => {
@@ -118,8 +120,8 @@ export default function ActivitiesTab({ userId }: ActivitiesTabProps) {
         <h2 className="font-semibold text-gray-900">{t('활동 (Activities)', 'Activities')}</h2>
         <span className="flex items-baseline gap-3">
           {(activities.length > 0 || honors.length > 0) && (
-            <button onClick={() => setPreviewOpen(true)} className="rounded-full border-2 border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 active:bg-blue-100">
-              📄 {t('원서 미리보기', 'Application preview')}
+            <button onClick={() => setPreviewOpen(true)} className="inline-flex items-center gap-1 rounded-full border-2 border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 active:bg-blue-100">
+              <FileText size={13} strokeWidth={2} />{t('원서 미리보기', 'Application preview')}
             </button>
           )}
           <span className="text-sm text-gray-400">{activities.length}/{ACTIVITY_MAX}</span>
@@ -380,7 +382,7 @@ function DescriptionCoach({ text }: { text: string }) {
       {check(roomLeft <= 60, t('공간 활용 좋아요', 'Good use of space'), t(`${roomLeft}자 남음 — 결과·성과를 더 담아보세요`, `${roomLeft} chars left — add outcomes`))}
       {hasKorean && (
         <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-[11px] text-amber-700">
-          💡 {t('실제 원서는 영어예요 — 지금 영어로 써두면 12학년에 옮겨 적기만 하면 돼요', 'The real application is in English — write it in English now and senior-year you just copies it')}
+          <Lightbulb size={12} strokeWidth={2} className="shrink-0" />{t('실제 원서는 영어예요 — 지금 영어로 써두면 12학년에 옮겨 적기만 하면 돼요', 'The real application is in English — write it in English now and senior-year you just copies it')}
         </span>
       )}
     </div>
@@ -418,7 +420,7 @@ function AppPreview({ activities, honors, onClose }: { activities: Activity[]; h
         <div className="flex items-center gap-3">
           <button onClick={onClose} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
           <div>
-            <h1 className="text-lg font-bold text-gray-900">📄 {t('원서 미리보기', 'Application preview')}</h1>
+            <h1 className="flex items-center gap-1.5 text-lg font-bold text-gray-900"><FileText size={19} strokeWidth={2} />{t('원서 미리보기', 'Application preview')}</h1>
             <p className="text-xs text-gray-400">{t('실제 Common App에 보이는 순서·형식 그대로예요 — 12학년 때 이 화면을 켜고 옮겨 적으세요.', 'Shown in the real Common App order and format — open this senior year and copy it over.')}</p>
           </div>
         </div>

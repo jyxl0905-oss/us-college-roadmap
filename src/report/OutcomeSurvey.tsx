@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { GraduationCap } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import type { ProfileRow } from '../lib/profile'
 import { t } from '../i18n'
@@ -55,7 +56,7 @@ export default function OutcomeSurvey({ userId, profile, onDone }: { userId: str
   if (state === 'done')
     return (
       <div className="rounded-2xl border border-green-200 bg-green-50 px-4 py-4 text-sm text-green-900">
-        {t('고마워요! 답변은 익명 통계로만 쓰여요. 4년 동안 수고 많았어요 🎓', 'Thank you! Your answers are used only as anonymous statistics. Well done on four years 🎓')}
+        {t('고마워요! 답변은 익명 통계로만 쓰여요. 4년 동안 수고 많았어요', 'Thank you! Your answers are used only as anonymous statistics. Well done on four years')} <GraduationCap size={15} strokeWidth={2} className="inline -mt-0.5" />
       </div>
     )
 
@@ -91,7 +92,7 @@ export default function OutcomeSurvey({ userId, profile, onDone }: { userId: str
     <div className="rounded-2xl border-2 border-blue-200 bg-white px-4 py-4">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <p className="font-semibold text-gray-900">{t('🎓 결과가 나왔나요? 1분 설문', '🎓 Got your results? A 1-minute survey')}</p>
+          <p className="flex items-center gap-1.5 font-semibold text-gray-900"><GraduationCap size={18} strokeWidth={2} />{t('결과가 나왔나요? 1분 설문', 'Got your results? A 1-minute survey')}</p>
           <p className="mt-0.5 text-xs text-gray-500">{t('다음 학생들을 위해 익명으로만 집계돼요.', 'Collected anonymously to help the students after you.')}</p>
         </div>
         {!profile.graduated && (

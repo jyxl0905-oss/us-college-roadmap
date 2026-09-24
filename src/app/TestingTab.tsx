@@ -1,3 +1,5 @@
+import { X } from 'lucide-react'
+import { PageSkeleton } from '../ui/Skeleton'
 import { useEffect, useRef, useState } from 'react'
 import AppShell from './AppShell'
 import { t } from '../i18n'
@@ -56,7 +58,7 @@ export default function TestingTab({ userId, profile, onProfileChange }: Testing
     }
   }
 
-  if (!tests) return <AppShell tab="testing" title={t('시험', 'Testing')}><p className="mt-10 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p></AppShell>
+  if (!tests) return <AppShell tab="testing" title={t('시험', 'Testing')}><PageSkeleton compact /></AppShell>
 
   // 응시일 내림차순 (loadAppRecords와 같은 순서, 미입력은 뒤로)
   const sortTests = (list: TestScore[]) =>
@@ -137,7 +139,7 @@ export default function TestingTab({ userId, profile, onProfileChange }: Testing
                     </p>
                     <p className="text-xs text-gray-400">{ts.taken_on ?? t('응시일 미입력', 'No test date')}</p>
                   </div>
-                  <button onClick={() => remove(ts.id)} aria-label={t('삭제', 'Delete')} className="text-gray-300 active:text-red-500">✕</button>
+                  <button onClick={() => remove(ts.id)} aria-label={t('삭제', 'Delete')} className="text-gray-300 active:text-red-500"><X size={16} strokeWidth={2} /></button>
                 </div>
               ))}
             </div>

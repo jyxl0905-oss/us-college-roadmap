@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Check, Megaphone } from 'lucide-react'
 import { t } from '../i18n'
 
 // 친구 초대 — 초대 코드(f-내ID 앞 8자리)가 붙은 링크를 공유. 가입 통계에 유입 경로로 잡힘
@@ -23,7 +24,7 @@ export default function ShareInvite({ userId, className = '' }: { userId: string
 
   return (
     <button onClick={share} className={className}>
-      {copied ? t('✅ 링크 복사됨!', '✅ Link copied!') : t('📣 친구에게 공유하기', '📣 Share with a friend')}
+      <span className="inline-flex items-center gap-1.5">{copied ? <><Check size={15} strokeWidth={2} />{t('링크 복사됨!', 'Link copied!')}</> : <><Megaphone size={15} strokeWidth={2} />{t('친구에게 공유하기', 'Share with a friend')}</>}</span>
     </button>
   )
 }

@@ -1,3 +1,5 @@
+import { PageSkeleton } from '../ui/Skeleton'
+import { GraduationCap, Flag, Compass, CircleCheck, CalendarDays, ClipboardList, TrendingUp, Bell, CalendarPlus, BookOpen, BarChart3, Target, Eye } from 'lucide-react'
 import { tierSchoolsQuery } from '../lib/tierSchools'
 import { useEffect, useRef, useState } from 'react'
 import type { ChecklistItem, School } from '../lib/types'
@@ -343,7 +345,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
     ...sortEntries(allDeadlines.filter((e) => e.plan === 'ED II' || e.plan === 'RD')),
   ].slice(0, 3)
 
-  if (loading) return <p className="mt-20 text-center text-gray-400">{t('리포트 만드는 중…', 'Building your report…')}</p>
+  if (loading) return <PageSkeleton compact />
   if (error)
     return (
       <div className="mt-20 px-6 text-center">
@@ -361,21 +363,21 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         <div>
           <h1 className="text-xl font-bold text-gray-900">{t(`${profile.nickname}님의 시즌 리포트`, `${profile.nickname}'s season report`)}</h1>
           <p className="mt-1 text-sm text-gray-500">
-            {graduated ? <span className="rounded-full bg-gray-900 px-2 py-0.5 text-[11px] font-semibold text-white">🎓 {t('졸업 · 기록 보관', 'Graduated · archive')}</span> : <>{t(`${grade}학년`, `Grade ${grade}`)} · {majorLabel(profile.major_primary)} · {seasonLabelKo[currentSeason()]}</>}
-            {profile.school_in_us && <span className="ml-1 rounded-full bg-gray-100 px-1.5 py-0.5 text-[11px] text-gray-500">🇺🇸 {t('미국 학교', 'US school')}</span>}
+            {graduated ? <span className="inline-flex items-center gap-1 rounded-full bg-gray-900 px-2 py-0.5 text-[11px] font-semibold text-white"><GraduationCap size={12} strokeWidth={2} />{t('졸업 · 기록 보관', 'Graduated · archive')}</span> : <>{t(`${grade}학년`, `Grade ${grade}`)} · {majorLabel(profile.major_primary)} · {seasonLabelKo[currentSeason()]}</>}
+            {profile.school_in_us && <span className="ml-1 inline-flex items-center gap-1 rounded-full bg-gray-100 px-1.5 py-0.5 text-[11px] text-gray-500"><Flag size={11} strokeWidth={2} />{t('미국 학교', 'US school')}</span>}
           </p>
           <button
             onClick={() => navigate(`/major/${profile.major_primary ?? 'undecided'}`)}
-            className="no-print mt-1.5 rounded-full border-2 border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 active:bg-blue-100"
+            className="no-print mt-1.5 inline-flex items-center gap-1 rounded-full border-2 border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 active:bg-blue-100"
           >
-            {t('🧭 전공 가이드 맵 보기', '🧭 Major guide map')}
+            <Compass size={13} strokeWidth={2} />{t('전공 가이드 맵 보기', 'Major guide map')}
           </button>
           {!graduated && (
             <button
               onClick={() => document.getElementById('checklist')?.scrollIntoView({ behavior: 'smooth' })}
-              className="no-print ml-1.5 mt-1.5 rounded-full border-2 border-green-200 bg-green-50 px-3 py-1 text-xs font-semibold text-green-700 active:bg-green-100"
+              className="no-print ml-1.5 mt-1.5 inline-flex items-center gap-1 rounded-full border-2 border-green-200 bg-green-50 px-3 py-1 text-xs font-semibold text-green-700 active:bg-green-100"
             >
-              ✅ {t(`체크리스트 ${commonItems.concat(intlItems).filter((i) => checkedIds.has(i.id)).length}/${commonItems.length + intlItems.length}`, `Checklist ${commonItems.concat(intlItems).filter((i) => checkedIds.has(i.id)).length}/${commonItems.length + intlItems.length}`)}
+              <CircleCheck size={13} strokeWidth={2} />{t(`체크리스트 ${commonItems.concat(intlItems).filter((i) => checkedIds.has(i.id)).length}/${commonItems.length + intlItems.length}`, `Checklist ${commonItems.concat(intlItems).filter((i) => checkedIds.has(i.id)).length}/${commonItems.length + intlItems.length}`)}
             </button>
           )}
           <p className="mt-0.5 text-xs text-gray-400">{targetText}</p>
@@ -423,7 +425,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       {grade === 12 && currentSeason() === 'fall' && upcomingDeadlines.length > 0 && (
         <div className="mt-5 rounded-xl border-2 border-red-200 bg-red-50 px-4 py-3.5">
           <div className="flex items-baseline justify-between">
-            <p className="font-semibold text-red-900">{t('🗓️ 다가오는 마감', '🗓️ Upcoming deadlines')}</p>
+            <p className="flex items-center gap-1.5 font-semibold text-red-900"><CalendarDays size={18} strokeWidth={2} />{t('다가오는 마감', 'Upcoming deadlines')}</p>
             <button onClick={() => navigate('/deadlines')} className="no-print text-sm text-red-700 underline">
               {t('전체 보기', 'See all')}
             </button>
@@ -454,7 +456,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
               className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-medium text-green-700"
               title={t('자가진단 대신 내 원서(활동·수상) 기록으로 계산됨', 'Computed from your application records instead of self-assessment')}
             >
-              {t('📋 기록 기반', '📋 From records')}
+              <ClipboardList size={11} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('기록 기반', 'From records')}
             </span>
           )}
         </div>
@@ -519,7 +521,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           {prevPct !== null && (
             <p className="mt-2 text-xs text-gray-500">
               {t('지난 시즌', 'Last season')} {prevPct}% → {t('이번 시즌', 'this season')} {nowPct}%{' '}
-              {nowPct >= prevPct ? '📈' : t('— 다시 속도를 내볼까요?', '— time to pick up the pace?')}
+              {nowPct >= prevPct ? <TrendingUp size={14} strokeWidth={2} className="inline -mt-0.5 text-green-600" /> : t('— 다시 속도를 내볼까요?', '— time to pick up the pace?')}
             </p>
           )}
         </div>
@@ -630,7 +632,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       <div className="no-print mt-6 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <p className="text-sm font-semibold text-gray-900">{t('🔔 알림 이메일 (시즌 시작 · 마감 D-2)', '🔔 Reminder emails (season start · deadline D-2)')}</p>
+            <p className="flex items-center gap-1.5 text-sm font-semibold text-gray-900"><Bell size={15} strokeWidth={2} />{t('알림 이메일 (시즌 시작 · 마감 D-2)', 'Reminder emails (season start · deadline D-2)')}</p>
             <p className="text-xs text-gray-400">{t('8월·1월·6월 시즌이 열릴 때 한 통, 그리고 지원 학교 탭에 입력한 마감일 이틀 전에 한 통', 'One email when the Aug/Jan/Jun season opens, and one two days before each deadline you enter in your college list')}</p>
           </div>
           <button
@@ -666,7 +668,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           }}
           className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 active:bg-gray-50"
         >
-          {t('📅 폰 캘린더에 추가 (.ics) — 다음 체크인', '📅 Add to calendar (.ics) — next check-in')}{assignedRounds.some((a) => a.student_deadline) ? t(' + 내가 입력한 마감일', ' + my entered deadlines') : ''}
+          <CalendarPlus size={15} strokeWidth={2} className="mr-1.5 inline -mt-0.5" />{t('폰 캘린더에 추가 (.ics) — 다음 체크인', 'Add to calendar (.ics) — next check-in')}{assignedRounds.some((a) => a.student_deadline) ? t(' + 내가 입력한 마감일', ' + my entered deadlines') : ''}
         </button>
       </div>
       </>)}
@@ -676,14 +678,14 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       <div className="mt-8 border-t border-gray-200 pt-4 text-center text-xs text-gray-400">
         <p>
           {t('미국 대입 로드맵', 'US College Roadmap')} · {t('전 기능 무료 · 광고 없음', 'Everything free · no ads')} · uscollegeroadmap.com ·{' '}
-          <button onClick={onOpenGuide} className="no-print underline">{t('📚 기본기·용어집', '📚 Basics · glossary')}</button>
+          <button onClick={onOpenGuide} className="no-print underline"><BookOpen size={12} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('기본기·용어집', 'Basics · glossary')}</button>
         </p>
         <p className="mt-1">
           {t('다음 체크인', 'Next check-in')}: <strong className="text-gray-500">{nextCheckinKo()}</strong>
         </p>
         {isAdmin && (
-          <button onClick={() => navigate('/admin')} className="no-print mt-3 rounded-full border border-gray-300 px-3 py-1 text-xs font-semibold text-gray-600 active:bg-gray-100">
-            📊 {t('운영 통계 보기', 'Admin stats')}
+          <button onClick={() => navigate('/admin')} className="no-print mt-3 inline-flex items-center gap-1 rounded-full border border-gray-300 px-3 py-1 text-xs font-semibold text-gray-600 active:bg-gray-100">
+            <BarChart3 size={13} strokeWidth={2} />{t('운영 통계 보기', 'Admin stats')}
           </button>
         )}
       </div>
@@ -699,14 +701,14 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         <p className="font-semibold text-gray-900">{t('바로 가기', 'Shortcuts')}</p>
         <div className="mt-2 flex flex-col gap-1.5">
           {!graduated && (
-            <button onClick={() => document.getElementById('checklist')?.scrollIntoView({ behavior: 'smooth' })} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">
-              ✅ {t('이번 시즌 체크리스트', 'This season’s checklist')} <span className="text-xs text-gray-400">{commonItems.concat(intlItems).filter((i) => checkedIds.has(i.id)).length}/{commonItems.length + intlItems.length}</span>
+            <button onClick={() => document.getElementById('checklist')?.scrollIntoView({ behavior: 'smooth' })} className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">
+              <CircleCheck size={16} strokeWidth={2} />{t('이번 시즌 체크리스트', 'This season’s checklist')} <span className="text-xs text-gray-400">{commonItems.concat(intlItems).filter((i) => checkedIds.has(i.id)).length}/{commonItems.length + intlItems.length}</span>
             </button>
           )}
-          <button onClick={() => navigate('/targets')} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">🎯 {t('목표 학교 · 💰 재정지원 순위', 'Targets · 💰 aid ranking')}</button>
-          <button onClick={() => navigate('/deadlines')} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">🗓️ {t('마감 캘린더', 'Deadline calendar')}</button>
-          <button onClick={() => navigate(`/major/${profile.major_primary ?? 'undecided'}`)} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">🧭 {t('전공 가이드 맵', 'Major guide map')}</button>
-          <button onClick={onOpenGuide} className="rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50">📚 {t('입시 기본기 · 용어집', 'Basics · glossary')}</button>
+          <button onClick={() => navigate('/targets')} className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50"><Target size={16} strokeWidth={2} />{t('목표 학교 · 재정지원 순위', 'Targets · aid ranking')}</button>
+          <button onClick={() => navigate('/deadlines')} className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50"><CalendarDays size={16} strokeWidth={2} />{t('마감 캘린더', 'Deadline calendar')}</button>
+          <button onClick={() => navigate(`/major/${profile.major_primary ?? 'undecided'}`)} className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50"><Compass size={16} strokeWidth={2} />{t('전공 가이드 맵', 'Major guide map')}</button>
+          <button onClick={onOpenGuide} className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-left text-gray-700 hover:bg-gray-50"><BookOpen size={16} strokeWidth={2} />{t('입시 기본기 · 용어집', 'Basics · glossary')}</button>
         </div>
         <ShareInvite userId={userId} className="mt-2 w-full rounded-lg bg-green-50 px-2 py-1.5 text-left text-sm font-medium text-green-800 hover:bg-green-100" />
         <p className="mt-3 border-t border-gray-100 pt-2 text-xs text-gray-400">{t('다음 체크인', 'Next check-in')}: {nextCheckinKo()}</p>
@@ -721,7 +723,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
 function DemoCta({ className = '' }: { className?: string }) {
   return (
     <div className={`rounded-2xl border-2 border-blue-200 bg-blue-50 p-4 ${className}`}>
-      <p className="font-semibold text-gray-900">{t('👀 예시 학생의 리포트였어요', '👀 That was a sample student’s report')}</p>
+      <p className="flex items-center gap-1.5 font-semibold text-gray-900"><Eye size={18} strokeWidth={2} />{t('예시 학생의 리포트였어요', 'That was a sample student’s report')}</p>
       <p className="mt-1 text-sm leading-relaxed text-gray-600">
         {t('가입하면 내 학년·전공·목표 학교로 이 리포트가 만들어지고, 체크·활동·에세이 기록이 저장돼요. 전 기능 무료예요.', 'Sign up and this report is built from your own grade, major and target schools, with your checks, activities and essays saved. Everything is free.')}
       </p>

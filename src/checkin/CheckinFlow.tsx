@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Frown, Annoyed, Meh, Smile, Laugh, Hand } from 'lucide-react'
 import type { ChecklistItem, ClarityItem, Tier } from '../lib/types'
 import { supabase } from '../lib/supabase'
 import { filterChecklist, saveProfile, type ProfileRow } from '../lib/profile'
@@ -31,7 +32,7 @@ interface CheckinFlowProps {
 type Screen = 'carryover' | 'plans' | 'changes' | 'targets' | 'clarity'
 type ChangeForm = 'scores' | 'activities' | 'gpa' | null
 
-const CLARITY_EMOJIS = ['😟', '😕', '😐', '🙂', '😄'] // 1~5점
+const CLARITY_ICONS = [Frown, Annoyed, Meh, Smile, Laugh] // 1~5점
 
 // 시즌 체크인 — ① 지난 시즌 미완료 이월/건너뛰기 ② 변경사항 ③ 전공·목표 확인
 export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }: CheckinFlowProps) {
@@ -168,7 +169,7 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
   if (screen === 'carryover') {
     return wrap(
       <div>
-        <h1 className="text-xl font-bold text-gray-900">{t('오랜만이에요! 👋', 'Welcome back! 👋')}</h1>
+        <h1 className="flex items-center gap-2 text-xl font-bold text-gray-900">{t('오랜만이에요!', 'Welcome back!')}<Hand size={22} strokeWidth={2} className="text-blue-600" /></h1>
         <p className="mt-2 text-sm text-gray-500">
           {t(
             `지난 ${seasonKoFromLabel(prevSeasonLabel)} 시즌에 완료하지 못한 항목이 있어요. 이번 시즌으로 가져갈까요?`,
@@ -420,7 +421,7 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
             <div key={item.id} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
               <p className="text-sm font-medium text-gray-900">{item.question}</p>
               <div className="mt-3 flex justify-between">
-                {CLARITY_EMOJIS.map((emoji, i) => {
+                {CLARITY_ICONS.map((Icon, i) => {
                   const score = i + 1
                   const on = clarityScores[item.id] === score
                   return (
@@ -428,11 +429,11 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
                       key={score}
                       onClick={() => setClarityScores((prev) => ({ ...prev, [item.id]: score }))}
                       aria-label={t(`${score}점`, `${score} of 5`)}
-                      className={`h-12 w-12 rounded-full text-2xl transition-transform ${
-                        on ? 'scale-110 bg-blue-100 ring-2 ring-blue-500' : 'bg-gray-50 active:bg-gray-100'
+                      className={`flex h-12 w-12 items-center justify-center rounded-full transition-transform ${
+                        on ? 'scale-110 bg-blue-100 text-blue-700 ring-2 ring-blue-500' : 'bg-gray-50 text-gray-500 active:bg-gray-100'
                       }`}
                     >
-                      {emoji}
+                      <Icon size={26} strokeWidth={1.9} />
                     </button>
                   )
                 })}

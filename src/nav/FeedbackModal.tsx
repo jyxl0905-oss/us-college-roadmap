@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { supabase } from '../lib/supabase'
 import { t } from '../i18n'
+import { HeartHandshake, MessageCircle } from 'lucide-react'
 
 // 💬 의견 보내기 — 상단 바에서 어느 화면에서든 열림. 내용은 운영 통계에서만 열람
 export default function FeedbackModal({ onClose }: { onClose: () => void }) {
@@ -32,14 +33,14 @@ export default function FeedbackModal({ onClose }: { onClose: () => void }) {
       <div className="w-full max-w-md rounded-t-2xl bg-white px-5 pb-8 pt-5 sm:rounded-2xl sm:pb-5" onClick={(e) => e.stopPropagation()}>
         {state === 'done' ? (
           <div className="py-6 text-center">
-            <p className="text-3xl">🙏</p>
+            <p className="flex justify-center text-blue-600"><HeartHandshake size={32} strokeWidth={1.9} /></p>
             <p className="mt-3 font-semibold text-gray-900">{t('고마워요! 잘 전달됐어요.', 'Thank you! Your feedback was sent.')}</p>
             <p className="mt-1 text-sm text-gray-500">{t('보내주신 의견은 다음 업데이트에 반영할게요.', 'We read every note and use it for the next update.')}</p>
             <button onClick={onClose} className="mt-5 w-full rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white active:bg-blue-700">{t('닫기', 'Close')}</button>
           </div>
         ) : (
           <>
-            <p className="font-semibold text-gray-900">💬 {t('의견 보내기', 'Send feedback')}</p>
+            <p className="flex items-center gap-1.5 font-semibold text-gray-900"><MessageCircle size={18} strokeWidth={2} className="text-blue-600" />{t('의견 보내기', 'Send feedback')}</p>
             <p className="mt-0.5 text-xs text-gray-500">{t('불편한 점, 바라는 기능, 이상한 정보 — 뭐든 자유롭게 적어주세요.', 'Anything goes — bugs, feature wishes, wrong info.')}</p>
             <textarea
               value={message}

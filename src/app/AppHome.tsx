@@ -1,9 +1,11 @@
+import { PageSkeleton } from '../ui/Skeleton'
+import { Lock, Lightbulb } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import type { ProfileRow } from '../lib/profile'
 import { profileGrade } from '../lib/profile'
 import { navigate } from '../lib/router'
 import { supabase } from '../lib/supabase'
-import AppShell from './AppShell'
+import AppShell, { TAB_ICONS } from './AppShell'
 import { t } from '../i18n'
 import { gpaBandLabels } from '../onboarding/labels'
 import { loadAppRecords, ACTIVITY_MAX, HONOR_MAX, essayStatusKo, type AppRecords } from './appData'
@@ -62,13 +64,13 @@ export default function AppHome({ userId, profile }: AppHomeProps) {
           const cyc = cycleSeasons().map((s) => s.label)
           const mine = plans.filter((p) => cyc.includes(p.season_label))
           const done = mine.filter((p) => p.status === 'done').length
-          return { path: '/app/plans', emoji: '🗓️', title: t('내 계획', 'My plans'), sub: mine.length > 0 ? t(`이번 학년도 ${mine.length}개 · 완료 ${done}`, `${mine.length} this school year · ${done} done`) : t('계획을 적으면 6축에 점선으로', 'Add plans to see them as a dashed line on the 6 axes'), pct: mine.length > 0 ? done / mine.length : 0 }
+          return { path: '/app/plans', Icon: TAB_ICONS.plans, title: t('내 계획', 'My plans'), sub: mine.length > 0 ? t(`이번 학년도 ${mine.length}개 · 완료 ${done}`, `${mine.length} this school year · ${done} done`) : t('계획을 적으면 6축에 점선으로', 'Add plans to see them as a dashed line on the 6 axes'), pct: mine.length > 0 ? done / mine.length : 0 }
         })(),
-        { path: '/app/activities', emoji: '🏃', title: t('활동 · 수상', 'Activities · Honors'), sub: t(`활동 ${rec.activities.length}/${ACTIVITY_MAX} · 수상 ${rec.honors.length}/${HONOR_MAX}`, `Activities ${rec.activities.length}/${ACTIVITY_MAX} · Honors ${rec.honors.length}/${HONOR_MAX}`), pct: Math.min(1, (rec.activities.length / ACTIVITY_MAX + rec.honors.length / HONOR_MAX) / 2) },
-        { path: '/app/testing', emoji: '✏️', title: t('시험', 'Testing'), sub: rec.tests.length > 0 ? t(`기록 ${rec.tests.length}건`, `${rec.tests.length} score${rec.tests.length === 1 ? '' : 's'} recorded`) : t('아직 기록 없음', 'No scores yet'), pct: rec.tests.length > 0 ? 1 : 0 },
-        { path: '/app/education', emoji: '📚', title: t('학업', 'Education'), sub: t(`${grade}학년 · GPA ${profile.gpa_band ? gpaBandLabels[profile.gpa_band] ?? profile.gpa_band : '미입력'} · 과목 ${rec.courses.length}개`, `Grade ${grade} · GPA ${profile.gpa_band ? gpaBandLabels[profile.gpa_band] ?? profile.gpa_band : 'not set'} · ${rec.courses.length} course${rec.courses.length === 1 ? '' : 's'}`), pct: profile.gpa_band ? (rec.courses.length > 0 ? 1 : 0.5) : 0 },
-        { path: '/app/colleges', emoji: '🎯', title: t('지원 학교', 'My colleges'), sub: targetCount > 0 ? t(`목표 ${targetCount}곳 · 라운드 배정 ${appCount.assigned}곳`, `${targetCount} target${targetCount === 1 ? '' : 's'} · ${appCount.assigned} assigned a round`) : tierMode ? t(`티어 목표 · 라운드 배정 ${appCount.assigned}곳`, `Tier target · ${appCount.assigned} assigned a round`) : t('목표 학교를 먼저 정해요', 'Pick your target schools first'), pct: targetCount > 0 ? Math.min(1, appCount.assigned / targetCount) : tierMode && appCount.assigned > 0 ? 1 : 0 },
-        { path: '/app/writing', emoji: '📝', title: t('에세이', 'Essays'), sub: rec.essays.length > 0 ? rec.essays.map((e) => essayStatusKo[e.status]).slice(0, 3).join(' · ') : t('아직 없음', 'None yet'), pct: rec.essays.length > 0 ? rec.essays.filter((e) => e.status === 'done').length / rec.essays.length : 0 },
+        { path: '/app/activities', Icon: TAB_ICONS.activities, title: t('활동 · 수상', 'Activities · Honors'), sub: t(`활동 ${rec.activities.length}/${ACTIVITY_MAX} · 수상 ${rec.honors.length}/${HONOR_MAX}`, `Activities ${rec.activities.length}/${ACTIVITY_MAX} · Honors ${rec.honors.length}/${HONOR_MAX}`), pct: Math.min(1, (rec.activities.length / ACTIVITY_MAX + rec.honors.length / HONOR_MAX) / 2) },
+        { path: '/app/testing', Icon: TAB_ICONS.testing, title: t('시험', 'Testing'), sub: rec.tests.length > 0 ? t(`기록 ${rec.tests.length}건`, `${rec.tests.length} score${rec.tests.length === 1 ? '' : 's'} recorded`) : t('아직 기록 없음', 'No scores yet'), pct: rec.tests.length > 0 ? 1 : 0 },
+        { path: '/app/education', Icon: TAB_ICONS.education, title: t('학업', 'Education'), sub: t(`${grade}학년 · GPA ${profile.gpa_band ? gpaBandLabels[profile.gpa_band] ?? profile.gpa_band : '미입력'} · 과목 ${rec.courses.length}개`, `Grade ${grade} · GPA ${profile.gpa_band ? gpaBandLabels[profile.gpa_band] ?? profile.gpa_band : 'not set'} · ${rec.courses.length} course${rec.courses.length === 1 ? '' : 's'}`), pct: profile.gpa_band ? (rec.courses.length > 0 ? 1 : 0.5) : 0 },
+        { path: '/app/colleges', Icon: TAB_ICONS.colleges, title: t('지원 학교', 'My colleges'), sub: targetCount > 0 ? t(`목표 ${targetCount}곳 · 라운드 배정 ${appCount.assigned}곳`, `${targetCount} target${targetCount === 1 ? '' : 's'} · ${appCount.assigned} assigned a round`) : tierMode ? t(`티어 목표 · 라운드 배정 ${appCount.assigned}곳`, `Tier target · ${appCount.assigned} assigned a round`) : t('목표 학교를 먼저 정해요', 'Pick your target schools first'), pct: targetCount > 0 ? Math.min(1, appCount.assigned / targetCount) : tierMode && appCount.assigned > 0 ? 1 : 0 },
+        { path: '/app/writing', Icon: TAB_ICONS.writing, title: t('에세이', 'Essays'), sub: rec.essays.length > 0 ? rec.essays.map((e) => essayStatusKo[e.status]).slice(0, 3).join(' · ') : t('아직 없음', 'None yet'), pct: rec.essays.length > 0 ? rec.essays.filter((e) => e.status === 'done').length / rec.essays.length : 0 },
       ]
     : []
 
@@ -77,12 +79,12 @@ export default function AppHome({ userId, profile }: AppHomeProps) {
       <p className="mt-3 text-sm text-gray-500">
         {t(`실제 Common App 형식 그대로, ${grade}학년부터 미리 채워두는 나만의 원서예요. 12학년 원서 시즌에 여기서 그대로 옮기면 돼요.`, `Your own application in the real Common App format, filled in ahead of time from grade ${grade}. In 12th-grade application season, just copy it over.`)}
       </p>
-      <p className="mt-2 text-xs text-gray-400">
-        🔒 {t('여기 기록한 기록과 내용은 오직 유저님만 볼 수 있어요.', 'Everything you record here is visible only to you.')}
+      <p className="mt-2 flex items-center gap-1 text-xs text-gray-400">
+        <Lock size={12} strokeWidth={2} />{t('여기 기록한 기록과 내용은 오직 유저님만 볼 수 있어요.', 'Everything you record here is visible only to you.')}
       </p>
 
       {!rec ? (
-        <p className="mt-10 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
+        <PageSkeleton compact />
       ) : (
         <div className="mt-5 flex flex-col gap-2.5">
           {sections.map((s) => (
@@ -92,8 +94,8 @@ export default function AppHome({ userId, profile }: AppHomeProps) {
               className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5 text-left active:bg-gray-50"
             >
               <div className="flex items-center justify-between">
-                <p className="font-semibold text-gray-900">
-                  {s.emoji} {s.title}
+                <p className="flex items-center gap-2 font-semibold text-gray-900">
+                  <s.Icon size={18} strokeWidth={2} />{s.title}
                 </p>
                 <span className="text-gray-300">›</span>
               </div>
@@ -116,7 +118,7 @@ export default function AppHome({ userId, profile }: AppHomeProps) {
           }}
           className="flex w-full items-center justify-between text-left"
         >
-          <span className="font-semibold text-gray-900">{t('💡 Common App은 이렇게 채워요', '💡 How to fill in the Common App')}</span>
+          <span className="flex items-center gap-1.5 font-semibold text-gray-900"><Lightbulb size={17} strokeWidth={2} />{t('Common App은 이렇게 채워요', 'How to fill in the Common App')}</span>
           <span className="text-sm text-gray-400">{guideOpen ? t('접기', 'Collapse') : t('펼치기', 'Expand')}</span>
         </button>
         {guideOpen && (

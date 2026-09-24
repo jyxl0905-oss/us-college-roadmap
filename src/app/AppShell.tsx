@@ -4,17 +4,17 @@ import { ClipboardList, CalendarRange, Activity, PencilLine, BookOpen, Target, P
 
 export type AppTab = 'home' | 'plans' | 'activities' | 'testing' | 'education' | 'colleges' | 'writing'
 
-export const appTabs: { key: AppTab; label: string; path: string; emoji: string }[] = [
-  { key: 'home', get label() { return t('홈', 'Home') }, path: '/app', emoji: '📋' },
-  { key: 'plans', get label() { return t('계획', 'Plans') }, path: '/app/plans', emoji: '🗓️' },
-  { key: 'activities', get label() { return t('활동', 'Activities') }, path: '/app/activities', emoji: '🏃' },
-  { key: 'testing', get label() { return t('시험', 'Testing') }, path: '/app/testing', emoji: '✏️' },
-  { key: 'education', get label() { return t('학업', 'Education') }, path: '/app/education', emoji: '📚' },
-  { key: 'colleges', get label() { return t('지원', 'Colleges') }, path: '/app/colleges', emoji: '🎯' },
-  { key: 'writing', get label() { return t('에세이', 'Essays') }, path: '/app/writing', emoji: '📝' },
+export const appTabs: { key: AppTab; label: string; path: string }[] = [
+  { key: 'home', get label() { return t('홈', 'Home') }, path: '/app' },
+  { key: 'plans', get label() { return t('계획', 'Plans') }, path: '/app/plans' },
+  { key: 'activities', get label() { return t('활동', 'Activities') }, path: '/app/activities' },
+  { key: 'testing', get label() { return t('시험', 'Testing') }, path: '/app/testing' },
+  { key: 'education', get label() { return t('학업', 'Education') }, path: '/app/education' },
+  { key: 'colleges', get label() { return t('지원', 'Colleges') }, path: '/app/colleges' },
+  { key: 'writing', get label() { return t('에세이', 'Essays') }, path: '/app/writing' },
 ]
 
-const TAB_ICONS: Record<AppTab, typeof ClipboardList> = {
+export const TAB_ICONS: Record<AppTab, typeof ClipboardList> = {
   home: ClipboardList, plans: CalendarRange, activities: Activity, testing: PencilLine, education: BookOpen, colleges: Target, writing: PenSquare,
 }
 

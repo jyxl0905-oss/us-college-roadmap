@@ -13,6 +13,7 @@ import { schoolLogoSources } from './logos'
 import { uniGroupOf, uniGroupTitles, uniGroups, rankSortKey, rankShort } from './rankGroups'
 import type { ProfileRow } from '../lib/profile'
 import { t } from '../i18n'
+import { Map as MapIcon, Palette, Target, X } from 'lucide-react'
 
 // 🗺️ 대학 지도 — 미국 지도(자체 SVG, 외부 요청 없음) 위에 99개교 위치 표시.
 // 주 경계: us-atlas(미 인구조사국, 퍼블릭 도메인, Albers USA 사전 투영 975×610).
@@ -330,7 +331,7 @@ export default function MapPage({ profile }: MapPageProps) {
         <div className="flex items-center gap-3">
           <button onClick={() => goBack('/targets')} aria-label={t('뒤로', 'Back')} className="rounded-lg p-2 text-gray-500 active:bg-gray-100">←</button>
           <div>
-            <h1 className="text-xl font-bold text-gray-900">🗺️ {t('대학 지도', 'College Map')}</h1>
+            <h1 className="flex items-center gap-2 text-xl font-bold text-gray-900"><MapIcon size={20} strokeWidth={2} className="text-blue-600" />{t('대학 지도', 'College Map')}</h1>
             <p className="text-xs text-gray-400">{t('검색하거나 로고를 눌러 학교 정보 · 드래그 이동 · 휠/핀치/더블탭 확대', 'Search or tap a logo for info · drag to pan · wheel/pinch/double-tap to zoom')}</p>
           </div>
         </div>
@@ -379,10 +380,10 @@ export default function MapPage({ profile }: MapPageProps) {
           <button onClick={() => setKind('university')} className={chip(kind === 'university')}>{t('종합대학', 'Universities')}</button>
           <button onClick={() => setKind('lac')} className={chip(kind === 'lac')}>{t('리버럴 아츠', 'Liberal arts')}</button>
           {schools.some((s) => s.kind === 'art') && (
-            <button onClick={() => setKind('art')} className={chip(kind === 'art')}>🎨 {t('미술·디자인', 'Art & design')}</button>
+            <button onClick={() => setKind('art')} className={`${chip(kind === 'art')} inline-flex items-center gap-1`}><Palette size={14} strokeWidth={2} />{t('미술·디자인', 'Art & design')}</button>
           )}
           {targetIds.size > 0 && (
-            <button onClick={() => setKind('targets')} className={chip(kind === 'targets')}>🎯 {t('내 목표', 'My targets')} {targetIds.size}</button>
+            <button onClick={() => setKind('targets')} className={`${chip(kind === 'targets')} inline-flex items-center gap-1`}><Target size={14} strokeWidth={2} />{t('내 목표', 'My targets')} {targetIds.size}</button>
           )}
           <span className="ml-auto flex shrink-0 gap-1.5">
             <button onClick={() => zoomPreset([-78.2, 44.6], [-69.2, 38.6])} className="rounded-full border-2 border-blue-200 bg-blue-50 px-3 py-1.5 text-sm font-medium text-blue-700">{t('동북부', 'Northeast')}</button>
@@ -524,7 +525,7 @@ export default function MapPage({ profile }: MapPageProps) {
                 <p className="truncate text-[15px] font-bold text-gray-900">{selected.name}</p>
                 <p className="truncate text-xs text-gray-400">{selected.name_ko}{selected.location_note ? ` · ${selected.location_note}` : ''}</p>
               </div>
-              <button onClick={() => setSelectedId(null)} aria-label={t('닫기', 'Close')} className="shrink-0 px-1 text-gray-300">✕</button>
+              <button onClick={() => setSelectedId(null)} aria-label={t('닫기', 'Close')} className="shrink-0 px-1 text-gray-300"><X size={16} strokeWidth={2} /></button>
             </div>
             <div className="mt-2 flex flex-wrap gap-1 text-[11px]">
               <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">

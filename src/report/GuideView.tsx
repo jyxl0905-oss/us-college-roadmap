@@ -1,3 +1,4 @@
+import { PageSkeleton } from '../ui/Skeleton'
 import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { t, localizeRows } from '../i18n'
@@ -43,7 +44,7 @@ export default function GuideView({ onBack }: { onBack: () => void }) {
         <h1 className="text-xl font-bold text-gray-900">{t('입시 기본기 · 용어집', 'Admissions Basics · Glossary')}</h1>
       </div>
 
-      {loading && <p className="mt-10 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>}
+      {loading && <PageSkeleton compact />}
 
       {basics.length > 0 && (
         <div className="mt-5 flex flex-col gap-3">

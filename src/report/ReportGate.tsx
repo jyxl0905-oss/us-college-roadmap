@@ -1,3 +1,4 @@
+import { BarChart3 } from 'lucide-react'
 import { t } from '../i18n'
 
 // 온보딩 게이트 — 리포트·체크리스트 진입 시(온보딩 미완료) 보여주는 화면.
@@ -5,7 +6,7 @@ import { t } from '../i18n'
 export default function ReportGate({ onStart }: { onStart: () => void }) {
   return (
     <div className="mx-auto max-w-md px-5 py-8">
-      <h1 className="text-xl font-bold text-gray-900">📊 {t('입시 리포트 · 시즌 체크리스트', 'Admissions report · season checklist')}</h1>
+      <h1 className="flex items-center gap-2 text-xl font-bold text-gray-900"><BarChart3 size={22} strokeWidth={2} className="text-blue-600" />{t('입시 리포트 · 시즌 체크리스트', 'Admissions report · season checklist')}</h1>
 
       {/* 블러 샘플 — 실제 리포트 구성(진행률·6축·체크리스트)을 흉내낸 정적 미리보기 */}
       <div className="relative mt-5 overflow-hidden rounded-2xl border-2 border-gray-200 bg-white">

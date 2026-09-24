@@ -1,4 +1,5 @@
 import type { School } from '../lib/types'
+import { HandCoins } from 'lucide-react'
 import { navigate, slugify } from '../lib/router'
 import { t } from '../i18n'
 import SchoolLogo from '../browse/SchoolLogo'
@@ -16,7 +17,7 @@ export default function AidRanking({ schools, status }: { schools: School[]; sta
     known.sort((a, b) => (b.intl_aid_avg ?? 0) - (a.intl_aid_avg ?? 0))
     return (
       <div className="rounded-2xl border-2 border-gray-200 bg-white px-4 py-4">
-        <p className="font-semibold text-gray-900">💰 {t('내 목표 학교 재정지원 순위', 'Aid ranking of my targets')} <span className="ml-1 text-xs font-normal text-gray-400">{t('국제학생 · CDS 평균 지원액순', 'international · by CDS avg. award')}</span></p>
+        <p className="font-semibold text-gray-900"><HandCoins size={17} strokeWidth={2} className="mr-1.5 inline -mt-0.5" />{t('내 목표 학교 재정지원 순위', 'Aid ranking of my targets')} <span className="ml-1 text-xs font-normal text-gray-400">{t('국제학생 · CDS 평균 지원액순', 'international · by CDS avg. award')}</span></p>
         <ol className="mt-2 flex flex-col gap-1.5">
           {known.map((s, i) => (
             <li key={s.id} className="flex items-center gap-2 text-sm">
@@ -55,7 +56,7 @@ export default function AidRanking({ schools, status }: { schools: School[]; sta
   withData.sort((a, b) => score(b) - score(a))
   return (
     <div className="rounded-2xl border-2 border-gray-200 bg-white px-4 py-4">
-      <p className="font-semibold text-gray-900">💰 {t('내 목표 학교 재정지원 순위', 'Aid ranking of my targets')} <span className="ml-1 text-xs font-normal text-gray-400">{t('시민권·영주권 · 공식 정책 기준', 'citizens/PR · by official policy')}</span></p>
+      <p className="font-semibold text-gray-900"><HandCoins size={17} strokeWidth={2} className="mr-1.5 inline -mt-0.5" />{t('내 목표 학교 재정지원 순위', 'Aid ranking of my targets')} <span className="ml-1 text-xs font-normal text-gray-400">{t('시민권·영주권 · 공식 정책 기준', 'citizens/PR · by official policy')}</span></p>
       <ol className="mt-2 flex flex-col gap-1.5">
         {withData.map((s, i) => (
           <li key={s.id} className="flex items-center gap-2 text-sm">

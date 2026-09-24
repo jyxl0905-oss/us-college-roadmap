@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Target, Trophy, ThumbsUp, Sprout, PartyPopper } from 'lucide-react'
 import { t, localizeRows } from '../i18n'
 import type { QuizAnswer, QuizItem } from '../lib/types'
 import { supabase } from '../lib/supabase'
@@ -70,7 +71,7 @@ export default function QuizStep({ onDone }: QuizStepProps) {
   if (phase === 'intro') {
     return (
       <div className="mt-8 text-center">
-        <p className="text-4xl">🎯</p>
+        <Target size={40} strokeWidth={1.9} className="mx-auto block text-blue-600" />
         <h1 className="mt-4 text-xl font-bold text-gray-900">{t('잠깐 퀴즈 — 몇 개 맞출 수 있을까요?', 'Quick quiz — how many can you get?')}</h1>
         <p className="mt-2 text-sm text-gray-500">
           {t(`미국 입시 상식 OX ${items.length}문제. 부담 없이 찍어도 돼요 — 바로 정답과 이유를 알려드려요.`, `${items.length} true/false questions on US admissions. Guessing is fine — you get the answer and why right away.`)}
@@ -95,7 +96,7 @@ export default function QuizStep({ onDone }: QuizStepProps) {
           : t('지금 몰라도 됨 — 이 툴이 알려주는 게 바로 이런 것들이니까', "Fine not to know yet — that's exactly what this tool teaches")
     return (
       <div className="mt-8 text-center">
-        <p className="text-4xl">{correctCount >= 4 ? '🏆' : correctCount >= 2 ? '👍' : '🌱'}</p>
+        {correctCount >= 4 ? <Trophy size={40} strokeWidth={1.9} className="mx-auto block text-blue-600" /> : correctCount >= 2 ? <ThumbsUp size={40} strokeWidth={1.9} className="mx-auto block text-blue-600" /> : <Sprout size={40} strokeWidth={1.9} className="mx-auto block text-blue-600" />}
         <h1 className="mt-4 text-2xl font-bold text-gray-900">
           {t(`${items.length}개 중 ${correctCount}개!`, `${correctCount} of ${items.length}!`)}
         </h1>
@@ -152,7 +153,7 @@ export default function QuizStep({ onDone }: QuizStepProps) {
       {revealed && (
         <div className="mt-5 rounded-xl bg-blue-50 px-4 py-3.5">
           <p className="font-semibold text-blue-900">
-            {wasCorrect ? t('정답이에요! 🎉', 'Correct! 🎉') : t(`정답은 ${item.answer ? 'O' : 'X'}예요`, `The answer is ${item.answer ? 'O' : 'X'}`)}
+            {wasCorrect ? <>{t('정답이에요!', 'Correct!')} <PartyPopper size={16} strokeWidth={2} className="inline -mt-0.5" /></> : t(`정답은 ${item.answer ? 'O' : 'X'}예요`, `The answer is ${item.answer ? 'O' : 'X'}`)}
           </p>
           <div className="mt-1 space-y-0.5">
             {item.explanation_2lines.split('\n').map((line, i) => (

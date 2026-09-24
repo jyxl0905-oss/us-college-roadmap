@@ -1,3 +1,4 @@
+import { PageSkeleton } from '../ui/Skeleton'
 import { useEffect, useState } from 'react'
 import type { School } from '../lib/types'
 import { loadSchools } from '../lib/schoolsCache'
@@ -10,6 +11,7 @@ import SchoolLogo from './SchoolLogo'
 import { rankBadge } from './rankGroups'
 import { t } from '../i18n'
 import { timingLabel } from '../lib/academics'
+import { AlertTriangle } from 'lucide-react'
 
 
 // URL ?ids=3,1,5 → 비교할 학교 id (최대 3)
@@ -39,7 +41,7 @@ export default function ComparePage({ profile }: ComparePageProps) {
   const myMajor =
     profile?.major_primary && profile.major_primary !== 'undecided' ? profile.major_primary : null
 
-  if (schools === null) return <p className="mt-20 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
+  if (schools === null) return <PageSkeleton />
   if (schools.length < 2)
     return (
       <div className="mx-auto max-w-md px-5 py-16 text-center">
@@ -114,7 +116,7 @@ export default function ComparePage({ profile }: ComparePageProps) {
             label: t(`${majorLabel(myMajor)} 직접 선발`, `Direct admit: ${majorLabel(myMajor)}`),
             render: (s: School) =>
               s.direct_admit_majors.includes(directAdmitParent(myMajor) as string) ? (
-                <span className="text-amber-700">{t('⚠️ 직접 선발', '⚠️ Direct admit')}</span>
+                <span className="inline-flex items-center gap-1 text-amber-700"><AlertTriangle size={14} strokeWidth={2} />{t('직접 선발', 'Direct admit')}</span>
               ) : (
                 t('아니오', 'No')
               ),

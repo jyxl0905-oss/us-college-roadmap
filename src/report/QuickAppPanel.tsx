@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
+import { FileText } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { navigate } from '../lib/router'
 import { t } from '../i18n'
-import { appTabs } from '../app/AppShell'
+import { appTabs, TAB_ICONS } from '../app/AppShell'
 
 // 데스크톱 리포트 사이드 패널 — 내 원서(가상 Common App) 각 탭의 기록 수와 바로가기.
 // "굳이 눌러 들어가지 않는다"는 피드백에 대한 답: 리포트 옆에 항상 보이게.
@@ -38,22 +39,25 @@ export default function QuickAppPanel({ userId }: { userId: string }) {
   return (
     <div className="rounded-2xl border-2 border-blue-200 bg-white p-4">
       <div className="flex items-baseline justify-between gap-2">
-        <p className="font-semibold text-gray-900">📋 {t('내 원서', 'My application')}</p>
+        <p className="flex items-center gap-1.5 font-semibold text-gray-900"><FileText size={18} strokeWidth={2} />{t('내 원서', 'My application')}</p>
         <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-medium text-amber-800">{t('가상 Common App', 'virtual Common App')}</span>
       </div>
       <div className="mt-2 flex flex-col">
-        {rows.map((tab) => (
+        {rows.map((tab) => {
+          const Icon = TAB_ICONS[tab.key]
+          return (
           <button
             key={tab.key}
             onClick={() => navigate(tab.path)}
             className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-left text-sm text-gray-700 hover:bg-blue-50"
           >
-            <span>{tab.emoji}</span>
+            <Icon size={16} strokeWidth={2} className="shrink-0 text-gray-500" />
             <span className="flex-1">{tab.label}</span>
             <span className="tabular-nums text-xs text-gray-400">{countFor(tab.key)}</span>
             <span className="text-gray-300">›</span>
           </button>
-        ))}
+          )
+        })}
       </div>
       <button onClick={() => navigate('/app')} className="mt-2 w-full rounded-xl bg-blue-600 px-3 py-2 text-sm font-semibold text-white hover:bg-blue-700">
         {t('내 원서 열기', 'Open my application')}

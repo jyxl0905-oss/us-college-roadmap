@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { t } from '../i18n'
 import { goBack, navigate } from '../lib/router'
 import apData from '../data/ap.json'
+import { Laptop, PenLine, FolderOpen, FileText, Sparkles, Banknote, BarChart3, type LucideIcon } from 'lucide-react'
 
 // AP 가이드 — 전 과목(배우는 내용·선수 과목·시험 형식·점수 분포) + 최근 정책 변화. 모든 내용 College Board 공식 출처 (2026-09-24 확인, 사용자 승인)
 interface ApCourse {
@@ -33,21 +34,21 @@ const CATEGORIES: { key: string; ko: string; en: string }[] = [
   { key: 'AP Career Kickstart', ko: '직업 연계', en: 'Career Kickstart' },
 ]
 
-const MODE: Record<string, { ko: string; en: string }> = {
-  digital: { ko: '💻 완전 디지털', en: '💻 Fully digital' },
-  hybrid: { ko: '💻✍️ 디지털 + 서술형 종이', en: '💻✍️ Digital + paper FRQ' },
-  mixed: { ko: '💻📁 디지털 시험 + 과제 제출', en: '💻📁 Digital exam + submitted task' },
-  portfolio: { ko: '📁 작품·과제 제출', en: '📁 Portfolio / task' },
-  paper: { ko: '✍️ 종이 시험', en: '✍️ Paper' },
+const MODE: Record<string, { icons: LucideIcon[]; ko: string; en: string }> = {
+  digital: { icons: [Laptop], ko: '완전 디지털', en: 'Fully digital' },
+  hybrid: { icons: [Laptop, PenLine], ko: '디지털 + 서술형 종이', en: 'Digital + paper FRQ' },
+  mixed: { icons: [Laptop, FolderOpen], ko: '디지털 시험 + 과제 제출', en: 'Digital exam + submitted task' },
+  portfolio: { icons: [FolderOpen], ko: '작품·과제 제출', en: 'Portfolio / task' },
+  paper: { icons: [PenLine], ko: '종이 시험', en: 'Paper' },
 }
 
 // 정책 항목 묶음 (주제 키워드 기준)
-const POLICY_GROUPS: { ko: string; en: string; match: RegExp }[] = [
-  { ko: '💻 디지털 시험 전환', en: '💻 Digital testing', match: /digital testing/i },
-  { ko: '📝 시험·과정 개편', en: '📝 Exam & course changes', match: /english|psychology|physics|calculus|history|statistics|frameworks|world language|capstone|start times|frq|scoring/i },
-  { ko: '🆕 신설·시범 과목', en: '🆕 New & pilot courses', match: /new course|pilot|discontinued/i },
-  { ko: '💵 응시료·신청 마감·시험 일정', en: '💵 Fees, deadlines & dates', match: /fee|deadline|exam dates|outside the us/i },
-  { ko: '📊 점수 발표·발송·상', en: '📊 Scores & awards', match: /score|scholar/i },
+const POLICY_GROUPS: { icon: LucideIcon; ko: string; en: string; match: RegExp }[] = [
+  { icon: Laptop, ko: '디지털 시험 전환', en: 'Digital testing', match: /digital testing/i },
+  { icon: FileText, ko: '시험·과정 개편', en: 'Exam & course changes', match: /english|psychology|physics|calculus|history|statistics|frameworks|world language|capstone|start times|frq|scoring/i },
+  { icon: Sparkles, ko: '신설·시범 과목', en: 'New & pilot courses', match: /new course|pilot|discontinued/i },
+  { icon: Banknote, ko: '응시료·신청 마감·시험 일정', en: 'Fees, deadlines & dates', match: /fee|deadline|exam dates|outside the us/i },
+  { icon: BarChart3, ko: '점수 발표·발송·상', en: 'Scores & awards', match: /score|scholar/i },
 ]
 
 // 한글 검색어 → 과목 이름에 들어가는 영어 단어 (예: '물리' → Physics 4과목 전부)
@@ -127,7 +128,7 @@ export default function ApGuidePage() {
 
         {/* 새 AP 한눈에 */}
         <div className="mt-4 rounded-xl border-2 border-blue-200 bg-blue-50/60 px-4 py-3.5">
-          <p className="text-sm font-semibold text-gray-900">🆕 {t('최근 새로 생긴 AP', 'Recently added APs')}</p>
+          <p className="flex items-center gap-1.5 text-sm font-semibold text-gray-900"><Sparkles size={16} strokeWidth={2} className="text-blue-600" />{t('최근 새로 생긴 AP', 'Recently added APs')}</p>
           <ul className="mt-1.5 flex flex-col gap-1 text-sm text-gray-800">
             {newCourses.map((c) => (
               <li key={c.key}>
@@ -161,7 +162,7 @@ export default function ApGuidePage() {
             />
             <div className="mt-2 flex gap-1.5 overflow-x-auto pb-1">
               <button onClick={() => setCat('all')} className={chip(cat === 'all')}>{t('전체', 'All')}</button>
-              <button onClick={() => setCat('new')} className={chip(cat === 'new')}>🆕 {t('신설·시범', 'New')}</button>
+              <button onClick={() => setCat('new')} className={`${chip(cat === 'new')} inline-flex items-center gap-1`}><Sparkles size={14} strokeWidth={2} />{t('신설·시범', 'New')}</button>
               {CATEGORIES.map((c) => (
                 <button key={c.key} onClick={() => setCat(c.key)} className={chip(cat === c.key)}>{t(c.ko, c.en)}</button>
               ))}
@@ -187,7 +188,7 @@ export default function ApGuidePage() {
                   <div className="mt-2 flex flex-col gap-1 text-xs text-gray-600">
                     <p><span className="font-medium text-gray-500">{t('권장 선수 과목 (공식 원문)', 'Prerequisites')}:</span> {!c.prereq ? t('공식 안내 없음', 'Not published') : /^none\.?$/i.test(c.prereq.trim()) ? t('없음', 'None') : c.prereq}</p>
                     {c.exam_format && <p><span className="font-medium text-gray-500">{t('시험 구성 (공식 원문)', 'Exam')}:</span> {c.exam_format}</p>}
-                    {c.exam_mode && MODE[c.exam_mode] && <p><span className="rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">{t(MODE[c.exam_mode].ko, MODE[c.exam_mode].en)}</span></p>}
+                    {c.exam_mode && MODE[c.exam_mode] && <p><span className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-2 py-0.5 text-[11px] text-gray-600">{MODE[c.exam_mode].icons.map((Icon, i) => <Icon key={i} size={12} strokeWidth={2} />)}{t(MODE[c.exam_mode].ko, MODE[c.exam_mode].en)}</span></p>}
                   </div>
                   <div className="mt-2.5">
                     {c.scores ? (
@@ -262,7 +263,7 @@ export default function ApGuidePage() {
               if (items.length === 0) return null
               return (
                 <div key={g.en}>
-                  <h2 className="font-semibold text-gray-900">{t(g.ko, g.en)}</h2>
+                  <h2 className="flex items-center gap-1.5 font-semibold text-gray-900"><g.icon size={18} strokeWidth={2} className="text-blue-600" />{t(g.ko, g.en)}</h2>
                   <div className="mt-2 flex flex-col gap-2">
                     {items.map((p) => (
                       <div key={p.topic} className="rounded-xl bg-white px-4 py-3 ring-1 ring-gray-200">

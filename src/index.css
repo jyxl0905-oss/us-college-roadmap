@@ -41,6 +41,19 @@ body {
 h1, h2 { letter-spacing: -0.025em; }
 h1.text-xl, h1.text-2xl { font-weight: 800; }
 
+/* 로딩 스켈레톤 (src/ui/Skeleton.tsx) */
+.skeleton { background: linear-gradient(90deg, var(--color-gray-100) 25%, var(--color-gray-50) 50%, var(--color-gray-100) 75%); background-size: 200% 100%; animation: skeleton-shimmer 1.3s ease-in-out infinite; }
+@keyframes skeleton-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@media screen { html.dark .skeleton { background: linear-gradient(90deg, #1e232d 25%, #262c38 50%, #1e232d 75%); background-size: 200% 100%; } }
+
+/* 페이지 전환: 짧은 페이드인 (App.tsx가 경로 바뀔 때 .page-enter를 다시 붙임) */
+.page-enter { animation: page-enter 0.22s ease-out; }
+/* transform은 쓰지 않음 — 고정 위치 버튼(하단 CTA·탭 바)의 기준이 바뀌어 튀는 것 방지 */
+@keyframes page-enter { from { opacity: 0.35; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .page-enter, .skeleton { animation: none; }
+}
+
 /* 로그인 후 내비게이션 (AppNav): 폰 하단 탭 바 / 컴퓨터 왼쪽 메뉴 */
 @media screen and (max-width: 767px) {
   html.has-bottom-nav #app-main { padding-bottom: calc(4rem + env(safe-area-inset-bottom)); }
@@ -126,7 +139,7 @@ h1.text-xl, h1.text-2xl { font-weight: 800; }
   html.dark .bg-gray-200 { background-color: #2d3444; }
   html.dark .bg-gray-300 { background-color: #3a4254; }
   html.dark .bg-gray-700 { background-color: #4b5468; }
-  html.dark .bg-gray-900 { background-color: #3f4759; }
+  html.dark .bg-gray-900 { background-color: #2a3766; } /* 리디자인: 다크에서도 남색 톤 */
   html.dark .bg-blue-50 { background-color: #16233c; }
   html.dark .bg-blue-50\/60 { background-color: rgb(22 35 60 / 0.6); }
   html.dark .bg-blue-100 { background-color: #1c2c4d; }

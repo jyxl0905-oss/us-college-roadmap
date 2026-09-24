@@ -3,6 +3,7 @@ import { t } from '../i18n'
 import { goBack, navigate } from '../lib/router'
 import { SUBJECTS, gradeGuide, subjectLabel, majorCores, rigorSources, type Subject } from '../data/courseGuide'
 import { profileGrade, type ProfileRow } from '../lib/profile'
+import { Pin, BookOpen, GraduationCap } from 'lucide-react'
 
 const GRADES = [9, 10, 11, 12] as const
 const TIERS = [
@@ -104,17 +105,17 @@ export default function CourseGuidePage({ profile }: { profile: ProfileRow | nul
           </table>
         </div>
         <p className="mt-1.5 text-[11px] leading-relaxed text-gray-400">
-          📌 {t('편집 가이드예요 — 학교마다 개설 과목과 순서가 달라요. 우리 학교 과목 안에서 비슷한 단계를 찾아보세요.', 'Editorial guide — course offerings and sequences vary by school. Find the matching step within your school’s courses.')}
+          <Pin size={12} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('편집 가이드예요 — 학교마다 개설 과목과 순서가 달라요. 우리 학교 과목 안에서 비슷한 단계를 찾아보세요.', 'Editorial guide — course offerings and sequences vary by school. Find the matching step within your school’s courses.')}
           {subject === 'language' && ' ' + t('외국어 AP는 보통 4년째 배우는 학생이 들어요 (College Board).', 'World-language APs are typically taken in the 4th year of study (College Board).')}
         </p>
 
         <button onClick={() => navigate('/guide/ap')} className="mt-4 w-full rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-3 text-left text-sm font-semibold text-blue-800 active:bg-blue-100">
-          📘 {t('AP 과목 가이드 — 새 AP·정책 변화·과목별 점수 분포 →', 'AP course guide — new APs, policy changes, score distributions →')}
+          <BookOpen size={16} strokeWidth={2} className="mr-1.5 inline -mt-0.5" />{t('AP 과목 가이드 — 새 AP·정책 변화·과목별 점수 분포 →', 'AP course guide — new APs, policy changes, score distributions →')}
         </button>
 
         {/* IB 학교 */}
         <div className="mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
-          <p className="text-sm font-semibold text-gray-900">🎓 {t('IB 학교라면 (11–12학년)', 'If your school runs IB (grades 11–12)')}</p>
+          <p className="flex items-center gap-1.5 text-sm font-semibold text-gray-900"><GraduationCap size={16} strokeWidth={2} className="text-blue-600" />{t('IB 학교라면 (11–12학년)', 'If your school runs IB (grades 11–12)')}</p>
           <p className="mt-1 text-xs leading-relaxed text-gray-600">
             {t(
               'IB 디플로마는 6과목 중 3~4과목을 HL(심화), 나머지를 SL로 들어요. 수학은 AI SL → AA SL → AA HL 순으로 깊어지고, AA(Analysis & Approaches)가 미적분 중심이라 공대·수학 지망에 맞아요.',

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { PartyPopper } from 'lucide-react'
 import type { OnboardingAnswers } from '../lib/types'
 import { t } from '../i18n'
 import { gradeFromGradYear, currentSeason, seasonLabelKo } from '../lib/academics'
@@ -17,7 +18,7 @@ export default function SummaryStep({ answers, onRestart, onComplete }: SummaryS
 
   return (
     <div>
-      <h1 className="text-xl font-bold text-gray-900">{t('입력이 끝났어요! 🎉', 'All done! 🎉')}</h1>
+      <h1 className="flex items-center gap-2 text-xl font-bold text-gray-900">{t('입력이 끝났어요!', 'All done!')}<PartyPopper size={22} strokeWidth={2} className="text-blue-600" /></h1>
       <p className="mt-2 text-sm text-gray-500">
         {grade !== null && t(`${grade < 9 ? '예비 9' : grade}학년 · ${seasonLabelKo[currentSeason()]} 시즌 기준으로 정리했어요.`, `Summarized for grade ${grade < 9 ? 'rising 9' : grade} · ${seasonLabelKo[currentSeason()]} season.`)}
       </p>

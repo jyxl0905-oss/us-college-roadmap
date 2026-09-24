@@ -1,3 +1,5 @@
+import { PageSkeleton } from '../ui/Skeleton'
+import { PenLine, SquarePen, Pin, RefreshCw, AlertTriangle } from 'lucide-react'
 import { tierSchoolsFrom } from '../lib/tierSchools'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
@@ -45,7 +47,7 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
     )
   }, [userId, profile.target_mode, profile.target_tier, profile.target_school_ids.join(',')]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (!essays) return <AppShell tab="writing" title={t('에세이', 'Essays')}><p className="mt-10 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p></AppShell>
+  if (!essays) return <AppShell tab="writing" title={t('에세이', 'Essays')}><PageSkeleton compact /></AppShell>
 
   const personal = essays.filter((e) => e.school_id === null)
   const forSchool = (id: number) => essays.filter((e) => e.school_id === id)
@@ -88,8 +90,8 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
         onClick={() => setWs({ id: e.id, schoolId: e.school_id, focusBody: true })}
         className="mt-2 flex w-full items-center justify-between rounded-lg bg-gray-50 px-3 py-2 text-left text-xs active:bg-gray-100"
       >
-        <span className="font-semibold text-gray-700">
-          {e.body ? t('✍️ 이어서 쓰기', '✍️ Keep writing') : t('✍️ 본문 쓰기', '✍️ Write the essay')}
+        <span className="flex items-center gap-1 font-semibold text-gray-700">
+          <PenLine size={13} strokeWidth={2} />{e.body ? t('이어서 쓰기', 'Keep writing') : t('본문 쓰기', 'Write the essay')}
         </span>
         <span className="text-gray-400">
           {e.body
@@ -114,7 +116,7 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
       {/* Common App 공통 문항 7개 — 공식 문구 + 한국어 요약. 학교별 보충 에세이는 각 학교 공식 페이지에서 */}
       <div className="mt-2 rounded-xl border border-gray-200 bg-white">
         <button onClick={() => setShowPrompts((v) => !v)} className="flex w-full items-center justify-between px-3.5 py-2.5 text-left text-sm font-medium text-gray-800">
-          <span>📝 {t(`Common App 공통 문항 7개 보기 (${COMMON_APP_PROMPTS_YEAR})`, `See the 7 Common App prompts (${COMMON_APP_PROMPTS_YEAR})`)}</span>
+          <span className="flex items-center gap-1.5"><SquarePen size={15} strokeWidth={2} />{t(`Common App 공통 문항 7개 보기 (${COMMON_APP_PROMPTS_YEAR})`, `See the 7 Common App prompts (${COMMON_APP_PROMPTS_YEAR})`)}</span>
           <span className="text-gray-400">{showPrompts ? '▴' : '▾'}</span>
         </button>
         {showPrompts && (
@@ -176,10 +178,10 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
           {s.essay_req && (
             <div className="mt-2 rounded-lg bg-gray-50 px-3 py-2.5">
               <p className="text-[11px] leading-relaxed text-gray-600">
-                📌 {s.essay_req}{s.essay_cycle ? <span className="text-gray-400"> ({s.essay_cycle})</span> : null}
+                <Pin size={11} strokeWidth={2} className="mr-1 inline -mt-0.5" />{s.essay_req}{s.essay_cycle ? <span className="text-gray-400"> ({s.essay_cycle})</span> : null}
               </p>
               {s.essay_change && (
-                <p className="mt-1 text-[11px] leading-relaxed text-amber-700">🔄 {t('최근 변경', 'Recent change')}: {s.essay_change}</p>
+                <p className="mt-1 text-[11px] leading-relaxed text-amber-700"><RefreshCw size={11} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('최근 변경', 'Recent change')}: {s.essay_change}</p>
               )}
               {s.essay_source_url && (
                 <a href={s.essay_source_url} target="_blank" rel="noreferrer" className="mt-0.5 inline-block text-[11px] text-blue-600 underline">
@@ -446,7 +448,7 @@ function EssayWorkspace({
             {' · '}
             {state === 'saving' ? t('저장 중…', 'Saving…')
               : state === 'dirty' ? t('입력 중…', 'Typing…')
-              : state === 'error' ? t('⚠️ 저장 실패 — 연결 확인', '⚠️ Save failed — check connection')
+              : state === 'error' ? <><AlertTriangle size={12} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('저장 실패 — 연결 확인', 'Save failed — check connection')}</>
               : savedAt ? t(`저장됨 ${new Date(savedAt).toLocaleTimeString()}`, `Saved ${new Date(savedAt).toLocaleTimeString()}`)
               : t('자동 저장돼요', 'Autosaves as you type')}
           </p>

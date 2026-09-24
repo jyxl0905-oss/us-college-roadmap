@@ -1,3 +1,4 @@
+import { PageSkeleton } from '../ui/Skeleton'
 import { useEffect, useState } from 'react'
 import type { School } from '../lib/types'
 import { loadSchools } from '../lib/schoolsCache'
@@ -12,6 +13,8 @@ import SchoolLogo from './SchoolLogo'
 import { rankBadge } from './rankGroups'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
 import { t } from '../i18n'
+import { timingLabel } from '../lib/academics'
+import { Globe, GraduationCap, Palette, Image as ImageIcon, PenLine, AlertTriangle } from 'lucide-react'
 
 
 interface SchoolDetailPageProps {
@@ -45,7 +48,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
   }, [school])
 
   if (school === 'loading')
-    return <p className="mt-20 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
+    return <PageSkeleton />
   if (!school)
     return (
       <div className="mx-auto max-w-md px-5 py-16 text-center">
@@ -103,14 +106,14 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
             ←
           </button>
           <span className="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-600">
-            {s.kind === 'lac' ? '🎓 ' : s.kind === 'art' ? '🎨 ' : ''}{rankBadge(s)}
+            {s.kind === 'lac' ? <GraduationCap size={13} strokeWidth={2} className="mr-1 inline -mt-0.5" /> : s.kind === 'art' ? <Palette size={13} strokeWidth={2} className="mr-1 inline -mt-0.5" /> : null}{rankBadge(s)}
           </span>
         </div>
 
         <div className="mt-3 flex items-center gap-3">
           <SchoolLogo schoolId={s.id} name={s.name} size={52} />
           <div className="min-w-0">
-            <h1 className="text-2xl font-bold text-gray-900">{s.name}</h1>
+            <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-gray-900">{s.name}</h1>
             <p className="text-gray-500">{s.name_ko}</p>
             {schoolWebsite(s.id) && (
               <a
@@ -119,11 +122,33 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
                 rel="noreferrer"
                 className="mt-1 inline-flex items-center gap-1 text-sm text-blue-600 underline"
               >
-                🌐 {t('공식 사이트', 'Official website')} ↗
+                <Globe size={14} strokeWidth={2} /> {t('공식 사이트', 'Official website')} ↗
               </a>
             )}
           </div>
         </div>
+
+        {/* 핵심 숫자 3개 — 맨 위에 크게 (2026-09 리디자인). 없는 값은 '미공개' */}
+        {(() => {
+          const early = s.ed_offered ? ['ED', s.ed_timing] : s.rea_offered ? ['REA', s.ea_timing] : s.ea_offered ? ['EA', s.ea_timing] : null
+          const deadline = early && early[1] ? { label: t(`${early[0]} 마감`, `${early[0]} deadline`), value: timingLabel(early[1]) } : s.rd_timing ? { label: t('RD 마감', 'RD deadline'), value: timingLabel(s.rd_timing) } : null
+          const sat = s.test_policy === 'test-free' ? t('미반영', 'Not used') : s.sat_mid50_low && s.sat_mid50_high ? `${s.sat_mid50_low}–${s.sat_mid50_high}` : null
+          const kpis: [string, string | null][] = [
+            [t('전체 합격률', 'Acceptance rate'), s.overall_accept_rate != null ? `${s.overall_accept_rate}%` : null],
+            [t('SAT 중간 50%', 'SAT middle 50%'), sat],
+            [deadline?.label ?? t('지원 마감', 'Deadline'), deadline?.value ?? null],
+          ]
+          return (
+            <div className="mt-4 grid grid-cols-3 rounded-2xl border-2 border-gray-200 bg-white py-4">
+              {kpis.map(([label, value], i) => (
+                <div key={i} className={`px-1 text-center ${i > 0 ? 'border-l border-gray-100' : ''}`}>
+                  <p className={`whitespace-nowrap font-extrabold tracking-tight ${value ? 'text-gray-900' : 'text-gray-300'} ${value && value.length > 8 ? 'text-[15px]' : 'text-[19px]'}`}>{value ?? t('미공개', 'N/A')}</p>
+                  <p className="mt-0.5 text-[11px] text-gray-500">{label}</p>
+                </div>
+              ))}
+            </div>
+          )
+        })()}
 
         {/* 지도 — 지연 로딩 임베드 */}
         <div className="mt-4 overflow-hidden rounded-xl border-2 border-gray-200">
@@ -145,20 +170,20 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
 
         {/* 미술·디자인 전문학교: 개설 전공 + 포트폴리오 요구사항 (공식 입학처 확인분) */}
         {(s.portfolio_req || (s.art_programs && s.art_programs.length > 0)) && (
-          <div className="mt-5 rounded-xl border-2 border-pink-200 bg-pink-50/60 px-4 py-3.5">
+          <div className="mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
             {s.art_programs && s.art_programs.length > 0 && (
               <>
-                <p className="text-xs font-semibold uppercase tracking-wide text-pink-700">🎨 {t('개설 전공 (공식)', 'Majors offered (official)')}</p>
+                <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-blue-700"><Palette size={14} strokeWidth={2} /> {t('개설 전공 (공식)', 'Majors offered (official)')}</p>
                 <div className="mt-1.5 flex flex-wrap gap-1.5">
                   {s.art_programs.map((k) => (
-                    <span key={k} className="rounded-full bg-white px-2.5 py-1 text-xs font-medium text-gray-800 ring-1 ring-pink-200">{artProgramLabel(k)}</span>
+                    <span key={k} className="rounded-full bg-gray-50 px-2.5 py-1 text-xs font-medium text-gray-800 ring-1 ring-gray-200">{artProgramLabel(k)}</span>
                   ))}
                 </div>
               </>
             )}
             {s.portfolio_req && (
               <>
-                <p className={`text-xs font-semibold uppercase tracking-wide text-pink-700 ${s.art_programs && s.art_programs.length > 0 ? 'mt-3' : ''}`}>🖼️ {t('포트폴리오 요구사항', 'Portfolio requirements')}</p>
+                <p className={`flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-blue-700 ${s.art_programs && s.art_programs.length > 0 ? 'mt-3' : ''}`}><ImageIcon size={14} strokeWidth={2} /> {t('포트폴리오 요구사항', 'Portfolio requirements')}</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-gray-800">{s.portfolio_req}</p>
               </>
             )}
@@ -176,13 +201,13 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         {/* 보충 에세이 요구사항 (공식 확인분만 표시) */}
         {s.essay_req && (
           <div className="mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
-            <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">
-              ✍️ {t('보충 에세이 (Supplemental Essays)', 'Supplemental essays')}{s.essay_cycle ? ` · ${s.essay_cycle}` : ''}
+            <p className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-gray-500">
+              <PenLine size={14} strokeWidth={2} /> {t('보충 에세이 (Supplemental Essays)', 'Supplemental essays')}{s.essay_cycle ? ` · ${s.essay_cycle}` : ''}
             </p>
             <p className="mt-1.5 text-sm leading-relaxed text-gray-800">{s.essay_req}</p>
             {s.essay_change && (
               <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-800">
-                🔄 {t('최근 변경', 'Recent change')}: {s.essay_change}
+                {t('최근 변경', 'Recent change')}: {s.essay_change}
               </p>
             )}
             {s.essay_source_url && (
@@ -278,7 +303,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         {/* direct-admit 경고 */}
         {s.direct_admit_majors.length > 0 && (
           <div className="mt-4 rounded-xl border-2 border-amber-300 bg-amber-50 px-4 py-3">
-            <p className="font-medium text-amber-900">{t('⚠️ 전공 직접 선발(direct admit) 주의', '⚠️ Direct-admit majors — heads up')}</p>
+            <p className="flex items-center gap-1.5 font-medium text-amber-900"><AlertTriangle size={16} strokeWidth={2} /> {t('전공 직접 선발(direct admit) 주의', 'Direct-admit majors — heads up')}</p>
             <p className="mt-1 text-sm text-amber-800">
               {t(
                 '이 학교는 다음 계열을 지원 시점에 전공·단과대 단위로 선발해요 — 해당 전공은 경쟁률이 따로 움직이고 입학 후 전과도 어려울 수 있어요:',

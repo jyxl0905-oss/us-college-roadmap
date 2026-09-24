@@ -1,3 +1,5 @@
+import { PageSkeleton } from '../ui/Skeleton'
+import { Target, Search, Scale, MapIcon, ClipboardList, MessageCircle } from 'lucide-react'
 import { tierSchoolsQuery } from '../lib/tierSchools'
 import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
@@ -69,13 +71,13 @@ export default function TargetsPage({ userId, profile }: { userId: string; profi
     window.history.replaceState(window.history.state, '', window.location.pathname)
   }, [schools])
 
-  if (schools === null) return <p className="mt-20 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
+  if (schools === null) return <PageSkeleton />
 
   return (
     <div className="min-h-dvh bg-gray-50">
       <div className="mx-auto max-w-md px-5 py-6 md:max-w-5xl">
         <div className="flex items-baseline justify-between gap-2">
-          <h1 className="text-xl font-bold text-gray-900">🎯 {t('내 목표 학교', 'My target schools')}</h1>
+          <h1 className="flex items-center gap-2 text-xl font-bold text-gray-900"><Target size={20} strokeWidth={2} />{t('내 목표 학교', 'My target schools')}</h1>
           <span className="text-xs text-gray-400">
             {profile.target_mode === 'tier' && profile.target_tier
               ? tierLabels[profile.target_tier]
@@ -101,22 +103,22 @@ export default function TargetsPage({ userId, profile }: { userId: string; profi
         ) : (
           <>
             <div className="mt-3 flex gap-2">
-              <button onClick={() => navigate('/schools')} className="rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 active:bg-gray-50">
-                🔍 {t('둘러보기 · 추가/제거', 'Browse · add/remove')}
+              <button onClick={() => navigate('/schools')} className="inline-flex items-center gap-1 rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 active:bg-gray-50">
+                <Search size={13} strokeWidth={2} />{t('둘러보기 · 추가/제거', 'Browse · add/remove')}
               </button>
               {schools.length >= 2 && (
                 <button
                   onClick={() => navigate(`/compare?ids=${schools.slice(0, 3).map((s) => s.id).join(',')}`)}
-                  className="rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 active:bg-gray-50"
+                  className="inline-flex items-center gap-1 rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 active:bg-gray-50"
                 >
-                  ⚖️ {t('비교하기', 'Compare')}
+                  <Scale size={13} strokeWidth={2} />{t('비교하기', 'Compare')}
                 </button>
               )}
-              <button onClick={() => navigate('/map')} className="rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 active:bg-gray-50">
-                🗺️ {t('지도로 보기', 'Map view')}
+              <button onClick={() => navigate('/map')} className="inline-flex items-center gap-1 rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 active:bg-gray-50">
+                <MapIcon size={13} strokeWidth={2} />{t('지도로 보기', 'Map view')}
               </button>
-              <button onClick={() => navigate('/app/colleges')} className="rounded-full border-2 border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700 active:bg-blue-100">
-                📋 {t('지원 라운드 정하기', 'Set rounds')}
+              <button onClick={() => navigate('/app/colleges')} className="inline-flex items-center gap-1 rounded-full border-2 border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700 active:bg-blue-100">
+                <ClipboardList size={13} strokeWidth={2} />{t('지원 라운드 정하기', 'Set rounds')}
               </button>
             </div>
             {/* 탭: 학교 카드 / 티어(예측) / 재정지원 — 스크롤 없이 한 화면에 하나씩 */}
@@ -164,7 +166,7 @@ export default function TargetsPage({ userId, profile }: { userId: string; profi
                         ) : (
                           <span className="shrink-0 rounded-full border-2 border-amber-300 bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-700">{t('미정 — 골라줘', 'Pick one')}</span>
                         )}
-                        {gap && <span className="shrink-0 text-xs" aria-hidden="true">💬</span>}
+                        {gap && <span className="shrink-0 text-gray-400" aria-hidden="true"><MessageCircle size={14} strokeWidth={2} /></span>}
                         <span className="shrink-0 text-gray-300">{open ? '▴' : '▾'}</span>
                       </button>
                       {open && (

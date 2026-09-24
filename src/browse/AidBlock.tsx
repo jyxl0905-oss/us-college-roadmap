@@ -1,5 +1,6 @@
 import type { School } from '../lib/types'
 import { t } from '../i18n'
+import { Wallet, Medal } from 'lucide-react'
 
 // 💰 재정지원·장학금 — 지원 신분(status)에 맞는 부분만 표시. 데이터 없으면 아무것도 렌더하지 않음.
 // status: 'intl' | 'domestic' | null(비로그인 → 국제학생 기준 + 안내)
@@ -17,22 +18,22 @@ export default function AidBlock({ school: s, status, compact = false }: { schoo
       if (s.intl_aid_count != null && s.intl_aid_count > 0 && s.intl_aid_avg != null)
         return (
           <p className="text-xs text-gray-600">
-            💰 {t(`국제학생 ${s.intl_aid_count.toLocaleString()}명 지원 · 평균 ${money(s.intl_aid_avg)}`, `${s.intl_aid_count.toLocaleString()} intl. students aided · avg ${money(s.intl_aid_avg)}`)}
+            <Wallet size={13} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t(`국제학생 ${s.intl_aid_count.toLocaleString()}명 지원 · 평균 ${money(s.intl_aid_avg)}`, `${s.intl_aid_count.toLocaleString()} intl. students aided · avg ${money(s.intl_aid_avg)}`)}
             {s.intl_aid_year && <span className="text-gray-400"> (CDS {s.intl_aid_year})</span>}
           </p>
         )
       if (s.intl_aid_count === 0)
-        return <p className="text-xs text-gray-400">💰 {t('국제학생 need 지원 기록 없음 (CDS)', 'No need-based aid to intl. students (CDS)')}</p>
+        return <p className="text-xs text-gray-400"><Wallet size={13} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('국제학생 need 지원 기록 없음 (CDS)', 'No need-based aid to intl. students (CDS)')}</p>
       return null
     }
-    if (s.no_loan) return <p className="text-xs text-gray-600">💰 {t('무대출(no-loan) 지원 정책', 'No-loan aid policy')}</p>
-    if (s.meets_full_need_all) return <p className="text-xs text-gray-600">💰 {t('need 100% 충족 공식 명시', 'Officially meets 100% of need')}</p>
+    if (s.no_loan) return <p className="text-xs text-gray-600"><Wallet size={13} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('무대출(no-loan) 지원 정책', 'No-loan aid policy')}</p>
+    if (s.meets_full_need_all) return <p className="text-xs text-gray-600"><Wallet size={13} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('need 100% 충족 공식 명시', 'Officially meets 100% of need')}</p>
     return null
   }
 
   return (
     <div className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
-      <p className="font-semibold text-gray-900">💰 {t('재정지원·장학금', 'Financial aid & scholarships')} <span className="ml-1 text-xs font-normal text-gray-400">{showIntl ? t('국제학생 기준', 'for international students') : t('시민권·영주권 기준', 'for citizens & permanent residents')}</span></p>
+      <p className="flex flex-wrap items-center gap-1.5 font-semibold text-gray-900"><Wallet size={18} strokeWidth={2} className="text-blue-600" />{t('재정지원·장학금', 'Financial aid & scholarships')} <span className="ml-1 text-xs font-normal text-gray-400">{showIntl ? t('국제학생 기준', 'for international students') : t('시민권·영주권 기준', 'for citizens & permanent residents')}</span></p>
 
       {showIntl ? (
         <div className="mt-2 flex flex-col gap-1.5 text-sm text-gray-700">
@@ -52,7 +53,7 @@ export default function AidBlock({ school: s, status, compact = false }: { schoo
             {s.need_blind_intl === false && <span className="rounded-full bg-amber-100 px-2 py-0.5 font-medium text-amber-800">need-aware</span>}
           </div>
           {s.merit_intl && (
-            <p className="text-xs text-gray-600">🏅 {t('국제학생 지원 가능 메리트: ', 'Merit open to internationals: ')}<span className="text-gray-800">{s.merit_intl}</span></p>
+            <p className="text-xs text-gray-600"><Medal size={13} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('국제학생 지원 가능 메리트: ', 'Merit open to internationals: ')}<span className="text-gray-800">{s.merit_intl}</span></p>
           )}
           {status === null && (
             <p className="text-[11px] text-gray-400">{t('시민권·영주권자 기준 정보는 가입 시 신분에 맞게 표시돼요.', 'Citizen/PR info is shown after sign-up based on your status.')}</p>
@@ -66,7 +67,7 @@ export default function AidBlock({ school: s, status, compact = false }: { schoo
           </div>
           <p className="text-xs text-gray-500">{t('시민권·영주권자는 FAFSA로 연방·주정부 지원도 받을 수 있어요.', 'Citizens/PRs can also access federal and state aid via FAFSA.')}</p>
           {s.merit_note && (
-            <p className="text-xs text-gray-600">🏅 {t('주요 메리트 장학금: ', 'Major merit scholarships: ')}<span className="text-gray-800">{s.merit_note}</span></p>
+            <p className="text-xs text-gray-600"><Medal size={13} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('주요 메리트 장학금: ', 'Major merit scholarships: ')}<span className="text-gray-800">{s.merit_note}</span></p>
           )}
         </div>
       )}

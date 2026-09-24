@@ -1,4 +1,5 @@
 import { directAdmitParent } from '../data/majors'
+import { Palette, AlertTriangle } from 'lucide-react'
 import type { School } from '../lib/types'
 import { satBandMid } from '../lib/score'
 import SchoolLogo from '../browse/SchoolLogo'
@@ -38,7 +39,7 @@ export default function SchoolCards({ schools, satBand, majorPrimary, aidStatus 
               <span className="flex min-w-0 items-center gap-3">
                 <SchoolLogo schoolId={s.id} name={s.name} size={36} />
                 <span className="min-w-0">
-                  <p className="font-semibold text-gray-900">{s.name}{s.kind === 'lac' && <span className="ml-1.5 rounded-full bg-purple-100 px-1.5 py-0.5 align-middle text-[10px] font-semibold text-purple-700">LAC #{s.lac_rank ?? '–'}</span>}{s.kind === 'art' && <span className="ml-1.5 rounded-full bg-pink-100 px-1.5 py-0.5 align-middle text-[10px] font-semibold text-pink-700">🎨 {t('미술·디자인', 'Art & design')}</span>}</p>
+                  <p className="font-semibold text-gray-900">{s.name}{s.kind === 'lac' && <span className="ml-1.5 rounded-full bg-purple-100 px-1.5 py-0.5 align-middle text-[10px] font-semibold text-purple-700">LAC #{s.lac_rank ?? '–'}</span>}{s.kind === 'art' && <span className="ml-1.5 rounded-full bg-pink-100 px-1.5 py-0.5 align-middle text-[10px] font-semibold text-pink-700"><Palette size={10} strokeWidth={2} className="mr-0.5 inline -mt-0.5" />{t('미술·디자인', 'Art & design')}</span>}</p>
                   <p className="text-sm text-gray-500">{s.name_ko}</p>
                 </span>
               </span>
@@ -113,7 +114,7 @@ export default function SchoolCards({ schools, satBand, majorPrimary, aidStatus 
 
             {directAdmitWarning && (
               <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-900">
-                ⚠️ {t('이 학교는 내 전공을', 'This school admits your major by')}{' '}
+                <AlertTriangle size={13} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('이 학교는 내 전공을', 'This school admits your major by')}{' '}
                 <strong>{t('입학 시 직접 지원(direct admit)', 'direct admit')}</strong>
                 {t('으로 뽑아요. 전공별 경쟁률이 따로 있으니 전략이 필요해요.', ' — each major has its own competition, so plan strategically.')}
               </p>

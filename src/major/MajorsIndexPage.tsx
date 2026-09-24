@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { navigate } from '../lib/router'
+import { Compass } from 'lucide-react'
 import { t, getLang } from '../i18n'
 import { majorsByTrack, majorDisplay, majorClusters, majorCategories, type MajorCategory } from '../data/majors'
 import careersData from '../data/major-careers.json'
@@ -148,7 +149,7 @@ export default function MajorsIndexPage() {
   return (
     <div className="min-h-dvh bg-gray-50">
       <div className="mx-auto max-w-md px-5 py-6 lg:max-w-4xl">
-        <h1 className="text-xl font-bold text-gray-900">🧭 {t('전공 알아보기', 'Explore majors')}</h1>
+        <h1 className="flex items-center gap-2 text-xl font-bold text-gray-900"><Compass size={20} strokeWidth={2} className="text-blue-600" />{t('전공 알아보기', 'Explore majors')}</h1>
         <p className="mt-1 text-sm text-gray-500">
           {t('전공마다 추천 AP, 활동 방향, 4년 로드맵을 정리했어요. 편집 가이드 — 정답이 아니라 출발점이에요.', 'Recommended APs, activity directions and a 4-year roadmap for each major. An editorial guide — a starting point, not the answer.')}
         </p>

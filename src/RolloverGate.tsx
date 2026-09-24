@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Backpack, GraduationCap } from 'lucide-react'
 import type { ProfileRow } from './lib/profile'
 import { gradeFromGradYear, currentSchoolYearEnd } from './lib/academics'
 import { t } from './i18n'
@@ -79,7 +80,7 @@ export default function RolloverGate({ userId, profile, onUpdateGradYear, onGrad
           </div>
         ) : (
           <div className="mt-16 rounded-2xl border-2 border-blue-200 bg-white px-5 py-6 text-center">
-            <p className="text-3xl">🎒</p>
+            <Backpack size={32} strokeWidth={1.9} className="mx-auto block text-blue-600" />
             <h1 className="mt-3 text-xl font-bold text-gray-900">{t('새 학년이 시작됐어요!', 'A new school year has started!')}</h1>
             <p className="mt-2 text-sm text-gray-500">
               {rawGrade !== null && rawGrade <= 12
@@ -94,9 +95,9 @@ export default function RolloverGate({ userId, profile, onUpdateGradYear, onGrad
                     await onGraduate()
                     localStorage.setItem(key, String(rawGrade))
                   })}
-                  className="w-full rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700 disabled:opacity-50"
+                  className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-blue-600 px-4 py-3.5 font-semibold text-white active:bg-blue-700 disabled:opacity-50"
                 >
-                  {t('🎓 졸업했어요 — 기록 보관 모드로', '🎓 I graduated — switch to archive mode')}
+                  <GraduationCap size={18} strokeWidth={2} />{t('졸업했어요 — 기록 보관 모드로', 'I graduated — switch to archive mode')}
                 </button>
               )}
               {rawGrade !== null && rawGrade <= 12 && (

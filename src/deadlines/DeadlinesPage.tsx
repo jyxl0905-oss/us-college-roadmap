@@ -1,3 +1,4 @@
+import { PageSkeleton } from '../ui/Skeleton'
 import { tierSchoolsQuery } from '../lib/tierSchools'
 import { timingLabel } from '../lib/academics'
 import { useEffect, useState } from 'react'
@@ -7,6 +8,7 @@ import { navigate, goBack } from '../lib/router'
 import type { ProfileRow } from '../lib/profile'
 import SchoolLogo from '../browse/SchoolLogo'
 import { t, localizeRows } from '../i18n'
+import { CalendarDays, AlertTriangle } from 'lucide-react'
 
 // 시기 라벨("11월 초") → 정렬 키. 입시 사이클 기준 8월이 가장 이름
 export function timingSortKey(label: string | null): number {
@@ -106,7 +108,7 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
     return (
       <div className="min-h-dvh bg-gray-50">
         <div className="mx-auto max-w-md px-5 py-16 text-center">
-          <p className="text-4xl">🗓️</p>
+          <p className="flex justify-center text-blue-600"><CalendarDays size={40} strokeWidth={1.9} /></p>
           <h1 className="mt-4 text-xl font-bold text-gray-900">{t('마감 캘린더', 'Deadline Calendar')}</h1>
           <p className="mt-3 text-sm text-gray-500">{t('목표 학교를 설정하면 캘린더가 생성됩니다.', 'Set your target schools to build your calendar.')}</p>
           <button
@@ -122,7 +124,7 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
       </div>
     )
 
-  if (schools === null) return <p className="mt-20 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
+  if (schools === null) return <PageSkeleton />
 
   // 보드에서 라운드를 배정한 학교는 그 라운드 마감만
   const byAssignedRound = (e: DeadlineEntry) => {
@@ -234,9 +236,10 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
 
         {/* 고정 고지 */}
         <p className="mt-4 rounded-xl border-2 border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+          <AlertTriangle size={16} strokeWidth={2} className="mr-1.5 inline -mt-0.5" />
           {t(
-            '⚠️ 마감일은 매년 변동될 수 있어요 — 지원 전 반드시 각 학교 공식 페이지에서 최종 확인하세요.',
-            '⚠️ Deadlines can change every year — always confirm on each school\'s official page before applying.',
+            '마감일은 매년 변동될 수 있어요 — 지원 전 반드시 각 학교 공식 페이지에서 최종 확인하세요.',
+            'Deadlines can change every year — always confirm on each school\'s official page before applying.',
           )}
         </p>
 

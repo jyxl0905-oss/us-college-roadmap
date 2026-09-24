@@ -1,3 +1,5 @@
+import { PageSkeleton } from '../ui/Skeleton'
+import { Target, AlertTriangle, PartyPopper, X } from 'lucide-react'
 import { tierSchoolsQuery } from '../lib/tierSchools'
 import { useEffect, useState } from 'react'
 import type { School } from '../lib/types'
@@ -188,7 +190,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
     return (
       <AppShell tab="colleges" title={t('지원 학교', 'My colleges')}>
         <div className="py-12 text-center">
-          <p className="text-4xl">🎯</p>
+          <Target size={40} strokeWidth={1.9} className="mx-auto block text-blue-600" />
           <p className="mt-3 text-sm text-gray-500">{t('목표 학교를 설정하면 라운드 칸이 생성돼요.', 'Set your target schools to create round slots.')}</p>
           <button
             onClick={() => navigate('/schools')}
@@ -201,7 +203,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
     )
 
   if (schools === null)
-    return <AppShell tab="colleges" title={t('지원 학교', 'My colleges')}><p className="mt-10 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p></AppShell>
+    return <AppShell tab="colleges" title={t('지원 학교', 'My colleges')}><PageSkeleton compact /></AppShell>
 
   // 상단 요약: "ED 1 · EA 3 · RD 4 | 제출 2/8"
   const roundCounts = (['ed', 'ed2', 'ea', 'rea', 'rd'] as Round[])
@@ -468,9 +470,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
                     className="mt-0.5 h-4 w-4 shrink-0 accent-blue-600"
                   />
                   <span className="min-w-0 flex-1 break-words">{task.title}</span>
-                  <button onClick={() => deleteTask(task.id)} aria-label={t('삭제', 'Delete')} className="text-gray-300 active:text-red-500">
-                    ✕
-                  </button>
+                  <button onClick={() => deleteTask(task.id)} aria-label={t('삭제', 'Delete')} className="text-gray-300 active:text-red-500"><X size={16} strokeWidth={2} /></button>
                 </div>
               ))}
             </div>
@@ -584,7 +584,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
         <div className="mt-3 flex flex-col gap-2">
           {warnings.map((w) => (
             <p key={w.key} className="rounded-xl border-2 border-amber-300 bg-amber-50 px-4 py-2.5 text-sm text-amber-900">
-              ⚠️ {w.text}
+              <AlertTriangle size={15} strokeWidth={2} className="mr-1.5 inline -mt-0.5" />{w.text}
             </p>
           ))}
         </div>
@@ -644,7 +644,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
         <p className="text-[11px] text-gray-400">{t('카드의 [라운드 칸에 넣기]로 위 칸에 배치해요. 그 학교가 제공하는 라운드만 보여요.', 'Use [Put in a round slot] on a card to place it above. Only rounds that school offers are shown.')}</p>
         <div className="mt-2 grid gap-2 md:grid-cols-2">
           {unassigned.length === 0 ? (
-            <p className="text-xs text-gray-400 md:col-span-2">{t('전부 배정됐어요 🎉', 'All assigned 🎉')}</p>
+            <p className="text-xs text-gray-400 md:col-span-2">{t('전부 배정됐어요', 'All assigned')} <PartyPopper size={13} strokeWidth={2} className="inline -mt-0.5" /></p>
           ) : (
             unassigned.map(card)
           )}

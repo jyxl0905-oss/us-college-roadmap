@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Calculator, Compass, Paperclip, FileText, ImageIcon, X } from 'lucide-react'
 import AppShell from './AppShell'
 import { t } from '../i18n'
 import { saveProfile, profileGrade, type ProfileRow } from '../lib/profile'
@@ -95,7 +96,7 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
         const total = computeGpa(courses)
         if (!total) return (
           <div className="mt-4 rounded-xl border-2 border-dashed border-gray-300 bg-white px-4 py-3 text-sm text-gray-500">
-            🧮 {t('아래 과목에 성적(A-, 95 등)을 적으면 학년별·누적 GPA를 자동 계산해 드려요.', 'Add grades to your courses below (A-, 95…) and we’ll compute your GPA by year and overall.')}
+            <Calculator size={14} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('아래 과목에 성적(A-, 95 등)을 적으면 학년별·누적 GPA를 자동 계산해 드려요.', 'Add grades to your courses below (A-, 95…) and we’ll compute your GPA by year and overall.')}
           </div>
         )
         const suggested = gpaToBand(total.unweighted)
@@ -104,7 +105,7 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
         return (
           <div className="mt-4 rounded-xl border-2 border-blue-200 bg-blue-50/60 px-4 py-4">
             <div className="flex items-baseline justify-between">
-              <p className="font-semibold text-gray-900">🧮 {t('내 GPA (자동 계산)', 'My GPA (auto-calculated)')}</p>
+              <p className="flex items-center gap-1.5 font-semibold text-gray-900"><Calculator size={17} strokeWidth={2} />{t('내 GPA (자동 계산)', 'My GPA (auto-calculated)')}</p>
               <span className="text-[11px] text-gray-400">{t(`성적 입력 ${total.gradedCredits}과목 기준`, `Based on ${total.gradedCredits} graded courses`)}</span>
             </div>
             <div className="mt-2 grid grid-cols-2 gap-2 text-center">
@@ -181,7 +182,7 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
         const recs = recommendCourses(courses, myGrade, profile.major_primary)
         return (
           <div className="mt-3 rounded-xl border-2 border-amber-200 bg-amber-50/60 px-4 py-3.5">
-            <p className="text-sm font-semibold text-gray-900">🧭 {t(`${Math.min(12, myGrade + 1)}학년 수강 추천`, `Suggestions for grade ${Math.min(12, myGrade + 1)}`)}</p>
+            <p className="flex items-center gap-1.5 text-sm font-semibold text-gray-900"><Compass size={15} strokeWidth={2} />{t(`${Math.min(12, myGrade + 1)}학년 수강 추천`, `Suggestions for grade ${Math.min(12, myGrade + 1)}`)}</p>
             {courses.length === 0 ? (
               <p className="mt-1 text-xs text-gray-600">{t('아래에 지금까지 들은 과목을 적으면, 다음 학년에 어떤 과목을 올리면 좋을지 추천해 드려요.', 'Add the courses you’ve taken below and we’ll suggest what to step up next year.')}</p>
             ) : myGrade >= 12 ? (
@@ -255,7 +256,7 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
                     {courseLetter(c) && c.percent !== null && (
                       <span className="text-[10px] text-gray-400">={courseLetter(c)}</span>
                     )}
-                    <button onClick={() => removeCourse(c.id)} aria-label={t('삭제', 'Delete')} className="text-gray-300 active:text-red-500">✕</button>
+                    <button onClick={() => removeCourse(c.id)} aria-label={t('삭제', 'Delete')} className="text-gray-300 active:text-red-500"><X size={16} strokeWidth={2} /></button>
                   </span>
                 </div>
               ))}
@@ -353,7 +354,7 @@ function RecordsVault({ userId, grade }: { userId: string; grade: number }) {
   return (
     <div className="mt-2">
       <button onClick={toggle} className="text-xs text-gray-400 underline">
-        📎 {t('성적표·증빙 보관함', 'Report cards & documents')} {files ? `(${files.length})` : ''} {open ? '▴' : '▾'}
+        <Paperclip size={12} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('성적표·증빙 보관함', 'Report cards & documents')} {files ? `(${files.length})` : ''} {open ? '▴' : '▾'}
       </button>
       {open && (
         <div className="mt-1.5 rounded-lg border-2 border-dashed border-gray-200 bg-white px-3 py-2.5">
@@ -369,11 +370,11 @@ function RecordsVault({ userId, grade }: { userId: string; grade: number }) {
                   {files.map((f) => (
                     <div key={f.name} className="flex items-center justify-between gap-2 text-xs">
                       <button onClick={() => void view(f.name)} className="min-w-0 truncate text-left text-blue-600 underline">
-                        {f.name.endsWith('.pdf') ? '📄' : '🖼️'} {displayName(f.name)}
+                        {f.name.endsWith('.pdf') ? <FileText size={12} strokeWidth={2} className="mr-1 inline -mt-0.5" /> : <ImageIcon size={12} strokeWidth={2} className="mr-1 inline -mt-0.5" />}{displayName(f.name)}
                       </button>
                       <span className="flex shrink-0 items-center gap-2 text-gray-400">
                         {f.size > 0 && <span>{(f.size / 1024 / 1024).toFixed(1)}MB</span>}
-                        <button onClick={() => void del(f.name)} aria-label={t('삭제', 'Delete')} className="text-gray-300 active:text-red-500">✕</button>
+                        <button onClick={() => void del(f.name)} aria-label={t('삭제', 'Delete')} className="text-gray-300 active:text-red-500"><X size={16} strokeWidth={2} /></button>
                       </span>
                     </div>
                   ))}

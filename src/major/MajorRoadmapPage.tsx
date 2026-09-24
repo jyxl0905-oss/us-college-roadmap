@@ -16,6 +16,7 @@ import schoolsIndex from '../data/schools.index.json'
 import SchoolLogo from '../browse/SchoolLogo'
 import { artSchoolsForMajors } from '../data/artSchools'
 import { slugify } from '../lib/router'
+import { Wrench, Lightbulb, BookOpen, Activity, AlertTriangle, Briefcase, GraduationCap, Trophy, Palette, Landmark, Compass } from 'lucide-react'
 
 interface Occupation { title: string; pay: string | null; pay_year: number | null; outlook: string | null; window: string | null; url: string | null; note?: string | null }
 interface CareerInfo { desc_ko: string | null; desc_en: string | null; occupations: Occupation[]; outlook_note_ko: string | null; grad_note_ko?: string | null }
@@ -132,7 +133,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
         <div className="lg:columns-2 lg:gap-4 [&>*]:break-inside-avoid">
         {majorKey === 'engineering' && (
           <details open={!full} className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
-            <summary className="cursor-pointer select-none font-semibold text-gray-900">{t('🔩 공학 세부 분야 한눈에', '🔩 Engineering fields at a glance')}</summary>
+            <summary className="cursor-pointer select-none font-semibold text-gray-900"><span className="inline-flex items-center gap-1.5"><Wrench size={18} strokeWidth={2} className="text-blue-600" />{t('공학 세부 분야 한눈에', 'Engineering fields at a glance')}</span></summary>
             <div className="mt-2 flex flex-col gap-1.5 text-sm">
               {[
                 { ko: '기계공학', en: 'Mechanical', d: t('움직이는 모든 것 — 자동차, 로봇, 기계 장치. 가장 범용적인 공학', 'Everything that moves — cars, robots, machines. The most versatile field') },
@@ -145,7 +146,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
               ))}
             </div>
             <p className="mt-2 rounded-lg bg-blue-50 px-3 py-2 text-xs text-blue-900">
-              💡 {t('고등학교 준비(Calc BC·Physics C·만들기 프로젝트)는 어느 분야든 같아요. 세부 분야는 대학 1~2학년에 정하는 경우가 많고, "Engineering Undecided"로 지원할 수 있는 학교도 많아요.', 'High-school prep (Calc BC, Physics C, build projects) is the same for every field. Many students choose a field in college, and many schools accept "Engineering Undecided" applicants.')}
+              <Lightbulb size={14} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('고등학교 준비(Calc BC·Physics C·만들기 프로젝트)는 어느 분야든 같아요. 세부 분야는 대학 1~2학년에 정하는 경우가 많고, "Engineering Undecided"로 지원할 수 있는 학교도 많아요.', 'High-school prep (Calc BC, Physics C, build projects) is the same for every field. Many students choose a field in college, and many schools accept "Engineering Undecided" applicants.')}
             </p>
             <p className="mt-2 text-xs text-gray-500">
               {t('별도 페이지가 있는 분야: ', 'Fields with their own page: ')}
@@ -173,7 +174,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
                   <div className="border-t border-gray-100 px-4 py-3">
                     {(['academic', 'activity'] as const).map((track) => (
                       <div key={track} className={track === 'activity' ? 'mt-3' : ''}>
-                        <p className="text-[11px] font-semibold text-gray-400">{track === 'academic' ? t('📚 학업', '📚 Academics') : t('🏃 활동', '🏃 Activities')}</p>
+                        <p className="flex items-center gap-1 text-[11px] font-semibold text-gray-400">{track === 'academic' ? <><BookOpen size={13} strokeWidth={2} />{t('학업', 'Academics')}</> : <><Activity size={13} strokeWidth={2} />{t('활동', 'Activities')}</>}</p>
                         <div className="mt-1 flex flex-col gap-1.5">
                           {cell[track].map((item) => {
                             const planned = isPlanned(item)
@@ -205,7 +206,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
 
         {full && data.ap.length > 0 && (
           <details className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
-            <summary className="cursor-pointer select-none font-semibold text-gray-900">{t('📚 추천 AP', '📚 Recommended APs')} <span className="ml-1 text-xs font-normal text-gray-400">{t(`${data.ap.length}개 · 우선순위 순`, `${data.ap.length} · by priority`)}</span></summary>
+            <summary className="cursor-pointer select-none font-semibold text-gray-900"><span className="inline-flex items-center gap-1.5"><BookOpen size={18} strokeWidth={2} className="text-blue-600" />{t('추천 AP', 'Recommended APs')}</span> <span className="ml-1 text-xs font-normal text-gray-400">{t(`${data.ap.length}개 · 우선순위 순`, `${data.ap.length} · by priority`)}</span></summary>
             <ol className="mt-2 flex flex-col gap-1.5 text-sm text-gray-700">
               {data.ap.map((a, i) => (
                 <li key={i} className="flex gap-2"><span className="shrink-0 font-semibold text-blue-600">{i + 1}</span><span>{a}</span></li>
@@ -228,7 +229,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
                 const warn = /함정|경고|Pitfall|Warning/.test(g.label)
                 return (
                   <div key={g.label} className={`rounded-lg px-3 py-2.5 ${warn ? 'bg-amber-50' : 'bg-gray-50'}`}>
-                    <p className={`text-xs font-semibold ${warn ? 'text-amber-800' : 'text-gray-500'}`}>{warn ? '⚠️ ' : ''}{g.label}</p>
+                    <p className={`text-xs font-semibold ${warn ? 'text-amber-800' : 'text-gray-500'}`}>{warn ? <AlertTriangle size={13} strokeWidth={2} className="mr-1 inline -mt-0.5" /> : null}{g.label}</p>
                     <p className="mt-0.5 text-sm leading-relaxed text-gray-700">{g.text}</p>
                   </div>
                 )
@@ -242,7 +243,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
         {CAREERS[majorKey] && CAREERS[majorKey].occupations.length > 0 && (
           <details open={!full} className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
             <summary className="cursor-pointer select-none font-semibold text-gray-900">
-              {t('💼 졸업 후 진로', '💼 After graduation')}
+              <span className="inline-flex items-center gap-1.5"><Briefcase size={18} strokeWidth={2} className="text-blue-600" />{t('졸업 후 진로', 'After graduation')}</span>
               <span className="ml-1 text-xs font-normal text-gray-400">
                 {CAREERS[majorKey].occupations[0]?.title}{CAREERS[majorKey].occupations[0]?.pay ? ` ${CAREERS[majorKey].occupations[0].pay}` : ''}{CAREERS[majorKey].occupations.length > 1 ? t(' 외', ' +more') : ''}
               </span>
@@ -270,7 +271,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
               ))}
             </div>
             {CAREERS[majorKey].grad_note_ko && getLang() === 'ko' && (
-              <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">🎓 {CAREERS[majorKey].grad_note_ko}</p>
+              <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800"><GraduationCap size={14} strokeWidth={2} className="mr-1 inline -mt-0.5" />{CAREERS[majorKey].grad_note_ko}</p>
             )}
             <p className="mt-2 text-[11px] text-gray-400">
               {t('연봉은 미국 전체 중간값(경력 전체 포함) 기준이며 지역·경력에 따라 크게 달라요. 출처: 미국 노동통계국(BLS) Occupational Outlook Handbook.', 'Pay figures are US-wide medians across all experience levels and vary widely by region and seniority. Source: US Bureau of Labor Statistics, Occupational Outlook Handbook.')}
@@ -282,7 +283,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
         {[majorKey].filter((rk) => RANKINGS[rk]).map((rk) => (
           <details key={rk} open={!full} className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
             <summary className="cursor-pointer select-none font-semibold text-gray-900">
-              {t('🏆 전공별 대학 순위', '🏆 Program rankings')} <span className="ml-1 text-xs font-normal text-gray-400">US News {RANKINGS[rk].edition}</span>
+              <span className="inline-flex items-center gap-1.5"><Trophy size={18} strokeWidth={2} className="text-blue-600" />{t('전공별 대학 순위', 'Program rankings')}</span> <span className="ml-1 text-xs font-normal text-gray-400">US News {RANKINGS[rk].edition}</span>
             </summary>
             <ol className="mt-2 flex flex-col gap-1 text-sm">
               {RANKINGS[rk].items.map((r, i) => (
@@ -311,7 +312,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
           if (list.length === 0) return null
           return (
             <div className="mt-4 rounded-xl border-2 border-pink-200 bg-pink-50 px-4 py-3.5">
-              <p className="font-semibold text-gray-900">{t('🎨 이 전공 특화 미술·디자인 학교', '🎨 Art & design schools for this major')} <span className="ml-1 text-xs font-normal text-gray-400">{list.length}{t('곳', '')}</span></p>
+              <p className="flex flex-wrap items-center gap-1.5 font-semibold text-gray-900"><Palette size={18} strokeWidth={2} className="text-pink-600" />{t('이 전공 특화 미술·디자인 학교', 'Art & design schools for this major')} <span className="ml-1 text-xs font-normal text-gray-400">{list.length}{t('곳', '')}</span></p>
               <p className="mt-0.5 text-xs text-pink-900">{t('이 전공을 공식 개설한 전문학교와 종합대 예술대학이에요. 종합대와 달리 포트폴리오 심사가 중심이라 준비 방식이 달라요 — 각 학교 카드에서 포트폴리오 요구사항을 확인하세요.', 'Specialized schools and university arts schools that officially offer this major. Unlike universities, admissions center on a portfolio review — check each school card for portfolio requirements.')}</p>
               <div className="mt-2 flex flex-wrap gap-1.5">
                 {list.map((sc) => (
@@ -331,7 +332,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
           if (list.length === 0) return null
           return (
             <details open={!full} className="mt-4 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
-              <summary className="cursor-pointer select-none font-semibold text-gray-900">{t('🏛️ 전공 단위로 뽑는 학교', '🏛️ Schools admitting by major')} <span className="ml-1 text-xs font-normal text-gray-400">{list.length}{t('곳', '')}</span></summary>
+              <summary className="cursor-pointer select-none font-semibold text-gray-900"><span className="inline-flex items-center gap-1.5"><Landmark size={18} strokeWidth={2} className="text-blue-600" />{t('전공 단위로 뽑는 학교', 'Schools admitting by major')}</span> <span className="ml-1 text-xs font-normal text-gray-400">{list.length}{t('곳', '')}</span></summary>
               <p className="mt-0.5 text-xs text-gray-500">{t('지원할 때 전공을 정해 내는 학교들 — 경쟁률이 학교 전체 합격률과 다르고 전과가 어려울 수 있어요. 각 학교 카드에서 확인하세요.', 'These schools admit into the major at application time — competitiveness differs from the overall rate and switching in can be hard. Check each school card.')}</p>
               <div className="mt-2 flex flex-wrap gap-1.5">
                 {list.map((sc) => (
@@ -349,8 +350,8 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
             <p className="text-sm font-semibold text-blue-900">{t('이 전공, 나랑 맞을까?', 'Is this major right for me?')}</p>
             <p className="mt-0.5 text-xs text-blue-800">{t('학년별 로드맵·추천 AP·활동 전략은 내 학년에 맞춘 리포트에서 볼 수 있어요.', 'The year-by-year roadmap, recommended APs and activity strategy live in your personalized report.')}</p>
             {userId ? (
-              <button onClick={() => setFull(true)} className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white active:bg-blue-700">
-                {t('🧭 전체 가이드 보기 (로드맵·AP·활동)', '🧭 See the full guide (roadmap · APs · activities)')}
+              <button onClick={() => setFull(true)} className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white active:bg-blue-700">
+                <Compass size={16} strokeWidth={2} />{t('전체 가이드 보기 (로드맵·AP·활동)', 'See the full guide (roadmap · APs · activities)')}
               </button>
             ) : (
               <button onClick={() => navigate('/')} className="mt-3 w-full rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white active:bg-blue-700">

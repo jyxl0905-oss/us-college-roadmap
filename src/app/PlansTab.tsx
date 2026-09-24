@@ -1,3 +1,5 @@
+import { PageSkeleton } from '../ui/Skeleton'
+import { Compass, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import AppShell from './AppShell'
 import { t } from '../i18n'
@@ -28,7 +30,7 @@ export default function PlansTab({ userId, majorKey }: PlansTabProps) {
     loadPlans(userId).then(setPlans)
   }, [userId])
 
-  if (!plans) return <AppShell tab="plans" title={t('내 계획', 'My plans')}><p className="mt-10 text-center text-gray-400">{t('불러오는 중…', 'Loading…')}</p></AppShell>
+  if (!plans) return <AppShell tab="plans" title={t('내 계획', 'My plans')}><PageSkeleton compact /></AppShell>
 
   const add = async () => {
     const text = title.trim()
@@ -68,9 +70,9 @@ export default function PlansTab({ userId, majorKey }: PlansTabProps) {
       </p>
       <button
         onClick={() => navigate(`/major/${majorKey ?? 'undecided'}`)}
-        className="mt-2 w-full rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-2.5 text-sm font-semibold text-blue-700 active:bg-blue-100"
+        className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-2.5 text-sm font-semibold text-blue-700 active:bg-blue-100"
       >
-        {t('🧭 전공 가이드 맵에서 골라 담기', '🧭 Pick from the major guide map')}
+        <Compass size={16} strokeWidth={2} />{t('전공 가이드 맵에서 골라 담기', 'Pick from the major guide map')}
       </button>
 
       {/* 입력 */}
@@ -121,7 +123,7 @@ export default function PlansTab({ userId, majorKey }: PlansTabProps) {
                   </button>
                   <span className={`min-w-0 flex-1 truncate text-sm ${p.status === 'done' ? 'text-gray-400 line-through' : 'text-gray-900'}`}>{p.title}</span>
                   <span className="shrink-0 text-[11px] text-gray-400">{axisShort[p.axis]}</span>
-                  <button onClick={() => remove(p.id)} aria-label={t('삭제', 'Delete')} className="shrink-0 text-gray-300 active:text-red-500">✕</button>
+                  <button onClick={() => remove(p.id)} aria-label={t('삭제', 'Delete')} className="shrink-0 text-gray-300 active:text-red-500"><X size={16} strokeWidth={2} /></button>
                 </div>
               ))}
             </div>
@@ -139,7 +141,7 @@ export default function PlansTab({ userId, majorKey }: PlansTabProps) {
                 <button onClick={() => cycle(p)} className="shrink-0 rounded-full bg-gray-100 px-2 py-0.5 text-[11px] font-semibold text-gray-500">{planStatusKo[p.status]}</button>
                 <span className="min-w-0 flex-1 truncate text-sm text-gray-600">{p.title}</span>
                 <span className="text-[11px] text-gray-400">{p.season_label}</span>
-                <button onClick={() => remove(p.id)} aria-label={t('삭제', 'Delete')} className="text-gray-300 active:text-red-500">✕</button>
+                <button onClick={() => remove(p.id)} aria-label={t('삭제', 'Delete')} className="text-gray-300 active:text-red-500"><X size={16} strokeWidth={2} /></button>
               </div>
             ))}
           </div>

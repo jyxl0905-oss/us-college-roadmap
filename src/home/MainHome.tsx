@@ -1,3 +1,5 @@
+import { PageSkeleton } from '../ui/Skeleton'
+import { FileText, Target, CalendarDays, BarChart3 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { navigate } from '../lib/router'
@@ -56,11 +58,11 @@ export default function MainHome({ userId, profile }: { userId: string; profile:
         {/* 내 원서 요약 — 기록이 중심 */}
         <div className="mt-4 rounded-2xl border-2 border-gray-200 bg-white p-4">
           <div className="flex items-baseline justify-between">
-            <p className="font-semibold text-gray-900">📋 {t('내 원서', 'My App')}</p>
+            <p className="flex items-center gap-1.5 font-semibold text-gray-900"><FileText size={18} strokeWidth={2} />{t('내 원서', 'My App')}</p>
             <span className="text-xs text-gray-400">{t('가상 원서 · 실제 제출 아님', 'Practice application · not a real submission')}</span>
           </div>
           {counts === null ? (
-            <p className="mt-3 text-sm text-gray-400">{t('불러오는 중…', 'Loading…')}</p>
+            <PageSkeleton compact />
           ) : total === 0 ? (
             <p className="mt-3 text-sm leading-relaxed text-gray-500">
               {t('아직 기록이 없어요. 활동 하나부터 시작해 보세요 — 나중에 옮겨 적기만 하면 되게.', 'Nothing recorded yet. Start with one activity — future you will just copy it over.')}
@@ -88,7 +90,7 @@ export default function MainHome({ userId, profile }: { userId: string; profile:
         {/* 목표 학교 요약 */}
         <div className="mt-4 rounded-2xl border-2 border-gray-200 bg-white p-4">
           <div className="flex items-baseline justify-between">
-            <p className="font-semibold text-gray-900">🎯 {t('목표 학교', 'Target schools')}</p>
+            <p className="flex items-center gap-1.5 font-semibold text-gray-900"><Target size={18} strokeWidth={2} />{t('목표 학교', 'Target schools')}</p>
             {targets.length > 0 && <button onClick={() => navigate('/targets')} className="text-xs text-blue-600 underline">{t('전체 보기', 'View all')}</button>}
           </div>
           {targets.length === 0 ? (
@@ -120,7 +122,7 @@ export default function MainHome({ userId, profile }: { userId: string; profile:
 
         {/* 다가오는 마감 */}
         <div className="mt-4 rounded-2xl border-2 border-gray-200 bg-white p-4">
-          <p className="font-semibold text-gray-900">🗓️ {t('다가오는 마감', 'Upcoming deadlines')}</p>
+          <p className="flex items-center gap-1.5 font-semibold text-gray-900"><CalendarDays size={18} strokeWidth={2} />{t('다가오는 마감', 'Upcoming deadlines')}</p>
           {deadlines.length > 0 ? (
             <div className="mt-2 flex flex-col gap-1.5">
               {deadlines.map((d) => {
@@ -143,7 +145,7 @@ export default function MainHome({ userId, profile }: { userId: string; profile:
 
         {/* 리포트 유도 — 작게, 하단에만 */}
         <button onClick={() => navigate('/report')} className="mt-6 w-full rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-left active:bg-blue-100">
-          <p className="text-sm font-semibold text-blue-900">📊 {t('입시 리포트 · 시즌 체크리스트', 'Admissions report · season checklist')}</p>
+          <p className="flex items-center gap-1.5 text-sm font-semibold text-blue-900"><BarChart3 size={16} strokeWidth={2} />{t('입시 리포트 · 시즌 체크리스트', 'Admissions report · season checklist')}</p>
           <p className="mt-0.5 text-xs text-blue-800/70">{t('학년·전공을 알려주면 너에게 맞는 것만 골라서 보여줄게 (5분)', 'Tell us your grade and major, and we’ll show only what fits you (5 min)')}</p>
         </button>
       </div>

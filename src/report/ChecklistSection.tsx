@@ -1,3 +1,4 @@
+import { Check } from 'lucide-react'
 import type { ChecklistItem } from '../lib/types'
 import { t, bilingual } from '../i18n'
 
@@ -44,11 +45,11 @@ export default function ChecklistSection({ items, checkedIds, onToggle }: Checkl
           >
             <span className="flex items-start gap-3">
               <span
-                className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 text-xs ${
+                className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-2 text-xs ${
                   checked ? 'border-green-500 bg-green-500 text-white' : 'border-gray-300'
                 }`}
               >
-                {checked && '✓'}
+                {checked && <Check size={13} strokeWidth={3} />}
               </span>
               <span>
                 <span

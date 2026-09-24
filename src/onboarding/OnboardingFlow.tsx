@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Target, ClipboardList, Activity, Hand, Sparkles, type LucideIcon } from 'lucide-react'
 import type { OnboardingAnswers, School, Tier } from '../lib/types'
 import { emptyAnswers } from '../lib/types'
 import { readPrefillSchoolIds, clearPrefill } from '../browse/prefill'
@@ -62,10 +63,11 @@ function stepList(a: OnboardingAnswers): StepId[] {
 
 // R1-C-3: 그룹 전환 브릿지 문구 (해당 스텝 위에 한 줄 표시)
 const bridgeText = (): Partial<Record<StepId, string>> => ({
-  majorTrack: t('기본 정보는 끝! 이제 목표를 물어볼게요 🎯', 'Basics done! Now your goals 🎯'),
-  gpa: t('이제 지금 상태를 확인할게요 📋', "Now let's check where you are 📋"),
-  actSpike: t('마지막 구간 — 활동 이야기예요 🏃', 'Last stretch — activities 🏃'),
+  majorTrack: t('기본 정보는 끝! 이제 목표를 물어볼게요', 'Basics done! Now your goals'),
+  gpa: t('이제 지금 상태를 확인할게요', "Now let's check where you are"),
+  actSpike: t('마지막 구간 — 활동 이야기예요', 'Last stretch — activities'),
 })
+const bridgeIcons: Partial<Record<StepId, LucideIcon>> = { majorTrack: Target, gpa: ClipboardList, actSpike: Activity }
 
 interface OnboardingFlowProps {
   onComplete?: (answers: OnboardingAnswers) => void | Promise<void>
@@ -142,7 +144,7 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
     return (
       <div className="min-h-dvh bg-gray-50">
         <div className="mx-auto max-w-md px-5 py-16 text-center">
-          <p className="text-4xl">👋</p>
+          <Hand size={40} strokeWidth={1.9} className="mx-auto block text-blue-600" />
           <h1 className="mt-4 text-xl font-bold text-gray-900">{t('진행하던 온보딩이 있어요', 'You have an onboarding in progress')}</h1>
           <p className="mt-2 text-sm text-gray-500">{t('답변은 저장돼 있으니 이어서 하면 돼요.', 'Your answers are saved — pick up where you left off.')}</p>
           <button
@@ -204,7 +206,7 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
         </header>
         <main className="pt-2">
           {bridgeText()[step] && (
-            <p className="mb-3 text-sm font-medium text-blue-600">{bridgeText()[step]}</p>
+            <p className="mb-3 flex items-center gap-1.5 text-sm font-medium text-blue-600">{bridgeText()[step]}{(() => { const BridgeIcon = bridgeIcons[step]; return BridgeIcon ? <BridgeIcon size={15} strokeWidth={2} className="shrink-0" /> : null })()}</p>
           )}
           {renderStep()}
         </main>
@@ -529,7 +531,7 @@ function TeaserInterstitial({ text, onNext }: { text: string; onNext: () => void
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <button onClick={onNext} className="mt-16 w-full text-center">
-      <p className="text-4xl">✨</p>
+      <Sparkles size={40} strokeWidth={1.9} className="mx-auto block text-blue-600" />
       <p className="mt-4 text-lg font-semibold leading-relaxed text-gray-900">{text}</p>
       <p className="mt-3 text-xs text-gray-400">{t('잠시 후 계속 — 탭하면 바로 넘어가요', 'Continuing shortly — tap to skip ahead')}</p>
     </button>

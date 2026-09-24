@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Pin } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { navigate } from '../lib/router'
 import { t } from '../i18n'
@@ -40,7 +41,7 @@ export default function MustDoCard({ userId, grade }: { userId: string; grade: n
   return (
     <div className="no-print mt-4 rounded-2xl border-2 border-amber-200 bg-amber-50 px-4 py-4">
       <div className="flex items-baseline justify-between gap-2">
-        <p className="font-semibold text-amber-900">📌 {t(`${grade}학년 꼭 체크`, `Grade ${grade} must-dos`)}</p>
+        <p className="flex items-center gap-1.5 font-semibold text-amber-900"><Pin size={17} strokeWidth={2} />{t(`${grade}학년 꼭 체크`, `Grade ${grade} must-dos`)}</p>
         <span className="text-xs text-amber-700">{doneCount}/{show.length}</span>
       </div>
       <p className="mt-0.5 text-xs text-amber-700">{t('시즌 체크리스트와 별개로, 이 시기에 놓치면 되돌리기 어려운 것만 모았어요.', 'Separate from the season checklist — only the things that are hard to undo if missed now.')}</p>

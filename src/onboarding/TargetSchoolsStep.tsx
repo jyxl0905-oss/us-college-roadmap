@@ -1,4 +1,5 @@
 import { schoolMatches } from '../data/schoolAliases'
+import { Palette } from 'lucide-react'
 import { useState } from 'react'
 import { t } from '../i18n'
 import type { School } from '../lib/types'
@@ -54,7 +55,7 @@ export default function TargetSchoolsStep({ selectedIds, onChange, onNext, major
       {/* 창작 계열 전공이면: 그 전공을 개설한 미술·디자인 전문학교를 먼저 추천 */}
       {!q && artRecs.length > 0 && (
         <div className="mt-4 rounded-xl border border-pink-200 bg-pink-50 p-3">
-          <p className="text-sm font-semibold text-pink-900">🎨 {t(`${majorLabel(artMajor ?? null)} 전공 특화 학교 추천`, `Specialized schools for ${majorLabel(artMajor ?? null)}`)}</p>
+          <p className="flex items-center gap-1.5 text-sm font-semibold text-pink-900"><Palette size={15} strokeWidth={2} className="shrink-0" />{t(`${majorLabel(artMajor ?? null)} 전공 특화 학교 추천`, `Specialized schools for ${majorLabel(artMajor ?? null)}`)}</p>
           <p className="mt-0.5 text-xs text-pink-800">{t('이 전공을 공식 개설한 미술·디자인 전문학교와 종합대 예술대학이에요. 눌러서 목표에 담을 수 있어요.', 'Art & design schools and university arts schools that officially offer this major. Tap to add.')}</p>
           <div className="mt-2 flex flex-wrap gap-1.5">
             {artRecs.map((s) => {
@@ -79,7 +80,7 @@ export default function TargetSchoolsStep({ selectedIds, onChange, onNext, major
           </button>
           {count('art') > 0 && (
             <button onClick={() => setKind('art')} className={`flex-1 rounded-xl border-2 px-3 py-2 text-sm font-semibold ${kind === 'art' ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-600'}`}>
-              🎨 {t('미술·디자인', 'Art & design')} <span className="font-normal opacity-70">{count('art')}</span>
+              <Palette size={14} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('미술·디자인', 'Art & design')} <span className="font-normal opacity-70">{count('art')}</span>
             </button>
           )}
         </div>
