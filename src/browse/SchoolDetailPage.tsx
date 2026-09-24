@@ -254,7 +254,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
           <CostBlock schoolId={s.id} />
         </div>
         <div className="mt-3 empty:hidden">
-          <EnglishBlock schoolId={s.id} />
+          <EnglishBlock schoolId={s.id} inUs={!!profile?.school_in_us} />
         </div>
         <div className="mt-3 empty:hidden">
           <SchoolPrograms schoolId={s.id} />

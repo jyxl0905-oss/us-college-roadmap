@@ -17,6 +17,24 @@ export interface EnglishReq {
   waiver_process_ko: string | null; waiver_process_en: string | null
   quote_en: string | null
   source_url: string | null
+  us_hs: 'explicit' | 'english_medium' | 'no_waiver' | 'not_required' | 'unclear' | null
+  us_hs_years: number | null; us_hs_extra_ko: string | null; us_hs_extra_en: string | null
+}
+
+// 미국 고등학교(보딩스쿨 포함)에 다닌 경우 면제되는지 — 한 줄 요약
+export function usHsLine(r: EnglishReq): { ok: boolean | null; ko: string; en: string } {
+  const y = r.us_hs_years
+  switch (r.us_hs) {
+    case 'explicit':
+    case 'english_medium':
+      return { ok: true, ko: y ? `${y}년 이상 다니면 면제 가능` : '영어로 수업하는 학교로 인정돼 면제 가능 (기간은 조건 원문 확인)', en: y ? `Waivable after ${y}+ years` : 'Counts as English-medium schooling (check the length rule)' }
+    case 'no_waiver':
+      return { ok: false, ko: '미국 고교에 다녀도 면제 안 돼요', en: 'No waiver even from a U.S. high school' }
+    case 'not_required':
+      return { ok: null, ko: '영어 시험이 필수가 아니에요', en: 'English test not required' }
+    default:
+      return { ok: null, ko: '공식 페이지에 명확하지 않아요 — 입학처에 문의', en: 'Not clear on the official page — ask admissions' }
+  }
 }
 
 export const PROCESS: Record<EnglishReq['waiver_process'], { icon: typeof CheckCircle2; cls: string; ko: string; en: string }> = {
@@ -26,7 +44,7 @@ export const PROCESS: Record<EnglishReq['waiver_process'], { icon: typeof CheckC
   counselor_confirmation: { icon: FileSignature, cls: 'bg-amber-50 text-amber-800 ring-amber-200', ko: '카운슬러·학교 확인서가 필요해요', en: 'Needs counselor/school confirmation' },
   no_waiver: { icon: XCircle, cls: 'bg-rose-50 text-rose-700 ring-rose-200', ko: '면제 없음 — 시험 점수 필요', en: 'No waiver — scores required' },
   not_applicable: { icon: CheckCircle2, cls: 'bg-gray-50 text-gray-600 ring-gray-200', ko: '영어 시험을 요구하지 않아요', en: 'No English test required' },
-  unclear: { icon: HelpCircle, cls: 'bg-gray-50 text-gray-600 ring-gray-200', ko: '면제 방법 미공개 — 입학처에 문의', en: 'Process not stated — ask admissions' },
+  unclear: { icon: HelpCircle, cls: 'bg-gray-50 text-gray-600 ring-gray-200', ko: '신청 필요 여부 안내 없음 — 입학처에 문의', en: 'Whether to request isn’t stated — ask admissions' },
 }
 
 const REQ_LABEL: Record<NonNullable<EnglishReq['requirement']>, [string, string]> = {
@@ -42,7 +60,7 @@ export function loadEnglish(): Promise<Map<number, EnglishReq>> {
   return cache
 }
 
-export default function EnglishBlock({ schoolId }: { schoolId: number }) {
+export default function EnglishBlock({ schoolId, inUs = false }: { schoolId: number; inUs?: boolean }) {
   const [r, setR] = useState<EnglishReq | null>(null)
   const [open, setOpen] = useState(false)
   useEffect(() => {
@@ -77,7 +95,7 @@ export default function EnglishBlock({ schoolId }: { schoolId: number }) {
               {min != null ? (
                 <p className="text-lg font-extrabold tabular-nums text-gray-900">{min}<span className="ml-0.5 text-[11px] font-medium text-gray-500">{t('+ 최소', '+ min')}</span>{name === 'TOEFL iBT' && r.toefl_scale === 'new' && <span className="block text-[10px] font-medium text-gray-400">{t('새 1–6점 척도', 'new 1–6 scale')}</span>}</p>
               ) : (
-                <p className="text-sm font-semibold text-gray-400">{t('최소 없음', 'No minimum')}</p>
+                <p className="text-[13px] font-semibold leading-tight text-gray-400">{t('최저 점수 비공개', 'No published minimum')}</p>
               )}
               {rec && <p className="mt-0.5 text-[11px] leading-snug text-gray-500">{t('권장', 'Rec.')} {rec}</p>}
             </div>
@@ -95,6 +113,17 @@ export default function EnglishBlock({ schoolId }: { schoolId: number }) {
           {r.score_waiver_note_ko && <p className="mt-1 text-[11px] text-gray-500">{t(r.score_waiver_note_ko, r.score_waiver_note_en ?? r.score_waiver_note_ko)}</p>}
         </div>
       )}
+
+      {r.us_hs && r.us_hs !== 'not_required' && (() => {
+        const L = usHsLine(r)
+        return (
+          <div className={`mt-3 rounded-lg px-3 py-2 ${inUs ? 'bg-blue-50 ring-1 ring-blue-200' : 'bg-gray-50'}`}>
+            <p className="text-xs font-semibold text-gray-500">{t('미국 고등학교·보딩스쿨에 다닌다면', 'If you attend a U.S. high school / boarding school')}{inUs && <span className="ml-1 text-blue-700">{t('· 내 경우', '· you')}</span>}</p>
+            <p className={`mt-0.5 text-sm font-semibold ${L.ok === true ? 'text-emerald-700' : L.ok === false ? 'text-rose-700' : 'text-gray-700'}`}>{t(L.ko, L.en)}</p>
+            {r.us_hs_extra_ko && <p className="text-[12px] text-gray-600">{t(r.us_hs_extra_ko, r.us_hs_extra_en ?? r.us_hs_extra_ko)}</p>}
+          </div>
+        )
+      })()}
 
       {r.waiver_process !== 'not_applicable' && (
         <div className="mt-3">

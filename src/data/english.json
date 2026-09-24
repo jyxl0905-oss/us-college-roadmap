@@ -23,7 +23,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 2,
@@ -47,7 +51,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "not_required",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 3,
@@ -71,7 +79,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "not_required",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 4,
@@ -95,7 +107,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "not_required",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 5,
@@ -119,7 +135,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 2,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 6,
@@ -143,7 +163,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "unclear",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 7,
@@ -167,7 +191,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "not_required",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 8,
@@ -191,7 +219,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "not_required",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 9,
@@ -215,7 +247,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "no_waiver",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 10,
@@ -239,7 +275,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "입학 시점까지 채우면 돼요 (고교·대학 합산 가능)",
+   "us_hs_extra_en": "Counted by the time you enroll (high school and college combined)"
   },
   {
    "id": 11,
@@ -263,7 +303,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "면제돼도 점수 제출을 강력히 권장해요",
+   "us_hs_extra_en": "Even if exempt, submitting a score is strongly recommended"
   },
   {
    "id": 12,
@@ -287,7 +331,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 13,
@@ -311,7 +359,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "not_required",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 14,
@@ -335,7 +387,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 2,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 15,
@@ -359,7 +415,11 @@
    "sat_ebrw_waiver": 700,
    "act_english_waiver": 29,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 16,
@@ -383,7 +443,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": 24,
    "score_waiver_note_ko": "UC 공통: ACT ELA 24 이상 인정. 디지털 SAT Reading and Writing은 인정하지 않아요",
-   "score_waiver_note_en": "UC-wide: ACT ELA 24+ accepted. The digital SAT Reading and Writing is not approved"
+   "score_waiver_note_en": "UC-wide: ACT ELA 24+ accepted. The digital SAT Reading and Writing is not approved",
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "여러 언어를 섞어 수업한 경우는 인정 안 돼요",
+   "us_hs_extra_en": "Mixed language of instruction does not count"
   },
   {
    "id": 17,
@@ -407,7 +471,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 2,
+   "us_hs_extra_ko": "지원 전까지 full-time으로 해야 해요",
+   "us_hs_extra_en": "Full-time study completed before applying"
   },
   {
    "id": 18,
@@ -431,7 +499,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": 24,
    "score_waiver_note_ko": "UC 공통: ACT ELA 24 이상 인정. 디지털 SAT Reading and Writing은 인정하지 않아요 (UCLA는 SAT·ACT로 증명하는 것을 권장하지 않아요)",
-   "score_waiver_note_en": "UC-wide: ACT ELA 24+ accepted. The digital SAT Reading and Writing is not approved (UCLA discourages using SAT/ACT for this)"
+   "score_waiver_note_en": "UC-wide: ACT ELA 24+ accepted. The digital SAT Reading and Writing is not approved (UCLA discourages using SAT/ACT for this)",
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 19,
@@ -455,7 +527,11 @@
    "sat_ebrw_waiver": 630,
    "act_english_waiver": 26,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 20,
@@ -479,7 +555,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "no_waiver",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 21,
@@ -503,7 +583,11 @@
    "sat_ebrw_waiver": 650,
    "act_english_waiver": 27,
    "score_waiver_note_ko": "영어권 지정 국가에서 4년 재학 조건과 함께 충족해야 해요",
-   "score_waiver_note_en": "Must be combined with 4 years of study in listed English-speaking countries"
+   "score_waiver_note_en": "Must be combined with 4 years of study in listed English-speaking countries",
+   "us_hs": "explicit",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "SAT EBRW 650+ 또는 ACT Reading·English 모두 27+도 함께 있어야 해요",
+   "us_hs_extra_en": "Also requires SAT EBRW 650+ or both ACT Reading and English 27+"
   },
   {
    "id": 22,
@@ -527,7 +611,11 @@
    "sat_ebrw_waiver": 650,
    "act_english_waiver": 26,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "admissions@nd.edu에 문의해서 사례별로 확인받아야 해요",
+   "us_hs_extra_en": "Must email admissions@nd.edu to inquire; case by case"
   },
   {
    "id": 23,
@@ -551,7 +639,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "성적이 좋아야 하고, 이메일로 요청해야 해요 (온라인 위주 학교는 제외)",
+   "us_hs_extra_en": "Strong academic performance; request by email; primarily online schools usually don't qualify"
   },
   {
    "id": 24,
@@ -575,7 +667,11 @@
    "sat_ebrw_waiver": 700,
    "act_english_waiver": 30,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "외국어 수업 빼고 모든 과목을 영어로 들어야 해요",
+   "us_hs_extra_en": "All academic subjects (except world language) taught in English"
   },
   {
    "id": 25,
@@ -599,7 +695,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "not_required",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 26,
@@ -623,7 +723,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "입학 시점 기준, 현재 학년 포함 최근 4년이에요 (자동 적용)",
+   "us_hs_extra_en": "Last four years incl. current year, by enrollment; applied automatically"
   },
   {
    "id": 27,
@@ -647,7 +751,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "unclear",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 28,
@@ -671,7 +779,11 @@
    "sat_ebrw_waiver": 650,
    "act_english_waiver": 27,
    "score_waiver_note_ko": "승인 시험으로 인정돼요 (이 경우 test-optional로는 지원할 수 없어요)",
-   "score_waiver_note_en": "Counts as an approved exam (you then can’t apply test-optional)"
+   "score_waiver_note_en": "Counts as an approved exam (you then can’t apply test-optional)",
+   "us_hs": "no_waiver",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 29,
@@ -695,7 +807,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 30,
@@ -719,7 +835,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "unclear",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 31,
@@ -743,7 +863,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "미국 고등학교를 졸업해야 해요",
+   "us_hs_extra_en": "Must graduate from the U.S. high school"
   },
   {
    "id": 32,
@@ -767,7 +891,11 @@
    "sat_ebrw_waiver": 480,
    "act_english_waiver": 17,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "영어가 공식 수업 언어인 학교의 졸업장이 있어야 하고, 캠퍼스 검토를 거쳐요",
+   "us_hs_extra_en": "Needs a secondary diploma from an English-instruction school; subject to campus review"
   },
   {
    "id": 33,
@@ -791,7 +919,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "현재 학년 전 3년 연속, ESL·IB English B·이중언어 과정 없이 모두 영어로 들어야 해요",
+   "us_hs_extra_en": "Three consecutive years before the current year, entirely in English, no ESL/ELL/IB English B/bilingual curriculum"
   },
   {
    "id": 34,
@@ -815,7 +947,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": 24,
    "score_waiver_note_ko": "UC 공통: ACT ELA 24 이상 인정. 디지털 SAT Reading and Writing은 인정하지 않아요",
-   "score_waiver_note_en": "UC-wide: ACT ELA 24+ accepted. The digital SAT Reading and Writing is not approved"
+   "score_waiver_note_en": "UC-wide: ACT ELA 24+ accepted. The digital SAT Reading and Writing is not approved",
+   "us_hs": "explicit",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 35,
@@ -839,7 +975,11 @@
    "sat_ebrw_waiver": 680,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "고등학교 과정 중 영어가 아닌 언어로 수업한 학교가 있으면 안 돼요",
+   "us_hs_extra_en": "No high school attended may have non-English instruction"
   },
   {
    "id": 36,
@@ -863,7 +1003,11 @@
    "sat_ebrw_waiver": 650,
    "act_english_waiver": 29,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "ESOL 없는 일반 교육과정이어야 해요",
+   "us_hs_extra_en": "Traditional curriculum without ESOL"
   },
   {
    "id": 37,
@@ -887,7 +1031,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "ESOL 수업을 들었다면 증빙을 요청받을 수 있어요",
+   "us_hs_extra_en": "Students in ESOL classes may be asked for proof"
   },
   {
    "id": 38,
@@ -911,7 +1059,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "10~12학년을 미국 본토에서 마쳐야 해요 (푸에르토리코 등 미국령 제외)",
+   "us_hs_extra_en": "Grades 10-12 completed in the mainland U.S. (not Puerto Rico/territories)"
   },
   {
    "id": 39,
@@ -935,7 +1087,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "ELP Waiver Request 양식을 제출해야 해요",
+   "us_hs_extra_en": "Must submit the ELP Waiver Request form"
   },
   {
    "id": 40,
@@ -959,7 +1115,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": 24,
    "score_waiver_note_ko": "UC 공통: ACT ELA 24 이상 인정. 디지털 SAT Reading and Writing은 인정하지 않아요",
-   "score_waiver_note_en": "UC-wide: ACT ELA 24+ accepted. The digital SAT Reading and Writing is not approved"
+   "score_waiver_note_en": "UC-wide: ACT ELA 24+ accepted. The digital SAT Reading and Writing is not approved",
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 41,
@@ -983,7 +1143,11 @@
    "sat_ebrw_waiver": 550,
    "act_english_waiver": 21,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "졸업까지 해야 해요 (미국 정규 인증 고교)",
+   "us_hs_extra_en": "Must graduate (U.S. regionally accredited high school)"
   },
   {
    "id": 42,
@@ -1007,7 +1171,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "unclear",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 43,
@@ -1031,7 +1199,11 @@
    "sat_ebrw_waiver": 550,
    "act_english_waiver": 21,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 44,
@@ -1055,7 +1227,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "ESL 수업 없이, 마감일까지 채워야 해요 (면제는 재량 검토)",
+   "us_hs_extra_en": "No ESL coursework, by the deadline; waiver is discretionary"
   },
   {
    "id": 45,
@@ -1079,7 +1255,11 @@
    "sat_ebrw_waiver": 580,
    "act_english_waiver": 22,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "초·중·고 전 과정을 미국 등에서 해야 해요. 아니면 10~12학년 영어 과목 B 평균 + SAT EBRW 580/ACT English 22",
+   "us_hs_extra_en": "Primary AND secondary in listed countries; alternative: B avg in HS English (grades 10-12) + SAT EBRW 580+/ACT English 22+"
   },
   {
    "id": 46,
@@ -1103,7 +1283,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 2,
+   "us_hs_extra_ko": "현재 학년을 빼고 최근 2년이에요",
+   "us_hs_extra_en": "Last two full completed years, not counting the current year"
   },
   {
    "id": 47,
@@ -1127,7 +1311,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "입학 직전 연속 4년 full-time이어야 하고, 포털에서 신청해야 해요",
+   "us_hs_extra_en": "Four consecutive full-time years right before enrolling; request via portal"
   },
   {
    "id": 48,
@@ -1151,7 +1339,11 @@
    "sat_ebrw_waiver": 600,
    "act_english_waiver": 26,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "모든 영어 과목 B 이상, 전체 성적 우수해야 해요 (검토 후 인정)",
+   "us_hs_extra_en": "B or better in all English courses and strong overall performance; considered, not automatic"
   },
   {
    "id": 49,
@@ -1175,7 +1367,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "not_required",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "SAT/ACT 점수로 영어 능력을 확인해요",
+   "us_hs_extra_en": "Proficiency is generally shown through required SAT/ACT scores"
   },
   {
    "id": 50,
@@ -1199,7 +1395,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "면제 신청서를 마감일까지 내야 해요",
+   "us_hs_extra_en": "Must submit the waiver request form by the deadline"
   },
   {
    "id": 51,
@@ -1223,7 +1423,11 @@
    "sat_ebrw_waiver": 630,
    "act_english_waiver": 26,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 2,
+   "us_hs_extra_ko": "졸업 시점까지 채우면 자동 면제예요",
+   "us_hs_extra_en": "By graduation; waived automatically"
   },
   {
    "id": 52,
@@ -1247,7 +1451,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "no_waiver",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 53,
@@ -1271,7 +1479,11 @@
    "sat_ebrw_waiver": 560,
    "act_english_waiver": 21,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "4년 모두 미국 고등학교에서 다녀야 해요",
+   "us_hs_extra_en": "All four years at a U.S. high school"
   },
   {
    "id": 54,
@@ -1295,7 +1507,11 @@
    "sat_ebrw_waiver": 550,
    "act_english_waiver": 24,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "9~12학년 영어로만 수업, ESL 수업 없이",
+   "us_hs_extra_en": "Grades 9-12, English-only instruction, no ESL"
   },
   {
    "id": 55,
@@ -1319,7 +1535,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 56,
@@ -1343,7 +1563,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "not_required",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 57,
@@ -1367,7 +1591,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": 24,
    "score_waiver_note_ko": "UC 공통: ACT ELA 24 이상 인정. 디지털 SAT Reading and Writing은 인정하지 않아요",
-   "score_waiver_note_en": "UC-wide: ACT ELA 24+ accepted. The digital SAT Reading and Writing is not approved"
+   "score_waiver_note_en": "UC-wide: ACT ELA 24+ accepted. The digital SAT Reading and Writing is not approved",
+   "us_hs": "unclear",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 58,
@@ -1391,7 +1619,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "지원 시점 기준 3년 넘게 연속이어야 해요",
+   "us_hs_extra_en": "More than three consecutive years at the time of application"
   },
   {
    "id": 59,
@@ -1415,7 +1647,11 @@
    "sat_ebrw_waiver": 650,
    "act_english_waiver": 29,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "입학 시점까지 최근 4년, 포털에서 신청해야 해요",
+   "us_hs_extra_en": "Most recent four years by enrollment; request in portal"
   },
   {
    "id": 60,
@@ -1439,7 +1675,11 @@
    "sat_ebrw_waiver": 570,
    "act_english_waiver": 24,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 61,
@@ -1463,7 +1703,11 @@
    "sat_ebrw_waiver": 630,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "영어로만 수업하는 학교여야 하고, 포털에서 양식을 내야 해요",
+   "us_hs_extra_en": "School with English as sole language of instruction; submit portal form"
   },
   {
    "id": 62,
@@ -1487,7 +1731,11 @@
    "sat_ebrw_waiver": 480,
    "act_english_waiver": 19,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 63,
@@ -1511,7 +1759,11 @@
    "sat_ebrw_waiver": 540,
    "act_english_waiver": 21,
    "score_waiver_note_ko": "ACT는 English·Reading 21 이상 + Writing 8 (디지털 SAT R&W는 550)",
-   "score_waiver_note_en": "ACT English & Reading 21+ and Writing 8 (digital SAT R&W 550)"
+   "score_waiver_note_en": "ACT English & Reading 21+ and Writing 8 (digital SAT R&W 550)",
+   "us_hs": "no_waiver",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "미국 고교 재학만으로는 면제 안 돼요. AP/IB English 이수나 SAT/ACT 점수로는 면제될 수 있어요",
+   "us_hs_extra_en": "U.S. high school attendance alone doesn't exempt visa holders; AP/IB English or SAT/ACT routes exist"
   },
   {
    "id": 64,
@@ -1535,7 +1787,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "unclear",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 65,
@@ -1559,7 +1815,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 2,
+   "us_hs_extra_ko": "최근 2년이고, Amherst 보충 질문 답변이나 확인서가 필요해요",
+   "us_hs_extra_en": "Two most recent years; answer supplement questions or attestation form"
   },
   {
    "id": 66,
@@ -1583,7 +1843,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 67,
@@ -1607,7 +1871,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "not_required",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 68,
@@ -1631,7 +1899,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "체크리스트에서 자동 면제 안 되면 포털에서 신청해야 해요",
+   "us_hs_extra_en": "If not auto-waived on checklist, request via portal form"
   },
   {
    "id": 69,
@@ -1655,7 +1927,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 70,
@@ -1679,7 +1955,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "not_required",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 71,
@@ -1703,7 +1983,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 72,
@@ -1727,7 +2011,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "Common App 접수 후 이메일로 요청해야 해요",
+   "us_hs_extra_en": "Email to request after Common App is received"
   },
   {
    "id": 73,
@@ -1751,7 +2039,11 @@
    "sat_ebrw_waiver": 700,
    "act_english_waiver": 29,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "포털에서 자동 면제 안 됐으면 이메일로 요청해야 해요",
+   "us_hs_extra_en": "If not already waived in portal, email to request"
   },
   {
    "id": 74,
@@ -1775,7 +2067,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "자동 면제 안 되면 이메일로 요청해야 해요",
+   "us_hs_extra_en": "If not automatically waived, request by email"
   },
   {
    "id": 75,
@@ -1799,7 +2095,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "no_waiver",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 76,
@@ -1823,7 +2123,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "포털 체크리스트 양식으로 요청해야 해요",
+   "us_hs_extra_en": "Request via the applicant portal checklist form"
   },
   {
    "id": 77,
@@ -1847,7 +2151,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "고등학교 수업이 전부 영어여야 해요",
+   "us_hs_extra_en": "All high school classes taught entirely in English"
   },
   {
    "id": 78,
@@ -1871,7 +2179,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 2,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 79,
@@ -1895,7 +2207,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 80,
@@ -1919,7 +2235,11 @@
    "sat_ebrw_waiver": 700,
    "act_english_waiver": 29,
    "score_waiver_note_ko": "ACT는 Reading과 English(또는 ELA) 29 이상",
-   "score_waiver_note_en": "ACT Reading & English (or ELA) 29+"
+   "score_waiver_note_en": "ACT Reading & English (or ELA) 29+",
+   "us_hs": "not_required",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 81,
@@ -1943,7 +2263,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 82,
@@ -1967,7 +2291,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 83,
@@ -1991,7 +2319,11 @@
    "sat_ebrw_waiver": 660,
    "act_english_waiver": 28,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "학업적으로 엄격한 학교여야 해요 (심사 중 자동 적용)",
+   "us_hs_extra_en": "Academically rigorous school; applied during review"
   },
   {
    "id": 84,
@@ -2015,7 +2347,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 85,
@@ -2039,7 +2375,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "현재 수업 언어 기준이에요",
+   "us_hs_extra_en": "Based on current language of instruction"
   },
   {
    "id": 86,
@@ -2063,7 +2403,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 87,
@@ -2087,7 +2431,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 88,
@@ -2111,7 +2459,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "not_required",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 89,
@@ -2135,7 +2487,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "9학년부터 다녀야 하고, 포털 양식으로 신청해요 (승인 보장 안 돼요)",
+   "us_hs_extra_en": "Since 9th grade; submit portal form; approval not guaranteed"
   },
   {
    "id": 90,
@@ -2159,7 +2515,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "외국어 빼고 모든 수업이 영어여야 하고, 포털에서 신청해야 해요",
+   "us_hs_extra_en": "All classes in English except second languages; request via portal"
   },
   {
    "id": 91,
@@ -2183,7 +2543,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "unclear",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 92,
@@ -2207,7 +2571,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 2,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 93,
@@ -2231,7 +2599,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "이메일로 양식을 받아 제출해야 해요",
+   "us_hs_extra_en": "Email to request the waiver form, then submit it"
   },
   {
    "id": 94,
@@ -2255,7 +2627,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "지원 후 사례별로 검토해요",
+   "us_hs_extra_en": "Considered case by case after applying"
   },
   {
    "id": 95,
@@ -2279,7 +2655,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "모든 과목이 영어여야 하고, 지원 후 이메일로 요청해야 해요",
+   "us_hs_extra_en": "All courses in English; email after applying"
   },
   {
    "id": 96,
@@ -2303,7 +2683,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "3년을 넘겨야 하고, 면제 신청서를 내야 해요",
+   "us_hs_extra_en": "More than three years; submit exemption request form"
   },
   {
    "id": 97,
@@ -2327,7 +2711,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "unclear",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 98,
@@ -2351,7 +2739,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "이메일로 요청해야 해요 (영어 수업 연수 기재)",
+   "us_hs_extra_en": "Request by email, stating years in an English-language classroom"
   },
   {
    "id": 99,
@@ -2375,7 +2767,11 @@
    "sat_ebrw_waiver": 560,
    "act_english_waiver": 21,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 100,
@@ -2399,7 +2795,11 @@
    "sat_ebrw_waiver": 510,
    "act_english_waiver": 18,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "9학년부터 연속 3년 full-time, GPA 3.0 이상, ELL 수업 없이",
+   "us_hs_extra_en": "Three consecutive full-time years from grade 9, 3.0+ GPA, no ELL classes"
   },
   {
    "id": 101,
@@ -2423,7 +2823,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "no_waiver",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "영어권 국적자만 면제돼요",
+   "us_hs_extra_en": "Only nationals of listed countries are exempt"
   },
   {
    "id": 102,
@@ -2447,7 +2851,11 @@
    "sat_ebrw_waiver": 640,
    "act_english_waiver": 22,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "지원 현황 페이지 양식으로 신청해야 해요",
+   "us_hs_extra_en": "Request via the application status page form"
   },
   {
    "id": 103,
@@ -2471,7 +2879,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "미국·영국식 교육과정이어야 하고, 자동이 아니라 재량 판단이에요",
+   "us_hs_extra_en": "American or British curriculum; not automatic, Director's discretion"
   },
   {
    "id": 104,
@@ -2495,7 +2907,11 @@
    "sat_ebrw_waiver": 650,
    "act_english_waiver": 27,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "포털에서 면제 신청서를 내야 해요",
+   "us_hs_extra_en": "Submit waiver request form in the portal"
   },
   {
    "id": 105,
@@ -2519,7 +2935,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "전 교육과정이 영어여야 하고, 포털에서 신청해야 해요",
+   "us_hs_extra_en": "Full curriculum in English; request in portal"
   },
   {
    "id": 106,
@@ -2543,7 +2963,11 @@
    "sat_ebrw_waiver": 600,
    "act_english_waiver": 27,
    "score_waiver_note_ko": "SAT·ACT를 제출하는 경우",
-   "score_waiver_note_en": "If submitting SAT/ACT"
+   "score_waiver_note_en": "If submitting SAT/ACT",
+   "us_hs": "unclear",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 107,
@@ -2567,7 +2991,11 @@
    "sat_ebrw_waiver": 510,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 2,
+   "us_hs_extra_ko": "ESL 수업은 빼고 계산해요",
+   "us_hs_extra_en": "Excluding ESL"
   },
   {
    "id": 108,
@@ -2591,7 +3019,11 @@
    "sat_ebrw_waiver": 660,
    "act_english_waiver": 27,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "영어 시험을 본 적도, 볼 계획도 없어야 하고 이메일로 요청해야 해요",
+   "us_hs_extra_en": "Must not have taken/plan to take any ELP test; request by email"
   },
   {
    "id": 109,
@@ -2615,7 +3047,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "이메일로 요청해야 해요",
+   "us_hs_extra_en": "Request by email"
   },
   {
    "id": 110,
@@ -2639,7 +3075,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "unclear",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 111,
@@ -2663,7 +3103,11 @@
    "sat_ebrw_waiver": 550,
    "act_english_waiver": 21,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "영어 중심 학교는 사례별로 이메일 검토 요청",
+   "us_hs_extra_en": "English-medium school waiver is case by case via email"
   },
   {
    "id": 112,
@@ -2687,7 +3131,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "10~12학년 대면 수업으로 다니고 졸업해야 해요 (입학처 재량)",
+   "us_hs_extra_en": "In-person grades 10-12 and graduation; at committee discretion"
   },
   {
    "id": 113,
@@ -2711,7 +3159,11 @@
    "sat_ebrw_waiver": 500,
    "act_english_waiver": 18,
    "score_waiver_note_ko": "ACT는 English와 Reading 모두 18 이상",
-   "score_waiver_note_en": "ACT English and Reading both 18+"
+   "score_waiver_note_en": "ACT English and Reading both 18+",
+   "us_hs": "no_waiver",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "특정 국가 시민권자만 면제돼요 (미국 고교 재학은 해당 없음)",
+   "us_hs_extra_en": "Only citizens of listed countries (U.S. not listed)"
   },
   {
    "id": 114,
@@ -2735,7 +3187,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": 24,
    "score_waiver_note_ko": "UC 공통: ACT ELA 24 이상 인정. 디지털 SAT Reading and Writing은 인정하지 않아요",
-   "score_waiver_note_en": "UC-wide: ACT ELA 24+ accepted. The digital SAT Reading and Writing is not approved"
+   "score_waiver_note_en": "UC-wide: ACT ELA 24+ accepted. The digital SAT Reading and Writing is not approved",
+   "us_hs": "unclear",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 115,
@@ -2759,7 +3215,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "또는 11·12학년 미국 고교 + SAT Verbal 550/ACT English 23",
+   "us_hs_extra_en": "Or junior+senior years at a U.S. high school with SAT Verbal 550 / ACT English 23"
   },
   {
    "id": 116,
@@ -2783,7 +3243,11 @@
    "sat_ebrw_waiver": 600,
    "act_english_waiver": 27,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "면제돼도 시험 제출을 강력히 권장하고, 이메일로 문의해야 해요",
+   "us_hs_extra_en": "Test still strongly recommended; email to ask"
   },
   {
    "id": 117,
@@ -2807,7 +3271,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "unclear",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 118,
@@ -2831,7 +3299,11 @@
    "sat_ebrw_waiver": 550,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "사례별 검토이고, 지원 후 입학처에 연락해야 해요",
+   "us_hs_extra_en": "Case by case; contact admissions after applying"
   },
   {
    "id": 119,
@@ -2855,7 +3327,11 @@
    "sat_ebrw_waiver": 600,
    "act_english_waiver": null,
    "score_waiver_note_ko": "ACT는 Reading 24 이상",
-   "score_waiver_note_en": "ACT Reading 24+"
+   "score_waiver_note_en": "ACT Reading 24+",
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "입학 담당자가 확인해요",
+   "us_hs_extra_en": "Subject to verification by an admission counselor"
   },
   {
    "id": 120,
@@ -2879,7 +3355,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 2,
+   "us_hs_extra_ko": "연속 2년 full-time이어야 해요",
+   "us_hs_extra_en": "Two consecutive full-time years"
   },
   {
    "id": 121,
@@ -2903,7 +3383,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "no_waiver",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "영어권 국가 시민권자만 면제돼요",
+   "us_hs_extra_en": "Only citizens of English-speaking countries"
   },
   {
    "id": 122,
@@ -2927,7 +3411,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 123,
@@ -2951,7 +3439,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "영어로만 수업하고 ESL 수업이 없어야 해요",
+   "us_hs_extra_en": "English-only instruction and no ESL courses"
   },
   {
    "id": 124,
@@ -2975,7 +3467,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": 20,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 1,
+   "us_hs_extra_ko": "1년 full-time 재학 성적표를 내야 해요",
+   "us_hs_extra_en": "Submit transcript showing one full-time year"
   },
   {
    "id": 125,
@@ -2999,7 +3495,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "자동 면제예요",
+   "us_hs_extra_en": "Automatically waived"
   },
   {
    "id": 126,
@@ -3023,7 +3523,11 @@
    "sat_ebrw_waiver": 560,
    "act_english_waiver": 24,
    "score_waiver_note_ko": "ACT는 English 24·Reading 20 이상",
-   "score_waiver_note_en": "ACT English 24 and Reading 20+"
+   "score_waiver_note_en": "ACT English 24 and Reading 20+",
+   "us_hs": "explicit",
+   "us_hs_years": 2,
+   "us_hs_extra_ko": "미국 고교 4학기 이상 성적표가 필요해요",
+   "us_hs_extra_en": "U.S. high school transcript covering at least 4 semesters"
   },
   {
    "id": 127,
@@ -3047,7 +3551,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 2,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 128,
@@ -3071,7 +3579,11 @@
    "sat_ebrw_waiver": 580,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "입학 담당자에게 해당 여부를 문의해야 해요",
+   "us_hs_extra_en": "Ask your SMU admission counselor whether you qualify"
   },
   {
    "id": 129,
@@ -3095,7 +3607,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": 24,
    "score_waiver_note_ko": "UC 공통: ACT ELA 24 이상 인정. 디지털 SAT Reading and Writing은 인정하지 않아요",
-   "score_waiver_note_en": "UC-wide: ACT ELA 24+ accepted. The digital SAT Reading and Writing is not approved"
+   "score_waiver_note_en": "UC-wide: ACT ELA 24+ accepted. The digital SAT Reading and Writing is not approved",
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "'대부분의 경우' 기준이에요",
+   "us_hs_extra_en": "Stated as 'in most cases'"
   },
   {
    "id": 130,
@@ -3119,7 +3635,11 @@
    "sat_ebrw_waiver": 550,
    "act_english_waiver": 24,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "ESL이 아닌 영어 과목 B 이상이어야 해요",
+   "us_hs_extra_en": "Non-ESL English courses with B or higher"
   },
   {
    "id": 131,
@@ -3143,7 +3663,11 @@
    "sat_ebrw_waiver": 490,
    "act_english_waiver": 17,
    "score_waiver_note_ko": "영어 능력은 SAT·ACT·CLT로만 증명해요 (TOEFL·IELTS·Duolingo는 인정 안 함). ACT는 English 17·Reading 19 이상",
-   "score_waiver_note_en": "English proficiency is shown only via SAT/ACT/CLT (TOEFL/IELTS/Duolingo not accepted). ACT English 17 and Reading 19+"
+   "score_waiver_note_en": "English proficiency is shown only via SAT/ACT/CLT (TOEFL/IELTS/Duolingo not accepted). ACT English 17 and Reading 19+",
+   "us_hs": "unclear",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 132,
@@ -3167,7 +3691,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "not_required",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 133,
@@ -3191,7 +3719,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "포털에서 신청해야 해요",
+   "us_hs_extra_en": "Request via portal form"
   },
   {
    "id": 134,
@@ -3215,7 +3747,11 @@
    "sat_ebrw_waiver": 550,
    "act_english_waiver": 21,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "영어 중심 학교는 사례별로 이메일 검토 요청",
+   "us_hs_extra_en": "English-medium school waiver is case by case via email"
   },
   {
    "id": 135,
@@ -3239,7 +3775,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 136,
@@ -3263,7 +3803,11 @@
    "sat_ebrw_waiver": 580,
    "act_english_waiver": 23,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 2,
+   "us_hs_extra_ko": "ELL 수업은 빼고 세고, 시작일 2년 이내에 마쳐야 해요",
+   "us_hs_extra_en": "ELL classes don't count; completed within two years of start date"
   },
   {
    "id": 137,
@@ -3287,7 +3831,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "신청해야 하고, 입학처 재량이에요",
+   "us_hs_extra_en": "Must request; at admissions' discretion"
   },
   {
    "id": 138,
@@ -3311,7 +3859,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "ESL 수업 없이, 자동 면제예요",
+   "us_hs_extra_en": "No ESL courses; automatically waived"
   },
   {
    "id": 139,
@@ -3335,7 +3887,11 @@
    "sat_ebrw_waiver": 600,
    "act_english_waiver": 25,
    "score_waiver_note_ko": "ACT는 English와 Reading 25 이상",
-   "score_waiver_note_en": "ACT English and Reading 25+"
+   "score_waiver_note_en": "ACT English and Reading 25+",
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "ESL·ELL·ENL 수업 없이 연속 3년 full-time, 포털 양식을 내야 해요",
+   "us_hs_extra_en": "Three consecutive full-time years without ESL/ELL/ENL; portal waiver form"
   },
   {
    "id": 140,
@@ -3359,7 +3915,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 3,
+   "us_hs_extra_ko": "지원서 언어 질문에 답해야 해요",
+   "us_hs_extra_en": "Answer the language questions in the application"
   },
   {
    "id": 141,
@@ -3383,7 +3943,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": "이메일로 요청해야 해요",
+   "us_hs_extra_en": "Request by email"
   },
   {
    "id": 142,
@@ -3407,7 +3971,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 143,
@@ -3431,7 +3999,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "no_waiver",
+   "us_hs_years": null,
+   "us_hs_extra_ko": "특정 국가 시민권자만 면제돼요",
+   "us_hs_extra_en": "Only citizens of listed countries"
   },
   {
    "id": 144,
@@ -3455,7 +4027,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "unclear",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 145,
@@ -3479,7 +4055,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "english_medium",
+   "us_hs_years": 2,
+   "us_hs_extra_ko": "학업 성적이 좋아야 해요 (성적표)",
+   "us_hs_extra_en": "Academic success shown on official transcripts"
   },
   {
    "id": 146,
@@ -3503,7 +4083,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "not_required",
+   "us_hs_years": null,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   },
   {
    "id": 147,
@@ -3527,7 +4111,11 @@
    "sat_ebrw_waiver": null,
    "act_english_waiver": null,
    "score_waiver_note_ko": null,
-   "score_waiver_note_en": null
+   "score_waiver_note_en": null,
+   "us_hs": "explicit",
+   "us_hs_years": 4,
+   "us_hs_extra_ko": null,
+   "us_hs_extra_en": null
   }
  ]
 }
