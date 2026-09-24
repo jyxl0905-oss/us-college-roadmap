@@ -35,6 +35,9 @@ export default function RigorTrendBox({ courses, grade }: { courses: CourseInput
         <span><span className="mr-1 inline-block h-2 w-2 rounded-sm bg-gray-200" />{t('일반', 'Regular')}</span>
       </p>
       <p className="mt-2 text-[13px] leading-relaxed text-gray-800">{t(r.ko, r.en)}</p>
+      {r.years.length > 0 && r.years[0].grade > 9 && (
+        <p className="mt-1.5 rounded-lg bg-gray-50 px-2.5 py-1.5 text-[11px] leading-snug text-gray-600">{t(`${r.years[0].grade - 1}학년 이전 기록이 없어요. 전학·편입했다면 이전 학교 과목도 학업 탭에 적어두세요 — 대학에는 고등학교 전체(이전 학교 포함) 성적표가 들어가서, 추이도 9학년부터 보는 게 정확해요.`, `No courses before grade ${r.years[0].grade}. If you transferred, add your previous school’s courses too — colleges see transcripts from every high school you attended, so the trend reads best from grade 9.`)}</p>
+      )}
       <p className="mt-1.5 text-[11px] leading-snug text-gray-400">{t('Common App 학교 보고서에서 카운슬러는 학생의 과목 선택 난이도를 같은 학교 학생들과 비교해 평가해요. 그래서 개수의 절대값보다 "우리 학교에서 들을 수 있는 것 중 얼마나 도전했나"가 중요해요. 이 판단은 사이트 참고 기준이에요.', 'On the Common App school report, counselors rate your course rigor relative to other students at your school — so what matters is how much you challenged yourself within what your school offers, not a raw count. This read is a site guideline.')}</p>
     </div>
   )

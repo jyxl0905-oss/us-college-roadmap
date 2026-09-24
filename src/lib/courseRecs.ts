@@ -144,10 +144,13 @@ const cellRank = (subject: Subject, cell: string): number => {
 export function coursePosition(courses: CourseInput[], grade: number, rowOf: (s: Subject, g: number) => [string, string, string]): Position[] {
   const g = Math.min(12, Math.max(9, grade))
   const thisYear = courses.filter((c) => c.grade === g)
-  // 외국어는 시작 학년 반영 — 이전 학년 기록은 있는데 외국어가 없으면 늦게 시작한 것으로 보고, 학년 대신 '몇 년차' 줄과 비교
-  const langGrades = courses.filter((c) => subjectOf(c) === 'language').map((c) => c.grade)
-  const langStart = langGrades.length ? Math.min(...langGrades) : 9
-  const lateStart = langStart > 9 && langStart <= g && courses.some((c) => c.grade < langStart)
+  // 외국어는 시작 학년 반영 — 가장 이른 외국어 기록의 학년·단계로 시작 학년을 추정
+  // (예: 10학년에 Level 1 → 10학년 시작. 편입 등으로 9학년 기록이 없어도 단계로 판단) → 학년 대신 '몇 년차' 줄과 비교
+  const langCourses = courses.filter((c) => subjectOf(c) === 'language' && c.grade <= g)
+  const first = [...langCourses].sort((a, b) => a.grade - b.grade || rungOf('language', a) - rungOf('language', b))[0]
+  const firstRung = first ? rungOf('language', first) : -1
+  const langStart = first && firstRung >= 0 && firstRung <= 3 ? Math.max(9, first.grade - firstRung) : 9
+  const lateStart = langStart > 9
   const langRowGrade = lateStart ? 9 + (g - langStart) : g
   return SUBJECTS.map((subject): Position => {
     const list = thisYear.filter((c) => subjectOf(c) === subject)
@@ -178,16 +181,16 @@ export function coursePosition(courses: CourseInput[], grade: number, rowOf: (s:
         const cells = r3.map((c) => cellRank(subject, c))
         cells.forEach((cr, i) => { if (cr >= 0 && r >= cr) tier = i as Tier })
         // 같은 단계라도 Honors면 한 칸 위로 (예: Honors Precalculus)
-        if (tier < 2 && top.level === 'honors' && subject === 'math') tier = (tier + 1) as Tier
+        if (tier < 2 && top.level === 'honors') tier = (tier + 1) as Tier
         const step = subject === 'math' ? ladders.math[r]?.name : ladders.language[r]?.name
         if (subject === 'language' && lateStart) {
           const yr = g - langStart + 1
-          reason_ko = `${top.name} → ${step} 단계 (${langStart}학년 시작 · ${yr}년차 → 9학년 시작 기준 ${yr}년차 줄과 비교)`
-          reason_en = `${top.name} → ${step} level (started grade ${langStart} · year ${yr} → compared with year ${yr} of a grade-9 start)`
+          reason_ko = `${top.name} → ${step} 단계 (${langStart}학년에 Level 1로 시작 · ${yr}년차 → 9학년 시작 기준 ${yr}년차 줄과 비교)`
+          reason_en = `${top.name} → ${step} level (started Level 1 in grade ${langStart} · year ${yr} → compared with year ${yr} of a grade-9 start)`
         } else {
           reason_ko = `${top.name} → ${step} 단계 (${g}학년 표와 비교)`; reason_en = `${top.name} → ${step} level (vs the grade ${g} row)`
         }
-        if (subject === 'math' && top.level === 'honors' && tier > 0) { reason_ko += ' · Honors 반영'; reason_en += ' · Honors counted' }
+        if (top.level === 'honors' && tier > 0) { reason_ko += ' · Honors라 한 칸 위'; reason_en += ' · one step up for Honors' }
         return { ...base, tier, merged: merged && tier >= 1, status: 'ok', course: top.name, reason_ko, reason_en }
       }
     } else {
