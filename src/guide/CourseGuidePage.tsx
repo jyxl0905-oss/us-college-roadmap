@@ -108,6 +108,10 @@ export default function CourseGuidePage({ profile }: { profile: ProfileRow | nul
           {subject === 'language' && ' ' + t('외국어 AP는 보통 4년째 배우는 학생이 들어요 (College Board).', 'World-language APs are typically taken in the 4th year of study (College Board).')}
         </p>
 
+        <button onClick={() => navigate('/guide/ap')} className="mt-4 w-full rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-3 text-left text-sm font-semibold text-blue-800 active:bg-blue-100">
+          📘 {t('AP 과목 가이드 — 새 AP·정책 변화·과목별 점수 분포 →', 'AP course guide — new APs, policy changes, score distributions →')}
+        </button>
+
         {/* IB 학교 */}
         <div className="mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
           <p className="text-sm font-semibold text-gray-900">🎓 {t('IB 학교라면 (11–12학년)', 'If your school runs IB (grades 11–12)')}</p>

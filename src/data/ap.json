@@ -1,0 +1,1151 @@
+{
+ "scores_year": 2026,
+ "scores_scope": "all AP students (global)",
+ "scores_source": "https://apstudents.collegeboard.org/about-ap-scores/score-distributions",
+ "verified_at": "2026-09-24",
+ "courses": [
+  {
+   "key": "ap-2-d-art-and-design",
+   "name": "AP 2-D Art and Design",
+   "category": "Arts",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students develop an inquiry-guided body of original work, practicing, experimenting, and revising with 2-D media such as graphic design, photography, illustration, printmaking, animation, and painting.",
+   "learn_ko": "탐구 질문을 중심으로 사진·그래픽 디자인·일러스트·판화·회화 등 2차원 매체로 실험하고 수정하며 자신만의 작품집을 만든다.",
+   "prereq": "None; any experience creating 2-D art and design work is helpful.",
+   "exam_format": "No exam. Portfolio: Sustained Investigation (15 digital images + written evidence, 60%) + Selected Works (5 works, 40%).",
+   "exam_mode": "portfolio",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-2-d-art-and-design",
+   "notes": "Portfolio (Sustained Investigation 60% + Selected Works 40%) submitted via AP Digital Portfolio; 2027 deadline May 7, 2027 11:59 PM ET. AI policy updated for 2026-27.",
+   "scores": [
+    12,
+    30,
+    43,
+    12,
+    3
+   ]
+  },
+  {
+   "key": "ap-3-d-art-and-design",
+   "name": "AP 3-D Art and Design",
+   "category": "Arts",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students develop an inquiry-guided body of original work, practicing, experimenting, and revising with 3-D forms such as sculpture, architecture, jewelry, fashion design, and interior design.",
+   "learn_ko": "탐구 질문을 중심으로 조각·건축·주얼리·패션·인테리어 디자인 등 3차원 형태로 실험하고 수정하며 자신만의 작품집을 만든다.",
+   "prereq": "None; any experience creating 3-D art and design work is helpful.",
+   "exam_format": "No exam. Portfolio: Sustained Investigation (60%) + Selected Works (40%), submitted digitally.",
+   "exam_mode": "portfolio",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-3-d-art-and-design",
+   "notes": "Portfolio (Sustained Investigation 60% + Selected Works 40%) submitted via AP Digital Portfolio; 2027 deadline May 7, 2027 11:59 PM ET. AI policy updated for 2026-27.",
+   "scores": [
+    7,
+    25,
+    43,
+    23,
+    2
+   ]
+  },
+  {
+   "key": "ap-drawing",
+   "name": "AP Drawing",
+   "category": "Arts",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students develop an inquiry-guided body of original work that demonstrates drawing skills through media such as drawing, painting, printmaking, illustration, and animation.",
+   "learn_ko": "탐구 질문을 중심으로 드로잉·회화·판화·일러스트·애니메이션 등으로 드로잉 역량을 보여 주는 작품집을 만든다.",
+   "prereq": "None; any experience creating art through drawing is helpful.",
+   "exam_format": "No exam. Portfolio: Sustained Investigation (60%) + Selected Works (40%), submitted digitally.",
+   "exam_mode": "portfolio",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-drawing",
+   "notes": "Portfolio (Sustained Investigation 60% + Selected Works 40%) submitted via AP Digital Portfolio; 2027 deadline May 7, 2027 11:59 PM ET. AI policy updated for 2026-27.",
+   "scores": [
+    16,
+    31,
+    36,
+    14,
+    3
+   ]
+  },
+  {
+   "key": "ap-art-history",
+   "name": "AP Art History",
+   "category": "Arts",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students study works of art from prehistoric to contemporary times across all continents, examining the social, political, economic, and technological contexts that shaped them.",
+   "learn_ko": "선사시대부터 현대까지 전 대륙의 미술 작품을 다루며, 작품을 낳은 사회·정치·경제·기술적 맥락을 분석한다.",
+   "prereq": "None",
+   "exam_format": "3h: 80 MCQ (50%) + 6 FRQ essays (50%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-art-history",
+   "notes": "2027 exam: Wed, May 12, 2027.",
+   "scores": [
+    15,
+    25,
+    27,
+    24,
+    9
+   ]
+  },
+  {
+   "key": "ap-music-theory",
+   "name": "AP Music Theory",
+   "category": "Arts",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students learn to recognize and describe the elements and processes of music by listening, reading scores, writing music, and singing.",
+   "learn_ko": "다양한 음악을 듣고 악보를 읽고 쓰며 노래하면서 음악의 구성 요소와 원리를 파악하고 설명하는 법을 배운다.",
+   "prereq": "Ability to read and write musical notation and basic voice or instrument performance skills.",
+   "exam_format": "~2h 40m: 75 MCQ incl. aural (45%) + 7 written FRQ (45%) + 2 sight-singing (10%).",
+   "exam_mode": "hybrid",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-music-theory",
+   "notes": "2027 transitions to hybrid digital (MCQ/audio in Bluebook, written FRQ on paper, sight-singing recorded in Bluebook) per AP Central; the AP Students exam page still describes paper MCQ — AP Central is newer. Updated CED released Fall 2026.",
+   "scores": [
+    18,
+    17,
+    24,
+    26,
+    15
+   ]
+  },
+  {
+   "key": "ap-english-language-and-composition",
+   "name": "AP English Language and Composition",
+   "category": "English",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students read nonfiction as writers, analyzing the rhetorical choices authors make to persuade an audience, and then write their own evidence-based arguments.",
+   "learn_ko": "논픽션 글을 작가의 시선으로 읽으며 설득을 위한 수사적 선택을 분석하고, 근거 기반의 논증 글을 직접 쓴다.",
+   "prereq": "None",
+   "exam_format": "3h 15m: 45 MCQ (45%) + 3 FRQ essays — synthesis, rhetorical analysis, argument (55%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-english-language-and-composition",
+   "notes": "MCQ answer choices reduced from 5 to 4 (Fall 2024).",
+   "scores": [
+    15,
+    28,
+    32,
+    15,
+    10
+   ]
+  },
+  {
+   "key": "ap-english-literature-and-composition",
+   "name": "AP English Literature and Composition",
+   "category": "English",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students closely read fiction, drama, and poetry to examine how authors create meaning through language, and write essays that develop and defend their interpretations.",
+   "learn_ko": "소설·희곡·시를 정독하며 작가가 언어로 의미를 만드는 방식을 탐구하고, 자신의 해석을 논증하는 에세이를 쓴다.",
+   "prereq": "None",
+   "exam_format": "3h: 55 MCQ (45%) + 3 FRQ essays — poetry, prose fiction, literary argument (55%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-english-literature-and-composition",
+   "notes": "MCQ answer choices reduced from 5 to 4 (Fall 2024).",
+   "scores": [
+    16,
+    26,
+    31,
+    16,
+    11
+   ]
+  },
+  {
+   "key": "ap-african-american-studies",
+   "name": "AP African American Studies",
+   "category": "History and Social Sciences",
+   "status": "new",
+   "launch_year": 2024,
+   "learn_en": "An interdisciplinary, source-based course on African American experiences from early African kingdoms to the present, drawing on history, literature, the arts, geography, science, and law, including an individual research project.",
+   "learn_ko": "초기 아프리카 왕국부터 현재까지 아프리카계 미국인의 경험을 역사·문학·예술·법 등 여러 학문의 1차 자료로 탐구하고, 개인 연구 프로젝트를 수행한다.",
+   "prereq": "None",
+   "exam_format": "2h 45m exam: 60 MCQ (60%) + project validation Q (1.5%) + 3 SAQ + 1 DBQ (30%); Individual Student Project (8.5%, teacher-scored presentation/oral defense).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-african-american-studies",
+   "notes": "Pilots 2022-23 (60 schools) and 2023-24 (~700 schools); official launch 2024-25, first exam for all participating schools spring 2025.",
+   "scores": [
+    20,
+    30,
+    27,
+    17,
+    6
+   ]
+  },
+  {
+   "key": "ap-comparative-government-and-politics",
+   "name": "AP Comparative Government and Politics",
+   "category": "History and Social Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students compare the governments and politics of China, Iran, Mexico, Nigeria, Russia, and the United Kingdom, learning the comparative method through data and text-based sources.",
+   "learn_ko": "중국·이란·멕시코·나이지리아·러시아·영국의 정치 체제를 비교하며, 데이터와 텍스트 자료로 비교정치학 방법론을 익힌다.",
+   "prereq": "None",
+   "exam_format": "2h 30m: 55 MCQ (50%) + 4 FRQ (50%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-comparative-government-and-politics",
+   "notes": "Updated CED released Fall 2026.",
+   "scores": [
+    15,
+    22,
+    33,
+    18,
+    12
+   ]
+  },
+  {
+   "key": "ap-european-history",
+   "name": "AP European History",
+   "category": "History and Social Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students study European history from c. 1450 to the present, covering the political, social, economic, cultural, and intellectual developments that shaped Europe and the world.",
+   "learn_ko": "1450년경부터 현재까지 유럽을 형성한 정치·사회·경제·문화·사상의 흐름을 공부한다.",
+   "prereq": "None",
+   "exam_format": "3h 15m: 55 MCQ (40%) + 3 SAQ (20%) + DBQ + long essay (40%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-european-history",
+   "notes": "Exam changes effective Fall 2026 (2027 exam).",
+   "scores": [
+    16,
+    33,
+    25,
+    18,
+    8
+   ]
+  },
+  {
+   "key": "ap-human-geography",
+   "name": "AP Human Geography",
+   "category": "History and Social Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students investigate population trends, cultural landscapes, and spatial patterns at multiple scales to understand how people interact with their environment.",
+   "learn_ko": "인구 변화, 문화 경관, 공간 패턴을 다양한 스케일에서 분석하며 인간과 환경의 상호작용을 이해한다.",
+   "prereq": "None",
+   "exam_format": "2h 15m: 60 MCQ (50%) + 3 FRQ (50%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-human-geography",
+   "notes": null,
+   "scores": [
+    19,
+    26,
+    21,
+    24,
+    10
+   ]
+  },
+  {
+   "key": "ap-macroeconomics",
+   "name": "AP Macroeconomics",
+   "category": "History and Social Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students learn how an economy works as a whole, using graphs, charts, and data to analyze topics such as national income, inflation, interest rates, and policy.",
+   "learn_ko": "국민소득·물가·금리·정책 등 경제 전체의 작동 원리를 그래프와 데이터를 활용해 분석한다.",
+   "prereq": "None",
+   "exam_format": "2h 10m: 60 MCQ (66%) + 3 FRQ (33%); four-function calculator permitted.",
+   "exam_mode": "hybrid",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-macroeconomics",
+   "notes": null,
+   "scores": [
+    19,
+    22,
+    25,
+    20,
+    14
+   ]
+  },
+  {
+   "key": "ap-microeconomics",
+   "name": "AP Microeconomics",
+   "category": "History and Social Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students study the economic principles governing individuals and businesses, including supply and demand, elasticity, and market structures.",
+   "learn_ko": "수요와 공급, 탄력성, 시장 구조 등 개인과 기업의 의사결정을 지배하는 경제 원리를 배운다.",
+   "prereq": "None",
+   "exam_format": "2h 10m: 60 MCQ (66%) + 3 FRQ (33%); four-function calculator permitted.",
+   "exam_mode": "hybrid",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-microeconomics",
+   "notes": null,
+   "scores": [
+    19,
+    26,
+    23,
+    20,
+    12
+   ]
+  },
+  {
+   "key": "ap-psychology",
+   "name": "AP Psychology",
+   "category": "History and Social Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students learn the foundational concepts that explain how and why people think and behave as they do, and analyze behavioral research.",
+   "learn_ko": "사람이 왜 그렇게 생각하고 행동하는지 설명하는 심리학의 기초 개념을 배우고 행동 연구를 분석한다.",
+   "prereq": "None",
+   "exam_format": "2h 40m: 75 MCQ (67%) + 2 FRQ (33%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-psychology",
+   "notes": "Clarified CED released Fall 2025.",
+   "scores": [
+    15,
+    35,
+    24,
+    18,
+    8
+   ]
+  },
+  {
+   "key": "ap-united-states-government-and-politics",
+   "name": "AP United States Government and Politics",
+   "category": "History and Social Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students examine the relationships among the president, Congress, and the Supreme Court and how political ideologies shape American politics.",
+   "learn_ko": "대통령·의회·연방대법원의 관계와 정치 이념이 미국 정치를 형성하는 방식을 탐구한다.",
+   "prereq": "None",
+   "exam_format": "3h: 55 MCQ (50%) + 4 FRQ (50%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-united-states-government-and-politics",
+   "notes": null,
+   "scores": [
+    23,
+    28,
+    25,
+    16,
+    8
+   ]
+  },
+  {
+   "key": "ap-united-states-history",
+   "name": "AP United States History",
+   "category": "History and Social Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students explore the events, ideas, movements, and innovations that shaped the United States from its origins to its role as a global power.",
+   "learn_ko": "건국 이념부터 세계 강국으로의 부상까지 미국을 형성한 사건·사상·운동·혁신을 탐구한다.",
+   "prereq": "None",
+   "exam_format": "3h 15m: 55 MCQ (40%) + 3 SAQ (20%) + DBQ + long essay (40%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-united-states-history",
+   "notes": "Exam changes effective Fall 2026 (2027 exam).",
+   "scores": [
+    14,
+    37,
+    23,
+    18,
+    8
+   ]
+  },
+  {
+   "key": "ap-world-history-modern",
+   "name": "AP World History: Modern",
+   "category": "History and Social Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students study the rise and fall of empires, technological change, and cultural and social transformations from a global perspective.",
+   "learn_ko": "제국의 흥망, 기술의 발전, 사회·문화 변화를 세계적 관점에서 공부한다.",
+   "prereq": "None",
+   "exam_format": "3h 15m: 55 MCQ (40%) + 3 SAQ (20%) + DBQ + long essay (40%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-world-history-modern",
+   "notes": "Exam changes effective Fall 2026 (2027 exam).",
+   "scores": [
+    14,
+    36,
+    16,
+    26,
+    8
+   ]
+  },
+  {
+   "key": "ap-calculus-ab",
+   "name": "AP Calculus AB",
+   "category": "Math and Computer Science",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students study the mathematics of change—limits, derivatives, and integrals—at the level of a first-semester college calculus course.",
+   "learn_ko": "극한·미분·적분 등 변화를 다루는 수학을 대학 1학기 미적분 수준으로 배운다.",
+   "prereq": "Completed courses in algebra, geometry, trigonometry, analytic geometry, and elementary functions.",
+   "exam_format": "3h 10m: 42 MCQ (50%) + 6 FRQ (50%); graphing calculator required on some parts.",
+   "exam_mode": "hybrid",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-calculus-ab",
+   "notes": "Exam updates effective Fall 2026.",
+   "scores": [
+    20,
+    28,
+    17,
+    24,
+    11
+   ]
+  },
+  {
+   "key": "ap-calculus-bc",
+   "name": "AP Calculus BC",
+   "category": "Math and Computer Science",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Covers all AP Calculus AB content and extends it (e.g., sequences, series, parametric and polar functions), preparing students for further study in math, engineering, CS, or economics.",
+   "learn_ko": "AP Calculus AB 내용을 모두 포함하고 수열·급수·극좌표 등으로 확장하여 수학·공학·컴퓨터과학·경제학 심화 학습을 준비한다.",
+   "prereq": "Completed courses in algebra, geometry, trigonometry, analytic geometry, and elementary functions, including sequences, series, and polar equations.",
+   "exam_format": "3h 10m: 42 MCQ (50%) + 6 FRQ (50%); graphing calculator required on some parts.",
+   "exam_mode": "hybrid",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-calculus-bc",
+   "notes": "Exam updates effective Fall 2026. Includes an AB subscore.",
+   "scores": [
+    46,
+    22,
+    14,
+    14,
+    4
+   ]
+  },
+  {
+   "key": "ap-computer-science-a",
+   "name": "AP Computer Science A",
+   "category": "Math and Computer Science",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students design and implement computer programs in Java to develop algorithms, work with data structures, and solve problems.",
+   "learn_ko": "Java 언어로 프로그램을 설계·구현하며 알고리즘, 자료구조, 문제 해결 능력을 기른다.",
+   "prereq": "High school courses in English and algebra, and familiarity with functions and function notation.",
+   "exam_format": "3h: 42 MCQ (55%) + 4 FRQ coding questions (45%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-computer-science-a",
+   "notes": "Updated framework CED released Fall 2025.",
+   "scores": [
+    25,
+    26,
+    15,
+    11,
+    23
+   ]
+  },
+  {
+   "key": "ap-computer-science-principles",
+   "name": "AP Computer Science Principles",
+   "category": "Math and Computer Science",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "An introductory course on how computing and technology affect daily life—apps, data, the internet, and their impacts—in which students also build a program of their choice; no coding background required.",
+   "learn_ko": "앱·데이터·인터넷 등 컴퓨팅이 일상에 미치는 영향을 배우고 원하는 프로그램을 직접 만드는 입문 과정으로, 코딩 경험이 없어도 된다.",
+   "prereq": "High school algebra course.",
+   "exam_format": "3h end-of-course exam: 70 MCQ (70%) + 2 written-response Qs on the Create task; Create performance task (program, video, Personalized Project Reference; 9 in-class hours) submitted via AP Digital Portfolio (Section II total 30%).",
+   "exam_mode": "mixed",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-computer-science-principles",
+   "notes": "Create task due Apr 30, 2027. Revised CED coming for 2027-28.",
+   "scores": [
+    10,
+    23,
+    30,
+    21,
+    16
+   ]
+  },
+  {
+   "key": "ap-precalculus",
+   "name": "AP Precalculus",
+   "category": "Math and Computer Science",
+   "status": "new",
+   "launch_year": 2023,
+   "learn_en": "Students study polynomial, rational, exponential, logarithmic, and trigonometric functions and use them to model real-world phenomena.",
+   "learn_ko": "다항·유리·지수·로그·삼각함수를 배우고 이를 활용해 실제 현상을 모델링한다.",
+   "prereq": "Successful completion of introductory algebra and geometry courses (e.g., linear/quadratic functions, factoring, right-triangle trigonometry, systems of equations).",
+   "exam_format": "2h 55m: 42 MCQ (~63%) + 4 FRQ (~37%); calculator required on some parts.",
+   "exam_mode": "hybrid",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-precalculus",
+   "notes": "Launched 2023-24; first exam May 2024. Updated CED released Fall 2026.",
+   "scores": [
+    29,
+    29,
+    24,
+    11,
+    7
+   ]
+  },
+  {
+   "key": "ap-statistics",
+   "name": "AP Statistics",
+   "category": "Math and Computer Science",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students learn how statistics are produced—collecting, analyzing, and drawing conclusions from data—and how to evaluate their credibility.",
+   "learn_ko": "데이터를 수집·분석하고 결론을 도출하는 과정을 배우며, 일상 속 통계의 신뢰성을 평가하는 법을 익힌다.",
+   "prereq": "A first-year algebra course.",
+   "exam_format": "3h: 42 MCQ (50%) + 4 FRQ (50%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-statistics",
+   "notes": "2027 exam moves from hybrid to fully digital. Revised framework CED released Fall 2026.",
+   "scores": [
+    17,
+    23,
+    22,
+    17,
+    21
+   ]
+  },
+  {
+   "key": "ap-biology",
+   "name": "AP Biology",
+   "category": "Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students explore key principles of biology—from cells and genetics to evolution and ecosystems—while designing experiments and analyzing data.",
+   "learn_ko": "세포·유전·진화·생태계 등 생물학의 핵심 원리를 배우고, 실험을 설계하고 데이터를 분석한다.",
+   "prereq": "High school courses in biology and chemistry.",
+   "exam_format": "3h: 60 MCQ (50%) + 6 FRQ (50%).",
+   "exam_mode": "hybrid",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-biology",
+   "notes": "Updated framework CED released Fall 2025.",
+   "scores": [
+    15,
+    25,
+    31,
+    21,
+    8
+   ]
+  },
+  {
+   "key": "ap-chemistry",
+   "name": "AP Chemistry",
+   "category": "Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students examine atomic and molecular interactions behind everyday materials and changes, and learn to conduct experiments and analyze error.",
+   "learn_ko": "일상 속 물질과 변화의 바탕이 되는 원자·분자 상호작용을 탐구하고 실험 수행과 오차 분석을 배운다.",
+   "prereq": "High school courses in chemistry and Algebra II.",
+   "exam_format": "3h 15m: 60 MCQ (50%) + 7 FRQ (50%).",
+   "exam_mode": "hybrid",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-chemistry",
+   "notes": "Updated framework CED released Fall 2024.",
+   "scores": [
+    15,
+    31,
+    30,
+    18,
+    6
+   ]
+  },
+  {
+   "key": "ap-environmental-science",
+   "name": "AP Environmental Science",
+   "category": "Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students use scientific tools to study the natural world and address environmental challenges such as resource use and sustainability.",
+   "learn_ko": "과학적 도구로 자연 세계를 탐구하고 자원 이용·지속가능성 등 환경 문제의 해결 방안을 모색한다.",
+   "prereq": "Two years of high school lab science (life and physical science) and at least one year of algebra.",
+   "exam_format": "2h 40m: 80 MCQ (60%) + 3 FRQ (40%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-environmental-science",
+   "notes": "Updated CED released Fall 2026.",
+   "scores": [
+    13,
+    29,
+    27,
+    15,
+    16
+   ]
+  },
+  {
+   "key": "ap-physics-1-algebra-based",
+   "name": "AP Physics 1: Algebra-Based",
+   "category": "Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "An algebra-based introduction to kinematics, dynamics, and energy, learned through hands-on laboratory work.",
+   "learn_ko": "대수 기반으로 운동학·역학·에너지를 배우며 실험 활동으로 개념을 탐구한다.",
+   "prereq": "Completed geometry and concurrently taking Algebra II or equivalent.",
+   "exam_format": "3h: 42 MCQ (50%) + 4 FRQ (50%).",
+   "exam_mode": "hybrid",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-physics-1-algebra-based",
+   "notes": "Exam updates effective Fall 2026.",
+   "scores": [
+    19,
+    24,
+    25,
+    15,
+    17
+   ]
+  },
+  {
+   "key": "ap-physics-2-algebra-based",
+   "name": "AP Physics 2: Algebra-Based",
+   "category": "Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "An algebra-based course in thermodynamics, electricity and magnetism, and quantum, atomic, and nuclear physics, with hands-on labs.",
+   "learn_ko": "대수 기반으로 열역학·전자기학·양자·원자·핵물리를 배우며 실험으로 현상을 탐구한다.",
+   "prereq": "AP Physics 1 or comparable course; taken or concurrently taking precalculus.",
+   "exam_format": "3h: 42 MCQ (50%) + 4 FRQ (50%).",
+   "exam_mode": "hybrid",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-physics-2-algebra-based",
+   "notes": "Exam updates effective Fall 2026.",
+   "scores": [
+    20,
+    29,
+    23,
+    21,
+    7
+   ]
+  },
+  {
+   "key": "ap-physics-c-electricity-and-magnetism",
+   "name": "AP Physics C: Electricity and Magnetism",
+   "category": "Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "A calculus-based course on electrostatics, conductors, capacitors, circuits, magnetic fields, and electromagnetism, with lab work.",
+   "learn_ko": "미적분을 활용해 정전기·도체·축전기·회로·자기장·전자기 유도를 배우고 실험으로 탐구한다.",
+   "prereq": "Calculus-based Newtonian physics (e.g., AP Physics C: Mechanics); taken or concurrently taking calculus.",
+   "exam_format": "3h: 42 MCQ (50%) + 4 FRQ (50%).",
+   "exam_mode": "hybrid",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-physics-c-electricity-and-magnetism",
+   "notes": "Exam updates effective Fall 2026.",
+   "scores": [
+    24,
+    24,
+    27,
+    17,
+    8
+   ]
+  },
+  {
+   "key": "ap-physics-c-mechanics",
+   "name": "AP Physics C: Mechanics",
+   "category": "Sciences",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "A calculus-based course on motion, gravitation, momentum, and rotation.",
+   "learn_ko": "미적분을 활용해 운동·중력·운동량·회전을 배운다.",
+   "prereq": "Taken or concurrently taking calculus.",
+   "exam_format": "3h: 42 MCQ (50%) + 4 FRQ (50%).",
+   "exam_mode": "hybrid",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-physics-c-mechanics",
+   "notes": "Exam updates effective Fall 2026.",
+   "scores": [
+    20,
+    25,
+    27,
+    17,
+    11
+   ]
+  },
+  {
+   "key": "ap-chinese-language-and-culture",
+   "name": "AP Chinese Language and Culture",
+   "category": "World Languages and Cultures",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students build Chinese communication skills in real-life situations, read and analyze authentic texts, and explore culture while learning to express ideas and opinions in Chinese.",
+   "learn_ko": "실생활 상황에서 중국어 의사소통 능력을 기르고 중국어 텍스트를 읽고 분석하며, 문화를 탐구하고 자신의 생각을 중국어로 표현한다.",
+   "prereq": "No prerequisites, but students are typically in their fourth year of high-school-level study (different pathway possible for native/heritage speakers).",
+   "exam_format": "~2h: FRQ (50%) — project presentation (20%), project Q&A (15%), story narration (7.5%), email response (7.5%) + 55 MCQ (50%: 25 listening, 30 reading). Speaking recorded in Bluebook.",
+   "exam_mode": "mixed",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-chinese-language-and-culture",
+   "notes": "Revised course framework for 2026-27 (first exam May 2027). Personalized Project Reference (PPR) submitted via AP Digital Portfolio by Apr 30, 2027.",
+   "scores": [
+    48,
+    19,
+    18,
+    6,
+    9
+   ]
+  },
+  {
+   "key": "ap-french-language-and-culture",
+   "name": "AP French Language and Culture",
+   "category": "World Languages and Cultures",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students build French communication skills in real-life situations, read and analyze authentic texts, and explore culture while learning to express ideas and opinions in French.",
+   "learn_ko": "실생활 상황에서 프랑스어 의사소통 능력을 기르고 프랑스어 문학을 읽고 분석하며, 문화를 탐구하고 자신의 생각을 프랑스어로 표현한다.",
+   "prereq": "No prerequisites, but students are typically in their fourth year of high-school-level study (different pathway possible for native/heritage speakers).",
+   "exam_format": "~2h 30m: FRQ (50%) — project presentation (20%), project Q&A (15%), argumentative essay (15%) + 55 MCQ (50%: 25 listening, 30 reading). Speaking recorded in Bluebook.",
+   "exam_mode": "mixed",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-french-language-and-culture",
+   "notes": "Revised course framework for 2026-27 (first exam May 2027). Personalized Project Reference (PPR) submitted via AP Digital Portfolio by Apr 30, 2027.",
+   "scores": [
+    15,
+    23,
+    33,
+    23,
+    6
+   ]
+  },
+  {
+   "key": "ap-german-language-and-culture",
+   "name": "AP German Language and Culture",
+   "category": "World Languages and Cultures",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students build German communication skills in real-life situations, read and analyze authentic texts, and explore culture while learning to express ideas and opinions in German.",
+   "learn_ko": "실생활 상황에서 독일어 의사소통 능력을 기르고 독일어 문학을 읽고 분석하며, 문화를 탐구하고 자신의 생각을 독일어로 표현한다.",
+   "prereq": "No prerequisites, but students are typically in their fourth year of high-school-level study (different pathway possible for native/heritage speakers).",
+   "exam_format": "~2h 30m: FRQ (50%) — project presentation (20%), project Q&A (15%), argumentative essay (15%) + 55 MCQ (50%: 25 listening, 30 reading). Speaking recorded in Bluebook.",
+   "exam_mode": "mixed",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-german-language-and-culture",
+   "notes": "Revised course framework for 2026-27 (first exam May 2027). Personalized Project Reference (PPR) submitted via AP Digital Portfolio by Apr 30, 2027.",
+   "scores": [
+    24,
+    17,
+    27,
+    22,
+    10
+   ]
+  },
+  {
+   "key": "ap-italian-language-and-culture",
+   "name": "AP Italian Language and Culture",
+   "category": "World Languages and Cultures",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students build Italian communication skills in real-life situations, read and analyze authentic texts, and explore culture while learning to express ideas and opinions in Italian.",
+   "learn_ko": "실생활 상황에서 이탈리아어 의사소통 능력을 기르고 이탈리아어 문학을 읽고 분석하며, 문화를 탐구하고 자신의 생각을 이탈리아어로 표현한다.",
+   "prereq": "No prerequisites, but students are typically in their fourth year of high-school-level study (different pathway possible for native/heritage speakers).",
+   "exam_format": "~2h 30m: FRQ (50%) — project presentation (20%), project Q&A (15%), argumentative essay (15%) + 55 MCQ (50%: 25 listening, 30 reading). Speaking recorded in Bluebook.",
+   "exam_mode": "mixed",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-italian-language-and-culture",
+   "notes": "Revised course framework for 2026-27 (first exam May 2027). Personalized Project Reference (PPR) submitted via AP Digital Portfolio by Apr 30, 2027.",
+   "scores": [
+    19,
+    22,
+    28,
+    20,
+    11
+   ]
+  },
+  {
+   "key": "ap-japanese-language-and-culture",
+   "name": "AP Japanese Language and Culture",
+   "category": "World Languages and Cultures",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students build Japanese communication skills in real-life situations, read and analyze authentic texts, and explore culture while learning to express ideas and opinions in Japanese.",
+   "learn_ko": "실생활 상황에서 일본어 의사소통 능력을 기르고 일본어 텍스트를 읽고 분석하며, 문화를 탐구하고 자신의 생각을 일본어로 표현한다.",
+   "prereq": "No prerequisites, but students are typically in their fourth year of high-school-level study (different pathway possible for native/heritage speakers).",
+   "exam_format": "~2h: FRQ (50%) — project presentation (20%), project Q&A (15%), story narration (7.5%), email response (7.5%) + 55 MCQ (50%: 25 listening, 30 reading). Speaking recorded in Bluebook.",
+   "exam_mode": "mixed",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-japanese-language-and-culture",
+   "notes": "Revised course framework for 2026-27 (first exam May 2027). Personalized Project Reference (PPR) submitted via AP Digital Portfolio by Apr 30, 2027.",
+   "scores": [
+    47,
+    10,
+    15,
+    7,
+    21
+   ]
+  },
+  {
+   "key": "ap-latin",
+   "name": "AP Latin",
+   "category": "World Languages and Cultures",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students read and analyze Latin literature in the original, including works by Vergil and Pliny the Younger, while exploring Roman history and culture.",
+   "learn_ko": "베르길리우스, 소(小)플리니우스 등의 라틴어 원전을 읽고 분석하며 고대 로마의 역사와 문화를 탐구한다.",
+   "prereq": "No prerequisites, but students are typically in their fourth year of high-school-level study.",
+   "exam_format": "3h: 52 MCQ (50%) + 5 FRQ (50%); plus 2 teacher-scored in-class course-project checkpoints (2% of FRQ section).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-latin",
+   "notes": "Revised framework CED released Fall 2025.",
+   "scores": [
+    20,
+    29,
+    24,
+    17,
+    10
+   ]
+  },
+  {
+   "key": "ap-spanish-language-and-culture",
+   "name": "AP Spanish Language and Culture",
+   "category": "World Languages and Cultures",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students build Spanish communication skills in real-life situations, read and analyze authentic texts, and explore culture while learning to express ideas and opinions in Spanish.",
+   "learn_ko": "실생활 상황에서 스페인어 의사소통 능력을 기르고 스페인어 문학을 읽고 분석하며, 문화를 탐구하고 자신의 생각을 스페인어로 표현한다.",
+   "prereq": "No prerequisites, but students are typically in their fourth year of high-school-level study (different pathway possible for native/heritage speakers).",
+   "exam_format": "~2h 30m: FRQ (50%) — project presentation (20%), project Q&A (15%), argumentative essay (15%) + 55 MCQ (50%: 25 listening, 30 reading). Speaking recorded in Bluebook.",
+   "exam_mode": "mixed",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-spanish-language-and-culture",
+   "notes": "Revised course framework for 2026-27 (first exam May 2027). Personalized Project Reference (PPR) submitted via AP Digital Portfolio by Apr 30, 2027.",
+   "scores": [
+    21,
+    31,
+    31,
+    14,
+    3
+   ]
+  },
+  {
+   "key": "ap-spanish-literature-and-culture",
+   "name": "AP Spanish Literature and Culture",
+   "category": "World Languages and Cultures",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students read Spanish-language poetry, prose, drama, and essays from Latin America, the United States, and Spain—from New World chronicles and Don Quijote to modern Nobel laureates—and analyze them in cultural context.",
+   "learn_ko": "식민지 시대 연대기와 『돈키호테』부터 현대 노벨상 작가까지 중남미·미국·스페인의 스페인어 시·소설·희곡·에세이를 문화적 맥락 속에서 읽고 분석한다.",
+   "prereq": "No prerequisites, but students are typically in their fourth year of high-school-level study (different pathway possible for native/heritage speakers).",
+   "exam_format": "3h: 15 listening MCQ (10%) + 50 reading MCQ (40%) + 4 FRQ — 2 short-answer, 2 essays (50%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-spanish-literature-and-culture",
+   "notes": "AP Central exam-modes page marks this course with the Digital Portfolio asterisk, but the AP Central and AP Students exam pages describe no portfolio component; treated as fully digital. Rubric update Fall 2023.",
+   "scores": [
+    20,
+    23,
+    28,
+    20,
+    9
+   ]
+  },
+  {
+   "key": "ap-seminar",
+   "name": "AP Seminar",
+   "category": "AP Capstone",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students investigate real-world or academic topics of their choice, learning to find and evaluate evidence and present arguments through writing and multimedia presentations, individually and in teams.",
+   "learn_ko": "스스로 고른 실생활·학술 주제를 탐구하며 근거를 찾고 평가하는 법을 배우고, 글과 멀티미디어 발표로 팀·개인 논증을 전달한다.",
+   "prereq": "None",
+   "exam_format": "Team Project & Presentation (20%) + Individual Research-Based Essay & Presentation (35%) via AP Digital Portfolio/teacher-scored + 2h end-of-course exam, 4 Qs (45%).",
+   "exam_mode": "mixed",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-seminar",
+   "notes": "Performance tasks due Apr 30, 2027; exam May 10, 2027. Revised CED coming for 2027-28. Also offered as 'English 10: AP Seminar' option. First year of AP Capstone Diploma.",
+   "scores": [
+    10,
+    21,
+    57,
+    10,
+    2
+   ]
+  },
+  {
+   "key": "ap-research",
+   "name": "AP Research",
+   "category": "AP Capstone",
+   "status": "existing",
+   "launch_year": null,
+   "learn_en": "Students design and conduct a yearlong independent research project on a topic of their choice, learning research methods and presenting and defending their findings.",
+   "learn_ko": "스스로 정한 주제로 1년간 독립 연구를 설계·수행하며 연구 방법론을 배우고, 결과를 발표하고 구두 방어한다.",
+   "prereq": "Students must have successfully completed the AP Seminar course.",
+   "exam_format": "No written exam. Academic paper 4,000–5,000 words (75%, via AP Digital Portfolio) + presentation and oral defense (25%, teacher-scored).",
+   "exam_mode": "portfolio",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-research",
+   "notes": "Paper due Apr 30, 2027. Capstone application no longer required (Fall 2024).",
+   "scores": [
+    17,
+    31,
+    42,
+    8,
+    2
+   ]
+  },
+  {
+   "key": "ap-business-personal-finance",
+   "name": "AP Business with Personal Finance",
+   "category": "AP Career Kickstart",
+   "status": "new",
+   "launch_year": 2026,
+   "learn_en": "A project-based course introducing entrepreneurship, marketing, finance, accounting, and management alongside personal-finance skills such as budgeting and investing.",
+   "learn_ko": "창업·마케팅·재무·회계·경영 등 비즈니스 기초와 예산 관리·투자 같은 개인 금융 역량을 프로젝트 중심으로 배운다.",
+   "prereq": "None",
+   "exam_format": "2h 40m: 60 MCQ (60%) + Business Canvas Project exam-day validation FRQ (15%) + 3 FRQ (25%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-business-personal-finance",
+   "notes": "AP Career Kickstart course; launched 2026-27, first exam Tue, May 4, 2027. Students may also earn an employer-endorsed credential.",
+   "scores": null
+  },
+  {
+   "key": "ap-cybersecurity",
+   "name": "AP Cybersecurity",
+   "category": "AP Career Kickstart",
+   "status": "new",
+   "launch_year": 2026,
+   "learn_en": "Students learn to protect data, devices, and networks from real-world cyber threats through hands-on challenges; no prior coding knowledge required.",
+   "learn_ko": "실제 사이버 위협으로부터 데이터·기기·네트워크를 보호하는 방법을 실습 중심으로 배우며, 코딩 경험이 없어도 된다.",
+   "prereq": "None",
+   "exam_format": "2h 10m: 60 MCQ (70%) + 1 FRQ (30%).",
+   "exam_mode": "digital",
+   "source_url": "https://apstudents.collegeboard.org/courses/ap-cybersecurity",
+   "notes": "AP Career Kickstart course; launched 2026-27 after pilots, first exam Wed, May 5, 2027. Students may also earn an employer-endorsed credential.",
+   "scores": null
+  },
+  {
+   "key": "ap-networking",
+   "name": "AP Networking",
+   "category": "AP Career Kickstart",
+   "status": "pilot",
+   "launch_year": 2027,
+   "learn_en": "Students develop technical and professional skills for networking and IT by configuring, securing, and troubleshooting networks through hands-on activities and real-world scenarios.",
+   "learn_ko": "실습과 실제 시나리오로 네트워크를 구성·보안·문제 해결하며 네트워킹·IT 분야의 기술 및 직무 역량을 기른다.",
+   "prereq": null,
+   "exam_format": null,
+   "exam_mode": null,
+   "source_url": "https://apcentral.collegeboard.org/courses/ap-networking/about",
+   "notes": "Third and final pilot in 2026-27 (only schools that piloted AP Networking or AP Cybersecurity eligible); available to all schools 2027-28, first exam May 2028. Not on the AP Students course index; prerequisites and exam format not published on official pages reviewed.",
+   "scores": null
+  }
+ ],
+ "policy": [
+  {
+   "topic": "Digital testing: 28 of 36 AP exams move to Bluebook (announcement)",
+   "effective": "2025 exams",
+   "summary_en": "College Board announced it would discontinue standard paper testing for 28 AP exams starting May 2025: 16 fully digital and 12 hybrid digital (MCQ in Bluebook, FRQ handwritten in paper booklets). World language exams and Music Theory stayed paper for 2025.",
+   "summary_ko": "College Board는 2025년 5월 시험부터 28개 AP 과목의 종이 시험을 중단하고 Bluebook으로 전환한다고 발표했다. 16개는 완전 디지털, 12개는 하이브리드(객관식은 Bluebook, 서술형은 종이 답안지에 손으로 작성)이며 제2외국어 과목과 Music Theory는 2025년에 종이 시험을 유지했다.",
+   "source_url": "https://allaccess.collegeboard.org/accelerating-our-transition-digital-ap-exams",
+   "source_date": "2024-07-25"
+  },
+  {
+   "topic": "Digital testing: 2025 administration confirmed",
+   "effective": "2025 exams",
+   "summary_en": "The May 5-16, 2025 administration was the first in which 28 of 36 AP subjects with end-of-course exams were given in Bluebook, either fully digital or hybrid digital.",
+   "summary_ko": "2025년 5월 5~16일 시험은 기말 시험이 있는 36개 과목 중 28개가 Bluebook으로 치러진 첫 시험이다. 과목별로 완전 디지털 또는 하이브리드 방식으로 시행되었다.",
+   "source_url": "https://newsroom.collegeboard.org/college-board-transitions-most-ap-exams-digital-may",
+   "source_date": "2025-05-05"
+  },
+  {
+   "topic": "Digital testing: fully digital subjects (2025 onward)",
+   "effective": "2025 exams",
+   "summary_en": "Fully digital in Bluebook: African American Studies, Art History, Comparative Government, CS A, CS Principles, English Language, English Literature, Environmental Science, European History, Human Geography, Latin, Psychology, Seminar, US Government, US History, World History: Modern.",
+   "summary_ko": "Bluebook 완전 디지털 과목은 African American Studies, Art History, Comparative Government, CS A, CS Principles, English Language, English Literature, Environmental Science, European History, Human Geography, Latin, Psychology, Seminar, US Government, US History, World History: Modern이다.",
+   "source_url": "https://allaccess.collegeboard.org/accelerating-our-transition-digital-ap-exams",
+   "source_date": "2024-07-25"
+  },
+  {
+   "topic": "Digital testing: hybrid digital subjects (2025 onward)",
+   "effective": "2025 exams",
+   "summary_en": "Hybrid digital (MCQ and FRQ prompts in Bluebook, FRQ answers handwritten): Biology, Calculus AB/BC, Chemistry, Macroeconomics, Microeconomics, Physics 1, Physics 2, Physics C: Mechanics, Physics C: E&M, Precalculus, and Statistics (Statistics becomes fully digital in 2027).",
+   "summary_ko": "하이브리드 과목(객관식과 서술형 문제는 Bluebook에서 보고, 서술형 답은 종이에 작성)은 Biology, Calculus AB/BC, Chemistry, Macroeconomics, Microeconomics, Physics 1·2, Physics C 두 과목, Precalculus, Statistics이다. Statistics는 2027년부터 완전 디지털로 바뀐다.",
+   "source_url": "https://allaccess.collegeboard.org/accelerating-our-transition-digital-ap-exams",
+   "source_date": "2024-07-25"
+  },
+  {
+   "topic": "Digital testing: 2026 status",
+   "effective": "2026 exams",
+   "summary_en": "College Board's Bluebook help page states that in May 2026 most (not all) AP exams are given digitally; world language exams and Music Theory did not switch until 2027 per the 2026-27 coordinator updates.",
+   "summary_ko": "Bluebook 도움말 페이지는 2026년 5월에 '대부분'의 AP 시험이 디지털로 시행된다고 밝힌다. 2026-27 코디네이터 공지에 따르면 제2외국어와 Music Theory는 2027년에야 전환되므로 2026년에는 아직 종이 시험이었다.",
+   "source_url": "https://bluebook.collegeboard.org/help-center/are-all-ap-exams-taken-bluebook",
+   "source_date": "page undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "Digital testing: 2027 changes (all end-of-course exams in Bluebook)",
+   "effective": "2027 exams",
+   "summary_en": "For 2027, world language exams (Chinese, French, German, Italian, Japanese, Spanish Language; Spanish Literature) become fully digital with audio and recording in Bluebook, AP Statistics moves from hybrid to fully digital, and AP Music Theory becomes hybrid digital. The 2027 lineup is 26 fully digital and 12 hybrid exams, plus portfolio-only Art and Design and AP Research.",
+   "summary_ko": "2027년부터 제2외국어 시험(중국어·프랑스어·독일어·이탈리아어·일본어·스페인어, Spanish Literature 포함)은 Bluebook에서 듣기와 녹음까지 하는 완전 디지털로, AP Statistics는 하이브리드에서 완전 디지털로, AP Music Theory는 하이브리드로 바뀐다. 2027년에는 완전 디지털 26개, 하이브리드 12개이며 Art and Design과 AP Research는 포트폴리오로만 평가한다.",
+   "source_url": "https://apstudents.collegeboard.org/ap-exams-what-to-know/digital-testing-exam-modes",
+   "source_date": "page undated, labeled for 2027 AP Exams (accessed 2026-09-24)"
+  },
+  {
+   "topic": "World language & culture courses revised; project + PPR",
+   "effective": "2026-27 school year / 2027 exams",
+   "summary_en": "The revised world language framework adds a course project; students submit a Personalized Project Reference (PPR) via AP Digital Portfolio by April 30, 2027, and paper exams are discontinued in favor of Bluebook starting May 2027.",
+   "summary_ko": "개정된 제2외국어 과목 체계에는 코스 프로젝트가 추가되었다. 학생은 2027년 4월 30일까지 AP Digital Portfolio에 PPR(Personalized Project Reference, 발표 개요)을 제출해야 하며, 2027년 5월부터 종이 시험이 폐지되고 Bluebook으로 시행된다.",
+   "source_url": "https://apcentral.collegeboard.org/courses/ap-world-languages-revisions",
+   "source_date": "page undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "AP English Language / Literature: 4 answer choices",
+   "effective": "2024-25 school year (2025 exams)",
+   "summary_en": "Starting fall 2024, multiple-choice answer choices on AP English Language and AP English Literature were reduced from 5 to 4.",
+   "summary_ko": "2024년 가을부터 AP English Language와 AP English Literature의 객관식 선택지가 5개에서 4개로 줄었다.",
+   "source_url": "https://apcentral.collegeboard.org/courses/how-ap-develops-courses-and-exams/course-changes-overview",
+   "source_date": "page undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "AP Psychology course and exam revision",
+   "effective": "2024-25 school year (2025 exams)",
+   "summary_en": "AP Psychology was revised to align with APA recommendations (research methods foundational, five content themes), and the May 2025 digital exam has fewer MCQs with four answer choices instead of five.",
+   "summary_ko": "AP Psychology는 미국심리학회(APA) 권고에 맞춰 개정되었다. 연구 방법을 기초로 삼고 내용을 5개 주제로 재편했으며, 2025년 5월 디지털 시험부터는 객관식 문항 수가 줄고 선택지도 5개에서 4개가 된다.",
+   "source_url": "https://allaccess.collegeboard.org/changes-announced-ap-psychology-and-ap-physics-courses",
+   "source_date": "2024-03-01"
+  },
+  {
+   "topic": "AP Physics 1/2/C course revisions",
+   "effective": "2024-25 school year (2025 exams)",
+   "summary_en": "All four AP Physics courses were revised to align content and skills across courses: fluids moved from Physics 2 to Physics 1 (Unit 8), waves moved fully into Physics 2, and science practices were decoupled from specific learning objectives.",
+   "summary_ko": "AP Physics 네 과목은 과목 간 내용과 기술을 맞추도록 개정되었다. 유체(fluids)는 Physics 2에서 Physics 1의 Unit 8로 옮겨졌고, 파동은 Physics 2로 완전히 이동했으며, 과학 탐구 기능은 특정 학습 목표와 분리되었다.",
+   "source_url": "https://apcentral.collegeboard.org/courses/ap-physics/revisions-2024-25",
+   "source_date": "2024-03-01 (announced via All Access: https://allaccess.collegeboard.org/changes-announced-ap-psychology-and-ap-physics-courses)"
+  },
+  {
+   "topic": "AP Physics exams: MCQ count and timing updated",
+   "effective": "2027 exams",
+   "summary_en": "For AP Physics 1, Physics 2, Physics C: Mechanics, and Physics C: E&M, the number of multiple-choice questions and section timing are updated effective with the May 2027 exams.",
+   "summary_ko": "AP Physics 1, Physics 2, Physics C: Mechanics, Physics C: E&M 시험은 2027년 5월부터 객관식 문항 수와 섹션별 시간이 바뀐다.",
+   "source_url": "https://apcentral.collegeboard.org/courses/ap-physics-1/exam",
+   "source_date": "page undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "AP Calculus AB/BC exams: MCQ count and timing updated",
+   "effective": "2027 exams",
+   "summary_en": "The AP Calculus AB/BC CED received minor clarifications for 2026-27 (content unchanged), and the number of multiple-choice questions and exam timing are updated starting with the May 2027 exams.",
+   "summary_ko": "AP Calculus AB/BC는 2026-27학년도 CED에 소소한 명확화가 반영되었고 내용은 바뀌지 않았다. 2027년 5월 시험부터 객관식 문항 수와 시험 시간이 바뀐다.",
+   "source_url": "https://apcentral.collegeboard.org/courses/ap-calculus-ab/exam",
+   "source_date": "page undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "AP US / European / World History: SAQ & LEQ changes",
+   "effective": "2027 exams",
+   "summary_en": "Starting May 2027, APUSH, AP Euro, and AP World require all 3 SAQs (no choice), a single required LEQ built on a broad prompt, and a DBQ that covers a wider chronological range. The MCQ section, rubrics, and course content are unchanged.",
+   "summary_ko": "2027년 5월부터 APUSH, AP Euro, AP World는 단답형(SAQ) 3문항을 모두 풀어야 하고(선택 폐지), 논술형(LEQ)은 넓은 주제의 필수 1문항으로 바뀌며, DBQ는 더 넓은 시대 범위를 다룬다. 객관식, 채점 기준, 과목 내용은 그대로다.",
+   "source_url": "https://apcentral.collegeboard.org/courses/ap-history-exam-updates",
+   "source_date": "page undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "AP Statistics revised framework + fully digital exam",
+   "effective": "2026-27 school year (2027 exams)",
+   "summary_en": "AP Statistics consolidates 8 units into 5, removes some topics (e.g., chi-square goodness of fit, inference for slopes), drops the Algebra II prerequisite, and moves to a fully digital exam in May 2027. Handheld graphing calculators are still allowed alongside Bluebook's Desmos.",
+   "summary_ko": "AP Statistics는 8개 단원을 5개로 통합하고 일부 주제(카이제곱 적합도 검정, 기울기 추론 등)를 뺐으며 Algebra II 선수 조건을 없앴다. 2027년 5월부터 완전 디지털 시험이 되며, Bluebook의 Desmos와 함께 휴대용 그래핑 계산기도 계속 쓸 수 있다.",
+   "source_url": "https://apcentral.collegeboard.org/courses/ap-statistics/future-revisions",
+   "source_date": "page undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "Other revised frameworks (Biology, CS A, Latin, Chemistry, Precalculus, Env. Sci., Seminar, CSP)",
+   "effective": "2024-25 through 2027-28",
+   "summary_en": "Revised CEDs: Chemistry (fall 2024); Biology, Computer Science A, Latin (fall 2025); Precalculus, Environmental Science, Statistics, world languages (fall 2026); AP Seminar and AP CS Principles revised CEDs are due in spring 2027 for 2027-28.",
+   "summary_ko": "개정 CED 시점은 Chemistry가 2024년 가을, Biology·Computer Science A·Latin이 2025년 가을, Precalculus·Environmental Science·Statistics·제2외국어가 2026년 가을이다. AP Seminar와 AP CS Principles 개정 CED는 2027-28학년도용으로 2027년 봄에 나온다.",
+   "source_url": "https://apcentral.collegeboard.org/courses/how-ap-develops-courses-and-exams/course-changes-overview",
+   "source_date": "page undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "AP Capstone (Seminar/Research): application no longer required",
+   "effective": "2024-25 school year",
+   "summary_en": "Starting fall 2024, schools no longer need a separate AP Capstone application to offer AP Seminar and AP Research, and the AI policy for these courses was clarified.",
+   "summary_ko": "2024년 가을부터 학교가 AP Seminar와 AP Research를 개설할 때 별도의 AP Capstone 신청이 필요 없고, 두 과목의 AI 정책이 명확해졌다.",
+   "source_url": "https://apcentral.collegeboard.org/courses/how-ap-develops-courses-and-exams/course-changes-overview",
+   "source_date": "page undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "New course: AP Precalculus",
+   "effective": "2023-24 school year (first exam May 2024)",
+   "summary_en": "AP Precalculus was announced in May 2022, launched in fall 2023, and had its first exam in May 2024.",
+   "summary_ko": "AP Precalculus는 2022년 5월에 발표되어 2023년 가을에 개설되었고, 첫 시험은 2024년 5월에 치러졌다.",
+   "source_url": "https://newsroom.collegeboard.org/new-ap-precalculus-course-will-expand-access-stem-majors-and-careers",
+   "source_date": "2022-05-17"
+  },
+  {
+   "topic": "New course: AP African American Studies",
+   "effective": "2024-25 school year (2025 exams)",
+   "summary_en": "After pilot years, College Board released the revised official AP African American Studies framework for the course's official launch in 2024-25. The exam score combines the exam and an Individual Student Project.",
+   "summary_ko": "시범 운영을 마친 뒤 College Board는 2024-25학년도 정식 개설용 AP African American Studies 개정 공식 체계를 발표했다. 점수는 시험과 개인 연구 프로젝트를 합쳐 산정한다.",
+   "source_url": "https://newsroom.collegeboard.org/advanced-placement-program-releases-revised-african-american-studies-framework",
+   "source_date": "2023-12-06"
+  },
+  {
+   "topic": "New courses: AP Career Kickstart (Business with Personal Finance, Cybersecurity)",
+   "effective": "2026-27 school year (first exams May 2027)",
+   "summary_en": "AP Business with Personal Finance and AP Cybersecurity launch nationally in fall 2026 as AP Career Kickstart courses, with fully digital exams on May 4 and May 5, 2027. Unused or canceled exam fees are waived for newly launched courses in their launch year.",
+   "summary_ko": "AP Business with Personal Finance와 AP Cybersecurity는 AP Career Kickstart 과목으로 2026년 가을 전국에 개설되며, 완전 디지털 시험이 2027년 5월 4일과 5일에 치러진다. 신규 과목은 개설 첫해에 미사용·취소 시험 수수료가 면제된다.",
+   "source_url": "https://newsroom.collegeboard.org/business-backed-high-school-courses-credentials-and-skills-launched-millions-us-students",
+   "source_date": "2025-09-18"
+  },
+  {
+   "topic": "AP Networking pilot",
+   "effective": "2026-27 pilot; broad availability 2027-28",
+   "summary_en": "AP Networking runs a final pilot in 2026-27, limited to schools that were in earlier Networking or Cybersecurity pilots, with an MCQ-only digital exam in May 2027. Nationwide availability is planned for 2027-28.",
+   "summary_ko": "AP Networking은 2026-27학년도에 마지막 시범 운영을 하며, 이전 Networking·Cybersecurity 시범 학교만 참여할 수 있다. 2027년 5월에 객관식만 있는 디지털 시험을 치르고, 전국 개설은 2027-28학년도로 예정되어 있다.",
+   "source_url": "https://apcentral.collegeboard.org/about-ap/outreach-and-collaborations/career-kickstart/cybersecurity-pilots",
+   "source_date": "page undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "Discontinued courses: none found (AP Italian still offered)",
+   "effective": "2027 exams",
+   "summary_en": "The official 2027 exam schedule still includes AP Italian Language and Culture (May 3, 2027), and no AP course discontinuation for 2023-2027 was found on official pages.",
+   "summary_ko": "공식 2027년 시험 일정에는 AP Italian Language and Culture(2027년 5월 3일)가 그대로 있으며, 2023~2027년 사이에 폐지된 AP 과목은 공식 페이지에서 확인되지 않았다.",
+   "source_url": "https://apcentral.collegeboard.org/exam-administration-ordering-scores/exam-dates",
+   "source_date": "page undated, 2027 schedule (accessed 2026-09-24)"
+  },
+  {
+   "topic": "Exam fees 2026-27",
+   "effective": "2026-27 school year (2027 exams)",
+   "summary_en": "The AP exam fee is $99 per exam in the US, US territories, Canada, and DoWEA schools, and $129 at schools everywhere else. The College Board fee reduction for eligible students is $37 per exam, and fees at authorized test centers outside the US vary.",
+   "summary_ko": "AP 시험 응시료는 미국·미국령·캐나다·DoWEA 학교에서 과목당 99달러, 그 밖의 지역 학교에서 과목당 129달러다. 자격을 갖춘 학생은 College Board에서 과목당 37달러를 감면받을 수 있고, 미국 밖 공인 시험센터의 응시료는 센터마다 다르다.",
+   "source_url": "https://apcentral.collegeboard.org/exam-administration-ordering-scores/ordering-fees/exam-fees",
+   "source_date": "page for 2026-27 school year, undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "Late order, cancellation, and late-testing fees",
+   "effective": "2026-27 school year (2027 exams)",
+   "summary_en": "Orders placed November 14, 2026 to March 12, 2027 carry a $40 late fee per exam on top of the base fee. Unused or canceled exams cost $40 each, and late testing adds $40 per exam where applicable.",
+   "summary_ko": "2026년 11월 14일부터 2027년 3월 12일 사이에 주문하면 기본 응시료에 더해 과목당 40달러의 지연 수수료가 붙는다. 미사용·취소 시험은 과목당 40달러, 추가 시험일(late testing) 응시도 해당 시 과목당 40달러가 추가된다.",
+   "source_url": "https://apcentral.collegeboard.org/exam-administration-ordering-scores/ordering-fees/exam-fees",
+   "source_date": "page for 2026-27 school year, undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "Ordering deadlines 2026-27",
+   "effective": "2026-27 school year",
+   "summary_en": "The preferred ordering deadline is October 2, 2026, and the final deadline for full-year and fall courses is November 13, 2026 at 11:59 PM ET (not November 15 this year). Spring-course orders are due March 12, 2027.",
+   "summary_ko": "권장 주문 마감은 2026년 10월 2일이고, 전학년·가을학기 과목의 최종 마감은 2026년 11월 13일 오후 11시 59분(미 동부)이다(올해는 11월 15일이 아님). 봄학기 과목 주문 마감은 2027년 3월 12일이다.",
+   "source_url": "https://apcentral.collegeboard.org/about-ap/school-year-timeline",
+   "source_date": "2026-27 timeline, undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "2027 exam dates",
+   "effective": "2027 exams",
+   "summary_en": "The 2027 AP exams run May 3-7 and May 10-14, 2027, with late testing May 17-21, 2027. Sessions are now called Session 1 and Session 2 instead of morning and afternoon.",
+   "summary_ko": "2027년 AP 시험은 5월 3~7일과 5월 10~14일에 치러지고, 추가 시험일(late testing)은 5월 17~21일이다. 오전·오후 대신 Session 1과 Session 2라는 명칭을 쓴다.",
+   "source_url": "https://apcentral.collegeboard.org/exam-administration-ordering-scores/exam-dates",
+   "source_date": "2027 schedule, undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "Exam start times aligned by time zone (security)",
+   "effective": "2027 exams",
+   "summary_en": "Beginning with the 2027 administration, some locations use start times set by time zone to prevent content disclosure. For UTC+9 (e.g., Korea), Session 1 starts at 10:00 a.m. and Session 2 at 2:00 p.m. local time.",
+   "summary_ko": "2027년 시험부터 문제 유출을 막기 위해 일부 지역은 시간대별로 정해진 시작 시각을 따른다. UTC+9(한국 등)는 Session 1이 현지 시각 오전 10시, Session 2가 오후 2시에 시작한다.",
+   "source_url": "https://apcentral.collegeboard.org/exam-administration-ordering-scores/exam-dates/start-times",
+   "source_date": "announced July 2026 per coordinator updates; page undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "FRQ release timing change",
+   "effective": "2027 exams",
+   "summary_en": "Starting with 2027, free-response questions are no longer posted two days after each exam. All FRQs are released on one day in early June, with two full FRQ sets for most subjects.",
+   "summary_ko": "2027년부터는 서술형 문제(FRQ)를 시험 이틀 뒤에 공개하지 않는다. 6월 초 하루에 모든 과목의 FRQ를 한꺼번에 공개하며, 대부분 과목은 두 세트를 공개한다.",
+   "source_url": "https://apcentral.collegeboard.org/courses/past-exam-questions/release-update",
+   "source_date": "page undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "Score release timing",
+   "effective": "2026 and 2027 exams",
+   "summary_en": "AP scores are released in July; the 2026-27 timeline lists scores as July 2027 with no exact day yet. Higher-ed institutions began receiving 2026 scores on July 1, 2026.",
+   "summary_ko": "AP 점수는 7월에 발표된다. 2026-27 일정표에는 '2027년 7월'로만 나와 있고 정확한 날짜는 아직 없다. 대학은 2026년 7월 1일부터 2026년 점수를 받기 시작했다.",
+   "source_url": "https://apcentral.collegeboard.org/about-ap/school-year-timeline",
+   "source_date": "2026-27 timeline, undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "Free score send deadline and additional score report fee",
+   "effective": "2027 exams",
+   "summary_en": "Students can pick one free score recipient until June 20, 2027 at 11:59 PM ET, and that school receives the scores by early July. After the deadline, each score report costs $15 and is available to the recipient within 24 hours.",
+   "summary_ko": "학생은 2027년 6월 20일 오후 11시 59분(미 동부)까지 무료 점수 수신 기관 1곳을 지정할 수 있고, 해당 학교는 7월 초까지 점수를 받는다. 마감 후에는 성적표 1건에 15달러이며 24시간 안에 전달된다.",
+   "source_url": "https://apstudents.collegeboard.org/sending-scores",
+   "source_date": "page undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "Scoring standards: Evidence-Based Standard Setting (EBSS)",
+   "effective": "Phased in from 2022; visible in 2025 score distributions",
+   "summary_en": "College Board now sets AP score cutoffs through Evidence-Based Standard Setting, using large-scale data instead of small faculty panels, which raised pass rates in some subjects. In 2025, 74% scored 3+ in English Language (55% in 2024) and 66% in Physics 1 (47% in 2024).",
+   "summary_ko": "College Board는 소수 교수진 패널 대신 대규모 데이터를 쓰는 EBSS(Evidence-Based Standard Setting)로 AP 점수 기준을 정하며, 이로 인해 일부 과목의 3점 이상 비율이 올랐다. 2025년 3점 이상 비율은 English Language 74%(2024년 55%), Physics 1 66%(2024년 47%)였다.",
+   "source_url": "https://allaccess.collegeboard.org/2025-ap-exams-scoring-standards-and-security-new-digital-era",
+   "source_date": "2025-07-01"
+  },
+  {
+   "topic": "AP Scholar awards: still offered (only legacy awards discontinued)",
+   "effective": "Current (no change 2023-2027)",
+   "summary_en": "AP Scholar, AP Scholar with Honor, and AP Scholar with Distinction are still offered (3+ on 3 or more exams; 3.25 average with 4+ exams at 3+; 3.5 average with 5+ exams at 3+). State, National, International, and DoDEA AP Scholar awards were discontinued around 2020.",
+   "summary_ko": "AP Scholar, AP Scholar with Honor, AP Scholar with Distinction은 지금도 수여된다. 기준은 각각 3개 이상 과목 3점 이상, 평균 3.25 이상에 4개 이상 과목 3점 이상, 평균 3.5 이상에 5개 이상 과목 3점 이상이다. State·National·International·DoDEA AP Scholar 상은 2020년 무렵 폐지되었다.",
+   "source_url": "https://apcentral.collegeboard.org/exam-administration-ordering-scores/scores/awards/scholar-awards",
+   "source_date": "page undated (accessed 2026-09-24)"
+  },
+  {
+   "topic": "Testing outside the US: authorized test centers",
+   "effective": "Current",
+   "summary_en": "Students outside the US can test at an AP school that offers testing or at a College Board-authorized AP test center run by partner administrators. Fees at those centers vary.",
+   "summary_ko": "미국 밖 학생은 AP 시험을 시행하는 학교나, 협력 기관이 운영하는 College Board 공인 AP 시험센터에서 응시할 수 있다. 시험센터 응시료는 센터마다 다르다.",
+   "source_url": "https://international.collegeboard.org/students/ap/taking-ap-globally",
+   "source_date": "page undated (accessed 2026-09-24)"
+  }
+ ]
+}

@@ -212,6 +212,7 @@ export default function MajorRoadmapPage({ majorKey, userId, profile }: MajorRoa
               ))}
             </ol>
             {data.strong && <p className="mt-2 text-xs text-gray-500">{t('강해야 하는 과목: ', 'Must be strong in: ')}{data.strong}</p>}
+            <button onClick={() => navigate('/guide/ap')} className="mt-2 text-xs font-medium text-blue-600 underline">{t('AP 과목별 배우는 내용·점수 분포 보기 →', 'What each AP covers & score distributions →')}</button>
           </details>
         )}
 
