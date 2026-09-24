@@ -1,0 +1,1309 @@
+{
+ "verified_at": "2026-09-24",
+ "nces": {
+  "url": "https://nces.ed.gov/programs/digest/d23/tables/dt23_322.10.asp",
+  "table": "Table 322.10",
+  "latest_year": "2021-22",
+  "base_year": "2012-13",
+  "total_latest": 2015035,
+  "total_base": 1840381,
+  "fields": [
+   {
+    "en": "Agriculture and natural resources",
+    "ko": "농업·천연자원",
+    "latest": 40675,
+    "base": 34304,
+    "pct": 18.6,
+    "keys": [
+     "animal_science",
+     "pre_vet",
+     "environmental"
+    ]
+   },
+   {
+    "en": "Architecture and related services",
+    "ko": "건축",
+    "latest": 9462,
+    "base": 9757,
+    "pct": -3.0,
+    "keys": [
+     "architecture"
+    ]
+   },
+   {
+    "en": "Area, ethnic, cultural, gender, and group studies",
+    "ko": "지역·민족·문화·젠더 연구",
+    "latest": 6658,
+    "base": 8850,
+    "pct": -24.8,
+    "keys": [
+     "humanities",
+     "social_sci"
+    ]
+   },
+   {
+    "en": "Biological and biomedical sciences",
+    "ko": "생명·바이오메디컬 과학",
+    "latest": 131462,
+    "base": 100397,
+    "pct": 30.9,
+    "keys": [
+     "biology",
+     "genetics",
+     "molecular_bio",
+     "microbiology",
+     "zoology",
+     "marine_biology",
+     "animal_behavior",
+     "neuroscience",
+     "natural_sci",
+     "premed",
+     "pre_dental",
+     "pre_vet"
+    ]
+   },
+   {
+    "en": "Business",
+    "ko": "경영·비즈니스",
+    "latest": 375418,
+    "base": 360887,
+    "pct": 4.0,
+    "keys": [
+     "business",
+     "finance",
+     "accounting",
+     "hospitality",
+     "culinary"
+    ]
+   },
+   {
+    "en": "Communication, journalism, and related programs",
+    "ko": "커뮤니케이션·저널리즘",
+    "latest": 86043,
+    "base": 84818,
+    "pct": 1.4,
+    "keys": [
+     "media",
+     "journalism"
+    ]
+   },
+   {
+    "en": "Communications technologies",
+    "ko": "커뮤니케이션 기술",
+    "latest": 4851,
+    "base": 4987,
+    "pct": -2.7,
+    "keys": [
+     "media",
+     "film"
+    ]
+   },
+   {
+    "en": "Computer and information sciences and support services",
+    "ko": "컴퓨터·정보과학",
+    "latest": 108503,
+    "base": 50961,
+    "pct": 112.9,
+    "keys": [
+     "cs",
+     "ai",
+     "cybersecurity",
+     "data_science",
+     "game_design"
+    ]
+   },
+   {
+    "en": "Education",
+    "ko": "교육학",
+    "latest": 89410,
+    "base": 104698,
+    "pct": -14.6,
+    "keys": [
+     "education"
+    ]
+   },
+   {
+    "en": "Engineering",
+    "ko": "공학",
+    "latest": 123017,
+    "base": 85987,
+    "pct": 43.1,
+    "keys": [
+     "engineering",
+     "industrial_eng",
+     "biomedical_eng",
+     "chemical_eng",
+     "aerospace_eng",
+     "nuclear_eng",
+     "robotics"
+    ]
+   },
+   {
+    "en": "Engineering technologies",
+    "ko": "공학기술",
+    "latest": 18405,
+    "base": 17010,
+    "pct": 8.2,
+    "keys": [
+     "engineering",
+     "robotics"
+    ]
+   },
+   {
+    "en": "English language and literature/letters",
+    "ko": "영어·영문학",
+    "latest": 33429,
+    "base": 52401,
+    "pct": -36.2,
+    "keys": [
+     "english"
+    ]
+   },
+   {
+    "en": "Family and consumer sciences/human sciences",
+    "ko": "가정·소비자과학(휴먼사이언스)",
+    "latest": 20630,
+    "base": 23930,
+    "pct": -13.8,
+    "keys": [
+     "nutrition"
+    ]
+   },
+   {
+    "en": "Foreign languages, literatures, and linguistics",
+    "ko": "외국어·문학·언어학",
+    "latest": 13912,
+    "base": 21647,
+    "pct": -35.7,
+    "keys": [
+     "linguistics",
+     "humanities"
+    ]
+   },
+   {
+    "en": "Health professions and related programs",
+    "ko": "보건·의료 계열",
+    "latest": 263765,
+    "base": 180437,
+    "pct": 46.2,
+    "keys": [
+     "premed",
+     "nursing",
+     "public_health",
+     "pharmacy",
+     "nutrition",
+     "pre_dental"
+    ]
+   },
+   {
+    "en": "Homeland security, law enforcement, and firefighting",
+    "ko": "국토안보·법집행·소방",
+    "latest": 56901,
+    "base": 60264,
+    "pct": -5.6,
+    "keys": [
+     "criminology",
+     "cybersecurity"
+    ]
+   },
+   {
+    "en": "Legal professions and studies",
+    "ko": "법학 관련",
+    "latest": 4444,
+    "base": 4425,
+    "pct": 0.4,
+    "keys": [
+     "prelaw"
+    ]
+   },
+   {
+    "en": "Liberal arts and sciences, general studies, and humanities",
+    "ko": "교양·일반학·인문",
+    "latest": 37887,
+    "base": 46790,
+    "pct": -19.0,
+    "keys": [
+     "humanities"
+    ]
+   },
+   {
+    "en": "Library science",
+    "ko": "문헌정보학",
+    "latest": 135,
+    "base": 102,
+    "pct": 32.4,
+    "keys": []
+   },
+   {
+    "en": "Mathematics and statistics",
+    "ko": "수학·통계",
+    "latest": 26212,
+    "base": 20449,
+    "pct": 28.2,
+    "keys": [
+     "math_data",
+     "applied_math",
+     "statistics",
+     "actuarial"
+    ]
+   },
+   {
+    "en": "Military technologies and applied sciences",
+    "ko": "군사기술·응용과학",
+    "latest": 1602,
+    "base": 105,
+    "pct": 1425.7,
+    "keys": []
+   },
+   {
+    "en": "Multi/interdisciplinary studies",
+    "ko": "학제간·융합 전공",
+    "latest": 52573,
+    "base": 47658,
+    "pct": 10.3,
+    "keys": [
+     "cognitive_science",
+     "data_science",
+     "neuroscience"
+    ]
+   },
+   {
+    "en": "Parks, recreation, leisure, fitness, and kinesiology",
+    "ko": "여가·피트니스·키네시올로지",
+    "latest": 52776,
+    "base": 42628,
+    "pct": 23.8,
+    "keys": [
+     "kinesiology",
+     "sport_management"
+    ]
+   },
+   {
+    "en": "Philosophy and religious studies",
+    "ko": "철학·종교학",
+    "latest": 11230,
+    "base": 14338,
+    "pct": -21.7,
+    "keys": [
+     "philosophy"
+    ]
+   },
+   {
+    "en": "Physical sciences and science technologies",
+    "ko": "물리과학(화학·물리·지구과학 등)",
+    "latest": 28301,
+    "base": 28053,
+    "pct": 0.9,
+    "keys": [
+     "natural_sci",
+     "chemistry",
+     "physics",
+     "astronomy",
+     "geology",
+     "earth_science"
+    ]
+   },
+   {
+    "en": "Precision production",
+    "ko": "정밀생산",
+    "latest": 12,
+    "base": 36,
+    "pct": -66.7,
+    "keys": []
+   },
+   {
+    "en": "Psychology",
+    "ko": "심리학",
+    "latest": 129609,
+    "base": 114446,
+    "pct": 13.2,
+    "keys": [
+     "psychology",
+     "sport_psychology",
+     "criminal_psych",
+     "cognitive_science"
+    ]
+   },
+   {
+    "en": "Public administration and social services",
+    "ko": "행정·사회복지",
+    "latest": 33429,
+    "base": 31950,
+    "pct": 4.6,
+    "keys": [
+     "social_sci"
+    ]
+   },
+   {
+    "en": "Social sciences and history",
+    "ko": "사회과학·역사",
+    "latest": 151109,
+    "base": 177767,
+    "pct": -15.0,
+    "keys": [
+     "social_sci",
+     "economics",
+     "political_sci",
+     "intl_relations",
+     "sociology",
+     "history",
+     "archaeology",
+     "prelaw"
+    ]
+   },
+   {
+    "en": "Theology and religious vocations",
+    "ko": "신학·종교직",
+    "latest": 6394,
+    "base": 7839,
+    "pct": -18.4,
+    "keys": [
+     "philosophy"
+    ]
+   },
+   {
+    "en": "Transportation and materials moving",
+    "ko": "운송(항공운항 포함)",
+    "latest": 6540,
+    "base": 4661,
+    "pct": 40.3,
+    "keys": [
+     "pilot"
+    ]
+   },
+   {
+    "en": "Visual and performing arts",
+    "ko": "시각·공연예술",
+    "latest": 90241,
+    "base": 97799,
+    "pct": -7.7,
+    "keys": [
+     "arts",
+     "graphic_design",
+     "fashion_design",
+     "film",
+     "music",
+     "game_design"
+    ]
+   }
+  ],
+  "detail": [
+   {
+    "en": "Chemical engineering",
+    "ko": "화학공학",
+    "latest": 9986,
+    "base": 7529,
+    "pct": 32.6,
+    "keys": [
+     "chemical_eng",
+     "engineering"
+    ],
+    "url": "https://nces.ed.gov/programs/digest/d22/tables/dt22_325.47.asp"
+   },
+   {
+    "en": "Civil engineering",
+    "ko": "토목공학",
+    "latest": 15051,
+    "base": 13262,
+    "pct": 13.5,
+    "keys": [
+     "engineering"
+    ],
+    "url": "https://nces.ed.gov/programs/digest/d22/tables/dt22_325.47.asp"
+   },
+   {
+    "en": "Electrical, electronics, and communications engineering",
+    "ko": "전기·전자·통신공학",
+    "latest": 16914,
+    "base": 12835,
+    "pct": 31.8,
+    "keys": [
+     "engineering",
+     "robotics"
+    ],
+    "url": "https://nces.ed.gov/programs/digest/d22/tables/dt22_325.47.asp"
+   },
+   {
+    "en": "Mechanical engineering",
+    "ko": "기계공학",
+    "latest": 36224,
+    "base": 21990,
+    "pct": 64.7,
+    "keys": [
+     "engineering",
+     "aerospace_eng",
+     "robotics"
+    ],
+    "url": "https://nces.ed.gov/programs/digest/d22/tables/dt22_325.47.asp"
+   },
+   {
+    "en": "Chemistry",
+    "ko": "화학",
+    "latest": 13962,
+    "base": 13814,
+    "pct": 1.1,
+    "keys": [
+     "chemistry",
+     "natural_sci"
+    ],
+    "url": "https://nces.ed.gov/programs/digest/d22/tables/dt22_325.72.asp"
+   },
+   {
+    "en": "Geology and earth science",
+    "ko": "지질학·지구과학",
+    "latest": 4905,
+    "base": 5539,
+    "pct": -11.4,
+    "keys": [
+     "geology",
+     "earth_science",
+     "natural_sci"
+    ],
+    "url": "https://nces.ed.gov/programs/digest/d22/tables/dt22_325.72.asp"
+   },
+   {
+    "en": "Physics",
+    "ko": "물리학",
+    "latest": 7468,
+    "base": 6082,
+    "pct": 22.8,
+    "keys": [
+     "physics",
+     "natural_sci"
+    ],
+    "url": "https://nces.ed.gov/programs/digest/d22/tables/dt22_325.72.asp"
+   },
+   {
+    "en": "Economics",
+    "ko": "경제학",
+    "latest": 34636,
+    "base": 28449,
+    "pct": 21.7,
+    "keys": [
+     "economics",
+     "business",
+     "social_sci"
+    ],
+    "url": "https://nces.ed.gov/programs/digest/d22/tables/dt22_325.92.asp"
+   },
+   {
+    "en": "History",
+    "ko": "역사학",
+    "latest": 22919,
+    "base": 34188,
+    "pct": -33.0,
+    "keys": [
+     "history",
+     "humanities"
+    ],
+    "url": "https://nces.ed.gov/programs/digest/d22/tables/dt22_325.92.asp"
+   },
+   {
+    "en": "Political science and government",
+    "ko": "정치학",
+    "latest": 38795,
+    "base": 38466,
+    "pct": 0.9,
+    "keys": [
+     "political_sci",
+     "intl_relations",
+     "prelaw"
+    ],
+    "url": "https://nces.ed.gov/programs/digest/d22/tables/dt22_325.92.asp"
+   },
+   {
+    "en": "Sociology",
+    "ko": "사회학",
+    "latest": 26291,
+    "base": 30531,
+    "pct": -13.9,
+    "keys": [
+     "sociology",
+     "social_sci"
+    ],
+    "url": "https://nces.ed.gov/programs/digest/d22/tables/dt22_325.92.asp"
+   }
+  ],
+  "detail_years": [
+   "2012-13",
+   "2020-21"
+  ]
+ },
+ "nyfed": {
+  "url": "https://www.newyorkfed.org/research/college-labor-market",
+  "data_url": "https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-outcomes-by-major-data.csv",
+  "released": "2026-02",
+  "vintage": "2024 ACS",
+  "overall": {
+   "unemployment": 4.2,
+   "underemployment": 39.4,
+   "wage_early": 58000,
+   "wage_mid": 87000
+  },
+  "majors": [
+   {
+    "en": "Agriculture",
+    "ko": "농업",
+    "unemployment": 1.4,
+    "underemployment": 57.1,
+    "wage_early": 56000,
+    "wage_mid": 80000,
+    "keys": []
+   },
+   {
+    "en": "Animal and Plant Sciences",
+    "ko": "동식물 과학",
+    "unemployment": 2.5,
+    "underemployment": 53.5,
+    "wage_early": 46600,
+    "wage_mid": 79000,
+    "keys": [
+     "animal_science"
+    ]
+   },
+   {
+    "en": "Environmental Studies",
+    "ko": "환경학",
+    "unemployment": 6.3,
+    "underemployment": 50.5,
+    "wage_early": 50000,
+    "wage_mid": 80000,
+    "keys": [
+     "environmental"
+    ]
+   },
+   {
+    "en": "Architecture",
+    "ko": "건축",
+    "unemployment": 6.8,
+    "underemployment": 25.7,
+    "wage_early": 60000,
+    "wage_mid": 91000,
+    "keys": [
+     "architecture"
+    ]
+   },
+   {
+    "en": "Ethnic Studies",
+    "ko": "민족학",
+    "unemployment": 4.9,
+    "underemployment": 49.6,
+    "wage_early": 52000,
+    "wage_mid": 90000,
+    "keys": []
+   },
+   {
+    "en": "Communications",
+    "ko": "커뮤니케이션",
+    "unemployment": 3.9,
+    "underemployment": 53.0,
+    "wage_early": 52000,
+    "wage_mid": 88000,
+    "keys": [
+     "media"
+    ]
+   },
+   {
+    "en": "Journalism",
+    "ko": "저널리즘",
+    "unemployment": 2.3,
+    "underemployment": 43.3,
+    "wage_early": 49000,
+    "wage_mid": 87000,
+    "keys": [
+     "journalism"
+    ]
+   },
+   {
+    "en": "Mass Media",
+    "ko": "매스미디어",
+    "unemployment": 5.2,
+    "underemployment": 52.1,
+    "wage_early": 50000,
+    "wage_mid": 80000,
+    "keys": [
+     "media"
+    ]
+   },
+   {
+    "en": "Advertising and Public Relations",
+    "ko": "광고·홍보",
+    "unemployment": 5.7,
+    "underemployment": 38.1,
+    "wage_early": 60000,
+    "wage_mid": 92000,
+    "keys": []
+   },
+   {
+    "en": "Information Systems & Management",
+    "ko": "정보시스템·경영",
+    "unemployment": 6.0,
+    "underemployment": 25.6,
+    "wage_early": 67000,
+    "wage_mid": 100000,
+    "keys": []
+   },
+   {
+    "en": "Computer Science",
+    "ko": "컴퓨터과학",
+    "unemployment": 7.0,
+    "underemployment": 19.1,
+    "wage_early": 87000,
+    "wage_mid": 120000,
+    "keys": [
+     "cs"
+    ]
+   },
+   {
+    "en": "General Education",
+    "ko": "교육학(일반)",
+    "unemployment": 2.6,
+    "underemployment": 28.1,
+    "wage_early": 45000,
+    "wage_mid": 56000,
+    "keys": [
+     "education"
+    ]
+   },
+   {
+    "en": "Early Childhood Education",
+    "ko": "유아교육",
+    "unemployment": 6.6,
+    "underemployment": 22.3,
+    "wage_early": 45000,
+    "wage_mid": 52000,
+    "keys": [
+     "education"
+    ]
+   },
+   {
+    "en": "Elementary Education",
+    "ko": "초등교육",
+    "unemployment": 1.2,
+    "underemployment": 16.2,
+    "wage_early": 45000,
+    "wage_mid": 55000,
+    "keys": [
+     "education"
+    ]
+   },
+   {
+    "en": "Secondary Education",
+    "ko": "중등교육",
+    "unemployment": 2.1,
+    "underemployment": 21.7,
+    "wage_early": 45300,
+    "wage_mid": 62000,
+    "keys": [
+     "education"
+    ]
+   },
+   {
+    "en": "Special Education",
+    "ko": "특수교육",
+    "unemployment": 0.7,
+    "underemployment": 16.0,
+    "wage_early": 46000,
+    "wage_mid": 56000,
+    "keys": [
+     "education"
+    ]
+   },
+   {
+    "en": "Miscellaneous Education",
+    "ko": "기타 교육",
+    "unemployment": 1.1,
+    "underemployment": 24.5,
+    "wage_early": 48000,
+    "wage_mid": 60000,
+    "keys": [
+     "education"
+    ]
+   },
+   {
+    "en": "General Engineering",
+    "ko": "공학(일반)",
+    "unemployment": 4.5,
+    "underemployment": 31.1,
+    "wage_early": 75000,
+    "wage_mid": 105000,
+    "keys": [
+     "engineering"
+    ]
+   },
+   {
+    "en": "Aerospace Engineering",
+    "ko": "항공우주공학",
+    "unemployment": 2.2,
+    "underemployment": 14.7,
+    "wage_early": 85000,
+    "wage_mid": 130000,
+    "keys": [
+     "aerospace_eng"
+    ]
+   },
+   {
+    "en": "Chemical Engineering",
+    "ko": "화학공학",
+    "unemployment": 4.7,
+    "underemployment": 17.9,
+    "wage_early": 85000,
+    "wage_mid": 135000,
+    "keys": [
+     "chemical_eng"
+    ]
+   },
+   {
+    "en": "Civil Engineering",
+    "ko": "토목공학",
+    "unemployment": 2.3,
+    "underemployment": 15.6,
+    "wage_early": 75000,
+    "wage_mid": 115000,
+    "keys": [
+     "engineering"
+    ]
+   },
+   {
+    "en": "Computer Engineering",
+    "ko": "컴퓨터공학",
+    "unemployment": 7.8,
+    "underemployment": 15.8,
+    "wage_early": 90000,
+    "wage_mid": 131000,
+    "keys": [
+     "engineering"
+    ]
+   },
+   {
+    "en": "Electrical Engineering",
+    "ko": "전기공학",
+    "unemployment": 3.2,
+    "underemployment": 21.1,
+    "wage_early": 82000,
+    "wage_mid": 123000,
+    "keys": [
+     "engineering"
+    ]
+   },
+   {
+    "en": "Industrial Engineering",
+    "ko": "산업공학",
+    "unemployment": 4.2,
+    "underemployment": 31.7,
+    "wage_early": 83000,
+    "wage_mid": 100000,
+    "keys": [
+     "industrial_eng"
+    ]
+   },
+   {
+    "en": "Mechanical Engineering",
+    "ko": "기계공학",
+    "unemployment": 4.4,
+    "underemployment": 20.1,
+    "wage_early": 80000,
+    "wage_mid": 120000,
+    "keys": [
+     "engineering"
+    ]
+   },
+   {
+    "en": "Miscellaneous Engineering",
+    "ko": "기타 공학",
+    "unemployment": 3.7,
+    "underemployment": 26.4,
+    "wage_early": 75000,
+    "wage_mid": 105000,
+    "keys": [
+     "engineering"
+    ]
+   },
+   {
+    "en": "Foreign Language",
+    "ko": "외국어",
+    "unemployment": 1.6,
+    "underemployment": 54.0,
+    "wage_early": 48000,
+    "wage_mid": 77000,
+    "keys": []
+   },
+   {
+    "en": "Family and Consumer Sciences",
+    "ko": "가정·소비자과학",
+    "unemployment": 4.3,
+    "underemployment": 45.6,
+    "wage_early": 48000,
+    "wage_mid": 65000,
+    "keys": []
+   },
+   {
+    "en": "English Language",
+    "ko": "영어·영문학",
+    "unemployment": 6.1,
+    "underemployment": 48.5,
+    "wage_early": 48000,
+    "wage_mid": 76000,
+    "keys": [
+     "english"
+    ]
+   },
+   {
+    "en": "Liberal Arts",
+    "ko": "교양학",
+    "unemployment": 3.8,
+    "underemployment": 54.6,
+    "wage_early": 45000,
+    "wage_mid": 75000,
+    "keys": [
+     "humanities"
+    ]
+   },
+   {
+    "en": "Biology",
+    "ko": "생물학",
+    "unemployment": 4.3,
+    "underemployment": 51.1,
+    "wage_early": 45000,
+    "wage_mid": 83000,
+    "keys": [
+     "biology"
+    ]
+   },
+   {
+    "en": "Biochemistry",
+    "ko": "생화학",
+    "unemployment": 2.7,
+    "underemployment": 42.0,
+    "wage_early": 52000,
+    "wage_mid": 100000,
+    "keys": []
+   },
+   {
+    "en": "Miscellaneous Biological Science",
+    "ko": "기타 생명과학",
+    "unemployment": 4.4,
+    "underemployment": 46.9,
+    "wage_early": 46000,
+    "wage_mid": 80000,
+    "keys": []
+   },
+   {
+    "en": "Mathematics",
+    "ko": "수학",
+    "unemployment": 5.8,
+    "underemployment": 26.2,
+    "wage_early": 70000,
+    "wage_mid": 100000,
+    "keys": [
+     "math_data",
+     "applied_math"
+    ]
+   },
+   {
+    "en": "Interdisciplinary Studies",
+    "ko": "학제간 전공",
+    "unemployment": 3.9,
+    "underemployment": 45.2,
+    "wage_early": 52000,
+    "wage_mid": 80000,
+    "keys": []
+   },
+   {
+    "en": "Nutrition Sciences",
+    "ko": "영양학",
+    "unemployment": 4.5,
+    "underemployment": 48.3,
+    "wage_early": 50000,
+    "wage_mid": 70000,
+    "keys": [
+     "nutrition"
+    ]
+   },
+   {
+    "en": "Leisure and Hospitality",
+    "ko": "여가·호스피탈리티",
+    "unemployment": 2.7,
+    "underemployment": 58.1,
+    "wage_early": 45000,
+    "wage_mid": 75000,
+    "keys": [
+     "hospitality"
+    ]
+   },
+   {
+    "en": "Philosophy",
+    "ko": "철학",
+    "unemployment": 5.1,
+    "underemployment": 47.1,
+    "wage_early": 52000,
+    "wage_mid": 80000,
+    "keys": [
+     "philosophy"
+    ]
+   },
+   {
+    "en": "Theology and Religion",
+    "ko": "신학·종교",
+    "unemployment": 3.1,
+    "underemployment": 47.5,
+    "wage_early": 41600,
+    "wage_mid": 66000,
+    "keys": []
+   },
+   {
+    "en": "Chemistry",
+    "ko": "화학",
+    "unemployment": 4.3,
+    "underemployment": 42.8,
+    "wage_early": 50000,
+    "wage_mid": 86000,
+    "keys": [
+     "chemistry"
+    ]
+   },
+   {
+    "en": "Earth Sciences",
+    "ko": "지구과학",
+    "unemployment": 3.8,
+    "underemployment": 31.4,
+    "wage_early": 50000,
+    "wage_mid": 75000,
+    "keys": [
+     "earth_science",
+     "geology"
+    ]
+   },
+   {
+    "en": "Physics",
+    "ko": "물리학",
+    "unemployment": 6.6,
+    "underemployment": 29.1,
+    "wage_early": 67000,
+    "wage_mid": 105000,
+    "keys": [
+     "physics"
+    ]
+   },
+   {
+    "en": "Miscellaneous Physical Sciences",
+    "ko": "기타 물리과학",
+    "unemployment": 2.5,
+    "underemployment": 22.5,
+    "wage_early": 60000,
+    "wage_mid": 81000,
+    "keys": []
+   },
+   {
+    "en": "Psychology",
+    "ko": "심리학",
+    "unemployment": 5.0,
+    "underemployment": 48.3,
+    "wage_early": 45000,
+    "wage_mid": 72000,
+    "keys": [
+     "psychology"
+    ]
+   },
+   {
+    "en": "Criminal Justice",
+    "ko": "형사사법",
+    "unemployment": 3.6,
+    "underemployment": 65.8,
+    "wage_early": 50000,
+    "wage_mid": 80000,
+    "keys": [
+     "criminology"
+    ]
+   },
+   {
+    "en": "Public Policy and Law",
+    "ko": "공공정책·법",
+    "unemployment": 2.2,
+    "underemployment": 45.5,
+    "wage_early": 55000,
+    "wage_mid": 80000,
+    "keys": []
+   },
+   {
+    "en": "Social Services",
+    "ko": "사회복지",
+    "unemployment": 1.9,
+    "underemployment": 30.1,
+    "wage_early": 43000,
+    "wage_mid": 60000,
+    "keys": []
+   },
+   {
+    "en": "Anthropology",
+    "ko": "인류학",
+    "unemployment": 7.9,
+    "underemployment": 55.3,
+    "wage_early": 45000,
+    "wage_mid": 65000,
+    "keys": [
+     "archaeology"
+    ]
+   },
+   {
+    "en": "Economics",
+    "ko": "경제학",
+    "unemployment": 3.5,
+    "underemployment": 33.1,
+    "wage_early": 72000,
+    "wage_mid": 115000,
+    "keys": [
+     "economics"
+    ]
+   },
+   {
+    "en": "Geography",
+    "ko": "지리학",
+    "unemployment": 1.6,
+    "underemployment": 43.0,
+    "wage_early": 50000,
+    "wage_mid": 88000,
+    "keys": []
+   },
+   {
+    "en": "Political Science",
+    "ko": "정치학",
+    "unemployment": 4.5,
+    "underemployment": 48.7,
+    "wage_early": 52000,
+    "wage_mid": 100000,
+    "keys": [
+     "political_sci"
+    ]
+   },
+   {
+    "en": "Sociology",
+    "ko": "사회학",
+    "unemployment": 4.6,
+    "underemployment": 52.0,
+    "wage_early": 49900,
+    "wage_mid": 79000,
+    "keys": [
+     "sociology"
+    ]
+   },
+   {
+    "en": "General Social Sciences",
+    "ko": "사회과학(일반)",
+    "unemployment": 2.3,
+    "underemployment": 38.0,
+    "wage_early": 45200,
+    "wage_mid": 75000,
+    "keys": [
+     "social_sci"
+    ]
+   },
+   {
+    "en": "Construction Services",
+    "ko": "건설 서비스",
+    "unemployment": 2.2,
+    "underemployment": 17.9,
+    "wage_early": 75000,
+    "wage_mid": 120000,
+    "keys": []
+   },
+   {
+    "en": "Art History",
+    "ko": "미술사",
+    "unemployment": 6.7,
+    "underemployment": 45.3,
+    "wage_early": 45000,
+    "wage_mid": 91000,
+    "keys": []
+   },
+   {
+    "en": "Fine Arts",
+    "ko": "순수미술",
+    "unemployment": 7.7,
+    "underemployment": 58.9,
+    "wage_early": 45000,
+    "wage_mid": 72000,
+    "keys": [
+     "arts"
+    ]
+   },
+   {
+    "en": "Performing Arts",
+    "ko": "공연예술",
+    "unemployment": 7.0,
+    "underemployment": 63.9,
+    "wage_early": 44000,
+    "wage_mid": 75000,
+    "keys": []
+   },
+   {
+    "en": "Commercial Art & Graphic Design",
+    "ko": "상업미술·그래픽 디자인",
+    "unemployment": 5.7,
+    "underemployment": 37.1,
+    "wage_early": 50000,
+    "wage_mid": 80000,
+    "keys": [
+     "graphic_design"
+    ]
+   },
+   {
+    "en": "Health Services",
+    "ko": "보건 서비스",
+    "unemployment": 3.8,
+    "underemployment": 45.1,
+    "wage_early": 50000,
+    "wage_mid": 67000,
+    "keys": []
+   },
+   {
+    "en": "Medical Technicians",
+    "ko": "의료기사",
+    "unemployment": 6.2,
+    "underemployment": 47.0,
+    "wage_early": 62000,
+    "wage_mid": 80000,
+    "keys": []
+   },
+   {
+    "en": "Nursing",
+    "ko": "간호학",
+    "unemployment": 2.1,
+    "underemployment": 12.8,
+    "wage_early": 70000,
+    "wage_mid": 87000,
+    "keys": [
+     "nursing"
+    ]
+   },
+   {
+    "en": "Pharmacy",
+    "ko": "약학",
+    "unemployment": 5.6,
+    "underemployment": 30.5,
+    "wage_early": 40000,
+    "wage_mid": 85000,
+    "keys": [
+     "pharmacy"
+    ]
+   },
+   {
+    "en": "Treatment Therapy",
+    "ko": "치료·재활",
+    "unemployment": 2.6,
+    "underemployment": 39.1,
+    "wage_early": 50000,
+    "wage_mid": 70000,
+    "keys": []
+   },
+   {
+    "en": "General Business",
+    "ko": "경영(일반)",
+    "unemployment": 4.3,
+    "underemployment": 50.4,
+    "wage_early": 60000,
+    "wage_mid": 90000,
+    "keys": [
+     "business"
+    ]
+   },
+   {
+    "en": "Accounting",
+    "ko": "회계",
+    "unemployment": 2.6,
+    "underemployment": 21.2,
+    "wage_early": 68000,
+    "wage_mid": 97000,
+    "keys": [
+     "accounting"
+    ]
+   },
+   {
+    "en": "Business Management",
+    "ko": "경영관리",
+    "unemployment": 3.8,
+    "underemployment": 52.6,
+    "wage_early": 56000,
+    "wage_mid": 82000,
+    "keys": [
+     "business"
+    ]
+   },
+   {
+    "en": "Business Analytics",
+    "ko": "비즈니스 애널리틱스",
+    "unemployment": 5.0,
+    "underemployment": 28.7,
+    "wage_early": 72000,
+    "wage_mid": 109000,
+    "keys": [
+     "business"
+    ]
+   },
+   {
+    "en": "Marketing",
+    "ko": "마케팅",
+    "unemployment": 4.4,
+    "underemployment": 49.3,
+    "wage_early": 60000,
+    "wage_mid": 100000,
+    "keys": [
+     "business"
+    ]
+   },
+   {
+    "en": "Finance",
+    "ko": "금융",
+    "unemployment": 2.8,
+    "underemployment": 27.8,
+    "wage_early": 70000,
+    "wage_mid": 112000,
+    "keys": [
+     "finance"
+    ]
+   },
+   {
+    "en": "International Affairs",
+    "ko": "국제관계",
+    "unemployment": 6.1,
+    "underemployment": 45.2,
+    "wage_early": 64000,
+    "wage_mid": 90000,
+    "keys": [
+     "intl_relations"
+    ]
+   },
+   {
+    "en": "History",
+    "ko": "역사학",
+    "unemployment": 4.3,
+    "underemployment": 50.1,
+    "wage_early": 47500,
+    "wage_mid": 80000,
+    "keys": [
+     "history"
+    ]
+   },
+   {
+    "en": "Engineering Technologies",
+    "ko": "공학기술",
+    "unemployment": 1.7,
+    "underemployment": 44.4,
+    "wage_early": 65000,
+    "wage_mid": 104000,
+    "keys": [
+     "engineering"
+    ]
+   },
+   {
+    "en": "Miscellaneous Technologies",
+    "ko": "기타 기술",
+    "unemployment": 3.6,
+    "underemployment": 49.0,
+    "wage_early": 54000,
+    "wage_mid": 96000,
+    "keys": []
+   }
+  ]
+ }
+}

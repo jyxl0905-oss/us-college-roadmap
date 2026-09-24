@@ -25,7 +25,7 @@ export const majorCategories: MajorCategory[] = [
   { value: 'cybersecurity', label: '사이버보안 (Cybersecurity)', track: 'stem' },
   { value: 'applied_math', label: '응용수학 (Applied Math)', track: 'stem' },
   { value: 'statistics', label: '통계학 (Statistics)', track: 'stem' },
-  { value: 'actuarial', label: '보험계리 (Actuarial Science)', track: 'stem' },
+  { value: 'actuarial', label: '보험계리 (Actuarial Science·Math)', track: 'stem' },
   { value: 'natural_sci', label: '자연과학 (Natural Sciences)', track: 'stem' },
   { value: 'biology', label: '생명과학 (Biology)', track: 'stem' },
   { value: 'genetics', label: '유전학 (Genetics)', track: 'stem' },

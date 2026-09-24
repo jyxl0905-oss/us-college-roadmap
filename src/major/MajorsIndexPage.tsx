@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { navigate } from '../lib/router'
-import { Compass } from 'lucide-react'
+import { Compass, TrendingUp } from 'lucide-react'
 import { t, getLang } from '../i18n'
 import { majorsByTrack, majorDisplay, majorClusters, majorCategories, type MajorCategory } from '../data/majors'
 import careersData from '../data/major-careers.json'
@@ -20,7 +20,7 @@ const KEYWORDS: Record<string, string> = {
   data_science: '데이터 분석 머신러닝 빅데이터',
   applied_math: '수학 모델링',
   statistics: '통계 확률 데이터 분석 스탯',
-  actuarial: '보험 계리 리스크',
+  actuarial: '보험 계리 리스크 보험수리 보험계리학 actuarial math mathematics science 액추어리',
   natural_sci: '과학 연구',
   biology: '생물 유전 바이오',
   chemistry: '화학 신약',
@@ -153,6 +153,14 @@ export default function MajorsIndexPage() {
         <p className="mt-1 text-sm text-gray-500">
           {t('전공마다 추천 AP, 활동 방향, 4년 로드맵을 정리했어요. 편집 가이드 — 정답이 아니라 출발점이에요.', 'Recommended APs, activity directions and a 4-year roadmap for each major. An editorial guide — a starting point, not the answer.')}
         </p>
+        <button onClick={() => navigate('/majors/trends')} className="mt-3 flex w-full items-center gap-3 rounded-xl border-2 border-blue-200 bg-blue-50 px-4 py-3 text-left active:bg-blue-100">
+          <TrendingUp size={18} strokeWidth={2} className="shrink-0 text-blue-600" />
+          <span className="min-w-0 flex-1">
+            <span className="block text-sm font-semibold text-gray-900">{t('전공 트렌드 — 인기·뜨는·지는·취업 잘되는 전공', 'Major trends — popular, rising, falling, strong outcomes')}</span>
+            <span className="block text-[11px] text-gray-500">{t('미 교육부 통계청·뉴욕 연방준비은행 공식 데이터', 'Official NCES & New York Fed data')}</span>
+          </span>
+          <span className="text-gray-400">→</span>
+        </button>
         <input
           type="search"
           value={query}

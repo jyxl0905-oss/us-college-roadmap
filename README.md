@@ -87,6 +87,7 @@ npm run dev
 - 신분별 지원 자격(`src/data/aidRules.json`): studentaid.gov·FSA Handbook·ICE/DHS·College Board·대학 공식 페이지 인용만. `/guide/cost`에서 표시.
 - 대회·서머 프로그램(`src/data/programs.json`): 75개, 각 프로그램 공식 사이트·운영 대학·입학처 페이지만 출처로 사용. 국제학생 참가 자격은 공식 자격 페이지 기준. 입학처 공식 입장 24개 포함. `/guide/programs`에서 표시, 매년 여름 갱신.
 - 영어 시험 기준(`src/data/english.json`): 144개교 TOEFL·IELTS·Duolingo 최소/권장, SAT·ACT 대체 점수, 면제 조건·면제 받는 방법(각 대학 입학처 공식 페이지). `/guide/english`와 학교 상세에서 표시, 매년 여름 갱신. Williams·UVA·UChicago는 수동 확인 대기.
+- 전공 트렌드(`src/data/majorTrends.json`): NCES Digest Table 322.10(학사 학위 수, 2012-13→2021-22) + 뉴욕 연준 'Labor Market for Recent College Graduates'(2024 ACS, 2026-02 공개). `/majors/trends`. NCES는 새 판 나오면, 뉴욕 연준은 매년 2월 갱신.
 
 ## 학교 데이터 범위
 - 종합대학 63개교(US News National Universities 기준 Top 60권) + 리버럴 아츠 칼리지 35개교(US News 2026 National Liberal Arts Colleges Top 35, 사관학교 제외·37위 공동 포함). `schools.kind` = university | lac, LAC는 `lac_rank`로 티어 매핑(1-12→1, 13-24→2, 25-35→3).

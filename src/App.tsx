@@ -38,6 +38,7 @@ const ApGuidePage = lazy(() => import('./guide/ApGuidePage'))
 const CostGuidePage = lazy(() => import('./guide/CostGuidePage'))
 const ProgramsGuidePage = lazy(() => import('./guide/ProgramsGuidePage'))
 const EnglishGuidePage = lazy(() => import('./guide/EnglishGuidePage'))
+const MajorTrendsPage = lazy(() => import('./major/MajorTrendsPage'))
 const MapPage = lazy(() => import('./browse/MapPage'))
 // 개발용: /admin?demo=1 → 샘플 데이터로 레이아웃 확인 (프로덕션 빌드에서 제거됨)
 const AdminDemo = import.meta.env.DEV
@@ -508,6 +509,9 @@ function AppRoutes() {
     )
   }
   // 전공 로드맵 (비로그인도 열람 가능, 계획 담기는 로그인 필요)
+  if (path === '/majors/trends' || path === '/majors/trends/') {
+    return <MajorTrendsPage />
+  }
   if (path === '/majors' || path === '/majors/') {
     return <MajorsIndexPage />
   }
