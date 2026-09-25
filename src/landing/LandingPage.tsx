@@ -241,6 +241,9 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
             {t('기존 이메일 계정으로 로그인', 'Log in with an existing email account')}
           </button>
         </div>
+        <p className="mt-6 text-center text-xs text-gray-500">
+          <button onClick={() => navigate('/about')} className="underline">{t('서비스 소개 · 데이터 출처와 원칙', 'About · data sources & principles')}</button>
+        </p>
       </div>
       <StickyCta anchorId="hero-cta" endId="final-cta" onStart={() => void googleLogin()} googleIcon={<GoogleIcon />} />
     </div>

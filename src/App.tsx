@@ -26,6 +26,7 @@ import { Eye, Compass, AlertTriangle, ClipboardList, CalendarDays, RefreshCw, Pe
 const OnboardingFlow = lazy(() => import('./onboarding/OnboardingFlow'))
 const DevInterestTest = lazy(() => import('./app/InterestTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} profile={d.demoProfile()} /> } }))
 const DevPlansTest = lazy(() => import('./app/PlansTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} majorKey="cs" /> } }))
+const DevGuideTest = lazy(() => import('./guide/CourseGuidePage').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} profile={d.demoProfile()} /> } }))
 const DevRecTest = lazy(() => import('./app/RecommendersTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} profile={d.demoProfile()} /> } }))
 const ReportView = lazy(() => import('./report/ReportView'))
 const CheckinFlow = lazy(() => import('./checkin/CheckinFlow'))
@@ -42,6 +43,7 @@ const CostGuidePage = lazy(() => import('./guide/CostGuidePage'))
 const ProgramsGuidePage = lazy(() => import('./guide/ProgramsGuidePage'))
 const EnglishGuidePage = lazy(() => import('./guide/EnglishGuidePage'))
 const MajorTrendsPage = lazy(() => import('./major/MajorTrendsPage'))
+const AboutPage = lazy(() => import('./about/AboutPage'))
 const MapPage = lazy(() => import('./browse/MapPage'))
 // 개발용: /admin?demo=1 → 샘플 데이터로 레이아웃 확인 (프로덕션 빌드에서 제거됨)
 const AdminDemo = import.meta.env.DEV
@@ -517,6 +519,9 @@ function AppRoutes() {
   if (path === '/compare' || path === '/compare/') {
     return <ComparePage key={window.location.search} profile={profile} />
   }
+  if (path === '/about' || path === '/about/') {
+    return <AboutPage />
+  }
   // 체험 모드의 내 원서: 가상 학생 예시 기록으로 모든 탭을 둘러봄 (저장 안 됨)
   if (path === '/demo/app' || path.startsWith('/demo/app/')) {
     return <DemoApp path={path.slice(5)} />
@@ -637,6 +642,7 @@ function AppRoutes() {
   if (import.meta.env.DEV && window.location.search.includes('rectest')) return <DevRecTest />
   if (import.meta.env.DEV && window.location.search.includes('interesttest')) return <DevInterestTest />
   if (import.meta.env.DEV && window.location.search.includes('planstest')) return <DevPlansTest />
+  if (import.meta.env.DEV && window.location.search.includes('guidetest')) return <DevGuideTest />
 
   if (profileErrorScreen) return profileErrorScreen
 
