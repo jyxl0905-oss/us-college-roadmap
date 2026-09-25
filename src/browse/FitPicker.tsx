@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { isDemoUser, demoStore } from '../demo/demoData'
 import { supabase } from '../lib/supabase'
 import { t } from '../i18n'
 import { fitOrder, fitLabels, type Fit } from '../board/boardLogic'
@@ -13,6 +14,11 @@ export const fitChipColors: Record<Fit, string> = {
 }
 
 export async function saveFit(userId: string, schoolId: number, fit: Fit, dataFit: Fit | null): Promise<boolean> {
+  if (isDemoUser(userId)) { // 체험 모드: 화면 안에서만
+    const list = demoStore().applications; const i = list.findIndex((a) => a.school_id === schoolId)
+    if (i >= 0) list[i] = { ...list[i], fit }; else list.push({ school_id: schoolId, round: null, status: 'preparing', updated_at: new Date().toISOString(), fit })
+    return true
+  }
   if (!supabase) return false
   // applications: 기존 행 값 보존을 위해 select 후 upsert (보드의 round·status를 덮어쓰지 않게)
   const { data: prev } = await supabase

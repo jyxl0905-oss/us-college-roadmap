@@ -22,7 +22,7 @@ const currentUrl = () => window.location.pathname + window.location.search + win
 // 체험 모드(/demo/…) 안에서 '내 원서'(/app…)로 가는 이동은 체험용 주소(/demo/app…)로 바꿔 체험을 이어감
 export const inDemo = () => window.location.pathname.startsWith('/demo')
 function demoAware(to: string): string {
-  return inDemo() && /^\/app(\/|\?|$)/.test(to) ? `/demo${to}` : to
+  return inDemo() && /^\/(app|targets)(\/|\?|#|$)/.test(to) ? `/demo${to}` : to
 }
 
 export function navigate(to: string): void {

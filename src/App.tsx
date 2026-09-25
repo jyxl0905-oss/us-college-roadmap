@@ -20,7 +20,7 @@ import { demoProfile, DEMO_USER_ID } from './demo/demoProfile'
 import { getLang, t } from './i18n'
 import TopNav from './nav/TopNav'
 import AppNav from './nav/AppNav'
-import { Eye, Compass, AlertTriangle, ClipboardList, CalendarDays, RefreshCw, PenLine } from 'lucide-react'
+import { Eye, Compass, AlertTriangle, ClipboardList, CalendarDays, RefreshCw, PenLine, Target } from 'lucide-react'
 
 // 무거운 화면(차트·리포트·보드·온보딩)은 필요할 때만 내려받음 — 둘러보기 첫 로딩을 가볍게
 const OnboardingFlow = lazy(() => import('./onboarding/OnboardingFlow'))
@@ -116,6 +116,28 @@ function StashFetcher({ userId, onDone }: { userId: string; onDone: (r: { answer
 }
 
 // 체험 모드 화면 — 상단 안내 띠 + 가상 학생 리포트 (기본기·용어집도 열람 가능)
+// 체험 모드 상단 바 — 예시 리포트 · 목표 학교 · 내 원서를 오가며 둘러보기 + 가입 유도
+function DemoBar({ active }: { active: 'report' | 'targets' | 'app' }) {
+  const tabs: [typeof active, string, string][] = [
+    ['report', '/demo', t('예시 리포트', 'Report')],
+    ['targets', '/demo/targets', t('목표 학교 · 내 위치', 'Target schools')],
+    ['app', '/demo/app', t('내 원서', 'My App')],
+  ]
+  return (
+    <div className="no-print z-30 border-b border-amber-200 bg-amber-50/95 backdrop-blur md:sticky md:top-[49px]">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-3 gap-y-1.5 px-4 py-2">
+        <span className="flex items-center gap-1 text-xs font-semibold text-amber-900"><Eye size={14} strokeWidth={2} />{t('체험 모드 · 가상의 11학년 CS 지망 학생 · 저장 안 됨', 'Demo · fictional grade-11 CS student · nothing is saved')}</span>
+        <div className="flex gap-1">
+          {tabs.map(([k, to, label]) => (
+            <button key={k} onClick={() => navigate(to)} className={`rounded-full px-3 py-1 text-xs font-semibold ${active === k ? 'bg-gray-900 text-white' : 'bg-white text-gray-700 ring-1 ring-amber-200'}`}>{label}</button>
+          ))}
+        </div>
+        <button onClick={() => navigate('/')} className="ml-auto rounded-full bg-blue-600 px-3 py-1 text-xs font-bold text-white">{t('내 것 만들기 (무료)', 'Make mine — free')}</button>
+      </div>
+    </div>
+  )
+}
+
 function DemoReport() {
   setRole('student') // 체험 학생은 항상 학생 기준 문구
   const [profile] = useState(demoProfile)
@@ -123,11 +145,16 @@ function DemoReport() {
   if (guide) return <Screen><GuideView onBack={() => setGuide(false)} /></Screen>
   return (
     <>
-      <div className="no-print border-b border-amber-200 bg-amber-50 px-4 py-2 text-center text-xs text-amber-900">
-        <Eye size={14} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('체험 모드 — 가상의 예시 학생(11학년·CS 지망)이에요. 체크해 봐도 저장되지 않아요.', 'Demo mode — a fictional sample student (grade 11, CS). Checks are not saved.')}{' '}
-        <button onClick={() => navigate('/')} className="font-semibold underline">{t('내 리포트 만들기', 'Make mine')}</button>
-      </div>
-      <div className="no-print mx-auto mt-3 max-w-md px-5 md:max-w-2xl lg:max-w-5xl">
+      <DemoBar active="report" />
+      <div className="no-print mx-auto mt-3 grid max-w-md grid-cols-1 gap-2 px-5 md:max-w-2xl md:grid-cols-2 lg:max-w-5xl">
+        <button onClick={() => navigate('/demo/targets')} className="flex w-full items-center gap-3 rounded-2xl border-2 border-blue-200 bg-blue-50 px-4 py-3 text-left active:bg-blue-100">
+          <Target size={22} strokeWidth={2} className="shrink-0 text-blue-600" />
+          <span className="min-w-0 flex-1">
+            <span className="block text-sm font-bold text-gray-900">{t('목표 학교에서 내 SAT는 어디쯤?', 'Where does my SAT land at each target?')}</span>
+            <span className="block text-xs text-gray-600">{t('합격자 중간 50% 범위 위 내 위치 · 합격률 · 재정지원', 'Your spot on the admitted middle 50% · admit rates · aid')}</span>
+          </span>
+          <span className="shrink-0 text-blue-600">→</span>
+        </button>
         <button onClick={() => navigate('/demo/app')} className="flex w-full items-center gap-3 rounded-2xl border-2 border-blue-200 bg-blue-50 px-4 py-3 text-left active:bg-blue-100">
           <ClipboardList size={22} strokeWidth={2} className="shrink-0 text-blue-600" />
           <span className="min-w-0 flex-1">
@@ -144,16 +171,23 @@ function DemoReport() {
   )
 }
 
+function DemoTargets() {
+  setRole('student')
+  const [profile] = useState(demoProfile)
+  return (
+    <>
+      <DemoBar active="targets" />
+      <TargetsPage userId={DEMO_USER_ID} profile={profile} />
+    </>
+  )
+}
+
 function DemoApp({ path }: { path: string }) {
   setRole('student') // 체험 학생은 항상 학생 기준 문구
   const [profile, setProfile] = useState(demoProfile)
   return (
     <>
-      <div className="no-print border-b border-amber-200 bg-amber-50 px-4 py-2 text-center text-xs text-amber-900">
-        <Eye size={14} strokeWidth={2} className="mr-1 inline -mt-0.5" />{t('체험 모드 — 가상의 예시 학생 기록이에요. 바꿔 봐도 저장되지 않아요.', 'Demo mode — a fictional sample student. Changes are not saved.')}{' '}
-        <button onClick={() => navigate('/demo')} className="font-semibold underline">{t('예시 리포트', 'Sample report')}</button>{' · '}
-        <button onClick={() => navigate('/')} className="font-semibold underline">{t('내 리포트 만들기', 'Make mine')}</button>
-      </div>
+      <DemoBar active="app" />
       <AppRouter path={path} userId={DEMO_USER_ID} profile={profile} onProfileChange={setProfile} />
     </>
   )
@@ -521,6 +555,9 @@ function AppRoutes() {
   }
   if (path === '/about' || path === '/about/') {
     return <AboutPage />
+  }
+  if (path === '/demo/targets' || path === '/demo/targets/') {
+    return <DemoTargets />
   }
   // 체험 모드의 내 원서: 가상 학생 예시 기록으로 모든 탭을 둘러봄 (저장 안 됨)
   if (path === '/demo/app' || path.startsWith('/demo/app/')) {

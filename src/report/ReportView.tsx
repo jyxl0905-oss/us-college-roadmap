@@ -694,7 +694,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
 
     {/* 데스크톱 사이드 패널 — 리포트 옆에서 내 원서를 바로 (모바일은 기존 흐름 그대로) */}
     {demo ? (
-      <aside className="no-print hidden lg:sticky lg:top-16 lg:block"><DemoCta /></aside>
+      <aside className="no-print hidden lg:sticky lg:top-28 lg:block"><DemoCta /></aside>
     ) : (
     <aside className="no-print hidden lg:sticky lg:top-16 lg:block">
       <QuickAppPanel userId={userId} />

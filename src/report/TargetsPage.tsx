@@ -1,4 +1,5 @@
 import { PageSkeleton } from '../ui/Skeleton'
+import { isDemoUser, demoStore } from '../demo/demoData'
 import { Target, Search, Scale, MapIcon, ClipboardList, MessageCircle } from 'lucide-react'
 import { tierSchoolsQuery } from '../lib/tierSchools'
 import { useEffect, useState } from 'react'
@@ -22,7 +23,14 @@ export default function TargetsPage({ userId, profile }: { userId: string; profi
   const [fits, setFits] = useState<Record<number, Fit | null>>({})
   const onboarded = profile.grad_year !== null
 
+  const demo = isDemoUser(userId)
   useEffect(() => {
+    if (demo) { // 체험 모드: 예시 학생이 정한 분류
+      const m: Record<number, Fit | null> = {}
+      for (const r of demoStore().applications) m[r.school_id] = r.fit ?? null
+      setFits(m)
+      return
+    }
     if (!supabase) return
     supabase
       .from('applications')
@@ -37,7 +45,7 @@ export default function TargetsPage({ userId, profile }: { userId: string; profi
 
   // 격차 제안 응답 기록 (강제 변경 없음 — 유지 선택도 기록)
   const recordDecision = async (schoolId: number, decision: 'kept' | 'reclassified') => {
-    if (!supabase) return
+    if (!supabase || demo) return
     await supabase
       .from('predictions')
       .update({ decision, updated_at: new Date().toISOString() })
