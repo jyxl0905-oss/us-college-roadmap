@@ -361,9 +361,10 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       {/* 1. 프로필 헤더 */}
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-xl font-bold text-gray-900">{t(`${profile.nickname}님의 시즌 리포트`, `${profile.nickname}'s season report`)}</h1>
+          <h1 className="text-xl font-bold text-gray-900">{profile.user_role === 'parent' ? t(`${profile.nickname}의 시즌 리포트`, `${profile.nickname}'s season report`) : t(`${profile.nickname}님의 시즌 리포트`, `${profile.nickname}'s season report`)}</h1>
           <p className="mt-1 text-sm text-gray-500">
             {graduated ? <span className="inline-flex items-center gap-1 rounded-full bg-gray-900 px-2 py-0.5 text-[11px] font-semibold text-white"><GraduationCap size={12} strokeWidth={2} />{t('졸업 · 기록 보관', 'Graduated · archive')}</span> : <>{t(`${grade}학년`, `Grade ${grade}`)} · {majorLabel(profile.major_primary)} · {seasonLabelKo[currentSeason()]}</>}
+            {profile.user_role === 'parent' && <span className="ml-1 inline-flex items-center gap-1 rounded-full bg-violet-50 px-1.5 py-0.5 text-[11px] font-semibold text-violet-700">{t('부모님 계정 · 자녀 기준', 'Parent account')}</span>}
             {profile.school_in_us && <span className="ml-1 inline-flex items-center gap-1 rounded-full bg-gray-100 px-1.5 py-0.5 text-[11px] text-gray-500"><Flag size={11} strokeWidth={2} />{t('미국 학교', 'US school')}</span>}
           </p>
           <button

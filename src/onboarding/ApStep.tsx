@@ -1,4 +1,5 @@
 import { t } from '../i18n'
+import { tp } from '../lib/role'
 const countOptions = [0, 1, 2, 3, 4, 5, 6, 7] // 7은 "7+"
 
 interface ApStepProps {
@@ -43,7 +44,7 @@ function ChipRow({
 export default function ApStep({ completed, current, onChange, onNext }: ApStepProps) {
   return (
     <div>
-      <h1 className="text-xl font-bold text-gray-900">{t('AP 과목은 몇 개인가요?', 'How many AP courses?')}</h1>
+      <h1 className="text-xl font-bold text-gray-900">{tp('AP 과목은 몇 개인가요?', '자녀의 AP 과목은 몇 개인가요?', 'How many AP courses?', 'How many AP courses has your child taken?')}</h1>
       <p className="mt-2 text-sm text-gray-500">{t('AP가 없는 학교라면 둘 다 0을 골라주세요.', 'If your school has no APs, choose 0 for both.')}</p>
       <ChipRow
         label={t('이수 완료한 AP', 'APs completed')}

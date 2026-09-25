@@ -1,4 +1,5 @@
 import { gradeFromGradYear, currentSeason, currentSchoolYearEnd, seasonLabelKo } from '../lib/academics'
+import { tp } from '../lib/role'
 import { t } from '../i18n'
 
 // 현재 학년도의 12학년(올해 졸업)부터 5개 — 8월 1일 롤오버에 맞춰 자동으로 한 해씩 밀림 (예: 2026-27 학년도 → 2027~2031)
@@ -16,7 +17,7 @@ export default function GradYearStep({ selected, onSelect, onNext }: GradYearSte
 
   return (
     <div>
-      <h1 className="text-xl font-bold text-gray-900">{t('지금 몇 학년이에요?', 'What grade are you in?')}</h1>
+      <h1 className="text-xl font-bold text-gray-900">{tp('지금 몇 학년이에요?', '자녀는 지금 몇 학년이에요?', 'What grade are you in?', 'What grade is your child in?')}</h1>
       <p className="mt-2 text-sm text-gray-500">{t('미국식 학년(9~12학년) 또는 졸업연도(Class of)로 골라주세요.', 'Pick by US grade (9–12) or graduation year (Class of).')}</p>
       <div className="mt-6 flex flex-col gap-3">
         {gradYears.map((year) => (
@@ -47,7 +48,7 @@ export default function GradYearStep({ selected, onSelect, onNext }: GradYearSte
           <div className="rounded-xl bg-blue-50 px-4 py-3 text-sm text-blue-900">
             {grade >= 9 && grade <= 12 ? (
               <>
-                {t('지금은 ', 'Right now you are in ')}<strong>{t(`${grade}학년`, `grade ${grade}`)}</strong>{t(`, ${seasonLabelKo[currentSeason()]} 시즌이에요. 맞나요?`, `, ${seasonLabelKo[currentSeason()]} season. Correct?`)}
+                {tp('지금은 ', '자녀는 지금 ', 'Right now you are in ', 'Right now your child is in ')}<strong>{t(`${grade}학년`, `grade ${grade}`)}</strong>{t(`, ${seasonLabelKo[currentSeason()]} 시즌이에요. 맞나요?`, `, ${seasonLabelKo[currentSeason()]} season. Correct?`)}
               </>
             ) : grade < 9 ? (
               <>

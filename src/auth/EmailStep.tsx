@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { researchAllowed } from '../lib/role'
 import { t } from '../i18n'
 import { MailCheck, Inbox } from 'lucide-react'
 import { supabase } from '../lib/supabase'
@@ -15,6 +16,10 @@ export default function EmailStep({ redirectPath = '/', title, minimal = false }
   const [sending, setSending] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [consent, setConsent] = useState(() => localStorage.getItem(RESEARCH_CONSENT_KEY) === '1')
+  // 부모·미국 시민권/영주권자는 연구 동의를 묻지 않음 (온보딩 답변 기준)
+  const canResearch = (() => {
+    try { const a = JSON.parse(localStorage.getItem('pending_answers') ?? 'null'); return researchAllowed({ role: a?.userRole, status: a?.applicantStatus }) } catch { return true }
+  })()
   const [showDetail, setShowDetail] = useState(false)
   // 개편: 신규 노출은 구글만 — 이메일 매직링크는 기존 계정용으로 접어둠 (만료 링크로 돌아온 경우엔 펼침)
   const [emailOpen, setEmailOpen] = useState(cameFromExpiredLink || minimal)
@@ -135,7 +140,7 @@ export default function EmailStep({ redirectPath = '/', title, minimal = false }
       {error && <p className="mt-2 text-sm text-red-600">{t('전송 실패', 'Send failed')}: {error}</p>}
 
       {/* R1-A③: 연구 동의 (선택, 기본 해제) */}
-      {!minimal && <label className="mt-4 flex items-start gap-2.5 text-sm text-gray-600">
+      {!minimal && canResearch && <label className="mt-4 flex items-start gap-2.5 text-sm text-gray-600">
         <input
           type="checkbox"
           checked={consent}

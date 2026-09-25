@@ -29,7 +29,25 @@ export function setLang(l: Lang): void {
   window.dispatchEvent(new Event('app:lang'))
 }
 
+// 부모 계정: 학생 기준 '내 ○○' 문구를 '자녀 ○○'로 (정해진 표현만 바꿈 — 기록·분석은 동일)
+let audience: 'student' | 'parent' = 'student'
+export const getAudience = () => audience
+export function setAudience(a: 'student' | 'parent'): void { audience = a }
+const KO_PARENT: [RegExp, string][] = [
+  [/내 (원서|리포트|위치|과목|기록|GPA|계획|성적|활동|점수|전공|목표|학교|입시|수업|시험|에세이|추천서|체크리스트|진로|AP)/g, '자녀 $1'],
+  [/내가 적은/g, '적어 둔'],
+  [/나를 대표하는/g, '자녀를 대표하는'],
+]
+const EN_PARENT: [RegExp, string][] = [
+  [/\bMy App\b/g, 'My Child’s App'],
+  [/\b(M|m)y (application|report|courses|plans|GPA|grades|activities|scores|record|records|major|targets|target schools|position)\b/g, '$1y child’s $2'],
+  [/\bWhere you are\b/g, 'Where your child is'],
+  [/\byour (courses|record|records|grades|GPA|activities|scores|plans|report|APs|AP scores|transcript)\b/g, 'your child’s $1'],
+]
+const parentize = (s: string, rules: [RegExp, string][]) => rules.reduce((acc, [re, to]) => acc.replace(re, to), s)
+
 export function t(ko: string, en: string): string {
+  if (audience === 'parent') return current === 'ko' ? parentize(ko, KO_PARENT) : parentize(en, EN_PARENT)
   return current === 'ko' ? ko : en
 }
 

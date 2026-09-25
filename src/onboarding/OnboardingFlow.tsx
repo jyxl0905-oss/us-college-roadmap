@@ -16,11 +16,13 @@ import SummaryStep from './SummaryStep'
 import QuizStep from './QuizStep'
 import InfoSourcesStep from './InfoSourcesStep'
 import ActivityStep from './ActivityStep'
+import { setRole, researchAllowed, tp } from '../lib/role'
 
 const seedSchools = schoolsData as School[]
 const DRAFT_KEY = 'onboarding_draft' // R1-C-6: 이탈 복구용 임시 저장
 
 type StepId =
+  | 'role'
   | 'gradYear'
   | 'status'
   | 'counselor'
@@ -45,7 +47,7 @@ type StepId =
 
 // 답변에 따라 조건부 질문(전공 상세, 목표 학교 상세, SAT 밴드, TOEFL)이 끼어드는 전체 스텝 목록
 function stepList(a: OnboardingAnswers): StepId[] {
-  const steps: StepId[] = ['gradYear', 'status', 'counselor', 'accredited', 'schoolName', 'majorTrack']
+  const steps: StepId[] = ['role', 'gradYear', 'status', 'counselor', 'accredited', 'schoolName', 'majorTrack']
   if (a.majorTrack !== 'undecided') steps.push('majorPrimary', 'majorSecondary')
   steps.push('targetMode')
   if (a.targetMode === 'schools') steps.push('targetSchools')
@@ -53,7 +55,10 @@ function stepList(a: OnboardingAnswers): StepId[] {
   if (a.targetMode === 'schools' || a.targetMode === 'tier') steps.push('teaser') // R1-C-5: 미리보기 티저
   steps.push('gpa', 'math', 'sat', 'ap') // Q9: SAT 상태+점수대는 한 화면
   if (a.applicantStatus !== 'domestic') steps.push('toefl') // 모름도 국제학생 처리
-  steps.push('activities', 'quiz', 'infoSources', 'summary') // Q12: 활동 자가진단 3그룹은 한 화면
+  steps.push('activities')
+  // 연구 문항(퀴즈·정보원)은 학생 본인·비(非)미국 시민권자만 — 부모·미국 사용자는 건너뜀
+  if (researchAllowed({ role: a.userRole, status: a.applicantStatus })) steps.push('quiz', 'infoSources')
+  steps.push('summary') // Q12: 활동 자가진단 3그룹은 한 화면
   return steps
 }
 
@@ -98,6 +103,7 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
 
   const steps = stepList(answers)
   const step = steps[Math.min(stepIndex, steps.length - 1)]
+  setRole(step === 'role' ? 'student' : answers.userRole) // 질문 문구를 학생/부모 기준으로 (고르는 화면은 중립)
 
   // 진행 상황 임시 저장 (완료 시 App에서 초안 제거)
   useEffect(() => {
@@ -214,6 +220,19 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
 
   function renderStep() {
     switch (step) {
+      case 'role':
+        return (
+          <ChoiceStep
+            title={t('누가 사용하시나요?', 'Who is using this?')}
+            subtitle={t('부모님이면 같은 기능을 "자녀" 기준 문구로 보여드려요. 나중에 바꿀 수 있어요.', 'Parents get the same tools, worded around your child. You can change this later.')}
+            options={[
+              { value: 'student', label: t('학생이에요', 'I’m a student'), description: t('내 성적·과목·활동을 기록하고 내 위치를 봐요', 'Track my grades, courses and activities and see where I stand') },
+              { value: 'parent', label: t('부모님이에요', 'I’m a parent'), description: t('자녀의 성적·수강 과목·활동을 기록하고 자녀의 위치를 봐요', 'Track your child’s grades, courses and activities and see where they stand') },
+            ]}
+            selected={answers.userRole}
+            onSelect={(v) => { setRole(v); answer({ userRole: v }) }}
+          />
+        )
       case 'gradYear':
         return (
           <GradYearStep
@@ -225,7 +244,7 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
       case 'status':
         return (
           <ChoiceStep
-            title={t('미국 대학에 어떤 신분으로 지원하나요?', 'What is your applicant status?')}
+            title={tp('미국 대학에 어떤 신분으로 지원하나요?', '자녀는 미국 대학에 어떤 신분으로 지원하나요?', 'What is your applicant status?', 'What is your child’s applicant status?')}
             options={[
               { value: 'intl', label: t('국제학생 (International)', 'International student'), description: t('F-1 등 유학 비자로 지원', 'Applying on an F-1 or other student visa') },
               { value: 'domestic', label: t('미국 시민권·영주권', 'U.S. citizen / permanent resident'), description: 'U.S. Citizen / Green Card' },
@@ -238,7 +257,7 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
       case 'counselor':
         return (
           <ChoiceStep
-            title={t('입시를 전담해 주는 카운슬러가 있나요?', 'Do you have a dedicated college counselor?')}
+            title={tp('입시를 전담해 주는 카운슬러가 있나요?', '자녀의 입시를 전담해 주는 카운슬러가 있나요?', 'Do you have a dedicated college counselor?', 'Does your child have a dedicated college counselor?')}
             subtitle={t('학교 카운슬러든 외부 컨설턴트든 정기적으로 관리해 주는 사람 기준이에요.', 'School counselor or private consultant — someone who checks in regularly.')}
             options={[
               { value: 'yes', label: t('예, 있어요', 'Yes') },
@@ -252,13 +271,13 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
       case 'accredited':
         return (
           <ChoiceStep
-            title={t('다니는 학교가 국제 인증을 받았나요?', 'Is your school internationally accredited?')}
+            title={tp('다니는 학교가 국제 인증을 받았나요?', '자녀가 다니는 학교가 국제 인증을 받았나요?', 'Is your school internationally accredited?', 'Is your child’s school internationally accredited?')}
             subtitle={t('WASC, Cognia 같은 인증이요. 성적표 인정에 중요해요.', 'e.g., WASC or Cognia — it matters for how your transcript is read.')}
             options={[
               { value: 'yes', label: t('예, 인증받았어요', 'Yes, accredited') },
               { value: 'no', label: t('아니요', 'No') },
               { value: 'unknown', label: t('잘 모르겠어요', 'Not sure'), description: t('확인 방법을 체크리스트 맨 위에 넣어드려요', "We'll put a how-to-check item at the top of your list") },
-              { value: 'us', label: t('미국 현지 학교에 다녀요', 'I attend a school in the U.S.'), description: t('미국 내 고등학교(공립·사립·보딩)면 국제 인증은 해당 없어요', 'Public, private or boarding school in the U.S. — this question does not apply') },
+              { value: 'us', label: tp('미국 현지 학교에 다녀요', '미국 현지 학교에 다녀요', 'I attend a school in the U.S.', 'My child attends a school in the U.S.'), description: t('미국 내 고등학교(공립·사립·보딩)면 국제 인증은 해당 없어요', 'Public, private or boarding school in the U.S. — this question does not apply') },
             ]}
             selected={answers.schoolInUs ? 'us' : answers.schoolAccredited}
             onSelect={(v) =>
@@ -273,7 +292,7 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
       case 'majorTrack':
         return (
           <ChoiceStep
-            title={t('문과·이과 중 어느 쪽인가요?', 'STEM or humanities/social?')}
+            title={tp('문과·이과 중 어느 쪽인가요?', '자녀는 문과·이과 중 어느 쪽인가요?', 'STEM or humanities/social?', 'Is your child leaning STEM or humanities/social?')}
             subtitle={t('관심 있는 계열을 골라주세요. 1순위 전공은 이 계열에서 고르고, 2순위는 계열 상관없이 고를 수 있어요.', "Pick a track for your first-choice major — your second choice can be from either track.")}
             options={[
               { value: 'stem', label: t('이과 (STEM)', 'STEM'), description: t('CS, 공학, 수학, 자연과학, 프리메드', 'CS, engineering, math, sciences, pre-med') },
@@ -293,7 +312,7 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
       case 'majorPrimary':
         return (
           <ChoiceStep
-            title={t('희망 전공 1순위를 골라주세요', 'Pick your first-choice major')}
+            title={tp('희망 전공 1순위를 골라주세요', '자녀의 희망 전공 1순위를 골라주세요', 'Pick your first-choice major', 'Pick your child’s first-choice major')}
             options={[
               ...majorsByTrack(answers.majorTrack === 'liberal' ? 'liberal' : 'stem').map((m) => ({
                 value: m.value,
@@ -384,14 +403,14 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
       case 'gpa':
         return (
           <ChoiceStep
-            title={t('지금 GPA는 어느 정도인가요?', 'What is your GPA right now?')}
+            title={tp('지금 GPA는 어느 정도인가요?', '자녀의 지금 GPA는 어느 정도인가요?', 'What is your GPA right now?', 'What is your child’s GPA right now?')}
             subtitle={t('4.0 만점(unweighted) 기준이에요.', 'Unweighted, 4.0 scale.')}
             options={[
               { value: '3.9+', label: t('3.9 이상', '3.9 or above') },
               { value: '3.7-3.9', label: '3.7 ~ 3.9' },
               { value: '3.5-3.7', label: '3.5 ~ 3.7' },
               { value: 'below3.5', label: t('3.5 미만', 'Below 3.5') },
-              { value: 'none', label: t('GPA가 없는 학교예요', 'My school has no GPA'), description: t('IB 점수제 등', 'e.g., IB points') },
+              { value: 'none', label: tp('GPA가 없는 학교예요', 'GPA가 없는 학교예요', 'My school has no GPA', 'The school has no GPA'), description: t('IB 점수제 등', 'e.g., IB points') },
               { value: 'ninth', label: t('9학년이라 아직 없어요', 'Not yet — 9th grade') },
             ]}
             selected={answers.gpaBand}
@@ -401,7 +420,7 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
       case 'math':
         return (
           <ChoiceStep
-            title={t('지금 듣고 있는 수학 과목은요?', 'Which math course are you in?')}
+            title={tp('지금 듣고 있는 수학 과목은요?', '자녀가 지금 듣고 있는 수학 과목은요?', 'Which math course are you in?', 'Which math course is your child in?')}
             options={[
               { value: 'algebra2_or_below', label: t('Algebra 2 이하', 'Algebra 2 or below') },
               { value: 'precalc', label: 'Precalculus' },
@@ -416,7 +435,7 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
         return (
           <div>
             <ChoiceStep
-              title={t('SAT는 어떤 상태인가요?', 'Where are you with the SAT?')}
+              title={tp('SAT는 어떤 상태인가요?', '자녀의 SAT는 어떤 상태인가요?', 'Where are you with the SAT?', 'Where is your child with the SAT?')}
               options={[
                 { value: 'none', label: t('아직 계획 없어요', 'No plans yet') },
                 { value: 'studying', label: t('공부 중이에요', 'Studying') },
@@ -455,7 +474,7 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
       case 'toefl':
         return (
           <ChoiceStep
-            title={t('TOEFL/IELTS는 어떤 상태인가요?', 'Where are you with TOEFL/IELTS?')}
+            title={tp('TOEFL/IELTS는 어떤 상태인가요?', '자녀의 TOEFL/IELTS는 어떤 상태인가요?', 'Where are you with TOEFL/IELTS?', 'Where is your child with TOEFL/IELTS?')}
             subtitle={answers.schoolInUs ? t('미국 학교를 여러 해 다녔으면 면제해 주는 대학이 많아요 — 학교별 기준 확인', 'Many colleges waive it after several years at a U.S. school — check each school') : t('국제학생은 대부분 영어 공인 점수가 필요하지만, 면제해 주는 학교도 있어요.', 'Most international applicants need it, but some schools waive it.')}
             options={[
               { value: 'none', label: t('아직 안 봤어요', 'Not yet') },

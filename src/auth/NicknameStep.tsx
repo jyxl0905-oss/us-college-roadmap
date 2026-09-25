@@ -3,10 +3,11 @@ import { t } from '../i18n'
 
 interface NicknameStepProps {
   onSubmit: (nickname: string) => Promise<void>
+  parent?: boolean // 부모 계정이면 자녀 이름을 받음
 }
 
 // 로그인 직후 닉네임 입력 → 프로필 저장
-export default function NicknameStep({ onSubmit }: NicknameStepProps) {
+export default function NicknameStep({ onSubmit, parent = false }: NicknameStepProps) {
   const [nickname, setNickname] = useState('')
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -24,8 +25,8 @@ export default function NicknameStep({ onSubmit }: NicknameStepProps) {
 
   return (
     <div>
-      <h1 className="text-xl font-bold text-gray-900">{t('마지막이에요! 닉네임을 정해주세요', 'Last step — pick a nickname')}</h1>
-      <p className="mt-2 text-sm text-gray-500">{t('리포트에 표시될 이름이에요.', 'Shown on your report.')}</p>
+      <h1 className="text-xl font-bold text-gray-900">{parent ? t('마지막이에요! 자녀 이름(또는 닉네임)을 적어 주세요', 'Last step — your child’s name or nickname') : t('마지막이에요! 닉네임을 정해주세요', 'Last step — pick a nickname')}</h1>
+      <p className="mt-2 text-sm text-gray-500">{parent ? t('자녀 리포트에 표시될 이름이에요.', 'Shown on your child’s report.') : t('리포트에 표시될 이름이에요.', 'Shown on your report.')}</p>
       <input
         type="text"
         value={nickname}

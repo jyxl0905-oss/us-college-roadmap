@@ -1,4 +1,5 @@
 import { schoolMatches } from '../data/schoolAliases'
+import { tp } from '../lib/role'
 import { Palette } from 'lucide-react'
 import { useState } from 'react'
 import { t } from '../i18n'
@@ -50,7 +51,7 @@ export default function TargetSchoolsStep({ selectedIds, onChange, onNext, major
 
   return (
     <div className={selectedIds.length > 0 ? 'pb-24' : ''}>
-      <h1 className="text-xl font-bold text-gray-900">{t('목표 학교를 골라주세요', 'Pick your target schools')}</h1>
+      <h1 className="text-xl font-bold text-gray-900">{tp('목표 학교를 골라주세요', '자녀의 목표 학교를 골라주세요', 'Pick your target schools', 'Pick your child’s target schools')}</h1>
       <p className="mt-2 text-sm text-gray-500">{t('여러 개 선택할 수 있어요.', 'You can pick several.')}</p>
       {/* 창작 계열 전공이면: 그 전공을 개설한 미술·디자인 전문학교를 먼저 추천 */}
       {!q && artRecs.length > 0 && (

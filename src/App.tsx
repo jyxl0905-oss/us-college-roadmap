@@ -4,6 +4,7 @@ import type { Session } from '@supabase/supabase-js'
 import { emptyAnswers, type OnboardingAnswers } from './lib/types'
 import { supabase, isSupabaseConfigured } from './lib/supabase'
 import { answersToRow, loadProfile, saveProfile, type ProfileRow } from './lib/profile'
+import { setRole } from './lib/role'
 import { currentSeasonLabel } from './lib/academics'
 import EmailStep, { RESEARCH_CONSENT_KEY } from './auth/EmailStep'
 import NicknameStep from './auth/NicknameStep'
@@ -114,6 +115,7 @@ function StashFetcher({ userId, onDone }: { userId: string; onDone: (r: { answer
 
 // 체험 모드 화면 — 상단 안내 띠 + 가상 학생 리포트 (기본기·용어집도 열람 가능)
 function DemoReport() {
+  setRole('student') // 체험 학생은 항상 학생 기준 문구
   const [profile] = useState(demoProfile)
   const [guide, setGuide] = useState(false)
   if (guide) return <Screen><GuideView onBack={() => setGuide(false)} /></Screen>
@@ -141,6 +143,7 @@ function DemoReport() {
 }
 
 function DemoApp({ path }: { path: string }) {
+  setRole('student') // 체험 학생은 항상 학생 기준 문구
   const [profile, setProfile] = useState(demoProfile)
   return (
     <>
@@ -346,6 +349,7 @@ function AppRoutes() {
   // (만료 링크로 돌아온 경우만 이메일 화면부터)
   const [phase, setPhase] = useState<GuestPhase>(cameFromAuthError ? 'email' : 'home')
   const path = usePath() // F1: /schools 라우팅
+  setRole(profile?.user_role) // 부모 계정이면 하위 화면 문구를 '자녀' 기준으로
   // 마지막 리포트 시즌 — 현재 시즌과 다르면 체크인 플로우부터
   // undefined = 아직 조회 전 (조회가 끝나기 전에 리포트를 먼저 그리면 안 됨)
   const [lastSeason, setLastSeason] = useState<string | null | undefined>(undefined)
@@ -754,6 +758,7 @@ function AppRoutes() {
     return (
       <Screen>
         <NicknameStep
+          parent={pending.userRole === 'parent'}
           onSubmit={async (nickname) => {
             const consent = localStorage.getItem(RESEARCH_CONSENT_KEY) === '1'
             const row = answersToRow(pending, nickname, consent)

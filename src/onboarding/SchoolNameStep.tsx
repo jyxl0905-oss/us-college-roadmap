@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { tp } from '../lib/role'
 import { t } from '../i18n'
 import { searchHsSchools } from '../data/hs-schools'
 
@@ -16,7 +17,7 @@ export default function SchoolNameStep({ value, onSelect }: Props) {
 
   return (
     <div>
-      <h1 className="text-xl font-bold text-gray-900">{t('다니는 학교는 어디예요?', 'Which school do you attend?')}</h1>
+      <h1 className="text-xl font-bold text-gray-900">{tp('다니는 학교는 어디예요?', '자녀가 다니는 학교는 어디예요?', 'Which school do you attend?', 'Which school does your child attend?')}</h1>
       <p className="mt-2 text-sm text-gray-500">
         {t('학교별로 어떤 준비가 부족한지 익명 통계로만 써요. 리포트에는 영향 없어요.', 'Used only for anonymous per-school statistics — it doesn’t change your report.')}
       </p>

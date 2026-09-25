@@ -463,3 +463,6 @@ alter table public.interest_logs enable row level security;
 create policy "own interest logs" on public.interest_logs for all to public using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
 -- 트리거 interest_logs_limit: 사용자당 300건 (security definer, 실행 권한 회수)
 alter table public.plans add column ref text check (char_length(ref) <= 80); -- 예: 'program:usaco'
+
+-- 2026-09-25 부모/학생 구분 (migration profiles_user_role) — 부모면 화면 문구가 '자녀' 기준으로 바뀜
+alter table public.profiles add column if not exists user_role text not null default 'student' check (user_role in ('student','parent'));

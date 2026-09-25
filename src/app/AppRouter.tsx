@@ -37,6 +37,6 @@ export default function AppRouter({ path, userId, profile, onProfileChange }: Ap
     case 'writing':
       return <WritingTab userId={userId} profile={profile} />
     default:
-      return <AppHome userId={userId} profile={profile} />
+      return <AppHome userId={userId} profile={profile} onProfileChange={onProfileChange} />
   }
 }

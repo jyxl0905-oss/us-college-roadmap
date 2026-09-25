@@ -76,6 +76,7 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
         </button>
       </div>
       <p className="mt-2 text-center text-xs text-gray-500">{t('예시 학생(11학년·CS 지망)의 리포트와 내 원서 전체를 로그인 없이 둘러볼 수 있어요.', 'Browse a sample student’s full report and application workspace (grade 11, CS) without signing in.')}</p>
+      <p className="mt-1 text-center text-xs text-gray-500">{t('학부모님도 쓸 수 있어요 — 시작할 때 "부모님이에요"를 고르면 자녀의 성적·과목을 기록하고 자녀의 위치를 볼 수 있어요.', 'Parents welcome — choose “I’m a parent” to track your child’s grades and courses and see where they stand.')}</p>
       {error && <p className="mt-2 text-center text-sm text-red-600">{error}</p>}
     </>
   )

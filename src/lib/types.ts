@@ -35,6 +35,7 @@ export interface ClarityItem {
 }
 
 export interface OnboardingAnswers {
+  userRole: 'student' | 'parent' | null // 학생 본인 / 부모
   gradYear: number | null
   applicantStatus: ApplicantStatus | null
   hasCounselor: YesNoUnknown | null
@@ -62,6 +63,7 @@ export interface OnboardingAnswers {
 }
 
 export const emptyAnswers: OnboardingAnswers = {
+  userRole: null,
   gradYear: null,
   applicantStatus: null,
   hasCounselor: null,

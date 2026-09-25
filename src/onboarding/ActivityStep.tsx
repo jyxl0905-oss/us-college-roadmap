@@ -1,4 +1,5 @@
 import { t } from '../i18n'
+import { tp } from '../lib/role'
 
 type Level = 1 | 2 | 3
 interface Props {
@@ -14,7 +15,7 @@ export default function ActivityStep({ spike, leadership, validation, onChange, 
   const groups: { key: 'activitySpike' | 'activityLeadership' | 'activityValidation'; title: string; value: Level | null; options: [Level, string][] }[] = [
     {
       key: 'activitySpike', value: spike,
-      title: t('나를 대표하는 활동 (Spike)', 'Signature activity (Spike)'),
+      title: tp('나를 대표하는 활동 (Spike)', '자녀를 대표하는 활동 (Spike)', 'Signature activity (Spike)', 'Signature activity (Spike)'),
       options: [[1, t('아직 없어요', 'Not yet')], [2, t('꾸준히 하는 활동은 있어요', 'I have a consistent activity')], [3, t('성과·결과물이 있는 대표 활동이 있어요', 'I have one with real results')]],
     },
     {
@@ -32,7 +33,7 @@ export default function ActivityStep({ spike, leadership, validation, onChange, 
 
   return (
     <div>
-      <h1 className="text-xl font-bold text-gray-900">{t('활동은 지금 어느 정도인가요?', 'Where are your activities now?')}</h1>
+      <h1 className="text-xl font-bold text-gray-900">{tp('활동은 지금 어느 정도인가요?', '자녀의 활동은 지금 어느 정도인가요?', 'Where are your activities now?', 'Where are your child’s activities now?')}</h1>
       <p className="mt-2 text-sm text-gray-500">{t('세 가지를 하나씩 골라주세요. 정답은 없어요 — 지금 상태 그대로요.', 'Pick one for each — there are no right answers, just where you are now.')}</p>
       <div className="mt-6 flex flex-col gap-6">
         {groups.map((g, gi) => (

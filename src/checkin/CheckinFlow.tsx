@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { researchAllowed } from '../lib/role'
 import { Frown, Annoyed, Meh, Smile, Laugh, Hand } from 'lucide-react'
 import type { ChecklistItem, ClarityItem, Tier } from '../lib/types'
 import { supabase } from '../lib/supabase'
@@ -127,7 +128,8 @@ export default function CheckinFlow({ userId, profile, prevSeasonLabel, onDone }
 
   // ③ 목표 확인 완료 → 명확성 척도(R1-B)를 거쳐 새 리포트 발급
   const finish = (d: ProfileRow) => {
-    if (clarityItems.length === 0) {
+    // 연구 문항: 부모·미국 시민권/영주권자에겐 묻지 않음
+    if (clarityItems.length === 0 || !researchAllowed({ role: d.user_role, status: d.applicant_status })) {
       void saveAndDone(d)
       return
     }

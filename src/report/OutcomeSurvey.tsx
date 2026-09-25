@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { researchAllowed } from '../lib/role'
 import { GraduationCap } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import type { ProfileRow } from '../lib/profile'
@@ -40,7 +41,8 @@ export default function OutcomeSurvey({ userId, profile, onDone }: { userId: str
   const [schoolId, setSchoolId] = useState<number | null>(null)
   const [features, setFeatures] = useState<string[]>([])
   const [comment, setComment] = useState('')
-  const [researchOk, setResearchOk] = useState(profile.research_consent)
+  const canResearch = researchAllowed({ role: profile.user_role, status: profile.applicant_status }) // 부모·미국 사용자는 연구 제외
+  const [researchOk, setResearchOk] = useState(profile.research_consent && canResearch)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -147,10 +149,10 @@ export default function OutcomeSurvey({ userId, profile, onDone }: { userId: str
       <p className="mt-4 text-sm font-medium text-gray-800">{t('5. 한마디 (선택)', '5. Anything else (optional)')}</p>
       <textarea value={comment} onChange={(e) => setComment(e.target.value.slice(0, 500))} rows={2} placeholder={t('아쉬웠던 점, 바라는 점…', 'What was missing, what you wish it had…')} className="mt-2 w-full rounded-xl border-2 border-gray-200 px-3 py-2 text-sm focus:border-blue-600 focus:outline-none" />
 
-      <label className="mt-3 flex items-start gap-2 text-xs text-gray-500">
+      {canResearch && <label className="mt-3 flex items-start gap-2 text-xs text-gray-500">
         <input type="checkbox" checked={researchOk} onChange={(e) => setResearchOk(e.target.checked)} className="mt-0.5 h-4 w-4 accent-blue-600" />
         <span>{t('(선택) 이 답변을 익명화된 연구 데이터로 활용하는 데 동의해요', '(Optional) I agree to the use of these answers as anonymized research data')}</span>
-      </label>
+      </label>}
 
       {error && <p className="mt-2 text-xs text-red-600">{t('저장 실패', 'Save failed')}: {error}</p>}
       <button

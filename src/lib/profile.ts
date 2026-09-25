@@ -1,4 +1,5 @@
 import type { OnboardingAnswers, ChecklistItem, School, Tier, QuizAnswer } from './types'
+import { researchAllowed } from './role'
 import { supabase } from './supabase'
 import { gradeFromGradYear, currentSeason } from './academics'
 import { getLang } from '../i18n'
@@ -39,6 +40,7 @@ export interface ProfileRow {
   lang?: 'ko' | 'en' | null // 알림 메일 언어 (UI 토글과 동기화)
   ref_source?: string | null // 유입 경로 (?ref= 태그, 가입 시 1회)
   graduated?: boolean // 졸업 처리됨 (롤오버 팝업 없음, 리포트는 보관 모드)
+  user_role?: 'student' | 'parent' // 부모면 '자녀' 기준 문구
 }
 
 export function answersToRow(
@@ -48,6 +50,7 @@ export function answersToRow(
 ): ProfileRow {
   return {
     nickname,
+    user_role: a.userRole === 'parent' ? 'parent' : 'student',
     grad_year: a.gradYear,
     applicant_status: a.applicantStatus,
     has_counselor: a.hasCounselor,
@@ -71,7 +74,8 @@ export function answersToRow(
     activity_validation: a.activityValidation,
     quiz_answers: a.quizAnswers,
     info_sources: a.infoSources.length > 0 ? a.infoSources : null,
-    research_consent: researchConsent,
+    // 미국 시민권·영주권자와 부모는 연구 대상에서 제외 — 동의값이 있어도 저장하지 않음
+    research_consent: researchConsent && researchAllowed({ role: a.userRole, status: a.applicantStatus }),
     lang: getLang(),
     ref_source: readRefSource(a),
   }

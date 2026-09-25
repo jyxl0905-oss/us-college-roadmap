@@ -1,4 +1,5 @@
 import { PageSkeleton } from '../ui/Skeleton'
+import { saveProfile } from '../lib/profile'
 import { isDemoUser, demoStore } from '../demo/demoData'
 import { Lock, Lightbulb } from 'lucide-react'
 import { useEffect, useState } from 'react'
@@ -27,10 +28,19 @@ const GUIDE = () => [
 interface AppHomeProps {
   userId: string
   profile: ProfileRow
+  onProfileChange?: (p: ProfileRow) => void
 }
 
 // F5 내 원서 홈 — 5개 섹션 채움 정도 + 짧은 작성 가이드
-export default function AppHome({ userId, profile }: AppHomeProps) {
+export default function AppHome({ userId, profile, onProfileChange }: AppHomeProps) {
+  const [roleSaving, setRoleSaving] = useState(false)
+  // 사용자 유형 전환 (학생 ↔ 부모) — 문구만 바뀌고 기록은 그대로
+  const switchRole = async (role: 'student' | 'parent') => {
+    if (roleSaving || (profile.user_role ?? 'student') === role) return
+    setRoleSaving(true)
+    const next = { ...profile, user_role: role }
+    try { await saveProfile(userId, next); onProfileChange?.(next) } catch (e) { alert((e as Error).message) } finally { setRoleSaving(false) }
+  }
   const [rec, setRec] = useState<AppRecords | null>(null)
   const [plans, setPlans] = useState<Plan[]>([])
   const [appCount, setAppCount] = useState<{ total: number; assigned: number }>({ total: 0, assigned: 0 })
@@ -86,6 +96,15 @@ export default function AppHome({ userId, profile }: AppHomeProps) {
       <p className="mt-2 flex items-center gap-1 text-xs text-gray-400">
         <Lock size={12} strokeWidth={2} />{t('여기 기록한 기록과 내용은 오직 유저님만 볼 수 있어요.', 'Everything you record here is visible only to you.')}
       </p>
+      <div className="mt-3 flex flex-wrap items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs text-gray-600">
+        <span>{t('사용하는 사람', 'Who uses this account')}</span>
+        {(['student', 'parent'] as const).map((r) => (
+          <button key={r} onClick={() => void switchRole(r)} disabled={roleSaving} className={`rounded-full px-3 py-1 font-semibold ${(profile.user_role ?? 'student') === r ? 'bg-gray-900 text-white' : 'border border-gray-200 text-gray-600'}`}>
+            {r === 'student' ? t('학생 본인', 'Student') : t('부모님', 'Parent')}
+          </button>
+        ))}
+        <span className="text-[11px] text-gray-400">{t('부모님이면 화면 문구가 "자녀" 기준으로 바뀌어요', 'Parents see wording about “your child”')}</span>
+      </div>
 
       {!rec ? (
         <PageSkeleton compact />
