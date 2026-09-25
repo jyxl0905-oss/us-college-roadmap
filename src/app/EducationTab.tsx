@@ -11,6 +11,7 @@ import { recommendCourses, subjectOf, rungOf, coursePosition } from '../lib/cour
 import RigorTrendBox from './RigorTrendBox'
 import CourseNameInput from './CourseNameInput'
 import MajorCourseRecs from './MajorCourseRecs'
+import TargetReqsCheck from './TargetReqsCheck'
 import { isDemoUser } from '../demo/demoData'
 import { ladders, ibMathLadder, subjectLabel, gradeGuide } from '../data/courseGuide'
 import { navigate } from '../lib/router'
@@ -228,6 +229,7 @@ export default function EducationTab({ userId, profile, onProfileChange }: Educa
         )
       })()}
       {courses && courses.length > 0 && <div className="mt-3"><RigorTrendBox courses={courses} grade={myGrade} /></div>}
+      {courses && courses.length > 0 && <div className="mt-3"><TargetReqsCheck courses={courses} grade={myGrade} profile={profile} /></div>}
 
 
       <div className="mt-3 rounded-xl border-2 border-gray-200 bg-white px-4 py-3">

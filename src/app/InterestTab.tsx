@@ -10,6 +10,8 @@ import type { School } from '../lib/types'
 import { PageSkeleton } from '../ui/Skeleton'
 import { insertRow, deleteRow } from './appData'
 import { DEMO_USER_ID } from '../demo/demoProfile'
+import { loadSchoolReqs, type SchoolReq } from '../lib/schoolReqs'
+import { OFFERED, INTL } from '../browse/InterviewBlock'
 
 // 관심 표현(Demonstrated Interest) 기록 — 학교별로 설명회·방문·메일링 등 기록. 반영 여부는 각 학교 CDS C7 "Level of applicant's interest" 기준
 export type InterestKind = 'mailing_list' | 'info_session' | 'campus_visit' | 'hs_visit' | 'college_fair' | 'email' | 'interview' | 'other'
@@ -37,6 +39,8 @@ export default function InterestTab({ userId, profile }: { userId: string; profi
   const [draft, setDraft] = useState<{ kind: InterestKind; date: string; note: string }>({ kind: 'info_session', date: today(), note: '' })
   const [extra, setExtra] = useState<number[]>([]) // 목록에 직접 추가한 학교
   const [busy, setBusy] = useState(false)
+  const [reqs, setReqs] = useState<Map<number, SchoolReq> | null>(null)
+  useEffect(() => { void loadSchoolReqs().then(setReqs) }, [])
   const demo = userId === DEMO_USER_ID
 
   useEffect(() => {
@@ -144,6 +148,11 @@ export default function InterestTab({ userId, profile }: { userId: string; profi
                     <span className={`rounded-full px-2 py-0.5 font-semibold ${di === true ? 'bg-blue-50 text-blue-700' : di === false ? 'bg-gray-100 text-gray-500' : 'bg-gray-50 text-gray-400'}`}>
                       {di === true ? t('관심도 반영 (CDS)', 'Considers interest (CDS)') : di === false ? t('반영 안 함 (CDS)', 'Not considered (CDS)') : t('공시 없음', 'Not reported')}
                     </span>
+                    {(() => {
+                      const iv = reqs?.get(s.id)?.interview
+                      if (!iv?.offered) return null
+                      return <span className="rounded-full bg-gray-50 px-2 py-0.5 text-gray-600 ring-1 ring-gray-200" title={iv.intl ? t(...INTL[iv.intl]) : undefined}>{t('인터뷰: ', 'Interview: ')}{t(OFFERED[iv.offered].ko, OFFERED[iv.offered].en)}{iv.intl === 'not_available' ? t(' · 해외 불가', ' · not abroad') : ''}</span>
+                    })()}
                     <span className="text-gray-500">{mine.length > 0 ? t(`기록 ${mine.length}개 · 최근 ${mine[0].happened_on ?? '—'}`, `${mine.length} entries · latest ${mine[0].happened_on ?? '—'}`) : t('기록 없음', 'No entries')}</span>
                   </p>
                 </div>
