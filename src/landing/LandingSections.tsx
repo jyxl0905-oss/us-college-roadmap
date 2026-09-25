@@ -236,3 +236,31 @@ export function StickyCta({ anchorId, endId, onStart, googleIcon }: { anchorId: 
     </div>
   )
 }
+
+// 03. 왜 무료인가 — /about 요약 (수치: IECA 2022·CNBC 2024, 서비스 소개 페이지와 동일)
+export function WhyFree() {
+  return (
+    <section>
+      <button onClick={() => navigate('/about')} className="group block w-full overflow-hidden rounded-3xl bg-gray-900 px-6 py-8 text-left text-white md:px-10 md:py-10">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-200/80">{t('왜 무료인가요', 'Why it’s free')}</p>
+        <div className="mt-4 grid grid-cols-3 gap-3 md:max-w-2xl">
+          {[
+            ['$6,304', t('컨설팅 평균 패키지', 'Avg. consulting package'), 'text-white'],
+            ['$120,000', t('비싸면 1년에', 'Top firms, per year'), 'text-white'],
+            [t('0원', '$0'), t('이 서비스', 'This service'), 'text-emerald-300'],
+          ].map(([n, l, c]) => (
+            <div key={l}>
+              <p className={`text-[18px] font-extrabold tabular-nums tracking-tight sm:text-[24px] md:text-[34px] ${c}`}>{n}</p>
+              <p className="text-[11px] text-gray-400 md:text-xs">{l}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-5 max-w-2xl text-sm leading-relaxed text-gray-300 md:text-[15px]">
+          {t('좋은 입시 정보가 가정 형편에 따라 갈리지 않도록 — 컨설팅을 받기 어려운 학생도 같은 공식 자료로 준비할 수 있게 모든 기능을 무료로 만들었어요.', 'So good admissions information doesn’t depend on what a family can pay — every feature is free, so students who can’t afford consulting prepare with the same official information.')}
+        </p>
+        <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-200 group-hover:underline">{t('서비스 소개 자세히 보기', 'Read more about us')} <ArrowRight size={15} /></span>
+        <p className="mt-3 text-[10.5px] text-gray-500">{t('IECA 2022 회원 평균 · CNBC 2024 (뉴욕 Command Education)', 'IECA 2022 member average · CNBC 2024 (Command Education, NYC)')}</p>
+      </button>
+    </section>
+  )
+}

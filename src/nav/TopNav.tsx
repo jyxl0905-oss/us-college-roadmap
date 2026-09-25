@@ -30,6 +30,7 @@ export default function TopNav() {
         { to: '/deadlines', label: t('마감', 'Deadlines'), active: path.startsWith('/deadlines') },
       ]
     : [
+        { to: '/about', label: t('서비스 소개', 'About'), active: path.startsWith('/about') },
         { to: '/schools', label: t('대학 둘러보기', 'Browse colleges'), active: path.startsWith('/schools') },
         { to: '/majors', label: t('전공 알아보기', 'Explore majors'), active: path.startsWith('/major') },
       ]

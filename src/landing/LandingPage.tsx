@@ -10,7 +10,7 @@ import apData from '../data/ap.json'
 import RadarChart from '../report/RadarChart'
 import type { AxisScores } from '../lib/score'
 import { Check, Eye, ShieldCheck, ClipboardCheck, FileText, Landmark, Compass, Share2 } from 'lucide-react'
-import { GradePeek, Facts, PainAndFaq, StickyCta } from './LandingSections'
+import { GradePeek, Facts, PainAndFaq, StickyCta, WhyFree } from './LandingSections'
 
 // 훅 랜딩 — 비로그인 첫 화면. 원칙: 유학원 광고처럼 보이면 실패 (과장·그라디언트·카운트다운 금지).
 // 수치는 전부 실데이터(공식 출처 시드)에서만. CTA는 구글 로그인 + 로그인 없는 체험.
@@ -153,6 +153,7 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
         {/* 새 섹션 01·02 — 내 학년 맛보기 + 알고 계셨나요 (2026-09) */}
         <div className="mt-16 md:mt-24"><GradePeek onStart={() => void googleLogin()} /></div>
         <div className="mt-16 md:mt-24"><Facts /></div>
+        <div className="mt-16 md:mt-24"><WhyFree /></div>
 
         {/* 3. 핵심 기능 3개 */}
         <div className="mt-16 grid grid-cols-1 gap-4 md:mt-24 md:grid-cols-3">
