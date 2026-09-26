@@ -10,6 +10,7 @@ import CostBlock from './CostBlock'
 import SchoolPrograms from './SchoolPrograms'
 import EnglishBlock from './EnglishBlock'
 import ApCreditBlock from './ApCreditBlock'
+import UsStudentBlock from './UsStudentBlock'
 import RequirementsBlock from './RequirementsBlock'
 import InterviewBlock from './InterviewBlock'
 import { setPrefillSchoolIds } from './prefill'
@@ -255,6 +256,9 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         </div>
         <div className="mt-3">
           <CostBlock schoolId={s.id} />
+        </div>
+        <div className="mt-3 empty:hidden">
+          <UsStudentBlock schoolId={s.id} profile={profile} />
         </div>
         {profile?.applicant_status !== 'domestic' && (
           <div className="mt-3 empty:hidden">
