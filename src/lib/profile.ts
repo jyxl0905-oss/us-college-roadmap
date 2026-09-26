@@ -184,6 +184,7 @@ export function filterChecklist(
       if (item.tier_condition !== null && !tiers.has(item.tier_condition)) return false
       if (p.school_in_us && item.id === 4) return false // 미국 현지 학교: 국제 인증(WASC 등) 확인 항목 해당 없음
       if (item.intl_only && !isIntl) return false
+      if (item.us_only && isIntl) return false // 미국 시민권·영주권자 전용 항목
       if (item.no_counselor_only && !noCounselor) return false
       return true
     })

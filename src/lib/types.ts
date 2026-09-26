@@ -169,6 +169,7 @@ export interface ChecklistItem {
   major_category: string | null
   tier_condition: Tier | null
   intl_only: boolean
+  us_only?: boolean // 미국 시민권·영주권자 전용 (FAFSA·National Merit 등)
   no_counselor_only: boolean
   axis: 'rigor' | 'testing' | 'spike' | 'leadership' | 'validation' | 'story'
   is_guide: boolean

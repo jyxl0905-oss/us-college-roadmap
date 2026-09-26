@@ -43,7 +43,7 @@ export function GradePeek({ onStart }: { onStart: () => void }) {
 
   // 전공·티어·카운슬러 조건이 없는 공통 항목만 (국제학생 기준)
   const list = (items ?? [])
-    .filter((i) => i.grade === grade && i.major_category === null && i.tier_condition === null && !i.no_counselor_only)
+    .filter((i) => i.grade === grade && i.major_category === null && i.tier_condition === null && !i.no_counselor_only && !i.us_only)
     .sort((a, b) => a.sort_order - b.sort_order)
   const [sKo, sEn] = SEASON_KO[season]
 
