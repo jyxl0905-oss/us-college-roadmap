@@ -1,10 +1,28 @@
 import { useEffect, useState } from 'react'
 
+// 영어 주소: /en/... = 영어판 (검색엔진용 언어별 고유 URL). 라우팅은 /en을 뗀 경로로 똑같이 처리
+export const isEnPath = (p: string) => p === '/en' || p.startsWith('/en/')
+export const stripEn = (p: string) => (p === '/en' ? '/' : p.startsWith('/en/') ? p.slice(3) : p)
+export const onEnUrl = () => isEnPath(window.location.pathname)
+// 같은 화면의 다른 언어 주소 (언어 토글·배너용)
+export function urlForLang(lang: 'ko' | 'en'): string {
+  const base = stripEn(window.location.pathname)
+  const rest = window.location.search + window.location.hash
+  return lang === 'en' ? `/en${base === '/' ? '' : base}${rest}` : `${base}${rest}`
+}
+// 앱 안 이동 주소에 현재 언어 접두어를 붙임 (/en에 있으면 /en 유지)
+function langAware(to: string): string {
+  if (!onEnUrl() || !to.startsWith('/') || isEnPath(to.split(/[?#]/)[0])) return to
+  if (to === '/') return '/en'
+  if (to.startsWith('/?') || to.startsWith('/#')) return `/en${to.slice(1)}`
+  return `/en${to}`
+}
+
 // 초경량 라우터 — /schools, /schools/:slug 등 고유 URL 직접 접근 지원
 export function usePath(): string {
-  // 경로 + 쿼리를 함께 추적 — /compare?ids= 처럼 쿼리만 바뀌어도(뒤로·앞으로) 다시 그림. 반환은 경로만
+  // 경로 + 쿼리를 함께 추적 — /compare?ids= 처럼 쿼리만 바뀌어도(뒤로·앞으로) 다시 그림. 반환은 경로만 (/en 접두어 제외)
   const [loc, setLoc] = useState(window.location.pathname + window.location.search)
-  const path = loc.split('?')[0]
+  const path = stripEn(loc.split('?')[0])
   useEffect(() => {
     const update = () => setLoc(window.location.pathname + window.location.search)
     window.addEventListener('popstate', update)
@@ -20,13 +38,13 @@ export function usePath(): string {
 const currentUrl = () => window.location.pathname + window.location.search + window.location.hash
 
 // 체험 모드(/demo/…) 안에서 '내 원서'(/app…)로 가는 이동은 체험용 주소(/demo/app…)로 바꿔 체험을 이어감
-export const inDemo = () => window.location.pathname.startsWith('/demo')
+export const inDemo = () => stripEn(window.location.pathname).startsWith('/demo')
 function demoAware(to: string): string {
   return inDemo() && /^\/(app|targets)(\/|\?|#|$)/.test(to) ? `/demo${to}` : to
 }
 
 export function navigate(to: string): void {
-  to = demoAware(to)
+  to = langAware(demoAware(to))
   // 지금 보고 있는 화면과 같은 주소면 기록을 쌓지 않음 — 같은 탭·메뉴를 다시 눌렀을 때 뒤로가기가 두 번 필요해지는 문제 방지
   if (to === currentUrl()) { window.scrollTo(0, 0); return }
   // 앱 내 이동 깊이를 항목 state에 기록 — goBack()이 '직전 화면이 앱 안'인지 판단하는 근거
@@ -38,6 +56,7 @@ export function navigate(to: string): void {
 
 // 리다이렉트: 현재 기록을 새 주소로 바꿈(쌓지 않음) — 뒤로가기가 리다이렉트 전 주소로 되돌아가 다시 튕기는 문제 방지
 export function redirect(to: string): void {
+  to = langAware(to)
   if (to === currentUrl()) return
   const depth = (window.history.state as { appDepth?: number } | null)?.appDepth ?? 0
   window.history.replaceState({ appDepth: depth }, '', to)

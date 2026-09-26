@@ -4,8 +4,19 @@ import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css'
 import './index.css'
 import App from './App'
 import { applyStoredTheme } from './nav/ThemeToggle'
+import { setLang } from './i18n'
 
 applyStoredTheme()
+
+// 영어를 골라 둔 사용자가 한국어 주소로 들어오면 같은 화면의 영어 주소로 (/x → /en/x) — 언어는 주소가 결정
+try {
+  const p = window.location.pathname
+  const onEn = p === '/en' || p.startsWith('/en/')
+  if (!onEn && localStorage.getItem('lang') === 'en') {
+    window.history.replaceState(null, '', `/en${p === '/' ? '' : p}${window.location.search}${window.location.hash}`)
+    setLang('en')
+  }
+} catch { /* ignore */ }
 
 // 유입 경로 태그 (?ref=insta, ?ref=f-초대코드 등) — 최초 방문 값만 기록, URL은 깨끗하게 정리
 try {

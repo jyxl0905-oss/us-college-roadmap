@@ -3,12 +3,11 @@
 export type Lang = 'ko' | 'en'
 const KEY = 'lang'
 
-let current: Lang = (() => {
-  const saved = typeof localStorage !== 'undefined' ? localStorage.getItem(KEY) : null
-  if (saved === 'ko' || saved === 'en') return saved
-  const nav = typeof navigator !== 'undefined' ? navigator.language : 'ko'
-  return nav.toLowerCase().startsWith('ko') ? 'ko' : 'en'
-})()
+// 언어는 주소로 정함: /en/... = 영어, 그 외 = 한국어 (검색엔진이 언어별 페이지를 구분하도록).
+// 영어를 골라 둔 사용자가 한국어 주소로 오면 main.tsx가 /en 주소로 옮겨 줌.
+const onEn = () => typeof window !== 'undefined' && (window.location.pathname === '/en' || window.location.pathname.startsWith('/en/'))
+let current: Lang = onEn() ? 'en' : 'ko'
+export const savedLang = (): Lang | null => { try { const v = localStorage.getItem(KEY); return v === 'ko' || v === 'en' ? v : null } catch { return null } }
 // index.html은 lang="ko" 고정 — 저장된/감지된 언어가 영어면 첫 로딩부터 맞춰줌 (스크린리더·번역 확장 기준)
 // 기본 탭 제목도 언어에 맞춤 (페이지별 제목이 없는 화면 — 체험 모드·리포트 등)
 const DEFAULT_TITLE = { ko: '미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴', en: 'US College Roadmap — free US college admissions planner' }
@@ -23,7 +22,16 @@ export function getLang(): Lang {
 
 export function setLang(l: Lang): void {
   current = l
-  localStorage.setItem(KEY, l)
+  try { localStorage.setItem(KEY, l) } catch { /* ignore */ }
+  // 주소도 같은 화면의 해당 언어판으로 (/x ↔ /en/x)
+  try {
+    const p = window.location.pathname
+    const base = p === '/en' ? '/' : p.startsWith('/en/') ? p.slice(3) : p
+    const rest = window.location.search + window.location.hash
+    const next = l === 'en' ? `/en${base === '/' ? '' : base}${rest}` : `${base}${rest}`
+    window.history.replaceState(window.history.state, '', next)
+    window.dispatchEvent(new Event('app:navigate'))
+  } catch { /* ignore */ }
   document.documentElement.lang = l
   syncDefaultTitle()
   window.dispatchEvent(new Event('app:lang'))

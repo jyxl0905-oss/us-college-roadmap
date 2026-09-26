@@ -17,7 +17,7 @@ import { logout } from './lib/logout'
 import ErrorBoundary from './ErrorBoundary'
 import LoadErrorBanner from './LoadErrorBanner'
 import { demoProfile, DEMO_USER_ID } from './demo/demoProfile'
-import { getLang, t } from './i18n'
+import { getLang, t, setLang, savedLang } from './i18n'
 import TopNav from './nav/TopNav'
 import AppNav from './nav/AppNav'
 import { Eye, Compass, AlertTriangle, ClipboardList, CalendarDays, RefreshCw, PenLine, Target } from 'lucide-react'
@@ -117,6 +117,24 @@ function StashFetcher({ userId, onDone }: { userId: string; onDone: (r: { answer
 }
 
 // 체험 모드 화면 — 상단 안내 띠 + 가상 학생 리포트 (기본기·용어집도 열람 가능)
+// 영어권 브라우저로 한국어 주소에 처음 온 방문자에게 영어판 안내 (자동 이동 대신 — 검색엔진 권장 방식)
+function EnSuggestBanner() {
+  const [hidden, setHidden] = useState(() => {
+    try {
+      if (getLang() !== 'ko' || savedLang() !== null || localStorage.getItem('en_banner_dismissed') === '1') return true
+      return (navigator.language || 'ko').toLowerCase().startsWith('ko')
+    } catch { return true }
+  })
+  if (hidden) return null
+  return (
+    <div className="no-print border-b border-blue-100 bg-blue-50 px-4 py-2 text-center text-xs text-blue-900">
+      This site is also available in English.{' '}
+      <button onClick={() => setLang('en')} className="font-semibold underline">Switch to English</button>
+      <button onClick={() => { try { localStorage.setItem('en_banner_dismissed', '1') } catch { /* ignore */ } setHidden(true) }} aria-label="Dismiss" className="ml-3 text-blue-400">✕</button>
+    </div>
+  )
+}
+
 // 체험 모드 상단 바 — 예시 리포트 · 목표 학교 · 내 원서를 오가며 둘러보기 + 가입 유도
 function DemoBar({ active }: { active: 'report' | 'targets' | 'app' }) {
   const tabs: [typeof active, string, string][] = [
@@ -355,6 +373,7 @@ export default function App() {
     <ErrorBoundary>
       <Suspense fallback={<LoadingScreen />}>
         <TopNav key={`nav-${langKey}`} />
+        <EnSuggestBanner key={`en-${langKey}`} />
         <AppNav key={`appnav-${langKey}`} />
         <div id="app-main" ref={mainRef}>
           <LoadErrorBanner />
