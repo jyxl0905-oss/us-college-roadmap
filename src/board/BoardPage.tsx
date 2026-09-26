@@ -387,7 +387,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
             <p className="mt-2 text-xs text-gray-500">
               {t('참고: SAT 중간 50% ', 'For reference: SAT middle 50% ')}
               {open.sat_mid50_low && open.sat_mid50_high ? `${open.sat_mid50_low}–${open.sat_mid50_high}` : t('미공개', 'not disclosed')}
-              {' · '}{open.intl_accept_rate != null
+              {' · '}{open.intl_accept_rate != null && profile.applicant_status !== 'domestic'
                 ? `${t('국제학생 합격률 ', 'intl. accept rate ')}${open.intl_accept_rate}%`
                 : `${t('합격률 ', 'accept rate ')}${open.overall_accept_rate != null ? `${open.overall_accept_rate}%` : t('미공개', 'not disclosed')}`}
               {' · '}<button onClick={() => navigate(`/schools/${slugify(open.name)}`)} className="text-blue-600 underline">{t('학교 카드 보기', 'See school card')}</button>

@@ -153,7 +153,7 @@ export default function TargetsPage({ userId, profile }: { userId: string; profi
               <p className="font-semibold text-gray-900">{t('네 생각엔 이 학교, 너한테 뭐야?', 'Your call — what is each school to you?')}</p>
               <p className="mt-0.5 text-xs text-gray-400">
                 {onboarded
-                  ? t('직접 고른 분류예요. 데이터 기준(SAT 중간50%·국제학생 합격률 기반 참고치)과 다르면 알려줄게요 — 바꿀지는 네가 정해.', 'Your own call. If the data-based reference (SAT mid-50% · intl accept rate) differs, we\u2019ll say so — changing it is up to you.')
+                  ? (profile.applicant_status === 'domestic' ? t('직접 고른 분류예요. 데이터 기준(SAT 중간50%·전체 합격률 기반 참고치)과 다르면 알려줄게요 — 바꿀지는 네가 정해.', 'Your own call. If the data-based reference (SAT mid-50% · overall accept rate) differs, we\u2019ll say so — changing it is up to you.') : t('직접 고른 분류예요. 데이터 기준(SAT 중간50%·국제학생 합격률 기반 참고치)과 다르면 알려줄게요 — 바꿀지는 네가 정해.', 'Your own call. If the data-based reference (SAT mid-50% · intl accept rate) differs, we\u2019ll say so — changing it is up to you.'))
                   : t('직접 고르는 분류예요 — 툴은 합격 가능성을 계산하지 않아요.', 'You pick these yourself — the tool does not estimate admission chances.')}
               </p>
               <div className="mt-3 divide-y divide-gray-100">

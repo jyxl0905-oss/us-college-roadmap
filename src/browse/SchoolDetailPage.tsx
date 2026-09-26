@@ -256,14 +256,16 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         <div className="mt-3">
           <CostBlock schoolId={s.id} />
         </div>
-        <div className="mt-3 empty:hidden">
-          <EnglishBlock schoolId={s.id} inUs={!!profile?.school_in_us} />
-        </div>
+        {profile?.applicant_status !== 'domestic' && (
+          <div className="mt-3 empty:hidden">
+            <EnglishBlock schoolId={s.id} inUs={!!profile?.school_in_us} />
+          </div>
+        )}
         <div className="mt-3 empty:hidden">
           <RequirementsBlock schoolId={s.id} userId={userId} profile={profile} />
         </div>
         <div className="mt-3 empty:hidden">
-          <InterviewBlock schoolId={s.id} />
+          <InterviewBlock schoolId={s.id} domestic={profile?.applicant_status === 'domestic'} />
         </div>
         <div className="mt-3 empty:hidden">
           <ApCreditBlock schoolId={s.id} />

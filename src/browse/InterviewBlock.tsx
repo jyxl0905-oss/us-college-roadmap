@@ -22,7 +22,7 @@ const WHO: Record<NonNullable<InterviewPolicy['who']>, [string, string]> = {
   alumni: ['졸업생(동문)', 'Alumni'], admissions_staff: ['입학처 직원', 'Admissions staff'], students: ['재학생', 'Current students'], mixed: ['동문·직원 등', 'Alumni / staff'],
 }
 
-export default function InterviewBlock({ schoolId }: { schoolId: number }) {
+export default function InterviewBlock({ schoolId, domestic = false }: { schoolId: number; domestic?: boolean }) {
   const [iv, setIv] = useState<InterviewPolicy | null>(null)
   const [req, setReq] = useState<SchoolReq | null>(null)
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function InterviewBlock({ schoolId }: { schoolId: number }) {
       {(!off || iv.third_party) && (
         <div className="mt-1.5 flex flex-wrap gap-1.5 text-[11.5px]">
           {!off && iv.who && <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-700">{t('면접관: ', 'With: ')}{t(...WHO[iv.who])}</span>}
-          {!off && iv.intl && <span className={`rounded-full px-2 py-0.5 ${iv.intl === 'available' ? 'bg-emerald-50 text-emerald-700' : iv.intl === 'not_available' ? 'bg-rose-50 text-rose-700' : 'bg-gray-100 text-gray-600'}`}>{t(...INTL[iv.intl])}</span>}
+          {!off && iv.intl && !domestic && <span className={`rounded-full px-2 py-0.5 ${iv.intl === 'available' ? 'bg-emerald-50 text-emerald-700' : iv.intl === 'not_available' ? 'bg-rose-50 text-rose-700' : 'bg-gray-100 text-gray-600'}`}>{t(...INTL[iv.intl])}</span>}
           {iv.third_party && <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-700">{t(iv.third_party_ko ?? iv.third_party, iv.third_party)}</span>}
         </div>
       )}

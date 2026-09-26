@@ -89,7 +89,11 @@ export default function SchoolCards({ schools, satBand, majorPrimary, aidStatus 
               {s.test_policy === 'test-optional' && (
                 <span className="rounded-full bg-gray-100 px-2 py-1 text-gray-600">Test-optional</span>
               )}
-              {s.intl_accept_rate !== null ? (
+              {aidStatus === 'domestic' && s.overall_accept_rate != null ? (
+                <span className="rounded-full bg-gray-100 px-2 py-1 text-gray-600">
+                  {t('합격률', 'Acceptance rate')} {s.overall_accept_rate}%
+                </span>
+              ) : s.intl_accept_rate !== null ? (
                 <span className="rounded-full bg-gray-100 px-2 py-1 text-gray-600">
                   {t('국제학생 합격률', 'Intl. acceptance rate')} {s.intl_accept_rate}%
                 </span>

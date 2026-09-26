@@ -36,6 +36,8 @@ export interface ClarityItem {
 
 export interface OnboardingAnswers {
   userRole: 'student' | 'parent' | null // 학생 본인 / 부모
+  usState: string | null // 미국 거주 주 (USPS 약어) 또는 'outside' — 시민권·영주권자만
+  schoolType: 'public' | 'private' | 'charter' | 'homeschool' | 'international' | 'other' | null
   gradYear: number | null
   applicantStatus: ApplicantStatus | null
   hasCounselor: YesNoUnknown | null
@@ -64,6 +66,8 @@ export interface OnboardingAnswers {
 
 export const emptyAnswers: OnboardingAnswers = {
   userRole: null,
+  usState: null,
+  schoolType: null,
   gradYear: null,
   applicantStatus: null,
   hasCounselor: null,

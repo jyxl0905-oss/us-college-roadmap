@@ -17,6 +17,7 @@ import QuizStep from './QuizStep'
 import InfoSourcesStep from './InfoSourcesStep'
 import ActivityStep from './ActivityStep'
 import { setRole, researchAllowed, tp } from '../lib/role'
+import { US_STATES } from '../data/usStates'
 
 const seedSchools = schoolsData as School[]
 const DRAFT_KEY = 'onboarding_draft' // R1-C-6: 이탈 복구용 임시 저장
@@ -25,6 +26,8 @@ type StepId =
   | 'role'
   | 'gradYear'
   | 'status'
+  | 'usState'
+  | 'schoolType'
   | 'counselor'
   | 'accredited'
   | 'schoolName'
@@ -47,7 +50,13 @@ type StepId =
 
 // 답변에 따라 조건부 질문(전공 상세, 목표 학교 상세, SAT 밴드, TOEFL)이 끼어드는 전체 스텝 목록
 function stepList(a: OnboardingAnswers): StepId[] {
-  const steps: StepId[] = ['role', 'gradYear', 'status', 'counselor', 'accredited', 'schoolName', 'majorTrack']
+  const steps: StepId[] = ['role', 'gradYear', 'status']
+  // 미국 시민권·영주권자: 거주 주·학교 유형 (미국에 살면 국제 인증 질문은 해당 없음)
+  const usResident = a.applicantStatus === 'domestic' && !!a.usState && a.usState !== 'outside'
+  if (a.applicantStatus === 'domestic') steps.push('usState', 'schoolType')
+  steps.push('counselor')
+  if (!usResident) steps.push('accredited')
+  steps.push('schoolName', 'majorTrack')
   if (a.majorTrack !== 'undecided') steps.push('majorPrimary', 'majorSecondary')
   steps.push('targetMode')
   if (a.targetMode === 'schools') steps.push('targetSchools')
@@ -251,7 +260,45 @@ export default function OnboardingFlow({ onComplete, onExit }: OnboardingFlowPro
               { value: 'unknown', label: t('잘 모르겠어요', 'Not sure'), description: t('국제학생 기준으로 안내하고, 확인 항목을 추가해 드려요', "We'll treat you as international and add a check item") },
             ]}
             selected={answers.applicantStatus}
-            onSelect={(v) => answer({ applicantStatus: v, ...(v === 'domestic' ? { toeflStatus: null } : {}) })}
+            onSelect={(v) => answer({ applicantStatus: v, ...(v === 'domestic' ? { toeflStatus: null } : { usState: null, schoolType: null }) })}
+          />
+        )
+      case 'usState':
+        return (
+          <div>
+            <h1 className="text-xl font-bold text-gray-900">{tp('어느 주에 살고 있나요?', '자녀는 어느 주에 살고 있나요?', 'Which state do you live in?', 'Which state does your child live in?')}</h1>
+            <p className="mt-2 text-sm text-gray-500">{t('주립대 학비·입학 기준은 거주 주에 따라 달라서 물어봐요.', 'Public-university tuition and admission rules depend on your state of residence.')}</p>
+            <select
+              value={answers.usState && answers.usState !== 'outside' ? answers.usState : ''}
+              onChange={(e) => e.target.value && answer({ usState: e.target.value, schoolInUs: true, schoolAccredited: 'yes' })}
+              className="mt-6 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-base text-gray-900 focus:border-blue-600 focus:outline-none"
+            >
+              <option value="">{t('주 선택…', 'Choose a state…')}</option>
+              {US_STATES.map(([code, name]) => <option key={code} value={code}>{name}</option>)}
+            </select>
+            <button
+              onClick={() => answer({ usState: 'outside', schoolInUs: false })}
+              className={`mt-3 w-full rounded-xl border-2 px-4 py-3 text-left font-medium ${answers.usState === 'outside' ? 'border-blue-600 bg-blue-50 text-gray-900' : 'border-gray-200 bg-white text-gray-800 active:bg-gray-50'}`}
+            >
+              {tp('미국 밖에 살아요', '미국 밖에 살아요', 'I live outside the U.S.', 'We live outside the U.S.')}
+              <span className="block text-xs font-normal text-gray-500">{t('예: 한국의 국제학교에 다니는 시민권자', 'e.g., a U.S. citizen at an international school in Korea')}</span>
+            </button>
+          </div>
+        )
+      case 'schoolType':
+        return (
+          <ChoiceStep
+            title={tp('어떤 학교에 다니나요?', '자녀는 어떤 학교에 다니나요?', 'What kind of school do you attend?', 'What kind of school does your child attend?')}
+            options={[
+              { value: 'public', label: t('공립 고등학교', 'Public high school') },
+              { value: 'private', label: t('사립 고등학교 (보딩 포함)', 'Private high school (incl. boarding)') },
+              { value: 'charter', label: t('차터 스쿨', 'Charter school') },
+              { value: 'homeschool', label: t('홈스쿨', 'Homeschool') },
+              { value: 'international', label: t('해외 국제학교', 'International school abroad') },
+              { value: 'other', label: t('기타', 'Other') },
+            ]}
+            selected={answers.schoolType}
+            onSelect={(v) => answer({ schoolType: v })}
           />
         )
       case 'counselor':

@@ -466,3 +466,7 @@ alter table public.plans add column ref text check (char_length(ref) <= 80); -- 
 
 -- 2026-09-25 부모/학생 구분 (migration profiles_user_role) — 부모면 화면 문구가 '자녀' 기준으로 바뀜
 alter table public.profiles add column if not exists user_role text not null default 'student' check (user_role in ('student','parent'));
+
+-- 2026-09-25 미국 사용자 분기 (migration profiles_us_state_school_type) — 시민권·영주권자에게만 묻는 거주 주·학교 유형
+alter table public.profiles add column if not exists us_state text check (us_state is null or us_state ~ '^([A-Z]{2}|outside)$');
+alter table public.profiles add column if not exists school_type text check (school_type is null or school_type in ('public','private','charter','homeschool','international','other'));

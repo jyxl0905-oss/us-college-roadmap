@@ -76,6 +76,7 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
         </button>
       </div>
       <p className="mt-2 text-center text-xs text-gray-500">{t('예시 학생(11학년·CS 지망)의 리포트와 내 원서 전체를 로그인 없이 둘러볼 수 있어요.', 'Browse a sample student’s full report and application workspace (grade 11, CS) without signing in.')}</p>
+      <p className="mt-1 text-center text-[11px] text-gray-400">{t('시작하면 ', 'By continuing you agree to the ')}<button onClick={() => navigate('/terms')} className="underline">{t('이용약관', 'Terms')}</button>{t('과 ', ' and ')}<button onClick={() => navigate('/privacy')} className="underline">{t('개인정보처리방침', 'Privacy Policy')}</button>{t('에 동의한 것으로 봐요.', '.')}</p>
       <p className="mt-1 text-center text-xs text-gray-500">{t('학부모님도 쓸 수 있어요 — 시작할 때 "부모님이에요"를 고르면 자녀의 성적·과목을 기록하고 자녀의 위치를 볼 수 있어요.', 'Parents welcome — choose “I’m a parent” to track your child’s grades and courses and see where they stand.')}</p>
       {error && <p className="mt-2 text-center text-sm text-red-600">{error}</p>}
     </>
@@ -244,6 +245,9 @@ export default function LandingPage({ onEmailLogin }: { onEmailLogin: () => void
         </div>
         <p className="mt-6 text-center text-xs text-gray-500">
           <button onClick={() => navigate('/about')} className="underline">{t('서비스 소개 · 데이터 출처와 원칙', 'About · data sources & principles')}</button>
+          {' · '}<button onClick={() => navigate('/privacy')} className="underline">{t('개인정보처리방침', 'Privacy')}</button>
+          {' · '}<button onClick={() => navigate('/terms')} className="underline">{t('이용약관', 'Terms')}</button>
+          {' · '}<a href="mailto:uscollegeroadmap@gmail.com" className="underline">uscollegeroadmap@gmail.com</a>
         </p>
       </div>
       <StickyCta anchorId="hero-cta" endId="final-cta" onStart={() => void googleLogin()} googleIcon={<GoogleIcon />} />

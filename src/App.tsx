@@ -44,6 +44,7 @@ const ProgramsGuidePage = lazy(() => import('./guide/ProgramsGuidePage'))
 const EnglishGuidePage = lazy(() => import('./guide/EnglishGuidePage'))
 const MajorTrendsPage = lazy(() => import('./major/MajorTrendsPage'))
 const AboutPage = lazy(() => import('./about/AboutPage'))
+const LegalPage = lazy(() => import('./about/LegalPage'))
 const MapPage = lazy(() => import('./browse/MapPage'))
 // 개발용: /admin?demo=1 → 샘플 데이터로 레이아웃 확인 (프로덕션 빌드에서 제거됨)
 const AdminDemo = import.meta.env.DEV
@@ -553,6 +554,8 @@ function AppRoutes() {
   if (path === '/compare' || path === '/compare/') {
     return <ComparePage key={window.location.search} profile={profile} />
   }
+  if (path === '/privacy' || path === '/privacy/') return <LegalPage kind="privacy" />
+  if (path === '/terms' || path === '/terms/') return <LegalPage kind="terms" />
   if (path === '/about' || path === '/about/') {
     return <AboutPage />
   }

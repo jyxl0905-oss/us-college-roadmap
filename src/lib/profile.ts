@@ -41,6 +41,8 @@ export interface ProfileRow {
   ref_source?: string | null // 유입 경로 (?ref= 태그, 가입 시 1회)
   graduated?: boolean // 졸업 처리됨 (롤오버 팝업 없음, 리포트는 보관 모드)
   user_role?: 'student' | 'parent' // 부모면 '자녀' 기준 문구
+  us_state?: string | null // 미국 거주 주 (시민권·영주권자), 'outside' = 미국 밖
+  school_type?: string | null // public/private/charter/homeschool/international/other
 }
 
 export function answersToRow(
@@ -51,6 +53,8 @@ export function answersToRow(
   return {
     nickname,
     user_role: a.userRole === 'parent' ? 'parent' : 'student',
+    us_state: a.applicantStatus === 'domestic' ? a.usState : null,
+    school_type: a.applicantStatus === 'domestic' ? a.schoolType : null,
     grad_year: a.gradYear,
     applicant_status: a.applicantStatus,
     has_counselor: a.hasCounselor,
