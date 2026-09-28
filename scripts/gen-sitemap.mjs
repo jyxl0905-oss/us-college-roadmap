@@ -1,4 +1,4 @@
-// 사이트맵 생성 — 정적 경로 + 학교 147곳 + 전공 (빌드마다 자동 재생성)
+// 사이트맵 생성 — 정적 경로 + 학교 369곳 + 전공 (빌드마다 자동 재생성)
 // 한국어판(/x)과 영어판(/en/x)을 모두 넣고 서로를 hreflang으로 연결 (x-default = 영어판)
 import { readFileSync, writeFileSync } from 'node:fs'
 

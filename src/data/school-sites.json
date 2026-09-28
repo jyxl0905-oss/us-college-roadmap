@@ -1,0 +1,890 @@
+{
+ "148": {
+  "d": "gonzaga.edu",
+  "u": "https://www.gonzaga.edu/"
+ },
+ "149": {
+  "d": "missouri.edu",
+  "u": "https://missouri.edu/"
+ },
+ "150": {
+  "d": "auburn.edu",
+  "u": "https://www.auburn.edu/"
+ },
+ "151": {
+  "d": "chapman.edu",
+  "u": "https://www.chapman.edu/"
+ },
+ "152": {
+  "d": "creighton.edu",
+  "u": "https://www.creighton.edu/"
+ },
+ "153": {
+  "d": "elon.edu",
+  "u": "https://www.elon.edu/"
+ },
+ "154": {
+  "d": "slu.edu",
+  "u": "https://www.slu.edu/"
+ },
+ "155": {
+  "d": "uiowa.edu",
+  "u": "https://uiowa.edu/"
+ },
+ "156": {
+  "d": "sandiego.edu",
+  "u": "https://www.sandiego.edu/"
+ },
+ "157": {
+  "d": "fairfield.edu",
+  "u": "https://fairfield.edu/"
+ },
+ "158": {
+  "d": "lmu.edu",
+  "u": "https://www.lmu.edu/"
+ },
+ "159": {
+  "d": "temple.edu",
+  "u": "https://www.temple.edu/"
+ },
+ "160": {
+  "d": "unh.edu",
+  "u": "https://www.unh.edu/"
+ },
+ "161": {
+  "d": "utk.edu",
+  "u": "https://www.utk.edu/"
+ },
+ "162": {
+  "d": "byu.edu",
+  "u": "https://byu.edu/"
+ },
+ "163": {
+  "d": "iastate.edu",
+  "u": "https://www.iastate.edu/"
+ },
+ "164": {
+  "d": "ou.edu",
+  "u": "https://www.ou.edu/"
+ },
+ "165": {
+  "d": "uoregon.edu",
+  "u": "https://www.uoregon.edu/"
+ },
+ "166": {
+  "d": "usfca.edu",
+  "u": "https://www.usfca.edu/"
+ },
+ "167": {
+  "d": "asu.edu",
+  "u": "https://www.asu.edu/"
+ },
+ "168": {
+  "d": "gmu.edu",
+  "u": "https://www.gmu.edu/"
+ },
+ "169": {
+  "d": "luc.edu",
+  "u": "https://www.luc.edu/"
+ },
+ "170": {
+  "d": "utdallas.edu",
+  "u": "https://www.utdallas.edu/"
+ },
+ "171": {
+  "d": "albany.edu",
+  "u": "https://www.albany.edu/"
+ },
+ "172": {
+  "d": "arizona.edu",
+  "u": "https://www.arizona.edu/"
+ },
+ "173": {
+  "d": "udayton.edu",
+  "u": "https://udayton.edu/"
+ },
+ "174": {
+  "d": "du.edu",
+  "u": "https://www.du.edu/"
+ },
+ "175": {
+  "d": "sc.edu",
+  "u": "https://www.sc.edu/"
+ },
+ "176": {
+  "d": "pacific.edu",
+  "u": "https://www.pacific.edu/"
+ },
+ "177": {
+  "d": "miamioh.edu",
+  "u": "https://miamioh.edu/"
+ },
+ "178": {
+  "d": "jefferson.edu",
+  "u": "https://www.jefferson.edu/"
+ },
+ "179": {
+  "d": "uvm.edu",
+  "u": "https://www.uvm.edu/"
+ },
+ "180": {
+  "d": "csulb.edu",
+  "u": "https://www.csulb.edu/"
+ },
+ "181": {
+  "d": "jmu.edu",
+  "u": "https://www.jmu.edu/index.shtml"
+ },
+ "182": {
+  "d": "sju.edu",
+  "u": "https://www.sju.edu/"
+ },
+ "183": {
+  "d": "sdsu.edu",
+  "u": "https://www.sdsu.edu/"
+ },
+ "184": {
+  "d": "sjsu.edu",
+  "u": "https://www.sjsu.edu/"
+ },
+ "185": {
+  "d": "stjohns.edu",
+  "u": "https://www.stjohns.edu/"
+ },
+ "186": {
+  "d": "uab.edu",
+  "u": "https://www.uab.edu/"
+ },
+ "187": {
+  "d": "uh.edu",
+  "u": "https://www.uh.edu/"
+ },
+ "188": {
+  "d": "umbc.edu",
+  "u": "https://umbc.edu/"
+ },
+ "189": {
+  "d": "scranton.edu",
+  "u": "https://www.scranton.edu/"
+ },
+ "190": {
+  "d": "calstatela.edu",
+  "u": "https://www.calstatela.edu/"
+ },
+ "191": {
+  "d": "mercer.edu",
+  "u": "https://www.mercer.edu/"
+ },
+ "192": {
+  "d": "catholic.edu",
+  "u": "https://www.catholic.edu/"
+ },
+ "193": {
+  "d": "ku.edu",
+  "u": "https://ku.edu/"
+ },
+ "194": {
+  "d": "uky.edu",
+  "u": "https://www.uky.edu/"
+ },
+ "195": {
+  "d": "uml.edu",
+  "u": "https://www.uml.edu/"
+ },
+ "196": {
+  "d": "web.uri.edu",
+  "u": "https://web.uri.edu/"
+ },
+ "197": {
+  "d": "ccny.cuny.edu",
+  "u": "https://www.ccny.cuny.edu/"
+ },
+ "198": {
+  "d": "fullerton.edu",
+  "u": "https://www.fullerton.edu/"
+ },
+ "199": {
+  "d": "duq.edu",
+  "u": "https://www.duq.edu/"
+ },
+ "200": {
+  "d": "k-state.edu",
+  "u": "https://www.k-state.edu/"
+ },
+ "201": {
+  "d": "montclair.edu",
+  "u": "https://www.montclair.edu/"
+ },
+ "202": {
+  "d": "oregonstate.edu",
+  "u": "https://oregonstate.edu/"
+ },
+ "203": {
+  "d": "qu.edu",
+  "u": "https://www.qu.edu/"
+ },
+ "204": {
+  "d": "shu.edu",
+  "u": "https://www.shu.edu/"
+ },
+ "205": {
+  "d": "ua.edu",
+  "u": "https://www.ua.edu/"
+ },
+ "206": {
+  "d": "stthomas.edu",
+  "u": "https://www.stthomas.edu/"
+ },
+ "207": {
+  "d": "vcu.edu",
+  "u": "https://www.vcu.edu/"
+ },
+ "208": {
+  "d": "bradley.edu",
+  "u": "https://www.bradley.edu/"
+ },
+ "209": {
+  "d": "butler.edu",
+  "u": "https://www.butler.edu/"
+ },
+ "210": {
+  "d": "colostate.edu",
+  "u": "https://colostate.edu/"
+ },
+ "211": {
+  "d": "depaul.edu",
+  "u": "https://www.depaul.edu/"
+ },
+ "212": {
+  "d": "monmouth.edu",
+  "u": "https://www.monmouth.edu/"
+ },
+ "213": {
+  "d": "unl.edu",
+  "u": "https://www.unl.edu/"
+ },
+ "214": {
+  "d": "charlotte.edu",
+  "u": "https://www.charlotte.edu/"
+ },
+ "215": {
+  "d": "hunter.cuny.edu",
+  "u": "https://www.hunter.cuny.edu/"
+ },
+ "216": {
+  "d": "seattleu.edu",
+  "u": "https://www.seattleu.edu/"
+ },
+ "217": {
+  "d": "uc.edu",
+  "u": "https://www.uc.edu/"
+ },
+ "218": {
+  "d": "louisville.edu",
+  "u": "https://www.louisville.edu/"
+ },
+ "219": {
+  "d": "olemiss.edu",
+  "u": "https://www.olemiss.edu/"
+ },
+ "220": {
+  "d": "utah.edu",
+  "u": "https://www.utah.edu/"
+ },
+ "221": {
+  "d": "ttu.edu",
+  "u": "https://www.ttu.edu/"
+ },
+ "222": {
+  "d": "manoa.hawaii.edu",
+  "u": "https://manoa.hawaii.edu/"
+ },
+ "223": {
+  "d": "wayne.edu",
+  "u": "https://wayne.edu/"
+ },
+ "224": {
+  "d": "adelphi.edu",
+  "u": "https://www.adelphi.edu/"
+ },
+ "225": {
+  "d": "gsu.edu",
+  "u": "https://www.gsu.edu/"
+ },
+ "226": {
+  "d": "hofstra.edu",
+  "u": "https://www.hofstra.edu/"
+ },
+ "227": {
+  "d": "okstate.edu",
+  "u": "https://www.okstate.edu/"
+ },
+ "228": {
+  "d": "rowan.edu",
+  "u": "https://www.rowan.edu/"
+ },
+ "229": {
+  "d": "samford.edu",
+  "u": "https://www.samford.edu/"
+ },
+ "230": {
+  "d": "uark.edu",
+  "u": "https://www.uark.edu/"
+ },
+ "231": {
+  "d": "wsu.edu",
+  "u": "https://wsu.edu/"
+ },
+ "232": {
+  "d": "ecu.edu",
+  "u": "https://www.ecu.edu/"
+ },
+ "233": {
+  "d": "lsu.edu",
+  "u": "https://www.lsu.edu/"
+ },
+ "234": {
+  "d": "ohio.edu",
+  "u": "https://www.ohio.edu/"
+ },
+ "235": {
+  "d": "sacredheart.edu",
+  "u": "https://www.sacredheart.edu/"
+ },
+ "236": {
+  "d": "umb.edu",
+  "u": "https://www.umb.edu/"
+ },
+ "237": {
+  "d": "stthom.edu",
+  "u": "https://www.stthom.edu/"
+ },
+ "238": {
+  "d": "belmont.edu",
+  "u": "https://www.belmont.edu/"
+ },
+ "239": {
+  "d": "fresnostate.edu",
+  "u": "https://www.fresnostate.edu/"
+ },
+ "240": {
+  "d": "msstate.edu",
+  "u": "https://www.msstate.edu/"
+ },
+ "241": {
+  "d": "laverne.edu",
+  "u": "https://www.laverne.edu/"
+ },
+ "242": {
+  "d": "uncg.edu",
+  "u": "https://www.uncg.edu/"
+ },
+ "243": {
+  "d": "unt.edu",
+  "u": "https://www.unt.edu/"
+ },
+ "244": {
+  "d": "xavier.edu",
+  "u": "https://www.xavier.edu/"
+ },
+ "245": {
+  "d": "illinoisstate.edu",
+  "u": "https://illinoisstate.edu/"
+ },
+ "246": {
+  "d": "indianapolis.iu.edu",
+  "u": "https://indianapolis.iu.edu/"
+ },
+ "247": {
+  "d": "nyit.edu",
+  "u": "https://www.nyit.edu/"
+ },
+ "248": {
+  "d": "ncat.edu",
+  "u": "https://www.ncat.edu/"
+ },
+ "249": {
+  "d": "unr.edu",
+  "u": "https://www.unr.edu/"
+ },
+ "250": {
+  "d": "uncw.edu",
+  "u": "https://www.uncw.edu/"
+ },
+ "251": {
+  "d": "bsu.edu",
+  "u": "https://www.bsu.edu/"
+ },
+ "252": {
+  "d": "utsa.edu",
+  "u": "https://www.utsa.edu/"
+ },
+ "253": {
+  "d": "und.edu",
+  "u": "https://und.edu/"
+ },
+ "254": {
+  "d": "wcupa.edu",
+  "u": "https://www.wcupa.edu/"
+ },
+ "255": {
+  "d": "wvu.edu",
+  "u": "https://www.wvu.edu/"
+ },
+ "256": {
+  "d": "fit.edu",
+  "u": "https://www.fit.edu/"
+ },
+ "257": {
+  "d": "kent.edu",
+  "u": "https://www.kent.edu/"
+ },
+ "258": {
+  "d": "unlv.edu",
+  "u": "https://www.unlv.edu/"
+ },
+ "259": {
+  "d": "unm.edu",
+  "u": "https://www.unm.edu/"
+ },
+ "260": {
+  "d": "unf.edu",
+  "u": "https://www.unf.edu/"
+ },
+ "261": {
+  "d": "nmsu.edu",
+  "u": "https://www.nmsu.edu/"
+ },
+ "262": {
+  "d": "nova.edu",
+  "u": "https://www.nova.edu/"
+ },
+ "263": {
+  "d": "pace.edu",
+  "u": "https://www.pace.edu/"
+ },
+ "264": {
+  "d": "sdstate.edu",
+  "u": "https://www.sdstate.edu/"
+ },
+ "265": {
+  "d": "utrgv.edu",
+  "u": "https://www.utrgv.edu/"
+ },
+ "266": {
+  "d": "uwyo.edu",
+  "u": "https://www.uwyo.edu/"
+ },
+ "267": {
+  "d": "aurora.edu",
+  "u": "https://aurora.edu/"
+ },
+ "268": {
+  "d": "cmich.edu",
+  "u": "https://www.cmich.edu/"
+ },
+ "269": {
+  "d": "suffolk.edu",
+  "u": "https://www.suffolk.edu/"
+ },
+ "270": {
+  "d": "utep.edu",
+  "u": "https://www.utep.edu/"
+ },
+ "271": {
+  "d": "umaine.edu",
+  "u": "https://www.umaine.edu/"
+ },
+ "272": {
+  "d": "bgsu.edu",
+  "u": "https://www.bgsu.edu/"
+ },
+ "273": {
+  "d": "calbaptist.edu",
+  "u": "https://www.calbaptist.edu/"
+ },
+ "274": {
+  "d": "harding.edu",
+  "u": "https://www.harding.edu/"
+ },
+ "275": {
+  "d": "nau.edu",
+  "u": "https://nau.edu/"
+ },
+ "276": {
+  "d": "newhaven.edu",
+  "u": "https://www.newhaven.edu/"
+ },
+ "277": {
+  "d": "wmich.edu",
+  "u": "https://wmich.edu/"
+ },
+ "278": {
+  "d": "biola.edu",
+  "u": "https://www.biola.edu/"
+ },
+ "279": {
+  "d": "txst.edu",
+  "u": "https://www.txst.edu/"
+ },
+ "280": {
+  "d": "hartford.edu",
+  "u": "https://www.hartford.edu/"
+ },
+ "281": {
+  "d": "uindy.edu",
+  "u": "https://uindy.edu/"
+ },
+ "282": {
+  "d": "memphis.edu",
+  "u": "https://www.memphis.edu/"
+ },
+ "283": {
+  "d": "uwm.edu",
+  "u": "https://uwm.edu/"
+ },
+ "284": {
+  "d": "usu.edu",
+  "u": "https://www.usu.edu/"
+ },
+ "285": {
+  "d": "wichita.edu",
+  "u": "https://www.wichita.edu/"
+ },
+ "286": {
+  "d": "boisestate.edu",
+  "u": "https://www.boisestate.edu/"
+ },
+ "287": {
+  "d": "unomaha.edu",
+  "u": "https://www.unomaha.edu/"
+ },
+ "288": {
+  "d": "acu.edu",
+  "u": "https://www.acu.edu/"
+ },
+ "289": {
+  "d": "montana.edu",
+  "u": "https://www.montana.edu/"
+ },
+ "290": {
+  "d": "niu.edu",
+  "u": "https://www.niu.edu/"
+ },
+ "291": {
+  "d": "oakland.edu",
+  "u": "https://www.oakland.edu/"
+ },
+ "292": {
+  "d": "usm.edu",
+  "u": "https://www.usm.edu/"
+ },
+ "293": {
+  "d": "uiw.edu",
+  "u": "https://www.uiw.edu/"
+ },
+ "294": {
+  "d": "kean.edu",
+  "u": "https://www.kean.edu/"
+ },
+ "295": {
+  "d": "etsu.edu",
+  "u": "https://www.etsu.edu/"
+ },
+ "296": {
+  "d": "georgiasouthern.edu",
+  "u": "https://www.georgiasouthern.edu/"
+ },
+ "297": {
+  "d": "odu.edu",
+  "u": "https://www.odu.edu/"
+ },
+ "298": {
+  "d": "cau.edu",
+  "u": "https://www.cau.edu/"
+ },
+ "299": {
+  "d": "mercy.edu",
+  "u": "https://www.mercy.edu/"
+ },
+ "300": {
+  "d": "kennesaw.edu",
+  "u": "https://www.kennesaw.edu/"
+ },
+ "301": {
+  "d": "missouristate.edu",
+  "u": "https://www.missouristate.edu/"
+ },
+ "302": {
+  "d": "louisiana.edu",
+  "u": "https://www.louisiana.edu/"
+ },
+ "303": {
+  "d": "spelman.edu",
+  "u": "https://www.spelman.edu/"
+ },
+ "304": {
+  "d": "wp.stolaf.edu",
+  "u": "https://wp.stolaf.edu/"
+ },
+ "305": {
+  "d": "hope.edu",
+  "u": "https://hope.edu/"
+ },
+ "306": {
+  "d": "andersonuniversity.edu",
+  "u": "https://www.andersonuniversity.edu/"
+ },
+ "307": {
+  "d": "appstate.edu",
+  "u": "https://www.appstate.edu/"
+ },
+ "308": {
+  "d": "bentley.edu",
+  "u": "https://www.bentley.edu/"
+ },
+ "309": {
+  "d": "berklee.edu",
+  "u": "https://www.berklee.edu/"
+ },
+ "310": {
+  "d": "bryant.edu",
+  "u": "https://www.bryant.edu/"
+ },
+ "311": {
+  "d": "baruch.cuny.edu",
+  "u": "https://www.baruch.cuny.edu/"
+ },
+ "312": {
+  "d": "brooklyn.edu",
+  "u": "https://www.brooklyn.edu/"
+ },
+ "313": {
+  "d": "jjay.cuny.edu",
+  "u": "https://www.jjay.cuny.edu/"
+ },
+ "314": {
+  "d": "citytech.cuny.edu",
+  "u": "https://www.citytech.cuny.edu/"
+ },
+ "315": {
+  "d": "qc.cuny.edu",
+  "u": "https://www.qc.cuny.edu/"
+ },
+ "316": {
+  "d": "calpoly.edu",
+  "u": "https://calpoly.edu/"
+ },
+ "317": {
+  "d": "cpp.edu",
+  "u": "https://www.cpp.edu/"
+ },
+ "318": {
+  "d": "csuchico.edu",
+  "u": "https://www.csuchico.edu/"
+ },
+ "319": {
+  "d": "csun.edu",
+  "u": "https://www.csun.edu/"
+ },
+ "320": {
+  "d": "csusm.edu",
+  "u": "https://www.csusm.edu/"
+ },
+ "321": {
+  "d": "calvin.edu",
+  "u": "https://www.calvin.edu/"
+ },
+ "322": {
+  "d": "cedarville.edu",
+  "u": "https://www.cedarville.edu/"
+ },
+ "323": {
+  "d": "coastal.edu",
+  "u": "https://www.coastal.edu/"
+ },
+ "324": {
+  "d": "charleston.edu",
+  "u": "https://www.charleston.edu/"
+ },
+ "325": {
+  "d": "colum.edu",
+  "u": "https://www.colum.edu/"
+ },
+ "326": {
+  "d": "eku.edu",
+  "u": "https://www.eku.edu/"
+ },
+ "327": {
+  "d": "emich.edu",
+  "u": "https://www.emich.edu/"
+ },
+ "328": {
+  "d": "elmhurst.edu",
+  "u": "https://www.elmhurst.edu/"
+ },
+ "329": {
+  "d": "daytonabeach.erau.edu",
+  "u": "https://daytonabeach.erau.edu/"
+ },
+ "330": {
+  "d": "prescott.erau.edu",
+  "u": "https://prescott.erau.edu/"
+ },
+ "331": {
+  "d": "emerson.edu",
+  "u": "https://www.emerson.edu/"
+ },
+ "332": {
+  "d": "endicott.edu",
+  "u": "https://www.endicott.edu/"
+ },
+ "333": {
+  "d": "fgcu.edu",
+  "u": "https://www.fgcu.edu/"
+ },
+ "334": {
+  "d": "ggc.edu",
+  "u": "https://www.ggc.edu/"
+ },
+ "335": {
+  "d": "gvsu.edu",
+  "u": "https://www.gvsu.edu/"
+ },
+ "336": {
+  "d": "hamptonu.edu",
+  "u": "https://www.hamptonu.edu/"
+ },
+ "337": {
+  "d": "highpoint.edu",
+  "u": "https://www.highpoint.edu/"
+ },
+ "338": {
+  "d": "ithaca.edu",
+  "u": "https://www.ithaca.edu/"
+ },
+ "339": {
+  "d": "jwu.edu",
+  "u": "https://www.jwu.edu/campuses/providence/"
+ },
+ "340": {
+  "d": "liu.edu",
+  "u": "https://www.liu.edu/"
+ },
+ "341": {
+  "d": "loyola.edu",
+  "u": "https://www.loyola.edu/"
+ },
+ "342": {
+  "d": "marist.edu",
+  "u": "https://www.marist.edu/"
+ },
+ "343": {
+  "d": "mcphs.edu",
+  "u": "https://www.mcphs.edu/"
+ },
+ "344": {
+  "d": "merrimack.edu",
+  "u": "https://www.merrimack.edu/"
+ },
+ "345": {
+  "d": "mtsu.edu",
+  "u": "https://www.mtsu.edu/"
+ },
+ "346": {
+  "d": "mnsu.edu",
+  "u": "https://mnsu.edu/"
+ },
+ "347": {
+  "d": "molloy.edu",
+  "u": "https://www.molloy.edu/"
+ },
+ "348": {
+  "d": "oru.edu",
+  "u": "https://oru.edu/"
+ },
+ "349": {
+  "d": "pointloma.edu",
+  "u": "https://www.pointloma.edu/"
+ },
+ "350": {
+  "d": "providence.edu",
+  "u": "https://www.providence.edu/"
+ },
+ "351": {
+  "d": "rider.edu",
+  "u": "https://www.rider.edu/"
+ },
+ "352": {
+  "d": "rwu.edu",
+  "u": "https://www.rwu.edu/"
+ },
+ "353": {
+  "d": "sxu.edu",
+  "u": "https://www.sxu.edu/"
+ },
+ "354": {
+  "d": "shsu.edu",
+  "u": "https://www.shsu.edu/"
+ },
+ "355": {
+  "d": "siena.edu",
+  "u": "https://www.siena.edu/"
+ },
+ "356": {
+  "d": "seu.edu",
+  "u": "https://www.seu.edu/"
+ },
+ "357": {
+  "d": "sjny.edu",
+  "u": "https://www.sjny.edu/"
+ },
+ "358": {
+  "d": "stevenson.edu",
+  "u": "https://www.stevenson.edu/"
+ },
+ "359": {
+  "d": "tarleton.edu",
+  "u": "https://www.tarleton.edu/"
+ },
+ "360": {
+  "d": "ut.edu",
+  "u": "https://www.ut.edu/"
+ },
+ "361": {
+  "d": "towson.edu",
+  "u": "https://www.towson.edu/"
+ },
+ "362": {
+  "d": "uco.edu",
+  "u": "https://www.uco.edu/"
+ },
+ "363": {
+  "d": "ung.edu",
+  "u": "https://www.ung.edu/"
+ },
+ "364": {
+  "d": "utc.edu",
+  "u": "https://utc.edu/"
+ },
+ "365": {
+  "d": "wit.edu",
+  "u": "https://wit.edu/"
+ },
+ "366": {
+  "d": "wcu.edu",
+  "u": "https://www.wcu.edu/"
+ },
+ "367": {
+  "d": "wku.edu",
+  "u": "https://www.wku.edu/"
+ },
+ "368": {
+  "d": "wwu.edu",
+  "u": "https://wwu.edu/"
+ },
+ "369": {
+  "d": "ycp.edu",
+  "u": "https://www.ycp.edu/"
+ }
+}

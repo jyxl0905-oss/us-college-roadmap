@@ -145,9 +145,10 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
           const early = s.ed_offered ? ['ED', s.ed_timing] : s.rea_offered ? ['REA', s.ea_timing] : s.ea_offered ? ['EA', s.ea_timing] : null
           const deadline = early && early[1] ? { label: t(`${early[0]} 마감`, `${early[0]} deadline`), value: timingLabel(early[1]) } : s.rd_timing ? { label: t('RD 마감', 'RD deadline'), value: timingLabel(s.rd_timing) } : null
           const sat = s.test_policy === 'test-free' ? t('미반영', 'Not used') : s.sat_mid50_low && s.sat_mid50_high ? `${s.sat_mid50_low}–${s.sat_mid50_high}` : null
+          const math = !sat && s.test_ranges?.sat_math ? `${s.test_ranges.sat_math[0]}–${s.test_ranges.sat_math[1]}` : null
           const kpis: [string, string | null][] = [
             [t('전체 합격률', 'Acceptance rate'), s.overall_accept_rate != null ? `${s.overall_accept_rate}%` : null],
-            [t('SAT 중간 50%', 'SAT middle 50%'), sat],
+            math ? [t('SAT 수학 중간 50%', 'SAT Math middle 50%'), math] : [t('SAT 중간 50%', 'SAT middle 50%'), sat],
             [deadline?.label ?? t('지원 마감', 'Deadline'), deadline?.value ?? null],
           ]
           return (
@@ -161,6 +162,21 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
             </div>
           )
         })()}
+
+        {/* 교육부 자료만 있는 학교 안내 */}
+        {s.source_kind === 'scorecard' && (
+          <div className="mt-4 rounded-xl border-2 border-amber-200 bg-amber-50 px-4 py-3 text-[13px] leading-relaxed text-amber-900">
+            <p className="font-semibold">{t('교육부 공식 자료로 기본 정보만 정리한 학교예요', 'Basic information from the U.S. Department of Education only')}</p>
+            <p className="mt-0.5 text-amber-800">
+              {t(
+                `위치·학부생 수·합격률·학비·졸업률은 미국 교육부 College Scorecard(2026년 6월 발표) 기준이에요. 에세이·마감·장학금·평가 요소 같은 입학처 세부 정보는 아직 정리 전이라, 학교 공식 사이트에서 확인해 주세요.`,
+                'Location, enrollment, admit rate, tuition and graduation figures come from the U.S. Department of Education College Scorecard (June 2026 release). Admissions details such as essays, deadlines, aid and review factors are not compiled yet — check the school’s official site.',
+              )}
+              {s.city && s.state ? ` (${s.city}, ${s.state}${s.ugds ? t(` · 학부생 ${s.ugds.toLocaleString()}명`, ` · ${s.ugds.toLocaleString()} undergrads`) : ''})` : ''}
+            </p>
+            {s.source_url && <a href={s.source_url} target="_blank" rel="noreferrer" className="mt-1 inline-block text-xs text-amber-900 underline">{t('College Scorecard에서 보기 ↗', 'View on College Scorecard ↗')}</a>}
+          </div>
+        )}
 
         {/* 지도 — 지연 로딩 임베드 */}
         <div className="mt-4 overflow-hidden rounded-xl border-2 border-gray-200">
@@ -295,14 +311,17 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
                 ? `${s.avg_gpa}${s.avg_gpa_scale === '100 scale' ? '/100' : ''}${s.avg_gpa_scale === 'weighted' ? ' (weighted)' : ''}${s.avg_gpa_year ? ` · ${s.avg_gpa_year}` : ''}`
                 : t('미공개', 'Not disclosed'),
             ],
-            [
+            ...(s.sat_mid50_low == null && s.test_ranges ? [] : [[
               t('SAT 중간 50%', 'SAT middle 50%'),
               s.test_policy === 'test-free'
                 ? t('시험 미반영 (test-free)', 'Test-free')
                 : s.sat_mid50_low && s.sat_mid50_high
                   ? `${s.sat_mid50_low} – ${s.sat_mid50_high}`
                   : t('미공개', 'Not disclosed'),
-            ],
+            ]]),
+            ...(s.test_ranges?.sat_math ? [[t('SAT 수학 25–75%', 'SAT Math 25th–75th'), `${s.test_ranges.sat_math[0]} – ${s.test_ranges.sat_math[1]}`]] : []),
+            ...(s.test_ranges?.sat_erw ? [[t('SAT 읽기·쓰기 25–75%', 'SAT Reading & Writing 25th–75th'), `${s.test_ranges.sat_erw[0]} – ${s.test_ranges.sat_erw[1]}`]] : []),
+            ...(s.test_ranges?.act ? [[t('ACT 종합 25–75%', 'ACT Composite 25th–75th'), `${s.test_ranges.act[0]} – ${s.test_ranges.act[1]}`]] : []),
             [t('전체 합격률', 'Overall accept rate'), dash(s.overall_accept_rate, '%')],
             // 국제학생 합격률이 공개되지 않은 학교는 행을 숨기고 위의 공식 전체 합격률만 보여줌
             ...(s.intl_accept_rate != null ? [[t('국제학생 합격률', 'Intl. student accept rate'), dash(s.intl_accept_rate, '%')]] : []),

@@ -77,7 +77,7 @@ export default function AboutPage() {
           <ul className="mt-2 flex flex-col gap-1.5 text-sm leading-relaxed text-gray-700">
             <li>• {t('학년·전공·목표 학교에 맞춰 이번 시즌에 할 일을 체크리스트로 정리해요.', 'A checklist of what to do this season, for your grade, major and target schools.')}</li>
             <li>• {t('과목·성적·활동·시험을 기록하면 수업 난이도, 목표 학교 과목 요건, 다음 학년 추천까지 분석해요.', 'Log courses, grades, activities and tests to get rigor analysis, target-school course checks and next-year suggestions.')}</li>
-            <li>• {t('147개 대학의 합격 범위·비용·재정지원·영어 시험·AP 학점·인터뷰·마감을 공식 자료로 비교해요.', 'Compare 147 colleges’ admit ranges, cost, aid, English tests, AP credit, interviews and deadlines from official sources.')}</li>
+            <li>• {t('미국 대학 369곳을 공식 자료로 비교해요. 147곳은 합격 범위·비용·재정지원·영어 시험·AP 학점·인터뷰·마감까지, 나머지 222곳은 교육부 자료로 합격률·학비·졸업률을 볼 수 있어요.', 'Compare 369 U.S. colleges from official sources — 147 with admit ranges, cost, aid, English tests, AP credit, interviews and deadlines, and 222 more with admit rates, tuition and graduation rates from the Department of Education.')}</li>
             <li>• {t('에세이·추천서·지원 학교·관심 표현까지 원서 준비 전체를 한곳에서 관리해요.', 'Manage essays, recommenders, your college list and demonstrated interest in one place.')}</li>
           </ul>
           <p className="mt-2 text-[12px] leading-relaxed text-gray-500">{t('컨설턴트와 카운슬러가 해 주는 개별 상담을 대신하진 못해요. 다만 정보 정리·일정 관리·기록처럼 누구에게나 필요한 부분은 돈 없이도 할 수 있게 했어요.', 'It can’t replace one-on-one advice from a counselor or consultant — but the parts everyone needs, like organizing information, keeping to a timeline and keeping records, no longer cost money.')}</p>

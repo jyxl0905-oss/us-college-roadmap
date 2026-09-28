@@ -1,3 +1,4 @@
+import schoolSites from '../data/school-sites.json'
 // 학교 로고 — 각 대학 공식 웹사이트의 파비콘(엠블럼)을 구글 파비콘 서비스로 표시
 // (API 키·외부 계약 불필요, 로고 파일을 직접 호스팅하지 않으므로 상표 이슈 최소화)
 const domains: Record<number, string> = {
@@ -234,8 +235,11 @@ const hiResLogos: Record<number, string> = {
 const DDG_OVERRIDE = new Set([24, 35, 58])
 const NO_FAVICON = new Set([49, 59])
 
+// 교육부 College Scorecard로 추가한 학교: 공식 사이트 주소(INSTURL)에서 도메인·링크를 가져옴
+const SITES = schoolSites as Record<string, { d: string; u: string }>
+
 function faviconUrl(schoolId: number): string | null {
-  const domain = domains[schoolId]
+  const domain = domains[schoolId] ?? SITES[schoolId]?.d
   if (!domain || NO_FAVICON.has(schoolId)) return null
   if (DDG_OVERRIDE.has(schoolId)) return `https://icons.duckduckgo.com/ip3/${domain}.ico`
   return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
@@ -251,6 +255,7 @@ export function schoolLogoSources(schoolId: number): string[] {
 const WEBSITE_OVERRIDE: Record<number, string> = { 138: 'https://www.newschool.edu/parsons/' }
 export function schoolWebsite(schoolId: number): string | null {
   if (WEBSITE_OVERRIDE[schoolId]) return WEBSITE_OVERRIDE[schoolId]
+  if (SITES[schoolId]) return SITES[schoolId].u
   const d = domains[schoolId]
   return d ? `https://www.${d}` : null
 }

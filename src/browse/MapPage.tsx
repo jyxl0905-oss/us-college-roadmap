@@ -10,7 +10,7 @@ import { loadSchools } from '../lib/schoolsCache'
 import { navigate, slugify, goBack } from '../lib/router'
 import SchoolLogo from './SchoolLogo'
 import { schoolLogoSources } from './logos'
-import { uniGroupOf, uniGroupTitles, uniGroups, rankSortKey, rankShort } from './rankGroups'
+import { uniGroupOf, uniGroupTitles, uniGroups, rankSortKey, rankShort, type UniGroup } from './rankGroups'
 import type { ProfileRow } from '../lib/profile'
 import { t, getLang } from '../i18n'
 import { Map as MapIcon, Palette, Target, X } from 'lucide-react'
@@ -161,7 +161,7 @@ export default function MapPage({ profile }: MapPageProps) {
     () =>
       schools
         .filter((s) => (kind === 'targets' ? targetIds.has(s.id) : kind === 'all' || (s.kind ?? 'university') === kind))
-        .filter((s) => tierSel === 0 || ((s.kind ?? 'university') === 'lac' ? s.tier === tierSel : s.usnews_rank != null && uniGroupOf(s.usnews_rank) === tierSel))
+        .filter((s) => tierSel === 0 || ((s.kind ?? 'university') === 'lac' ? s.tier === tierSel : uniGroupOf(s.usnews_rank) === tierSel))
         .map((s) => {
           const ll = coords[String(s.id)]
           if (!ll) return null
@@ -402,7 +402,7 @@ export default function MapPage({ profile }: MapPageProps) {
                   ? t('순위 전체', 'All ranks')
                   : kind === 'lac'
                     ? ({ 1: 'LAC Top 12', 2: t('LAC 13–24위', 'LAC 13–24'), 3: t('LAC 25–35위', 'LAC 25–35') } as Record<number, string>)[tr]
-                    : uniGroupTitles[tr as 1 | 2 | 3 | 4 | 5]
+                    : uniGroupTitles[tr as UniGroup]
               return (
                 <button
                   key={tr}

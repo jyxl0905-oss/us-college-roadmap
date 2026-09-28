@@ -11,7 +11,9 @@
   "need_blind_intl": true,
   "lac_rank": null,
   "usnews_rank_prev": 1,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NJ",
+  "source_kind": null
  },
  {
   "id": 2,
@@ -25,7 +27,9 @@
   "need_blind_intl": true,
   "lac_rank": null,
   "usnews_rank_prev": 2,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": null
  },
  {
   "id": 3,
@@ -39,7 +43,9 @@
   "need_blind_intl": true,
   "lac_rank": null,
   "usnews_rank_prev": 3,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": null
  },
  {
   "id": 4,
@@ -53,7 +59,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 4,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 5,
@@ -67,7 +75,9 @@
   "need_blind_intl": true,
   "lac_rank": null,
   "usnews_rank_prev": 4,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CT",
+  "source_kind": null
  },
  {
   "id": 6,
@@ -81,7 +91,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 6,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "IL",
+  "source_kind": null
  },
  {
   "id": 7,
@@ -100,7 +112,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 7,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NC",
+  "source_kind": null
  },
  {
   "id": 8,
@@ -119,7 +133,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 7,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MD",
+  "source_kind": null
  },
  {
   "id": 9,
@@ -140,7 +156,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 7,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "IL",
+  "source_kind": null
  },
  {
   "id": 10,
@@ -161,7 +179,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 7,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "PA",
+  "source_kind": null
  },
  {
   "id": 11,
@@ -175,7 +195,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 11,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 12,
@@ -199,7 +221,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 12,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 13,
@@ -216,7 +240,9 @@
   "need_blind_intl": true,
   "lac_rank": null,
   "usnews_rank_prev": 13,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "RI",
+  "source_kind": null
  },
  {
   "id": 14,
@@ -233,7 +259,9 @@
   "need_blind_intl": true,
   "lac_rank": null,
   "usnews_rank_prev": 13,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NH",
+  "source_kind": null
  },
  {
   "id": 15,
@@ -252,7 +280,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 15,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 16,
@@ -272,7 +302,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 15,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 17,
@@ -292,7 +324,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 17,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": null
  },
  {
   "id": 18,
@@ -319,7 +353,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 17,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 19,
@@ -339,7 +375,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 17,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "TN",
+  "source_kind": null
  },
  {
   "id": 20,
@@ -366,7 +404,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 20,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "PA",
+  "source_kind": null
  },
  {
   "id": 21,
@@ -386,7 +426,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 20,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MI",
+  "source_kind": null
  },
  {
   "id": 22,
@@ -402,7 +444,9 @@
   "need_blind_intl": true,
   "lac_rank": null,
   "usnews_rank_prev": 20,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "IN",
+  "source_kind": null
  },
  {
   "id": 23,
@@ -424,7 +468,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 20,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MO",
+  "source_kind": null
  },
  {
   "id": 24,
@@ -441,7 +487,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 24,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "GA",
+  "source_kind": null
  },
  {
   "id": 25,
@@ -460,7 +508,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 24,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "DC",
+  "source_kind": null
  },
  {
   "id": 26,
@@ -476,7 +526,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 26,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NC",
+  "source_kind": null
  },
  {
   "id": 27,
@@ -500,7 +552,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 26,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "VA",
+  "source_kind": null
  },
  {
   "id": 28,
@@ -520,7 +574,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 28,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 29,
@@ -539,7 +595,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 29,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 30,
@@ -553,7 +611,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 30,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "FL",
+  "source_kind": null
  },
  {
   "id": 31,
@@ -579,7 +639,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 30,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": null
  },
  {
   "id": 32,
@@ -593,7 +655,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 32,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "GA",
+  "source_kind": null
  },
  {
   "id": 33,
@@ -612,7 +676,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 32,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 34,
@@ -634,7 +700,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 32,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 35,
@@ -659,7 +727,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 32,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 36,
@@ -680,7 +750,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 36,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": null
  },
  {
   "id": 37,
@@ -700,7 +772,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 36,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": null
  },
  {
   "id": 38,
@@ -724,7 +798,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 36,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "IL",
+  "source_kind": null
  },
  {
   "id": 39,
@@ -741,7 +817,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 36,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "WI",
+  "source_kind": null
  },
  {
   "id": 40,
@@ -758,7 +836,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 40,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 41,
@@ -775,7 +855,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 41,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "OH",
+  "source_kind": null
  },
  {
   "id": 42,
@@ -798,7 +880,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 42,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": null
  },
  {
   "id": 43,
@@ -819,7 +903,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 42,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NJ",
+  "source_kind": null
  },
  {
   "id": 44,
@@ -841,7 +927,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 42,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MD",
+  "source_kind": null
  },
  {
   "id": 45,
@@ -863,7 +951,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 42,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "WA",
+  "source_kind": null
  },
  {
   "id": 46,
@@ -880,7 +970,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 46,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "PA",
+  "source_kind": null
  },
  {
   "id": 47,
@@ -900,7 +992,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 46,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": null
  },
  {
   "id": 48,
@@ -925,7 +1019,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 46,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "IN",
+  "source_kind": null
  },
  {
   "id": 49,
@@ -939,7 +1035,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 46,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "GA",
+  "source_kind": null
  },
  {
   "id": 50,
@@ -956,7 +1054,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 46,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 51,
@@ -975,7 +1075,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 51,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "OH",
+  "source_kind": null
  },
  {
   "id": 52,
@@ -989,7 +1091,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 51,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "FL",
+  "source_kind": null
  },
  {
   "id": 53,
@@ -1007,7 +1111,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 51,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": null
  },
  {
   "id": 54,
@@ -1032,7 +1138,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 51,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "VA",
+  "source_kind": null
  },
  {
   "id": 55,
@@ -1046,7 +1154,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 51,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NC",
+  "source_kind": null
  },
  {
   "id": 56,
@@ -1063,7 +1173,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 51,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "VA",
+  "source_kind": null
  },
  {
   "id": 57,
@@ -1077,7 +1189,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 57,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 58,
@@ -1099,7 +1213,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 57,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "PA",
+  "source_kind": null
  },
  {
   "id": 59,
@@ -1123,7 +1239,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 59,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "DC",
+  "source_kind": null
  },
  {
   "id": 60,
@@ -1140,7 +1258,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 59,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "PA",
+  "source_kind": null
  },
  {
   "id": 61,
@@ -1160,7 +1280,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 59,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 62,
@@ -1177,7 +1299,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 59,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 63,
@@ -1200,7 +1324,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 59,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MN",
+  "source_kind": null
  },
  {
   "id": 64,
@@ -1217,7 +1343,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 1
+  "lac_rank_prev": 1,
+  "state": "MA",
+  "source_kind": null
  },
  {
   "id": 65,
@@ -1234,7 +1362,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": true,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 2
+  "lac_rank_prev": 2,
+  "state": "MA",
+  "source_kind": null
  },
  {
   "id": 66,
@@ -1251,7 +1381,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 4
+  "lac_rank_prev": 4,
+  "state": "PA",
+  "source_kind": null
  },
  {
   "id": 67,
@@ -1268,7 +1400,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": true,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 5
+  "lac_rank_prev": 5,
+  "state": "ME",
+  "source_kind": null
  },
  {
   "id": 68,
@@ -1285,7 +1419,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 7
+  "lac_rank_prev": 7,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 69,
@@ -1302,7 +1438,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 7
+  "lac_rank_prev": 7,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 70,
@@ -1319,7 +1457,9 @@
   "ed_cds_year": "2024-25",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 7
+  "lac_rank_prev": 7,
+  "state": "MA",
+  "source_kind": null
  },
  {
   "id": 71,
@@ -1336,7 +1476,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 10
+  "lac_rank_prev": 10,
+  "state": "MN",
+  "source_kind": null
  },
  {
   "id": 72,
@@ -1353,7 +1495,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 10
+  "lac_rank_prev": 10,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 73,
@@ -1370,7 +1514,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 13
+  "lac_rank_prev": 13,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 74,
@@ -1387,7 +1533,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 13
+  "lac_rank_prev": 13,
+  "state": "NC",
+  "source_kind": null
  },
  {
   "id": 75,
@@ -1404,7 +1552,9 @@
   "ed_cds_year": "2024-25",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 13
+  "lac_rank_prev": 13,
+  "state": "IA",
+  "source_kind": null
  },
  {
   "id": 76,
@@ -1421,7 +1571,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 13
+  "lac_rank_prev": 13,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 77,
@@ -1438,7 +1590,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 13
+  "lac_rank_prev": 13,
+  "state": "VT",
+  "source_kind": null
  },
  {
   "id": 78,
@@ -1455,7 +1609,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 13
+  "lac_rank_prev": 13,
+  "state": "MA",
+  "source_kind": null
  },
  {
   "id": 79,
@@ -1472,7 +1628,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 13
+  "lac_rank_prev": 13,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 80,
@@ -1489,7 +1647,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 13
+  "lac_rank_prev": 13,
+  "state": "CT",
+  "source_kind": null
  },
  {
   "id": 81,
@@ -1506,7 +1666,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": true,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 21
+  "lac_rank_prev": 21,
+  "state": "VA",
+  "source_kind": null
  },
  {
   "id": 82,
@@ -1523,7 +1685,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 22
+  "lac_rank_prev": 22,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 83,
@@ -1540,7 +1704,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 22
+  "lac_rank_prev": 22,
+  "state": "VA",
+  "source_kind": null
  },
  {
   "id": 84,
@@ -1557,7 +1723,9 @@
   "ed_cds_year": "2024-25",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 24
+  "lac_rank_prev": 24,
+  "state": "ME",
+  "source_kind": null
  },
  {
   "id": 85,
@@ -1571,7 +1739,9 @@
   "overall_accept_rate": 7.1,
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 24
+  "lac_rank_prev": 24,
+  "state": "ME",
+  "source_kind": null
  },
  {
   "id": 86,
@@ -1588,7 +1758,9 @@
   "ed_cds_year": "2024-25",
   "need_blind_intl": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 24
+  "lac_rank_prev": 24,
+  "state": "PA",
+  "source_kind": null
  },
  {
   "id": 87,
@@ -1605,7 +1777,9 @@
   "ed_cds_year": "2023-24",
   "need_blind_intl": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 27
+  "lac_rank_prev": 27,
+  "state": "MA",
+  "source_kind": null
  },
  {
   "id": 88,
@@ -1622,7 +1796,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 28
+  "lac_rank_prev": 28,
+  "state": "MN",
+  "source_kind": null
  },
  {
   "id": 89,
@@ -1639,7 +1815,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 29
+  "lac_rank_prev": 29,
+  "state": "MA",
+  "source_kind": null
  },
  {
   "id": 90,
@@ -1656,7 +1834,9 @@
   "ed_cds_year": "2024-25",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 30
+  "lac_rank_prev": 30,
+  "state": "PA",
+  "source_kind": null
  },
  {
   "id": 91,
@@ -1677,7 +1857,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 30
+  "lac_rank_prev": 30,
+  "state": "PA",
+  "source_kind": null
  },
  {
   "id": 92,
@@ -1694,7 +1876,9 @@
   "ed_cds_year": "2024-25",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 30
+  "lac_rank_prev": 30,
+  "state": "CO",
+  "source_kind": null
  },
  {
   "id": 93,
@@ -1711,7 +1895,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 30
+  "lac_rank_prev": 30,
+  "state": "PA",
+  "source_kind": null
  },
  {
   "id": 94,
@@ -1728,7 +1914,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 34
+  "lac_rank_prev": 34,
+  "state": "OH",
+  "source_kind": null
  },
  {
   "id": 95,
@@ -1745,7 +1933,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 35
+  "lac_rank_prev": 35,
+  "state": "PA",
+  "source_kind": null
  },
  {
   "id": 96,
@@ -1762,7 +1952,9 @@
   "ed_cds_year": "2024-25",
   "need_blind_intl": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 35
+  "lac_rank_prev": 35,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 97,
@@ -1779,7 +1971,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 37
+  "lac_rank_prev": 37,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 98,
@@ -1796,7 +1990,9 @@
   "ed_cds_year": "2025-26",
   "need_blind_intl": false,
   "usnews_rank_prev": null,
-  "lac_rank_prev": 37
+  "lac_rank_prev": 37,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 99,
@@ -1813,7 +2009,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 73,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "IN",
+  "source_kind": null
  },
  {
   "id": 100,
@@ -1829,7 +2027,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 64,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MI",
+  "source_kind": null
  },
  {
   "id": 101,
@@ -1853,7 +2053,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 64,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NC",
+  "source_kind": null
  },
  {
   "id": 102,
@@ -1880,7 +2082,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 64,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 103,
@@ -1899,7 +2103,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 64,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": null
  },
  {
   "id": 104,
@@ -1921,7 +2127,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 64,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "FL",
+  "source_kind": null
  },
  {
   "id": 105,
@@ -1938,7 +2146,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 69,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": null
  },
  {
   "id": 106,
@@ -1955,7 +2165,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 69,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "LA",
+  "source_kind": null
  },
  {
   "id": 107,
@@ -1979,7 +2191,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 69,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CT",
+  "source_kind": null
  },
  {
   "id": 108,
@@ -1998,7 +2212,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 69,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "PA",
+  "source_kind": null
  },
  {
   "id": 109,
@@ -2015,7 +2231,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 73,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 110,
@@ -2031,7 +2249,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 75,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "SC",
+  "source_kind": null
  },
  {
   "id": 111,
@@ -2049,7 +2269,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 75,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NJ",
+  "source_kind": null
  },
  {
   "id": 112,
@@ -2072,7 +2294,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 75,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 113,
@@ -2089,7 +2313,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 75,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 114,
@@ -2103,7 +2329,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 75,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 115,
@@ -2117,7 +2345,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 80,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CO",
+  "source_kind": null
  },
  {
   "id": 116,
@@ -2140,7 +2370,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 80,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "PA",
+  "source_kind": null
  },
  {
   "id": 117,
@@ -2157,7 +2389,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 80,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NJ",
+  "source_kind": null
  },
  {
   "id": 118,
@@ -2176,7 +2410,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 80,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NJ",
+  "source_kind": null
  },
  {
   "id": 119,
@@ -2192,7 +2428,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 84,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 120,
@@ -2209,7 +2447,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 84,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "IL",
+  "source_kind": null
  },
  {
   "id": 121,
@@ -2226,7 +2466,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 84,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": null
  },
  {
   "id": 122,
@@ -2245,7 +2487,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 84,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 123,
@@ -2262,7 +2506,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 88,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "DC",
+  "source_kind": null
  },
  {
   "id": 124,
@@ -2283,7 +2529,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 88,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": null
  },
  {
   "id": 125,
@@ -2300,7 +2548,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 88,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "DC",
+  "source_kind": null
  },
  {
   "id": 126,
@@ -2314,7 +2564,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 88,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "WI",
+  "source_kind": null
  },
  {
   "id": 127,
@@ -2339,7 +2591,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 88,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 128,
@@ -2361,7 +2615,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 88,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": null
  },
  {
   "id": 129,
@@ -2377,7 +2633,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 88,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 130,
@@ -2396,7 +2654,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 88,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "DE",
+  "source_kind": null
  },
  {
   "id": 131,
@@ -2412,7 +2672,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 88,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "FL",
+  "source_kind": null
  },
  {
   "id": 132,
@@ -2426,7 +2688,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 97,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "FL",
+  "source_kind": null
  },
  {
   "id": 133,
@@ -2445,7 +2709,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 97,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 134,
@@ -2462,7 +2728,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 97,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NJ",
+  "source_kind": null
  },
  {
   "id": 135,
@@ -2482,7 +2750,9 @@
   "need_blind_intl": false,
   "lac_rank": null,
   "usnews_rank_prev": 97,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": null
  },
  {
   "id": 136,
@@ -2501,7 +2771,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": 97,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CO",
+  "source_kind": null
  },
  {
   "id": 137,
@@ -2525,7 +2797,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 138,
@@ -2546,7 +2820,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 139,
@@ -2569,7 +2845,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "RI",
+  "source_kind": null
  },
  {
   "id": 140,
@@ -2589,7 +2867,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": null
  },
  {
   "id": 141,
@@ -2612,7 +2892,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 142,
@@ -2633,7 +2915,9 @@
   "need_blind_intl": true,
   "lac_rank": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "IL",
+  "source_kind": null
  },
  {
   "id": 143,
@@ -2653,7 +2937,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 144,
@@ -2675,7 +2961,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": null
  },
  {
   "id": 145,
@@ -2696,7 +2984,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MD",
+  "source_kind": null
  },
  {
   "id": 146,
@@ -2719,7 +3009,9 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "GA",
+  "source_kind": null
  },
  {
   "id": 147,
@@ -2740,6 +3032,3560 @@
   "need_blind_intl": null,
   "lac_rank": null,
   "usnews_rank_prev": null,
-  "lac_rank_prev": null
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": null
+ },
+ {
+  "id": 148,
+  "name": "Gonzaga University",
+  "name_ko": "곤자가 대학교",
+  "usnews_rank": 90,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 81.7,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "WA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 149,
+  "name": "University of Missouri",
+  "name_ko": "미주리 대학교",
+  "usnews_rank": 95,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 78.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MO",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 150,
+  "name": "Auburn University",
+  "name_ko": "오번 대학교",
+  "usnews_rank": 100,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 45.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "AL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 151,
+  "name": "Chapman University",
+  "name_ko": "채프먼 대학교",
+  "usnews_rank": 100,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 65.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 152,
+  "name": "Creighton University",
+  "name_ko": "크레이턴 대학교",
+  "usnews_rank": 100,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 79.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NE",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 153,
+  "name": "Elon University",
+  "name_ko": "엘런 대학교",
+  "usnews_rank": 100,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 66.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NC",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 154,
+  "name": "Saint Louis University",
+  "name_ko": "세인트루이스 대학교",
+  "usnews_rank": 100,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 75.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MO",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 155,
+  "name": "University of Iowa",
+  "name_ko": "아이오와 대학교",
+  "usnews_rank": 100,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 83.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "IA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 156,
+  "name": "University of San Diego",
+  "name_ko": "샌디에이고 대학교",
+  "usnews_rank": 100,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 52.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 157,
+  "name": "Fairfield University",
+  "name_ko": "페어필드 대학교",
+  "usnews_rank": 109,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 33.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CT",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 158,
+  "name": "Loyola Marymount University",
+  "name_ko": "로욜라 메리마운트 대학교",
+  "usnews_rank": 109,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 45.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 159,
+  "name": "Temple University",
+  "name_ko": "템플 대학교",
+  "usnews_rank": 109,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 80.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "PA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 160,
+  "name": "University of New Hampshire",
+  "name_ko": "뉴햄프셔 대학교",
+  "usnews_rank": 109,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 88.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NH",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 161,
+  "name": "University of Tennessee--Knoxville",
+  "name_ko": "테네시 대학교 녹스빌",
+  "usnews_rank": 109,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 41.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TN",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 162,
+  "name": "Brigham Young University",
+  "name_ko": "브리검영 대학교 (BYU)",
+  "usnews_rank": 116,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 67.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "UT",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 163,
+  "name": "Iowa State University of Science and Technology",
+  "name_ko": "아이오와 주립대학교",
+  "usnews_rank": 116,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 88.7,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "IA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 164,
+  "name": "The University of Oklahoma",
+  "name_ko": "오클라호마 대학교",
+  "usnews_rank": 116,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 76.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "OK",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 165,
+  "name": "University of Oregon",
+  "name_ko": "오리건 대학교",
+  "usnews_rank": 116,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 88.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "OR",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 166,
+  "name": "University of San Francisco",
+  "name_ko": "샌프란시스코 대학교",
+  "usnews_rank": 116,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 61.7,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 167,
+  "name": "Arizona State University",
+  "name_ko": "애리조나 주립대학교 (ASU)",
+  "usnews_rank": 121,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 89.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "AZ",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 168,
+  "name": "George Mason University",
+  "name_ko": "조지메이슨 대학교",
+  "usnews_rank": 121,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 87.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "VA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 169,
+  "name": "Loyola University Chicago",
+  "name_ko": "로욜라 대학교 시카고",
+  "usnews_rank": 121,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 81.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "IL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 170,
+  "name": "The University of Texas--Dallas",
+  "name_ko": "텍사스대학교 댈러스",
+  "usnews_rank": 121,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 65.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 171,
+  "name": "University at Albany--SUNY",
+  "name_ko": "올버니 대학교 (SUNY)",
+  "usnews_rank": 121,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 69.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 172,
+  "name": "University of Arizona",
+  "name_ko": "애리조나 대학교",
+  "usnews_rank": 121,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 86.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "AZ",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 173,
+  "name": "University of Dayton",
+  "name_ko": "데이턴 대학교",
+  "usnews_rank": 121,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 65.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "OH",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 174,
+  "name": "University of Denver",
+  "name_ko": "덴버 대학교",
+  "usnews_rank": 121,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 77.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CO",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 175,
+  "name": "University of South Carolina",
+  "name_ko": "사우스캐롤라이나 대학교",
+  "usnews_rank": 121,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 60.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "SC",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 176,
+  "name": "University of the Pacific",
+  "name_ko": "퍼시픽 대학교",
+  "usnews_rank": 121,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 71.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 177,
+  "name": "Miami University--Oxford",
+  "name_ko": "마이애미 대학교 (오하이오)",
+  "usnews_rank": 133,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 75.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "OH",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 178,
+  "name": "Thomas Jefferson University",
+  "name_ko": "토머스제퍼슨 대학교",
+  "usnews_rank": 133,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 81.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "PA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 179,
+  "name": "University of Vermont",
+  "name_ko": "버몬트 대학교",
+  "usnews_rank": 133,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 65.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "VT",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 180,
+  "name": "California State University, Long Beach",
+  "name_ko": "캘리포니아 주립대학교 롱비치",
+  "usnews_rank": 137,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 46.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 181,
+  "name": "James Madison University",
+  "name_ko": "제임스매디슨 대학교",
+  "usnews_rank": 137,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 71.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "VA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 182,
+  "name": "Saint Joseph's University",
+  "name_ko": "세인트조지프 대학교",
+  "usnews_rank": 137,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 88.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "PA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 183,
+  "name": "San Diego State University",
+  "name_ko": "샌디에이고 주립대학교",
+  "usnews_rank": 137,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 36.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 184,
+  "name": "San Jose State University",
+  "name_ko": "산호세 주립대학교",
+  "usnews_rank": 137,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 84.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 185,
+  "name": "St. John's University",
+  "name_ko": "세인트존스 대학교",
+  "usnews_rank": 137,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 83.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 186,
+  "name": "University of Alabama at Birmingham",
+  "name_ko": "앨라배마 대학교 버밍햄",
+  "usnews_rank": 137,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 88.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "AL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 187,
+  "name": "University of Houston",
+  "name_ko": "휴스턴 대학교",
+  "usnews_rank": 137,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 73.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 188,
+  "name": "University of Maryland Baltimore County",
+  "name_ko": "메릴랜드 대학교 볼티모어 카운티 (UMBC)",
+  "usnews_rank": 137,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 72.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MD",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 189,
+  "name": "University of Scranton",
+  "name_ko": "스크랜턴 대학교",
+  "usnews_rank": 137,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 81.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "PA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 190,
+  "name": "California State University--Los Angeles",
+  "name_ko": "캘리포니아 주립대학교 로스앤젤레스",
+  "usnews_rank": 148,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 91.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 191,
+  "name": "Mercer University",
+  "name_ko": "머서 대학교",
+  "usnews_rank": 148,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 68.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "GA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 192,
+  "name": "The Catholic University of America",
+  "name_ko": "미국 가톨릭 대학교",
+  "usnews_rank": 148,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 82.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "DC",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 193,
+  "name": "University of Kansas",
+  "name_ko": "캔자스 대학교",
+  "usnews_rank": 148,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 93.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "KS",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 194,
+  "name": "University of Kentucky",
+  "name_ko": "켄터키 대학교",
+  "usnews_rank": 148,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 92.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "KY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 195,
+  "name": "University of Massachusetts--Lowell",
+  "name_ko": "매사추세츠 대학교 로웰",
+  "usnews_rank": 148,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 83.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 196,
+  "name": "University of Rhode Island",
+  "name_ko": "로드아일랜드 대학교",
+  "usnews_rank": 148,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 72.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "RI",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 197,
+  "name": "CUNY--City College",
+  "name_ko": "뉴욕시립대학교 시티 칼리지 (CUNY City College)",
+  "usnews_rank": 156,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 60.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 198,
+  "name": "California State University--Fullerton",
+  "name_ko": "캘리포니아 주립대학교 풀러턴",
+  "usnews_rank": 156,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 90.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 199,
+  "name": "Duquesne University",
+  "name_ko": "듀케인 대학교",
+  "usnews_rank": 156,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 83.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "PA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 200,
+  "name": "Kansas State University",
+  "name_ko": "캔자스 주립대학교",
+  "usnews_rank": 156,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 81.7,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "KS",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 201,
+  "name": "Montclair State University",
+  "name_ko": "몬트클레어 주립대학교",
+  "usnews_rank": 156,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 87.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NJ",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 202,
+  "name": "Oregon State University",
+  "name_ko": "오리건 주립대학교",
+  "usnews_rank": 156,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 77.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "OR",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 203,
+  "name": "Quinnipiac University",
+  "name_ko": "퀴니피액 대학교",
+  "usnews_rank": 156,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 72.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CT",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 204,
+  "name": "Seton Hall University",
+  "name_ko": "세턴홀 대학교",
+  "usnews_rank": 156,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 73.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NJ",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 205,
+  "name": "The University of Alabama",
+  "name_ko": "앨라배마 대학교",
+  "usnews_rank": 156,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 76.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "AL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 206,
+  "name": "University of St. Thomas (Minnesota)",
+  "name_ko": "세인트토머스 대학교 (미네소타)",
+  "usnews_rank": 156,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 85.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MN",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 207,
+  "name": "Virginia Commonwealth University",
+  "name_ko": "버지니아 커먼웰스 대학교 (VCU)",
+  "usnews_rank": 156,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 92.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "VA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 208,
+  "name": "Bradley University",
+  "name_ko": "브래들리 대학교",
+  "usnews_rank": 169,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 76.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "IL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 209,
+  "name": "Butler University",
+  "name_ko": "버틀러 대학교",
+  "usnews_rank": 169,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 85.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "IN",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 210,
+  "name": "Colorado State University",
+  "name_ko": "콜로라도 주립대학교",
+  "usnews_rank": 169,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 88.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CO",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 211,
+  "name": "DePaul University",
+  "name_ko": "드폴 대학교",
+  "usnews_rank": 169,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 75.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "IL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 212,
+  "name": "Monmouth University",
+  "name_ko": "먼머스 대학교",
+  "usnews_rank": 169,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 89.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NJ",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 213,
+  "name": "University of Nebraska -- Lincoln",
+  "name_ko": "네브래스카 대학교 링컨",
+  "usnews_rank": 169,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 87.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NE",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 214,
+  "name": "University of North Carolina at Charlotte",
+  "name_ko": "노스캐롤라이나 대학교 샬럿",
+  "usnews_rank": 169,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 79.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NC",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 215,
+  "name": "CUNY--Hunter College",
+  "name_ko": "뉴욕시립대학교 헌터 칼리지 (CUNY Hunter)",
+  "usnews_rank": 179,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 53.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 216,
+  "name": "Seattle University",
+  "name_ko": "시애틀 대학교",
+  "usnews_rank": 179,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 76.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "WA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 217,
+  "name": "University of Cincinnati",
+  "name_ko": "신시내티 대학교",
+  "usnews_rank": 179,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 85.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "OH",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 218,
+  "name": "University of Louisville",
+  "name_ko": "루이빌 대학교",
+  "usnews_rank": 179,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 79.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "KY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 219,
+  "name": "University of Mississippi",
+  "name_ko": "미시시피 대학교",
+  "usnews_rank": 179,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 96.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MS",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 220,
+  "name": "University of Utah",
+  "name_ko": "유타 대학교",
+  "usnews_rank": 179,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 86.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "UT",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 221,
+  "name": "Texas Tech University",
+  "name_ko": "텍사스텍 대학교",
+  "usnews_rank": 186,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 72.7,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 222,
+  "name": "University of Hawaii at Manoa",
+  "name_ko": "하와이 대학교 마노아",
+  "usnews_rank": 186,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 86.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "HI",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 223,
+  "name": "Wayne State University",
+  "name_ko": "웨인 주립대학교",
+  "usnews_rank": 186,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 81.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MI",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 224,
+  "name": "Adelphi University",
+  "name_ko": "아델피 대학교",
+  "usnews_rank": 191,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 65.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 225,
+  "name": "Georgia State University",
+  "name_ko": "조지아 주립대학교",
+  "usnews_rank": 191,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 55.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "GA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 226,
+  "name": "Hofstra University",
+  "name_ko": "호프스트라 대학교",
+  "usnews_rank": 191,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 68.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 227,
+  "name": "Oklahoma State University",
+  "name_ko": "오클라호마 주립대학교",
+  "usnews_rank": 191,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 75.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "OK",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 228,
+  "name": "Rowan University",
+  "name_ko": "로완 대학교",
+  "usnews_rank": 191,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 77.7,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NJ",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 229,
+  "name": "Samford University",
+  "name_ko": "샘포드 대학교",
+  "usnews_rank": 191,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 82.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "AL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 230,
+  "name": "University of Arkansas",
+  "name_ko": "아칸소 대학교",
+  "usnews_rank": 191,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 74.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "AR",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 231,
+  "name": "Washington State University",
+  "name_ko": "워싱턴 주립대학교",
+  "usnews_rank": 191,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 86.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "WA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 232,
+  "name": "East Carolina University",
+  "name_ko": "이스트캐롤라이나 대학교",
+  "usnews_rank": 202,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 89.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NC",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 233,
+  "name": "Louisiana State University and Agricultural & Mechanical College",
+  "name_ko": "루이지애나 주립대학교 (LSU)",
+  "usnews_rank": 202,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 73.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "LA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 234,
+  "name": "Ohio University",
+  "name_ko": "오하이오 대학교",
+  "usnews_rank": 202,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 85.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "OH",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 235,
+  "name": "Sacred Heart University",
+  "name_ko": "세이크리드하트 대학교",
+  "usnews_rank": 202,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 65.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CT",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 236,
+  "name": "University of Massachusetts--Boston",
+  "name_ko": "매사추세츠 대학교 보스턴",
+  "usnews_rank": 202,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 83.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 237,
+  "name": "University of St. Thomas (Texas)",
+  "name_ko": "세인트토머스 대학교 (텍사스)",
+  "usnews_rank": 202,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 89.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 238,
+  "name": "Belmont University",
+  "name_ko": "벨몬트 대학교",
+  "usnews_rank": 208,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 95.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TN",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 239,
+  "name": "California State University--Fresno",
+  "name_ko": "캘리포니아 주립대학교 프레즈노",
+  "usnews_rank": 208,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 95.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 240,
+  "name": "Mississippi State University",
+  "name_ko": "미시시피 주립대학교",
+  "usnews_rank": 208,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 77.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MS",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 241,
+  "name": "University of La Verne",
+  "name_ko": "라번 대학교",
+  "usnews_rank": 208,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 71.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 242,
+  "name": "University of North Carolina--Greensboro",
+  "name_ko": "노스캐롤라이나 대학교 그린즈버로",
+  "usnews_rank": 208,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 88.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NC",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 243,
+  "name": "University of North Texas",
+  "name_ko": "노스텍사스 대학교",
+  "usnews_rank": 208,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 72.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 244,
+  "name": "Xavier University",
+  "name_ko": "제이비어 대학교",
+  "usnews_rank": 208,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 86.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "OH",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 245,
+  "name": "Illinois State University",
+  "name_ko": "일리노이 주립대학교",
+  "usnews_rank": 219,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 88.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "IL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 246,
+  "name": "Indiana University Indianapolis",
+  "name_ko": "인디애나 대학교 인디애나폴리스",
+  "usnews_rank": 219,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 76.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "IN",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 247,
+  "name": "New York Institute of Technology",
+  "name_ko": "뉴욕공과대학교 (NYIT)",
+  "usnews_rank": 219,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 81.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 248,
+  "name": "North Carolina Agricultural and Technical State University",
+  "name_ko": "노스캐롤라이나 A&T 주립대학교",
+  "usnews_rank": 219,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 49.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NC",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 249,
+  "name": "University of Nevada--Reno",
+  "name_ko": "네바다 대학교 리노",
+  "usnews_rank": 219,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 73.7,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NV",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 250,
+  "name": "University of North Carolina--Wilmington",
+  "name_ko": "노스캐롤라이나 대학교 윌밍턴",
+  "usnews_rank": 219,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 64.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NC",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 251,
+  "name": "Ball State University",
+  "name_ko": "볼 주립대학교",
+  "usnews_rank": 227,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 85.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "IN",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 252,
+  "name": "The University of Texas--San Antonio",
+  "name_ko": "텍사스대학교 샌안토니오",
+  "usnews_rank": 227,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 86.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 253,
+  "name": "University of North Dakota",
+  "name_ko": "노스다코타 대학교",
+  "usnews_rank": 227,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 76.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "ND",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 254,
+  "name": "West Chester University of Pennsylvania",
+  "name_ko": "웨스트체스터 대학교 (펜실베이니아)",
+  "usnews_rank": 227,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 78.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "PA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 255,
+  "name": "West Virginia University",
+  "name_ko": "웨스트버지니아 대학교",
+  "usnews_rank": 227,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 89.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "WV",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 256,
+  "name": "Florida Institute of Technology",
+  "name_ko": "플로리다 공과대학교",
+  "usnews_rank": 236,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 57.7,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "FL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 257,
+  "name": "Kent State University",
+  "name_ko": "켄트 주립대학교",
+  "usnews_rank": 236,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 86.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "OH",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 258,
+  "name": "University of Nevada--Las Vegas",
+  "name_ko": "네바다 대학교 라스베이거스 (UNLV)",
+  "usnews_rank": 236,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 96.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NV",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 259,
+  "name": "University of New Mexico",
+  "name_ko": "뉴멕시코 대학교",
+  "usnews_rank": 236,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 95.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NM",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 260,
+  "name": "University of North Florida",
+  "name_ko": "노스플로리다 대학교",
+  "usnews_rank": 236,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 53.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "FL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 261,
+  "name": "New Mexico State University",
+  "name_ko": "뉴멕시코 주립대학교",
+  "usnews_rank": 250,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 89.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NM",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 262,
+  "name": "Nova Southeastern University",
+  "name_ko": "노바사우스이스턴 대학교",
+  "usnews_rank": 250,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 73.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "FL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 263,
+  "name": "Pace University",
+  "name_ko": "페이스 대학교",
+  "usnews_rank": 250,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 75.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 264,
+  "name": "South Dakota State University",
+  "name_ko": "사우스다코타 주립대학교",
+  "usnews_rank": 250,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 98.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "SD",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 265,
+  "name": "The University of Texas--Rio Grande Valley",
+  "name_ko": "텍사스대학교 리오그란데밸리",
+  "usnews_rank": 250,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 94.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 266,
+  "name": "University of Wyoming",
+  "name_ko": "와이오밍 대학교",
+  "usnews_rank": 250,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 96.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "WY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 267,
+  "name": "Aurora University",
+  "name_ko": "오로라 대학교",
+  "usnews_rank": 262,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 80.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "IL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 268,
+  "name": "Central Michigan University",
+  "name_ko": "센트럴미시간 대학교",
+  "usnews_rank": 262,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 89.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MI",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 269,
+  "name": "Suffolk University",
+  "name_ko": "서퍽 대학교",
+  "usnews_rank": 262,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 82.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 270,
+  "name": "The University of Texas--El Paso",
+  "name_ko": "텍사스대학교 엘패소",
+  "usnews_rank": 262,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 99.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 271,
+  "name": "University of Maine",
+  "name_ko": "메인 대학교",
+  "usnews_rank": 262,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 96.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "ME",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 272,
+  "name": "Bowling Green State University",
+  "name_ko": "볼링그린 주립대학교",
+  "usnews_rank": 276,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 81.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "OH",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 273,
+  "name": "California Baptist University",
+  "name_ko": "캘리포니아 뱁티스트 대학교",
+  "usnews_rank": 276,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 84.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 274,
+  "name": "Harding University",
+  "name_ko": "하딩 대학교",
+  "usnews_rank": 276,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 70.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "AR",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 275,
+  "name": "Northern Arizona University",
+  "name_ko": "노던애리조나 대학교",
+  "usnews_rank": 276,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 89.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "AZ",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 276,
+  "name": "University of New Haven",
+  "name_ko": "뉴헤이븐 대학교",
+  "usnews_rank": 276,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 60.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CT",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 277,
+  "name": "Western Michigan University",
+  "name_ko": "웨스턴미시간 대학교",
+  "usnews_rank": 276,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 84.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MI",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 278,
+  "name": "Biola University",
+  "name_ko": "바이올라 대학교",
+  "usnews_rank": 288,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 74.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 279,
+  "name": "Texas State University",
+  "name_ko": "텍사스 주립대학교",
+  "usnews_rank": 288,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 89.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 280,
+  "name": "University of Hartford",
+  "name_ko": "하트퍼드 대학교",
+  "usnews_rank": 288,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 95.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CT",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 281,
+  "name": "University of Indianapolis",
+  "name_ko": "인디애나폴리스 대학교",
+  "usnews_rank": 288,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 66.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "IN",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 282,
+  "name": "University of Memphis",
+  "name_ko": "멤피스 대학교",
+  "usnews_rank": 288,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 72.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TN",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 283,
+  "name": "University of Wisconsin--Milwaukee",
+  "name_ko": "위스콘신 대학교 밀워키",
+  "usnews_rank": 288,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 90.7,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "WI",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 284,
+  "name": "Utah State University",
+  "name_ko": "유타 주립대학교",
+  "usnews_rank": 288,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 92.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "UT",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 285,
+  "name": "Wichita State University",
+  "name_ko": "위치타 주립대학교",
+  "usnews_rank": 288,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 94.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "KS",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 286,
+  "name": "Boise State University",
+  "name_ko": "보이시 주립대학교",
+  "usnews_rank": 299,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 87.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "ID",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 287,
+  "name": "University of Nebraska Omaha",
+  "name_ko": "네브래스카 대학교 오마하",
+  "usnews_rank": 299,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 87.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NE",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 288,
+  "name": "Abilene Christian University",
+  "name_ko": "애빌린 크리스천 대학교",
+  "usnews_rank": 308,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 66.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 289,
+  "name": "Montana State University",
+  "name_ko": "몬태나 주립대학교",
+  "usnews_rank": 308,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 82.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MT",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 290,
+  "name": "Northern Illinois University",
+  "name_ko": "노던일리노이 대학교",
+  "usnews_rank": 308,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 69.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "IL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 291,
+  "name": "Oakland University",
+  "name_ko": "오클랜드 대학교",
+  "usnews_rank": 308,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 87.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MI",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 292,
+  "name": "University of Southern Mississippi",
+  "name_ko": "서던미시시피 대학교",
+  "usnews_rank": 308,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 99.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MS",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 293,
+  "name": "University of the Incarnate Word",
+  "name_ko": "인카네이트워드 대학교",
+  "usnews_rank": 308,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 98.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 294,
+  "name": "Kean University",
+  "name_ko": "킨 대학교",
+  "usnews_rank": 317,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 75.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NJ",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 295,
+  "name": "East Tennessee State University",
+  "name_ko": "이스트테네시 주립대학교",
+  "usnews_rank": 328,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 86.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TN",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 296,
+  "name": "Georgia Southern University",
+  "name_ko": "조지아서던 대학교",
+  "usnews_rank": 328,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 87.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "GA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 297,
+  "name": "Old Dominion University",
+  "name_ko": "올드도미니언 대학교",
+  "usnews_rank": 328,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 90.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "VA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 298,
+  "name": "Clark Atlanta University",
+  "name_ko": "클라크 애틀랜타 대학교",
+  "usnews_rank": 332,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 64.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "GA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 299,
+  "name": "Mercy University",
+  "name_ko": "머시 대학교",
+  "usnews_rank": 332,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 85.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 300,
+  "name": "Kennesaw State University",
+  "name_ko": "케네소 주립대학교",
+  "usnews_rank": 342,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 69.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "GA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 301,
+  "name": "Missouri State University",
+  "name_ko": "미주리 주립대학교",
+  "usnews_rank": 342,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 90.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MO",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 302,
+  "name": "University of Louisiana at Lafayette",
+  "name_ko": "루이지애나 대학교 라파예트",
+  "usnews_rank": 353,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 87.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "LA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 303,
+  "name": "Spelman College",
+  "name_ko": "스펠먼 칼리지",
+  "usnews_rank": 34,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "overall_accept_rate": 24.9,
+  "need_blind_intl": null,
+  "lac_rank": 34,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "GA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 304,
+  "name": "St. Olaf College",
+  "name_ko": "세인트올라프 칼리지",
+  "usnews_rank": 49,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "overall_accept_rate": 48.3,
+  "need_blind_intl": null,
+  "lac_rank": 49,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MN",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 305,
+  "name": "Hope College",
+  "name_ko": "호프 칼리지",
+  "usnews_rank": 78,
+  "tier": 3,
+  "direct_admit_majors": [],
+  "kind": "lac",
+  "overall_accept_rate": 79.2,
+  "need_blind_intl": null,
+  "lac_rank": 78,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MI",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 306,
+  "name": "Anderson University",
+  "name_ko": "앤더슨 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 54.7,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "SC",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 307,
+  "name": "Appalachian State University",
+  "name_ko": "애팔래치안 주립대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 90.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NC",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 308,
+  "name": "Bentley University",
+  "name_ko": "벤틀리 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 45.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 309,
+  "name": "Berklee College of Music",
+  "name_ko": "버클리 음악대학",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 43.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 310,
+  "name": "Bryant University",
+  "name_ko": "브라이언트 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 65.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "RI",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 311,
+  "name": "CUNY--Baruch College",
+  "name_ko": "뉴욕시립대학교 버룩 칼리지 (CUNY Baruch)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 47.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 312,
+  "name": "CUNY--Brooklyn College",
+  "name_ko": "뉴욕시립대학교 브루클린 칼리지 (CUNY Brooklyn)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 58.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 313,
+  "name": "CUNY--John Jay College of Criminal Justice",
+  "name_ko": "뉴욕시립대학교 존제이 칼리지 (CUNY John Jay)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 57.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 314,
+  "name": "CUNY--New York City College of Technology",
+  "name_ko": "뉴욕시립대학교 뉴욕시티 공과칼리지 (CUNY City Tech)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 80.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 315,
+  "name": "CUNY--Queens College",
+  "name_ko": "뉴욕시립대학교 퀸즈 칼리지 (CUNY Queens)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 64.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 316,
+  "name": "California Polytechnic State University--San Luis Obispo",
+  "name_ko": "캘리포니아 폴리테크닉 주립대학교 샌루이스오비스포 (Cal Poly SLO)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 31.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 317,
+  "name": "California State Polytechnic University--Pomona",
+  "name_ko": "캘리포니아 주립 폴리테크닉 대학교 포모나 (Cal Poly Pomona)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 75.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 318,
+  "name": "California State University--Chico",
+  "name_ko": "캘리포니아 주립대학교 치코",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 92.7,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 319,
+  "name": "California State University--Northridge",
+  "name_ko": "캘리포니아 주립대학교 노스리지",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 93.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 320,
+  "name": "California State University--San Marcos",
+  "name_ko": "캘리포니아 주립대학교 샌마르코스",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 95.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 321,
+  "name": "Calvin University",
+  "name_ko": "캘빈 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 70.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MI",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 322,
+  "name": "Cedarville University",
+  "name_ko": "시더빌 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 65.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "OH",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 323,
+  "name": "Coastal Carolina University",
+  "name_ko": "코스탈캐롤라이나 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 75.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "SC",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 324,
+  "name": "College of Charleston",
+  "name_ko": "찰스턴 칼리지",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 60.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "SC",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 325,
+  "name": "Columbia College Chicago",
+  "name_ko": "컬럼비아 칼리지 시카고",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 89.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "IL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 326,
+  "name": "Eastern Kentucky University",
+  "name_ko": "이스턴켄터키 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 77.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "KY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 327,
+  "name": "Eastern Michigan University",
+  "name_ko": "이스턴미시간 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 79.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MI",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 328,
+  "name": "Elmhurst University",
+  "name_ko": "엘름허스트 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 73.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "IL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 329,
+  "name": "Embry-Riddle Aeronautical University--Daytona Beach",
+  "name_ko": "엠브리-리들 항공대학교 데이토나비치",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 64.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "FL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 330,
+  "name": "Embry-Riddle Aeronautical University--Prescott",
+  "name_ko": "엠브리-리들 항공대학교 프레스컷",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 76.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "AZ",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 331,
+  "name": "Emerson College",
+  "name_ko": "에머슨 칼리지",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 51.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 332,
+  "name": "Endicott College",
+  "name_ko": "엔디컷 칼리지",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 71.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 333,
+  "name": "Florida Gulf Coast University",
+  "name_ko": "플로리다걸프코스트 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 63.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "FL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 334,
+  "name": "Georgia Gwinnett College",
+  "name_ko": "조지아그위넷 칼리지",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 95.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "GA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 335,
+  "name": "Grand Valley State University",
+  "name_ko": "그랜드밸리 주립대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 83.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MI",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 336,
+  "name": "Hampton University",
+  "name_ko": "햄프턴 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 62.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "VA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 337,
+  "name": "High Point University",
+  "name_ko": "하이포인트 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 75.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NC",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 338,
+  "name": "Ithaca College",
+  "name_ko": "이타카 칼리지",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 69.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 339,
+  "name": "Johnson & Wales University--Providence",
+  "name_ko": "존슨앤웨일스 대학교 프로비던스",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 88.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "RI",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 340,
+  "name": "Long Island University",
+  "name_ko": "롱아일랜드 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 86.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 341,
+  "name": "Loyola University Maryland",
+  "name_ko": "로욜라 대학교 메릴랜드",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 75.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MD",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 342,
+  "name": "Marist University",
+  "name_ko": "마리스트 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 56.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 343,
+  "name": "Massachusetts College of Pharmacy and Health Sciences",
+  "name_ko": "매사추세츠 약학보건과학대학교 (MCPHS)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 85.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 344,
+  "name": "Merrimack College",
+  "name_ko": "메리맥 칼리지",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 70.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 345,
+  "name": "Middle Tennessee State University",
+  "name_ko": "미들테네시 주립대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 69.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TN",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 346,
+  "name": "Minnesota State University--Mankato",
+  "name_ko": "미네소타 주립대학교 맨케이토",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 88.4,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MN",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 347,
+  "name": "Molloy University",
+  "name_ko": "몰로이 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 81.7,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 348,
+  "name": "Oral Roberts University",
+  "name_ko": "오럴로버츠 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 98.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "OK",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 349,
+  "name": "Point Loma Nazarene University",
+  "name_ko": "포인트로마 나자렌 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 83.7,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "CA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 350,
+  "name": "Providence College",
+  "name_ko": "프로비던스 칼리지",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 50.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "RI",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 351,
+  "name": "Rider University",
+  "name_ko": "라이더 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 78.6,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NJ",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 352,
+  "name": "Roger Williams University",
+  "name_ko": "로저윌리엄스 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 87.7,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "RI",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 353,
+  "name": "Saint Xavier University",
+  "name_ko": "세인트제이비어 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 84.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "IL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 354,
+  "name": "Sam Houston State University",
+  "name_ko": "샘휴스턴 주립대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 90.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 355,
+  "name": "Siena University",
+  "name_ko": "시에나 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 69.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 356,
+  "name": "Southeastern University",
+  "name_ko": "사우스이스턴 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 53.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "FL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 357,
+  "name": "St. Joseph's University--New York",
+  "name_ko": "세인트조지프 대학교 뉴욕",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 72.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 358,
+  "name": "Stevenson University",
+  "name_ko": "스티븐슨 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 78.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MD",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 359,
+  "name": "Tarleton State University",
+  "name_ko": "탈턴 주립대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 89.5,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TX",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 360,
+  "name": "The University of Tampa",
+  "name_ko": "탬파 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 40.3,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "FL",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 361,
+  "name": "Towson University",
+  "name_ko": "타우슨 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 82.0,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MD",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 362,
+  "name": "University of Central Oklahoma",
+  "name_ko": "센트럴오클라호마 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 78.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "OK",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 363,
+  "name": "University of North Georgia",
+  "name_ko": "노스조지아 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 67.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "GA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 364,
+  "name": "University of Tennessee--Chattanooga",
+  "name_ko": "테네시 대학교 채터누가",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 81.1,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "TN",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 365,
+  "name": "Wentworth Institute of Technology",
+  "name_ko": "웬트워스 공과대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 91.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "MA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 366,
+  "name": "Western Carolina University",
+  "name_ko": "웨스턴캐롤라이나 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 81.8,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "NC",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 367,
+  "name": "Western Kentucky University",
+  "name_ko": "웨스턴켄터키 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 93.9,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "KY",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 368,
+  "name": "Western Washington University",
+  "name_ko": "웨스턴워싱턴 대학교",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 93.2,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "WA",
+  "source_kind": "scorecard"
+ },
+ {
+  "id": 369,
+  "name": "York College of Pennsylvania",
+  "name_ko": "요크 칼리지 (펜실베이니아)",
+  "usnews_rank": null,
+  "tier": null,
+  "direct_admit_majors": [],
+  "kind": "university",
+  "overall_accept_rate": 73.7,
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null,
+  "state": "PA",
+  "source_kind": "scorecard"
  }
 ]

@@ -130,9 +130,18 @@ const KEYWORD_REGION: [string, Region][] = [
   ['워싱턴주', 'west'], ['Seattle', 'west'], ['시애틀', 'west'],
 ]
 
+// 미국 인구조사국 4대 지역 (주 약자 기준) — 주(state)가 있는 학교는 이걸로 판정
+const STATE_REGION: Record<string, Region> = Object.fromEntries([
+  ...['CT', 'ME', 'MA', 'NH', 'RI', 'VT', 'NJ', 'NY', 'PA'].map((st) => [st, 'northeast']),
+  ...['DE', 'DC', 'FL', 'GA', 'MD', 'NC', 'SC', 'VA', 'WV', 'AL', 'KY', 'MS', 'TN', 'AR', 'LA', 'OK', 'TX'].map((st) => [st, 'south']),
+  ...['IL', 'IN', 'MI', 'OH', 'WI', 'IA', 'KS', 'MN', 'MO', 'NE', 'ND', 'SD'].map((st) => [st, 'midwest']),
+  ...['AZ', 'CO', 'ID', 'MT', 'NV', 'NM', 'UT', 'WY', 'AK', 'CA', 'HI', 'OR', 'WA'].map((st) => [st, 'west']),
+])
+
 export function schoolRegion(s: School): Region | null {
   const fixed = REGION_BY_ID[s.id]
   if (fixed) return fixed
+  if (s.state && STATE_REGION[s.state]) return STATE_REGION[s.state]
   // 소재지를 직접 서술하는 intro를 먼저, 주변 도시까지 언급하는 location_note를 나중에 검사
   for (const text of [s.intro_ko ?? '', s.location_note ?? '']) {
     for (const [kw, region] of KEYWORD_REGION) {

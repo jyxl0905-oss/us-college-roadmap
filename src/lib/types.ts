@@ -138,6 +138,11 @@ export interface School {
   kind?: 'university' | 'lac' | 'art' // 학교 종류 (기본 university, art=미술·디자인 전문학교)
   lac_rank?: number | null // LAC 순위 (US News National Liberal Arts Colleges)
   usnews_rank_prev?: number | null // 전년판 순위 (변화 표시용)
+  state?: string | null // 주 약자 (College Scorecard 확대분부터)
+  city?: string | null
+  source_kind?: string | null // 'scorecard' = 교육부 공식 자료만 있는 학교 (입학처 세부 정보 정리 전)
+  ugds?: number | null // 학부생 수 (Scorecard)
+  test_ranges?: { sat_math?: [number, number]; sat_erw?: [number, number]; act?: [number, number] } | null // Scorecard 과목별 25–75%
   lac_rank_prev?: number | null
   // 재정지원 (공식: CDS H6·학교 페이지)
   intl_aid_count?: number | null

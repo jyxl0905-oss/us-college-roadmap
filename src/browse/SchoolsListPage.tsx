@@ -10,7 +10,7 @@ import { navigate, slugify, goBack } from '../lib/router'
 import { regionLabels, schoolRegion, type Region } from './region'
 import SchoolLogo from './SchoolLogo'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
-import { uniGroupOf, uniGroupTitles, uniGroups, rankBadge, USNEWS_EDITION } from './rankGroups'
+import { uniGroupOf, uniGroupTitles, uniGroups, rankBadge, USNEWS_EDITION, type UniGroup } from './rankGroups'
 import RankTag from './RankTag'
 import { saveProfile, type ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
@@ -86,7 +86,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
 
   // 검색용 페이지 제목
   useEffect(() => {
-    document.title = t('미국 명문대 합격률·합격 전략 — 대학 147+ 공식 데이터 | 미국 대입 로드맵', 'US college acceptance rates — official data on 147+ colleges | US College Roadmap')
+    document.title = t('미국 명문대 합격률·합격 전략 — 대학 369곳 공식 데이터 | 미국 대입 로드맵', 'US college acceptance rates — official data on 369 colleges | US College Roadmap')
     return () => { document.title = t('미국 대입 로드맵 — 미국 대학 입시 무료 관리 툴', 'US College Roadmap — free US college admissions planner') }
   }, [])
 
@@ -131,13 +131,13 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
 
   // 종합대는 순위 5그룹(usnews_rank), LAC은 기존 3그룹(tier), 미술·디자인 전문학교는 순위 없이 한 그룹
   const groups: number[] = kind === 'lac' ? [1, 2, 3] : kind === 'art' ? [1] : uniGroups
-  const groupOf = (s: School) => (kind === 'lac' ? s.tier : kind === 'art' ? 1 : uniGroupOf(s.usnews_rank ?? 9999))
-  const groupTitle = (g: number) => (kind === 'lac' ? lacTierTitles[g as Tier] : kind === 'art' ? t('미술·디자인 전문학교', 'Art & design schools') : uniGroupTitles[g as 1 | 2 | 3 | 4 | 5])
+  const groupOf = (s: School) => (kind === 'lac' ? s.tier : kind === 'art' ? 1 : uniGroupOf(s.usnews_rank))
+  const groupTitle = (g: number) => (kind === 'lac' ? lacTierTitles[g as Tier] : kind === 'art' ? t('미술·디자인 전문학교', 'Art & design schools') : uniGroupTitles[g as UniGroup])
   const sortGroup = (list: School[]) =>
     [...list].sort((a, b) =>
       sortByIntl
         ? (b.intl_accept_rate ?? -1) - (a.intl_accept_rate ?? -1)
-        : (kind === 'lac' ? (a.lac_rank ?? 999) - (b.lac_rank ?? 999) : kind === 'art' ? a.name.localeCompare(b.name) : (a.usnews_rank ?? 9999) - (b.usnews_rank ?? 9999)),
+        : (kind === 'lac' ? (a.lac_rank ?? 999) - (b.lac_rank ?? 999) : kind === 'art' ? a.name.localeCompare(b.name) : (a.usnews_rank ?? 9999) - (b.usnews_rank ?? 9999) || a.name.localeCompare(b.name)),
     )
 
   const chip = (on: boolean) =>
