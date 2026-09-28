@@ -3,23 +3,29 @@
   "id": 1,
   "name": "Princeton University",
   "name_ko": "프린스턴 대학교",
-  "usnews_rank": 1,
+  "usnews_rank": 2,
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 4.6,
-  "need_blind_intl": true
+  "need_blind_intl": true,
+  "lac_rank": null,
+  "usnews_rank_prev": 1,
+  "lac_rank_prev": null
  },
  {
   "id": 2,
   "name": "Massachusetts Institute of Technology",
   "name_ko": "매사추세츠 공과대학교 (MIT)",
-  "usnews_rank": 2,
+  "usnews_rank": 1,
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 4.5,
-  "need_blind_intl": true
+  "need_blind_intl": true,
+  "lac_rank": null,
+  "usnews_rank_prev": 2,
+  "lac_rank_prev": null
  },
  {
   "id": 3,
@@ -30,18 +36,24 @@
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 3.6,
-  "need_blind_intl": true
+  "need_blind_intl": true,
+  "lac_rank": null,
+  "usnews_rank_prev": 3,
+  "lac_rank_prev": null
  },
  {
   "id": 4,
   "name": "Stanford University",
   "name_ko": "스탠퍼드 대학교",
-  "usnews_rank": 4,
+  "usnews_rank": 5,
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 3.6,
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 4,
+  "lac_rank_prev": null
  },
  {
   "id": 5,
@@ -52,24 +64,30 @@
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 3.9,
-  "need_blind_intl": true
+  "need_blind_intl": true,
+  "lac_rank": null,
+  "usnews_rank_prev": 4,
+  "lac_rank_prev": null
  },
  {
   "id": 6,
   "name": "University of Chicago",
   "name_ko": "시카고대학교",
-  "usnews_rank": 6,
+  "usnews_rank": 9,
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 4.5,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 6,
+  "lac_rank_prev": null
  },
  {
   "id": 7,
   "name": "Duke University",
   "name_ko": "듀크 대학교",
-  "usnews_rank": 7,
+  "usnews_rank": 8,
   "tier": 1,
   "direct_admit_majors": [
    "engineering"
@@ -79,13 +97,16 @@
   "ed_applied": 6013,
   "ed_admitted": 1042,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 7,
+  "lac_rank_prev": null
  },
  {
   "id": 8,
   "name": "Johns Hopkins University",
   "name_ko": "존스 홉킨스 대학교",
-  "usnews_rank": 7,
+  "usnews_rank": 9,
   "tier": 1,
   "direct_admit_majors": [
    "engineering"
@@ -95,13 +116,16 @@
   "ed_applied": 7639,
   "ed_admitted": 835,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 7,
+  "lac_rank_prev": null
  },
  {
   "id": 9,
   "name": "Northwestern University",
   "name_ko": "노스웨스턴 대학교",
-  "usnews_rank": 7,
+  "usnews_rank": 9,
   "tier": 1,
   "direct_admit_majors": [
    "engineering",
@@ -113,7 +137,10 @@
   "ed_applied": 5154,
   "ed_admitted": 1186,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 7,
+  "lac_rank_prev": null
  },
  {
   "id": 10,
@@ -131,24 +158,30 @@
   "ed_applied": 9503,
   "ed_admitted": 1266,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 7,
+  "lac_rank_prev": null
  },
  {
   "id": 11,
   "name": "California Institute of Technology (Caltech)",
   "name_ko": "캘리포니아 공과대학교(칼텍)",
-  "usnews_rank": 11,
+  "usnews_rank": 5,
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 2.6,
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 11,
+  "lac_rank_prev": null
  },
  {
   "id": 12,
   "name": "Cornell University",
   "name_ko": "코넬대학교",
-  "usnews_rank": 12,
+  "usnews_rank": 14,
   "tier": 1,
   "direct_admit_majors": [
    "architecture",
@@ -163,13 +196,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 8.8,
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 12,
+  "lac_rank_prev": null
  },
  {
   "id": 13,
   "name": "Brown University",
   "name_ko": "브라운대학교",
-  "usnews_rank": 13,
+  "usnews_rank": 16,
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "university",
@@ -177,13 +213,16 @@
   "ed_applied": 6251,
   "ed_admitted": 898,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": true
+  "need_blind_intl": true,
+  "lac_rank": null,
+  "usnews_rank_prev": 13,
+  "lac_rank_prev": null
  },
  {
   "id": 14,
   "name": "Dartmouth College",
   "name_ko": "다트머스칼리지",
-  "usnews_rank": 13,
+  "usnews_rank": 12,
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "university",
@@ -191,13 +230,16 @@
   "ed_applied": 3552,
   "ed_admitted": 768,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": true
+  "need_blind_intl": true,
+  "lac_rank": null,
+  "usnews_rank_prev": 13,
+  "lac_rank_prev": null
  },
  {
   "id": 15,
   "name": "Columbia University",
   "name_ko": "컬럼비아대학교",
-  "usnews_rank": 15,
+  "usnews_rank": 12,
   "tier": 1,
   "direct_admit_majors": [
    "engineering"
@@ -207,13 +249,16 @@
   "ed_applied": 6007,
   "ed_admitted": 795,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 15,
+  "lac_rank_prev": null
  },
  {
   "id": 16,
   "name": "University of California, Berkeley",
   "name_ko": "UC 버클리(캘리포니아대학교 버클리)",
-  "usnews_rank": 15,
+  "usnews_rank": 20,
   "tier": 1,
   "direct_admit_majors": [
    "architecture",
@@ -224,13 +269,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 11.0,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 15,
+  "lac_rank_prev": null
  },
  {
   "id": 17,
   "name": "Rice University",
   "name_ko": "라이스 대학교",
-  "usnews_rank": 17,
+  "usnews_rank": 16,
   "tier": 1,
   "direct_admit_majors": [
    "architecture",
@@ -241,13 +289,16 @@
   "ed_applied": 5748,
   "ed_admitted": 647,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 17,
+  "lac_rank_prev": null
  },
  {
   "id": 18,
   "name": "University of California, Los Angeles (UCLA)",
   "name_ko": "UCLA(캘리포니아대학교 로스앤젤레스)",
-  "usnews_rank": 17,
+  "usnews_rank": 20,
   "tier": 1,
   "direct_admit_majors": [
    "arts",
@@ -265,13 +316,16 @@
    "film",
    "music"
   ],
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 17,
+  "lac_rank_prev": null
  },
  {
   "id": 19,
   "name": "Vanderbilt University",
   "name_ko": "밴더빌트 대학교",
-  "usnews_rank": 17,
+  "usnews_rank": 16,
   "tier": 1,
   "direct_admit_majors": [
    "engineering",
@@ -282,13 +336,16 @@
   "ed_applied": 6202,
   "ed_admitted": 874,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 17,
+  "lac_rank_prev": null
  },
  {
   "id": 20,
   "name": "Carnegie Mellon University",
   "name_ko": "카네기멜런대학교",
-  "usnews_rank": 20,
+  "usnews_rank": 14,
   "tier": 1,
   "direct_admit_majors": [
    "architecture",
@@ -306,14 +363,17 @@
   "ed_applied": 2680,
   "ed_admitted": 553,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 20,
+  "lac_rank_prev": null
  },
  {
   "id": 21,
   "name": "University of Michigan--Ann Arbor",
   "name_ko": "미시간대학교 앤아버",
-  "usnews_rank": 20,
-  "tier": 1,
+  "usnews_rank": 25,
+  "tier": 2,
   "direct_admit_majors": [
    "architecture",
    "arts",
@@ -323,7 +383,10 @@
   ],
   "kind": "university",
   "overall_accept_rate": 15.6,
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 20,
+  "lac_rank_prev": null
  },
  {
   "id": 22,
@@ -336,13 +399,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 11.3,
-  "need_blind_intl": true
+  "need_blind_intl": true,
+  "lac_rank": null,
+  "usnews_rank_prev": 20,
+  "lac_rank_prev": null
  },
  {
   "id": 23,
   "name": "Washington University in St. Louis",
   "name_ko": "세인트루이스 워싱턴대학교",
-  "usnews_rank": 20,
+  "usnews_rank": 16,
   "tier": 1,
   "direct_admit_majors": [
    "architecture",
@@ -355,13 +421,16 @@
   "ed_applied": 4934,
   "ed_admitted": 1333,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 20,
+  "lac_rank_prev": null
  },
  {
   "id": 24,
   "name": "Emory University",
   "name_ko": "에모리 대학교",
-  "usnews_rank": 24,
+  "usnews_rank": 23,
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "university",
@@ -369,13 +438,16 @@
   "ed_applied": 4728,
   "ed_admitted": 1049,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 24,
+  "lac_rank_prev": null
  },
  {
   "id": 25,
   "name": "Georgetown University",
   "name_ko": "조지타운 대학교",
-  "usnews_rank": 24,
+  "usnews_rank": 23,
   "tier": 2,
   "direct_admit_majors": [
    "business",
@@ -385,20 +457,26 @@
   ],
   "kind": "university",
   "overall_accept_rate": 12.9,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 24,
+  "lac_rank_prev": null
  },
  {
   "id": 26,
   "name": "University of North Carolina at Chapel Hill",
   "name_ko": "노스캐롤라이나 대학교 채플힐",
-  "usnews_rank": 26,
+  "usnews_rank": 27,
   "tier": 2,
   "direct_admit_majors": [
    "business"
   ],
   "kind": "university",
   "overall_accept_rate": 15.3,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 26,
+  "lac_rank_prev": null
  },
  {
   "id": 27,
@@ -419,13 +497,16 @@
   "ed_applied": 4461,
   "ed_admitted": 1245,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 26,
+  "lac_rank_prev": null
  },
  {
   "id": 28,
   "name": "University of Southern California",
   "name_ko": "서던캘리포니아 대학교 (USC)",
-  "usnews_rank": 28,
+  "usnews_rank": 27,
   "tier": 2,
   "direct_admit_majors": [
    "architecture",
@@ -436,7 +517,10 @@
   ],
   "kind": "university",
   "overall_accept_rate": 9.8,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 28,
+  "lac_rank_prev": null
  },
  {
   "id": 29,
@@ -452,24 +536,30 @@
   ],
   "kind": "university",
   "overall_accept_rate": 26.7,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 29,
+  "lac_rank_prev": null
  },
  {
   "id": 30,
   "name": "University of Florida",
   "name_ko": "플로리다대학교",
-  "usnews_rank": 30,
+  "usnews_rank": 34,
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 24.2,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 30,
+  "lac_rank_prev": null
  },
  {
   "id": 31,
   "name": "University of Texas at Austin",
   "name_ko": "텍사스대학교 오스틴",
-  "usnews_rank": 30,
+  "usnews_rank": 34,
   "tier": 2,
   "direct_admit_majors": [
    "architecture",
@@ -486,24 +576,30 @@
   ],
   "kind": "university",
   "overall_accept_rate": 26.6,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 30,
+  "lac_rank_prev": null
  },
  {
   "id": 32,
   "name": "Georgia Institute of Technology",
   "name_ko": "조지아공과대학교 (조지아텍)",
-  "usnews_rank": 32,
+  "usnews_rank": 29,
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 14.1,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 32,
+  "lac_rank_prev": null
  },
  {
   "id": 33,
   "name": "New York University",
   "name_ko": "뉴욕대학교 (NYU)",
-  "usnews_rank": 32,
+  "usnews_rank": 31,
   "tier": 2,
   "direct_admit_majors": [
    "arts",
@@ -513,13 +609,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 9.2,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 32,
+  "lac_rank_prev": null
  },
  {
   "id": 34,
   "name": "University of California, Davis",
   "name_ko": "캘리포니아대학교 데이비스 (UC 데이비스)",
-  "usnews_rank": 32,
+  "usnews_rank": 34,
   "tier": 2,
   "direct_admit_majors": [
    "cs",
@@ -532,13 +631,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 41.8,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 32,
+  "lac_rank_prev": null
  },
  {
   "id": 35,
   "name": "University of California, Irvine",
   "name_ko": "캘리포니아대학교 어바인 (UC 어바인)",
-  "usnews_rank": 32,
+  "usnews_rank": 34,
   "tier": 2,
   "direct_admit_majors": [
    "arts",
@@ -554,13 +656,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 28.6,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 32,
+  "lac_rank_prev": null
  },
  {
   "id": 36,
   "name": "Boston College",
   "name_ko": "보스턴 칼리지",
-  "usnews_rank": 36,
+  "usnews_rank": 31,
   "tier": 2,
   "direct_admit_majors": [
    "business",
@@ -572,13 +677,16 @@
   "ed_applied": 4288,
   "ed_admitted": 1434,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 36,
+  "lac_rank_prev": null
  },
  {
   "id": 37,
   "name": "Tufts University",
   "name_ko": "터프츠 대학교",
-  "usnews_rank": 36,
+  "usnews_rank": 31,
   "tier": 2,
   "direct_admit_majors": [
    "engineering",
@@ -589,13 +697,16 @@
   "ed_applied": 3344,
   "ed_admitted": 1071,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 36,
+  "lac_rank_prev": null
  },
  {
   "id": 38,
   "name": "University of Illinois Urbana-Champaign",
   "name_ko": "일리노이대학교 어바나-샴페인 (UIUC)",
-  "usnews_rank": 36,
+  "usnews_rank": 34,
   "tier": 2,
   "direct_admit_majors": [
    "architecture",
@@ -610,13 +721,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 42.4,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 36,
+  "lac_rank_prev": null
  },
  {
   "id": 39,
   "name": "University of Wisconsin--Madison",
   "name_ko": "위스콘신 대학교 매디슨",
-  "usnews_rank": 36,
+  "usnews_rank": 34,
   "tier": 2,
   "direct_admit_majors": [
    "engineering",
@@ -624,27 +738,33 @@
   ],
   "kind": "university",
   "overall_accept_rate": 45.2,
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 36,
+  "lac_rank_prev": null
  },
  {
   "id": 40,
   "name": "University of California, Santa Barbara",
   "name_ko": "캘리포니아 대학교 샌타바버라 (UC 샌타바버라)",
-  "usnews_rank": 40,
-  "tier": 2,
+  "usnews_rank": 44,
+  "tier": 3,
   "direct_admit_majors": [
    "cs",
    "engineering"
   ],
   "kind": "university",
   "overall_accept_rate": 33.0,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 40,
+  "lac_rank_prev": null
  },
  {
   "id": 41,
   "name": "Ohio State University",
   "name_ko": "오하이오 주립 대학교",
-  "usnews_rank": 41,
+  "usnews_rank": 44,
   "tier": 3,
   "direct_admit_majors": [
    "architecture",
@@ -652,14 +772,17 @@
   ],
   "kind": "university",
   "overall_accept_rate": 60.6,
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 41,
+  "lac_rank_prev": null
  },
  {
   "id": 42,
   "name": "Boston University",
   "name_ko": "보스턴 대학교",
-  "usnews_rank": 42,
-  "tier": 3,
+  "usnews_rank": 34,
+  "tier": 2,
   "direct_admit_majors": [
    "business",
    "engineering",
@@ -672,13 +795,16 @@
   "ed_applied": 6907,
   "ed_admitted": 2165,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 42,
+  "lac_rank_prev": null
  },
  {
   "id": 43,
   "name": "Rutgers University--New Brunswick",
   "name_ko": "럿거스 대학교 뉴브런즈윅",
-  "usnews_rank": 42,
+  "usnews_rank": 44,
   "tier": 3,
   "direct_admit_majors": [
    "arts",
@@ -690,13 +816,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 58.1,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 42,
+  "lac_rank_prev": null
  },
  {
   "id": 44,
   "name": "University of Maryland, College Park",
   "name_ko": "메릴랜드 대학교 칼리지파크",
-  "usnews_rank": 42,
+  "usnews_rank": 49,
   "tier": 3,
   "direct_admit_majors": [
    "architecture",
@@ -709,13 +838,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 44.8,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 42,
+  "lac_rank_prev": null
  },
  {
   "id": 45,
   "name": "University of Washington (Seattle)",
   "name_ko": "워싱턴 대학교 시애틀",
-  "usnews_rank": 42,
+  "usnews_rank": 49,
   "tier": 3,
   "direct_admit_majors": [
    "architecture",
@@ -728,13 +860,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 39.1,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 42,
+  "lac_rank_prev": null
  },
  {
   "id": 46,
   "name": "Lehigh University",
   "name_ko": "리하이 대학교",
-  "usnews_rank": 46,
+  "usnews_rank": 44,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
@@ -742,13 +877,16 @@
   "ed_applied": 2040,
   "ed_admitted": 966,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 46,
+  "lac_rank_prev": null
  },
  {
   "id": 47,
   "name": "Northeastern University",
   "name_ko": "노스이스턴 대학교",
-  "usnews_rank": 46,
+  "usnews_rank": 42,
   "tier": 3,
   "direct_admit_majors": [
    "architecture",
@@ -759,13 +897,16 @@
   "ed_applied": 3466,
   "ed_admitted": 1492,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 46,
+  "lac_rank_prev": null
  },
  {
   "id": 48,
   "name": "Purdue University--Main Campus",
   "name_ko": "퍼듀 대학교",
-  "usnews_rank": 46,
+  "usnews_rank": 55,
   "tier": 3,
   "direct_admit_majors": [
    "arts",
@@ -781,24 +922,30 @@
   ],
   "kind": "university",
   "overall_accept_rate": 49.9,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 46,
+  "lac_rank_prev": null
  },
  {
   "id": 49,
   "name": "University of Georgia",
   "name_ko": "조지아 대학교",
-  "usnews_rank": 46,
+  "usnews_rank": 52,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 37.7,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 46,
+  "lac_rank_prev": null
  },
  {
   "id": 50,
   "name": "University of Rochester",
   "name_ko": "로체스터 대학교",
-  "usnews_rank": 46,
+  "usnews_rank": 49,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
@@ -806,13 +953,16 @@
   "ed_applied": 1129,
   "ed_admitted": 472,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 46,
+  "lac_rank_prev": null
  },
  {
   "id": 51,
   "name": "Case Western Reserve University",
   "name_ko": "케이스 웨스턴 리저브 대학교",
-  "usnews_rank": 51,
+  "usnews_rank": 44,
   "tier": 3,
   "direct_admit_majors": [
    "nursing"
@@ -822,24 +972,30 @@
   "ed_applied": 1053,
   "ed_admitted": 263,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 51,
+  "lac_rank_prev": null
  },
  {
   "id": 52,
   "name": "Florida State University",
   "name_ko": "플로리다 주립 대학교",
-  "usnews_rank": 51,
+  "usnews_rank": 59,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 24.2,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 51,
+  "lac_rank_prev": null
  },
  {
   "id": 53,
   "name": "Texas A&M University",
   "name_ko": "텍사스 A&M 대학교",
-  "usnews_rank": 51,
+  "usnews_rank": 59,
   "tier": 3,
   "direct_admit_majors": [
    "architecture",
@@ -848,13 +1004,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 57.4,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 51,
+  "lac_rank_prev": null
  },
  {
   "id": 54,
   "name": "Virginia Tech",
   "name_ko": "버지니아 공과대학교(버지니아텍)",
-  "usnews_rank": 51,
+  "usnews_rank": 52,
   "tier": 3,
   "direct_admit_majors": [
    "architecture",
@@ -870,24 +1029,30 @@
   ],
   "kind": "university",
   "overall_accept_rate": 54.8,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 51,
+  "lac_rank_prev": null
  },
  {
   "id": 55,
   "name": "Wake Forest University",
   "name_ko": "웨이크 포레스트 대학교",
-  "usnews_rank": 51,
-  "tier": 3,
+  "usnews_rank": 34,
+  "tier": 2,
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 21.7,
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 51,
+  "lac_rank_prev": null
  },
  {
   "id": 56,
   "name": "William & Mary",
   "name_ko": "윌리엄 앤 메리 대학교",
-  "usnews_rank": 51,
+  "usnews_rank": 52,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
@@ -895,24 +1060,30 @@
   "ed_applied": 1586,
   "ed_admitted": 746,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 51,
+  "lac_rank_prev": null
  },
  {
   "id": 57,
   "name": "University of California, Merced",
   "name_ko": "캘리포니아 대학교 머세드(UC 머세드)",
-  "usnews_rank": 57,
+  "usnews_rank": 69,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 90.5,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 57,
+  "lac_rank_prev": null
  },
  {
   "id": 58,
   "name": "Villanova University",
   "name_ko": "빌라노바 대학교",
-  "usnews_rank": 57,
+  "usnews_rank": 42,
   "tier": 3,
   "direct_admit_majors": [
    "business",
@@ -925,7 +1096,10 @@
   "ed_applied": 1680,
   "ed_admitted": 1005,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 57,
+  "lac_rank_prev": null
  },
  {
   "id": 59,
@@ -946,13 +1120,16 @@
   "ed_applied": 1139,
   "ed_admitted": 755,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 59,
+  "lac_rank_prev": null
  },
  {
   "id": 60,
   "name": "Pennsylvania State University--University Park",
   "name_ko": "펜실베이니아 주립대학교 유니버시티 파크",
-  "usnews_rank": 59,
+  "usnews_rank": 55,
   "tier": 3,
   "direct_admit_majors": [
    "architecture",
@@ -960,13 +1137,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 60.6,
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 59,
+  "lac_rank_prev": null
  },
  {
   "id": 61,
   "name": "Santa Clara University",
   "name_ko": "산타클라라 대학교",
-  "usnews_rank": 59,
+  "usnews_rank": 55,
   "tier": 3,
   "direct_admit_majors": [
    "business",
@@ -977,7 +1157,10 @@
   "ed_applied": 611,
   "ed_admitted": 467,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 59,
+  "lac_rank_prev": null
  },
  {
   "id": 62,
@@ -991,7 +1174,10 @@
   ],
   "kind": "university",
   "overall_accept_rate": 49.0,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 59,
+  "lac_rank_prev": null
  },
  {
   "id": 63,
@@ -1011,7 +1197,10 @@
   ],
   "kind": "university",
   "overall_accept_rate": 79.8,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 59,
+  "lac_rank_prev": null
  },
  {
   "id": 64,
@@ -1026,7 +1215,9 @@
   "ed_applied": 964,
   "ed_admitted": 256,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 1
  },
  {
   "id": 65,
@@ -1041,247 +1232,281 @@
   "ed_applied": 971,
   "ed_admitted": 216,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": true
+  "need_blind_intl": true,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 2
  },
  {
   "id": 66,
   "name": "Swarthmore College",
   "name_ko": "스워스모어 칼리지",
-  "usnews_rank": 4,
+  "usnews_rank": 3,
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 4,
+  "lac_rank": 3,
   "overall_accept_rate": 7.5,
   "ed_applied": 1281,
   "ed_admitted": 228,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 4
  },
  {
   "id": 67,
   "name": "Bowdoin College",
   "name_ko": "보든 칼리지",
-  "usnews_rank": 5,
+  "usnews_rank": 3,
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 5,
+  "lac_rank": 3,
   "overall_accept_rate": 7.1,
   "ed_applied": 1985,
   "ed_admitted": 296,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": true
+  "need_blind_intl": true,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 5
  },
  {
   "id": 68,
   "name": "Claremont McKenna College",
   "name_ko": "클레어몬트 매케나 칼리지",
-  "usnews_rank": 7,
+  "usnews_rank": 3,
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 7,
+  "lac_rank": 3,
   "overall_accept_rate": 9.6,
   "ed_applied": 978,
   "ed_admitted": 216,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 7
  },
  {
   "id": 69,
   "name": "Pomona College",
   "name_ko": "포모나 칼리지",
-  "usnews_rank": 7,
+  "usnews_rank": 3,
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 7,
+  "lac_rank": 3,
   "overall_accept_rate": 7.1,
   "ed_applied": 1656,
   "ed_admitted": 227,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 7
  },
  {
   "id": 70,
   "name": "Wellesley College",
   "name_ko": "웰즐리 칼리지",
-  "usnews_rank": 7,
+  "usnews_rank": 10,
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 7,
+  "lac_rank": 10,
   "overall_accept_rate": 14.1,
   "ed_applied": 1033,
   "ed_admitted": 308,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 7
  },
  {
   "id": 71,
   "name": "Carleton College",
   "name_ko": "칼턴 칼리지",
-  "usnews_rank": 10,
-  "tier": 1,
+  "usnews_rank": 16,
+  "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 10,
+  "lac_rank": 16,
   "overall_accept_rate": 20.4,
   "ed_applied": 760,
   "ed_admitted": 263,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 10
  },
  {
   "id": 72,
   "name": "Harvey Mudd College",
   "name_ko": "하비 머드 칼리지",
-  "usnews_rank": 10,
+  "usnews_rank": 8,
   "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 10,
+  "lac_rank": 8,
   "overall_accept_rate": 12.7,
   "ed_applied": 594,
   "ed_admitted": 109,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 10
  },
  {
   "id": 73,
   "name": "Barnard College",
   "name_ko": "바너드 칼리지",
-  "usnews_rank": 13,
+  "usnews_rank": 19,
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 19,
   "overall_accept_rate": 8.8,
   "ed_applied": 1437,
   "ed_admitted": 476,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 74,
   "name": "Davidson College",
   "name_ko": "데이비슨 칼리지",
-  "usnews_rank": 13,
+  "usnews_rank": 16,
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 16,
   "overall_accept_rate": 13.4,
   "ed_applied": 1232,
   "ed_admitted": 358,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 75,
   "name": "Grinnell College",
   "name_ko": "그리넬 칼리지",
-  "usnews_rank": 13,
+  "usnews_rank": 16,
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 16,
   "overall_accept_rate": 14.5,
   "ed_applied": 828,
   "ed_admitted": 283,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 76,
   "name": "Hamilton College",
   "name_ko": "해밀턴 칼리지",
-  "usnews_rank": 13,
+  "usnews_rank": 14,
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 14,
   "overall_accept_rate": 13.6,
   "ed_applied": 1120,
   "ed_admitted": 315,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 77,
   "name": "Middlebury College",
   "name_ko": "미들버리 칼리지",
-  "usnews_rank": 13,
+  "usnews_rank": 19,
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 19,
   "overall_accept_rate": 10.8,
   "ed_applied": 1179,
   "ed_admitted": 460,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 78,
   "name": "Smith College",
   "name_ko": "스미스 칼리지",
-  "usnews_rank": 13,
+  "usnews_rank": 22,
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 22,
   "overall_accept_rate": 21.0,
   "ed_applied": 1107,
   "ed_admitted": 371,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 79,
   "name": "Vassar College",
   "name_ko": "배서 칼리지",
-  "usnews_rank": 13,
-  "tier": 2,
+  "usnews_rank": 12,
+  "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 12,
   "overall_accept_rate": 18.6,
   "ed_applied": 1046,
   "ed_admitted": 402,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 80,
   "name": "Wesleyan University",
   "name_ko": "웨슬리언 대학교",
-  "usnews_rank": 13,
+  "usnews_rank": 14,
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 14,
   "overall_accept_rate": 16.5,
   "ed_applied": 1220,
   "ed_admitted": 522,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 81,
   "name": "Washington and Lee University",
   "name_ko": "워싱턴 앤드 리 대학교",
-  "usnews_rank": 21,
-  "tier": 2,
+  "usnews_rank": 12,
+  "tier": 1,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 21,
+  "lac_rank": 12,
   "overall_accept_rate": 14.0,
   "ed_applied": 1048,
   "ed_admitted": 289,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": true
+  "need_blind_intl": true,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 21
  },
  {
   "id": 82,
@@ -1296,79 +1521,91 @@
   "ed_applied": 1342,
   "ed_admitted": 477,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 22
  },
  {
   "id": 83,
   "name": "University of Richmond",
   "name_ko": "리치먼드 대학교",
-  "usnews_rank": 22,
+  "usnews_rank": 21,
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 22,
+  "lac_rank": 21,
   "overall_accept_rate": 22.2,
   "ed_applied": 1154,
   "ed_admitted": 421,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 22
  },
  {
   "id": 84,
   "name": "Bates College",
   "name_ko": "베이츠 칼리지",
-  "usnews_rank": 24,
-  "tier": 2,
+  "usnews_rank": 26,
+  "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 24,
+  "lac_rank": 26,
   "overall_accept_rate": 13.3,
   "ed_applied": 1128,
   "ed_admitted": 306,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 24
  },
  {
   "id": 85,
   "name": "Colby College",
   "name_ko": "콜비 칼리지",
-  "usnews_rank": 24,
+  "usnews_rank": 22,
   "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 24,
+  "lac_rank": 22,
   "overall_accept_rate": 7.1,
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 24
  },
  {
   "id": 86,
   "name": "Haverford College",
   "name_ko": "해버퍼드 칼리지",
-  "usnews_rank": 24,
-  "tier": 2,
+  "usnews_rank": 26,
+  "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 24,
+  "lac_rank": 26,
   "overall_accept_rate": 12.4,
   "ed_applied": 745,
   "ed_admitted": 219,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 24
  },
  {
   "id": 87,
   "name": "College of the Holy Cross",
   "name_ko": "홀리크로스 칼리지",
-  "usnews_rank": 27,
-  "tier": 3,
+  "usnews_rank": 22,
+  "tier": 2,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 27,
+  "lac_rank": 22,
   "overall_accept_rate": 17.6,
   "ed_applied": 761,
   "ed_admitted": 511,
   "ed_cds_year": "2023-24",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 27
  },
  {
   "id": 88,
@@ -1383,43 +1620,49 @@
   "ed_applied": 479,
   "ed_admitted": 201,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 28
  },
  {
   "id": 89,
   "name": "Mount Holyoke College",
   "name_ko": "마운트 홀리요크 칼리지",
-  "usnews_rank": 29,
+  "usnews_rank": 34,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 29,
+  "lac_rank": 34,
   "overall_accept_rate": 36.0,
   "ed_applied": 411,
   "ed_admitted": 208,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 29
  },
  {
   "id": 90,
   "name": "Bryn Mawr College",
   "name_ko": "브린 마 칼리지",
-  "usnews_rank": 30,
+  "usnews_rank": 31,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 30,
+  "lac_rank": 31,
   "overall_accept_rate": 29.4,
   "ed_applied": 456,
   "ed_admitted": 167,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 30
  },
  {
   "id": 91,
   "name": "Bucknell University",
   "name_ko": "버크넬 대학교",
-  "usnews_rank": 30,
+  "usnews_rank": 29,
   "tier": 3,
   "direct_admit_majors": [
    "College of Arts & Sciences",
@@ -1427,27 +1670,31 @@
    "Freeman College of Management"
   ],
   "kind": "lac",
-  "lac_rank": 30,
+  "lac_rank": 29,
   "overall_accept_rate": 28.9,
   "ed_applied": 1200,
   "ed_admitted": 656,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 30
  },
  {
   "id": 92,
   "name": "Colorado College",
   "name_ko": "콜로라도 칼리지",
-  "usnews_rank": 30,
+  "usnews_rank": 34,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 30,
+  "lac_rank": 34,
   "overall_accept_rate": 18.5,
   "ed_applied": 918,
   "ed_admitted": 292,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 30
  },
  {
   "id": 93,
@@ -1462,82 +1709,94 @@
   "ed_applied": 937,
   "ed_admitted": 356,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 30
  },
  {
   "id": 94,
   "name": "Denison University",
   "name_ko": "데니슨 대학교",
-  "usnews_rank": 34,
+  "usnews_rank": 31,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 34,
+  "lac_rank": 31,
   "overall_accept_rate": 17.4,
   "ed_applied": 1589,
   "ed_admitted": 394,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 34
  },
  {
   "id": 95,
   "name": "Franklin & Marshall College",
   "name_ko": "프랭클린 앤 마셜 칼리지",
-  "usnews_rank": 35,
+  "usnews_rank": 34,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 35,
+  "lac_rank": 34,
   "overall_accept_rate": 28.2,
   "ed_applied": 860,
   "ed_admitted": 254,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 35
  },
  {
   "id": 96,
   "name": "Occidental College",
   "name_ko": "옥시덴탈 칼리지",
-  "usnews_rank": 35,
+  "usnews_rank": 38,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 35,
+  "lac_rank": 38,
   "overall_accept_rate": 44.2,
   "ed_applied": 466,
   "ed_admitted": 223,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 35
  },
  {
   "id": 97,
   "name": "Pitzer College",
   "name_ko": "피처 칼리지",
-  "usnews_rank": 37,
+  "usnews_rank": 44,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 37,
+  "lac_rank": 44,
   "overall_accept_rate": 25.2,
   "ed_applied": 385,
   "ed_admitted": 167,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 37
  },
  {
   "id": 98,
   "name": "Scripps College",
   "name_ko": "스크립스 칼리지",
-  "usnews_rank": 37,
+  "usnews_rank": 38,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "lac",
-  "lac_rank": 37,
+  "lac_rank": 38,
   "overall_accept_rate": 38.3,
   "ed_applied": 275,
   "ed_admitted": 141,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 37
  },
  {
   "id": 99,
@@ -1551,26 +1810,32 @@
   ],
   "kind": "university",
   "overall_accept_rate": 75.9,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 73,
+  "lac_rank_prev": null
  },
  {
   "id": 100,
   "name": "Michigan State University",
   "name_ko": "미시간 주립대학교",
-  "usnews_rank": 64,
+  "usnews_rank": 69,
   "tier": 3,
   "direct_admit_majors": [
    "business"
   ],
   "kind": "university",
   "overall_accept_rate": 84.8,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 64,
+  "lac_rank_prev": null
  },
  {
   "id": 101,
   "name": "North Carolina State University",
   "name_ko": "노스캐롤라이나 주립대학교",
-  "usnews_rank": 64,
+  "usnews_rank": 73,
   "tier": 3,
   "direct_admit_majors": [
    "business",
@@ -1585,13 +1850,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 41.7,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 64,
+  "lac_rank_prev": null
  },
  {
   "id": 102,
   "name": "Rensselaer Polytechnic Institute",
   "name_ko": "렌슬리어 공과대학교 (RPI)",
-  "usnews_rank": 64,
+  "usnews_rank": 69,
   "tier": 3,
   "direct_admit_majors": [
    "engineering",
@@ -1609,13 +1877,16 @@
   "ed_applied": 317,
   "ed_admitted": 219,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 64,
+  "lac_rank_prev": null
  },
  {
   "id": 103,
   "name": "University of Massachusetts Amherst",
   "name_ko": "매사추세츠 대학교 애머스트",
-  "usnews_rank": 64,
+  "usnews_rank": 59,
   "tier": 3,
   "direct_admit_majors": [
    "business",
@@ -1625,13 +1896,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 59.7,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 64,
+  "lac_rank_prev": null
  },
  {
   "id": 104,
   "name": "University of Miami",
   "name_ko": "마이애미 대학교",
-  "usnews_rank": 64,
+  "usnews_rank": 55,
   "tier": 3,
   "direct_admit_majors": [
    "nursing",
@@ -1644,13 +1918,16 @@
   "ed_applied": 2395,
   "ed_admitted": 1062,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 64,
+  "lac_rank_prev": null
  },
  {
   "id": 105,
   "name": "Brandeis University",
   "name_ko": "브랜다이스 대학교",
-  "usnews_rank": 69,
+  "usnews_rank": 59,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
@@ -1658,13 +1935,16 @@
   "ed_applied": 680,
   "ed_admitted": 242,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 69,
+  "lac_rank_prev": null
  },
  {
   "id": 106,
   "name": "Tulane University",
   "name_ko": "툴레인 대학교",
-  "usnews_rank": 69,
+  "usnews_rank": 59,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
@@ -1672,13 +1952,16 @@
   "ed_applied": 2077,
   "ed_admitted": 1209,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 69,
+  "lac_rank_prev": null
  },
  {
   "id": 107,
   "name": "University of Connecticut",
   "name_ko": "코네티컷 대학교 (UConn)",
-  "usnews_rank": 69,
+  "usnews_rank": 73,
   "tier": 3,
   "direct_admit_majors": [
    "business",
@@ -1693,13 +1976,16 @@
   "ed_applied": 1442,
   "ed_admitted": 672,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 69,
+  "lac_rank_prev": null
  },
  {
   "id": 108,
   "name": "University of Pittsburgh",
   "name_ko": "피츠버그 대학교",
-  "usnews_rank": 69,
+  "usnews_rank": 59,
   "tier": 3,
   "direct_admit_majors": [
    "business",
@@ -1709,7 +1995,10 @@
   ],
   "kind": "university",
   "overall_accept_rate": 58.1,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 69,
+  "lac_rank_prev": null
  },
  {
   "id": 109,
@@ -1723,26 +2012,32 @@
   ],
   "kind": "university",
   "overall_accept_rate": 38.6,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 73,
+  "lac_rank_prev": null
  },
  {
   "id": 110,
   "name": "Clemson University",
   "name_ko": "클렘슨 대학교",
-  "usnews_rank": 75,
+  "usnews_rank": 80,
   "tier": 3,
   "direct_admit_majors": [
    "nursing"
   ],
   "kind": "university",
   "overall_accept_rate": 38.3,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 75,
+  "lac_rank_prev": null
  },
  {
   "id": 111,
   "name": "Rutgers University--Newark",
   "name_ko": "럿거스 대학교 뉴어크",
-  "usnews_rank": 75,
+  "usnews_rank": 73,
   "tier": 3,
   "direct_admit_majors": [
    "business",
@@ -1751,13 +2046,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 71.4,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 75,
+  "lac_rank_prev": null
  },
  {
   "id": 112,
   "name": "Syracuse University",
   "name_ko": "시러큐스 대학교",
-  "usnews_rank": 75,
+  "usnews_rank": 72,
   "tier": 3,
   "direct_admit_majors": [
    "business",
@@ -1771,13 +2069,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 45.9,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 75,
+  "lac_rank_prev": null
  },
  {
   "id": 113,
   "name": "University at Buffalo (SUNY)",
   "name_ko": "버팔로 대학교 (SUNY)",
-  "usnews_rank": 75,
+  "usnews_rank": 85,
   "tier": 3,
   "direct_admit_majors": [
    "arts",
@@ -1785,18 +2086,24 @@
   ],
   "kind": "university",
   "overall_accept_rate": 74.2,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 75,
+  "lac_rank_prev": null
  },
  {
   "id": 114,
   "name": "University of California, Riverside",
   "name_ko": "캘리포니아 대학교 리버사이드 (UCR)",
-  "usnews_rank": 75,
+  "usnews_rank": 80,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 76.4,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 75,
+  "lac_rank_prev": null
  },
  {
   "id": 115,
@@ -1807,7 +2114,10 @@
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 60.7,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 80,
+  "lac_rank_prev": null
  },
  {
   "id": 116,
@@ -1827,13 +2137,16 @@
   "ed_applied": 299,
   "ed_admitted": 234,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 80,
+  "lac_rank_prev": null
  },
  {
   "id": 117,
   "name": "New Jersey Institute of Technology",
   "name_ko": "뉴저지 공과대학교 (NJIT)",
-  "usnews_rank": 80,
+  "usnews_rank": 85,
   "tier": 3,
   "direct_admit_majors": [
    "architecture",
@@ -1841,13 +2154,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 65.1,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 80,
+  "lac_rank_prev": null
  },
  {
   "id": 118,
   "name": "Stevens Institute of Technology",
   "name_ko": "스티븐스 공과대학교",
-  "usnews_rank": 80,
+  "usnews_rank": 59,
   "tier": 3,
   "direct_admit_majors": [
    "premed"
@@ -1857,26 +2173,32 @@
   "ed_applied": 407,
   "ed_admitted": 284,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 80,
+  "lac_rank_prev": null
  },
  {
   "id": 119,
   "name": "Pepperdine University",
   "name_ko": "페퍼다인 대학교",
-  "usnews_rank": 84,
+  "usnews_rank": 80,
   "tier": 3,
   "direct_admit_majors": [
    "nursing"
   ],
   "kind": "university",
   "overall_accept_rate": 62.9,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 84,
+  "lac_rank_prev": null
  },
  {
   "id": 120,
   "name": "University of Illinois Chicago",
   "name_ko": "일리노이 대학교 시카고 (UIC)",
-  "usnews_rank": 84,
+  "usnews_rank": 95,
   "tier": 3,
   "direct_admit_majors": [
    "nursing",
@@ -1884,13 +2206,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 77.3,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 84,
+  "lac_rank_prev": null
  },
  {
   "id": 121,
   "name": "Worcester Polytechnic Institute",
   "name_ko": "우스터 공과대학교 (WPI)",
-  "usnews_rank": 84,
+  "usnews_rank": 73,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
@@ -1898,13 +2223,16 @@
   "ed_applied": 397,
   "ed_admitted": 310,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 84,
+  "lac_rank_prev": null
  },
  {
   "id": 122,
   "name": "Yeshiva University",
   "name_ko": "예시바 대학교",
-  "usnews_rank": 84,
+  "usnews_rank": 90,
   "tier": 3,
   "direct_admit_majors": [
    "business"
@@ -1914,13 +2242,16 @@
   "ed_applied": 129,
   "ed_admitted": 129,
   "ed_cds_year": "2023-24",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 84,
+  "lac_rank_prev": null
  },
  {
   "id": 123,
   "name": "American University",
   "name_ko": "아메리칸 대학교",
-  "usnews_rank": 88,
+  "usnews_rank": 95,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
@@ -1928,13 +2259,16 @@
   "ed_applied": 392,
   "ed_admitted": 316,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 124,
   "name": "Baylor University",
   "name_ko": "베일러 대학교",
-  "usnews_rank": 88,
+  "usnews_rank": 90,
   "tier": 3,
   "direct_admit_majors": [
    "engineering",
@@ -1946,13 +2280,16 @@
   "ed_applied": 566,
   "ed_admitted": 453,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 125,
   "name": "Howard University",
   "name_ko": "하워드 대학교",
-  "usnews_rank": 88,
+  "usnews_rank": 73,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
@@ -1960,24 +2297,30 @@
   "ed_applied": 430,
   "ed_admitted": 363,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 126,
   "name": "Marquette University",
   "name_ko": "마켓 대학교",
-  "usnews_rank": 88,
+  "usnews_rank": 90,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 81.3,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 127,
   "name": "Rochester Institute of Technology",
   "name_ko": "로체스터 공과대학교 (RIT)",
-  "usnews_rank": 88,
+  "usnews_rank": 95,
   "tier": 3,
   "direct_admit_majors": [
    "business",
@@ -1993,13 +2336,16 @@
   "ed_applied": 1405,
   "ed_admitted": 1028,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 128,
   "name": "Southern Methodist University",
   "name_ko": "서던메소디스트 대학교 (SMU)",
-  "usnews_rank": 88,
+  "usnews_rank": 85,
   "tier": 3,
   "direct_admit_majors": [
    "business",
@@ -2012,26 +2358,32 @@
   "ed_applied": 528,
   "ed_admitted": 424,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 129,
   "name": "University of California, Santa Cruz",
   "name_ko": "캘리포니아 대학교 산타크루즈 (UCSC)",
-  "usnews_rank": 88,
+  "usnews_rank": 109,
   "tier": 3,
   "direct_admit_majors": [
    "cs"
   ],
   "kind": "university",
   "overall_accept_rate": 65.8,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 130,
   "name": "University of Delaware",
   "name_ko": "델라웨어 대학교",
-  "usnews_rank": 88,
+  "usnews_rank": 85,
   "tier": 3,
   "direct_admit_majors": [
    "nursing",
@@ -2041,37 +2393,46 @@
   ],
   "kind": "university",
   "overall_accept_rate": 70.6,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 131,
   "name": "University of South Florida",
   "name_ko": "사우스플로리다 대학교",
-  "usnews_rank": 88,
+  "usnews_rank": 100,
   "tier": 3,
   "direct_admit_majors": [
    "nursing"
   ],
   "kind": "university",
   "overall_accept_rate": 43.2,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 132,
   "name": "Florida International University",
   "name_ko": "플로리다 국제대학교 (FIU)",
-  "usnews_rank": 97,
+  "usnews_rank": 100,
   "tier": 3,
   "direct_admit_majors": [],
   "kind": "university",
   "overall_accept_rate": 54.7,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 97,
+  "lac_rank_prev": null
  },
  {
   "id": 133,
   "name": "Fordham University",
   "name_ko": "포덤 대학교",
-  "usnews_rank": 97,
+  "usnews_rank": 85,
   "tier": 3,
   "direct_admit_majors": [
    "business"
@@ -2081,13 +2442,16 @@
   "ed_applied": 595,
   "ed_admitted": 307,
   "ed_cds_year": "2024-25",
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 97,
+  "lac_rank_prev": null
  },
  {
   "id": 134,
   "name": "Rutgers University--Camden",
   "name_ko": "럿거스 대학교 캠던",
-  "usnews_rank": 97,
+  "usnews_rank": 95,
   "tier": 3,
   "direct_admit_majors": [
    "business",
@@ -2095,13 +2459,16 @@
   ],
   "kind": "university",
   "overall_accept_rate": 66.3,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 97,
+  "lac_rank_prev": null
  },
  {
   "id": 135,
   "name": "Texas Christian University",
   "name_ko": "텍사스 크리스천 대학교 (TCU)",
-  "usnews_rank": 97,
+  "usnews_rank": 90,
   "tier": 3,
   "direct_admit_majors": [
    "business",
@@ -2112,13 +2479,16 @@
   "ed_applied": 1373,
   "ed_admitted": 935,
   "ed_cds_year": "2025-26",
-  "need_blind_intl": false
+  "need_blind_intl": false,
+  "lac_rank": null,
+  "usnews_rank_prev": 97,
+  "lac_rank_prev": null
  },
  {
   "id": 136,
   "name": "University of Colorado Boulder",
   "name_ko": "콜로라도 대학교 볼더",
-  "usnews_rank": 97,
+  "usnews_rank": 109,
   "tier": 3,
   "direct_admit_majors": [
    "business",
@@ -2128,7 +2498,10 @@
   ],
   "kind": "university",
   "overall_accept_rate": 78.1,
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": 97,
+  "lac_rank_prev": null
  },
  {
   "id": 137,
@@ -2149,7 +2522,10 @@
    "industrial_design",
    "interior_design"
   ],
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 138,
@@ -2167,7 +2543,10 @@
    "industrial_design",
    "interior_design"
   ],
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 139,
@@ -2187,7 +2566,10 @@
    "industrial_design",
    "interior_design"
   ],
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 140,
@@ -2204,7 +2586,10 @@
    "film",
    "music"
   ],
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 141,
@@ -2224,7 +2609,10 @@
    "arts",
    "architecture"
   ],
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 142,
@@ -2242,7 +2630,10 @@
    "film",
    "interior_design"
   ],
-  "need_blind_intl": true
+  "need_blind_intl": true,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 143,
@@ -2259,7 +2650,10 @@
    "film",
    "interior_design"
   ],
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 144,
@@ -2278,7 +2672,10 @@
    "film",
    "game_design"
   ],
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 145,
@@ -2296,7 +2693,10 @@
    "game_design",
    "interior_design"
   ],
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 146,
@@ -2316,7 +2716,10 @@
    "industrial_design",
    "interior_design"
   ],
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 147,
@@ -2334,6 +2737,9 @@
    "film",
    "industrial_design"
   ],
-  "need_blind_intl": false
+  "need_blind_intl": null,
+  "lac_rank": null,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  }
 ]
