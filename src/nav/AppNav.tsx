@@ -36,7 +36,7 @@ export default function AppNav() {
     first,
     { to: '/targets', label: t('목표 학교', 'Targets'), icon: Target, active: (p) => p.startsWith('/targets') },
     { to: '/app', label: t('내 원서', 'My App'), icon: FileText, active: (p) => p.startsWith('/app') },
-    { to: '/schools', label: t('둘러보기', 'Browse'), icon: Search, active: (p) => p.startsWith('/schools') || p.startsWith('/compare') || p === '/map' },
+    { to: '/schools', label: t('학교 둘러보기', 'Schools'), icon: Search, active: (p) => p.startsWith('/schools') || p.startsWith('/compare') || p === '/map' },
   ]
   const more: Item[] = [
     ...(onboarded ? [] : [{ to: '/report', label: t('리포트', 'Report'), icon: BarChart3, active: (p: string) => p.startsWith('/report') }]),

@@ -25,7 +25,7 @@ export default function TopNav() {
             ]),
         { to: '/targets', label: t('목표 학교', 'Targets'), active: path.startsWith('/targets') },
         { to: '/app', label: t('내 원서', 'My App'), active: path.startsWith('/app') },
-        { to: '/schools', label: t('둘러보기', 'Browse'), active: path.startsWith('/schools') || path.startsWith('/compare') },
+        { to: '/schools', label: t('학교 둘러보기', 'Browse schools'), active: path.startsWith('/schools') || path.startsWith('/compare') },
         { to: '/majors', label: t('전공', 'Majors'), active: path.startsWith('/major') },
         { to: '/deadlines', label: t('마감', 'Deadlines'), active: path.startsWith('/deadlines') },
       ]
