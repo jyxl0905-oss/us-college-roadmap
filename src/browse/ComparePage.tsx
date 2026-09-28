@@ -12,6 +12,7 @@ import { rankBadge } from './rankGroups'
 import { t, getLang } from '../i18n'
 import { timingLabel } from '../lib/academics'
 import { AlertTriangle } from 'lucide-react'
+import { loadC7, LEVEL_STYLE, levelLabel, type C7Row } from '../lib/c7'
 
 
 // URL ?ids=3,1,5 → 비교할 학교 id (최대 3)
@@ -27,7 +28,9 @@ interface ComparePageProps {
 // F2: 학교 비교 테이블 — 열=학교, 항목명 열은 가로 스크롤 시 고정
 export default function ComparePage({ profile }: ComparePageProps) {
   const [schools, setSchools] = useState<School[] | null>(null)
+  const [c7, setC7] = useState<Map<number, C7Row> | null>(null)
   const ids = compareIdsFromUrl()
+  useEffect(() => { void loadC7().then(setC7) }, [])
 
   useEffect(() => {
     loadSchools().then((list) =>
@@ -108,6 +111,18 @@ export default function ComparePage({ profile }: ComparePageProps) {
             : s.test_policy === 'test-free'
               ? t('시험 미반영', 'Test-free')
               : <span className="text-gray-400">{t('미공개', 'Not disclosed')}</span>,
+    },
+    {
+      // CDS C7 공시 비중 — 제출 정책과 별개
+      label: t('시험 점수 비중 (공시)', 'Test score weight (CDS)'),
+      render: (s) => {
+        const r = c7?.get(s.id)
+        if (s.test_policy === 'test-free') return <span className="text-gray-500">{t('시험 미반영', 'Test-free')}</span>
+        const lv = r?.levels.standardized_tests
+        return r && lv ? (
+          <span className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${LEVEL_STYLE[lv].chip}`}>{levelLabel(lv)}<span className="ml-1 font-normal opacity-70">{r.year}</span></span>
+        ) : <span className="text-gray-400">{t('미공개', 'Not disclosed')}</span>
+      },
     },
     { label: t('관심 표현 반영', 'Demonstrated interest'), render: (s) => boolCell(s.demonstrated_interest, t('반영함', 'Considered'), t('반영 안 함', 'Not considered')) },
     ...(myMajor

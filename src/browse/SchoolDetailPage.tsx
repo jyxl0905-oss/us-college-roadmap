@@ -13,6 +13,7 @@ import ApCreditBlock from './ApCreditBlock'
 import UsStudentBlock from './UsStudentBlock'
 import RequirementsBlock from './RequirementsBlock'
 import InterviewBlock from './InterviewBlock'
+import FactorsBlock from './FactorsBlock'
 import { setPrefillSchoolIds } from './prefill'
 import FitPicker from './FitPicker'
 import { schoolWebsite } from './logos'
@@ -249,6 +250,11 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
             )}
           </div>
         )}
+
+        {/* 평가 요소 비중 (CDS C7) — 인재상 바로 아래 */}
+        <div className="mt-4 empty:hidden">
+          <FactorsBlock school={s} gradYear={profile?.grad_year} />
+        </div>
 
         {/* 💰 재정지원 — 지원 신분에 맞는 부분만 (인재상 카드와 별개로 항상 표시) */}
         <div className="mt-4">

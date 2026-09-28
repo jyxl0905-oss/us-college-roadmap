@@ -146,7 +146,7 @@
    "talent",
    "character"
   ],
-  "c7_source_url": "https://irds.stanford.edu/data-findings/cds",
+  "c7_source_url": "https://drive.google.com/file/d/1GIPKgVj1d86dkmLkHI_mZVCk_iY6kiCp/view",
   "overall_accept_rate": 3.6
  },
  {
@@ -226,7 +226,7 @@
    "talent",
    "character"
   ],
-  "c7_source_url": "https://data.uchicago.edu/files/2025/08/CDS_2024-2025_to_publish.pdf",
+  "c7_source_url": "https://data.uchicago.edu/files/2026/08/CDS_2025-2026_to_publish-1.pdf",
   "overall_accept_rate": 4.5
  },
  {
@@ -359,7 +359,7 @@
    "talent",
    "character"
   ],
-  "c7_source_url": "https://enrollment.northwestern.edu/data/2024-2025.pdf",
+  "c7_source_url": "https://enrollment.northwestern.edu/data/2025-2026.pdf",
   "overall_accept_rate": 7.7,
   "ed_applied": 5154,
   "ed_admitted": 1186,
@@ -404,7 +404,7 @@
    "recommendations",
    "character"
   ],
-  "c7_source_url": "https://upenn.box.com/s/ckv4frz37rzxa4u6bdiv2h4yzykqm4ef",
+  "c7_source_url": "https://upenn.box.com/s/woo7d85yxpol6j9e2o121aucjc6dc1k5",
   "overall_accept_rate": 5.4,
   "ed_applied": 9503,
   "ed_admitted": 1266,
@@ -445,7 +445,7 @@
    "recommendations",
    "character"
   ],
-  "c7_source_url": "https://iro.caltech.edu/documents/31491/Caltech_CDS_2024-2025_May_2025.pdf",
+  "c7_source_url": "https://iro.caltech.edu/documents/35129/Caltech_CDS_2025-26_August_2026.pdf",
   "overall_accept_rate": 2.6
  },
  {
@@ -615,7 +615,7 @@
    "extracurricular",
    "character"
   ],
-  "c7_source_url": "https://opir.columbia.edu/sites/opir.columbia.edu/files/content/Common%20Data%20Set/2024-25_Columbia_College_and_Columbia_Engineering_CDS.pdf",
+  "c7_source_url": "https://opir.columbia.edu/sites/opir.columbia.edu/files/content/Common%20Data%20Set/2025-26_Columbia_College_and_Columbia_Enginnering_CDS.pdf",
   "overall_accept_rate": 4.0,
   "ed_applied": 6007,
   "ed_admitted": 795,
@@ -942,7 +942,7 @@
    "character",
    "volunteer_work"
   ],
-  "c7_source_url": "https://drive.google.com/drive/folders/1TsZYMnJhOYuNfNYsaziNrbm9uJIqLS_u",
+  "c7_source_url": "https://drive.google.com/file/d/1jFtuEmv7OPCTq9e8kD90I7CByERcMBty/view",
   "overall_accept_rate": 11.3
  },
  {
@@ -1166,7 +1166,7 @@
    "character",
    "state_residency"
   ],
-  "c7_source_url": "https://ira.virginia.edu/common-data-set/common-data-set-2025-2026",
+  "c7_source_url": "https://qlksnpn-apprd01.eservices.virginia.edu/extensions/CDS_SectionC/CDS_SectionC.html",
   "overall_accept_rate": 16.8,
   "ed_applied": 4461,
   "ed_admitted": 1245,
@@ -1372,7 +1372,7 @@
    "character",
    "state_residency"
   ],
-  "c7_source_url": "https://irp.gatech.edu/files/CDS/CDS_2025-2026_FINAL_R3_30MAR2026.pdf",
+  "c7_source_url": "https://irp.gatech.edu/sites/default/files/CDS/CDS_2025-2026_FINAL_R4_03JUN2026.pdf",
   "overall_accept_rate": 14.1
  },
  {
@@ -1645,7 +1645,7 @@
    "character",
    "first_generation"
   ],
-  "c7_source_url": "https://www.dmi.illinois.edu/stuenr/misc/cds_2025_2026.xlsx",
+  "c7_source_url": "https://uofi.box.com/shared/static/orx4vnmzkt2drmgoiksxpfs39pr42uor.xlsx",
   "overall_accept_rate": 42.4
  },
  {
@@ -1915,7 +1915,7 @@
   ],
   "what_they_value": "UW 입학처 공식 페이지는 표준화 시험 대신 교과 과정의 질(curriculum quality)과 과목 성적을 학업 평가의 중심에 둔다고 명시한다. 에세이와 과외활동을 포함한 지원서 전체를 개별 검토하는 홀리스틱 리뷰를 하며, 학업 외 성취와 지원자의 환경적 맥락도 함께 본다.",
   "source_url": "https://uw-s3-cdn.s3.us-west-2.amazonaws.com/wp-content/uploads/sites/162/2026/02/27111247/CDS_2025-2026_Seattle.pdf",
-  "test_policy": "test-free",
+  "test_policy": "test-optional",
   "intro_ko": "시애틀에 있는 워싱턴주 플래그십 주립대학으로 CS(Allen School)·공학·의생명 분야가 강한 대형 연구 중심 대학이다.",
   "location_note": "워싱턴주 시애틀 도심 북쪽에 캠퍼스가 있으며 아마존·마이크로소프트 등 테크 기업 허브와 인접해 있다.",
   "ed_offered": false,
@@ -2210,8 +2210,10 @@
   "rd_timing": "12월 초",
   "deadlines_source_url": "https://admissions.fsu.edu/deadlines",
   "deadlines_verified_at": "2026-08-10",
-  "c7_very_important": null,
-  "c7_source_url": null,
+  "c7_very_important": [
+   "rigor"
+  ],
+  "c7_source_url": "https://ir.fsu.edu/commondataset.aspx",
   "overall_accept_rate": 24.2
  },
  {
@@ -2675,7 +2677,7 @@
    "class_rank",
    "gpa"
   ],
-  "c7_source_url": "https://idr.umn.edu/sites/idr.umn.edu/files/cds_2024_2025_tc.pdf",
+  "c7_source_url": "https://idr.umn.edu/sites/idr.umn.edu/files/cds_2025_2026_tc_0.pdf",
   "overall_accept_rate": 79.8
  },
  {
@@ -3110,7 +3112,7 @@
    "recommendations",
    "character"
   ],
-  "c7_source_url": "https://barnard.edu/institutional-effectiveness/common-data-set",
+  "c7_source_url": "https://barnard.edu/sites/default/files/2026-09/Barnard_CDS_2025-2026.pdf",
   "kind": "lac",
   "lac_rank": 13,
   "overall_accept_rate": 8.8,
@@ -3320,7 +3322,7 @@
    "recommendations",
    "character"
   ],
-  "c7_source_url": "https://www1.smith.edu/sites/default/files/2025-02/2024-2025-CDS-Smith-PUB19Dec24%20v2.pdf",
+  "c7_source_url": "https://drive.google.com/file/d/1qDhlH43IbOCQzP6xtUHMzTmgEss1I-68/view",
   "kind": "lac",
   "lac_rank": 13,
   "overall_accept_rate": 21.0,
@@ -3404,7 +3406,7 @@
   "c7_very_important": [
    "rigor"
   ],
-  "c7_source_url": "https://www.wesleyan.edu/ir/common-data-sets.html",
+  "c7_source_url": "https://wesleyan0.sharepoint.com/:f:/s/IRDataandReports/EtCqjFa5sgBLif1SveNykPUB6j5D6s_nZFlWs_GLu_3yXA",
   "kind": "lac",
   "lac_rank": 13,
   "overall_accept_rate": 16.5,
@@ -3651,7 +3653,7 @@
    "extracurricular",
    "character"
   ],
-  "c7_source_url": "https://www.haverford.edu/sites/default/files/Office/President/CDS_2024-2025.pdf",
+  "c7_source_url": "https://www.haverford.edu/sites/default/files/Office/President/CDS-2025-26.pdf",
   "kind": "lac",
   "lac_rank": 24,
   "overall_accept_rate": 12.4,
@@ -3690,8 +3692,8 @@
   "c7_very_important": [
    "rigor",
    "gpa",
-   "recommendations",
    "essay",
+   "recommendations",
    "interview",
    "character"
   ],
@@ -4199,7 +4201,7 @@
    "class_rank",
    "gpa"
   ],
-  "c7_source_url": "https://iuapps.iu.edu/cds/?p=index&i=home&campus=Bloomington&year=2025",
+  "c7_source_url": "https://iuapps.iu.edu/cds/?p=index&i=home&campus=Bloomington&year=2025&section=C.+First-Time%2C+%28Freshman%29+Admission",
   "intro_en": "Indiana's flagship public research university, known for the direct-admission Kelley School of Business and the Jacobs School of Music.",
   "what_they_value_en": "The admissions office describes admission as centered on academic performance and preparation: the level and rigor of coursework in the 34 required college-prep courses, individual grades and cumulative GPA, SAT/ACT if submitted (test-optional, but sharing scores is preferred), and the essay. Per the 2025-26 CDS C7, rigor, class rank and GPA are Very Important; test scores and the essay are Important. Leadership, activities, service, work experience and recommendations are considered as supplemental context when provided.",
   "location_note_en": "Located in Bloomington, Indiana.",
@@ -4507,7 +4509,7 @@
    "rigor",
    "class_rank",
    "gpa",
-   "test_scores",
+   "standardized_tests",
    "essay",
    "extracurricular"
   ],
@@ -4624,7 +4626,7 @@
    "class_rank",
    "gpa",
    "extracurricular",
-   "volunteer"
+   "volunteer_work"
   ],
   "direct_admit_majors": []
  },
@@ -4642,8 +4644,8 @@
   "overall_accept_rate": 52.4,
   "need_blind_intl": null,
   "demonstrated_interest": false,
-  "what_they_value": "UConn은 모든 1학년 지원서를 holistic하게 심사하며 \"학업·개인 정보 전체에 대한 종합 검토로 선발한다\"고 명시한다 — GPA·석차·에세이·활동·(선택) 추천서·(선택) 시험 어느 하나로 결정되지 않는다. GPA를 자체 재계산해 핵심 과목의 AP·IB·Honors에 가중치를 주고, 학년별 과목 난도와 성적 추이를 본다. 최근 완성된 CDS 기준 교과 엄격성·석차·GPA가 Very Important.",
-  "what_they_value_en": "UConn reviews every first-year application holistically: \"Selection is based on a comprehensive review of all the information provided on the application, both academic and personal,\" and no single element - GPA, class rank, essay, activities, optional recommendations or optional test scores - decides an outcome. The office recalculates GPA and weights advanced coursework (AP, IB, Honors) in core classes, and looks at the range and challenge level of courses taken each year plus grade trends by subject. Its most recent completed C7 table rates rigor of secondary school record, class rank, academic GPA, standardized test scores and the application essay as Very Important, with extracurriculars, character, first-generation status, talent and recommendations Important.",
+  "what_they_value": "UConn은 모든 1학년 지원서를 holistic하게 심사하며 \"학업·개인 정보 전체에 대한 종합 검토로 선발한다\"고 명시한다 — GPA·석차·에세이·활동·(선택) 추천서·(선택) 시험 어느 하나로 결정되지 않는다. GPA를 자체 재계산해 핵심 과목의 AP·IB·Honors에 가중치를 주고, 학년별 과목 난도와 성적 추이를 본다. 2025-26 CDS에서는 학업 요소를 모두 'Considered'로 표시해 Very Important·Important로 꼽은 요소가 없다.",
+  "what_they_value_en": "UConn reviews every first-year application holistically: \"Selection is based on a comprehensive review of all the information provided on the application, both academic and personal,\" and no single element - GPA, class rank, essay, activities, optional recommendations or optional test scores - decides an outcome. The office recalculates GPA and weights advanced coursework (AP, IB, Honors) in core classes, and looks at the range and challenge level of courses taken each year plus grade trends by subject. Its 2025-26 C7 table marks every academic factor as Considered, with no factor rated Very Important or Important.",
   "source_url": "https://bpir.media.uconn.edu/wp-content/uploads/sites/3452/2026/08/UConn_CDS_2025_2026_WEB.pdf",
   "test_policy": "test-optional",
   "intro_ko": "코네티컷주의 대표 주립 연구대학으로 경영·공학·간호 분야와 강한 대학 스포츠로 알려져 있다.",
@@ -4660,7 +4662,7 @@
   "rd_timing": "1월 중순",
   "deadlines_source_url": "https://admissions.uconn.edu/apply/first-year/deadlines/",
   "deadlines_verified_at": "2026-08-28",
-  "c7_source_url": "https://bpir.media.uconn.edu/wp-content/uploads/sites/3452/2025/07/UConn_CDS_2024_2025.pdf",
+  "c7_source_url": "https://bpir.media.uconn.edu/wp-content/uploads/sites/3452/2026/08/UConn_CDS_2025_2026_WEB.pdf",
   "intl_aid_count": 641,
   "intl_aid_avg": 18754,
   "intl_aid_year": "2025-26",
@@ -4675,13 +4677,7 @@
   "ed_applied": 1442,
   "ed_admitted": 672,
   "ed_cds_year": "2025-26",
-  "c7_very_important": [
-   "rigor",
-   "class_rank",
-   "gpa",
-   "test_scores",
-   "essay"
-  ],
+  "c7_very_important": [],
   "direct_admit_majors": [
    "business",
    "engineering",
@@ -4782,7 +4778,7 @@
   "rd_timing": "1월 중순",
   "deadlines_source_url": "https://www.binghamton.edu/admissions/undergraduate/apply/freshman/",
   "deadlines_verified_at": "2026-08-28",
-  "c7_source_url": "https://www.binghamton.edu/offices/oir/institutional-data/common-data-set.html",
+  "c7_source_url": "https://drive.google.com/file/d/1Dcby2MF3MGue7PRpH2nOCbSCtwmgPPUG/view?usp=sharing",
   "intl_aid_count": 299,
   "intl_aid_avg": 7598,
   "intl_aid_year": "2024-25",
@@ -4880,7 +4876,7 @@
   "what_they_value": "럿거스 뉴어크는 CDS상 교과 엄격성·GPA를 Very Important로, 에세이를 Important로 둔다. 시험 점수·추천서·인터뷰·재능·인성은 반영하지 않는다고 표시해, 학업 기록과 에세이가 사실상 결정 요소다.",
   "what_they_value_en": "Rutgers–Newark's Common Data Set rates rigor of the secondary school record and academic GPA as \"very important\" and the application essay as \"important.\" Class rank, extracurricular activities, first-generation status, geographic residence, state residency, volunteer work, work experience and level of applicant's interest are all \"considered.\" Standardized test scores, recommendations, interviews, talent/ability and character/personal qualities are marked not considered, so the academic record and the essay carry the decision.",
   "source_url": "https://oirap.rutgers.edu/CDS/2023/Newark%20CDS_2023-2024_final_V1.pdf",
-  "test_policy": "test-optional",
+  "test_policy": "test-free",
   "intro_ko": "뉴저지주 럿거스 대학교의 뉴어크 캠퍼스로, 다양성이 높은 도시형 캠퍼스이며 경영·형사사법 분야가 알려져 있다.",
   "intro_en": "The Newark campus of Rutgers University in New Jersey — a highly diverse urban campus known for business and criminal justice.",
   "location_note": "뉴저지주 뉴어크에 있다.",
@@ -4934,7 +4930,7 @@
   "overall_accept_rate": 45.9,
   "need_blind_intl": null,
   "demonstrated_interest": null,
-  "what_they_value": "시러큐스는 학업 성취가 \"특히 12학년의 과목과 성과를 포함해 입학 결정의 중요한 요소\"라고 밝히고, 학교 프로파일로 과목 선택과 성적을 맥락화한다. 카운슬러 평가와 교과 교사 추천서 1부를 요구하며, 방과후 활동·봉사·아르바이트에서 조직력과 리더십을 본다고 명시한다. (CDS는 공개하지 않음)",
+  "what_they_value": "시러큐스는 학업 성취가 \"특히 12학년의 과목과 성과를 포함해 입학 결정의 중요한 요소\"라고 밝히고, 학교 프로파일로 과목 선택과 성적을 맥락화한다. 카운슬러 평가와 교과 교사 추천서 1부를 요구하며, 방과후 활동·봉사·아르바이트에서 조직력과 리더십을 본다고 명시한다.",
   "what_they_value_en": "Syracuse says academic performance is \"a significant factor in our admissions decision, especially your senior-year pursuits and accomplishments,\" and that the school profile is used to put course selection and grades in context. It asks for a counselor evaluation and one academic teacher recommendation, which \"give admissions representatives a sense of your gifts, capabilities and accomplishments,\" and reviews after-school activities, volunteer work and employment \"to see how each illustrates your organizational and leadership skills.\" Syracuse adds that it looks for \"more than academically prepared students\" — students who innovate, take risks and show integrity and good citizenship — and several programs carry a talent component in art and design, architecture, drama and music.",
   "source_url": "https://www.syracuse.edu/admissions-aid/application-process/undergraduate/what-we-look-for/",
   "test_policy": "test-optional",
@@ -4952,7 +4948,7 @@
   "rd_timing": "1월 초",
   "deadlines_source_url": "https://www.syracuse.edu/admissions-aid/application-process/apply/dates-deadlines/",
   "deadlines_verified_at": "2026-08-28",
-  "c7_source_url": null,
+  "c7_source_url": "https://effectiveness.syr.edu/wp-content/uploads/2026/09/CDS_2025-26_Complete.pdf",
   "intl_aid_count": null,
   "intl_aid_avg": null,
   "intl_aid_year": null,
@@ -4967,7 +4963,15 @@
   "ed_applied": null,
   "ed_admitted": null,
   "ed_cds_year": null,
-  "c7_very_important": [],
+  "c7_very_important": [
+   "rigor",
+   "gpa",
+   "essay",
+   "recommendations",
+   "extracurricular",
+   "talent",
+   "character"
+  ],
   "direct_admit_majors": [
    "business",
    "engineering",
@@ -5029,7 +5033,7 @@
   "c7_very_important": [
    "rigor",
    "gpa",
-   "test_scores"
+   "standardized_tests"
   ],
   "direct_admit_majors": [
    "arts",
@@ -5193,7 +5197,7 @@
    "rigor",
    "class_rank",
    "gpa",
-   "test_scores"
+   "standardized_tests"
   ],
   "direct_admit_majors": [
    "architecture",
@@ -5367,7 +5371,7 @@
    "extracurricular",
    "talent",
    "character",
-   "religious"
+   "religious_affiliation"
   ],
   "direct_admit_majors": [
    "nursing"
@@ -5533,7 +5537,7 @@
   "c7_very_important": [
    "rigor",
    "gpa",
-   "test_scores",
+   "standardized_tests",
    "essay",
    "interview"
   ],
@@ -5591,7 +5595,7 @@
   "c7_very_important": [
    "rigor",
    "gpa",
-   "interest"
+   "demonstrated_interest"
   ],
   "direct_admit_majors": []
  },
@@ -5644,7 +5648,7 @@
   "ed_cds_year": "2025-26",
   "c7_very_important": [
    "gpa",
-   "test_scores"
+   "standardized_tests"
   ],
   "direct_admit_majors": [
    "engineering",
@@ -5702,7 +5706,7 @@
   "c7_very_important": [
    "rigor",
    "gpa",
-   "test_scores"
+   "standardized_tests"
   ],
   "direct_admit_majors": []
  },
@@ -5871,7 +5875,7 @@
    "rigor",
    "gpa",
    "essay",
-   "recommendation"
+   "recommendations"
   ],
   "direct_admit_majors": [
    "business",
@@ -6046,7 +6050,7 @@
   "c7_very_important": [
    "rigor",
    "gpa",
-   "test_scores"
+   "standardized_tests"
   ],
   "direct_admit_majors": [
    "nursing"
@@ -6103,7 +6107,7 @@
    "rigor",
    "class_rank",
    "gpa",
-   "test_scores"
+   "standardized_tests"
   ],
   "direct_admit_majors": []
  },
@@ -6139,7 +6143,7 @@
   "rd_timing": "1월 초",
   "deadlines_source_url": "https://www.fordham.edu/undergraduate-admission/apply/dates-and-deadlines/",
   "deadlines_verified_at": "2026-08-28",
-  "c7_source_url": "https://www.fordham.edu/about/leadership-and-administration/administrative-offices/office-of-the-provost/provost-office-units/institutional-research-and-assessment/consumer-information/common-data-set/",
+  "c7_source_url": "https://fordhamit-my.sharepoint.com/:x:/g/personal/oira_fordham_edu/EaJPT5Oj60pOvKeX3_fzOqQBLFA9sVfvKFLE4nT-WLJSRQ",
   "intl_aid_count": 490,
   "intl_aid_avg": 34884,
   "intl_aid_year": "2024-2025",
@@ -6194,7 +6198,7 @@
   "rd_timing": "12월 초",
   "deadlines_source_url": "https://admissions.rutgers.edu/apply/dates-deadlines/camden",
   "deadlines_verified_at": "2026-08-28",
-  "c7_source_url": "https://oirap.rutgers.edu/CDS/2023/Camden%20CDS_2023-2024_final_V1.pdf",
+  "c7_source_url": "https://oirds.rutgers.edu/CDS/2023/Camden%20CDS_2023-2024_final_V1.pdf",
   "intl_aid_count": 55,
   "intl_aid_avg": 15365,
   "intl_aid_year": "2022-2023",
@@ -6306,7 +6310,7 @@
   "rd_timing": "1월 중순",
   "deadlines_source_url": "https://www.colorado.edu/admissions/process/first-year/apply",
   "deadlines_verified_at": "2026-08-28",
-  "c7_source_url": "https://data.colorado.edu/reports/common-data-set",
+  "c7_source_url": "https://o365coloradoedu.sharepoint.com/sites/OIT-DnA_Website_Public/Shared%20Documents/CDS%20Reports/2025-2026%20Common%20Data%20Set.html",
   "intl_aid_count": 189,
   "intl_aid_avg": 20444,
   "intl_aid_year": "2025-2026",
@@ -6364,7 +6368,7 @@
    "gpa",
    "essay",
    "talent",
-   "interest"
+   "demonstrated_interest"
   ],
   "c7_source_url": "https://www.pratt.edu/wp-content/uploads/2026/02/2025-2026-CDS.xlsx",
   "intro_en": "A private art, design, and architecture college with its campus in Brooklyn.",

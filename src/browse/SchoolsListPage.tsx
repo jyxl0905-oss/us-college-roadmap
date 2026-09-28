@@ -3,6 +3,7 @@ import { schoolMatches } from '../data/schoolAliases'
 import { directAdmitParent, majorLabel } from '../data/majors'
 import { isArtMajor } from '../data/artSchools'
 import { useEffect, useMemo, useState } from 'react'
+import { loadC7, LEVELS, levelLabel, effectiveTestLevel, type C7Row, type Level } from '../lib/c7'
 import type { School, Tier } from '../lib/types'
 import { loadSchools } from '../lib/schoolsCache'
 import { navigate, slugify, goBack } from '../lib/router'
@@ -37,6 +38,9 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
   const [needBlindOnly, setNeedBlindOnly] = useState(false)
   const [testPolicy, setTestPolicy] = useState<'all' | 'test-required' | 'test-optional' | 'test-free'>('all')
   const [region, setRegion] = useState<'all' | Region>('all')
+  const [testWeight, setTestWeight] = useState<'all' | Level>('all') // CDS C7 시험 점수 비중
+  const [c7, setC7] = useState<Map<number, C7Row> | null>(null)
+  useEffect(() => { if (testWeight !== 'all' && !c7) void loadC7().then(setC7) }, [testWeight, c7])
   const [directAdmitMine, setDirectAdmitMine] = useState(false)
   const [compareIds, setCompareIdsState] = useState<number[]>(readCompareIds) // F2: 최대 3개, 세션 유지
   const setCompareIds = (ids: number[]) => {
@@ -104,6 +108,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
     if (needBlindOnly && s.need_blind_intl !== true) return false
     if (testPolicy !== 'all' && s.test_policy !== testPolicy) return false
     if (region !== 'all' && schoolRegion(s) !== region) return false
+    if (testWeight !== 'all' && (!c7 || effectiveTestLevel(c7.get(s.id), s.test_policy) !== testWeight)) return false
     if (directAdmitMine && myMajor && !s.direct_admit_majors.includes(directAdmitParent(myMajor) as string)) return false
     return true
   }
@@ -112,7 +117,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
     const q = query.trim().toLowerCase()
     return schools.filter((s) => (s.kind ?? 'university') === kind && passesFilters(s, q))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [schools, kind, query, needBlindOnly, testPolicy, region, directAdmitMine, myMajor])
+  }, [schools, kind, query, needBlindOnly, testPolicy, testWeight, c7, region, directAdmitMine, myMajor])
 
   // 검색어가 지금 탭에는 없고 반대 탭에 있으면 자동 전환 (LAC 탭에서 '하버드'를 찾으면 종합대로)
   useEffect(() => {
@@ -235,6 +240,14 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
             <option value="test-required">{t('SAT/ACT 필수', 'SAT/ACT required')}</option>
             <option value="test-optional">Test-optional</option>
             <option value="test-free">{t('시험 미반영', 'Test-free')}</option>
+          </select>
+          <select
+            value={testWeight}
+            onChange={(e) => setTestWeight(e.target.value as typeof testWeight)}
+            className="shrink-0 rounded-full border-2 border-gray-200 bg-white px-3 py-1.5 text-sm text-gray-600"
+          >
+            <option value="all">{t('시험 점수 비중 전체', 'Any test score weight')}</option>
+            {LEVELS.map((lv) => <option key={lv} value={lv}>{t(`시험 점수 ${levelLabel(lv)}`, `Test scores: ${levelLabel(lv).toLowerCase()}`)}</option>)}
           </select>
           <select
             value={region}

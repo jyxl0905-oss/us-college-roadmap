@@ -10,6 +10,7 @@ import type { ProfileRow } from '../lib/profile'
 import type { School } from '../lib/types'
 import { tierLabels } from '../onboarding/labels'
 import SchoolCards from './SchoolCards'
+import TargetTestWeight from './TargetTestWeight'
 import ArtSchoolRecs from '../browse/ArtSchoolRecs'
 import AidRanking from './AidRanking'
 import SchoolLogo from '../browse/SchoolLogo'
@@ -129,6 +130,7 @@ export default function TargetsPage({ userId, profile }: { userId: string; profi
                 <ClipboardList size={13} strokeWidth={2} />{t('지원 라운드 정하기', 'Set rounds')}
               </button>
             </div>
+            <TargetTestWeight schools={schools} />
             {/* 탭: 학교 카드 / 티어(예측) / 재정지원 — 스크롤 없이 한 화면에 하나씩 */}
             <div className="mt-4 grid grid-cols-3 gap-1.5">
               {([
