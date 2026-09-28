@@ -470,3 +470,16 @@ alter table public.profiles add column if not exists user_role text not null def
 -- 2026-09-25 미국 사용자 분기 (migration profiles_us_state_school_type) — 시민권·영주권자에게만 묻는 거주 주·학교 유형
 alter table public.profiles add column if not exists us_state text check (us_state is null or us_state ~ '^([A-Z]{2}|outside)$');
 alter table public.profiles add column if not exists school_type text check (school_type is null or school_type in ('public','private','charter','homeschool','international','other'));
+
+-- 2026-09-27 카운슬러·학부모 읽기 전용 공유 링크
+create table public.report_shares (
+  token text primary key, -- 64자 무작위 (gen_random_uuid ×2)
+  user_id uuid not null references auth.users(id) on delete cascade,
+  created_at timestamptz not null default now(),
+  revoked_at timestamptz,
+  last_viewed_at timestamptz
+);
+alter table public.report_shares enable row level security;
+create policy "own shares readable" on public.report_shares for select to authenticated using ((select auth.uid()) = user_id);
+-- 함수(security definer): create_report_share() / revoke_report_shares() — authenticated 전용
+-- get_shared_report(p_token) — anon 허용. 프로필 일부·과목·시험·활동·수상·지원 학교·체크 기록만 반환 (에세이·파일·추천인·연구 응답·이메일 제외)

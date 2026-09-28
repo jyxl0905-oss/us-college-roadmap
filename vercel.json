@@ -21,6 +21,15 @@
   ],
   "headers": [
     {
+      "source": "/(en/)?s/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         {

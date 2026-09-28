@@ -24,6 +24,7 @@ import OutcomeSurvey from './OutcomeSurvey'
 import MustDoCard from './MustDoCard'
 import QuickAppPanel from './QuickAppPanel'
 import ShareInvite from './ShareInvite'
+import ShareLinkCard from '../share/ShareLinkCard'
 import { checkIsAdmin } from '../lib/admin'
 import { t, localizeRows } from '../i18n'
 import { downloadIcs, nextCheckinDate } from '../lib/ics'
@@ -627,6 +628,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
       {!demo && (<>
       <div className="no-print mt-8 flex flex-col gap-2">
         <ShareInvite userId={userId} className="w-full rounded-xl border-2 border-green-200 bg-green-50 px-4 py-3 text-left font-medium text-green-800 active:bg-green-100" />
+        <ShareLinkCard userId={userId} />
       </div>
 
       {/* 리마인더: 캘린더 파일 + 시즌 시작 이메일 알림 스위치 */}

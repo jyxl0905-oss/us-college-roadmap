@@ -4,7 +4,7 @@ import { goBack, navigate } from '../lib/router'
 
 // 개인정보처리방침·이용약관 — 실제 운영 방식 그대로 적음 (DB: Supabase 서울 리전, 호스팅: Vercel, 로그인·알림 메일: Google)
 export const CONTACT_EMAIL = 'uscollegeroadmap@gmail.com'
-const EFFECTIVE = '2026-09-25'
+const EFFECTIVE = '2026-09-27'
 
 type Sec = { h: [string, string]; body: [string, string][] }
 
@@ -25,6 +25,7 @@ const PRIVACY: Sec[] = [
   { h: ['3. 판매·광고·제3자 제공', '3. No selling, no ads'], body: [
     ['개인정보를 판매하거나 광고 목적으로 제공하지 않아요. 광고와 추적 스크립트도 없어요.', 'We do not sell personal information or share it for advertising. There are no ads or tracking scripts.'],
     ['서비스 운영을 위해 아래 업체가 정보를 처리해요: Supabase(데이터베이스·로그인, 서울 리전), Vercel(웹 호스팅), Google(Google 로그인·알림 이메일 발송).', 'These providers process data to run the service: Supabase (database and sign-in, Seoul region), Vercel (web hosting), Google (Google sign-in and sending reminder emails).'],
+    ['읽기 전용 공유 링크: 내가 링크를 만들면, 링크를 가진 사람은 로그인 없이 과목·성적, 시험 점수, 활동·수상, 목표·지원 학교, 이번 시즌 체크리스트 진행을 볼 수 있어요. 에세이·올린 파일·추천인 정보는 포함되지 않고, 링크는 리포트 화면에서 언제든 끌 수 있어요.', 'Read-only share link: if you create one, anyone with the link can view your courses and grades, test scores, activities and honors, target and application schools, and this season’s checklist progress without logging in. Essays, uploaded files and recommender details are never included, and you can turn the link off on your report at any time.'],
     ['학교 로고 이미지는 외부 사이트(위키미디어·각 대학 사이트)에서 불러와서, 이미지 요청 시 브라우저의 IP 주소가 해당 사이트에 전달될 수 있어요.', 'School logos load from external sites (Wikimedia and college websites), so your browser’s IP address may reach those sites when the images load.'],
   ] },
   { h: ['4. 보관과 삭제', '4. Retention and deletion'], body: [

@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /s/
+Disallow: /en/s/
 
 Sitemap: https://www.uscollegeroadmap.com/sitemap.xml

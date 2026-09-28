@@ -26,6 +26,7 @@ import { Eye, Compass, AlertTriangle, ClipboardList, CalendarDays, RefreshCw, Pe
 const OnboardingFlow = lazy(() => import('./onboarding/OnboardingFlow'))
 const DevInterestTest = lazy(() => import('./app/InterestTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} profile={d.demoProfile()} /> } }))
 const DevPlansTest = lazy(() => import('./app/PlansTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} majorKey="cs" /> } }))
+const SharedReportPage = lazy(() => import('./share/SharedReportPage'))
 const DevGuideTest = lazy(() => import('./guide/CourseGuidePage').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} profile={d.demoProfile()} /> } }))
 const DevRecTest = lazy(() => import('./app/RecommendersTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} profile={d.demoProfile()} /> } }))
 const ReportView = lazy(() => import('./report/ReportView'))
@@ -612,6 +613,10 @@ function AppRoutes() {
   }
   if (path === '/majors' || path === '/majors/') {
     return <MajorsIndexPage />
+  }
+  // 학생이 공유한 읽기 전용 리포트 (카운슬러·부모님용, 로그인 불필요)
+  if (path.startsWith('/s/')) {
+    return <SharedReportPage token={path.slice(3).replace(/\/+$/, '')} />
   }
   // 체험 모드: 로그인 없이 가상 학생의 리포트 전체를 둘러봄 (저장·기록 없음)
   if (path === '/demo' || path === '/demo/') {
