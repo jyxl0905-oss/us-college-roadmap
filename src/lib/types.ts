@@ -137,6 +137,8 @@ export interface School {
   c7_source_url?: string | null
   kind?: 'university' | 'lac' | 'art' // 학교 종류 (기본 university, art=미술·디자인 전문학교)
   lac_rank?: number | null // LAC 순위 (US News National Liberal Arts Colleges)
+  usnews_rank_prev?: number | null // 전년판 순위 (변화 표시용)
+  lac_rank_prev?: number | null
   // 재정지원 (공식: CDS H6·학교 페이지)
   intl_aid_count?: number | null
   intl_aid_avg?: number | null

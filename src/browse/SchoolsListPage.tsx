@@ -10,7 +10,8 @@ import { navigate, slugify, goBack } from '../lib/router'
 import { regionLabels, schoolRegion, type Region } from './region'
 import SchoolLogo from './SchoolLogo'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
-import { uniGroupOf, uniGroupTitles, uniGroups, rankBadge } from './rankGroups'
+import { uniGroupOf, uniGroupTitles, uniGroups, rankBadge, USNEWS_EDITION } from './rankGroups'
+import RankTag from './RankTag'
 import { saveProfile, type ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
 import FitPicker from './FitPicker'
@@ -18,8 +19,8 @@ import { t, bilingual, getLang } from '../i18n'
 import { Map as MapIcon, Palette, GraduationCap, Scale } from 'lucide-react'
 
 const lacTierTitles: Record<Tier, string> = bilingual(
-  { 1: 'LAC Top 12', 2: 'LAC 13–24위', 3: 'LAC 25–35위' },
-  { 1: 'LAC Top 12', 2: 'LAC ranked 13–24', 3: 'LAC ranked 25–35' },
+  { 1: 'LAC Top 12', 2: 'LAC 13–24위', 3: 'LAC 25위 이하' },
+  { 1: 'LAC Top 12', 2: 'LAC ranked 13–24', 3: 'LAC ranked 25+' },
 )
 
 interface SchoolsListPageProps {
@@ -269,6 +270,12 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
           </button>
         </div>
 
+        {kind !== 'art' && (
+          <p className="mt-2 text-[11px] text-gray-400">
+            {t(`순위: US News ${USNEWS_EDITION} ${kind === 'lac' ? '리버럴 아츠 칼리지' : '종합대학'} 기준 · ▲▼는 ${USNEWS_EDITION - 1}년판 대비`, `Ranks: US News ${USNEWS_EDITION} ${kind === 'lac' ? 'National Liberal Arts Colleges' : 'National Universities'} · ▲▼ vs. ${USNEWS_EDITION - 1} edition`)}
+          </p>
+        )}
+
         {/* F2 안내: 비교 진입점 */}
         {schools.length > 0 && compareIds.length === 0 && (
           <p className="mt-3 rounded-xl bg-blue-50 px-3.5 py-2.5 text-xs text-blue-800">
@@ -302,7 +309,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
           return (
             <div key={g} id={`tier-${g}`} className="mt-6 scroll-mt-24">
               <h2 className="font-semibold text-gray-900">{groupTitle(g)}</h2>
-              <div className="mt-3 grid gap-2.5 md:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-3 grid grid-cols-1 gap-2.5 md:grid-cols-2 lg:grid-cols-3">
                 {list.map((s) => (
                   <button
                     key={s.id}
@@ -354,9 +361,11 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
                       </span>
                     </span>
                     <span className="mt-2.5 flex flex-wrap gap-1 text-[11px]">
-                      <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
-                        {rankBadge(s)}
-                      </span>
+                      {s.kind === 'art' ? (
+                        <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">{rankBadge(s)}</span>
+                      ) : (
+                        <RankTag s={s} />
+                      )}
                       {s.overall_accept_rate != null && (
                         <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-600">
                           {t(`합격률 ${s.overall_accept_rate}%`, `Accept ${s.overall_accept_rate}%`)}

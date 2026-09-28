@@ -3,7 +3,7 @@
   "id": 1,
   "name": "Princeton University",
   "name_ko": "프린스턴 대학교",
-  "usnews_rank": 1,
+  "usnews_rank": 2,
   "tier": 1,
   "sat_mid50_low": 1490,
   "sat_mid50_high": 1560,
@@ -39,13 +39,15 @@
    "character"
   ],
   "c7_source_url": "https://ir.princeton.edu/sites/g/files/toruqf2041/files/documents/CDS_2526_Princeton_v2.pdf",
-  "overall_accept_rate": 4.6
+  "overall_accept_rate": 4.6,
+  "usnews_rank_prev": 1,
+  "lac_rank_prev": null
  },
  {
   "id": 2,
   "name": "Massachusetts Institute of Technology",
   "name_ko": "매사추세츠 공과대학교 (MIT)",
-  "usnews_rank": 2,
+  "usnews_rank": 1,
   "tier": 1,
   "sat_mid50_low": 1520,
   "sat_mid50_high": 1570,
@@ -73,7 +75,9 @@
    "character"
   ],
   "c7_source_url": "https://ir.mit.edu/projects/2025-26-common-data-set/",
-  "overall_accept_rate": 4.5
+  "overall_accept_rate": 4.5,
+  "usnews_rank_prev": 2,
+  "lac_rank_prev": null
  },
  {
   "id": 3,
@@ -105,13 +109,15 @@
   "deadlines_verified_at": "2026-08-10",
   "c7_very_important": [],
   "c7_source_url": "https://oira.harvard.edu/files/2026/07/CDS_2025-2026.pdf",
-  "overall_accept_rate": 3.6
+  "overall_accept_rate": 3.6,
+  "usnews_rank_prev": 3,
+  "lac_rank_prev": null
  },
  {
   "id": 4,
   "name": "Stanford University",
   "name_ko": "스탠퍼드 대학교",
-  "usnews_rank": 4,
+  "usnews_rank": 5,
   "tier": 1,
   "sat_mid50_low": 1520,
   "sat_mid50_high": 1570,
@@ -147,7 +153,9 @@
    "character"
   ],
   "c7_source_url": "https://drive.google.com/file/d/1GIPKgVj1d86dkmLkHI_mZVCk_iY6kiCp/view",
-  "overall_accept_rate": 3.6
+  "overall_accept_rate": 3.6,
+  "usnews_rank_prev": 4,
+  "lac_rank_prev": null
  },
  {
   "id": 5,
@@ -188,13 +196,15 @@
    "character"
   ],
   "c7_source_url": "https://oir.yale.edu/sites/default/files/yale_cds_2025-26_md_20260616.pdf",
-  "overall_accept_rate": 3.9
+  "overall_accept_rate": 3.9,
+  "usnews_rank_prev": 4,
+  "lac_rank_prev": null
  },
  {
   "id": 6,
   "name": "University of Chicago",
   "name_ko": "시카고대학교",
-  "usnews_rank": 6,
+  "usnews_rank": 9,
   "tier": 1,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -227,13 +237,15 @@
    "character"
   ],
   "c7_source_url": "https://data.uchicago.edu/files/2026/08/CDS_2025-2026_to_publish-1.pdf",
-  "overall_accept_rate": 4.5
+  "overall_accept_rate": 4.5,
+  "usnews_rank_prev": 6,
+  "lac_rank_prev": null
  },
  {
   "id": 7,
   "name": "Duke University",
   "name_ko": "듀크 대학교",
-  "usnews_rank": 7,
+  "usnews_rank": 8,
   "tier": 1,
   "sat_mid50_low": 1510,
   "sat_mid50_high": 1570,
@@ -271,13 +283,15 @@
   "overall_accept_rate": 5.7,
   "ed_applied": 6013,
   "ed_admitted": 1042,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": 7,
+  "lac_rank_prev": null
  },
  {
   "id": 8,
   "name": "Johns Hopkins University",
   "name_ko": "존스 홉킨스 대학교",
-  "usnews_rank": 7,
+  "usnews_rank": 9,
   "tier": 1,
   "sat_mid50_low": 1530,
   "sat_mid50_high": 1565,
@@ -315,13 +329,15 @@
   "overall_accept_rate": 6.4,
   "ed_applied": 7639,
   "ed_admitted": 835,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": 7,
+  "lac_rank_prev": null
  },
  {
   "id": 9,
   "name": "Northwestern University",
   "name_ko": "노스웨스턴 대학교",
-  "usnews_rank": 7,
+  "usnews_rank": 9,
   "tier": 1,
   "sat_mid50_low": 1510,
   "sat_mid50_high": 1560,
@@ -363,7 +379,9 @@
   "overall_accept_rate": 7.7,
   "ed_applied": 5154,
   "ed_admitted": 1186,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": 7,
+  "lac_rank_prev": null
  },
  {
   "id": 10,
@@ -408,13 +426,15 @@
   "overall_accept_rate": 5.4,
   "ed_applied": 9503,
   "ed_admitted": 1266,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": 7,
+  "lac_rank_prev": null
  },
  {
   "id": 11,
   "name": "California Institute of Technology (Caltech)",
   "name_ko": "캘리포니아 공과대학교(칼텍)",
-  "usnews_rank": 11,
+  "usnews_rank": 5,
   "tier": 1,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -446,13 +466,15 @@
    "character"
   ],
   "c7_source_url": "https://iro.caltech.edu/documents/35129/Caltech_CDS_2025-26_August_2026.pdf",
-  "overall_accept_rate": 2.6
+  "overall_accept_rate": 2.6,
+  "usnews_rank_prev": 11,
+  "lac_rank_prev": null
  },
  {
   "id": 12,
   "name": "Cornell University",
   "name_ko": "코넬대학교",
-  "usnews_rank": 12,
+  "usnews_rank": 14,
   "tier": 1,
   "sat_mid50_low": 1510,
   "sat_mid50_high": 1560,
@@ -495,13 +517,15 @@
    "character"
   ],
   "c7_source_url": "https://irp.cornell.edu/wp-content/uploads/2026/06/CDS-Cornell-2025-2026-v2.xlsx",
-  "overall_accept_rate": 8.8
+  "overall_accept_rate": 8.8,
+  "usnews_rank_prev": 12,
+  "lac_rank_prev": null
  },
  {
   "id": 13,
   "name": "Brown University",
   "name_ko": "브라운대학교",
-  "usnews_rank": 13,
+  "usnews_rank": 16,
   "tier": 1,
   "sat_mid50_low": 1470,
   "sat_mid50_high": 1550,
@@ -530,13 +554,15 @@
   "overall_accept_rate": 5.4,
   "ed_applied": 6251,
   "ed_admitted": 898,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": 13,
+  "lac_rank_prev": null
  },
  {
   "id": 14,
   "name": "Dartmouth College",
   "name_ko": "다트머스칼리지",
-  "usnews_rank": 13,
+  "usnews_rank": 12,
   "tier": 1,
   "sat_mid50_low": 1440,
   "sat_mid50_high": 1550,
@@ -574,13 +600,15 @@
   "overall_accept_rate": 5.4,
   "ed_applied": 3552,
   "ed_admitted": 768,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": 13,
+  "lac_rank_prev": null
  },
  {
   "id": 15,
   "name": "Columbia University",
   "name_ko": "컬럼비아대학교",
-  "usnews_rank": 15,
+  "usnews_rank": 12,
   "tier": 1,
   "sat_mid50_low": 1510,
   "sat_mid50_high": 1560,
@@ -619,13 +647,15 @@
   "overall_accept_rate": 4.0,
   "ed_applied": 6007,
   "ed_admitted": 795,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": 15,
+  "lac_rank_prev": null
  },
  {
   "id": 16,
   "name": "University of California, Berkeley",
   "name_ko": "UC 버클리(캘리포니아대학교 버클리)",
-  "usnews_rank": 15,
+  "usnews_rank": 20,
   "tier": 1,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -661,13 +691,15 @@
    "essay"
   ],
   "c7_source_url": "https://docs.google.com/spreadsheets/d/1INsGFH6MhaO-MFMBZ1Dngcn84FeN-hc0BLS0-v8TL_k/edit",
-  "overall_accept_rate": 11.0
+  "overall_accept_rate": 11.0,
+  "usnews_rank_prev": 15,
+  "lac_rank_prev": null
  },
  {
   "id": 17,
   "name": "Rice University",
   "name_ko": "라이스 대학교",
-  "usnews_rank": 17,
+  "usnews_rank": 16,
   "tier": 1,
   "sat_mid50_low": 1510,
   "sat_mid50_high": 1560,
@@ -709,13 +741,15 @@
   "overall_accept_rate": 8.0,
   "ed_applied": 5748,
   "ed_admitted": 647,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": 17,
+  "lac_rank_prev": null
  },
  {
   "id": 18,
   "name": "University of California, Los Angeles (UCLA)",
   "name_ko": "UCLA(캘리포니아대학교 로스앤젤레스)",
-  "usnews_rank": 17,
+  "usnews_rank": 20,
   "tier": 1,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -761,13 +795,15 @@
   ],
   "portfolio_req": "예술 계열 전공은 UC 지원서(11월 말 마감)에서 해당 전공을 1지망으로 선택해야 하고, 별도의 보충 지원서(supplemental application)를 따로 내야 한다. 예술·건축대학(Arts and Architecture) 전공은 SlideRoom으로 포트폴리오를 내며, Design·Games·Computational Art·Dance·World Arts and Cultures는 12월 중순, Art는 1월 하순이 마감이다(Art는 작품 이미지 8~10장과 글). 영화·TV(Film and Television)는 Acceptd로 12월 초까지 에세이 2편, 글쓰기 샘플, 3분 이내 영상 인터뷰, 추천서 2부를 낸다. 음악대학(Herb Alpert School of Music)은 Acceptd로 12월 초까지 보충 지원서를 내고, 1차 심사를 통과하면 1월 말에 오디션·인터뷰를 본다. 2025년 가을 1학년 기준 공식 합격률은 예술·건축대학 5.1%(Art 3.3%, Design | Media Arts 3.1%), 영화·TV 1.3%, 음악대학 24%다. 건축(Architectural Studies)은 1학년 입학을 받지 않고 2학년 때 전과로 들어간다.",
   "portfolio_req_en": "Arts applicants must list the arts major as their first choice on the UC Application (due late November) and also submit a separate supplemental application. Arts and Architecture majors submit portfolios through SlideRoom: Design, Games, Computational Art, Dance, and World Arts and Cultures are due in mid-December, and Art is due in late January (8-10 images of original work plus written statements). Film and Television uses Acceptd and is due in early December. It requires two essays, a writing sample, a video interview of up to 3 minutes, and two letters of recommendation. Music majors submit through Acceptd in early December, and applicants who pass prescreening are invited to late-January auditions or interviews. UCLA's published fall 2025 first-year admit rates are 5.1% for the School of the Arts and Architecture (Art 3.3%, Design | Media Arts 3.1%), 1.3% for Film and Television, and 24% for the Herb Alpert School of Music. Architectural Studies does not admit first-years; students transfer in during sophomore year.",
-  "portfolio_source_url": "https://admission.ucla.edu/apply/supplemental-applications"
+  "portfolio_source_url": "https://admission.ucla.edu/apply/supplemental-applications",
+  "usnews_rank_prev": 17,
+  "lac_rank_prev": null
  },
  {
   "id": 19,
   "name": "Vanderbilt University",
   "name_ko": "밴더빌트 대학교",
-  "usnews_rank": 17,
+  "usnews_rank": 16,
   "tier": 1,
   "sat_mid50_low": 1510,
   "sat_mid50_high": 1560,
@@ -806,13 +842,15 @@
   "overall_accept_rate": 5.9,
   "ed_applied": 6202,
   "ed_admitted": 874,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": 17,
+  "lac_rank_prev": null
  },
  {
   "id": 20,
   "name": "Carnegie Mellon University",
   "name_ko": "카네기멜런대학교",
-  "usnews_rank": 20,
+  "usnews_rank": 14,
   "tier": 1,
   "sat_mid50_low": 1500,
   "sat_mid50_high": 1560,
@@ -858,14 +896,16 @@
   "overall_accept_rate": 11.7,
   "ed_applied": 2680,
   "ed_admitted": 553,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": 20,
+  "lac_rank_prev": null
  },
  {
   "id": 21,
   "name": "University of Michigan--Ann Arbor",
   "name_ko": "미시간대학교 앤아버",
-  "usnews_rank": 20,
-  "tier": 1,
+  "usnews_rank": 25,
+  "tier": 2,
   "sat_mid50_low": 1370,
   "sat_mid50_high": 1530,
   "gpa_note": "신입생 평균 고교 GPA 3.9이며 93.9%가 GPA 3.75 이상입니다 (CDS 2025-26 C11-C12).",
@@ -899,7 +939,9 @@
    "gpa"
   ],
   "c7_source_url": "https://obp.umich.edu/wp-content/uploads/pubdata/cds/cds_2025-26_umaa.pdf",
-  "overall_accept_rate": 15.6
+  "overall_accept_rate": 15.6,
+  "usnews_rank_prev": 20,
+  "lac_rank_prev": null
  },
  {
   "id": 22,
@@ -943,13 +985,15 @@
    "volunteer_work"
   ],
   "c7_source_url": "https://drive.google.com/file/d/1jFtuEmv7OPCTq9e8kD90I7CByERcMBty/view",
-  "overall_accept_rate": 11.3
+  "overall_accept_rate": 11.3,
+  "usnews_rank_prev": 20,
+  "lac_rank_prev": null
  },
  {
   "id": 23,
   "name": "Washington University in St. Louis",
   "name_ko": "세인트루이스 워싱턴대학교",
-  "usnews_rank": 20,
+  "usnews_rank": 16,
   "tier": 1,
   "sat_mid50_low": 1500,
   "sat_mid50_high": 1570,
@@ -992,13 +1036,15 @@
   "overall_accept_rate": 12.1,
   "ed_applied": 4934,
   "ed_admitted": 1333,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": 20,
+  "lac_rank_prev": null
  },
  {
   "id": 24,
   "name": "Emory University",
   "name_ko": "에모리 대학교",
-  "usnews_rank": 24,
+  "usnews_rank": 23,
   "tier": 2,
   "sat_mid50_low": 1480,
   "sat_mid50_high": 1540,
@@ -1034,13 +1080,15 @@
   "overall_accept_rate": 10.7,
   "ed_applied": 4728,
   "ed_admitted": 1049,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": 24,
+  "lac_rank_prev": null
  },
  {
   "id": 25,
   "name": "Georgetown University",
   "name_ko": "조지타운 대학교",
-  "usnews_rank": 24,
+  "usnews_rank": 23,
   "tier": 2,
   "sat_mid50_low": 1405,
   "sat_mid50_high": 1530,
@@ -1080,13 +1128,15 @@
    "character"
   ],
   "c7_source_url": "https://georgetown.box.com/s/0r8akn4cbm52zjkll6i7uttlb9k36px2",
-  "overall_accept_rate": 12.9
+  "overall_accept_rate": 12.9,
+  "usnews_rank_prev": 24,
+  "lac_rank_prev": null
  },
  {
   "id": 26,
   "name": "University of North Carolina at Chapel Hill",
   "name_ko": "노스캐롤라이나 대학교 채플힐",
-  "usnews_rank": 26,
+  "usnews_rank": 27,
   "tier": 2,
   "sat_mid50_low": 1400,
   "sat_mid50_high": 1530,
@@ -1122,7 +1172,9 @@
    "state_residency"
   ],
   "c7_source_url": "https://oira.unc.edu/wp-content/uploads/sites/297/2026/06/CDS_UNCCH_2025-26_20260615.pdf",
-  "overall_accept_rate": 15.3
+  "overall_accept_rate": 15.3,
+  "usnews_rank_prev": 26,
+  "lac_rank_prev": null
  },
  {
   "id": 27,
@@ -1170,13 +1222,15 @@
   "overall_accept_rate": 16.8,
   "ed_applied": 4461,
   "ed_admitted": 1245,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": 26,
+  "lac_rank_prev": null
  },
  {
   "id": 28,
   "name": "University of Southern California",
   "name_ko": "서던캘리포니아 대학교 (USC)",
-  "usnews_rank": 28,
+  "usnews_rank": 27,
   "tier": 2,
   "sat_mid50_low": 1470,
   "sat_mid50_high": 1540,
@@ -1214,7 +1268,9 @@
    "character"
   ],
   "c7_source_url": "https://oir.usc.edu/wp-content/uploads/sites/3/2026/10/CDS_2025-26_FINAL.pdf",
-  "overall_accept_rate": 9.8
+  "overall_accept_rate": 9.8,
+  "usnews_rank_prev": 28,
+  "lac_rank_prev": null
  },
  {
   "id": 29,
@@ -1255,13 +1311,15 @@
    "essay"
   ],
   "c7_source_url": "https://ir.ucsd.edu/stats/undergrad/C3.pdf",
-  "overall_accept_rate": 26.7
+  "overall_accept_rate": 26.7,
+  "usnews_rank_prev": 29,
+  "lac_rank_prev": null
  },
  {
   "id": 30,
   "name": "University of Florida",
   "name_ko": "플로리다대학교",
-  "usnews_rank": 30,
+  "usnews_rank": 34,
   "tier": 2,
   "sat_mid50_low": 1330,
   "sat_mid50_high": 1470,
@@ -1292,13 +1350,15 @@
    "talent"
   ],
   "c7_source_url": "https://data-apps.ir.aa.ufl.edu/public/cds/CDS%202025-26_v7_07.15.2026.pdf",
-  "overall_accept_rate": 24.2
+  "overall_accept_rate": 24.2,
+  "usnews_rank_prev": 30,
+  "lac_rank_prev": null
  },
  {
   "id": 31,
   "name": "University of Texas at Austin",
   "name_ko": "텍사스대학교 오스틴",
-  "usnews_rank": 30,
+  "usnews_rank": 34,
   "tier": 2,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -1336,13 +1396,15 @@
   "deadlines_verified_at": "2026-08-10",
   "c7_very_important": [],
   "c7_source_url": "https://utexas.box.com/s/z5p8zzbr6yk4eluam3v3dt2wyaha3cja",
-  "overall_accept_rate": 26.6
+  "overall_accept_rate": 26.6,
+  "usnews_rank_prev": 30,
+  "lac_rank_prev": null
  },
  {
   "id": 32,
   "name": "Georgia Institute of Technology",
   "name_ko": "조지아공과대학교 (조지아텍)",
-  "usnews_rank": 32,
+  "usnews_rank": 29,
   "tier": 2,
   "sat_mid50_low": 1370,
   "sat_mid50_high": 1530,
@@ -1373,13 +1435,15 @@
    "state_residency"
   ],
   "c7_source_url": "https://irp.gatech.edu/sites/default/files/CDS/CDS_2025-2026_FINAL_R4_03JUN2026.pdf",
-  "overall_accept_rate": 14.1
+  "overall_accept_rate": 14.1,
+  "usnews_rank_prev": 32,
+  "lac_rank_prev": null
  },
  {
   "id": 33,
   "name": "New York University",
   "name_ko": "뉴욕대학교 (NYU)",
-  "usnews_rank": 32,
+  "usnews_rank": 31,
   "tier": 2,
   "sat_mid50_low": 1480,
   "sat_mid50_high": 1550,
@@ -1416,13 +1480,15 @@
    "character"
   ],
   "c7_source_url": "https://www.nyu.edu/content/dam/nyu/institutionalResearch/documents/cds-2025-2026/CDS%202025-2026%20FINAL%20(no%20G).pdf",
-  "overall_accept_rate": 9.2
+  "overall_accept_rate": 9.2,
+  "usnews_rank_prev": 32,
+  "lac_rank_prev": null
  },
  {
   "id": 34,
   "name": "University of California, Davis",
   "name_ko": "캘리포니아대학교 데이비스 (UC 데이비스)",
-  "usnews_rank": 32,
+  "usnews_rank": 34,
   "tier": 2,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -1459,13 +1525,15 @@
    "gpa"
   ],
   "c7_source_url": "https://aggiedata.ucdavis.edu/sites/g/files/dgvnsk1841/files/media/documents/CDS_UCD_0.pdf",
-  "overall_accept_rate": 41.8
+  "overall_accept_rate": 41.8,
+  "usnews_rank_prev": 32,
+  "lac_rank_prev": null
  },
  {
   "id": 35,
   "name": "University of California, Irvine",
   "name_ko": "캘리포니아대학교 어바인 (UC 어바인)",
-  "usnews_rank": 32,
+  "usnews_rank": 34,
   "tier": 2,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -1510,13 +1578,15 @@
    "work_experience"
   ],
   "c7_source_url": "https://bpb-us-e2.wpmucdn.com/sites.uci.edu/dist/2/5478/files/2026/05/2025-26-CDS-PDF-Upload.pdf",
-  "overall_accept_rate": 28.6
+  "overall_accept_rate": 28.6,
+  "usnews_rank_prev": 32,
+  "lac_rank_prev": null
  },
  {
   "id": 36,
   "name": "Boston College",
   "name_ko": "보스턴 칼리지",
-  "usnews_rank": 36,
+  "usnews_rank": 31,
   "tier": 2,
   "sat_mid50_low": 1460,
   "sat_mid50_high": 1520,
@@ -1552,13 +1622,15 @@
   "overall_accept_rate": 16.4,
   "ed_applied": 4288,
   "ed_admitted": 1434,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": 36,
+  "lac_rank_prev": null
  },
  {
   "id": 37,
   "name": "Tufts University",
   "name_ko": "터프츠 대학교",
-  "usnews_rank": 36,
+  "usnews_rank": 31,
   "tier": 2,
   "sat_mid50_low": 1460,
   "sat_mid50_high": 1520,
@@ -1597,13 +1669,15 @@
   "overall_accept_rate": 11.5,
   "ed_applied": 3344,
   "ed_admitted": 1071,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": 36,
+  "lac_rank_prev": null
  },
  {
   "id": 38,
   "name": "University of Illinois Urbana-Champaign",
   "name_ko": "일리노이대학교 어바나-샴페인 (UIUC)",
-  "usnews_rank": 36,
+  "usnews_rank": 34,
   "tier": 2,
   "sat_mid50_low": 1390,
   "sat_mid50_high": 1520,
@@ -1646,13 +1720,15 @@
    "first_generation"
   ],
   "c7_source_url": "https://uofi.box.com/shared/static/orx4vnmzkt2drmgoiksxpfs39pr42uor.xlsx",
-  "overall_accept_rate": 42.4
+  "overall_accept_rate": 42.4,
+  "usnews_rank_prev": 36,
+  "lac_rank_prev": null
  },
  {
   "id": 39,
   "name": "University of Wisconsin--Madison",
   "name_ko": "위스콘신 대학교 매디슨",
-  "usnews_rank": 36,
+  "usnews_rank": 34,
   "tier": 2,
   "sat_mid50_low": 1370,
   "sat_mid50_high": 1490,
@@ -1684,14 +1760,16 @@
    "gpa"
   ],
   "c7_source_url": "https://uwmadison.box.com/s/ilx9kil11ninf8vwj1z87vumhuvpw4px",
-  "overall_accept_rate": 45.2
+  "overall_accept_rate": 45.2,
+  "usnews_rank_prev": 36,
+  "lac_rank_prev": null
  },
  {
   "id": 40,
   "name": "University of California, Santa Barbara",
   "name_ko": "캘리포니아 대학교 샌타바버라 (UC 샌타바버라)",
-  "usnews_rank": 40,
-  "tier": 2,
+  "usnews_rank": 44,
+  "tier": 3,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
   "gpa_note": "Fall 2025 입학생 평균 고교 GPA 4.29(가중), 87.8%가 GPA 4.0 (CDS 2025-26 C11-C12)",
@@ -1722,13 +1800,15 @@
    "essay"
   ],
   "c7_source_url": "https://drive.google.com/file/d/1FIkvY5dANho45ioG7-JHgO3IPH6-ui1W/view",
-  "overall_accept_rate": 33.0
+  "overall_accept_rate": 33.0,
+  "usnews_rank_prev": 40,
+  "lac_rank_prev": null
  },
  {
   "id": 41,
   "name": "Ohio State University",
   "name_ko": "오하이오 주립 대학교",
-  "usnews_rank": 41,
+  "usnews_rank": 44,
   "tier": 3,
   "sat_mid50_low": 1280,
   "sat_mid50_high": 1430,
@@ -1762,14 +1842,16 @@
    "standardized_tests"
   ],
   "c7_source_url": "https://irp.osu.edu/sites/default/files/documents/2026/03/CDS-2025-2026-OSU-Columbus-Campus.pdf",
-  "overall_accept_rate": 60.6
+  "overall_accept_rate": 60.6,
+  "usnews_rank_prev": 41,
+  "lac_rank_prev": null
  },
  {
   "id": 42,
   "name": "Boston University",
   "name_ko": "보스턴 대학교",
-  "usnews_rank": 42,
-  "tier": 3,
+  "usnews_rank": 34,
+  "tier": 2,
   "sat_mid50_low": 1430,
   "sat_mid50_high": 1510,
   "gpa_note": "Fall 2024 입학생 평균 고교 GPA 3.9, 78%가 GPA 3.75 이상 (CDS C11-C12)",
@@ -1806,13 +1888,15 @@
   "overall_accept_rate": 11.1,
   "ed_applied": 6907,
   "ed_admitted": 2165,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": 42,
+  "lac_rank_prev": null
  },
  {
   "id": 43,
   "name": "Rutgers University--New Brunswick",
   "name_ko": "럿거스 대학교 뉴브런즈윅",
-  "usnews_rank": 42,
+  "usnews_rank": 44,
   "tier": 3,
   "sat_mid50_low": 1350,
   "sat_mid50_high": 1510,
@@ -1848,13 +1932,15 @@
    "gpa"
   ],
   "c7_source_url": "https://oirap.rutgers.edu/CDS/2023/New%20Brunswick%20CDS_2023-2024_final_V1.pdf",
-  "overall_accept_rate": 58.1
+  "overall_accept_rate": 58.1,
+  "usnews_rank_prev": 42,
+  "lac_rank_prev": null
  },
  {
   "id": 44,
   "name": "University of Maryland, College Park",
   "name_ko": "메릴랜드 대학교 칼리지파크",
-  "usnews_rank": 42,
+  "usnews_rank": 49,
   "tier": 3,
   "sat_mid50_low": 1410,
   "sat_mid50_high": 1520,
@@ -1890,13 +1976,15 @@
    "rigor"
   ],
   "c7_source_url": "https://www.irpa.umd.edu/InstitutionalData/CommonDataSet/CDS_2025-2026.xlsx",
-  "overall_accept_rate": 44.8
+  "overall_accept_rate": 44.8,
+  "usnews_rank_prev": 42,
+  "lac_rank_prev": null
  },
  {
   "id": 45,
   "name": "University of Washington (Seattle)",
   "name_ko": "워싱턴 대학교 시애틀",
-  "usnews_rank": 42,
+  "usnews_rank": 49,
   "tier": 3,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -1935,13 +2023,15 @@
    "state_residency"
   ],
   "c7_source_url": "https://uw-s3-cdn.s3.us-west-2.amazonaws.com/wp-content/uploads/sites/162/2026/02/27111247/CDS_2025-2026_Seattle.pdf",
-  "overall_accept_rate": 39.1
+  "overall_accept_rate": 39.1,
+  "usnews_rank_prev": 42,
+  "lac_rank_prev": null
  },
  {
   "id": 46,
   "name": "Lehigh University",
   "name_ko": "리하이 대학교",
-  "usnews_rank": 46,
+  "usnews_rank": 44,
   "tier": 3,
   "sat_mid50_low": 1380,
   "sat_mid50_high": 1480,
@@ -1973,13 +2063,15 @@
   "overall_accept_rate": 25.9,
   "ed_applied": 2040,
   "ed_admitted": 966,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": 46,
+  "lac_rank_prev": null
  },
  {
   "id": 47,
   "name": "Northeastern University",
   "name_ko": "노스이스턴 대학교",
-  "usnews_rank": 46,
+  "usnews_rank": 42,
   "tier": 3,
   "sat_mid50_low": 1450,
   "sat_mid50_high": 1520,
@@ -2016,13 +2108,15 @@
   "overall_accept_rate": 5.2,
   "ed_applied": 3466,
   "ed_admitted": 1492,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": 46,
+  "lac_rank_prev": null
  },
  {
   "id": 48,
   "name": "Purdue University--Main Campus",
   "name_ko": "퍼듀 대학교",
-  "usnews_rank": 46,
+  "usnews_rank": 55,
   "tier": 3,
   "sat_mid50_low": 1220,
   "sat_mid50_high": 1470,
@@ -2063,13 +2157,15 @@
    "essay"
   ],
   "c7_source_url": "https://www.purdue.edu/idata/wp-content/uploads/2026/04/CDS-2025-2026.xlsx",
-  "overall_accept_rate": 49.9
+  "overall_accept_rate": 49.9,
+  "usnews_rank_prev": 46,
+  "lac_rank_prev": null
  },
  {
   "id": 49,
   "name": "University of Georgia",
   "name_ko": "조지아 대학교",
-  "usnews_rank": 46,
+  "usnews_rank": 52,
   "tier": 3,
   "sat_mid50_low": 1220,
   "sat_mid50_high": 1400,
@@ -2098,13 +2194,15 @@
    "gpa"
   ],
   "c7_source_url": "http://oir.uga.edu/wp-content/uploads/UGA_CDS_2025-2026.pdf",
-  "overall_accept_rate": 37.7
+  "overall_accept_rate": 37.7,
+  "usnews_rank_prev": 46,
+  "lac_rank_prev": null
  },
  {
   "id": 50,
   "name": "University of Rochester",
   "name_ko": "로체스터 대학교",
-  "usnews_rank": 46,
+  "usnews_rank": 49,
   "tier": 3,
   "sat_mid50_low": 1420,
   "sat_mid50_high": 1500,
@@ -2138,13 +2236,15 @@
   "overall_accept_rate": 40.1,
   "ed_applied": 1129,
   "ed_admitted": 472,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": 46,
+  "lac_rank_prev": null
  },
  {
   "id": 51,
   "name": "Case Western Reserve University",
   "name_ko": "케이스 웨스턴 리저브 대학교",
-  "usnews_rank": 51,
+  "usnews_rank": 44,
   "tier": 3,
   "sat_mid50_low": 1440,
   "sat_mid50_high": 1530,
@@ -2180,13 +2280,15 @@
   "overall_accept_rate": 36.5,
   "ed_applied": 1053,
   "ed_admitted": 263,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": 51,
+  "lac_rank_prev": null
  },
  {
   "id": 52,
   "name": "Florida State University",
   "name_ko": "플로리다 주립 대학교",
-  "usnews_rank": 51,
+  "usnews_rank": 59,
   "tier": 3,
   "sat_mid50_low": 1360,
   "sat_mid50_high": 1470,
@@ -2214,13 +2316,15 @@
    "rigor"
   ],
   "c7_source_url": "https://ir.fsu.edu/commondataset.aspx",
-  "overall_accept_rate": 24.2
+  "overall_accept_rate": 24.2,
+  "usnews_rank_prev": 51,
+  "lac_rank_prev": null
  },
  {
   "id": 53,
   "name": "Texas A&M University",
   "name_ko": "텍사스 A&M 대학교",
-  "usnews_rank": 51,
+  "usnews_rank": 59,
   "tier": 3,
   "sat_mid50_low": 1160,
   "sat_mid50_high": 1390,
@@ -2256,13 +2360,15 @@
    "talent"
   ],
   "c7_source_url": "https://abpa.tamu.edu/_files/_documents/common-data/cds-pdf-2025-2026.pdf",
-  "overall_accept_rate": 57.4
+  "overall_accept_rate": 57.4,
+  "usnews_rank_prev": 51,
+  "lac_rank_prev": null
  },
  {
   "id": 54,
   "name": "Virginia Tech",
   "name_ko": "버지니아 공과대학교(버지니아텍)",
-  "usnews_rank": 51,
+  "usnews_rank": 52,
   "tier": 3,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -2299,14 +2405,16 @@
   "deadlines_verified_at": "2026-08-10",
   "c7_very_important": null,
   "c7_source_url": null,
-  "overall_accept_rate": 54.8
+  "overall_accept_rate": 54.8,
+  "usnews_rank_prev": 51,
+  "lac_rank_prev": null
  },
  {
   "id": 55,
   "name": "Wake Forest University",
   "name_ko": "웨이크 포레스트 대학교",
-  "usnews_rank": 51,
-  "tier": 3,
+  "usnews_rank": 34,
+  "tier": 2,
   "sat_mid50_low": 1420,
   "sat_mid50_high": 1500,
   "gpa_note": "평균 고교 GPA 미공시(CDS C12 무응답). 고교 내신 상위 10% 비율 64.2%(석차 제출자 18% 기준, C10).",
@@ -2337,13 +2445,15 @@
    "character"
   ],
   "c7_source_url": "https://prod.wp.cdn.aws.wfu.edu/sites/202/2026/06/CDS_2025-2026-PDF_Template_WFU.pdf",
-  "overall_accept_rate": 21.7
+  "overall_accept_rate": 21.7,
+  "usnews_rank_prev": 51,
+  "lac_rank_prev": null
  },
  {
   "id": 56,
   "name": "William & Mary",
   "name_ko": "윌리엄 앤 메리 대학교",
-  "usnews_rank": 51,
+  "usnews_rank": 52,
   "tier": 3,
   "sat_mid50_low": 1390,
   "sat_mid50_high": 1520,
@@ -2384,13 +2494,15 @@
   "overall_accept_rate": 34.1,
   "ed_applied": 1586,
   "ed_admitted": 746,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": 51,
+  "lac_rank_prev": null
  },
  {
   "id": 57,
   "name": "University of California, Merced",
   "name_ko": "캘리포니아 대학교 머세드(UC 머세드)",
-  "usnews_rank": 57,
+  "usnews_rank": 69,
   "tier": 3,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -2420,13 +2532,15 @@
    "essay"
   ],
   "c7_source_url": "https://cie.ucmerced.edu/sites/g/files/ufvvjh616/f/page/documents/cds_2025-26_uc_merced.xlsx",
-  "overall_accept_rate": 90.5
+  "overall_accept_rate": 90.5,
+  "usnews_rank_prev": 57,
+  "lac_rank_prev": null
  },
  {
   "id": 58,
   "name": "Villanova University",
   "name_ko": "빌라노바 대학교",
-  "usnews_rank": 57,
+  "usnews_rank": 42,
   "tier": 3,
   "sat_mid50_low": 1420,
   "sat_mid50_high": 1490,
@@ -2464,7 +2578,9 @@
   "overall_accept_rate": 27.0,
   "ed_applied": 1680,
   "ed_admitted": 1005,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": 57,
+  "lac_rank_prev": null
  },
  {
   "id": 59,
@@ -2509,13 +2625,15 @@
   "overall_accept_rate": 47.1,
   "ed_applied": 1139,
   "ed_admitted": 755,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": 59,
+  "lac_rank_prev": null
  },
  {
   "id": 60,
   "name": "Pennsylvania State University--University Park",
   "name_ko": "펜실베이니아 주립대학교 유니버시티 파크",
-  "usnews_rank": 59,
+  "usnews_rank": 55,
   "tier": 3,
   "sat_mid50_low": 1250,
   "sat_mid50_high": 1410,
@@ -2546,13 +2664,15 @@
    "gpa"
   ],
   "c7_source_url": "https://bpb-us-e1.wpmucdn.com/sites.psu.edu/dist/d/114442/files/2026/06/UniversityPark_CDS_2025_2026.pdf",
-  "overall_accept_rate": 60.6
+  "overall_accept_rate": 60.6,
+  "usnews_rank_prev": 59,
+  "lac_rank_prev": null
  },
  {
   "id": 61,
   "name": "Santa Clara University",
   "name_ko": "산타클라라 대학교",
-  "usnews_rank": 59,
+  "usnews_rank": 55,
   "tier": 3,
   "sat_mid50_low": 1330,
   "sat_mid50_high": 1470,
@@ -2593,7 +2713,9 @@
   "overall_accept_rate": 48.0,
   "ed_applied": 611,
   "ed_admitted": 467,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": 59,
+  "lac_rank_prev": null
  },
  {
   "id": 62,
@@ -2633,7 +2755,9 @@
    "essay"
   ],
   "c7_source_url": "https://www.stonybrook.edu/irpe/_media/Common_data_sets/CDS_2025-2026.xlsx",
-  "overall_accept_rate": 49.0
+  "overall_accept_rate": 49.0,
+  "usnews_rank_prev": 59,
+  "lac_rank_prev": null
  },
  {
   "id": 63,
@@ -2678,7 +2802,9 @@
    "gpa"
   ],
   "c7_source_url": "https://idr.umn.edu/sites/idr.umn.edu/files/cds_2025_2026_tc_0.pdf",
-  "overall_accept_rate": 79.8
+  "overall_accept_rate": 79.8,
+  "usnews_rank_prev": 59,
+  "lac_rank_prev": null
  },
  {
   "id": 64,
@@ -2721,7 +2847,9 @@
   "overall_accept_rate": 8.2,
   "ed_applied": 964,
   "ed_admitted": 256,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 1
  },
  {
   "id": 65,
@@ -2766,13 +2894,15 @@
   "overall_accept_rate": 9.0,
   "ed_applied": 971,
   "ed_admitted": 216,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 2
  },
  {
   "id": 66,
   "name": "Swarthmore College",
   "name_ko": "스워스모어 칼리지",
-  "usnews_rank": 4,
+  "usnews_rank": 3,
   "tier": 1,
   "sat_mid50_low": 1480,
   "sat_mid50_high": 1550,
@@ -2806,17 +2936,19 @@
   ],
   "c7_source_url": "https://www.swarthmore.edu/sites/default/files/assets/documents/institutional-effectiveness-research-assessment/Swarthmore-CDS-2025-26.pdf",
   "kind": "lac",
-  "lac_rank": 4,
+  "lac_rank": 3,
   "overall_accept_rate": 7.5,
   "ed_applied": 1281,
   "ed_admitted": 228,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 4
  },
  {
   "id": 67,
   "name": "Bowdoin College",
   "name_ko": "보든 칼리지",
-  "usnews_rank": 5,
+  "usnews_rank": 3,
   "tier": 1,
   "sat_mid50_low": 1470,
   "sat_mid50_high": 1540,
@@ -2852,17 +2984,19 @@
   ],
   "c7_source_url": "https://www.bowdoin.edu/ir/pdf/bowdoin-cds_2025-2026.pdf",
   "kind": "lac",
-  "lac_rank": 5,
+  "lac_rank": 3,
   "overall_accept_rate": 7.1,
   "ed_applied": 1985,
   "ed_admitted": 296,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 5
  },
  {
   "id": 68,
   "name": "Claremont McKenna College",
   "name_ko": "클레어몬트 매케나 칼리지",
-  "usnews_rank": 7,
+  "usnews_rank": 3,
   "tier": 1,
   "sat_mid50_low": 1480,
   "sat_mid50_high": 1540,
@@ -2896,17 +3030,19 @@
   ],
   "c7_source_url": "https://www.cmc.edu/sites/default/files/CDS_2025-26.pdf",
   "kind": "lac",
-  "lac_rank": 7,
+  "lac_rank": 3,
   "overall_accept_rate": 9.6,
   "ed_applied": 978,
   "ed_admitted": 216,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 7
  },
  {
   "id": 69,
   "name": "Pomona College",
   "name_ko": "포모나 칼리지",
-  "usnews_rank": 7,
+  "usnews_rank": 3,
   "tier": 1,
   "sat_mid50_low": 1490,
   "sat_mid50_high": 1550,
@@ -2942,17 +3078,19 @@
   ],
   "c7_source_url": "https://tableau.campus.pomona.edu/views/CDS2025-26/C_First-timeFirst-yearadmission",
   "kind": "lac",
-  "lac_rank": 7,
+  "lac_rank": 3,
   "overall_accept_rate": 7.1,
   "ed_applied": 1656,
   "ed_admitted": 227,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 7
  },
  {
   "id": 70,
   "name": "Wellesley College",
   "name_ko": "웰즐리 칼리지",
-  "usnews_rank": 7,
+  "usnews_rank": 10,
   "tier": 1,
   "sat_mid50_low": 1460,
   "sat_mid50_high": 1540,
@@ -2984,18 +3122,20 @@
   ],
   "c7_source_url": "https://wellesley-college.files.svdcdn.com/production/administrative-departments/OIR/CDS_2025-2026-FINAL.pdf",
   "kind": "lac",
-  "lac_rank": 7,
+  "lac_rank": 10,
   "overall_accept_rate": 14.1,
   "ed_applied": 1033,
   "ed_admitted": 308,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 7
  },
  {
   "id": 71,
   "name": "Carleton College",
   "name_ko": "칼턴 칼리지",
-  "usnews_rank": 10,
-  "tier": 1,
+  "usnews_rank": 16,
+  "tier": 2,
   "sat_mid50_low": 1460,
   "sat_mid50_high": 1530,
   "gpa_note": "석차 제출 신입생 중 77%가 고교 상위 10% (CDS 2025-26 C10, 석차 제출 비율 30.5%)",
@@ -3030,17 +3170,19 @@
   ],
   "c7_source_url": "https://carleton-wp-production.s3.amazonaws.com/uploads/sites/292/2026/06/CDS-PDF-2025-2026_PDF_Carleton_06242026.pdf",
   "kind": "lac",
-  "lac_rank": 10,
+  "lac_rank": 16,
   "overall_accept_rate": 20.4,
   "ed_applied": 760,
   "ed_admitted": 263,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 10
  },
  {
   "id": 72,
   "name": "Harvey Mudd College",
   "name_ko": "하비 머드 칼리지",
-  "usnews_rank": 10,
+  "usnews_rank": 8,
   "tier": 1,
   "sat_mid50_low": 1500,
   "sat_mid50_high": 1560,
@@ -3071,17 +3213,19 @@
   ],
   "c7_source_url": "https://www.hmc.edu/institutional-research/wp-content/uploads/sites/42/2026/03/CDS-HMC-2025.2026_shared.pdf",
   "kind": "lac",
-  "lac_rank": 10,
+  "lac_rank": 8,
   "overall_accept_rate": 12.7,
   "ed_applied": 594,
   "ed_admitted": 109,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 10
  },
  {
   "id": 73,
   "name": "Barnard College",
   "name_ko": "바너드 칼리지",
-  "usnews_rank": 13,
+  "usnews_rank": 19,
   "tier": 2,
   "sat_mid50_low": 1480,
   "sat_mid50_high": 1540,
@@ -3114,17 +3258,19 @@
   ],
   "c7_source_url": "https://barnard.edu/sites/default/files/2026-09/Barnard_CDS_2025-2026.pdf",
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 19,
   "overall_accept_rate": 8.8,
   "ed_applied": 1437,
   "ed_admitted": 476,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 74,
   "name": "Davidson College",
   "name_ko": "데이비슨 칼리지",
-  "usnews_rank": 13,
+  "usnews_rank": 16,
   "tier": 2,
   "sat_mid50_low": 1410,
   "sat_mid50_high": 1500,
@@ -3155,17 +3301,19 @@
   ],
   "c7_source_url": "https://www.davidson.edu/media/9718/download",
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 16,
   "overall_accept_rate": 13.4,
   "ed_applied": 1232,
   "ed_admitted": 358,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 75,
   "name": "Grinnell College",
   "name_ko": "그리넬 칼리지",
-  "usnews_rank": 13,
+  "usnews_rank": 16,
   "tier": 2,
   "sat_mid50_low": 1430,
   "sat_mid50_high": 1520,
@@ -3196,17 +3344,19 @@
   ],
   "c7_source_url": "https://www.grinnell.edu/doc/grinnell-college-common-data-set-2024-2025",
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 16,
   "overall_accept_rate": 14.5,
   "ed_applied": 828,
   "ed_admitted": 283,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 76,
   "name": "Hamilton College",
   "name_ko": "해밀턴 칼리지",
-  "usnews_rank": 13,
+  "usnews_rank": 14,
   "tier": 2,
   "sat_mid50_low": 1440,
   "sat_mid50_high": 1510,
@@ -3237,17 +3387,19 @@
   ],
   "c7_source_url": "https://www.hamilton.edu/documents/CDS%202025-26%20Excel%20Final.pdf",
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 14,
   "overall_accept_rate": 13.6,
   "ed_applied": 1120,
   "ed_admitted": 315,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 77,
   "name": "Middlebury College",
   "name_ko": "미들버리 칼리지",
-  "usnews_rank": 13,
+  "usnews_rank": 19,
   "tier": 2,
   "sat_mid50_low": 1460,
   "sat_mid50_high": 1530,
@@ -3281,17 +3433,19 @@
   ],
   "c7_source_url": "https://www.middlebury.edu/sites/default/files/2026-02/Fall%202025%20CDS%20Preliminary.pdf",
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 19,
   "overall_accept_rate": 10.8,
   "ed_applied": 1179,
   "ed_admitted": 460,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 78,
   "name": "Smith College",
   "name_ko": "스미스 칼리지",
-  "usnews_rank": 13,
+  "usnews_rank": 22,
   "tier": 2,
   "sat_mid50_low": 1450,
   "sat_mid50_high": 1520,
@@ -3324,18 +3478,20 @@
   ],
   "c7_source_url": "https://drive.google.com/file/d/1qDhlH43IbOCQzP6xtUHMzTmgEss1I-68/view",
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 22,
   "overall_accept_rate": 21.0,
   "ed_applied": 1107,
   "ed_admitted": 371,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 79,
   "name": "Vassar College",
   "name_ko": "배서 칼리지",
-  "usnews_rank": 13,
-  "tier": 2,
+  "usnews_rank": 12,
+  "tier": 1,
   "sat_mid50_low": 1460,
   "sat_mid50_high": 1520,
   "gpa_note": "석차 제출 신입생 중 79%가 고교 상위 10% (CDS 2025-26 C10, 석차 제출률 29%)",
@@ -3369,17 +3525,19 @@
   ],
   "c7_source_url": "https://offices.vassar.edu/institutional-research/wp-content/uploads/sites/23/2026/03/Vassar_College_CDS_2025-2026.pdf",
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 12,
   "overall_accept_rate": 18.6,
   "ed_applied": 1046,
   "ed_admitted": 402,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 80,
   "name": "Wesleyan University",
   "name_ko": "웨슬리언 대학교",
-  "usnews_rank": 13,
+  "usnews_rank": 14,
   "tier": 2,
   "sat_mid50_low": 1350,
   "sat_mid50_high": 1510,
@@ -3408,18 +3566,20 @@
   ],
   "c7_source_url": "https://wesleyan0.sharepoint.com/:f:/s/IRDataandReports/EtCqjFa5sgBLif1SveNykPUB6j5D6s_nZFlWs_GLu_3yXA",
   "kind": "lac",
-  "lac_rank": 13,
+  "lac_rank": 14,
   "overall_accept_rate": 16.5,
   "ed_applied": 1220,
   "ed_admitted": 522,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 13
  },
  {
   "id": 81,
   "name": "Washington and Lee University",
   "name_ko": "워싱턴 앤드 리 대학교",
-  "usnews_rank": 21,
-  "tier": 2,
+  "usnews_rank": 12,
+  "tier": 1,
   "sat_mid50_low": 1430,
   "sat_mid50_high": 1530,
   "gpa_note": "석차 제출 신입생 중 85%가 고교 상위 10% (CDS 2025-26 C10, 석차 제출률 31%)",
@@ -3450,11 +3610,13 @@
   ],
   "c7_source_url": "https://my.wlu.edu/document/2025-common-data-set",
   "kind": "lac",
-  "lac_rank": 21,
+  "lac_rank": 12,
   "overall_accept_rate": 14.0,
   "ed_applied": 1048,
   "ed_admitted": 289,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 21
  },
  {
   "id": 82,
@@ -3495,13 +3657,15 @@
   "overall_accept_rate": 13.9,
   "ed_applied": 1342,
   "ed_admitted": 477,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 22
  },
  {
   "id": 83,
   "name": "University of Richmond",
   "name_ko": "리치먼드 대학교",
-  "usnews_rank": 22,
+  "usnews_rank": 21,
   "tier": 2,
   "sat_mid50_low": 1420,
   "sat_mid50_high": 1490,
@@ -3531,18 +3695,20 @@
   ],
   "c7_source_url": "https://ifx.richmond.edu/pdfs/CDS2025-2026SectionC.pdf",
   "kind": "lac",
-  "lac_rank": 22,
+  "lac_rank": 21,
   "overall_accept_rate": 22.2,
   "ed_applied": 1154,
   "ed_admitted": 421,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 22
  },
  {
   "id": 84,
   "name": "Bates College",
   "name_ko": "베이츠 칼리지",
-  "usnews_rank": 24,
-  "tier": 2,
+  "usnews_rank": 26,
+  "tier": 3,
   "sat_mid50_low": 1325,
   "sat_mid50_high": 1510,
   "gpa_note": null,
@@ -3577,17 +3743,19 @@
   ],
   "c7_source_url": "https://www.bates.edu/research/files/2026/06/CDS_2025-2026.pdf",
   "kind": "lac",
-  "lac_rank": 24,
+  "lac_rank": 26,
   "overall_accept_rate": 13.3,
   "ed_applied": 1128,
   "ed_admitted": 306,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 24
  },
  {
   "id": 85,
   "name": "Colby College",
   "name_ko": "콜비 칼리지",
-  "usnews_rank": 24,
+  "usnews_rank": 22,
   "tier": 2,
   "sat_mid50_low": 1450,
   "sat_mid50_high": 1540,
@@ -3614,15 +3782,17 @@
   "c7_very_important": [],
   "c7_source_url": null,
   "kind": "lac",
-  "lac_rank": 24,
-  "overall_accept_rate": 7.1
+  "lac_rank": 22,
+  "overall_accept_rate": 7.1,
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 24
  },
  {
   "id": 86,
   "name": "Haverford College",
   "name_ko": "해버퍼드 칼리지",
-  "usnews_rank": 24,
-  "tier": 2,
+  "usnews_rank": 26,
+  "tier": 3,
   "sat_mid50_low": 1470,
   "sat_mid50_high": 1540,
   "gpa_note": "석차 제출 신입생 중 94.1%가 고교 상위 10% (CDS 2024-25 C10)",
@@ -3655,18 +3825,20 @@
   ],
   "c7_source_url": "https://www.haverford.edu/sites/default/files/Office/President/CDS-2025-26.pdf",
   "kind": "lac",
-  "lac_rank": 24,
+  "lac_rank": 26,
   "overall_accept_rate": 12.4,
   "ed_applied": 745,
   "ed_admitted": 219,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 24
  },
  {
   "id": 87,
   "name": "College of the Holy Cross",
   "name_ko": "홀리크로스 칼리지",
-  "usnews_rank": 27,
-  "tier": 3,
+  "usnews_rank": 22,
+  "tier": 2,
   "sat_mid50_low": 1270,
   "sat_mid50_high": 1420,
   "gpa_note": "석차 제출 신입생(전체의 22%) 중 38%가 고교 상위 10% (CDS 2023-24 C10)",
@@ -3699,11 +3871,13 @@
   ],
   "c7_source_url": "https://www.holycross.edu/document/common-data-set-20232024",
   "kind": "lac",
-  "lac_rank": 27,
+  "lac_rank": 22,
   "overall_accept_rate": 17.6,
   "ed_applied": 761,
   "ed_admitted": 511,
-  "ed_cds_year": "2023-24"
+  "ed_cds_year": "2023-24",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 27
  },
  {
   "id": 88,
@@ -3743,13 +3917,15 @@
   "overall_accept_rate": 28.5,
   "ed_applied": 479,
   "ed_admitted": 201,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 28
  },
  {
   "id": 89,
   "name": "Mount Holyoke College",
   "name_ko": "마운트 홀리요크 칼리지",
-  "usnews_rank": 29,
+  "usnews_rank": 34,
   "tier": 3,
   "sat_mid50_low": 1365,
   "sat_mid50_high": 1485,
@@ -3781,17 +3957,19 @@
   ],
   "c7_source_url": "https://drive.google.com/file/d/1YBj1g21DRKEMSV0WHaiIT6paJg1qruX9/view",
   "kind": "lac",
-  "lac_rank": 29,
+  "lac_rank": 34,
   "overall_accept_rate": 36.0,
   "ed_applied": 411,
   "ed_admitted": 208,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 29
  },
  {
   "id": 90,
   "name": "Bryn Mawr College",
   "name_ko": "브린 마 칼리지",
-  "usnews_rank": 30,
+  "usnews_rank": 31,
   "tier": 3,
   "sat_mid50_low": 1300,
   "sat_mid50_high": 1470,
@@ -3823,17 +4001,19 @@
   ],
   "c7_source_url": "https://www.brynmawr.edu/sites/default/files/media/documents/2026-04/CDS%202025-26%20Bryn%20Mawr%20Read%20Only.pdf",
   "kind": "lac",
-  "lac_rank": 30,
+  "lac_rank": 31,
   "overall_accept_rate": 29.4,
   "ed_applied": 456,
   "ed_admitted": 167,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 30
  },
  {
   "id": 91,
   "name": "Bucknell University",
   "name_ko": "버크넬 대학교",
-  "usnews_rank": 30,
+  "usnews_rank": 29,
   "tier": 3,
   "sat_mid50_low": 1170,
   "sat_mid50_high": 1360,
@@ -3871,17 +4051,19 @@
   ],
   "c7_source_url": "https://www.bucknell.edu/sites/default/files/institutional-research/common_data_set_2025-26.pdf",
   "kind": "lac",
-  "lac_rank": 30,
+  "lac_rank": 29,
   "overall_accept_rate": 28.9,
   "ed_applied": 1200,
   "ed_admitted": 656,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 30
  },
  {
   "id": 92,
   "name": "Colorado College",
   "name_ko": "콜로라도 칼리지",
-  "usnews_rank": 30,
+  "usnews_rank": 34,
   "tier": 3,
   "sat_mid50_low": 1240,
   "sat_mid50_high": 1430,
@@ -3908,11 +4090,13 @@
   "c7_very_important": [],
   "c7_source_url": "https://www.coloradocollege.edu/offices/ipe/documents/CDS-2025-2026_PDF_Final.pdf",
   "kind": "lac",
-  "lac_rank": 30,
+  "lac_rank": 34,
   "overall_accept_rate": 18.5,
   "ed_applied": 918,
   "ed_admitted": 292,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 30
  },
  {
   "id": 93,
@@ -3952,13 +4136,15 @@
   "overall_accept_rate": 31.4,
   "ed_applied": 937,
   "ed_admitted": 356,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 30
  },
  {
   "id": 94,
   "name": "Denison University",
   "name_ko": "데니슨 대학교",
-  "usnews_rank": 34,
+  "usnews_rank": 31,
   "tier": 3,
   "sat_mid50_low": 1270,
   "sat_mid50_high": 1420,
@@ -3990,17 +4176,19 @@
   ],
   "c7_source_url": "https://denison.edu/sites/default/files/forms/2026-08/cds_du_20252026_published_updated2026.08.14.pdf",
   "kind": "lac",
-  "lac_rank": 34,
+  "lac_rank": 31,
   "overall_accept_rate": 17.4,
   "ed_applied": 1589,
   "ed_admitted": 394,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 34
  },
  {
   "id": 95,
   "name": "Franklin & Marshall College",
   "name_ko": "프랭클린 앤 마셜 칼리지",
-  "usnews_rank": 35,
+  "usnews_rank": 34,
   "tier": 3,
   "sat_mid50_low": 1310,
   "sat_mid50_high": 1470,
@@ -4032,17 +4220,19 @@
   ],
   "c7_source_url": "https://drive.google.com/file/d/1CpyIXEDF-2bMSlt8qXimtThANg0xsUlw/view",
   "kind": "lac",
-  "lac_rank": 35,
+  "lac_rank": 34,
   "overall_accept_rate": 28.2,
   "ed_applied": 860,
   "ed_admitted": 254,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 35
  },
  {
   "id": 96,
   "name": "Occidental College",
   "name_ko": "옥시덴탈 칼리지",
-  "usnews_rank": 35,
+  "usnews_rank": 38,
   "tier": 3,
   "sat_mid50_low": 1400,
   "sat_mid50_high": 1510,
@@ -4074,17 +4264,19 @@
   ],
   "c7_source_url": "https://www.oxy.edu/sites/default/files/assets/Institutional_Research/CDS_C_2526_0.pdf",
   "kind": "lac",
-  "lac_rank": 35,
+  "lac_rank": 38,
   "overall_accept_rate": 44.2,
   "ed_applied": 466,
   "ed_admitted": 223,
-  "ed_cds_year": "2024-25"
+  "ed_cds_year": "2024-25",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 35
  },
  {
   "id": 97,
   "name": "Pitzer College",
   "name_ko": "피처 칼리지",
-  "usnews_rank": 37,
+  "usnews_rank": 44,
   "tier": 3,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -4117,17 +4309,19 @@
   ],
   "c7_source_url": "https://www.pitzer.edu/documents/common-data-set-2025-2026",
   "kind": "lac",
-  "lac_rank": 37,
+  "lac_rank": 44,
   "overall_accept_rate": 25.2,
   "ed_applied": 385,
   "ed_admitted": 167,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 37
  },
  {
   "id": 98,
   "name": "Scripps College",
   "name_ko": "스크립스 칼리지",
-  "usnews_rank": 37,
+  "usnews_rank": 38,
   "tier": 3,
   "sat_mid50_low": 1430,
   "sat_mid50_high": 1500,
@@ -4159,11 +4353,13 @@
   ],
   "c7_source_url": "https://www.scrippscollege.edu/assessir/wp-content/uploads/sites/30/CDS_2025-2026_FINAL_V3.pdf",
   "kind": "lac",
-  "lac_rank": 37,
+  "lac_rank": 38,
   "overall_accept_rate": 38.3,
   "ed_applied": 275,
   "ed_admitted": 141,
-  "ed_cds_year": "2025-26"
+  "ed_cds_year": "2025-26",
+  "usnews_rank_prev": null,
+  "lac_rank_prev": 37
  },
  {
   "id": 99,
@@ -4217,13 +4413,15 @@
   "aid_source_url": "https://iuapps.iu.edu/cds/?p=index&i=home&campus=Bloomington&section=H.+Financial+Aid&year=2025",
   "kind": "university",
   "lac_rank": null,
-  "overall_accept_rate": 75.9
+  "overall_accept_rate": 75.9,
+  "usnews_rank_prev": 73,
+  "lac_rank_prev": null
  },
  {
   "id": 100,
   "name": "Michigan State University",
   "name_ko": "미시간 주립대학교",
-  "usnews_rank": 64,
+  "usnews_rank": 69,
   "tier": 3,
   "sat_mid50_low": 1100,
   "sat_mid50_high": 1310,
@@ -4271,13 +4469,15 @@
   ],
   "direct_admit_majors": [
    "business"
-  ]
+  ],
+  "usnews_rank_prev": 64,
+  "lac_rank_prev": null
  },
  {
   "id": 101,
   "name": "North Carolina State University",
   "name_ko": "노스캐롤라이나 주립대학교",
-  "usnews_rank": 64,
+  "usnews_rank": 73,
   "tier": 3,
   "sat_mid50_low": 1310,
   "sat_mid50_high": 1440,
@@ -4334,13 +4534,15 @@
    "math_data",
    "media",
    "education"
-  ]
+  ],
+  "usnews_rank_prev": 64,
+  "lac_rank_prev": null
  },
  {
   "id": 102,
   "name": "Rensselaer Polytechnic Institute",
   "name_ko": "렌슬리어 공과대학교 (RPI)",
-  "usnews_rank": 64,
+  "usnews_rank": 69,
   "tier": 3,
   "sat_mid50_low": 1380,
   "sat_mid50_high": 1500,
@@ -4398,13 +4600,15 @@
    "arts",
    "music",
    "premed"
-  ]
+  ],
+  "usnews_rank_prev": 64,
+  "lac_rank_prev": null
  },
  {
   "id": 103,
   "name": "University of Massachusetts Amherst",
   "name_ko": "매사추세츠 대학교 애머스트",
-  "usnews_rank": 64,
+  "usnews_rank": 59,
   "tier": 3,
   "sat_mid50_low": 1330,
   "sat_mid50_high": 1480,
@@ -4456,13 +4660,15 @@
    "cs",
    "engineering",
    "nursing"
-  ]
+  ],
+  "usnews_rank_prev": 64,
+  "lac_rank_prev": null
  },
  {
   "id": 104,
   "name": "University of Miami",
   "name_ko": "마이애미 대학교",
-  "usnews_rank": 64,
+  "usnews_rank": 55,
   "tier": 3,
   "sat_mid50_low": 1350,
   "sat_mid50_high": 1450,
@@ -4518,13 +4724,15 @@
    "music",
    "architecture",
    "arts"
-  ]
+  ],
+  "usnews_rank_prev": 64,
+  "lac_rank_prev": null
  },
  {
   "id": 105,
   "name": "Brandeis University",
   "name_ko": "브랜다이스 대학교",
-  "usnews_rank": 69,
+  "usnews_rank": 59,
   "tier": 3,
   "sat_mid50_low": 1370,
   "sat_mid50_high": 1470,
@@ -4572,13 +4780,15 @@
    "class_rank",
    "gpa"
   ],
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "usnews_rank_prev": 69,
+  "lac_rank_prev": null
  },
  {
   "id": 106,
   "name": "Tulane University",
   "name_ko": "툴레인 대학교",
-  "usnews_rank": 69,
+  "usnews_rank": 59,
   "tier": 3,
   "sat_mid50_low": 1430,
   "sat_mid50_high": 1500,
@@ -4628,13 +4838,15 @@
    "extracurricular",
    "volunteer_work"
   ],
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "usnews_rank_prev": 69,
+  "lac_rank_prev": null
  },
  {
   "id": 107,
   "name": "University of Connecticut",
   "name_ko": "코네티컷 대학교 (UConn)",
-  "usnews_rank": 69,
+  "usnews_rank": 73,
   "tier": 3,
   "sat_mid50_low": 1260,
   "sat_mid50_high": 1420,
@@ -4685,13 +4897,15 @@
    "nursing",
    "arts",
    "music"
-  ]
+  ],
+  "usnews_rank_prev": 69,
+  "lac_rank_prev": null
  },
  {
   "id": 108,
   "name": "University of Pittsburgh",
   "name_ko": "피츠버그 대학교",
-  "usnews_rank": 69,
+  "usnews_rank": 59,
   "tier": 3,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -4744,7 +4958,9 @@
    "engineering",
    "cs",
    "nursing"
-  ]
+  ],
+  "usnews_rank_prev": 69,
+  "lac_rank_prev": null
  },
  {
   "id": 109,
@@ -4800,13 +5016,15 @@
   "direct_admit_majors": [
    "arts",
    "music"
-  ]
+  ],
+  "usnews_rank_prev": 73,
+  "lac_rank_prev": null
  },
  {
   "id": 110,
   "name": "Clemson University",
   "name_ko": "클렘슨 대학교",
-  "usnews_rank": 75,
+  "usnews_rank": 80,
   "tier": 3,
   "sat_mid50_low": 1250,
   "sat_mid50_high": 1400,
@@ -4857,13 +5075,15 @@
   ],
   "direct_admit_majors": [
    "nursing"
-  ]
+  ],
+  "usnews_rank_prev": 75,
+  "lac_rank_prev": null
  },
  {
   "id": 111,
   "name": "Rutgers University--Newark",
   "name_ko": "럿거스 대학교 뉴어크",
-  "usnews_rank": 75,
+  "usnews_rank": 73,
   "tier": 3,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -4914,13 +5134,15 @@
    "business",
    "nursing",
    "premed"
-  ]
+  ],
+  "usnews_rank_prev": 75,
+  "lac_rank_prev": null
  },
  {
   "id": 112,
   "name": "Syracuse University",
   "name_ko": "시러큐스 대학교",
-  "usnews_rank": 75,
+  "usnews_rank": 72,
   "tier": 3,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -4981,13 +5203,15 @@
    "architecture",
    "media",
    "education"
-  ]
+  ],
+  "usnews_rank_prev": 75,
+  "lac_rank_prev": null
  },
  {
   "id": 113,
   "name": "University at Buffalo (SUNY)",
   "name_ko": "버팔로 대학교 (SUNY)",
-  "usnews_rank": 75,
+  "usnews_rank": 85,
   "tier": 3,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -5038,13 +5262,15 @@
   "direct_admit_majors": [
    "arts",
    "music"
-  ]
+  ],
+  "usnews_rank_prev": 75,
+  "lac_rank_prev": null
  },
  {
   "id": 114,
   "name": "University of California, Riverside",
   "name_ko": "캘리포니아 대학교 리버사이드 (UCR)",
-  "usnews_rank": 75,
+  "usnews_rank": 80,
   "tier": 3,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -5091,7 +5317,9 @@
    "gpa",
    "essay"
   ],
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "usnews_rank_prev": 75,
+  "lac_rank_prev": null
  },
  {
   "id": 115,
@@ -5144,7 +5372,9 @@
    "rigor",
    "gpa"
   ],
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "usnews_rank_prev": 80,
+  "lac_rank_prev": null
  },
  {
   "id": 116,
@@ -5205,13 +5435,15 @@
    "music",
    "nursing",
    "premed"
-  ]
+  ],
+  "usnews_rank_prev": 80,
+  "lac_rank_prev": null
  },
  {
   "id": 117,
   "name": "New Jersey Institute of Technology",
   "name_ko": "뉴저지 공과대학교 (NJIT)",
-  "usnews_rank": 80,
+  "usnews_rank": 85,
   "tier": 3,
   "sat_mid50_low": 1235,
   "sat_mid50_high": 1460,
@@ -5261,13 +5493,15 @@
   "direct_admit_majors": [
    "architecture",
    "arts"
-  ]
+  ],
+  "usnews_rank_prev": 80,
+  "lac_rank_prev": null
  },
  {
   "id": 118,
   "name": "Stevens Institute of Technology",
   "name_ko": "스티븐스 공과대학교",
-  "usnews_rank": 80,
+  "usnews_rank": 59,
   "tier": 3,
   "sat_mid50_low": 1370,
   "sat_mid50_high": 1470,
@@ -5315,13 +5549,15 @@
   ],
   "direct_admit_majors": [
    "premed"
-  ]
+  ],
+  "usnews_rank_prev": 80,
+  "lac_rank_prev": null
  },
  {
   "id": 119,
   "name": "Pepperdine University",
   "name_ko": "페퍼다인 대학교",
-  "usnews_rank": 84,
+  "usnews_rank": 80,
   "tier": 3,
   "sat_mid50_low": 1240,
   "sat_mid50_high": 1410,
@@ -5375,13 +5611,15 @@
   ],
   "direct_admit_majors": [
    "nursing"
-  ]
+  ],
+  "usnews_rank_prev": 84,
+  "lac_rank_prev": null
  },
  {
   "id": 120,
   "name": "University of Illinois Chicago",
   "name_ko": "일리노이 대학교 시카고 (UIC)",
-  "usnews_rank": 84,
+  "usnews_rank": 95,
   "tier": 3,
   "sat_mid50_low": 1030,
   "sat_mid50_high": 1300,
@@ -5432,13 +5670,15 @@
   "direct_admit_majors": [
    "nursing",
    "premed"
-  ]
+  ],
+  "usnews_rank_prev": 84,
+  "lac_rank_prev": null
  },
  {
   "id": 121,
   "name": "Worcester Polytechnic Institute",
   "name_ko": "우스터 공과대학교 (WPI)",
-  "usnews_rank": 84,
+  "usnews_rank": 73,
   "tier": 3,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -5485,13 +5725,15 @@
    "rigor",
    "gpa"
   ],
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "usnews_rank_prev": 84,
+  "lac_rank_prev": null
  },
  {
   "id": 122,
   "name": "Yeshiva University",
   "name_ko": "예시바 대학교",
-  "usnews_rank": 84,
+  "usnews_rank": 90,
   "tier": 3,
   "sat_mid50_low": 1330,
   "sat_mid50_high": 1470,
@@ -5543,13 +5785,15 @@
   ],
   "direct_admit_majors": [
    "business"
-  ]
+  ],
+  "usnews_rank_prev": 84,
+  "lac_rank_prev": null
  },
  {
   "id": 123,
   "name": "American University",
   "name_ko": "아메리칸 대학교",
-  "usnews_rank": 88,
+  "usnews_rank": 95,
   "tier": 3,
   "sat_mid50_low": 1320,
   "sat_mid50_high": 1440,
@@ -5597,13 +5841,15 @@
    "gpa",
    "demonstrated_interest"
   ],
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 124,
   "name": "Baylor University",
   "name_ko": "베일러 대학교",
-  "usnews_rank": 88,
+  "usnews_rank": 90,
   "tier": 3,
   "sat_mid50_low": 1190,
   "sat_mid50_high": 1370,
@@ -5654,13 +5900,15 @@
    "engineering",
    "premed",
    "music"
-  ]
+  ],
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 125,
   "name": "Howard University",
   "name_ko": "하워드 대학교",
-  "usnews_rank": 88,
+  "usnews_rank": 73,
   "tier": 3,
   "sat_mid50_low": 1050,
   "sat_mid50_high": 1270,
@@ -5708,13 +5956,15 @@
    "gpa",
    "standardized_tests"
   ],
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 126,
   "name": "Marquette University",
   "name_ko": "마켓 대학교",
-  "usnews_rank": 88,
+  "usnews_rank": 90,
   "tier": 3,
   "sat_mid50_low": 1230,
   "sat_mid50_high": 1360,
@@ -5761,13 +6011,15 @@
    "rigor",
    "gpa"
   ],
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 127,
   "name": "Rochester Institute of Technology",
   "name_ko": "로체스터 공과대학교 (RIT)",
-  "usnews_rank": 88,
+  "usnews_rank": 95,
   "tier": 3,
   "sat_mid50_low": 1310,
   "sat_mid50_high": 1440,
@@ -5822,13 +6074,15 @@
    "media",
    "natural_sci",
    "math_data"
-  ]
+  ],
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 128,
   "name": "Southern Methodist University",
   "name_ko": "서던메소디스트 대학교 (SMU)",
-  "usnews_rank": 88,
+  "usnews_rank": 85,
   "tier": 3,
   "sat_mid50_low": 1360,
   "sat_mid50_high": 1470,
@@ -5882,13 +6136,15 @@
    "engineering",
    "arts",
    "music"
-  ]
+  ],
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 129,
   "name": "University of California, Santa Cruz",
   "name_ko": "캘리포니아 대학교 산타크루즈 (UCSC)",
-  "usnews_rank": 88,
+  "usnews_rank": 109,
   "tier": 3,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -5939,13 +6195,15 @@
   ],
   "direct_admit_majors": [
    "cs"
-  ]
+  ],
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 130,
   "name": "University of Delaware",
   "name_ko": "델라웨어 대학교",
-  "usnews_rank": 88,
+  "usnews_rank": 85,
   "tier": 3,
   "sat_mid50_low": 1220,
   "sat_mid50_high": 1370,
@@ -5998,13 +6256,15 @@
    "engineering",
    "business",
    "music"
-  ]
+  ],
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 131,
   "name": "University of South Florida",
   "name_ko": "사우스플로리다 대학교",
-  "usnews_rank": 88,
+  "usnews_rank": 100,
   "tier": 3,
   "sat_mid50_low": 1160,
   "sat_mid50_high": 1340,
@@ -6054,13 +6314,15 @@
   ],
   "direct_admit_majors": [
    "nursing"
-  ]
+  ],
+  "usnews_rank_prev": 88,
+  "lac_rank_prev": null
  },
  {
   "id": 132,
   "name": "Florida International University",
   "name_ko": "플로리다 국제대학교 (FIU)",
-  "usnews_rank": 97,
+  "usnews_rank": 100,
   "tier": 3,
   "sat_mid50_low": 1070,
   "sat_mid50_high": 1260,
@@ -6109,13 +6371,15 @@
    "gpa",
    "standardized_tests"
   ],
-  "direct_admit_majors": []
+  "direct_admit_majors": [],
+  "usnews_rank_prev": 97,
+  "lac_rank_prev": null
  },
  {
   "id": 133,
   "name": "Fordham University",
   "name_ko": "포덤 대학교",
-  "usnews_rank": 97,
+  "usnews_rank": 85,
   "tier": 3,
   "sat_mid50_low": 1340,
   "sat_mid50_high": 1470,
@@ -6164,13 +6428,15 @@
   ],
   "direct_admit_majors": [
    "business"
-  ]
+  ],
+  "usnews_rank_prev": 97,
+  "lac_rank_prev": null
  },
  {
   "id": 134,
   "name": "Rutgers University--Camden",
   "name_ko": "럿거스 대학교 캠던",
-  "usnews_rank": 97,
+  "usnews_rank": 95,
   "tier": 3,
   "sat_mid50_low": null,
   "sat_mid50_high": null,
@@ -6220,13 +6486,15 @@
   "direct_admit_majors": [
    "business",
    "nursing"
-  ]
+  ],
+  "usnews_rank_prev": 97,
+  "lac_rank_prev": null
  },
  {
   "id": 135,
   "name": "Texas Christian University",
   "name_ko": "텍사스 크리스천 대학교 (TCU)",
-  "usnews_rank": 97,
+  "usnews_rank": 90,
   "tier": 3,
   "sat_mid50_low": 1110,
   "sat_mid50_high": 1330,
@@ -6276,13 +6544,15 @@
   "direct_admit_majors": [
    "business",
    "nursing"
-  ]
+  ],
+  "usnews_rank_prev": 97,
+  "lac_rank_prev": null
  },
  {
   "id": 136,
   "name": "University of Colorado Boulder",
   "name_ko": "콜로라도 대학교 볼더",
-  "usnews_rank": 97,
+  "usnews_rank": 109,
   "tier": 3,
   "sat_mid50_low": 1130,
   "sat_mid50_high": 1370,
@@ -6334,7 +6604,9 @@
    "engineering",
    "cs",
    "music"
-  ]
+  ],
+  "usnews_rank_prev": 97,
+  "lac_rank_prev": null
  },
  {
   "id": 137,
@@ -6402,7 +6674,9 @@
    "game_design",
    "industrial_design",
    "interior_design"
-  ]
+  ],
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 138,
@@ -6462,7 +6736,9 @@
    "fashion_design",
    "industrial_design",
    "interior_design"
-  ]
+  ],
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 139,
@@ -6524,7 +6800,9 @@
    "architecture",
    "industrial_design",
    "interior_design"
-  ]
+  ],
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 140,
@@ -6583,7 +6861,9 @@
    "graphic_design",
    "film",
    "music"
-  ]
+  ],
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 141,
@@ -6606,7 +6886,7 @@
   "what_they_value": "미술대학 지원자는 포트폴리오·스케치북과 함께 학교가 출제하는 Hometest를 제출하며, 학교는 이를 통해 시각적 상상력, 콘셉트 전개, 손으로 만드는 능력, 지시를 따르고 시간을 관리하는 능력을 본다고 밝힌다. 건축대학은 Studio Test를 입학 심사의 핵심으로 두고 창의적 사고와 문제 해결 능력을 평가하며, 건축 경험은 요구하지 않는다. 공과대학은 미술·건축과 달리 SAT/ACT 제출이 필수이고 포트폴리오·Hometest는 없으며, 고교에서 미적분·화학·물리를 각 1년 이상 이수할 것과 STEM 교사 추천서 1통 이상을 요구한다. 학교가 공개한 2025년 가을 기준 단과대별 합격률(Common App 제출 기준)은 공학 16%, 미술 8%, 건축 4%다. 학부 입학 과정에서 인터뷰는 진행하지 않는다.",
   "source_url": "https://cooper.edu/sites/default/files/uploads/assets/institutional-statistics.pdf",
   "test_policy": "test-optional",
-  "intro_ko": "건축·미술·공학 3개 단과대학으로 이루어진 뉴욕의 소규모 사립대로, 모든 학부생에게 반액 등록금 장학금을 준다. 앨버트 너켄 공과대학은 화학·토목·전기·기계공학(B.E.)과 컴퓨터과학·일반공학(B.S.) 과정을 운영하며 학부생의 절반 이상이 공학 전공이며, 학교가 공개한 US News 2026 기준 학부 공학 프로그램 9위다.",
+  "intro_ko": "건축·미술·공학 3개 단과대학으로 이루어진 뉴욕의 소규모 사립대로, 모든 학부생에게 반액 등록금 장학금을 준다. 앨버트 너켄 공과대학은 화학·토목·전기·기계공학(B.E.)과 컴퓨터과학·일반공학(B.S.) 과정을 운영하며 학부생의 절반 이상이 공학 전공이며, 학교가 공개한 US News 2027 기준 학부 공학 프로그램(박사과정 없는 학교) 9위다.",
   "location_note": "뉴욕주 뉴욕시에 있다.",
   "ed_offered": true,
   "ed2_offered": false,
@@ -6620,7 +6900,7 @@
   "deadlines_verified_at": "2026-09-22",
   "c7_very_important": null,
   "c7_source_url": null,
-  "intro_en": "A small private college in New York City made up of schools of architecture, art, and engineering, awarding every undergraduate a half-tuition scholarship. The Albert Nerken School of Engineering offers B.E. programs in chemical, civil, electrical and mechanical engineering plus B.S. programs in computer science and general engineering, and engineering students make up over half of the undergraduate body; the school cites a U.S. News 2026 ranking of #9 among undergraduate engineering programs.",
+  "intro_en": "A small private college in New York City made up of schools of architecture, art, and engineering, awarding every undergraduate a half-tuition scholarship. The Albert Nerken School of Engineering offers B.E. programs in chemical, civil, electrical and mechanical engineering plus B.S. programs in computer science and general engineering, and engineering students make up over half of the undergraduate body; the school cites a U.S. News 2027 ranking of #9 among undergraduate engineering programs (no doctorate).",
   "what_they_value_en": "School of Art applicants submit a portfolio and sketchbook along with the school-issued Hometest, which the school says shows visual imagination, concept development, hands-on making, and how well applicants follow directions and manage time. The School of Architecture treats its Studio Test as a cornerstone of admissions, assessing creative thinking and problem-solving, and requires no prior architecture experience. The School of Engineering, unlike Art and Architecture, requires the SAT or ACT and has no portfolio or Hometest; it asks applicants to complete at least one year each of calculus, chemistry and physics in high school and to submit at least one recommendation from a STEM teacher. The school's published fall 2025 acceptance rates by school (based on Common Applications submitted) are 16% for Engineering, 8% for Art and 4% for Architecture. No interviews are conducted in undergraduate admissions.",
   "location_note_en": "Located in New York City, New York.",
   "gpa_note_en": null,
@@ -6645,7 +6925,9 @@
   "art_programs": [
    "arts",
    "architecture"
-  ]
+  ],
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 142,
@@ -6705,7 +6987,9 @@
    "fashion_design",
    "film",
    "interior_design"
-  ]
+  ],
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 143,
@@ -6764,7 +7048,9 @@
    "graphic_design",
    "film",
    "interior_design"
-  ]
+  ],
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 144,
@@ -6830,7 +7116,9 @@
    "interior_design",
    "film",
    "game_design"
-  ]
+  ],
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 145,
@@ -6890,7 +7178,9 @@
    "film",
    "game_design",
    "interior_design"
-  ]
+  ],
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 146,
@@ -6952,7 +7242,9 @@
    "game_design",
    "industrial_design",
    "interior_design"
-  ]
+  ],
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  },
  {
   "id": 147,
@@ -7012,6 +7304,8 @@
    "fashion_design",
    "film",
    "industrial_design"
-  ]
+  ],
+  "usnews_rank_prev": null,
+  "lac_rank_prev": null
  }
 ]

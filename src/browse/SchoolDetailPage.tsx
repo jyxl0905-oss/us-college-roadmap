@@ -19,6 +19,7 @@ import FitPicker from './FitPicker'
 import { schoolWebsite } from './logos'
 import SchoolLogo from './SchoolLogo'
 import { rankBadge } from './rankGroups'
+import RankTag from './RankTag'
 import { readCompareIds, writeCompareIds, toggleCompareId } from './compareSet'
 import { t, getLang } from '../i18n'
 import { timingLabel } from '../lib/academics'
@@ -124,6 +125,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
           <div className="min-w-0">
             <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-gray-900">{s.name}</h1>
             {getLang() === 'ko' && <p className="text-gray-500">{s.name_ko}</p>}
+            {s.kind !== 'art' && <RankTag s={s} className="mt-1 text-xs" />}
             {s.deadlines_verified_at && <VerifiedBadge className="mt-1.5" date={s.deadlines_verified_at} sources={t('CDS · 입학처', 'CDS · admissions office')} />}
             {schoolWebsite(s.id) && (
               <a

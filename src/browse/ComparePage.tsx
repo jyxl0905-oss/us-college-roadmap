@@ -9,6 +9,7 @@ import type { ProfileRow } from '../lib/profile'
 import { setPrefillSchoolIds } from './prefill'
 import SchoolLogo from './SchoolLogo'
 import { rankBadge } from './rankGroups'
+import RankTag from './RankTag'
 import { t, getLang } from '../i18n'
 import { timingLabel } from '../lib/academics'
 import { AlertTriangle } from 'lucide-react'
@@ -88,7 +89,7 @@ export default function ComparePage({ profile }: ComparePageProps) {
     v === null ? <span className="text-gray-400">{t('미공개', 'Not disclosed')}</span> : v ? yes : no
 
   const rows: { label: string; render: (s: School) => React.ReactNode }[] = [
-    { label: t('티어', 'Tier'), render: (s) => rankBadge(s) },
+    { label: t('US News 순위', 'US News rank'), render: (s) => (s.kind === 'art' ? rankBadge(s) : <RankTag s={s} className="text-xs" />) },
     { label: t('SAT 중간 50%', 'SAT middle 50%'), render: satCell },
     {
       label: t('합격률 (국제학생)', 'Accept rate (intl.)'),

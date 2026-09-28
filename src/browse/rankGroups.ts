@@ -12,6 +12,9 @@ export const uniGroupTitles: Record<UniGroup, string> = bilingual(
 )
 export const uniGroups: UniGroup[] = [1, 2, 3, 4, 5]
 
+// 지금 반영된 US News Best Colleges 판 (전년 대비 변화는 _prev 컬럼과 비교)
+export const USNEWS_EDITION = 2027
+
 // 학교 종류별 표시 — 종합대(US News 순위)·LAC(LAC 순위)·미술·디자인 전문학교(순위 없음)
 type RankLike = { kind?: 'university' | 'lac' | 'art'; usnews_rank: number | null; lac_rank?: number | null }
 export const isArtSchool = (s: { kind?: string }) => s.kind === 'art'

@@ -2,25 +2,25 @@
  "cs": {
   "list_name": "Best Undergraduate Computer Science Programs",
   "url": "https://www.usnews.com/best-colleges/rankings/computer-science-overall",
-  "edition": "2026",
+  "edition": "2027",
   "items": [
+   {
+    "rank": 1,
+    "name": "Carnegie Mellon University",
+    "school_id": 20
+   },
    {
     "rank": 1,
     "name": "Massachusetts Institute of Technology",
     "school_id": 2
    },
    {
-    "rank": 2,
-    "name": "Carnegie Mellon University",
-    "school_id": 20
-   },
-   {
-    "rank": 2,
+    "rank": 1,
     "name": "Stanford University",
     "school_id": 4
    },
    {
-    "rank": 2,
+    "rank": 4,
     "name": "University of California, Berkeley",
     "school_id": 16
    },
@@ -35,27 +35,22 @@
     "school_id": 1
    },
    {
-    "rank": 7,
-    "name": "Cornell University",
-    "school_id": 12
-   },
-   {
-    "rank": 7,
+    "rank": 5,
     "name": "University of Illinois Urbana-Champaign",
     "school_id": 38
    },
    {
-    "rank": 9,
+    "rank": 8,
     "name": "California Institute of Technology",
     "school_id": 11
    },
    {
-    "rank": 9,
-    "name": "The University of Texas--Austin",
-    "school_id": 31
+    "rank": 8,
+    "name": "Cornell University",
+    "school_id": 12
    },
    {
-    "rank": 9,
+    "rank": 8,
     "name": "University of Washington",
     "school_id": 45
    }
@@ -64,7 +59,7 @@
  "engineering": {
   "list_name": "Best Undergraduate Engineering Programs (Doctorate)",
   "url": "https://www.usnews.com/best-colleges/rankings/engineering-doctorate",
-  "edition": "2026",
+  "edition": "2027",
   "items": [
    {
     "rank": 1,
@@ -73,16 +68,16 @@
    },
    {
     "rank": 2,
-    "name": "Stanford University",
-    "school_id": 4
-   },
-   {
-    "rank": 3,
     "name": "Georgia Institute of Technology",
     "school_id": 32
    },
    {
-    "rank": 3,
+    "rank": 2,
+    "name": "Stanford University",
+    "school_id": 4
+   },
+   {
+    "rank": 2,
     "name": "University of California, Berkeley",
     "school_id": 16
    },
@@ -92,12 +87,12 @@
     "school_id": 11
    },
    {
-    "rank": 5,
+    "rank": 6,
     "name": "University of Illinois Urbana-Champaign",
     "school_id": 38
    },
    {
-    "rank": 5,
+    "rank": 6,
     "name": "University of Michigan--Ann Arbor",
     "school_id": 21
    },
@@ -121,17 +116,17 @@
  "biomedical_eng": {
   "list_name": "Best Undergraduate Biomedical Engineering Programs",
   "url": "https://www.usnews.com/best-colleges/rankings/engineering-doctorate-biological-biomedical",
-  "edition": "2026",
+  "edition": "2027",
   "items": [
-   {
-    "rank": 1,
-    "name": "Georgia Institute of Technology",
-    "school_id": 32
-   },
    {
     "rank": 1,
     "name": "Johns Hopkins University",
     "school_id": 8
+   },
+   {
+    "rank": 2,
+    "name": "Georgia Institute of Technology",
+    "school_id": 32
    },
    {
     "rank": 3,
@@ -140,60 +135,45 @@
    },
    {
     "rank": 4,
-    "name": "Stanford University",
-    "school_id": 4
-   },
-   {
-    "rank": 5,
     "name": "Massachusetts Institute of Technology",
     "school_id": 2
    },
    {
-    "rank": 6,
-    "name": "University of Michigan--Ann Arbor",
-    "school_id": 21
+    "rank": 5,
+    "name": "Stanford University",
+    "school_id": 4
    },
    {
-    "rank": 7,
+    "rank": 6,
     "name": "University of California San Diego",
     "school_id": 29
    },
    {
-    "rank": 8,
-    "name": "University of California, Berkeley",
-    "school_id": 16
-   },
-   {
-    "rank": 9,
+    "rank": 7,
     "name": "Rice University",
     "school_id": 17
    },
    {
-    "rank": 10,
-    "name": "The University of Texas--Austin",
-    "school_id": 31
+    "rank": 8,
+    "name": "University of Michigan--Ann Arbor",
+    "school_id": 21
    },
    {
-    "rank": 11,
+    "rank": 9,
+    "name": "University of California, Berkeley",
+    "school_id": 16
+   },
+   {
+    "rank": 10,
     "name": "University of Pennsylvania",
     "school_id": 10
-   },
-   {
-    "rank": 12,
-    "name": "Cornell University",
-    "school_id": 12
-   },
-   {
-    "rank": 12,
-    "name": "Northwestern University",
-    "school_id": 9
    }
   ]
  },
  "chemical_eng": {
   "list_name": "Best Undergraduate Chemical Engineering Programs",
   "url": "https://www.usnews.com/best-colleges/rankings/engineering-doctorate-chemical",
-  "edition": "2026",
+  "edition": "2027",
   "items": [
    {
     "rank": 1,
@@ -212,28 +192,28 @@
    },
    {
     "rank": 4,
-    "name": "University of Delaware",
-    "school_id": null
-   },
-   {
-    "rank": 5,
     "name": "The University of Texas--Austin",
     "school_id": 31
    },
    {
+    "rank": 5,
+    "name": "University of Delaware",
+    "school_id": 130
+   },
+   {
     "rank": 6,
+    "name": "Carnegie Mellon University",
+    "school_id": 20
+   },
+   {
+    "rank": 7,
     "name": "Stanford University",
     "school_id": 4
    },
    {
-    "rank": 6,
+    "rank": 7,
     "name": "University of Michigan--Ann Arbor",
     "school_id": 21
-   },
-   {
-    "rank": 8,
-    "name": "University of Illinois Urbana-Champaign",
-    "school_id": 38
    },
    {
     "rank": 9,
@@ -242,25 +222,20 @@
    },
    {
     "rank": 10,
-    "name": "Princeton University",
-    "school_id": 1
+    "name": "University of Illinois Urbana-Champaign",
+    "school_id": 38
    },
    {
-    "rank": 11,
-    "name": "Carnegie Mellon University",
-    "school_id": 20
-   },
-   {
-    "rank": 12,
-    "name": "University of Minnesota--Twin Cities",
-    "school_id": 63
+    "rank": 10,
+    "name": "University of Wisconsin--Madison",
+    "school_id": 39
    }
   ]
  },
  "aerospace_eng": {
   "list_name": "Best Undergraduate Aerospace Engineering Programs",
   "url": "https://www.usnews.com/best-colleges/rankings/engineering-doctorate-aerospace-aeronautical-astronautical",
-  "edition": "2026",
+  "edition": "2027",
   "items": [
    {
     "rank": 1,
@@ -283,22 +258,27 @@
     "school_id": 11
    },
    {
-    "rank": 4,
+    "rank": 5,
     "name": "University of Michigan--Ann Arbor",
     "school_id": 21
    },
    {
-    "rank": 7,
-    "name": "University of Illinois Urbana-Champaign",
-    "school_id": 38
+    "rank": 6,
+    "name": "Embry-Riddle Aeronautical University-Daytona Beach",
+    "school_id": null
    },
    {
-    "rank": 8,
+    "rank": 6,
     "name": "Stanford University",
     "school_id": 4
    },
    {
     "rank": 8,
+    "name": "University of Illinois Urbana-Champaign",
+    "school_id": 38
+   },
+   {
+    "rank": 9,
     "name": "The University of Texas--Austin",
     "school_id": 31
    },
@@ -310,19 +290,14 @@
    {
     "rank": 10,
     "name": "University of Colorado Boulder",
-    "school_id": null
-   },
-   {
-    "rank": 12,
-    "name": "Virginia Tech",
-    "school_id": 54
+    "school_id": 136
    }
   ]
  },
  "industrial_eng": {
   "list_name": "Best Undergraduate Industrial Engineering Programs (Industrial / Manufacturing)",
   "url": "https://www.usnews.com/best-colleges/rankings/engineering-doctorate-industrial-manufacturing",
-  "edition": "2026",
+  "edition": "2027",
   "items": [
    {
     "rank": 1,
@@ -351,60 +326,45 @@
    },
    {
     "rank": 6,
-    "name": "University of Wisconsin--Madison",
-    "school_id": 39
-   },
-   {
-    "rank": 6,
     "name": "Virginia Tech",
     "school_id": 54
    },
    {
-    "rank": 8,
+    "rank": 7,
     "name": "Texas A&M University",
     "school_id": 53
    },
    {
-    "rank": 9,
-    "name": "Stanford University",
-    "school_id": 4
-   },
-   {
-    "rank": 9,
-    "name": "University of Illinois Urbana-Champaign",
-    "school_id": 38
-   },
-   {
-    "rank": 11,
-    "name": "North Carolina State University",
-    "school_id": null
-   },
-   {
-    "rank": 12,
+    "rank": 8,
     "name": "Cornell University",
     "school_id": 12
    },
    {
-    "rank": 12,
-    "name": "The Pennsylvania State University--University Park",
-    "school_id": 60
+    "rank": 9,
+    "name": "University of Wisconsin--Madison",
+    "school_id": 39
+   },
+   {
+    "rank": 10,
+    "name": "Stanford University",
+    "school_id": 4
    }
   ]
  },
  "business": {
   "list_name": "Best Undergraduate Business Programs",
   "url": "https://www.usnews.com/best-colleges/rankings/business-overall",
-  "edition": "2026",
+  "edition": "2027",
   "items": [
-   {
-    "rank": 1,
-    "name": "Massachusetts Institute of Technology",
-    "school_id": 2
-   },
    {
     "rank": 1,
     "name": "University of Pennsylvania",
     "school_id": 10
+   },
+   {
+    "rank": 2,
+    "name": "Massachusetts Institute of Technology",
+    "school_id": 2
    },
    {
     "rank": 3,
@@ -413,13 +373,13 @@
    },
    {
     "rank": 4,
-    "name": "University of Michigan--Ann Arbor",
-    "school_id": 21
-   },
-   {
-    "rank": 5,
     "name": "New York University",
     "school_id": 33
+   },
+   {
+    "rank": 4,
+    "name": "University of Michigan--Ann Arbor",
+    "school_id": 21
    },
    {
     "rank": 6,
@@ -428,35 +388,30 @@
    },
    {
     "rank": 6,
-    "name": "The University of Texas--Austin",
-    "school_id": 31
-   },
-   {
-    "rank": 8,
     "name": "Cornell University",
     "school_id": 12
    },
    {
-    "rank": 8,
+    "rank": 6,
     "name": "Indiana University--Bloomington",
     "school_id": 99
    },
    {
-    "rank": 8,
+    "rank": 6,
     "name": "University of North Carolina--Chapel Hill",
     "school_id": 26
    },
    {
-    "rank": 8,
-    "name": "University of Southern California",
-    "school_id": 28
+    "rank": 6,
+    "name": "The University of Texas--Austin",
+    "school_id": 31
    }
   ]
  },
  "finance": {
   "list_name": "Best Undergraduate Finance Programs",
   "url": "https://www.usnews.com/best-colleges/rankings/business-finance",
-  "edition": "2026",
+  "edition": "2027",
   "items": [
    {
     "rank": 1,
@@ -485,13 +440,13 @@
    },
    {
     "rank": 6,
-    "name": "Boston College",
-    "school_id": 36
-   },
-   {
-    "rank": 6,
     "name": "University of California, Berkeley",
     "school_id": 16
+   },
+   {
+    "rank": 7,
+    "name": "Boston College",
+    "school_id": 36
    },
    {
     "rank": 8,
@@ -505,25 +460,15 @@
    },
    {
     "rank": 10,
-    "name": "Carnegie Mellon University",
-    "school_id": 20
-   },
-   {
-    "rank": 11,
     "name": "Cornell University",
     "school_id": 12
-   },
-   {
-    "rank": 12,
-    "name": "University of Virginia",
-    "school_id": 27
    }
   ]
  },
  "accounting": {
   "list_name": "Best Undergraduate Accounting Programs",
   "url": "https://www.usnews.com/best-colleges/rankings/business-accounting",
-  "edition": "2026",
+  "edition": "2027",
   "items": [
    {
     "rank": 1,
@@ -532,13 +477,13 @@
    },
    {
     "rank": 2,
-    "name": "The University of Texas--Austin",
-    "school_id": 31
+    "name": "Brigham Young University",
+    "school_id": null
    },
    {
     "rank": 3,
-    "name": "Brigham Young University",
-    "school_id": null
+    "name": "The University of Texas--Austin",
+    "school_id": 31
    },
    {
     "rank": 4,
@@ -559,11 +504,6 @@
     "rank": 7,
     "name": "University of Southern California",
     "school_id": 28
-   },
-   {
-    "rank": 8,
-    "name": "Boston College",
-    "school_id": 36
    },
    {
     "rank": 8,
@@ -571,41 +511,36 @@
     "school_id": 30
    },
    {
-    "rank": 10,
+    "rank": 8,
     "name": "University of Notre Dame",
     "school_id": 22
    },
    {
-    "rank": 11,
+    "rank": 10,
     "name": "New York University",
     "school_id": 33
-   },
-   {
-    "rank": 12,
-    "name": "The Ohio State University",
-    "school_id": 41
    }
   ]
  },
  "nursing": {
   "list_name": "Best Undergraduate Bachelor of Science in Nursing (BSN) Programs",
   "url": "https://www.usnews.com/best-colleges/rankings/nursing-overall",
-  "edition": "2026",
+  "edition": "2027",
   "items": [
    {
     "rank": 1,
-    "name": "Duke University",
-    "school_id": 7
-   },
-   {
-    "rank": 2,
     "name": "Emory University",
     "school_id": 24
    },
    {
-    "rank": 2,
+    "rank": 1,
     "name": "University of Pennsylvania",
     "school_id": 10
+   },
+   {
+    "rank": 1,
+    "name": "University of Washington",
+    "school_id": 45
    },
    {
     "rank": 4,
@@ -614,12 +549,12 @@
    },
    {
     "rank": 4,
-    "name": "University of North Carolina--Chapel Hill",
-    "school_id": 26
+    "name": "University of Iowa",
+    "school_id": null
    },
    {
     "rank": 6,
-    "name": "University of Illinois Chicago",
+    "name": "University of Alabama at Birmingham",
     "school_id": null
    },
    {
@@ -628,26 +563,31 @@
     "school_id": 21
    },
    {
-    "rank": 8,
-    "name": "University of Iowa",
+    "rank": 6,
+    "name": "University of North Carolina--Chapel Hill",
+    "school_id": 26
+   },
+   {
+    "rank": 9,
+    "name": "University of Illinois Chicago",
+    "school_id": 120
+   },
+   {
+    "rank": 9,
+    "name": "University of Maryland, Baltimore",
     "school_id": null
    },
    {
-    "rank": 8,
+    "rank": 9,
     "name": "University of Minnesota--Twin Cities",
     "school_id": 63
-   },
-   {
-    "rank": 8,
-    "name": "University of Pittsburgh",
-    "school_id": null
    }
   ]
  },
  "data_science": {
   "list_name": "Best Undergraduate Data Science Programs (Computer Science specialty: Data Analytics/Science)",
   "url": "https://www.usnews.com/best-colleges/rankings/computer-science/data-analytics-science",
-  "edition": "2026",
+  "edition": "2027",
   "items": [
    {
     "rank": 1,
@@ -656,18 +596,18 @@
    },
    {
     "rank": 2,
-    "name": "Stanford University",
-    "school_id": 4
-   },
-   {
-    "rank": 3,
     "name": "Massachusetts Institute of Technology",
     "school_id": 2
    },
    {
-    "rank": 4,
+    "rank": 3,
     "name": "Carnegie Mellon University",
     "school_id": 20
+   },
+   {
+    "rank": 4,
+    "name": "Stanford University",
+    "school_id": 4
    },
    {
     "rank": 5,
@@ -676,23 +616,28 @@
    },
    {
     "rank": 6,
+    "name": "California Institute of Technology",
+    "school_id": 11
+   },
+   {
+    "rank": 6,
     "name": "University of Michigan--Ann Arbor",
     "school_id": 21
    },
    {
-    "rank": 6,
+    "rank": 8,
+    "name": "Columbia University",
+    "school_id": 15
+   },
+   {
+    "rank": 8,
     "name": "University of Washington",
     "school_id": 45
    },
    {
-    "rank": 8,
-    "name": "University of California San Diego",
-    "school_id": 29
-   },
-   {
-    "rank": 9,
-    "name": "University of Illinois Urbana-Champaign",
-    "school_id": 38
+    "rank": 10,
+    "name": "Cornell University",
+    "school_id": 12
    },
    {
     "rank": 10,
@@ -700,61 +645,56 @@
     "school_id": 3
    },
    {
-    "rank": 11,
-    "name": "Columbia University",
-    "school_id": 15
-   },
-   {
-    "rank": 12,
-    "name": "California Institute of Technology",
-    "school_id": 11
-   },
-   {
-    "rank": 12,
-    "name": "University of Chicago",
-    "school_id": 6
+    "rank": 10,
+    "name": "University of California San Diego",
+    "school_id": 29
    }
   ]
  },
  "economics": {
   "list_name": "Best Undergraduate Economics Programs",
   "url": "https://www.usnews.com/best-colleges/rankings/economics-overall",
-  "edition": "2026",
+  "edition": "2027",
   "items": [
    {
     "rank": 1,
-    "name": "Stanford University",
-    "school_id": 4
-   },
-   {
-    "rank": 2,
     "name": "Harvard University",
     "school_id": 3
    },
    {
-    "rank": 2,
+    "rank": 1,
     "name": "Massachusetts Institute of Technology",
     "school_id": 2
    },
    {
-    "rank": 2,
+    "rank": 1,
     "name": "Princeton University",
     "school_id": 1
    },
    {
-    "rank": 2,
-    "name": "University of California, Berkeley",
-    "school_id": 16
-   },
-   {
-    "rank": 2,
+    "rank": 1,
     "name": "University of Chicago",
     "school_id": 6
    },
    {
-    "rank": 2,
+    "rank": 5,
+    "name": "Stanford University",
+    "school_id": 4
+   },
+   {
+    "rank": 5,
+    "name": "University of California, Berkeley",
+    "school_id": 16
+   },
+   {
+    "rank": 5,
     "name": "Yale University",
     "school_id": 5
+   },
+   {
+    "rank": 8,
+    "name": "Columbia University",
+    "school_id": 15
    },
    {
     "rank": 8,
@@ -765,33 +705,23 @@
     "rank": 8,
     "name": "University of Pennsylvania",
     "school_id": 10
-   },
-   {
-    "rank": 10,
-    "name": "Columbia University",
-    "school_id": 15
    }
   ]
  },
  "psychology": {
   "list_name": "Best Undergraduate Psychology Programs",
   "url": "https://www.usnews.com/best-colleges/rankings/psychology-overall",
-  "edition": "2026",
+  "edition": "2027",
   "items": [
    {
     "rank": 1,
-    "name": "Harvard University",
-    "school_id": 3
-   },
-   {
-    "rank": 2,
-    "name": "Princeton University",
-    "school_id": 1
-   },
-   {
-    "rank": 2,
     "name": "Stanford University",
     "school_id": 4
+   },
+   {
+    "rank": 2,
+    "name": "Harvard University",
+    "school_id": 3
    },
    {
     "rank": 2,
@@ -799,17 +729,22 @@
     "school_id": 16
    },
    {
-    "rank": 5,
+    "rank": 4,
+    "name": "Princeton University",
+    "school_id": 1
+   },
+   {
+    "rank": 4,
     "name": "University of California, Los Angeles",
     "school_id": 18
    },
    {
-    "rank": 5,
+    "rank": 4,
     "name": "University of Michigan--Ann Arbor",
     "school_id": 21
    },
    {
-    "rank": 5,
+    "rank": 4,
     "name": "Yale University",
     "school_id": 5
    },
@@ -820,20 +755,25 @@
    },
    {
     "rank": 8,
-    "name": "Johns Hopkins University",
-    "school_id": 8
+    "name": "Duke University",
+    "school_id": 7
    },
    {
     "rank": 8,
-    "name": "University of Illinois Urbana-Champaign",
-    "school_id": 38
+    "name": "University of California, Davis",
+    "school_id": 34
+   },
+   {
+    "rank": 8,
+    "name": "University of Wisconsin--Madison",
+    "school_id": 39
    }
   ]
  },
  "engineering_mechanical": {
   "list_name": "Best Undergraduate Mechanical Engineering Programs (Doctorate)",
   "url": "https://www.usnews.com/best-colleges/rankings/engineering-doctorate-mechanical",
-  "edition": "2026",
+  "edition": "2027",
   "items": [
    {
     "rank": 1,
@@ -842,28 +782,28 @@
    },
    {
     "rank": 2,
-    "name": "Stanford University",
-    "school_id": 4
-   },
-   {
-    "rank": 2,
-    "name": "University of California, Berkeley",
-    "school_id": 16
-   },
-   {
-    "rank": 4,
     "name": "Georgia Institute of Technology",
     "school_id": 32
    },
    {
+    "rank": 3,
+    "name": "Stanford University",
+    "school_id": 4
+   },
+   {
     "rank": 4,
-    "name": "University of Illinois Urbana-Champaign",
-    "school_id": 38
+    "name": "Purdue University--Main Campus",
+    "school_id": 48
+   },
+   {
+    "rank": 4,
+    "name": "University of Michigan--Ann Arbor",
+    "school_id": 21
    },
    {
     "rank": 6,
-    "name": "University of Michigan--Ann Arbor",
-    "school_id": 21
+    "name": "University of California, Berkeley",
+    "school_id": 16
    },
    {
     "rank": 7,
@@ -872,8 +812,8 @@
    },
    {
     "rank": 8,
-    "name": "Purdue University--Main Campus",
-    "school_id": 48
+    "name": "University of Illinois Urbana-Champaign",
+    "school_id": 38
    },
    {
     "rank": 9,
@@ -882,35 +822,25 @@
    },
    {
     "rank": 10,
-    "name": "Cornell University",
-    "school_id": 12
-   },
-   {
-    "rank": 11,
     "name": "The University of Texas--Austin",
     "school_id": 31
-   },
-   {
-    "rank": 12,
-    "name": "Princeton University",
-    "school_id": 1
    }
   ]
  },
  "engineering_electrical": {
   "list_name": "Best Undergraduate Electrical / Electronic Engineering Programs (Doctorate)",
   "url": "https://www.usnews.com/best-colleges/rankings/engineering-doctorate-electrical-electronic-communications",
-  "edition": "2026",
+  "edition": "2027",
   "items": [
    {
     "rank": 1,
-    "name": "University of California, Berkeley",
-    "school_id": 16
+    "name": "Massachusetts Institute of Technology",
+    "school_id": 2
    },
    {
     "rank": 2,
-    "name": "Massachusetts Institute of Technology",
-    "school_id": 2
+    "name": "University of California, Berkeley",
+    "school_id": 16
    },
    {
     "rank": 3,
@@ -924,23 +854,23 @@
    },
    {
     "rank": 5,
-    "name": "University of Illinois Urbana-Champaign",
-    "school_id": 38
-   },
-   {
-    "rank": 6,
     "name": "California Institute of Technology",
     "school_id": 11
    },
    {
-    "rank": 7,
-    "name": "Carnegie Mellon University",
-    "school_id": 20
+    "rank": 5,
+    "name": "University of Illinois Urbana-Champaign",
+    "school_id": 38
+   },
+   {
+    "rank": 5,
+    "name": "University of Michigan--Ann Arbor",
+    "school_id": 21
    },
    {
     "rank": 8,
-    "name": "University of Michigan--Ann Arbor",
-    "school_id": 21
+    "name": "Carnegie Mellon University",
+    "school_id": 20
    },
    {
     "rank": 9,
@@ -951,16 +881,6 @@
     "rank": 10,
     "name": "Purdue University--Main Campus",
     "school_id": 48
-   },
-   {
-    "rank": 11,
-    "name": "Cornell University",
-    "school_id": 12
-   },
-   {
-    "rank": 12,
-    "name": "University of California, Los Angeles",
-    "school_id": 18
    }
   ]
  }
