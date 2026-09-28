@@ -27,6 +27,7 @@ const OnboardingFlow = lazy(() => import('./onboarding/OnboardingFlow'))
 const DevInterestTest = lazy(() => import('./app/InterestTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} profile={d.demoProfile()} /> } }))
 const DevPlansTest = lazy(() => import('./app/PlansTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} majorKey="cs" /> } }))
 const SharedReportPage = lazy(() => import('./share/SharedReportPage'))
+const DevDeleteAccount = lazy(() => import('./account/DeleteAccount'))
 const DevGuideTest = lazy(() => import('./guide/CourseGuidePage').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} profile={d.demoProfile()} /> } }))
 const DevRecTest = lazy(() => import('./app/RecommendersTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} profile={d.demoProfile()} /> } }))
 const ReportView = lazy(() => import('./report/ReportView'))
@@ -707,6 +708,7 @@ function AppRoutes() {
   if (import.meta.env.DEV && window.location.search.includes('interesttest')) return <DevInterestTest />
   if (import.meta.env.DEV && window.location.search.includes('planstest')) return <DevPlansTest />
   if (import.meta.env.DEV && window.location.search.includes('guidetest')) return <DevGuideTest />
+  if (import.meta.env.DEV && window.location.search.includes('deltest')) return <div className="mx-auto max-w-md px-5 py-6"><DevDeleteAccount userId="dev" /></div>
 
   if (profileErrorScreen) return profileErrorScreen
 

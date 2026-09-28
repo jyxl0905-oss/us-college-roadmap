@@ -483,3 +483,6 @@ alter table public.report_shares enable row level security;
 create policy "own shares readable" on public.report_shares for select to authenticated using ((select auth.uid()) = user_id);
 -- 함수(security definer): create_report_share() / revoke_report_shares() — authenticated 전용
 -- get_shared_report(p_token) — anon 허용. 프로필 일부·과목·시험·활동·수상·지원 학교·체크 기록만 반환 (에세이·파일·추천인·연구 응답·이메일 제외)
+
+-- 2026-09-28 앱 안 계정 삭제: delete_my_account() (security definer, authenticated 전용)
+-- analytics_events·feedback(본인 행)·pending_onboarding(가입 이메일) 삭제 후 auth.users 행 삭제 → 기록 테이블은 FK cascade. 올린 파일(records/{uid}/…)은 앱이 먼저 스토리지 API로 삭제.

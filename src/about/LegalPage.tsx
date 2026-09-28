@@ -4,7 +4,7 @@ import { goBack, navigate } from '../lib/router'
 
 // 개인정보처리방침·이용약관 — 실제 운영 방식 그대로 적음 (DB: Supabase 서울 리전, 호스팅: Vercel, 로그인·알림 메일: Google)
 export const CONTACT_EMAIL = 'uscollegeroadmap@gmail.com'
-const EFFECTIVE = '2026-09-27'
+const EFFECTIVE = '2026-09-28'
 
 type Sec = { h: [string, string]; body: [string, string][] }
 
@@ -30,7 +30,8 @@ const PRIVACY: Sec[] = [
   ] },
   { h: ['4. 보관과 삭제', '4. Retention and deletion'], body: [
     ['계정을 쓰는 동안 보관해요.', 'We keep your data while your account exists.'],
-    [`계정과 기록 전체 삭제를 원하면 가입한 이메일로 ${CONTACT_EMAIL}에 요청해 주세요. 확인 후 지체 없이 삭제해요.`, `To delete your account and all records, email ${CONTACT_EMAIL} from the address you signed up with. We delete it promptly after confirming.`],
+    ['계정과 기록 전체는 리포트 화면 맨 아래 "계정 삭제"에서 직접 바로 지울 수 있어요. 올린 파일·공유 링크까지 함께 지워지고 되돌릴 수 없어요.', 'You can delete your account and all records yourself at any time from "Delete account" at the bottom of your report. Uploaded files and share links are deleted too, and this cannot be undone.'],
+    [`앱에 들어갈 수 없다면 가입한 이메일로 ${CONTACT_EMAIL}에 요청해 주세요. 확인 후 지체 없이 삭제해요.`, `If you can’t sign in, email ${CONTACT_EMAIL} from the address you signed up with. We delete it promptly after confirming.`],
     ['기록은 앱 안에서 언제든 직접 고치거나 지울 수 있어요.', 'You can edit or delete your records in the app at any time.'],
   ] },
   { h: ['5. 보안', '5. Security'], body: [
@@ -40,7 +41,7 @@ const PRIVACY: Sec[] = [
     ['이 서비스는 미국 대학을 준비하는 고등학생(9~12학년)과 그 부모님을 위한 서비스예요. 만 13세 미만 어린이를 대상으로 하지 않으며, 13세 미만의 정보가 수집된 것을 알게 되면 바로 삭제해요.', 'The service is for high-school students (grades 9–12) preparing for U.S. colleges and their parents. It is not directed to children under 13; if we learn we have collected information from a child under 13, we delete it.'],
   ] },
   { h: ['7. 이용자의 권리', '7. Your choices'], body: [
-    ['내 정보 열람·수정은 앱에서 직접 할 수 있고, 삭제·연구 동의 철회는 이메일로 요청할 수 있어요.', 'View and edit your information in the app; request deletion or withdraw research consent by email.'],
+    ['내 정보 열람·수정·계정 삭제는 앱에서 직접 할 수 있고, 연구 동의 철회는 이메일로 요청할 수 있어요.', 'View, edit and delete your information in the app; withdraw research consent by email.'],
   ] },
   { h: ['8. 변경', '8. Changes'], body: [
     ['방침이 바뀌면 이 페이지에 시행일과 함께 알려 드려요.', 'If this policy changes, we update this page with a new effective date.'],

@@ -25,6 +25,7 @@ import MustDoCard from './MustDoCard'
 import QuickAppPanel from './QuickAppPanel'
 import ShareInvite from './ShareInvite'
 import ShareLinkCard from '../share/ShareLinkCard'
+import DeleteAccount from '../account/DeleteAccount'
 import { checkIsAdmin } from '../lib/admin'
 import { t, localizeRows } from '../i18n'
 import { downloadIcs, nextCheckinDate } from '../lib/ics'
@@ -674,6 +675,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           <CalendarPlus size={15} strokeWidth={2} className="mr-1.5 inline -mt-0.5" />{t('폰 캘린더에 추가 (.ics) — 다음 체크인', 'Add to calendar (.ics) — next check-in')}{assignedRounds.some((a) => a.student_deadline) ? t(' + 내가 입력한 마감일', ' + my entered deadlines') : ''}
         </button>
       </div>
+      <DeleteAccount userId={userId} />
       </>)}
       {demo && <DemoCta className="no-print mt-8" />}
 
