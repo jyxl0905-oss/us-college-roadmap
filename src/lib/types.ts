@@ -139,6 +139,8 @@ export interface School {
   lac_rank?: number | null // LAC 순위 (US News National Liberal Arts Colleges)
   usnews_rank_prev?: number | null // 전년판 순위 (변화 표시용)
   state?: string | null // 주 약자 (College Scorecard 확대분부터)
+  regional_rank?: number | null // US News 지역 순위 (전국 순위 없는 학교만)
+  regional_list?: string | null // 'ru-south' 등
   city?: string | null
   source_kind?: string | null // 'scorecard' = 교육부 공식 자료만 있는 학교 (입학처 세부 정보 정리 전)
   ugds?: number | null // 학부생 수 (Scorecard)

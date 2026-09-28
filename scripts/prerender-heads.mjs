@@ -55,8 +55,12 @@ pair('/',
 // ── 학교 369곳 (147곳은 입학처 세부 정보까지, 222곳은 교육부 College Scorecard 기본 정보) ──
 const schools = JSON.parse(readFileSync('src/data/schools.index.json', 'utf8'))
 for (const s of schools) {
-  const rank = s.kind === 'lac' ? `리버럴 아츠 칼리지 ${s.lac_rank ?? ''}위` : s.kind === 'art' ? '미술·디자인 전문학교, 포트폴리오 요구사항' : s.usnews_rank != null ? `미국 대학 순위 ${s.usnews_rank}위` : '미국 4년제 대학'
-  const rankEn = s.kind === 'lac' ? `#${s.lac_rank ?? ''} liberal arts college` : s.kind === 'art' ? 'Art & design school — portfolio requirements' : s.usnews_rank != null ? `#${s.usnews_rank} national university (U.S. News)` : 'U.S. four-year college'
+  const REG = { north: ['북부', 'North'], south: ['남부', 'South'], midwest: ['중서부', 'Midwest'], west: ['서부', 'West'] }
+  const rg = s.regional_rank != null && s.regional_list ? s.regional_list.split('-') : null
+  const regKo = rg ? `US News ${REG[rg[1]][0]} 지역 ${rg[0] === 'rc' ? '칼리지' : '대학'} ${s.regional_rank}위` : null
+  const regEn = rg ? `#${s.regional_rank} in U.S. News Regional ${rg[0] === 'rc' ? 'Colleges' : 'Universities'} ${REG[rg[1]][1]}` : null
+  const rank = s.kind === 'lac' ? `리버럴 아츠 칼리지 ${s.lac_rank ?? ''}위` : s.kind === 'art' ? '미술·디자인 전문학교, 포트폴리오 요구사항' : s.usnews_rank != null ? `미국 대학 순위 ${s.usnews_rank}위` : regKo ?? '미국 4년제 대학'
+  const rankEn = s.kind === 'lac' ? `#${s.lac_rank ?? ''} liberal arts college` : s.kind === 'art' ? 'Art & design school — portfolio requirements' : s.usnews_rank != null ? `#${s.usnews_rank} national university (U.S. News)` : regEn ?? 'U.S. four-year college'
   const rate = s.overall_accept_rate != null ? ` 합격률 ${s.overall_accept_rate}%,` : ''
   const rateEn = s.overall_accept_rate != null ? ` ${s.overall_accept_rate}% acceptance rate,` : ''
   // 교육부 College Scorecard 자료만 있는 학교: 있는 정보만 설명

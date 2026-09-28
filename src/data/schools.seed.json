@@ -43,7 +43,9 @@
   "usnews_rank_prev": 1,
   "lac_rank_prev": null,
   "state": "NJ",
-  "city": "Princeton"
+  "city": "Princeton",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 2,
@@ -81,7 +83,9 @@
   "usnews_rank_prev": 2,
   "lac_rank_prev": null,
   "state": "MA",
-  "city": "Cambridge"
+  "city": "Cambridge",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 3,
@@ -117,7 +121,9 @@
   "usnews_rank_prev": 3,
   "lac_rank_prev": null,
   "state": "MA",
-  "city": "Cambridge"
+  "city": "Cambridge",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 4,
@@ -163,7 +169,9 @@
   "usnews_rank_prev": 4,
   "lac_rank_prev": null,
   "state": "CA",
-  "city": "Stanford"
+  "city": "Stanford",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 5,
@@ -208,7 +216,9 @@
   "usnews_rank_prev": 4,
   "lac_rank_prev": null,
   "state": "CT",
-  "city": "New Haven"
+  "city": "New Haven",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 6,
@@ -251,7 +261,9 @@
   "usnews_rank_prev": 6,
   "lac_rank_prev": null,
   "state": "IL",
-  "city": "Chicago"
+  "city": "Chicago",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 7,
@@ -299,7 +311,9 @@
   "usnews_rank_prev": 7,
   "lac_rank_prev": null,
   "state": "NC",
-  "city": "Durham"
+  "city": "Durham",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 8,
@@ -347,7 +361,9 @@
   "usnews_rank_prev": 7,
   "lac_rank_prev": null,
   "state": "MD",
-  "city": "Baltimore"
+  "city": "Baltimore",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 9,
@@ -399,7 +415,9 @@
   "usnews_rank_prev": 7,
   "lac_rank_prev": null,
   "state": "IL",
-  "city": "Evanston"
+  "city": "Evanston",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 10,
@@ -448,7 +466,9 @@
   "usnews_rank_prev": 7,
   "lac_rank_prev": null,
   "state": "PA",
-  "city": "Philadelphia"
+  "city": "Philadelphia",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 11,
@@ -490,7 +510,9 @@
   "usnews_rank_prev": 11,
   "lac_rank_prev": null,
   "state": "CA",
-  "city": "Pasadena"
+  "city": "Pasadena",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 12,
@@ -543,7 +565,9 @@
   "usnews_rank_prev": 12,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "Ithaca"
+  "city": "Ithaca",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 13,
@@ -582,7 +606,9 @@
   "usnews_rank_prev": 13,
   "lac_rank_prev": null,
   "state": "RI",
-  "city": "Providence"
+  "city": "Providence",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 14,
@@ -630,7 +656,9 @@
   "usnews_rank_prev": 13,
   "lac_rank_prev": null,
   "state": "NH",
-  "city": "Hanover"
+  "city": "Hanover",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 15,
@@ -679,7 +707,9 @@
   "usnews_rank_prev": 15,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "New York"
+  "city": "New York",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 16,
@@ -725,7 +755,9 @@
   "usnews_rank_prev": 15,
   "lac_rank_prev": null,
   "state": "CA",
-  "city": "Berkeley"
+  "city": "Berkeley",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 17,
@@ -777,7 +809,9 @@
   "usnews_rank_prev": 17,
   "lac_rank_prev": null,
   "state": "TX",
-  "city": "Houston"
+  "city": "Houston",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 18,
@@ -833,7 +867,9 @@
   "usnews_rank_prev": 17,
   "lac_rank_prev": null,
   "state": "CA",
-  "city": "Los Angeles"
+  "city": "Los Angeles",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 19,
@@ -882,7 +918,9 @@
   "usnews_rank_prev": 17,
   "lac_rank_prev": null,
   "state": "TN",
-  "city": "Nashville"
+  "city": "Nashville",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 20,
@@ -938,7 +976,9 @@
   "usnews_rank_prev": 20,
   "lac_rank_prev": null,
   "state": "PA",
-  "city": "Pittsburgh"
+  "city": "Pittsburgh",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 21,
@@ -983,7 +1023,9 @@
   "usnews_rank_prev": 20,
   "lac_rank_prev": null,
   "state": "MI",
-  "city": "Ann Arbor"
+  "city": "Ann Arbor",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 22,
@@ -1031,7 +1073,9 @@
   "usnews_rank_prev": 20,
   "lac_rank_prev": null,
   "state": "IN",
-  "city": "Notre Dame"
+  "city": "Notre Dame",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 23,
@@ -1084,7 +1128,9 @@
   "usnews_rank_prev": 20,
   "lac_rank_prev": null,
   "state": "MO",
-  "city": "St. Louis"
+  "city": "St. Louis",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 24,
@@ -1130,7 +1176,9 @@
   "usnews_rank_prev": 24,
   "lac_rank_prev": null,
   "state": "GA",
-  "city": "Atlanta"
+  "city": "Atlanta",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 25,
@@ -1180,7 +1228,9 @@
   "usnews_rank_prev": 24,
   "lac_rank_prev": null,
   "state": "DC",
-  "city": "Washington"
+  "city": "Washington",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 26,
@@ -1226,7 +1276,9 @@
   "usnews_rank_prev": 26,
   "lac_rank_prev": null,
   "state": "NC",
-  "city": "Chapel Hill"
+  "city": "Chapel Hill",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 27,
@@ -1278,7 +1330,9 @@
   "usnews_rank_prev": 26,
   "lac_rank_prev": null,
   "state": "VA",
-  "city": "Charlottesville"
+  "city": "Charlottesville",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 28,
@@ -1326,7 +1380,9 @@
   "usnews_rank_prev": 28,
   "lac_rank_prev": null,
   "state": "CA",
-  "city": "Los Angeles"
+  "city": "Los Angeles",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 29,
@@ -1371,7 +1427,9 @@
   "usnews_rank_prev": 29,
   "lac_rank_prev": null,
   "state": "CA",
-  "city": "La Jolla"
+  "city": "La Jolla",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 30,
@@ -1412,7 +1470,9 @@
   "usnews_rank_prev": 30,
   "lac_rank_prev": null,
   "state": "FL",
-  "city": "Gainesville"
+  "city": "Gainesville",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 31,
@@ -1460,7 +1520,9 @@
   "usnews_rank_prev": 30,
   "lac_rank_prev": null,
   "state": "TX",
-  "city": "Austin"
+  "city": "Austin",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 32,
@@ -1501,7 +1563,9 @@
   "usnews_rank_prev": 32,
   "lac_rank_prev": null,
   "state": "GA",
-  "city": "Atlanta"
+  "city": "Atlanta",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 33,
@@ -1548,7 +1612,9 @@
   "usnews_rank_prev": 32,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "New York"
+  "city": "New York",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 34,
@@ -1595,7 +1661,9 @@
   "usnews_rank_prev": 32,
   "lac_rank_prev": null,
   "state": "CA",
-  "city": "Davis"
+  "city": "Davis",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 35,
@@ -1650,7 +1718,9 @@
   "usnews_rank_prev": 32,
   "lac_rank_prev": null,
   "state": "CA",
-  "city": "Irvine"
+  "city": "Irvine",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 36,
@@ -1696,7 +1766,9 @@
   "usnews_rank_prev": 36,
   "lac_rank_prev": null,
   "state": "MA",
-  "city": "Chestnut Hill"
+  "city": "Chestnut Hill",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 37,
@@ -1745,7 +1817,9 @@
   "usnews_rank_prev": 36,
   "lac_rank_prev": null,
   "state": "MA",
-  "city": "Medford"
+  "city": "Medford",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 38,
@@ -1798,7 +1872,9 @@
   "usnews_rank_prev": 36,
   "lac_rank_prev": null,
   "state": "IL",
-  "city": "Champaign"
+  "city": "Champaign",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 39,
@@ -1840,7 +1916,9 @@
   "usnews_rank_prev": 36,
   "lac_rank_prev": null,
   "state": "WI",
-  "city": "Madison"
+  "city": "Madison",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 40,
@@ -1882,7 +1960,9 @@
   "usnews_rank_prev": 40,
   "lac_rank_prev": null,
   "state": "CA",
-  "city": "Santa Barbara"
+  "city": "Santa Barbara",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 41,
@@ -1926,7 +2006,9 @@
   "usnews_rank_prev": 41,
   "lac_rank_prev": null,
   "state": "OH",
-  "city": "Columbus"
+  "city": "Columbus",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 42,
@@ -1974,7 +2056,9 @@
   "usnews_rank_prev": 42,
   "lac_rank_prev": null,
   "state": "MA",
-  "city": "Boston"
+  "city": "Boston",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 43,
@@ -2020,7 +2104,9 @@
   "usnews_rank_prev": 42,
   "lac_rank_prev": null,
   "state": "NJ",
-  "city": "New Brunswick"
+  "city": "New Brunswick",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 44,
@@ -2066,7 +2152,9 @@
   "usnews_rank_prev": 42,
   "lac_rank_prev": null,
   "state": "MD",
-  "city": "College Park"
+  "city": "College Park",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 45,
@@ -2115,7 +2203,9 @@
   "usnews_rank_prev": 42,
   "lac_rank_prev": null,
   "state": "WA",
-  "city": "Seattle"
+  "city": "Seattle",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 46,
@@ -2157,7 +2247,9 @@
   "usnews_rank_prev": 46,
   "lac_rank_prev": null,
   "state": "PA",
-  "city": "Bethlehem"
+  "city": "Bethlehem",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 47,
@@ -2204,7 +2296,9 @@
   "usnews_rank_prev": 46,
   "lac_rank_prev": null,
   "state": "MA",
-  "city": "Boston"
+  "city": "Boston",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 48,
@@ -2255,7 +2349,9 @@
   "usnews_rank_prev": 46,
   "lac_rank_prev": null,
   "state": "IN",
-  "city": "West Lafayette"
+  "city": "West Lafayette",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 49,
@@ -2294,7 +2390,9 @@
   "usnews_rank_prev": 46,
   "lac_rank_prev": null,
   "state": "GA",
-  "city": "Athens"
+  "city": "Athens",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 50,
@@ -2338,7 +2436,9 @@
   "usnews_rank_prev": 46,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "Rochester"
+  "city": "Rochester",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 51,
@@ -2384,7 +2484,9 @@
   "usnews_rank_prev": 51,
   "lac_rank_prev": null,
   "state": "OH",
-  "city": "Cleveland"
+  "city": "Cleveland",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 52,
@@ -2422,7 +2524,9 @@
   "usnews_rank_prev": 51,
   "lac_rank_prev": null,
   "state": "FL",
-  "city": "Tallahassee"
+  "city": "Tallahassee",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 53,
@@ -2468,7 +2572,9 @@
   "usnews_rank_prev": 51,
   "lac_rank_prev": null,
   "state": "TX",
-  "city": "College Station"
+  "city": "College Station",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 54,
@@ -2515,7 +2621,9 @@
   "usnews_rank_prev": 51,
   "lac_rank_prev": null,
   "state": "VA",
-  "city": "Blacksburg"
+  "city": "Blacksburg",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 55,
@@ -2557,7 +2665,9 @@
   "usnews_rank_prev": 51,
   "lac_rank_prev": null,
   "state": "NC",
-  "city": "Winston-Salem"
+  "city": "Winston-Salem",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 56,
@@ -2608,7 +2718,9 @@
   "usnews_rank_prev": 51,
   "lac_rank_prev": null,
   "state": "VA",
-  "city": "Williamsburg"
+  "city": "Williamsburg",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 57,
@@ -2648,7 +2760,9 @@
   "usnews_rank_prev": 57,
   "lac_rank_prev": null,
   "state": "CA",
-  "city": "Merced"
+  "city": "Merced",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 58,
@@ -2696,7 +2810,9 @@
   "usnews_rank_prev": 57,
   "lac_rank_prev": null,
   "state": "PA",
-  "city": "Villanova"
+  "city": "Villanova",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 59,
@@ -2745,7 +2861,9 @@
   "usnews_rank_prev": 59,
   "lac_rank_prev": null,
   "state": "DC",
-  "city": "Washington"
+  "city": "Washington",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 60,
@@ -2786,7 +2904,9 @@
   "usnews_rank_prev": 59,
   "lac_rank_prev": null,
   "state": "PA",
-  "city": "University Park"
+  "city": "University Park",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 61,
@@ -2837,7 +2957,9 @@
   "usnews_rank_prev": 59,
   "lac_rank_prev": null,
   "state": "CA",
-  "city": "Santa Clara"
+  "city": "Santa Clara",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 62,
@@ -2881,7 +3003,9 @@
   "usnews_rank_prev": 59,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "Stony Brook"
+  "city": "Stony Brook",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 63,
@@ -2930,7 +3054,9 @@
   "usnews_rank_prev": 59,
   "lac_rank_prev": null,
   "state": "MN",
-  "city": "Minneapolis"
+  "city": "Minneapolis",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 64,
@@ -2977,7 +3103,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 1,
   "state": "MA",
-  "city": "Williamstown"
+  "city": "Williamstown",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 65,
@@ -3026,7 +3154,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 2,
   "state": "MA",
-  "city": "Amherst"
+  "city": "Amherst",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 66,
@@ -3074,7 +3204,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 4,
   "state": "PA",
-  "city": "Swarthmore"
+  "city": "Swarthmore",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 67,
@@ -3124,7 +3256,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 5,
   "state": "ME",
-  "city": "Brunswick"
+  "city": "Brunswick",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 68,
@@ -3172,7 +3306,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 7,
   "state": "CA",
-  "city": "Claremont"
+  "city": "Claremont",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 69,
@@ -3222,7 +3358,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 7,
   "state": "CA",
-  "city": "Claremont"
+  "city": "Claremont",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 70,
@@ -3268,7 +3406,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 7,
   "state": "MA",
-  "city": "Wellesley"
+  "city": "Wellesley",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 71,
@@ -3318,7 +3458,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 10,
   "state": "MN",
-  "city": "Northfield"
+  "city": "Northfield",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 72,
@@ -3363,7 +3505,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 10,
   "state": "CA",
-  "city": "Claremont"
+  "city": "Claremont",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 73,
@@ -3410,7 +3554,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 13,
   "state": "NY",
-  "city": "New York"
+  "city": "New York",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 74,
@@ -3455,7 +3601,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 13,
   "state": "NC",
-  "city": "Davidson"
+  "city": "Davidson",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 75,
@@ -3500,7 +3648,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 13,
   "state": "IA",
-  "city": "Grinnell"
+  "city": "Grinnell",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 76,
@@ -3545,7 +3695,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 13,
   "state": "NY",
-  "city": "Clinton"
+  "city": "Clinton",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 77,
@@ -3593,7 +3745,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 13,
   "state": "VT",
-  "city": "Middlebury"
+  "city": "Middlebury",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 78,
@@ -3640,7 +3794,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 13,
   "state": "MA",
-  "city": "Northampton"
+  "city": "Northampton",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 79,
@@ -3689,7 +3845,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 13,
   "state": "NY",
-  "city": "Poughkeepsie"
+  "city": "Poughkeepsie",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 80,
@@ -3732,7 +3890,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 13,
   "state": "CT",
-  "city": "Middletown"
+  "city": "Middletown",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 81,
@@ -3778,7 +3938,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 21,
   "state": "VA",
-  "city": "Lexington"
+  "city": "Lexington",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 82,
@@ -3823,7 +3985,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 22,
   "state": "NY",
-  "city": "Hamilton"
+  "city": "Hamilton",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 83,
@@ -3867,7 +4031,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 22,
   "state": "VA",
-  "city": "University of Richmond"
+  "city": "University of Richmond",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 84,
@@ -3917,7 +4083,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 24,
   "state": "ME",
-  "city": "Lewiston"
+  "city": "Lewiston",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 85,
@@ -3955,7 +4123,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 24,
   "state": "ME",
-  "city": "Waterville"
+  "city": "Waterville",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 86,
@@ -4003,7 +4173,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 24,
   "state": "PA",
-  "city": "Haverford"
+  "city": "Haverford",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 87,
@@ -4051,7 +4223,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 27,
   "state": "MA",
-  "city": "Worcester"
+  "city": "Worcester",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 88,
@@ -4095,7 +4269,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 28,
   "state": "MN",
-  "city": "Saint Paul"
+  "city": "Saint Paul",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 89,
@@ -4141,7 +4317,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 29,
   "state": "MA",
-  "city": "South Hadley"
+  "city": "South Hadley",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 90,
@@ -4187,7 +4365,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 30,
   "state": "PA",
-  "city": "Bryn Mawr"
+  "city": "Bryn Mawr",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 91,
@@ -4239,7 +4419,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 30,
   "state": "PA",
-  "city": "Lewisburg"
+  "city": "Lewisburg",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 92,
@@ -4280,7 +4462,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 30,
   "state": "CO",
-  "city": "Colorado Springs"
+  "city": "Colorado Springs",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 93,
@@ -4324,7 +4508,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 30,
   "state": "PA",
-  "city": "Easton"
+  "city": "Easton",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 94,
@@ -4370,7 +4556,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 34,
   "state": "OH",
-  "city": "Granville"
+  "city": "Granville",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 95,
@@ -4416,7 +4604,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 35,
   "state": "PA",
-  "city": "Lancaster"
+  "city": "Lancaster",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 96,
@@ -4462,7 +4652,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 35,
   "state": "CA",
-  "city": "Los Angeles"
+  "city": "Los Angeles",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 97,
@@ -4509,7 +4701,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 37,
   "state": "CA",
-  "city": "Claremont"
+  "city": "Claremont",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 98,
@@ -4555,7 +4749,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": 37,
   "state": "CA",
-  "city": "Claremont"
+  "city": "Claremont",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 99,
@@ -4613,7 +4809,9 @@
   "usnews_rank_prev": 73,
   "lac_rank_prev": null,
   "state": "IN",
-  "city": "Bloomington"
+  "city": "Bloomington",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 100,
@@ -4671,7 +4869,9 @@
   "usnews_rank_prev": 64,
   "lac_rank_prev": null,
   "state": "MI",
-  "city": "East Lansing"
+  "city": "East Lansing",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 101,
@@ -4738,7 +4938,9 @@
   "usnews_rank_prev": 64,
   "lac_rank_prev": null,
   "state": "NC",
-  "city": "Raleigh"
+  "city": "Raleigh",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 102,
@@ -4806,7 +5008,9 @@
   "usnews_rank_prev": 64,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "Troy"
+  "city": "Troy",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 103,
@@ -4868,7 +5072,9 @@
   "usnews_rank_prev": 64,
   "lac_rank_prev": null,
   "state": "MA",
-  "city": "Amherst"
+  "city": "Amherst",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 104,
@@ -4934,7 +5140,9 @@
   "usnews_rank_prev": 64,
   "lac_rank_prev": null,
   "state": "FL",
-  "city": "Coral Gables"
+  "city": "Coral Gables",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 105,
@@ -4992,7 +5200,9 @@
   "usnews_rank_prev": 69,
   "lac_rank_prev": null,
   "state": "MA",
-  "city": "Waltham"
+  "city": "Waltham",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 106,
@@ -5052,7 +5262,9 @@
   "usnews_rank_prev": 69,
   "lac_rank_prev": null,
   "state": "LA",
-  "city": "New Orleans"
+  "city": "New Orleans",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 107,
@@ -5113,7 +5325,9 @@
   "usnews_rank_prev": 69,
   "lac_rank_prev": null,
   "state": "CT",
-  "city": "Storrs"
+  "city": "Storrs",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 108,
@@ -5176,7 +5390,9 @@
   "usnews_rank_prev": 69,
   "lac_rank_prev": null,
   "state": "PA",
-  "city": "Pittsburgh"
+  "city": "Pittsburgh",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 109,
@@ -5236,7 +5452,9 @@
   "usnews_rank_prev": 73,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "Vestal"
+  "city": "Vestal",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 110,
@@ -5297,7 +5515,9 @@
   "usnews_rank_prev": 75,
   "lac_rank_prev": null,
   "state": "SC",
-  "city": "Clemson"
+  "city": "Clemson",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 111,
@@ -5358,7 +5578,9 @@
   "usnews_rank_prev": 75,
   "lac_rank_prev": null,
   "state": "NJ",
-  "city": "Newark"
+  "city": "Newark",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 112,
@@ -5429,7 +5651,9 @@
   "usnews_rank_prev": 75,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "Syracuse"
+  "city": "Syracuse",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 113,
@@ -5490,7 +5714,9 @@
   "usnews_rank_prev": 75,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "Buffalo"
+  "city": "Buffalo",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 114,
@@ -5547,7 +5773,9 @@
   "usnews_rank_prev": 75,
   "lac_rank_prev": null,
   "state": "CA",
-  "city": "Riverside"
+  "city": "Riverside",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 115,
@@ -5604,7 +5832,9 @@
   "usnews_rank_prev": 80,
   "lac_rank_prev": null,
   "state": "CO",
-  "city": "Golden"
+  "city": "Golden",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 116,
@@ -5669,7 +5899,9 @@
   "usnews_rank_prev": 80,
   "lac_rank_prev": null,
   "state": "PA",
-  "city": "Philadelphia"
+  "city": "Philadelphia",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 117,
@@ -5729,7 +5961,9 @@
   "usnews_rank_prev": 80,
   "lac_rank_prev": null,
   "state": "NJ",
-  "city": "Newark"
+  "city": "Newark",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 118,
@@ -5787,7 +6021,9 @@
   "usnews_rank_prev": 80,
   "lac_rank_prev": null,
   "state": "NJ",
-  "city": "Hoboken"
+  "city": "Hoboken",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 119,
@@ -5851,7 +6087,9 @@
   "usnews_rank_prev": 84,
   "lac_rank_prev": null,
   "state": "CA",
-  "city": "Malibu"
+  "city": "Malibu",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 120,
@@ -5912,7 +6150,9 @@
   "usnews_rank_prev": 84,
   "lac_rank_prev": null,
   "state": "IL",
-  "city": "Chicago"
+  "city": "Chicago",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 121,
@@ -5969,7 +6209,9 @@
   "usnews_rank_prev": 84,
   "lac_rank_prev": null,
   "state": "MA",
-  "city": "Worcester"
+  "city": "Worcester",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 122,
@@ -6031,7 +6273,9 @@
   "usnews_rank_prev": 84,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "New York"
+  "city": "New York",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 123,
@@ -6089,7 +6333,9 @@
   "usnews_rank_prev": 88,
   "lac_rank_prev": null,
   "state": "DC",
-  "city": "Washington"
+  "city": "Washington",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 124,
@@ -6150,7 +6396,9 @@
   "usnews_rank_prev": 88,
   "lac_rank_prev": null,
   "state": "TX",
-  "city": "Waco"
+  "city": "Waco",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 125,
@@ -6208,7 +6456,9 @@
   "usnews_rank_prev": 88,
   "lac_rank_prev": null,
   "state": "DC",
-  "city": "Washington"
+  "city": "Washington",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 126,
@@ -6265,7 +6515,9 @@
   "usnews_rank_prev": 88,
   "lac_rank_prev": null,
   "state": "WI",
-  "city": "Milwaukee"
+  "city": "Milwaukee",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 127,
@@ -6330,7 +6582,9 @@
   "usnews_rank_prev": 88,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "Rochester"
+  "city": "Rochester",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 128,
@@ -6394,7 +6648,9 @@
   "usnews_rank_prev": 88,
   "lac_rank_prev": null,
   "state": "TX",
-  "city": "Dallas"
+  "city": "Dallas",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 129,
@@ -6455,7 +6711,9 @@
   "usnews_rank_prev": 88,
   "lac_rank_prev": null,
   "state": "CA",
-  "city": "Santa Cruz"
+  "city": "Santa Cruz",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 130,
@@ -6518,7 +6776,9 @@
   "usnews_rank_prev": 88,
   "lac_rank_prev": null,
   "state": "DE",
-  "city": "Newark"
+  "city": "Newark",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 131,
@@ -6578,7 +6838,9 @@
   "usnews_rank_prev": 88,
   "lac_rank_prev": null,
   "state": "FL",
-  "city": "Tampa"
+  "city": "Tampa",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 132,
@@ -6637,7 +6899,9 @@
   "usnews_rank_prev": 97,
   "lac_rank_prev": null,
   "state": "FL",
-  "city": "Miami"
+  "city": "Miami",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 133,
@@ -6696,7 +6960,9 @@
   "usnews_rank_prev": 97,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "Bronx"
+  "city": "Bronx",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 134,
@@ -6756,7 +7022,9 @@
   "usnews_rank_prev": 97,
   "lac_rank_prev": null,
   "state": "NJ",
-  "city": "Camden"
+  "city": "Camden",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 135,
@@ -6816,7 +7084,9 @@
   "usnews_rank_prev": 97,
   "lac_rank_prev": null,
   "state": "TX",
-  "city": "Fort Worth"
+  "city": "Fort Worth",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 136,
@@ -6878,7 +7148,9 @@
   "usnews_rank_prev": 97,
   "lac_rank_prev": null,
   "state": "CO",
-  "city": "Boulder"
+  "city": "Boulder",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 137,
@@ -6950,7 +7222,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "Brooklyn"
+  "city": "Brooklyn",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 138,
@@ -7014,7 +7288,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "New York"
+  "city": "New York",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 139,
@@ -7080,7 +7356,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": null,
   "state": "RI",
-  "city": "Providence"
+  "city": "Providence",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 140,
@@ -7143,7 +7421,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": null,
   "state": "CA",
-  "city": "Valencia"
+  "city": "Valencia",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 141,
@@ -7209,7 +7489,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "New York"
+  "city": "New York",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 142,
@@ -7273,7 +7555,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": null,
   "state": "IL",
-  "city": "Chicago"
+  "city": "Chicago",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 143,
@@ -7336,7 +7620,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "New York"
+  "city": "New York",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 144,
@@ -7406,7 +7692,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": null,
   "state": "NY",
-  "city": "New York"
+  "city": "New York",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 145,
@@ -7470,7 +7758,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": null,
   "state": "MD",
-  "city": "Baltimore"
+  "city": "Baltimore",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 146,
@@ -7536,7 +7826,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": null,
   "state": "GA",
-  "city": "Savannah"
+  "city": "Savannah",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "id": 147,
@@ -7600,7 +7892,9 @@
   "usnews_rank_prev": null,
   "lac_rank_prev": null,
   "state": "MA",
-  "city": "Boston"
+  "city": "Boston",
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -7654,7 +7948,9 @@
     27,
     31
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -7708,7 +8004,9 @@
     23,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -7762,7 +8060,9 @@
     26,
     31
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -7816,7 +8116,9 @@
     28,
     31
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -7870,7 +8172,9 @@
     26,
     31
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -7924,7 +8228,9 @@
     23,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -7978,7 +8284,9 @@
     25,
     31
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8032,7 +8340,9 @@
     21,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8073,7 +8383,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 5671,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8127,7 +8439,9 @@
     29,
     32
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8181,7 +8495,9 @@
     28,
     32
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8222,7 +8538,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 20970,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8276,7 +8594,9 @@
     26,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8330,7 +8650,9 @@
     25,
     31
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8384,7 +8706,9 @@
     28,
     32
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8438,7 +8762,9 @@
     21,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8492,7 +8818,9 @@
     23,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8546,7 +8874,9 @@
     23,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8600,7 +8930,9 @@
     25,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8641,7 +8973,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 64674,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8695,7 +9029,9 @@
     25,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8749,7 +9085,9 @@
     27,
     32
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8803,7 +9141,9 @@
     24,
     32
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8844,7 +9184,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 12564,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8898,7 +9240,9 @@
     21,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -8952,7 +9296,9 @@
     25,
     31
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9006,7 +9352,9 @@
     28,
     33
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9060,7 +9408,9 @@
     26,
     32
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9114,7 +9464,9 @@
     23,
     32
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9168,7 +9520,9 @@
     25,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9222,7 +9576,9 @@
     25,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9276,7 +9632,9 @@
     30,
     32
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9317,7 +9675,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 35924,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9371,7 +9731,9 @@
     24,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9425,7 +9787,9 @@
     28,
     31
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9466,7 +9830,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 35377,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9507,7 +9873,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 27601,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9561,7 +9929,9 @@
     24,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9615,7 +9985,9 @@
     23,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9669,7 +10041,9 @@
     23,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9723,7 +10097,9 @@
     25,
     31
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9777,7 +10153,9 @@
     25,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9818,7 +10196,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 19562,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9872,7 +10252,9 @@
     25,
     31
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9913,7 +10295,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 3154,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -9967,7 +10351,9 @@
     20,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10021,7 +10407,9 @@
     21,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10075,7 +10463,9 @@
     25,
     32
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10125,7 +10515,9 @@
     520,
     650
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10175,7 +10567,9 @@
     540,
     700
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10216,7 +10610,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 38546,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10270,7 +10666,9 @@
     26,
     32
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10324,7 +10722,9 @@
     20,
     27
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10374,7 +10774,9 @@
     480,
     620
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10428,7 +10830,9 @@
     24,
     31
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10482,7 +10886,9 @@
     25,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10536,7 +10942,9 @@
     27,
     32
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10590,7 +10998,9 @@
     24,
     31
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10644,7 +11054,9 @@
     25,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10698,7 +11110,9 @@
     22,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10739,7 +11153,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 3574,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10793,7 +11209,9 @@
     26,
     31
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10834,7 +11252,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 25538,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10888,7 +11308,9 @@
     25,
     31
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10942,7 +11364,9 @@
     24,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -10996,7 +11420,9 @@
     22,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11050,7 +11476,9 @@
     21,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11100,7 +11528,9 @@
     550,
     700
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11154,7 +11584,9 @@
     23,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11208,7 +11640,9 @@
     24,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11262,7 +11696,9 @@
     19,
     27
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11316,7 +11752,9 @@
     21,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11370,7 +11808,9 @@
     22,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11424,7 +11864,9 @@
     23,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11478,7 +11920,9 @@
     17,
     25
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11532,7 +11976,9 @@
     23,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11586,7 +12032,9 @@
     24,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11640,7 +12088,9 @@
     19,
     26
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11694,7 +12144,9 @@
     28,
     32
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11748,7 +12200,9 @@
     20,
     27
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11802,7 +12256,9 @@
     23,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11856,7 +12312,9 @@
     22,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11910,7 +12368,9 @@
     21,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -11951,7 +12411,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 21099,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12005,7 +12467,9 @@
     21,
     26
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12059,7 +12523,9 @@
     24,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12113,7 +12579,9 @@
     22,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12154,7 +12622,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 7087,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12208,7 +12678,9 @@
     22,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12262,7 +12734,9 @@
     18,
     25
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12316,7 +12790,9 @@
     24,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12357,7 +12833,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 21605,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12411,7 +12889,9 @@
     21,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12465,7 +12945,9 @@
     18,
     25
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12519,7 +13001,9 @@
     22,
     27
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12573,7 +13057,9 @@
     19,
     27
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12627,7 +13113,9 @@
     22,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12681,7 +13169,9 @@
     21,
     27
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12735,7 +13225,9 @@
     21,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12789,7 +13281,9 @@
     24,
     32
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12843,7 +13337,9 @@
     17,
     23
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12897,7 +13393,9 @@
     19,
     26
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -12951,7 +13449,9 @@
     24,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13005,7 +13505,9 @@
     20,
     24
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13059,7 +13561,9 @@
     19,
     25
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13100,7 +13604,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 9981,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13154,7 +13660,9 @@
     24,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13208,7 +13716,9 @@
     20,
     26
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13262,7 +13772,9 @@
     23,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13316,7 +13828,9 @@
     18,
     25
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13370,7 +13884,9 @@
     18,
     25
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13424,7 +13940,9 @@
     19,
     26
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13478,7 +13996,9 @@
     19,
     25
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13532,7 +14052,9 @@
     17,
     24
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13586,7 +14108,9 @@
     19,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13640,7 +14164,9 @@
     24,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13694,7 +14220,9 @@
     19,
     25
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13748,7 +14276,9 @@
     15,
     21
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13789,7 +14319,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 7944,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13843,7 +14375,9 @@
     21,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13897,7 +14431,9 @@
     21,
     27
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -13951,7 +14487,9 @@
     24,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14005,7 +14543,9 @@
     17,
     22
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14046,7 +14586,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 8496,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14100,7 +14642,9 @@
     19,
     26
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14141,7 +14685,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 8179,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14195,7 +14741,9 @@
     20,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14236,7 +14784,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 22903,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14286,7 +14836,9 @@
     540,
     645
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14327,7 +14879,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 12568,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14381,7 +14935,9 @@
     24,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14435,7 +14991,9 @@
     19,
     25
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14489,7 +15047,9 @@
     24,
     30
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14530,7 +15090,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 3005,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14584,7 +15146,9 @@
     18,
     24
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14630,7 +15194,9 @@
     18,
     25
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14684,7 +15250,9 @@
     20,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14738,7 +15306,9 @@
     17,
     25
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14779,7 +15349,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 17674,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14825,7 +15397,9 @@
     19,
     26
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14879,7 +15453,9 @@
     22,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14933,7 +15509,9 @@
     21,
     27
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -14974,7 +15552,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 11301,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15024,7 +15604,9 @@
     540,
     640
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15070,7 +15652,9 @@
     20,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15111,7 +15695,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 4440,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15161,7 +15747,9 @@
     460,
     565
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15215,7 +15803,9 @@
     19,
     26
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15269,7 +15859,9 @@
     18,
     23
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15323,7 +15915,9 @@
     24,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15364,7 +15958,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 3603,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15405,7 +16001,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 5735,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15459,7 +16057,9 @@
     19,
     26
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15513,7 +16113,9 @@
     19,
     26
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15567,7 +16169,9 @@
     23,
     28
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15621,7 +16225,9 @@
     22,
     29
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15675,7 +16281,9 @@
     28,
     32
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15729,7 +16337,9 @@
     25,
     31
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -15783,7 +16393,9 @@
     22,
     29
    ]
-  }
+  },
+  "regional_list": "ru-south",
+  "regional_rank": 31
  },
  {
   "sat_mid50_high": null,
@@ -15837,7 +16449,9 @@
     21,
     27
    ]
-  }
+  },
+  "regional_list": "ru-south",
+  "regional_rank": 4
  },
  {
   "sat_mid50_high": null,
@@ -15891,7 +16505,9 @@
     28,
     31
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 2
  },
  {
   "sat_mid50_high": null,
@@ -15932,7 +16548,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 7468,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": "ru-north",
+  "regional_rank": 45
  },
  {
   "sat_mid50_high": null,
@@ -15986,7 +16604,9 @@
     27,
     28
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 8
  },
  {
   "sat_mid50_high": null,
@@ -16036,7 +16656,9 @@
     550,
     690
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 9
  },
  {
   "sat_mid50_high": null,
@@ -16086,7 +16708,9 @@
     460,
     660
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 39
  },
  {
   "sat_mid50_high": null,
@@ -16136,7 +16760,9 @@
     480,
     620
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 16
  },
  {
   "sat_mid50_high": null,
@@ -16186,7 +16812,9 @@
     460,
     570
    ]
-  }
+  },
+  "regional_list": "rc-north",
+  "regional_rank": 30
  },
  {
   "sat_mid50_high": null,
@@ -16236,7 +16864,9 @@
     500,
     650
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 39
  },
  {
   "sat_mid50_high": null,
@@ -16277,7 +16907,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 21996,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": "ru-west",
+  "regional_rank": 1
  },
  {
   "sat_mid50_high": null,
@@ -16318,7 +16950,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 25042,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": "ru-west",
+  "regional_rank": 2
  },
  {
   "sat_mid50_high": null,
@@ -16359,7 +16993,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 13631,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": "ru-west",
+  "regional_rank": 16
  },
  {
   "sat_mid50_high": null,
@@ -16400,7 +17036,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 32691,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": "ru-west",
+  "regional_rank": 17
  },
  {
   "sat_mid50_high": null,
@@ -16441,7 +17079,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 14877,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": "ru-west",
+  "regional_rank": 20
  },
  {
   "sat_mid50_high": null,
@@ -16495,7 +17135,9 @@
     24,
     30
    ]
-  }
+  },
+  "regional_list": "ru-midwest",
+  "regional_rank": 3
  },
  {
   "sat_mid50_high": null,
@@ -16549,7 +17191,9 @@
     22,
     29
    ]
-  }
+  },
+  "regional_list": "ru-midwest",
+  "regional_rank": 23
  },
  {
   "sat_mid50_high": null,
@@ -16603,7 +17247,9 @@
     21,
     26
    ]
-  }
+  },
+  "regional_list": "ru-south",
+  "regional_rank": 37
  },
  {
   "sat_mid50_high": null,
@@ -16657,7 +17303,9 @@
     25,
     30
    ]
-  }
+  },
+  "regional_list": "ru-south",
+  "regional_rank": 8
  },
  {
   "sat_mid50_high": null,
@@ -16698,7 +17346,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 5368,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": "rc-midwest",
+  "regional_rank": 42
  },
  {
   "sat_mid50_high": null,
@@ -16752,7 +17402,9 @@
     19,
     25
    ]
-  }
+  },
+  "regional_list": "ru-south",
+  "regional_rank": 32
  },
  {
   "sat_mid50_high": null,
@@ -16806,7 +17458,9 @@
     18,
     27
    ]
-  }
+  },
+  "regional_list": "ru-midwest",
+  "regional_rank": 84
  },
  {
   "sat_mid50_high": null,
@@ -16860,7 +17514,9 @@
     23,
     30
    ]
-  }
+  },
+  "regional_list": "ru-midwest",
+  "regional_rank": 10
  },
  {
   "sat_mid50_high": null,
@@ -16914,7 +17570,9 @@
     24,
     30
    ]
-  }
+  },
+  "regional_list": "ru-south",
+  "regional_rank": 2
  },
  {
   "sat_mid50_high": null,
@@ -16968,7 +17626,9 @@
     24,
     29
    ]
-  }
+  },
+  "regional_list": "rc-west",
+  "regional_rank": 2
  },
  {
   "sat_mid50_high": null,
@@ -17022,7 +17682,9 @@
     29,
     32
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -17076,7 +17738,9 @@
     25,
     30
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 19
  },
  {
   "sat_mid50_high": null,
@@ -17130,7 +17794,9 @@
     20,
     25
    ]
-  }
+  },
+  "regional_list": "ru-south",
+  "regional_rank": 22
  },
  {
   "sat_mid50_high": null,
@@ -17171,7 +17837,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 11344,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": "rc-south",
+  "regional_rank": 52
  },
  {
   "sat_mid50_high": null,
@@ -17225,7 +17893,9 @@
     22,
     30
    ]
-  }
+  },
+  "regional_list": "ru-midwest",
+  "regional_rank": 15
  },
  {
   "sat_mid50_high": null,
@@ -17279,7 +17949,9 @@
     13,
     22
    ]
-  }
+  },
+  "regional_list": "ru-south",
+  "regional_rank": 8
  },
  {
   "sat_mid50_high": null,
@@ -17333,7 +18005,9 @@
     24,
     33
    ]
-  }
+  },
+  "regional_list": "ru-south",
+  "regional_rank": 5
  },
  {
   "sat_mid50_high": null,
@@ -17387,7 +18061,9 @@
     27,
     30
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 11
  },
  {
   "sat_mid50_high": null,
@@ -17441,7 +18117,9 @@
     22,
     27
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 98
  },
  {
   "sat_mid50_high": null,
@@ -17495,7 +18173,9 @@
     21,
     30
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 89
  },
  {
   "sat_mid50_high": null,
@@ -17549,7 +18229,9 @@
     28,
     32
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 6
  },
  {
   "sat_mid50_high": null,
@@ -17603,7 +18285,9 @@
     25,
     31
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 6
  },
  {
   "sat_mid50_high": null,
@@ -17657,7 +18341,9 @@
     26,
     30
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 39
  },
  {
   "sat_mid50_high": null,
@@ -17698,7 +18384,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 3916,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": "ru-north",
+  "regional_rank": 25
  },
  {
   "sat_mid50_high": null,
@@ -17752,7 +18440,9 @@
     20,
     26
    ]
-  }
+  },
+  "regional_list": "ru-south",
+  "regional_rank": 16
  },
  {
   "sat_mid50_high": null,
@@ -17798,7 +18488,9 @@
     21,
     25
    ]
-  }
+  },
+  "regional_list": "ru-midwest",
+  "regional_rank": 55
  },
  {
   "sat_mid50_high": null,
@@ -17852,7 +18544,9 @@
     22,
     28
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 39
  },
  {
   "sat_mid50_high": null,
@@ -17906,7 +18600,9 @@
     22,
     28
    ]
-  }
+  },
+  "regional_list": "ru-west",
+  "regional_rank": 38
  },
  {
   "sat_mid50_high": null,
@@ -17960,7 +18656,9 @@
     25,
     32
    ]
-  }
+  },
+  "regional_list": "ru-west",
+  "regional_rank": 9
  },
  {
   "sat_mid50_high": null,
@@ -18014,7 +18712,9 @@
     29,
     32
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 3
  },
  {
   "sat_mid50_high": null,
@@ -18068,7 +18768,9 @@
     27,
     31
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 45
  },
  {
   "sat_mid50_high": null,
@@ -18122,7 +18824,9 @@
     24,
     29
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 25
  },
  {
   "sat_mid50_high": null,
@@ -18163,7 +18867,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 3096,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": "ru-midwest",
+  "regional_rank": 42
  },
  {
   "sat_mid50_high": null,
@@ -18217,7 +18923,9 @@
     17,
     24
    ]
-  }
+  },
+  "regional_list": "ru-west",
+  "regional_rank": 48
  },
  {
   "sat_mid50_high": null,
@@ -18271,7 +18979,9 @@
     27,
     33
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 11
  },
  {
   "sat_mid50_high": null,
@@ -18312,7 +19022,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 4813,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -18366,7 +19078,9 @@
     24,
     29
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 56
  },
  {
   "sat_mid50_high": null,
@@ -18407,7 +19121,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 3102,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": "ru-north",
+  "regional_rank": 56
  },
  {
   "sat_mid50_high": null,
@@ -18461,7 +19177,9 @@
     19,
     24
    ]
-  }
+  },
+  "regional_list": null,
+  "regional_rank": null
  },
  {
   "sat_mid50_high": null,
@@ -18502,7 +19220,9 @@
   "lac_rank": null,
   "source_kind": "scorecard",
   "ugds": 10572,
-  "test_ranges": null
+  "test_ranges": null,
+  "regional_list": "ru-south",
+  "regional_rank": 11
  },
  {
   "sat_mid50_high": null,
@@ -18556,7 +19276,9 @@
     19,
     27
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 13
  },
  {
   "sat_mid50_high": null,
@@ -18602,7 +19324,9 @@
     18,
     24
    ]
-  }
+  },
+  "regional_list": "ru-west",
+  "regional_rank": 55
  },
  {
   "sat_mid50_high": null,
@@ -18656,7 +19380,9 @@
     19,
     25
    ]
-  }
+  },
+  "regional_list": "ru-south",
+  "regional_rank": 48
  },
  {
   "sat_mid50_high": null,
@@ -18710,7 +19436,9 @@
     20,
     26
    ]
-  }
+  },
+  "regional_list": "ru-south",
+  "regional_rank": 35
  },
  {
   "sat_mid50_high": null,
@@ -18764,7 +19492,9 @@
     27,
     31
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 22
  },
  {
   "sat_mid50_high": null,
@@ -18818,7 +19548,9 @@
     19,
     25
    ]
-  }
+  },
+  "regional_list": "ru-south",
+  "regional_rank": 14
  },
  {
   "sat_mid50_high": null,
@@ -18872,7 +19604,9 @@
     16,
     21
    ]
-  }
+  },
+  "regional_list": "ru-south",
+  "regional_rank": 30
  },
  {
   "sat_mid50_high": null,
@@ -18926,7 +19660,9 @@
     24,
     31
    ]
-  }
+  },
+  "regional_list": "ru-west",
+  "regional_rank": 21
  },
  {
   "sat_mid50_high": null,
@@ -18980,6 +19716,8 @@
     21,
     28
    ]
-  }
+  },
+  "regional_list": "ru-north",
+  "regional_rank": 81
  }
 ]

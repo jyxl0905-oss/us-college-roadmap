@@ -137,8 +137,12 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
     [...list].sort((a, b) =>
       sortByIntl
         ? (b.intl_accept_rate ?? -1) - (a.intl_accept_rate ?? -1)
-        : (kind === 'lac' ? (a.lac_rank ?? 999) - (b.lac_rank ?? 999) : kind === 'art' ? a.name.localeCompare(b.name) : (a.usnews_rank ?? 9999) - (b.usnews_rank ?? 9999) || a.name.localeCompare(b.name)),
+        : (kind === 'lac' ? (a.lac_rank ?? 999) - (b.lac_rank ?? 999) : kind === 'art' ? a.name.localeCompare(b.name) : (a.usnews_rank ?? 9999) - (b.usnews_rank ?? 9999) || regionalOrder(a) - regionalOrder(b) || (a.regional_rank ?? 9999) - (b.regional_rank ?? 9999) || a.name.localeCompare(b.name)),
     )
+
+  // 지역 순위 정렬: 지역 대학(북·남·중서·서) → 지역 칼리지 → 순위 없음
+  const REGIONAL_ORDER = ['ru-north', 'ru-south', 'ru-midwest', 'ru-west', 'rc-north', 'rc-south', 'rc-midwest', 'rc-west']
+  const regionalOrder = (s: School) => { const i = REGIONAL_ORDER.indexOf(s.regional_list ?? ''); return i < 0 ? 99 : i }
 
   const chip = (on: boolean) =>
     `shrink-0 rounded-full border-2 px-3 py-1.5 text-sm font-medium transition-colors ${
@@ -272,7 +276,7 @@ export default function SchoolsListPage({ profile, userId, onProfileChange }: Sc
 
         {kind !== 'art' && (
           <p className="mt-2 text-[11px] text-gray-400">
-            {t(`순위: US News ${USNEWS_EDITION} ${kind === 'lac' ? '리버럴 아츠 칼리지' : '종합대학'} 기준 · ▲▼는 ${USNEWS_EDITION - 1}년판 대비`, `Ranks: US News ${USNEWS_EDITION} ${kind === 'lac' ? 'National Liberal Arts Colleges' : 'National Universities'} · ▲▼ vs. ${USNEWS_EDITION - 1} edition`)}
+            {t(`순위: US News ${USNEWS_EDITION} ${kind === 'lac' ? '리버럴 아츠 칼리지' : '종합대학'} 기준${kind === 'lac' ? '' : ' (전국 순위가 없는 학교는 청록색 지역 순위)'} · ▲▼는 ${USNEWS_EDITION - 1}년판 대비`, `Ranks: US News ${USNEWS_EDITION} ${kind === 'lac' ? 'National Liberal Arts Colleges' : 'National Universities'}${kind === 'lac' ? '' : ' (teal = regional rank for schools without a national rank)'} · ▲▼ vs. ${USNEWS_EDITION - 1} edition`)}
           </p>
         )}
 
