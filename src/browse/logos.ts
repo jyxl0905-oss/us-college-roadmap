@@ -236,7 +236,8 @@ const DDG_OVERRIDE = new Set([24, 35, 58])
 const NO_FAVICON = new Set([49, 59])
 
 // 교육부 College Scorecard로 추가한 학교: 공식 사이트 주소(INSTURL)에서 도메인·링크를 가져옴
-const SITES = schoolSites as Record<string, { d: string; u: string }>
+// l = 위키백과 인포박스의 인장·방패 120px 썸네일 (2026-09-28, 정사각형에 가까운 것만 — 없으면 파비콘)
+const SITES = schoolSites as Record<string, { d: string; u: string; l?: string }>
 
 function faviconUrl(schoolId: number): string | null {
   const domain = domains[schoolId] ?? SITES[schoolId]?.d
@@ -247,7 +248,7 @@ function faviconUrl(schoolId: number): string | null {
 
 // 시도 순서: 고해상도 마크 → 파비콘 (SchoolLogo가 onError로 순차 폴백)
 export function schoolLogoSources(schoolId: number): string[] {
-  return [hiResLogos[schoolId], faviconUrl(schoolId)].filter(Boolean) as string[]
+  return [hiResLogos[schoolId] ?? SITES[schoolId]?.l, faviconUrl(schoolId)].filter(Boolean) as string[]
 }
 
 // 학교 공식 웹사이트 — 파비콘용 도메인을 그대로 사용 (전수 검증됨)
