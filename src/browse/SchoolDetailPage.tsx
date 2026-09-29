@@ -166,11 +166,11 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         {/* 교육부 자료만 있는 학교 안내 */}
         {s.source_kind === 'scorecard' && (
           <div className="mt-4 rounded-xl border-2 border-amber-200 bg-amber-50 px-4 py-3 text-[13px] leading-relaxed text-amber-900">
-            <p className="font-semibold">{t('교육부 공식 자료와 입학처 기본 정보로 정리한 학교예요', 'Federal data plus basic admissions information')}</p>
+            <p className="font-semibold">{t('교육부 공식 자료와 입학처·CDS 자료로 정리한 학교예요', 'Federal data plus admissions and CDS information')}</p>
             <p className="mt-0.5 text-amber-800">
               {t(
-                `위치·학부생 수·합격률·학비·졸업률은 미국 교육부 College Scorecard(2026년 6월 발표) 기준이고, 시험 정책·지원 마감·보충 에세이·영어 시험 기준은 각 대학 입학처 공식 페이지에서 정리했어요(2026년 9월). 평가 요소 비중·국제학생 장학금은 아직 정리 전이라 학교 공식 사이트에서 확인해 주세요.`,
-                'Location, enrollment, admit rate, tuition and graduation figures come from the U.S. Department of Education College Scorecard (June 2026 release); test policy, deadlines, supplemental essays and English test requirements come from each college’s official admissions pages (September 2026). Review factors and international aid are not compiled yet — check the school’s official site.',
+                `위치·학부생 수·합격률·학비·졸업률은 미국 교육부 College Scorecard(2026년 6월 발표) 기준이고, 시험 정책·지원 마감·보충 에세이·영어 시험·평가 요소 비중·국제학생 장학금은 각 대학 입학처 페이지와 공식 Common Data Set에서 정리했어요(2026년 9월). 확인하지 못한 항목은 표시하지 않았으니 학교 공식 사이트에서 확인해 주세요.`,
+                'Location, enrollment, admit rate, tuition and graduation figures come from the U.S. Department of Education College Scorecard (June 2026 release); test policy, deadlines, supplemental essays, English tests, review factors and international scholarships come from each college’s admissions pages and official Common Data Set (September 2026). Items we could not verify are not shown — check the school’s official site.',
               )}
               {s.city && s.state ? ` (${s.city}, ${s.state}${s.ugds ? t(` · 학부생 ${s.ugds.toLocaleString()}명`, ` · ${s.ugds.toLocaleString()} undergrads`) : ''})` : ''}
             </p>
