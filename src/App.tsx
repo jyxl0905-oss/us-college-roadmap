@@ -27,7 +27,8 @@ const OnboardingFlow = lazy(() => import('./onboarding/OnboardingFlow'))
 const DevInterestTest = lazy(() => import('./app/InterestTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} profile={d.demoProfile()} /> } }))
 const DevPlansTest = lazy(() => import('./app/PlansTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} majorKey="cs" /> } }))
 const SharedReportPage = lazy(() => import('./share/SharedReportPage'))
-const DevDeleteAccount = lazy(() => import('./account/DeleteAccount'))
+const SettingsPage = lazy(() => import('./account/SettingsPage'))
+const DevSettings = lazy(() => import('./account/SettingsPage').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} email="dev@example.com" profile={d.demoProfile()} onProfileChange={() => {}} /> } }))
 const DevGuideTest = lazy(() => import('./guide/CourseGuidePage').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} profile={d.demoProfile()} /> } }))
 const DevRecTest = lazy(() => import('./app/RecommendersTab').then(async (m) => { const d = await import('./demo/demoProfile'); return { default: () => <m.default userId={d.DEMO_USER_ID} profile={d.demoProfile()} /> } }))
 const ReportView = lazy(() => import('./report/ReportView'))
@@ -659,6 +660,14 @@ function AppRoutes() {
     }
     return <Redirect to="/" />
   }
+  // 설정 — 계정·알림·화면·공유·개인정보·로그아웃·계정 삭제 (로그인 전용)
+  if (path === '/settings' || path === '/settings/') {
+    // 개발 전용: /settings?settingstest 로 로그인 없이 화면 확인 (저장 안 함, 프로덕션 빌드에서 제거됨)
+    if (import.meta.env.DEV && window.location.search.includes('settingstest')) return <DevSettings />
+    if (profileErrorScreen) return profileErrorScreen
+    if (session && profile) return <SettingsPage userId={session.user.id} email={session.user.email ?? null} profile={profile} onProfileChange={setProfile} />
+    return <Redirect to="/" />
+  }
   // F3: 마감 캘린더 (로그인 전용)
   if (path === '/targets' || path === '/targets/') {
     if (session && profile) return <TargetsPage userId={session.user.id} profile={profile} />
@@ -708,7 +717,6 @@ function AppRoutes() {
   if (import.meta.env.DEV && window.location.search.includes('interesttest')) return <DevInterestTest />
   if (import.meta.env.DEV && window.location.search.includes('planstest')) return <DevPlansTest />
   if (import.meta.env.DEV && window.location.search.includes('guidetest')) return <DevGuideTest />
-  if (import.meta.env.DEV && window.location.search.includes('deltest')) return <div className="mx-auto max-w-md px-5 py-6"><DevDeleteAccount userId="dev" /></div>
 
   if (profileErrorScreen) return profileErrorScreen
 

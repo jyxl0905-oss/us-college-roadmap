@@ -3,5 +3,7 @@ Allow: /
 Disallow: /admin
 Disallow: /s/
 Disallow: /en/s/
+Disallow: /settings
+Disallow: /en/settings
 
 Sitemap: https://www.uscollegeroadmap.com/sitemap.xml

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Moon, Sun } from 'lucide-react'
 import { t } from '../i18n'
 
@@ -11,16 +11,28 @@ export function applyStoredTheme() {
   } catch { /* ignore */ }
 }
 
+export const isDark = () => document.documentElement.classList.contains('dark')
+
+// 설정 화면과 상단 버튼이 같은 값을 쓰도록 이벤트로 알림
+export function setTheme(dark: boolean) {
+  try { localStorage.setItem(THEME_KEY, dark ? 'dark' : 'light') } catch { /* ignore */ }
+  document.documentElement.classList.toggle('dark', dark)
+  window.dispatchEvent(new Event('app:theme'))
+}
+
+export function useDark(): boolean {
+  const [dark, setDark] = useState(isDark)
+  useEffect(() => {
+    const on = () => setDark(isDark())
+    window.addEventListener('app:theme', on)
+    return () => window.removeEventListener('app:theme', on)
+  }, [])
+  return dark
+}
+
 export default function ThemeToggle() {
-  const [dark, setDark] = useState(() => {
-    try { return localStorage.getItem(THEME_KEY) === 'dark' } catch { return false }
-  })
-  const toggle = () => {
-    const next = !dark
-    setDark(next)
-    try { localStorage.setItem(THEME_KEY, next ? 'dark' : 'light') } catch { /* ignore */ }
-    document.documentElement.classList.toggle('dark', next)
-  }
+  const dark = useDark()
+  const toggle = () => setTheme(!dark)
   return (
     <button
       onClick={toggle}

@@ -1,4 +1,4 @@
-import { MessageCircle, BarChart3 } from 'lucide-react'
+import { MessageCircle, BarChart3, Settings } from 'lucide-react'
 import { useState } from 'react'
 import { navigate, usePath } from '../lib/router'
 import { t } from '../i18n'
@@ -64,6 +64,9 @@ export default function TopNav() {
           )}
           <LangToggle />
           <ThemeToggle />
+          {loggedIn && (
+            <button onClick={() => navigate('/settings')} title={t('설정', 'Settings')} aria-label={t('설정', 'Settings')} className={`flex h-8 w-8 items-center justify-center rounded-full hover:bg-gray-100 ${path.startsWith('/settings') ? 'text-gray-900' : 'text-gray-500'}`}><Settings size={17} strokeWidth={1.9} /></button>
+          )}
         </div>
       </div>
       {feedbackOpen && <FeedbackModal onClose={() => setFeedbackOpen(false)} />}

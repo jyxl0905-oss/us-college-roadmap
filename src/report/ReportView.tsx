@@ -1,5 +1,5 @@
 import { PageSkeleton } from '../ui/Skeleton'
-import { GraduationCap, Flag, Compass, CircleCheck, CalendarDays, ClipboardList, TrendingUp, Bell, CalendarPlus, BookOpen, BarChart3, Target, Eye } from 'lucide-react'
+import { GraduationCap, Flag, Compass, CircleCheck, CalendarDays, ClipboardList, TrendingUp, CalendarPlus, BookOpen, BarChart3, Target, Eye, Settings } from 'lucide-react'
 import { tierSchoolsQuery } from '../lib/tierSchools'
 import { useEffect, useRef, useState } from 'react'
 import type { ChecklistItem, School } from '../lib/types'
@@ -25,11 +25,9 @@ import MustDoCard from './MustDoCard'
 import QuickAppPanel from './QuickAppPanel'
 import ShareInvite from './ShareInvite'
 import ShareLinkCard from '../share/ShareLinkCard'
-import DeleteAccount from '../account/DeleteAccount'
 import { checkIsAdmin } from '../lib/admin'
 import { t, localizeRows } from '../i18n'
 import { downloadIcs, nextCheckinDate } from '../lib/ics'
-import { saveProfile } from '../lib/profile'
 import { entriesForSchool, sortEntries } from '../deadlines/DeadlinesPage'
 import SchoolLogo from '../browse/SchoolLogo'
 import { recordOverrides, type RecordOverrides } from '../lib/recordScore'
@@ -72,7 +70,7 @@ interface ReportViewProps {
 }
 
 // 로그인 후 메인 화면 — 시즌 리포트 (차트·학교·체크리스트·내보내기)
-export default function ReportView({ userId, profile, onLogout, onOpenGuide, onProfileChange, demo = false }: ReportViewProps) {
+export default function ReportView({ userId, profile, onLogout, onOpenGuide, demo = false }: ReportViewProps) {
   const [items, setItems] = useState<ChecklistItem[]>([])
   const [allItems, setAllItems] = useState<ChecklistItem[]>([])
   const [schools, setSchools] = useState<School[]>([])
@@ -385,9 +383,11 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
           )}
           <p className="mt-0.5 text-xs text-gray-400">{targetText}</p>
         </div>
-        <button onClick={onLogout} className="no-print shrink-0 text-sm text-gray-400 underline">
-          {demo ? t('체험 끝내기', 'Exit demo') : t('로그아웃', 'Log out')}
-        </button>
+        {demo ? (
+          <button onClick={onLogout} className="no-print shrink-0 text-sm text-gray-400 underline">{t('체험 끝내기', 'Exit demo')}</button>
+        ) : (
+          <button onClick={() => navigate('/settings')} className="no-print inline-flex shrink-0 items-center gap-1 text-sm text-gray-400 underline"><Settings size={14} strokeWidth={2} />{t('설정', 'Settings')}</button>
+        )}
       </div>
 
       {/* 내보내기 */}
@@ -632,26 +632,8 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
         <ShareLinkCard userId={userId} />
       </div>
 
-      {/* 리마인더: 캘린더 파일 + 시즌 시작 이메일 알림 스위치 */}
-      <div className="no-print mt-6 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
-        <div className="flex items-center justify-between gap-3">
-          <div className="min-w-0">
-            <p className="flex items-center gap-1.5 text-sm font-semibold text-gray-900"><Bell size={15} strokeWidth={2} />{t('알림 이메일 (시즌 시작 · 마감 D-2)', 'Reminder emails (season start · deadline D-2)')}</p>
-            <p className="text-xs text-gray-400">{t('8월·1월·6월 시즌이 열릴 때 한 통, 그리고 지원 학교 탭에 입력한 마감일 이틀 전에 한 통', 'One email when the Aug/Jan/Jun season opens, and one two days before each deadline you enter in your college list')}</p>
-          </div>
-          <button
-            role="switch"
-            aria-checked={!profile.reminder_opt_out}
-            onClick={async () => {
-              const next = { ...profile, reminder_opt_out: !profile.reminder_opt_out }
-              await saveProfile(userId, next)
-              onProfileChange?.(next)
-            }}
-            className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${profile.reminder_opt_out ? 'bg-gray-300' : 'bg-blue-600'}`}
-          >
-            <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${profile.reminder_opt_out ? 'left-0.5' : 'left-[22px]'}`} />
-          </button>
-        </div>
+      {/* 리마인더: 캘린더 파일 (알림 이메일 켜고 끄기는 설정으로 이동) */}
+      <div className="no-print mt-6">
         <button
           onClick={() => {
             const events = [
@@ -670,12 +652,14 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, onP
             ]
             downloadIcs('us-college-roadmap.ics', events)
           }}
-          className="mt-3 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 active:bg-gray-50"
+          className="w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 active:bg-gray-50"
         >
           <CalendarPlus size={15} strokeWidth={2} className="mr-1.5 inline -mt-0.5" />{t('폰 캘린더에 추가 (.ics) — 다음 체크인', 'Add to calendar (.ics) — next check-in')}{assignedRounds.some((a) => a.student_deadline) ? t(' + 내가 입력한 마감일', ' + my entered deadlines') : ''}
         </button>
+        <button onClick={() => navigate('/settings')} className="mt-2 w-full text-center text-xs text-gray-400 underline">
+          {t('알림 이메일·공유 링크·계정은 설정에서 관리해요', 'Manage reminder emails, share links and your account in Settings')}
+        </button>
       </div>
-      <DeleteAccount userId={userId} />
       </>)}
       {demo && <DemoCta className="no-print mt-8" />}
 

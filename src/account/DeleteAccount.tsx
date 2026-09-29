@@ -48,13 +48,13 @@ export default function DeleteAccount({ userId }: { userId: string }) {
 
   if (!open) {
     return (
-      <button onClick={() => setOpen(true)} className="no-print mt-8 inline-flex items-center gap-1 text-xs text-gray-400 underline">
-        <Trash2 size={12} />{t('계정 삭제', 'Delete account')}
+      <button onClick={() => setOpen(true)} className="no-print mt-2 flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-3 text-sm font-semibold text-red-600 active:bg-red-50">
+        <Trash2 size={15} strokeWidth={2} />{t('계정 삭제', 'Delete account')}
       </button>
     )
   }
   return (
-    <div className="no-print mt-8 rounded-xl border-2 border-red-200 bg-red-50 px-4 py-3.5">
+    <div className="no-print mt-2 rounded-xl border-2 border-red-200 bg-red-50 px-4 py-3.5">
       <p className="flex items-center gap-1.5 font-semibold text-red-800"><Trash2 size={16} />{t('계정과 모든 기록 삭제', 'Delete your account and all records')}</p>
       <p className="mt-1 text-[13px] leading-relaxed text-red-800">
         {t('프로필, 체크리스트, 과목·성적, 시험 점수, 활동·수상, 에세이, 추천인, 지원 학교, 올린 파일, 공유 링크가 모두 바로 지워지고 되돌릴 수 없어요. 같은 이메일로 다시 가입하면 처음부터 시작해요.', 'Your profile, checklist, courses and grades, test scores, activities and honors, essays, recommenders, college list, uploaded files and share links are deleted immediately and cannot be recovered. Signing up again with the same email starts from scratch.')}
