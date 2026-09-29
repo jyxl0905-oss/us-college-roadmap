@@ -106,6 +106,9 @@ pair('/guide/courses',
 pair('/guide/cost',
   ['미국 대학 1년 비용 비교·국제학생 재정지원 자격 | 미국 대입 로드맵', '미국 대학 147곳의 국제학생 1년 총비용(학비·기숙사·식비·교재)을 공식 Cost of Attendance로 비교하고, 연방·주 정부·학교 재정지원을 국제학생과 시민권·영주권자가 각각 받을 수 있는지 미국 교육부 공식 자료로 정리했어요.'],
   ['U.S. college cost comparison & financial aid eligibility | US College Roadmap', 'Compare the official yearly cost of attendance at 147 U.S. colleges and see which federal, state and college aid international students and U.S. citizens/permanent residents can receive — from U.S. Department of Education sources.'])
+pair('/guide/scholarships',
+  ['국제학생 장학금 찾기 — 미국 대학 merit 장학금 비교 | 미국 대입 로드맵', '국제학생이 받을 수 있는 미국 대학 자체 장학금(merit)을 자동 심사 여부·연간 금액·전액 학비 가능 여부·SAT 필요 여부·장학금 마감일로 걸러 볼 수 있어요. 각 대학 공식 장학금 페이지 기준.'],
+  ['Scholarships for international students — compare U.S. college merit aid | US College Roadmap', 'Find U.S. college merit scholarships open to international students and filter by automatic consideration, amount per year, full-tuition awards, SAT/ACT requirements and scholarship deadlines — from each college’s official pages.'])
 pair('/guide/programs',
   ['미국 대입 대회·서머 프로그램 가이드 — 전공별 추천·국제학생 참가 자격 | 미국 대입 로드맵', 'USACO·AMC·ISEF·RSI·PROMYS·YYGS·RISD Pre-College 등 전공별 대회와 서머 프로그램 75개의 내용, 국제학생 참가 자격, 비용, 운영하거나 공식 언급한 대학(MIT·Caltech 입학처 등)을 공식 출처로 정리했어요.'],
   ['Competitions & summer programs by major — eligibility & official mentions | US College Roadmap', '75 competitions and summer programs by major — USACO, AMC, ISEF, RSI, PROMYS, YYGS, RISD Pre-College and more — with eligibility (including international students), cost and which colleges run or officially mention them.'])

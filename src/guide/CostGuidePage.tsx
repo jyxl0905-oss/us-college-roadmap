@@ -42,6 +42,9 @@ export default function CostGuidePage({ profile }: { profile: ProfileRow | null 
           <h1 className="text-xl font-bold text-gray-900">{t('비용·재정지원 가이드', 'Cost & financial aid guide')}</h1>
         </div>
         <VerifiedBadge className="mt-3" date={(costJson as { verified_at: string }).verified_at} sources={t('각 대학 공식 COA · 미 교육부', 'College COA pages · U.S. Dept. of Education')} />
+        <button onClick={() => navigate('/guide/scholarships')} className="mt-3 flex w-full items-center justify-between rounded-xl border-2 border-green-200 bg-green-50 px-4 py-2.5 text-left text-sm font-semibold text-green-800 active:bg-green-100">
+          {t('국제학생 장학금 찾기 — 자동 심사·금액·마감으로 거르기', 'Find scholarships for international students — filter by amount & deadline')}<span aria-hidden="true">→</span>
+        </button>
         <div className="mt-4 grid grid-cols-2 gap-2">
           {tabBtn('cost', t('1년 비용 비교', 'Cost per year'))}
           {tabBtn('aid', t('재정지원 자격', 'Aid eligibility'))}

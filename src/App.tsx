@@ -43,6 +43,7 @@ const MajorsIndexPage = lazy(() => import('./major/MajorsIndexPage'))
 const CourseGuidePage = lazy(() => import('./guide/CourseGuidePage'))
 const ApGuidePage = lazy(() => import('./guide/ApGuidePage'))
 const CostGuidePage = lazy(() => import('./guide/CostGuidePage'))
+const ScholarshipsPage = lazy(() => import('./guide/ScholarshipsPage'))
 const ProgramsGuidePage = lazy(() => import('./guide/ProgramsGuidePage'))
 const EnglishGuidePage = lazy(() => import('./guide/EnglishGuidePage'))
 const MajorTrendsPage = lazy(() => import('./major/MajorTrendsPage'))
@@ -633,6 +634,9 @@ function AppRoutes() {
   }
   if (path === '/guide/programs' || path === '/guide/programs/') {
     return <ProgramsGuidePage profile={profile} userId={session?.user.id ?? null} />
+  }
+  if (path === '/guide/scholarships' || path === '/guide/scholarships/') {
+    return <ScholarshipsPage profile={profile} />
   }
   if (path === '/guide/cost' || path === '/guide/cost/') {
     return <CostGuidePage profile={profile} />

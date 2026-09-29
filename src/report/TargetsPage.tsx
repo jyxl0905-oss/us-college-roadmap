@@ -13,6 +13,7 @@ import SchoolCards from './SchoolCards'
 import TargetTestWeight from './TargetTestWeight'
 import ArtSchoolRecs from '../browse/ArtSchoolRecs'
 import AidRanking from './AidRanking'
+import SatSubmitHelper from './SatSubmitHelper'
 import SchoolLogo from '../browse/SchoolLogo'
 import FitPicker, { saveFit, fitChipColors } from '../browse/FitPicker'
 import { fitLabels, normalizeFit, type Fit } from '../board/boardLogic'
@@ -56,7 +57,7 @@ export default function TargetsPage({ userId, profile }: { userId: string; profi
   }
   const [decided, setDecided] = useState<Record<number, boolean>>({})
   // 스크롤 부담 완화 — 학교 카드 / 티어(예측) / 재정지원을 탭으로 분리 (한 번에 하나만)
-  const [tab, setTab] = useState<'cards' | 'fits' | 'aid'>('cards')
+  const [tab, setTab] = useState<'cards' | 'fits' | 'aid' | 'sat'>('cards')
   const [openFitId, setOpenFitId] = useState<number | null>(null) // 티어 탭에서 펼친 학교 행
 
   useEffect(() => {
@@ -132,12 +133,13 @@ export default function TargetsPage({ userId, profile }: { userId: string; profi
             </div>
             <TargetTestWeight schools={schools} />
             {/* 탭: 학교 카드 / 티어(예측) / 재정지원 — 스크롤 없이 한 화면에 하나씩 */}
-            <div className="mt-4 grid grid-cols-3 gap-1.5">
+            <div className="mt-4 grid grid-cols-2 gap-1.5 sm:grid-cols-4">
               {([
                 ['cards', t('학교 카드', 'School cards')],
                 ['fits', t('티어 (예측)', 'Tiers (your call)')],
                 ['aid', t('재정지원 순위', 'Aid ranking')],
-              ] as ['cards' | 'fits' | 'aid', string][]).map(([k, label]) => (
+                ['sat', t('SAT 제출 판단', 'Send SAT?')],
+              ] as ['cards' | 'fits' | 'aid' | 'sat', string][]).map(([k, label]) => (
                 <button
                   key={k}
                   onClick={() => setTab(k)}
@@ -217,6 +219,13 @@ export default function TargetsPage({ userId, profile }: { userId: string; profi
                 })}
               </div>
             </div>
+            )}
+
+            {/* SAT·ACT 제출 판단 (선택 제출 학교) */}
+            {tab === 'sat' && (
+              <div className="mt-3">
+                <SatSubmitHelper userId={userId} profile={profile} schools={schools} />
+              </div>
             )}
 
             {/* 재정지원 순위 */}
