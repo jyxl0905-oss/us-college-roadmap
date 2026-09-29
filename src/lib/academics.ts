@@ -55,7 +55,9 @@ export function timingLabel(raw: string | null | undefined): string | null {
   // 롤링 (예: '롤링 (마감일 없음, 12월 초 장학금 우선 검토)')
   if (raw.startsWith('롤링')) {
     const inner = raw.match(/(\d{1,2})월\s*(초|중순|말)/)
-    return t(raw, inner ? `Rolling (no deadline; scholarship priority review ${timingLabelEn(inner[0])})` : 'Rolling (no deadline)')
+    if (!inner) return t(raw, 'Rolling (no deadline)')
+    const kind = raw.includes('장학금') ? 'scholarship priority review' : 'priority deadline'
+    return t(raw, `Rolling (no deadline; ${kind} ${timingLabelEn(inner[0])})`)
   }
   const m = raw.match(/^(\d{1,2})월\s*(초|중순|말)?$/)
   if (!m) return raw

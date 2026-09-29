@@ -67,9 +67,9 @@ for (const s of schools) {
   if (s.source_kind === 'scorecard') {
     pair(`/schools/${slugify(s.name)}`,
       [`${s.name} 합격률·학비·졸업률 (${s.name_ko}) — 미국 대입 로드맵`,
-        `${s.name}(${s.name_ko}, ${s.state ?? ''})${rate} SAT·ACT 점수 구간, 주 거주자/타주 학비, 소득별 실제 부담액, 졸업률 — 미 교육부 College Scorecard 공식 자료. ${rank}.`],
+        `${s.name}(${s.name_ko}, ${s.state ?? ''})${rate} SAT·ACT 점수 구간, 시험 제출 정책, 지원 마감, 보충 에세이, 영어 시험 기준, 학비·실제 부담액, 졸업률 — 미 교육부 College Scorecard·입학처 공식 자료. ${rank}.`],
       [`${s.name} admission rate, cost & outcomes — US College Roadmap`,
-        `${s.name} (${s.state ?? ''}):${rateEn} SAT/ACT ranges, in-state and out-of-state tuition, net price by income and graduation rate — from the U.S. Department of Education College Scorecard. ${rankEn}.`])
+        `${s.name} (${s.state ?? ''}):${rateEn} SAT/ACT ranges, test policy, deadlines, supplemental essays, English test requirements, tuition, net price and graduation rate — from the U.S. Department of Education College Scorecard and official admissions pages. ${rankEn}.`])
     continue
   }
   pair(`/schools/${slugify(s.name)}`,

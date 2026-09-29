@@ -143,7 +143,7 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         {/* 핵심 숫자 3개 — 맨 위에 크게 (2026-09 리디자인). 없는 값은 '미공개' */}
         {(() => {
           const early = s.ed_offered ? ['ED', s.ed_timing] : s.rea_offered ? ['REA', s.ea_timing] : s.ea_offered ? ['EA', s.ea_timing] : null
-          const deadline = early && early[1] ? { label: t(`${early[0]} 마감`, `${early[0]} deadline`), value: timingLabel(early[1]) } : s.rd_timing ? { label: t('RD 마감', 'RD deadline'), value: timingLabel(s.rd_timing) } : null
+          const deadline = early && early[1] ? { label: t(`${early[0]} 마감`, `${early[0]} deadline`), value: timingLabel(early[1]) } : s.rd_timing ? { label: s.rd_timing.startsWith('롤링') ? t('지원 마감', 'Deadline') : t('RD 마감', 'RD deadline'), value: timingLabel(s.rd_timing) } : null
           const sat = s.test_policy === 'test-free' ? t('미반영', 'Not used') : s.sat_mid50_low && s.sat_mid50_high ? `${s.sat_mid50_low}–${s.sat_mid50_high}` : null
           const math = !sat && s.test_ranges?.sat_math ? `${s.test_ranges.sat_math[0]}–${s.test_ranges.sat_math[1]}` : null
           const kpis: [string, string | null][] = [
@@ -166,11 +166,11 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         {/* 교육부 자료만 있는 학교 안내 */}
         {s.source_kind === 'scorecard' && (
           <div className="mt-4 rounded-xl border-2 border-amber-200 bg-amber-50 px-4 py-3 text-[13px] leading-relaxed text-amber-900">
-            <p className="font-semibold">{t('교육부 공식 자료로 기본 정보만 정리한 학교예요', 'Basic information from the U.S. Department of Education only')}</p>
+            <p className="font-semibold">{t('교육부 공식 자료와 입학처 기본 정보로 정리한 학교예요', 'Federal data plus basic admissions information')}</p>
             <p className="mt-0.5 text-amber-800">
               {t(
-                `위치·학부생 수·합격률·학비·졸업률은 미국 교육부 College Scorecard(2026년 6월 발표) 기준이에요. 에세이·마감·장학금·평가 요소 같은 입학처 세부 정보는 아직 정리 전이라, 학교 공식 사이트에서 확인해 주세요.`,
-                'Location, enrollment, admit rate, tuition and graduation figures come from the U.S. Department of Education College Scorecard (June 2026 release). Admissions details such as essays, deadlines, aid and review factors are not compiled yet — check the school’s official site.',
+                `위치·학부생 수·합격률·학비·졸업률은 미국 교육부 College Scorecard(2026년 6월 발표) 기준이고, 시험 정책·지원 마감·보충 에세이·영어 시험 기준은 각 대학 입학처 공식 페이지에서 정리했어요(2026년 9월). 평가 요소 비중·국제학생 장학금은 아직 정리 전이라 학교 공식 사이트에서 확인해 주세요.`,
+                'Location, enrollment, admit rate, tuition and graduation figures come from the U.S. Department of Education College Scorecard (June 2026 release); test policy, deadlines, supplemental essays and English test requirements come from each college’s official admissions pages (September 2026). Review factors and international aid are not compiled yet — check the school’s official site.',
               )}
               {s.city && s.state ? ` (${s.city}, ${s.state}${s.ugds ? t(` · 학부생 ${s.ugds.toLocaleString()}명`, ` · ${s.ugds.toLocaleString()} undergrads`) : ''})` : ''}
             </p>
