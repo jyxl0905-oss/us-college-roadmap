@@ -235,7 +235,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
     const app = appFor(s.id)
     const auto = autoItems(s, profile, app)
     const c7 = c7Checkable(app) ? c7Actions(s) : []
-    const customs = tasksFor(s.id).filter((t) => !auto.some((a) => a.key === t.title) && !c7.some((c) => c.key === t.title))
+    const customs = tasksFor(s.id).filter((t) => !t.title.startsWith('prep:') && !auto.some((a) => a.key === t.title) && !c7.some((c) => c.key === t.title))
     const total = auto.length + c7.length + customs.length
     const done =
       auto.filter((a) => isItemDone(s.id, a.key)).length +
@@ -253,7 +253,7 @@ export default function BoardPage({ userId, profile }: BoardPageProps) {
     const auto = autoItems(open, profile, app)
     const c7 = c7Actions(open)
     const checkable = c7Checkable(app)
-    const customs = tasksFor(open.id).filter((t) => !auto.some((a) => a.key === t.title) && !c7.some((c) => c.key === t.title))
+    const customs = tasksFor(open.id).filter((t) => !t.title.startsWith('prep:') && !auto.some((a) => a.key === t.title) && !c7.some((c) => c.key === t.title))
     const first = isFirstChoice(app)
 
     const fitBlock = (
