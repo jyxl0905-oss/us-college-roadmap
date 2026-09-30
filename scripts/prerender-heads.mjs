@@ -109,6 +109,9 @@ pair('/guide/cost',
 pair('/guide/scholarships',
   ['국제학생 장학금 찾기 — 미국 대학 merit 장학금 비교 | 미국 대입 로드맵', '국제학생이 받을 수 있는 미국 대학 자체 장학금(merit)을 자동 심사 여부·연간 금액·전액 학비 가능 여부·SAT 필요 여부·장학금 마감일로 걸러 볼 수 있어요. 각 대학 공식 장학금 페이지 기준.'],
   ['Scholarships for international students — compare U.S. college merit aid | US College Roadmap', 'Find U.S. college merit scholarships open to international students and filter by automatic consideration, amount per year, full-tuition awards, SAT/ACT requirements and scholarship deadlines — from each college’s official pages.'])
+pair('/guide/essays',
+  ['대학이 공개한 합격 에세이 분석 — 존스홉킨스 Essays That Worked 등 111편 | 미국 대입 로드맵', '존스홉킨스·해밀턴·올린·코네티컷 칼리지·MIT·조지아대가 공식 사이트에 공개한 합격 에세이 111편의 소재·구조·기법과 입학처가 밝힌 이유를 분석하고, 한국 국제학생이 가져갈 점을 정리했어요.'],
+  ['College essays that worked — 111 officially published essays analyzed | US College Roadmap', 'Topics, structures and techniques of 111 admitted-student essays published by Johns Hopkins, Hamilton, Olin, Connecticut College, MIT and UGA, with what each college said it liked and takeaways for international students.'])
 pair('/guide/programs',
   ['미국 대입 대회·서머 프로그램 가이드 — 전공별 추천·국제학생 참가 자격 | 미국 대입 로드맵', 'USACO·AMC·ISEF·RSI·PROMYS·YYGS·RISD Pre-College 등 전공별 대회와 서머 프로그램 75개의 내용, 국제학생 참가 자격, 비용, 운영하거나 공식 언급한 대학(MIT·Caltech 입학처 등)을 공식 출처로 정리했어요.'],
   ['Competitions & summer programs by major — eligibility & official mentions | US College Roadmap', '75 competitions and summer programs by major — USACO, AMC, ISEF, RSI, PROMYS, YYGS, RISD Pre-College and more — with eligibility (including international students), cost and which colleges run or officially mention them.'])

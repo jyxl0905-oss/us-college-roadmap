@@ -7,6 +7,7 @@ import { isDemoUser, demoStore, demoId } from '../demo/demoData'
 import AppShell from './AppShell'
 import { supabase } from '../lib/supabase'
 import { t } from '../i18n'
+import { navigate } from '../lib/router'
 import { COMMON_APP_PROMPTS, COMMON_APP_PROMPTS_SOURCE, COMMON_APP_PROMPTS_YEAR, COMMON_APP_WORD_RANGE } from '../data/commonAppPrompts'
 import type { ProfileRow } from '../lib/profile'
 import { loadSchools } from '../lib/schoolsCache'
@@ -108,6 +109,10 @@ export default function WritingTab({ userId, profile }: WritingTabProps) {
       <p className="mt-3 rounded-xl bg-gray-100 px-3.5 py-2.5 text-xs text-gray-600">
         {t('문항·진행 상태·메모에 더해 ', 'Along with the prompt, status and notes, you can now ')}<span className="font-semibold">{t('본문도 앱 안에서 직접 쓰고 저장', 'write and save the essay itself in the app')}</span>{t('할 수 있어요 (자동 저장). 중요한 본문은 구글 독스에도 백업해 두면 안전해요.', ' (autosaved). For safety, keep a backup of important drafts in Google Docs too.')}
       </p>
+
+      <button onClick={() => navigate('/guide/essays')} className="mt-2 flex w-full items-center justify-between rounded-xl border-2 border-green-200 bg-green-50 px-3.5 py-2.5 text-left text-sm font-semibold text-green-800 active:bg-green-100">
+        {t('대학이 공개한 합격 에세이 111편 분석 보기', 'See 111 college-published essays that worked, analyzed')}<span aria-hidden="true">→</span>
+      </button>
 
       {/* 개인 에세이 */}
       <div className="mt-5 flex items-baseline justify-between">
