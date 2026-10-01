@@ -62,6 +62,7 @@ h1.text-xl, h1.text-2xl { font-weight: 800; }
 @media screen and (min-width: 768px) {
   html.has-side-nav #app-main { padding-left: 15rem; }
   html.has-side-nav header.topnav { display: none; }
+  html.has-side-nav .admin-bar { top: 0; }
   html.has-side-nav .bottom-nav-offset { left: 15rem; }
 }
 

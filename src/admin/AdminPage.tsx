@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Eye, CalendarDays, UserPlus, Activity, RefreshCw, Home, MessageSquare, Users, BarChart3, Wrench, LayoutDashboard, Repeat, UserCheck, FileText, type LucideIcon } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { navigate } from '../lib/router'
 import { majorLabel } from '../data/majors'
@@ -130,45 +131,50 @@ function Lines({ points }: { points: { day: string; n: number; users: number }[]
   )
 }
 
+type AdminTab = 'overview' | 'users' | 'engagement' | 'feedback' | 'ops'
 interface Visits { since: string | null; visitors_total: number; visits_total: number; today: number; last_7d: number; last_30d: number; returning: number; members_ever: number; by_day: { d: string; n: number }[] }
 
-function VisitsCard({ v }: { v: Visits }) {
-  const max = Math.max(1, ...v.by_day.map((x) => x.n))
+// 최근 30일 일별 방문자 막대 (빈 날은 0으로 채움)
+function VisitBars({ v }: { v: Visits }) {
+  const map = new Map(v.by_day.map((x) => [x.d, x.n]))
+  const days: { d: string; n: number }[] = []
+  const kstToday = new Date(Date.now() + 9 * 3600_000)
+  for (let i = 29; i >= 0; i--) {
+    const d = new Date(kstToday.getTime() - i * 86400_000).toISOString().slice(0, 10)
+    if (v.since && d < v.since) continue
+    days.push({ d, n: map.get(d) ?? 0 })
+  }
+  if (days.length === 0) return <p className="text-sm text-gray-400">아직 기록된 방문이 없어요 — 오늘부터 쌓여요</p>
+  return <Bars points={days.map((x) => ({ label: x.d, n: x.n }))} labelEvery={Math.max(1, Math.ceil(days.length / 10))} />
+}
+
+type Accent = 'blue' | 'green' | 'violet' | 'amber' | 'gray'
+const ACCENT: Record<Accent, string> = { blue: 'bg-blue-50 text-blue-600', green: 'bg-green-50 text-green-600', violet: 'bg-violet-50 text-violet-600', amber: 'bg-amber-50 text-amber-600', gray: 'bg-gray-100 text-gray-500' }
+
+function Tile({ label, value, sub, icon: Icon, accent = 'gray', big = false }: { label: string; value: string | number; sub?: string; icon?: LucideIcon; accent?: Accent; big?: boolean }) {
   return (
-    <div className="mb-3 rounded-xl border border-gray-100 bg-white px-4 py-3.5">
-      <p className="text-sm font-semibold text-gray-900">누적 방문자</p>
-      <p className="text-xs text-gray-400">{v.since ? `${v.since}부터 집계 (그 전 방문은 기록이 없어요)` : '아직 기록된 방문이 없어요 — 배포 후부터 쌓여요'} · 브라우저 기준 · 운영자 방문 제외</p>
-      <div className="mt-2.5 grid grid-cols-2 gap-2 sm:grid-cols-4">
-        <Tile label="누적 방문자" value={v.visitors_total} sub={`방문 ${v.visits_total}회 (하루 1회 기준)`} />
-        <Tile label="오늘" value={v.today} sub={`7일 ${v.last_7d} · 30일 ${v.last_30d}`} />
-        <Tile label="다시 온 방문자" value={v.returning} sub="2일 이상 방문" />
-        <Tile label="누적 로그인 회원" value={v.members_ever} sub="가입 이후 한 번이라도 접속" />
+    <div className="rounded-2xl border border-gray-100 bg-white px-4 py-3.5 shadow-sm">
+      <div className="flex items-center gap-2">
+        {Icon && <span className={`flex h-7 w-7 items-center justify-center rounded-lg ${ACCENT[accent]}`}><Icon size={15} strokeWidth={2.2} /></span>}
+        <p className="text-xs font-medium text-gray-500">{label}</p>
       </div>
-      {v.by_day.length > 0 && (
-        <div className="mt-3 flex h-16 items-end gap-0.5" aria-label="최근 30일 일별 방문자">
-          {v.by_day.map((x) => <div key={x.d} title={`${x.d}: ${x.n}명`} className="flex-1 rounded-t bg-blue-400" style={{ height: `${(x.n / max) * 100}%` }} />)}
+      <p className={`mt-1.5 font-bold tabular-nums tracking-tight text-gray-900 ${big ? 'text-3xl' : 'text-2xl'}`}>{typeof value === 'number' ? value.toLocaleString() : value}</p>
+      {sub && <p className="mt-0.5 text-xs text-gray-400">{sub}</p>}
+    </div>
+  )
+}
+
+function Card({ title, hint, action, children }: { title: string; hint?: string; action?: React.ReactNode; children: React.ReactNode }) {
+  return (
+    <section className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm sm:p-5">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <h2 className="font-semibold text-gray-900">{title}</h2>
+          {hint && <p className="mt-0.5 text-xs text-gray-400">{hint}</p>}
         </div>
-      )}
-    </div>
-  )
-}
-
-function Tile({ label, value, sub }: { label: string; value: string | number; sub?: string }) {
-  return (
-    <div className="rounded-xl border border-gray-100 bg-white px-4 py-3">
-      <p className="text-xs text-gray-500">{label}</p>
-      <p className="mt-0.5 text-2xl font-bold tabular-nums text-gray-900">{value}</p>
-      {sub && <p className="text-xs text-gray-400">{sub}</p>}
-    </div>
-  )
-}
-
-function Card({ title, hint, children }: { title: string; hint?: string; children: React.ReactNode }) {
-  return (
-    <section className="rounded-2xl border border-gray-100 bg-white p-4">
-      <h2 className="font-semibold text-gray-900">{title}</h2>
-      {hint && <p className="mb-2 text-xs text-gray-400">{hint}</p>}
-      <div className="mt-2">{children}</div>
+        {action}
+      </div>
+      <div className="mt-3">{children}</div>
     </section>
   )
 }
@@ -226,7 +232,7 @@ function RefreshScheduleCard() {
     { window: '1–3월', active: month >= 1 && month <= 3, title: '겨울 배치', detail: 'CDS 기반 전부 — 합격률(전체·국제), SAT 중간50%, ED 합격률, 장학금, 학교가 보는 것 + Scorecard' },
   ]
   return (
-    <div className="mb-4 rounded-2xl border border-gray-100 bg-white p-4">
+    <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm sm:p-5">
       <h2 className="font-semibold text-gray-900">🗓️ 데이터 갱신 스케줄</h2>
       <p className="mt-0.5 text-xs text-gray-400">연 2회 배치 + 순위 단발 — 큰 이벤트(시험 정책 전환 등)는 수시. 해당 시기가 되면 "여름/겨울 배치 돌려줘" 한 마디면 돼요.</p>
       <div className="mt-2.5 flex flex-col gap-1.5">
@@ -253,7 +259,7 @@ function SnapshotsCard() {
   }, [])
   const n = (v: number | null | undefined) => (v === null || v === undefined ? '—' : v.toLocaleString())
   return (
-    <div className="mb-4 rounded-2xl border border-gray-100 bg-white p-4">
+    <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm sm:p-5">
       <h2 className="font-semibold text-gray-900">📈 월별 기록</h2>
       <p className="mt-0.5 text-xs text-gray-400">매일 자동 저장 — 달이 넘어가면 그 달의 마지막 값이 월말 기록으로 남아요. 원서의 성장 지표용.</p>
       {!rows ? (
@@ -298,7 +304,7 @@ function SnapshotsCard() {
   )
 }
 
-function HealthCard() {
+function HealthCard({ compact = false }: { compact?: boolean }) {
   const [db, setDb] = useState<number | 'fail' | null>(null)
   const [auth, setAuth] = useState<number | 'fail' | null>(null)
   const [meta, setMeta] = useState<{ last_reminder_at?: string; last_signup_at?: string; last_event_at?: string; online_now?: number; online_today?: number } | null>(null)
@@ -331,28 +337,37 @@ function HealthCard() {
     return m < 60 ? `${m}분 전` : m < 1440 ? `${Math.round(m / 60)}시간 전` : `${Math.round(m / 1440)}일 전`
   }
 
-  return (
-    <div className="mb-4 rounded-2xl border border-gray-100 bg-white p-4">
-      <div className="flex items-baseline justify-between">
-        <h2 className="font-semibold text-gray-900">🩺 서버 상태</h2>
-        <button onClick={run} className="text-xs text-blue-600 underline">다시 확인</button>
+  const ok = typeof db === 'number' && db < 2000 && typeof auth === 'number' && auth < 2000
+  if (compact) {
+    return (
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-2xl border border-gray-100 bg-white px-4 py-2.5 text-sm shadow-sm">
+        <span className="flex items-center gap-1.5 font-semibold text-gray-800">
+          <span className={`h-2.5 w-2.5 rounded-full ${db === null || auth === null ? 'animate-pulse bg-gray-300' : ok ? 'bg-green-500' : 'bg-red-500'}`} />
+          {db === null || auth === null ? '서버 확인 중' : ok ? '서버 정상' : '서버 확인 필요'}
+        </span>
+        <span className="text-gray-500">지금 접속 <strong className="tabular-nums text-gray-900">{meta?.online_now ?? '…'}</strong>명 · 오늘 <strong className="tabular-nums text-gray-900">{meta?.online_today ?? '…'}</strong>명 <span className="text-xs text-gray-400">(로그인 회원)</span></span>
+        <span className="text-xs text-gray-400">마지막 가입 {ago(meta?.last_signup_at)} · 마지막 사용 {ago(meta?.last_event_at)}</span>
       </div>
-      <div className="mt-2 grid grid-cols-2 gap-2 text-sm sm:grid-cols-4">
-        <div className="rounded-lg bg-blue-50 px-3 py-2">
+    )
+  }
+
+  return (
+    <Card title="🩺 서버 상태" action={<button onClick={run} className="shrink-0 rounded-lg border border-gray-200 px-2.5 py-1 text-xs font-semibold text-gray-600 hover:bg-gray-50">다시 확인</button>}>
+      <div className="grid grid-cols-2 gap-2 text-sm sm:grid-cols-4">
+        <div className="rounded-xl bg-blue-50 px-3 py-2.5">
           👥 현재 접속자{' '}
           <span className="font-bold tabular-nums text-blue-700">{meta?.online_now ?? '…'}</span>
           <span className="ml-1 text-xs text-gray-400">(5분 내{meta?.online_today !== undefined ? ` · 오늘 ${meta.online_today}` : ''})</span>
         </div>
-        <div className="rounded-lg bg-gray-50 px-3 py-2">{dot(db)} DB <span className="tabular-nums text-gray-500">{label(db)}</span></div>
-        <div className="rounded-lg bg-gray-50 px-3 py-2">{dot(auth)} 로그인 서버 <span className="tabular-nums text-gray-500">{label(auth)}</span></div>
-        <div className="rounded-lg bg-gray-50 px-3 py-2">🟢 사이트 <span className="text-gray-500">지금 열려 있음</span></div>
-        <div className="rounded-lg bg-gray-50 px-3 py-2">📨 알림 발송 <span className="text-gray-500">{ago(meta?.last_reminder_at)}</span></div>
+        <div className="rounded-xl bg-gray-50 px-3 py-2.5">{dot(db)} DB <span className="tabular-nums text-gray-500">{label(db)}</span></div>
+        <div className="rounded-xl bg-gray-50 px-3 py-2.5">{dot(auth)} 로그인 서버 <span className="tabular-nums text-gray-500">{label(auth)}</span></div>
+        <div className="rounded-xl bg-gray-50 px-3 py-2.5">📨 알림 발송 <span className="text-gray-500">{ago(meta?.last_reminder_at)}</span></div>
       </div>
       <p className="mt-2 text-xs text-gray-400">
         마지막 가입 {ago(meta?.last_signup_at)} · 마지막 사용 기록 {ago(meta?.last_event_at)}
         {checkedAt && ` · 확인 ${checkedAt.toLocaleTimeString('ko-KR')}`} — 🟢 정상 · 🟡 느림 · 🔴 문제 (DB가 🔴면 Supabase 일시정지 가능성)
       </p>
-    </div>
+    </Card>
   )
 }
 
@@ -382,6 +397,11 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
   }
   const [loadingStats, setLoadingStats] = useState(false)
   const [visits, setVisits] = useState<Visits | null>(null)
+  const [tab, setTabState] = useState<AdminTab>(() => { try { return (localStorage.getItem('admin_tab') as AdminTab) || 'overview' } catch { return 'overview' } })
+  const setTab = (k: AdminTab) => { setTabState(k); try { localStorage.setItem('admin_tab', k) } catch { /* ignore */ } window.scrollTo(0, 0) }
+  const [reload, setReload] = useState(0)
+  // 새로고침 — 모든 집계를 다시 받아옴
+  const refresh = () => { setExtra(null); setFunnelData(null); setBySchool(null); setVisits(null); setFeedback(null); setReload((n) => n + 1) }
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -398,7 +418,7 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
     if (!bySchool) supabase.rpc('admin_stats_schools').then(({ data }) => { if (data) setBySchool(data as SchoolRow[]) }, () => {})
     if (!visits) supabase.rpc('admin_visits').then(({ data }) => { if (data) setVisits(data as Visits) }, () => {})
     if (!feedback) supabase.rpc('admin_feedback').then(({ data }) => { if (data) setFeedback(data as typeof feedback) }, () => {})
-  }, [demo, school]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [demo, school, reload]) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (error) return (
     <div className="mx-auto max-w-md px-5 py-16 text-center">
@@ -421,44 +441,106 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
     { label: '2개월 이상 재방문', n: T.multi_month_users },
   ]
 
+  const latestFeedback = (feedback ?? []).slice(0, 3)
+  const TABS: { k: AdminTab; label: string; icon: LucideIcon; badge?: number }[] = [
+    { k: 'overview', label: '개요', icon: LayoutDashboard },
+    { k: 'users', label: '사용자', icon: Users },
+    { k: 'engagement', label: '참여', icon: BarChart3 },
+    { k: 'feedback', label: '피드백', icon: MessageSquare, badge: feedback?.length },
+    { k: 'ops', label: '운영', icon: Wrench },
+  ]
+  const schoolLabel = school === '__none__' ? '학교 미입력' : school
+
   return (
-    <div className="mx-auto max-w-3xl px-4 pb-16 pt-6">
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <div>
-          <h1 className="text-xl font-bold text-gray-900">운영 통계</h1>
-          <p className="text-xs text-gray-400">집계 시각 {new Date(stats.generated_at).toLocaleString('ko-KR')} · 개인 식별 정보 없이 집계만 표시</p>
+    <div className="min-h-dvh bg-gray-50">
+      {/* 상단 바 — 제목·새로고침·탭 (스크롤해도 고정) */}
+      <div className="admin-bar sticky top-[49px] z-30 border-b border-gray-200 bg-white/90 backdrop-blur">
+        <div className="mx-auto max-w-6xl px-4 pt-3">
+          <div className="flex items-center justify-between gap-3">
+            <div className="min-w-0">
+              <h1 className="text-lg font-bold text-gray-900">운영 대시보드</h1>
+              <p className="truncate text-[11px] text-gray-400">집계 {new Date(stats.generated_at).toLocaleString('ko-KR')} · 개인 식별 정보 없이 집계만</p>
+            </div>
+            <div className="flex shrink-0 items-center gap-1.5">
+              <button onClick={refresh} disabled={loadingStats} className="inline-flex items-center gap-1 rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-gray-700 hover:bg-gray-50 disabled:opacity-50">
+                <RefreshCw size={13} className={loadingStats ? 'animate-spin' : ''} />새로고침
+              </button>
+              <button onClick={() => navigate('/')} aria-label="홈" className="rounded-lg border border-gray-200 bg-white p-1.5 text-gray-500 hover:bg-gray-50"><Home size={15} /></button>
+            </div>
+          </div>
+          <nav className="mt-2.5 flex gap-1 overflow-x-auto [scrollbar-width:none]" aria-label="대시보드 탭">
+            {TABS.map(({ k, label, icon: Icon, badge }) => (
+              <button key={k} onClick={() => setTab(k)} aria-current={tab === k ? 'page' : undefined} className={`inline-flex shrink-0 items-center gap-1.5 border-b-2 px-3 pb-2.5 pt-1 text-sm font-semibold ${tab === k ? 'border-blue-600 text-gray-900' : 'border-transparent text-gray-500 hover:text-gray-800'}`}>
+                <Icon size={15} strokeWidth={2} />{label}
+                {badge ? <span className="rounded-full bg-gray-100 px-1.5 text-[10px] font-bold text-gray-600">{badge}</span> : null}
+              </button>
+            ))}
+          </nav>
         </div>
-        <button onClick={() => navigate('/')} className="text-sm text-gray-400 underline">← 홈</button>
       </div>
 
-      <HealthCard />
-      <SnapshotsCard />
-      <RefreshScheduleCard />
+      <div className="mx-auto max-w-6xl px-4 pb-16 pt-4">
+        {school && (tab === 'users' || tab === 'engagement' || tab === 'overview') && (
+          <div className="mb-3 flex items-center justify-between gap-2 rounded-xl bg-blue-50 px-3 py-2 text-xs text-blue-800">
+            <span>지금 <strong>{schoolLabel}</strong> 사용자 기준으로 보고 있어요</span>
+            <button onClick={() => setSchool(null)} className="font-semibold underline">전체 보기</button>
+          </div>
+        )}
 
-      {/* 피드백은 바로 위에서 — 가장 자주 확인하는 카드 */}
-      <div className="mb-4">
-        <Card title="💬 사용자 피드백" hint="상단 바 💬 버튼으로 보낸 의견 (최근 100건) — 이름·이메일 없이 학년·학교만 표시">
-          {!feedback ? <p className="text-sm text-gray-400">불러오는 중…</p> : feedback.length === 0 ? <p className="text-sm text-gray-400">아직 피드백이 없어요</p> : (
-            <ul className="space-y-2">
-              {feedback.map((f, i) => (
-                <li key={i} className="rounded-xl bg-gray-50 px-3 py-2.5">
-                  <p className="whitespace-pre-wrap text-sm text-gray-800">{f.message}</p>
-                  <p className="mt-1 text-xs text-gray-400">
-                    {new Date(f.created_at).toLocaleString('ko-KR')}
-                    {f.grad_year && ` · Class of ${f.grad_year}`}{f.school && ` · ${f.school}`}{f.page && ` · ${f.page}`}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          )}
+        {tab === 'overview' && (
+          <div className="grid gap-4">
+            <HealthCard compact />
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+              <Tile big icon={Eye} accent="blue" label="누적 방문자" value={visits?.visitors_total ?? '…'} sub={visits?.since ? `${visits.since}부터 · 브라우저 기준` : '오늘부터 집계'} />
+              <Tile big icon={CalendarDays} accent="violet" label="오늘 방문자" value={visits?.today ?? '…'} sub={visits ? `7일 ${visits.last_7d} · 30일 ${visits.last_30d}` : undefined} />
+              <Tile big icon={UserPlus} accent="green" label="총 가입자" value={T.profiles} sub={`7일 +${T.new_7d} · 30일 +${T.new_30d}`} />
+              <Tile big icon={Activity} accent="amber" label="활성 회원 (7일)" value={T.active_7d} sub={`30일 ${T.active_30d}`} />
+            </div>
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+              <Tile icon={UserCheck} label="누적 로그인 회원" value={visits?.members_ever ?? '…'} sub="가입 후 한 번이라도 접속" />
+              <Tile icon={Repeat} label="다시 온 방문자" value={visits?.returning ?? '…'} sub="2일 이상 방문" />
+              <Tile icon={FileText} label="리포트 완료" value={onboardedN ?? '–'} sub={onboardedN !== null ? pct(onboardedN, T.profiles) + ' 전환' : '온보딩 완료 기준'} />
+              <Tile icon={Users} label="재방문 회원 (2개월+)" value={T.multi_month_users} sub={pct(T.multi_month_users, T.profiles) + ' 리텐션'} />
+            </div>
+            <div className="grid gap-4 lg:grid-cols-2">
+              <Card title="일별 방문자" hint="최근 30일 · 로그인 안 한 방문자 포함 · 운영자 제외">{visits ? <VisitBars v={visits} /> : <p className="text-sm text-gray-400">불러오는 중…</p>}</Card>
+              <Card title="일별 활동 (최근 30일)" hint="이벤트 = 로그인·체크·리포트 열람 등 모든 기록">
+          <Lines points={stats.events_by_day} />
+          <div className="mt-3"><BarList data={stats.events_by_type_30d} labels={eventKo} /></div>
+              </Card>
+            </div>
+            <div className="grid gap-4 lg:grid-cols-2">
+        <Card title="사용자 퍼널" hint="가입 → 온보딩 → 리포트 → 체크 → 내 원서 → 재방문. 어디서 이탈하는지 보는 용도">
+          <div className="flex flex-col gap-1.5">
+            {funnel.map((f, i) => (
+              <div key={f.label} className="flex items-center gap-2 text-sm">
+                <span className="w-40 shrink-0 text-gray-700">{f.label}</span>
+                <div className="h-4 flex-1 rounded-sm bg-gray-100">
+                  <div className="h-4 rounded-sm bg-blue-500" style={{ width: `${funnel[0].n > 0 ? (f.n / funnel[0].n) * 100 : 0}%` }} />
+                </div>
+                <span className="w-24 shrink-0 text-right tabular-nums text-gray-500">{f.n} <span className="text-gray-400">({i === 0 ? '100%' : pct(f.n, funnel[0].n)})</span></span>
+              </div>
+            ))}
+          </div>
         </Card>
-      </div>
+              <Card title="💬 최근 피드백" action={<button onClick={() => setTab('feedback')} className="shrink-0 text-xs font-semibold text-blue-600 hover:underline">모두 보기 →</button>}>
+                {!feedback ? <p className="text-sm text-gray-400">불러오는 중…</p> : latestFeedback.length === 0 ? <p className="text-sm text-gray-400">아직 피드백이 없어요</p> : (
+                  <ul className="space-y-2">{latestFeedback.map((f, i) => (
+                    <li key={i} className="rounded-xl bg-gray-50 px-3 py-2.5"><p className="line-clamp-2 text-sm text-gray-800">{f.message}</p><p className="mt-1 text-[11px] text-gray-400">{new Date(f.created_at).toLocaleDateString('ko-KR')}{f.page && ` · ${f.page}`}</p></li>
+                  ))}</ul>
+                )}
+              </Card>
+            </div>
+        <Card title="주별 신규 가입 (최근 16주)">
+          <Bars points={stats.signups_by_week.map((w) => ({ label: w.week, n: w.n }))} labelEvery={1} />
+        </Card>
+          </div>
+        )}
 
-      {/* 학교별 비교 표 — 전체 기준, 필터와 무관 */}
-      {bySchool && bySchool.length > 0 && (
-        <div className="mb-4 rounded-2xl border border-gray-100 bg-white p-4">
-          <h2 className="font-semibold text-gray-900">🏫 학교별 현황</h2>
-          <p className="mb-2 text-xs text-gray-400">학교 이름은 온보딩에서 학생이 직접 입력 · 행 클릭 = 그 학교 기준으로 아래 통계 전환 · ✏️ = 이름 정리(같은 이름으로 바꾸면 병합)</p>
+        {tab === 'users' && (
+          <div className="grid gap-4">
+            {bySchool && bySchool.length > 0 && (
+              <Card title="🏫 학교별 현황" hint="학교 이름은 학생이 직접 입력 · 행 클릭 = 그 학교 기준으로 통계 전환 · ✏️ = 이름 정리(같은 이름으로 바꾸면 병합)">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[900px] text-sm">
               <thead>
@@ -505,13 +587,10 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
               </tbody>
             </table>
           </div>
-        </div>
-      )}
-
-      {/* 학교 필터 — 학교별로 나눠 보기 */}
-      {(stats.hs_schools ?? []).length > 0 && (
-        <div className="mb-4 rounded-2xl border border-gray-100 bg-white p-3">
-          <p className="mb-2 text-xs font-medium text-gray-500">학교별로 보기 {loadingStats && <span className="text-gray-400">· 불러오는 중…</span>}</p>
+              </Card>
+            )}
+            {(stats.hs_schools ?? []).length > 0 && (
+              <Card title="학교별로 보기" hint={loadingStats ? '불러오는 중…' : '고르면 사용자·참여 탭 숫자가 그 학교 기준으로 바뀌어요'}>
           <div className="flex flex-wrap gap-1.5">
             <button onClick={() => setSchool(null)} className={`rounded-full border px-3 py-1 text-xs ${school === null ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 text-gray-600'}`}>전체</button>
             {(stats.hs_schools ?? []).map((h) => (
@@ -520,34 +599,16 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
               </button>
             ))}
           </div>
-          {school && <p className="mt-2 text-xs text-blue-700">아래 모든 숫자는 <strong>{school === '__none__' ? '학교 미입력' : school}</strong> 사용자 기준이에요.</p>}
-        </div>
-      )}
-
-      {/* 누적 방문자 — 익명 포함, 집계 시작일 이후 (운영자 방문 제외) */}
-      {visits && <VisitsCard v={visits} />}
-
-      {/* 핵심 지표 */}
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-        <Tile label="총 가입자" value={T.profiles} sub={`최근 7일 +${T.new_7d} · 30일 +${T.new_30d}`} />
-        <Tile label="리포트 완료" value={onboardedN ?? '–'} sub={onboardedN !== null ? pct(onboardedN, T.profiles) + ' 전환' : '온보딩(12문항) 완료 기준'} />
-        <Tile label="활성 사용자 (7일)" value={T.active_7d} sub={`30일 ${T.active_30d}`} />
-        <Tile label="재방문 (2개월+)" value={T.multi_month_users} sub={pct(T.multi_month_users, T.profiles) + ' 리텐션'} />
-        <Tile label="리포트 발급" value={T.reports_total} sub={`${T.reports_users}명`} />
-        <Tile label="체크 완료" value={T.checks_total} sub={`${T.checks_users}명 · 평균 완료율 ${stats.checklist_progress.avg_done_rate != null ? Math.round(stats.checklist_progress.avg_done_rate * 100) + '%' : '–'}`} />
-        <Tile label="알림 메일 발송" value={stats.reminders_sent} sub={`수신 거부 ${T.reminder_opt_out}`} />
-        <Tile label="연구 동의" value={T.research_consent} sub={pct(T.research_consent, T.profiles)} />
-      </div>
-
-      {/* 인기 순위 하이라이트 — 데이터 쌓이면 자동 계산 */}
+              </Card>
+            )}
       {(() => {
         const majors = Object.entries(stats.major).filter(([k]) => k !== '?').sort((a, b) => b[1] - a[1]).slice(0, 5)
         const schools = stats.top_schools.slice(0, 5)
         const total = T.profiles
         if (majors.length === 0 && schools.length === 0) return null
         return (
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            <div className="rounded-2xl border border-gray-100 bg-white p-4">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm sm:p-5">
               <p className="font-semibold text-gray-900">🏆 인기 전공 Top 5</p>
               <ol className="mt-2 space-y-1 text-sm">
                 {majors.map(([k, v], i) => (
@@ -555,7 +616,7 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
                 ))}
               </ol>
             </div>
-            <div className="rounded-2xl border border-gray-100 bg-white p-4">
+            <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm sm:p-5">
               <p className="font-semibold text-gray-900">🎯 인기 목표 학교 Top 5</p>
               {schools.length === 0 ? <p className="mt-2 text-sm text-gray-400">아직 구체 학교를 고른 사용자가 없어요</p> : (
                 <ol className="mt-2 space-y-1 text-sm">
@@ -569,37 +630,13 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
         )
       })()}
 
-      <div className="mt-4 grid gap-4">
-        <Card title="사용자 퍼널" hint="가입 → 온보딩 → 리포트 → 체크 → 내 원서 → 재방문. 어디서 이탈하는지 보는 용도">
-          <div className="flex flex-col gap-1.5">
-            {funnel.map((f, i) => (
-              <div key={f.label} className="flex items-center gap-2 text-sm">
-                <span className="w-40 shrink-0 text-gray-700">{f.label}</span>
-                <div className="h-4 flex-1 rounded-sm bg-gray-100">
-                  <div className="h-4 rounded-sm bg-blue-500" style={{ width: `${funnel[0].n > 0 ? (f.n / funnel[0].n) * 100 : 0}%` }} />
-                </div>
-                <span className="w-24 shrink-0 text-right tabular-nums text-gray-500">{f.n} <span className="text-gray-400">({i === 0 ? '100%' : pct(f.n, funnel[0].n)})</span></span>
-              </div>
-            ))}
-          </div>
-        </Card>
-
-        <Card title="주별 신규 가입 (최근 16주)">
-          <Bars points={stats.signups_by_week.map((w) => ({ label: w.week, n: w.n }))} labelEvery={1} />
-        </Card>
-
-        <Card title="일별 활동 (최근 30일)" hint="이벤트 = 로그인·체크·리포트 열람 등 모든 기록">
-          <Lines points={stats.events_by_day} />
-          <div className="mt-3"><BarList data={stats.events_by_type_30d} labels={eventKo} /></div>
-        </Card>
-
+            <div className="grid gap-4 lg:grid-cols-2">
         <Card title="사용자 구성 — 학년·전공">
           <p className="mb-1 text-xs font-medium text-gray-500">졸업연도</p>
           <BarList data={Object.fromEntries(Object.entries(stats.grad_year).map(([k, v]) => [k, v]))} labels={Object.fromEntries(Object.keys(stats.grad_year).map((k) => [k, k === '?' ? '미입력' : gradeOf(k)]))} />
           <p className="mb-1 mt-4 text-xs font-medium text-gray-500">1순위 전공</p>
           <BarList data={stats.major} labels={Object.fromEntries(Object.keys(stats.major).map((k) => [k, k === '?' ? '미입력' : majorLabel(k)]))} />
         </Card>
-
         <Card title="사용자 구성 — 상황" hint="타깃(카운슬러 없는 국제학생)이 실제로 오고 있는지 확인">
           <div className="grid gap-4 sm:grid-cols-2">
             <div><p className="mb-1 text-xs font-medium text-gray-500">지원 신분</p><BarList data={stats.applicant_status} labels={statusKo} /></div>
@@ -611,13 +648,8 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
           </div>
           <p className="mt-3 text-xs text-gray-500">미국 현지 학교 재학: {T.school_in_us}명</p>
         </Card>
-
-        <Card title="목표 학교 Top 15" hint="구체 학교를 고른 사용자 기준, 중복 선택 포함">
-          {stats.top_schools.length === 0 ? <p className="text-sm text-gray-400">아직 데이터 없음</p> : (
-            <BarList data={Object.fromEntries(stats.top_schools.map((s) => [s.name, s.n]))} total={T.profiles} />
-          )}
-        </Card>
-
+            </div>
+            <div className="grid gap-4 lg:grid-cols-2">
         <Card title="학업 프로필 분포">
           <div className="grid gap-4 sm:grid-cols-2">
             <div><p className="mb-1 text-xs font-medium text-gray-500">GPA 밴드</p><BarList data={stats.gpa_band} labels={{ ...gpaBandLabels, '?': '미입력' }} /></div>
@@ -627,7 +659,6 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
             <div><p className="mb-1 text-xs font-medium text-gray-500">TOEFL 상태</p><BarList data={stats.toefl_status} labels={{ ...toeflStatusLabels, '?': '미입력' }} /></div>
           </div>
         </Card>
-
         <Card title="활동 자가진단 (온보딩)" hint="1=아직 없음 · 2=어느 정도 · 3=뚜렷함">
           <div className="grid gap-4 sm:grid-cols-3">
             <div><p className="mb-1 text-xs font-medium text-gray-500">대표 활동</p><BarList data={stats.activity_self.spike} labels={levelKo} /></div>
@@ -635,12 +666,33 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
             <div><p className="mb-1 text-xs font-medium text-gray-500">교외 인정</p><BarList data={stats.activity_self.validation} labels={levelKo} /></div>
           </div>
         </Card>
-
-        <Card title="6축 평균 점수" hint="각 사용자의 최신 리포트 스냅샷 기준 평균 (0-100)">
-          <BarList data={Object.fromEntries(axisOrder.filter((a) => stats.axis_avg[a] != null).map((a) => [a, stats.axis_avg[a] as number]))} labels={axisKo} total={0} />
-          <p className="mt-1 text-xs text-gray-400">막대 옆 숫자는 평균 점수(비율 아님)</p>
+            </div>
+        <Card title="목표 학교 Top 15" hint="구체 학교를 고른 사용자 기준, 중복 선택 포함">
+          {stats.top_schools.length === 0 ? <p className="text-sm text-gray-400">아직 데이터 없음</p> : (
+            <BarList data={Object.fromEntries(stats.top_schools.map((s) => [s.name, s.n]))} total={T.profiles} />
+          )}
         </Card>
+          </div>
+        )}
 
+        {tab === 'engagement' && (
+          <div className="grid gap-4">
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+              <Tile label="리포트 발급" value={T.reports_total} sub={`${T.reports_users}명`} />
+              <Tile label="체크 완료" value={T.checks_total} sub={`${T.checks_users}명 · 평균 완료율 ${stats.checklist_progress.avg_done_rate != null ? Math.round(stats.checklist_progress.avg_done_rate * 100) + '%' : '–'}`} />
+              <Tile label="알림 메일 발송" value={stats.reminders_sent} sub={`수신 거부 ${T.reminder_opt_out}`} />
+              <Tile label="연구 동의" value={T.research_consent} sub={pct(T.research_consent, T.profiles)} />
+            </div>
+            <div className="grid gap-4 lg:grid-cols-2">
+        <Card title="내 원서(가상 Common App) 사용" hint="기능별 기록 수와 사용자 수 — 어떤 탭이 쓰이는지">
+          <table className="w-full text-sm">
+            <thead><tr className="text-left text-xs text-gray-400"><th className="py-1">기능</th><th>기록 수</th><th>사용자</th><th>비고</th></tr></thead>
+            <tbody>{Object.entries(stats.app_usage).map(([k, v]) => (
+              <tr key={k} className="border-t border-gray-50"><td className="py-1.5 text-gray-700">{appKo[k] ?? k}</td><td className="text-gray-500">{v.rows}</td><td className="text-gray-500">{v.users}</td><td className="text-xs text-gray-400">{v.done != null ? `완료 ${v.done}` : v.with_round != null ? `라운드 배정 ${v.with_round}` : ''}</td></tr>
+            ))}</tbody>
+          </table>
+          {Object.keys(stats.rounds).length > 0 && (<><p className="mb-1 mt-3 text-xs font-medium text-gray-500">지원 라운드 배정</p><BarList data={stats.rounds} labels={roundKo} /></>)}
+        </Card>
         <Card title="시즌별 체크리스트 완료율">
           {stats.checklist_progress.by_season.length === 0 ? <p className="text-sm text-gray-400">아직 데이터 없음</p> : (
             <table className="w-full text-sm">
@@ -651,7 +703,7 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
             </table>
           )}
         </Card>
-
+            </div>
         <Card title="많이 체크된 항목 / 아무도 안 한 공통 항목" hint="콘텐츠 개선용 — 안 하는 항목은 문구·난도·시기 점검 대상">
           <p className="mb-1 text-xs font-medium text-gray-500">가장 많이 완료</p>
           {stats.most_checked.length === 0 ? <p className="text-sm text-gray-400">아직 없음</p> : <BarList data={Object.fromEntries(stats.most_checked.map((m) => [m.title, m.n]))} total={T.checks_users} />}
@@ -660,7 +712,11 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
             {stats.least_checked.map((l) => <li key={l.title + l.grade + l.season}>· {l.grade}학년 {l.season} — {l.title} <span className="text-gray-400">({l.n})</span></li>)}
           </ul>
         </Card>
-
+            <div className="grid gap-4 lg:grid-cols-2">
+        <Card title="6축 평균 점수" hint="각 사용자의 최신 리포트 스냅샷 기준 평균 (0-100)">
+          <BarList data={Object.fromEntries(axisOrder.filter((a) => stats.axis_avg[a] != null).map((a) => [a, stats.axis_avg[a] as number]))} labels={axisKo} total={0} />
+          <p className="mt-1 text-xs text-gray-400">막대 옆 숫자는 평균 점수(비율 아님)</p>
+        </Card>
         <Card title="퀴즈·명확성 — 사용자 입시 이해도" hint="퀴즈 정답률이 낮은 문항 = 사용자가 가장 모르는 것 (콘텐츠 우선순위)">
           <p className="text-sm text-gray-700">퀴즈 응답 {stats.quiz.respondents}명 · 평균 {stats.quiz.avg_correct ?? '–'} / 5 정답</p>
           <ul className="mt-2 space-y-1 text-sm">
@@ -685,17 +741,40 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
             </ul>
           )}
         </Card>
+            </div>
+            <div className="grid gap-4 lg:grid-cols-2">
+        {extra && Object.keys(extra.ref_source ?? {}).length > 0 && (
+          <Card title="📣 유입 경로" hint="가입 시 링크의 ?ref= 태그 기준 — direct=태그 없이 직접 방문, f-…=친구 초대 코드">
+            <BarList data={extra.ref_source ?? {}} labels={{ direct: '직접 방문 / 태그 없음' }} />
+            {(extra.invited_total ?? 0) > 0 && (
+              <p className="mt-2 text-xs text-gray-500">친구 초대로 가입: {extra.invited_total}명{(extra.top_inviters ?? []).length > 0 && <> · 최다 초대 코드 {(extra.top_inviters ?? []).slice(0, 3).map((i) => `${i.code} (${i.n})`).join(', ')}</>}</p>
+            )}
+          </Card>
+        )}
+        {extra && Object.keys(extra.lang ?? {}).length > 0 && (
+          <Card title="언어 설정"><BarList data={extra.lang} labels={{ ko: '한국어', en: 'English', '?': '미설정' }} /></Card>
+        )}
+            </div>
+          </div>
+        )}
 
-        <Card title="내 원서(가상 Common App) 사용" hint="기능별 기록 수와 사용자 수 — 어떤 탭이 쓰이는지">
-          <table className="w-full text-sm">
-            <thead><tr className="text-left text-xs text-gray-400"><th className="py-1">기능</th><th>기록 수</th><th>사용자</th><th>비고</th></tr></thead>
-            <tbody>{Object.entries(stats.app_usage).map(([k, v]) => (
-              <tr key={k} className="border-t border-gray-50"><td className="py-1.5 text-gray-700">{appKo[k] ?? k}</td><td className="text-gray-500">{v.rows}</td><td className="text-gray-500">{v.users}</td><td className="text-xs text-gray-400">{v.done != null ? `완료 ${v.done}` : v.with_round != null ? `라운드 배정 ${v.with_round}` : ''}</td></tr>
-            ))}</tbody>
-          </table>
-          {Object.keys(stats.rounds).length > 0 && (<><p className="mb-1 mt-3 text-xs font-medium text-gray-500">지원 라운드 배정</p><BarList data={stats.rounds} labels={roundKo} /></>)}
-        </Card>
-
+        {tab === 'feedback' && (
+          <div className="grid gap-4">
+            <Card title="💬 사용자 피드백" hint="상단 바 💬 버튼으로 보낸 의견 (최근 100건) — 이름·이메일 없이 학년·학교만 표시">
+          {!feedback ? <p className="text-sm text-gray-400">불러오는 중…</p> : feedback.length === 0 ? <p className="text-sm text-gray-400">아직 피드백이 없어요</p> : (
+            <ul className="space-y-2">
+              {feedback.map((f, i) => (
+                <li key={i} className="rounded-xl bg-gray-50 px-3 py-2.5">
+                  <p className="whitespace-pre-wrap text-sm text-gray-800">{f.message}</p>
+                  <p className="mt-1 text-xs text-gray-400">
+                    {new Date(f.created_at).toLocaleString('ko-KR')}
+                    {f.grad_year && ` · Class of ${f.grad_year}`}{f.school && ` · ${f.school}`}{f.page && ` · ${f.page}`}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )}
+            </Card>
         <Card title="🎓 졸업 후 결과 설문" hint="12학년 봄~졸업 모드에서 1회 수집 — 도움 정도·합격 결과·가장 유용했던 기능">
           {!extra ? <p className="text-sm text-gray-400">불러오는 중…</p> : extra.survey.n === 0 ? <p className="text-sm text-gray-400">아직 응답 없음 (첫 12학년 봄부터 쌓여요)</p> : (
             <div>
@@ -717,19 +796,19 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
             </div>
           )}
         </Card>
-        {extra && Object.keys(extra.ref_source ?? {}).length > 0 && (
-          <Card title="📣 유입 경로" hint="가입 시 링크의 ?ref= 태그 기준 — direct=태그 없이 직접 방문, f-…=친구 초대 코드">
-            <BarList data={extra.ref_source ?? {}} labels={{ direct: '직접 방문 / 태그 없음' }} />
-            {(extra.invited_total ?? 0) > 0 && (
-              <p className="mt-2 text-xs text-gray-500">친구 초대로 가입: {extra.invited_total}명{(extra.top_inviters ?? []).length > 0 && <> · 최다 초대 코드 {(extra.top_inviters ?? []).slice(0, 3).map((i) => `${i.code} (${i.n})`).join(', ')}</>}</p>
-            )}
-          </Card>
+          </div>
         )}
-        {extra && Object.keys(extra.lang ?? {}).length > 0 && (
-          <Card title="언어 설정"><BarList data={extra.lang} labels={{ ko: '한국어', en: 'English', '?': '미설정' }} /></Card>
+
+        {tab === 'ops' && (
+          <div className="grid gap-4">
+            <HealthCard />
+            <SnapshotsCard />
+            <RefreshScheduleCard />
+          </div>
         )}
+
+        <p className="mt-8 text-center text-xs text-gray-400">/admin · 운영자 전용</p>
       </div>
-      <p className="mt-6 text-center text-xs text-gray-400">/admin · 운영자 전용</p>
     </div>
   )
 }
