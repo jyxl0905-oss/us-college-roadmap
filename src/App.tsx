@@ -63,6 +63,7 @@ import MainHome from './home/MainHome'
 import ReportGate from './report/ReportGate'
 import { readPrefillSchoolIds, clearPrefill } from './browse/prefill'
 import { logEvent } from './lib/analytics'
+import { logVisit } from './lib/visit'
 
 const PENDING_KEY = 'pending_answers' // 매직 링크로 나갔다 돌아와도 온보딩 답변 유지
 
@@ -445,6 +446,11 @@ function AppRoutes() {
   // 세션 객체는 토큰 갱신(약 1시간마다·탭 복귀 시)마다 새로 생기므로 user id 기준으로만 프로필을 다시 불러옴
   // (세션 객체 기준이면 갱신 때마다 로딩 화면으로 바뀌며 리포트·원서 화면 상태가 날아감)
   const userId = session?.user.id ?? null
+
+  // 누적 방문자 집계 — 세션 확인이 끝난 뒤 하루 한 번 (로그인 여부만 함께, 개인정보 없음)
+  useEffect(() => {
+    if (!sessionLoading) logVisit(!!userId)
+  }, [sessionLoading, userId])
 
   // 접속자 집계용 하트비트 — 로그인 상태에서 접속 시 + 1분마다 last_seen 갱신 (운영 통계의 '현재 접속자', 실패는 무시)
   useEffect(() => {

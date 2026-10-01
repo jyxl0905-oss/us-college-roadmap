@@ -4,7 +4,7 @@ import { goBack, navigate } from '../lib/router'
 
 // 개인정보처리방침·이용약관 — 실제 운영 방식 그대로 적음 (DB: Supabase 서울 리전, 호스팅: Vercel, 로그인·알림 메일: Google)
 export const CONTACT_EMAIL = 'uscollegeroadmap@gmail.com'
-const EFFECTIVE = '2026-09-28'
+const EFFECTIVE = '2026-10-01'
 
 type Sec = { h: [string, string]; body: [string, string][] }
 
@@ -14,18 +14,19 @@ const PRIVACY: Sec[] = [
     ['온보딩 답변: 학년(졸업 연도), 지원 신분, 카운슬러 유무, 학교 정보, 희망 전공, 목표 학교, GPA·SAT·AP 범위, 활동 자가진단, 학생/부모 구분 등.', 'Onboarding answers: grade (graduation year), applicant status, counselor access, school details, intended majors, target schools, GPA/SAT/AP ranges, activity self-assessment, student/parent choice, etc.'],
     ['직접 입력한 기록: 과목·성적, 활동·수상, 시험 점수, 에세이 문항·메모·본문, 추천인 이름·진행 상황, 관심 표현 기록, 계획, 지원 학교·라운드, 올린 파일(성적표 등).', 'Records you enter: courses and grades, activities and honors, test scores, essay prompts/notes/drafts, recommender names and status, demonstrated-interest logs, plans, your college list and rounds, and files you upload (e.g., transcripts).'],
     ['이용 기록: 가입·로그인·리포트 보기 같은 이용 이벤트, 마지막 접속 시각, 체크인·설문 응답, 보내 주신 의견.', 'Usage: events such as sign-up, login and report views; your last-seen time; check-in and survey answers; feedback you send.'],
-    ['브라우저 저장소: 언어·화면 테마 설정, 작성 중인 온보딩 초안 — 내 기기에만 저장돼요.', 'Browser storage: language and theme settings and in-progress onboarding drafts — kept on your device only.'],
+    ['방문 통계: 브라우저마다 무작위 번호 하나를 만들어 하루 한 번 "방문했다"는 사실과 처음 연 페이지 주소, 로그인 여부만 기록해요. 이름·이메일·IP 주소는 저장하지 않아요. 브라우저 저장소를 지우면 새 번호가 만들어져요.', 'Visit statistics: your browser gets one random ID, and once a day we record only that a visit happened, the first page address and whether you were logged in. No name, email or IP address is stored. Clearing browser storage creates a new ID.'],
+    ['브라우저 저장소: 언어·화면 테마 설정, 작성 중인 온보딩 초안, 위 방문 통계용 무작위 번호 — 내 기기에 저장돼요.', 'Browser storage: language and theme settings, in-progress onboarding drafts and the random visit ID above — kept on your device.'],
   ] },
   { h: ['2. 이용 목적', '2. How we use it'], body: [
     ['리포트·체크리스트·수업 분석·학교 비교 같은 서비스 기능을 제공하는 데 써요.', 'To provide the service: your report, checklists, course analysis and school comparisons.'],
-    ['알림 이메일(시즌 시작·내가 입력한 마감일 이틀 전)을 보내요. 리포트 화면에서 언제든 끌 수 있어요.', 'To send reminder emails (season start; two days before deadlines you enter). You can turn them off on your report at any time.'],
+    ['알림 이메일(시즌 시작·내가 입력한 마감일 이틀 전)을 보내요. 설정 화면에서 언제든 끌 수 있어요.', 'To send reminder emails (season start; two days before deadlines you enter). You can turn them off in Settings at any time.'],
     ['서비스를 개선하기 위한 통계에 써요.', 'For statistics that help us improve the service.'],
     ['연구: 동의한 학생 본인의 답변만 이름·이메일을 빼고 익명 통계로 써요. 부모 계정과 미국 시민권·영주권자에게는 연구 동의를 묻지 않아요.', 'Research: only answers from students who opt in, used as anonymous statistics without names or emails. Parents and U.S. citizens/permanent residents are not asked.'],
   ] },
   { h: ['3. 판매·광고·제3자 제공', '3. No selling, no ads'], body: [
-    ['개인정보를 판매하거나 광고 목적으로 제공하지 않아요. 광고와 추적 스크립트도 없어요.', 'We do not sell personal information or share it for advertising. There are no ads or tracking scripts.'],
+    ['개인정보를 판매하거나 광고 목적으로 제공하지 않아요. 광고와 외부 추적 스크립트(구글 애널리틱스 등)도 없어요.', 'We do not sell personal information or share it for advertising. There are no ads or third-party tracking scripts (such as Google Analytics).'],
     ['서비스 운영을 위해 아래 업체가 정보를 처리해요: Supabase(데이터베이스·로그인, 서울 리전), Vercel(웹 호스팅), Google(Google 로그인·알림 이메일 발송).', 'These providers process data to run the service: Supabase (database and sign-in, Seoul region), Vercel (web hosting), Google (Google sign-in and sending reminder emails).'],
-    ['읽기 전용 공유 링크: 내가 링크를 만들면, 링크를 가진 사람은 로그인 없이 과목·성적, 시험 점수, 활동·수상, 목표·지원 학교, 이번 시즌 체크리스트 진행을 볼 수 있어요. 에세이·올린 파일·추천인 정보는 포함되지 않고, 링크는 리포트 화면에서 언제든 끌 수 있어요.', 'Read-only share link: if you create one, anyone with the link can view your courses and grades, test scores, activities and honors, target and application schools, and this season’s checklist progress without logging in. Essays, uploaded files and recommender details are never included, and you can turn the link off on your report at any time.'],
+    ['읽기 전용 공유 링크: 내가 링크를 만들면, 링크를 가진 사람은 로그인 없이 과목·성적, 시험 점수, 활동·수상, 목표·지원 학교, 이번 시즌 체크리스트 진행을 볼 수 있어요. 에세이·올린 파일·추천인 정보는 포함되지 않고, 링크는 설정 화면에서 언제든 끌 수 있어요.', 'Read-only share link: if you create one, anyone with the link can view your courses and grades, test scores, activities and honors, target and application schools, and this season’s checklist progress without logging in. Essays, uploaded files and recommender details are never included, and you can turn the link off in Settings at any time.'],
     ['학교 로고 이미지는 외부 사이트(위키미디어·각 대학 사이트)에서 불러와서, 이미지 요청 시 브라우저의 IP 주소가 해당 사이트에 전달될 수 있어요.', 'School logos load from external sites (Wikimedia and college websites), so your browser’s IP address may reach those sites when the images load.'],
   ] },
   { h: ['4. 보관과 삭제', '4. Retention and deletion'], body: [

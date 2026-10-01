@@ -1,0 +1,2 @@
+-- 누적 방문자 집계 (2026-10-01 적용, 사용자 요청): site_visits 테이블 + log_visit(익명·인증 실행) + admin_visits(운영자 전용)
+-- 실제 정의는 Supabase 마이그레이션 site_visits_counter 참고. 브라우저 무작위 ID·하루 1행·운영자 방문 제외, 이메일·IP 저장 안 함

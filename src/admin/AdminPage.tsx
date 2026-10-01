@@ -130,6 +130,29 @@ function Lines({ points }: { points: { day: string; n: number; users: number }[]
   )
 }
 
+interface Visits { since: string | null; visitors_total: number; visits_total: number; today: number; last_7d: number; last_30d: number; returning: number; members_ever: number; by_day: { d: string; n: number }[] }
+
+function VisitsCard({ v }: { v: Visits }) {
+  const max = Math.max(1, ...v.by_day.map((x) => x.n))
+  return (
+    <div className="mb-3 rounded-xl border border-gray-100 bg-white px-4 py-3.5">
+      <p className="text-sm font-semibold text-gray-900">누적 방문자</p>
+      <p className="text-xs text-gray-400">{v.since ? `${v.since}부터 집계 (그 전 방문은 기록이 없어요)` : '아직 기록된 방문이 없어요 — 배포 후부터 쌓여요'} · 브라우저 기준 · 운영자 방문 제외</p>
+      <div className="mt-2.5 grid grid-cols-2 gap-2 sm:grid-cols-4">
+        <Tile label="누적 방문자" value={v.visitors_total} sub={`방문 ${v.visits_total}회 (하루 1회 기준)`} />
+        <Tile label="오늘" value={v.today} sub={`7일 ${v.last_7d} · 30일 ${v.last_30d}`} />
+        <Tile label="다시 온 방문자" value={v.returning} sub="2일 이상 방문" />
+        <Tile label="누적 로그인 회원" value={v.members_ever} sub="가입 이후 한 번이라도 접속" />
+      </div>
+      {v.by_day.length > 0 && (
+        <div className="mt-3 flex h-16 items-end gap-0.5" aria-label="최근 30일 일별 방문자">
+          {v.by_day.map((x) => <div key={x.d} title={`${x.d}: ${x.n}명`} className="flex-1 rounded-t bg-blue-400" style={{ height: `${(x.n / max) * 100}%` }} />)}
+        </div>
+      )}
+    </div>
+  )
+}
+
 function Tile({ label, value, sub }: { label: string; value: string | number; sub?: string }) {
   return (
     <div className="rounded-xl border border-gray-100 bg-white px-4 py-3">
@@ -358,6 +381,7 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
     setSchool(null)
   }
   const [loadingStats, setLoadingStats] = useState(false)
+  const [visits, setVisits] = useState<Visits | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -372,6 +396,7 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
     if (!extra) supabase.rpc('admin_stats_extra').then(({ data }) => { if (data) setExtra(data as Extra) }, () => {})
     if (!funnelData) supabase.rpc('admin_funnel').then(({ data }) => { if (data) setFunnelData(data as FunnelData) }, () => {})
     if (!bySchool) supabase.rpc('admin_stats_schools').then(({ data }) => { if (data) setBySchool(data as SchoolRow[]) }, () => {})
+    if (!visits) supabase.rpc('admin_visits').then(({ data }) => { if (data) setVisits(data as Visits) }, () => {})
     if (!feedback) supabase.rpc('admin_feedback').then(({ data }) => { if (data) setFeedback(data as typeof feedback) }, () => {})
   }, [demo, school]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -498,6 +523,9 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
           {school && <p className="mt-2 text-xs text-blue-700">아래 모든 숫자는 <strong>{school === '__none__' ? '학교 미입력' : school}</strong> 사용자 기준이에요.</p>}
         </div>
       )}
+
+      {/* 누적 방문자 — 익명 포함, 집계 시작일 이후 (운영자 방문 제외) */}
+      {visits && <VisitsCard v={visits} />}
 
       {/* 핵심 지표 */}
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
