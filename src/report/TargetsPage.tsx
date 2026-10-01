@@ -12,6 +12,7 @@ import { tierLabels } from '../onboarding/labels'
 import SchoolCards from './SchoolCards'
 import TargetTestWeight from './TargetTestWeight'
 import ArtSchoolRecs from '../browse/ArtSchoolRecs'
+import MusicSchoolRecs from '../browse/MusicSchoolRecs'
 import AidRanking from './AidRanking'
 import SatSubmitHelper from './SatSubmitHelper'
 import PrepChecklist from './PrepChecklist'
@@ -104,6 +105,7 @@ export default function TargetsPage({ userId, profile }: { userId: string; profi
         )}
 
         <ArtSchoolRecs profile={profile} className="mt-3" />
+        <MusicSchoolRecs profile={profile} className="mt-3" />
 
         {schools.length === 0 ? (
           <div className="mt-8 rounded-2xl border-2 border-dashed border-gray-300 bg-white px-5 py-8 text-center">

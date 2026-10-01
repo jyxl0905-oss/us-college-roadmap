@@ -9,6 +9,7 @@ import AidBlock from './AidBlock'
 import CostBlock from './CostBlock'
 import SchoolPrograms from './SchoolPrograms'
 import EnglishBlock from './EnglishBlock'
+import { musicSchools, MusicSchoolCard } from '../guide/MusicSchoolsPage'
 import ApCreditBlock from './ApCreditBlock'
 import UsStudentBlock from './UsStudentBlock'
 import RequirementsBlock from './RequirementsBlock'
@@ -197,6 +198,14 @@ export default function SchoolDetailPage({ slug, userId, profile, onProfileChang
         )}
 
         {/* 미술·디자인 전문학교: 개설 전공 + 포트폴리오 요구사항 (공식 입학처 확인분) */}
+        {/* 이 대학의 음대 지원 정보 (음악 학교 가이드와 같은 데이터) */}
+        {musicSchools.filter((m) => m.school_id === s.id).map((m) => (
+          <div key={m.key} className="mt-5">
+            <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-gray-500">{t('음대 지원 (오디션)', 'Applying to the music school')}</p>
+            <MusicSchoolCard s={m} />
+          </div>
+        ))}
+
         {(s.portfolio_req || (s.art_programs && s.art_programs.length > 0)) && (
           <div className="mt-5 rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
             {s.art_programs && s.art_programs.length > 0 && (

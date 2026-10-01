@@ -45,6 +45,7 @@ const ApGuidePage = lazy(() => import('./guide/ApGuidePage'))
 const CostGuidePage = lazy(() => import('./guide/CostGuidePage'))
 const ScholarshipsPage = lazy(() => import('./guide/ScholarshipsPage'))
 const EssaysThatWorkedPage = lazy(() => import('./guide/EssaysThatWorkedPage'))
+const MusicSchoolsPage = lazy(() => import('./guide/MusicSchoolsPage'))
 const ProgramsGuidePage = lazy(() => import('./guide/ProgramsGuidePage'))
 const EnglishGuidePage = lazy(() => import('./guide/EnglishGuidePage'))
 const MajorTrendsPage = lazy(() => import('./major/MajorTrendsPage'))
@@ -641,6 +642,9 @@ function AppRoutes() {
   }
   if (path === '/guide/programs' || path === '/guide/programs/') {
     return <ProgramsGuidePage profile={profile} userId={session?.user.id ?? null} />
+  }
+  if (path === '/guide/music' || path === '/guide/music/') {
+    return <MusicSchoolsPage profile={profile} />
   }
   if (path === '/guide/essays' || path === '/guide/essays/') {
     return <EssaysThatWorkedPage />

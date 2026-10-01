@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { BarChart3, Target, FileText, Search, Menu, Compass, CalendarDays, BookOpen, GraduationCap, Map, MessageCircle, X, Home, Shield, Wallet, Trophy, Languages, Settings, Award, PenLine } from 'lucide-react'
+import { BarChart3, Target, FileText, Search, Menu, Compass, CalendarDays, BookOpen, GraduationCap, Map, MessageCircle, X, Home, Shield, Wallet, Trophy, Languages, Settings, Award, PenLine, Music } from 'lucide-react'
 import { navigate, usePath } from '../lib/router'
 import { t } from '../i18n'
 import LangToggle from '../i18n/LangToggle'
@@ -48,6 +48,7 @@ export default function AppNav() {
     { to: '/guide/programs', label: t('대회·서머', 'Programs'), icon: Trophy, active: (p) => p === '/guide/programs' },
     { to: '/guide/cost', label: t('비용·재정지원', 'Cost & aid'), icon: Wallet, active: (p) => p === '/guide/cost' },
     { to: '/guide/essays', label: t('합격 에세이', 'Essays that worked'), icon: PenLine, active: (p) => p === '/guide/essays' },
+    { to: '/guide/music', label: t('음악 학교', 'Music schools'), icon: Music, active: (p) => p === '/guide/music' },
     { to: '/guide/scholarships', label: t('장학금 찾기', 'Scholarships'), icon: Award, active: (p) => p === '/guide/scholarships' },
     { to: '/map', label: t('대학 지도', 'College map'), icon: Map, active: (p) => p === '/map' },
     { to: '/settings', label: t('설정', 'Settings'), icon: Settings, active: (p) => p.startsWith('/settings') },

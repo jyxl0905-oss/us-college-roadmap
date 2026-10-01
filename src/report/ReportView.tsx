@@ -41,6 +41,7 @@ import type { AxisScores } from '../lib/score'
 import AoBox from './AoBox'
 import SchoolCards from './SchoolCards'
 import ArtSchoolRecs from '../browse/ArtSchoolRecs'
+import MusicSchoolRecs from '../browse/MusicSchoolRecs'
 import ChecklistSection from './ChecklistSection'
 
 interface PrevReport {
@@ -564,6 +565,7 @@ export default function ReportView({ userId, profile, onLogout, onOpenGuide, dem
 
       {/* 창작 계열 전공: 미술·디자인 전문학교 추천 (화면 전용) */}
       <ArtSchoolRecs profile={profile} className="mt-5" />
+      <MusicSchoolRecs profile={profile} className="mt-3" />
 
       {/* 5. 목표 학교 — 화면에서는 상단 바 [목표 학교] 페이지로 이동, PDF 인쇄에만 포함 */}
       {schools.length > 0 && (

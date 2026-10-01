@@ -112,6 +112,9 @@ pair('/guide/scholarships',
 pair('/guide/essays',
   ['대학이 공개한 합격 에세이 분석 — 존스홉킨스 Essays That Worked 등 111편 | 미국 대입 로드맵', '존스홉킨스·해밀턴·올린·코네티컷 칼리지·MIT·조지아대가 공식 사이트에 공개한 합격 에세이 111편의 소재·구조·기법과 입학처가 밝힌 이유를 분석하고, 한국 국제학생이 가져갈 점을 정리했어요.'],
   ['College essays that worked — 111 officially published essays analyzed | US College Roadmap', 'Topics, structures and techniques of 111 admitted-student essays published by Johns Hopkins, Hamilton, Olin, Connecticut College, MIT and UGA, with what each college said it liked and takeaways for international students.'])
+pair('/guide/music',
+  ['미국 음대·음악원 지원 가이드 — 줄리어드·버클리·이스트먼 오디션·프리스크린·마감 | 미국 대입 로드맵', '줄리어드·커티스·버클리·NEC 등 음악 전문학교와 피바디·이스트먼·제이콥스·USC 손튼 등 대학 안 음대 22곳의 2027년 가을 입학 마감, 프리스크린 영상, 오디션 방식(현장·영상), 영어 기준, 비용, 국제학생 장학금을 공식 자료로 정리했어요.'],
+  ['U.S. music schools & conservatories — auditions, prescreens & deadlines | US College Roadmap', 'Fall 2027 deadlines, prescreen videos, audition formats (in person or recorded), English requirements, costs and international aid at 22 conservatories and university music schools — Juilliard, Curtis, Berklee, NEC, Peabody, Eastman, Jacobs, USC Thornton and more.'])
 pair('/guide/programs',
   ['미국 대입 대회·서머 프로그램 가이드 — 전공별 추천·국제학생 참가 자격 | 미국 대입 로드맵', 'USACO·AMC·ISEF·RSI·PROMYS·YYGS·RISD Pre-College 등 전공별 대회와 서머 프로그램 75개의 내용, 국제학생 참가 자격, 비용, 운영하거나 공식 언급한 대학(MIT·Caltech 입학처 등)을 공식 출처로 정리했어요.'],
   ['Competitions & summer programs by major — eligibility & official mentions | US College Roadmap', '75 competitions and summer programs by major — USACO, AMC, ISEF, RSI, PROMYS, YYGS, RISD Pre-College and more — with eligibility (including international students), cost and which colleges run or officially mention them.'])
