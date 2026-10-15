@@ -20,6 +20,7 @@ import { demoProfile, DEMO_USER_ID } from './demo/demoProfile'
 import { getLang, t, setLang, savedLang } from './i18n'
 import TopNav from './nav/TopNav'
 import AppNav from './nav/AppNav'
+import { profileBus } from './assistant/profileBus'
 import { Eye, Compass, AlertTriangle, ClipboardList, CalendarDays, RefreshCw, PenLine, Target } from 'lucide-react'
 
 // 무거운 화면(차트·리포트·보드·온보딩)은 필요할 때만 내려받음 — 둘러보기 첫 로딩을 가볍게
@@ -38,6 +39,7 @@ const DeadlinesPage = lazy(() => import('./deadlines/DeadlinesPage'))
 const AppRouter = lazy(() => import('./app/AppRouter'))
 const MajorRoadmapPage = lazy(() => import('./major/MajorRoadmapPage'))
 const AdminPage = lazy(() => import('./admin/AdminPage'))
+const AssistantDock = lazy(() => import('./assistant/AssistantDock'))
 const TargetsPage = lazy(() => import('./report/TargetsPage'))
 const MajorsIndexPage = lazy(() => import('./major/MajorsIndexPage'))
 const CourseGuidePage = lazy(() => import('./guide/CourseGuidePage'))
@@ -382,6 +384,7 @@ export default function App() {
         <TopNav key={`nav-${langKey}`} />
         <EnSuggestBanner key={`en-${langKey}`} />
         <AppNav key={`appnav-${langKey}`} />
+        <Suspense fallback={null}><AssistantDock key={`ai-${langKey}`} /></Suspense>
         <div id="app-main" ref={mainRef}>
           <LoadErrorBanner />
           <AppRoutes key={langKey} />
@@ -426,6 +429,12 @@ function AppRoutes() {
   }, [session, profile])
   const [checkinDone, setCheckinDone] = useState(false)
   const [showGuide, setShowGuide] = useState(false)
+  // AI 도우미(라우트 밖)와 프로필 공유 — 도우미에서 바꾼 동의 값도 여기 상태에 반영해 다른 화면 저장 때 덮이지 않게
+  useEffect(() => { profileBus.set(session ? profile : null) }, [session, profile])
+  useEffect(() => {
+    profileBus.registerPatcher((patch) => setProfile((p) => (p ? { ...p, ...patch } : p)))
+    return () => profileBus.registerPatcher(null)
+  }, [])
 
   useEffect(() => {
     if (!supabase) return

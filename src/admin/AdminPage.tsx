@@ -151,6 +151,29 @@ function VisitBars({ v }: { v: Visits }) {
 type Accent = 'blue' | 'green' | 'violet' | 'amber' | 'gray'
 const ACCENT: Record<Accent, string> = { blue: 'bg-blue-50 text-blue-600', green: 'bg-green-50 text-green-600', violet: 'bg-violet-50 text-violet-600', amber: 'bg-amber-50 text-amber-600', gray: 'bg-gray-100 text-gray-500' }
 
+// AI 도우미 사용 집계 (admin_ai_stats) — 비용은 Haiku 5.5 요금($0.10/$0.50 per 1M 토큰) 기준 최대 추정(캐시 할인 미반영)
+interface AiStats { today: number; last_30d: number; users_30d: number; up: number; down: number; in_tokens_30d: number; out_tokens_30d: number; not_in_site: string[] }
+function AiCard({ a }: { a: AiStats | null }) {
+  if (!a) return <Card title="AI 도우미"><p className="text-sm text-gray-400">불러오는 중…</p></Card>
+  const cost = (a.in_tokens_30d * 0.1 + a.out_tokens_30d * 0.5) / 1e6
+  return (
+    <Card title="AI 도우미" hint="최근 30일 · 비용은 최대 추정 · 기록은 90일 후 자동 삭제">
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <Tile label="오늘 질문" value={a.today} />
+        <Tile label="30일 질문" value={a.last_30d} sub={`${a.users_30d}명`} />
+        <Tile label="👍 / 👎" value={`${a.up} / ${a.down}`} />
+        <Tile label="30일 비용(추정)" value={`$${cost.toFixed(2)}`} />
+      </div>
+      {a.not_in_site.length > 0 && (
+        <div className="mt-4">
+          <p className="text-xs font-semibold text-gray-500">출처 없이 답한 질문 (사이트에 없는 정보 → 채울 후보)</p>
+          <ul className="mt-1.5 space-y-1 text-sm text-gray-700">{a.not_in_site.map((q, i) => <li key={i} className="truncate">· {q}</li>)}</ul>
+        </div>
+      )}
+    </Card>
+  )
+}
+
 function Tile({ label, value, sub, icon: Icon, accent = 'gray', big = false }: { label: string; value: string | number; sub?: string; icon?: LucideIcon; accent?: Accent; big?: boolean }) {
   return (
     <div className="rounded-2xl border border-gray-100 bg-white px-4 py-3.5 shadow-sm">
@@ -397,11 +420,12 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
   }
   const [loadingStats, setLoadingStats] = useState(false)
   const [visits, setVisits] = useState<Visits | null>(null)
+  const [ai, setAi] = useState<AiStats | null>(null)
   const [tab, setTabState] = useState<AdminTab>(() => { try { return (localStorage.getItem('admin_tab') as AdminTab) || 'overview' } catch { return 'overview' } })
   const setTab = (k: AdminTab) => { setTabState(k); try { localStorage.setItem('admin_tab', k) } catch { /* ignore */ } window.scrollTo(0, 0) }
   const [reload, setReload] = useState(0)
   // 새로고침 — 모든 집계를 다시 받아옴
-  const refresh = () => { setExtra(null); setFunnelData(null); setBySchool(null); setVisits(null); setFeedback(null); setReload((n) => n + 1) }
+  const refresh = () => { setExtra(null); setFunnelData(null); setBySchool(null); setVisits(null); setFeedback(null); setAi(null); setReload((n) => n + 1) }
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -417,6 +441,7 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
     if (!funnelData) supabase.rpc('admin_funnel').then(({ data }) => { if (data) setFunnelData(data as FunnelData) }, () => {})
     if (!bySchool) supabase.rpc('admin_stats_schools').then(({ data }) => { if (data) setBySchool(data as SchoolRow[]) }, () => {})
     if (!visits) supabase.rpc('admin_visits').then(({ data }) => { if (data) setVisits(data as Visits) }, () => {})
+    if (!ai) supabase.rpc('admin_ai_stats').then(({ data }) => { if (data) setAi(data as AiStats) }, () => {})
     if (!feedback) supabase.rpc('admin_feedback').then(({ data }) => { if (data) setFeedback(data as typeof feedback) }, () => {})
   }, [demo, school, reload]) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -677,6 +702,7 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
 
         {tab === 'engagement' && (
           <div className="grid gap-4">
+            <AiCard a={ai} />
             <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
               <Tile label="리포트 발급" value={T.reports_total} sub={`${T.reports_users}명`} />
               <Tile label="체크 완료" value={T.checks_total} sub={`${T.checks_users}명 · 평균 완료율 ${stats.checklist_progress.avg_done_rate != null ? Math.round(stats.checklist_progress.avg_done_rate * 100) + '%' : '–'}`} />

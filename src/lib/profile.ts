@@ -43,6 +43,8 @@ export interface ProfileRow {
   user_role?: 'student' | 'parent' // 부모면 '자녀' 기준 문구
   us_state?: string | null // 미국 거주 주 (시민권·영주권자), 'outside' = 미국 밖
   school_type?: string | null // public/private/charter/homeschool/international/other
+  ai_profile_consent?: boolean // AI 도우미가 프로필 참고 (동의 화면·설정)
+  ai_consent_at?: string | null // AI 도우미 동의 화면에 답한 시각 (없으면 처음 열 때 동의 화면)
 }
 
 export function answersToRow(

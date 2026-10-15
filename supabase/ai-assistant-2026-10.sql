@@ -1,0 +1,9 @@
+-- AI 도우미 (2026-10-14 적용, Supabase 마이그레이션 ai_assistant) — 기록용. 설계: docs/ai-assistant-design.md
+-- profiles: ai_profile_consent(맞춤 답변 동의), ai_consent_at(동의 화면에 답한 시각)
+-- app_settings(key, value jsonb): ai_public(false = 운영자만), ai_daily_limit(10). RLS 켜고 정책 없음(서버 함수만 읽음)
+-- ai_usage(user_id, day KST, count): 하루 사용 횟수. 본인 읽기만
+-- ai_messages: 질문·답·출처·토큰·평가(rating ±1). 본인 읽기 + rating만 수정 가능. 90일 지난 기록은 ai_take_quota가 지움
+-- ai_take_quota(p_user, p_email): 서버 함수(service_role)만 호출. 운영자 이메일 목록은 is_admin()과 같음(공개 리포에는 적지 않음)
+-- ai_status(): 화면용 — 열림 여부·오늘 사용·한도
+-- admin_ai_stats(): 운영 대시보드 집계(운영자만)
+-- 공개 전환: update public.app_settings set value = 'true' where key = 'ai_public';

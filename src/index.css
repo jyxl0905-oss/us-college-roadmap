@@ -55,7 +55,11 @@ h1.text-xl, h1.text-2xl { font-weight: 800; }
 }
 
 /* 로그인 후 내비게이션 (AppNav): 폰 하단 탭 바 / 컴퓨터 왼쪽 메뉴 */
+/* AI 도우미 버튼: 폰은 하단 탭 바 위, 컴퓨터는 오른쪽 아래 */
+.ai-fab { bottom: 1.25rem; }
+@media print { .ai-fab { display: none; } }
 @media screen and (max-width: 767px) {
+  html.has-bottom-nav .ai-fab { bottom: calc(4.75rem + env(safe-area-inset-bottom)); }
   html.has-bottom-nav #app-main { padding-bottom: calc(4rem + env(safe-area-inset-bottom)); }
   html.has-bottom-nav .bottom-nav-offset { bottom: calc(4rem + env(safe-area-inset-bottom)); }
 }

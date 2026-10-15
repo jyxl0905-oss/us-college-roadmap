@@ -112,6 +112,14 @@ export default function SettingsPage({ userId, email, profile, onProfileChange }
           </Row>
         </Section>
 
+        {profile.ai_consent_at && (
+          <Section title={t('AI 도우미', 'AI assistant')}>
+            <Row title={t('내 정보 참고해서 답하기', 'Use my info in answers')} sub={t('켜면 학년·신분·전공·목표 학교·점수 구간·이번 시즌 체크리스트가 질문과 함께 Anthropic(미국)으로 전송돼요. 이름·이메일은 보내지 않아요. 만 14세 이상만 켤 수 있어요.', 'When on, your grade, status, major, target schools, score bands and this season’s checklist are sent to Anthropic (U.S.) with each question. Name and email are never sent. Only for ages 14+.')}>
+              <Switch on={!!profile.ai_profile_consent} label={t('AI 도우미 정보 참고', 'AI assistant personalization')} onClick={() => void save({ ...profile, ai_profile_consent: !profile.ai_profile_consent, ai_consent_at: new Date().toISOString() })} />
+            </Row>
+          </Section>
+        )}
+
         <Section title={t('화면', 'Display')}>
           <Row title={t('언어', 'Language')} sub={t('알림 이메일도 이 언어로 보내요', 'Reminder emails use this language too')}>
             <LangToggle className="shrink-0" />
