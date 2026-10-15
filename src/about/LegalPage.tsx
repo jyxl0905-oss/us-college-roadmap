@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import { t } from '../i18n'
 import { goBack, navigate } from '../lib/router'
 
-// 개인정보처리방침·이용약관 — 실제 운영 방식 그대로 적음 (DB: Supabase 서울 리전, 호스팅: Vercel, 로그인·알림 메일: Google)
+// 개인정보처리방침·이용약관 — 실제 운영 방식 그대로 적음 (DB: Supabase 서울 리전, 호스팅: Vercel, 로그인·알림 메일: Google, AI 도우미: Anthropic)
 export const CONTACT_EMAIL = 'uscollegeroadmap@gmail.com'
-const EFFECTIVE = '2026-10-01'
+const EFFECTIVE = '2026-10-15'
 
 type Sec = { h: [string, string]; body: [string, string][] }
 
@@ -13,6 +13,7 @@ const PRIVACY: Sec[] = [
     ['계정 정보: 이메일 주소. Google로 로그인하면 Google이 제공하는 이름·이메일·프로필 사진 주소가 함께 저장돼요.', 'Account: your email address. If you sign in with Google, the name, email and profile-photo URL Google provides are stored too.'],
     ['온보딩 답변: 학년(졸업 연도), 지원 신분, 카운슬러 유무, 학교 정보, 희망 전공, 목표 학교, GPA·SAT·AP 범위, 활동 자가진단, 학생/부모 구분 등.', 'Onboarding answers: grade (graduation year), applicant status, counselor access, school details, intended majors, target schools, GPA/SAT/AP ranges, activity self-assessment, student/parent choice, etc.'],
     ['직접 입력한 기록: 과목·성적, 활동·수상, 시험 점수, 에세이 문항·메모·본문, 추천인 이름·진행 상황, 관심 표현 기록, 계획, 지원 학교·라운드, 올린 파일(성적표 등).', 'Records you enter: courses and grades, activities and honors, test scores, essay prompts/notes/drafts, recommender names and status, demonstrated-interest logs, plans, your college list and rounds, and files you upload (e.g., transcripts).'],
+    ['AI 도우미: 도우미에 입력한 질문과 받은 답변, 답변 평가(👍/👎). 맞춤 답변에 동의한 경우 질문할 때 학년·지원 신분·희망 전공·목표 학교·성적 구간·이번 시즌 체크리스트 진행 상황·지원 라운드가 함께 쓰여요(이름·이메일·재학 고교는 쓰지 않아요).', 'AI assistant: questions you ask, the answers you receive and your ratings. If you agree to personalized answers, your grade, applicant status, intended majors, target schools, score bands, this season’s checklist progress and application rounds are used with each question (never your name, email or school).'],
     ['이용 기록: 가입·로그인·리포트 보기 같은 이용 이벤트, 마지막 접속 시각, 체크인·설문 응답, 보내 주신 의견.', 'Usage: events such as sign-up, login and report views; your last-seen time; check-in and survey answers; feedback you send.'],
     ['방문 통계: 브라우저마다 무작위 번호 하나를 만들어 하루 한 번 "방문했다"는 사실과 처음 연 페이지 주소, 로그인 여부만 기록해요. 이름·이메일·IP 주소는 저장하지 않아요. 브라우저 저장소를 지우면 새 번호가 만들어져요.', 'Visit statistics: your browser gets one random ID, and once a day we record only that a visit happened, the first page address and whether you were logged in. No name, email or IP address is stored. Clearing browser storage creates a new ID.'],
     ['브라우저 저장소: 언어·화면 테마 설정, 작성 중인 온보딩 초안, 위 방문 통계용 무작위 번호 — 내 기기에 저장돼요.', 'Browser storage: language and theme settings, in-progress onboarding drafts and the random visit ID above — kept on your device.'],
@@ -20,17 +21,20 @@ const PRIVACY: Sec[] = [
   { h: ['2. 이용 목적', '2. How we use it'], body: [
     ['리포트·체크리스트·수업 분석·학교 비교 같은 서비스 기능을 제공하는 데 써요.', 'To provide the service: your report, checklists, course analysis and school comparisons.'],
     ['알림 이메일(시즌 시작·내가 입력한 마감일 이틀 전)을 보내요. 설정 화면에서 언제든 끌 수 있어요.', 'To send reminder emails (season start; two days before deadlines you enter). You can turn them off in Settings at any time.'],
+    ['AI 도우미가 사이트에 정리된 자료로 답을 만들고, 동의한 경우 내 상황에 맞춰 답하는 데 써요. 질문·답변 기록은 답변 품질 점검에만 써요.', 'For the AI assistant to answer from this site’s data and, if you agree, tailor answers to you. Question and answer logs are used only to check answer quality.'],
     ['서비스를 개선하기 위한 통계에 써요.', 'For statistics that help us improve the service.'],
     ['연구: 동의한 학생 본인의 답변만 이름·이메일을 빼고 익명 통계로 써요. 부모 계정과 미국 시민권·영주권자에게는 연구 동의를 묻지 않아요.', 'Research: only answers from students who opt in, used as anonymous statistics without names or emails. Parents and U.S. citizens/permanent residents are not asked.'],
   ] },
   { h: ['3. 판매·광고·제3자 제공', '3. No selling, no ads'], body: [
     ['개인정보를 판매하거나 광고 목적으로 제공하지 않아요. 광고와 외부 추적 스크립트(구글 애널리틱스 등)도 없어요.', 'We do not sell personal information or share it for advertising. There are no ads or third-party tracking scripts (such as Google Analytics).'],
-    ['서비스 운영을 위해 아래 업체가 정보를 처리해요: Supabase(데이터베이스·로그인, 서울 리전), Vercel(웹 호스팅), Google(Google 로그인·알림 이메일 발송).', 'These providers process data to run the service: Supabase (database and sign-in, Seoul region), Vercel (web hosting), Google (Google sign-in and sending reminder emails).'],
+    ['서비스 운영을 위해 아래 업체가 정보를 처리해요: Supabase(데이터베이스·로그인, 서울 리전), Vercel(웹 호스팅), Google(Google 로그인·알림 이메일 발송), Anthropic(AI 도우미 답변 생성).', 'These providers process data to run the service: Supabase (database and sign-in, Seoul region), Vercel (web hosting), Google (Google sign-in and sending reminder emails), Anthropic (generating AI assistant answers).'],
+    ['국외 이전: AI 도우미를 쓰면 질문과(동의한 경우) 위 1번의 맞춤 답변용 정보가 답변 생성을 위해 미국의 Anthropic 서버로 전송돼요. 도우미를 쓰지 않거나 설정에서 "내 정보 참고"를 끄면 내 정보는 전송되지 않아요. Anthropic은 API로 받은 정보를 AI 학습에 쓰지 않아요.', 'International transfer: when you use the AI assistant, your question and (if you agreed) the personalization info in section 1 are sent to Anthropic’s servers in the U.S. to generate the answer. If you don’t use the assistant or turn off “use my info” in Settings, your info is not sent. Anthropic does not use data received through its API to train its models.'],
     ['읽기 전용 공유 링크: 내가 링크를 만들면, 링크를 가진 사람은 로그인 없이 과목·성적, 시험 점수, 활동·수상, 목표·지원 학교, 이번 시즌 체크리스트 진행을 볼 수 있어요. 에세이·올린 파일·추천인 정보는 포함되지 않고, 링크는 설정 화면에서 언제든 끌 수 있어요.', 'Read-only share link: if you create one, anyone with the link can view your courses and grades, test scores, activities and honors, target and application schools, and this season’s checklist progress without logging in. Essays, uploaded files and recommender details are never included, and you can turn the link off in Settings at any time.'],
     ['학교 로고 이미지는 외부 사이트(위키미디어·각 대학 사이트)에서 불러와서, 이미지 요청 시 브라우저의 IP 주소가 해당 사이트에 전달될 수 있어요.', 'School logos load from external sites (Wikimedia and college websites), so your browser’s IP address may reach those sites when the images load.'],
   ] },
   { h: ['4. 보관과 삭제', '4. Retention and deletion'], body: [
     ['계정을 쓰는 동안 보관해요.', 'We keep your data while your account exists.'],
+    ['AI 도우미의 질문·답변 기록은 90일이 지나면 자동으로 지워요.', 'AI assistant question and answer logs are deleted automatically after 90 days.'],
     ['계정과 기록 전체는 설정 화면의 "계정 삭제"에서 직접 바로 지울 수 있어요. 올린 파일·공유 링크까지 함께 지워지고 되돌릴 수 없어요.', 'You can delete your account and all records yourself at any time from "Delete account" in Settings. Uploaded files and share links are deleted too, and this cannot be undone.'],
     [`앱에 들어갈 수 없다면 가입한 이메일로 ${CONTACT_EMAIL}에 요청해 주세요. 확인 후 지체 없이 삭제해요.`, `If you can’t sign in, email ${CONTACT_EMAIL} from the address you signed up with. We delete it promptly after confirming.`],
     ['기록은 앱 안에서 언제든 직접 고치거나 지울 수 있어요.', 'You can edit or delete your records in the app at any time.'],
@@ -42,7 +46,7 @@ const PRIVACY: Sec[] = [
     ['이 서비스는 미국 대학을 준비하는 고등학생(9~12학년)과 그 부모님을 위한 서비스예요. 만 13세 미만 어린이를 대상으로 하지 않으며, 13세 미만의 정보가 수집된 것을 알게 되면 바로 삭제해요.', 'The service is for high-school students (grades 9–12) preparing for U.S. colleges and their parents. It is not directed to children under 13; if we learn we have collected information from a child under 13, we delete it.'],
   ] },
   { h: ['7. 이용자의 권리', '7. Your choices'], body: [
-    ['내 정보 열람·수정, 연구 동의 철회, 계정 삭제는 앱의 설정 화면에서 직접 할 수 있어요. 이메일로 요청해도 돼요.', 'View and edit your information, withdraw research consent, and delete your account yourself in Settings — or ask us by email.'],
+    ['내 정보 열람·수정, 연구 동의 철회, AI 도우미 "내 정보 참고" 끄기, 계정 삭제는 앱의 설정 화면에서 직접 할 수 있어요. 이메일로 요청해도 돼요.', 'View and edit your information, withdraw research consent, turn off “use my info” for the AI assistant, and delete your account yourself in Settings — or ask us by email.'],
   ] },
   { h: ['8. 변경', '8. Changes'], body: [
     ['방침이 바뀌면 이 페이지에 시행일과 함께 알려 드려요.', 'If this policy changes, we update this page with a new effective date.'],
@@ -56,6 +60,7 @@ const TERMS: Sec[] = [
   { h: ['2. 정보의 성격', '2. About the information'], body: [
     ['학교 정보는 각 대학 공식 자료로 정리하지만, 정책과 마감은 해마다 바뀔 수 있어요. 지원 전에는 반드시 각 대학 공식 페이지에서 최종 확인하세요.', 'School information is compiled from official sources, but policies and deadlines change. Always confirm on each college’s official page before applying.'],
     ['이 서비스는 합격 가능성을 예측하거나 보장하지 않아요. 체크리스트와 조언("편집 가이드" 표시)은 참고용이에요.', 'The service does not predict or guarantee admission. Checklists and advice (marked “editorial guide”) are for reference.'],
+    ['AI 도우미 답변은 사이트에 정리된 자료를 바탕으로 AI가 만든 것이라 틀릴 수 있어요. 마감·금액·요건은 원서를 내기 전 각 대학 공식 페이지에서 꼭 확인하세요. 도우미는 에세이를 대신 써 주지 않고, 하루 사용 횟수에 제한이 있어요.', 'AI assistant answers are generated by AI from this site’s data and can be wrong. Always confirm deadlines, fees and requirements on each college’s official page before applying. The assistant does not write essays for you, and daily use is limited.'],
   ] },
   { h: ['3. 계정', '3. Accounts'], body: [
     ['9~12학년 고등학생 본인과 그 부모·보호자가 사용할 수 있어요.', 'High-school students (grades 9–12) and their parents or guardians may use the service.'],
