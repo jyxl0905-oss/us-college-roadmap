@@ -114,7 +114,7 @@ export default function SettingsPage({ userId, email, profile, onProfileChange }
 
         {profile.ai_consent_at && (
           <Section title={t('AI 도우미', 'AI assistant')}>
-            <Row title={t('내 정보 참고해서 답하기', 'Use my info in answers')} sub={t('켜면 학년·신분·전공·목표 학교·점수 구간·이번 시즌 체크리스트가 질문과 함께 Anthropic(미국)으로 전송돼요. 이름·이메일은 보내지 않아요. 만 14세 이상만 켤 수 있어요.', 'When on, your grade, status, major, target schools, score bands and this season’s checklist are sent to Anthropic (U.S.) with each question. Name and email are never sent. Only for ages 14+.')}>
+            <Row title={t('내 정보 참고해서 답하기', 'Use my info in answers')} sub={t('켜면 내가 입력한 기록(학년·전공·목표 학교·과목과 성적·시험 점수·활동·수상·계획·지원 학교·추천서/에세이 진행·할 일)이 질문과 함께 Anthropic(미국)으로 전송돼 내 기록에 대한 질문에도 답해요. 이름·이메일·에세이 본문·추천인 이름은 보내지 않아요. 만 14세 이상만 켤 수 있어요.', 'When on, your records (grade, majors, targets, courses and grades, test scores, activities, honors, plans, college list, recommender/essay progress, tasks) are sent to Anthropic (U.S.) with each question so it can answer about them. Name, email, essay drafts and recommender names are never sent. Only for ages 14+.')}>
               <Switch on={!!profile.ai_profile_consent} label={t('AI 도우미 정보 참고', 'AI assistant personalization')} onClick={() => void save({ ...profile, ai_profile_consent: !profile.ai_profile_consent, ai_consent_at: new Date().toISOString() })} />
             </Row>
           </Section>

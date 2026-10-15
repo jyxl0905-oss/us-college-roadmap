@@ -7,6 +7,7 @@ export const AI_FILES = [
   'schools.index.json', 'schoolAliases.ts', 'app-fees.json', 'english.json', 'requirements.json', 'apCredit.json',
   'cost.json', 'usData.json', 'scholarships.json', 'programs.json', 'music-schools.json', 'aidRules.json', 'essays-that-worked.json',
   'major-roadmaps.json', 'major-roadmaps.en.json', 'major-careers.json', 'majors.ts',
+  'ap.json', 'courseGuide.ts', 'mustDo.ts', 'majorTrends.json',
 ]
 const out = new URL('../public/ai/', import.meta.url)
 mkdirSync(out, { recursive: true })

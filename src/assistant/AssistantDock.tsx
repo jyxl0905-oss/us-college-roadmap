@@ -31,7 +31,7 @@ function suggestions(path: string): string[] {
   if (path.startsWith('/schools/')) return [t('이 학교 국제학생 원서비랑 마감 알려줘', 'Application fee and deadlines for this school?'), t('이 학교 장학금 있어?', 'Does this school offer scholarships?'), t('이 학교 영어 시험 기준은?', 'English test requirements here?')]
   if (path.startsWith('/targets')) return [t('내 목표 학교 마감 순서대로 정리해줘', 'List my target schools by deadline'), t('내 SAT로 목표 학교들 범위 어디쯤이야?', 'Where does my SAT fall at my targets?'), t('내 목표 학교 원서비 다 합치면?', 'Total application fees for my targets?')]
   if (path.startsWith('/major')) return [t('이 전공은 학년별로 뭘 준비해야 해?', 'What should I do each year for this major?'), t('이 전공 졸업하면 어떤 직업을 가져?', 'What jobs does this major lead to?'), t('이 전공에 맞는 대회·서머 추천해줘', 'Competitions and summer programs for this major?')]
-  return [t('이번 시즌에 뭐 해야 해?', 'What should I do this season?'), t('내 전공은 학년별로 뭘 준비해야 해?', 'What should I prepare for my major?'), t('내 목표 학교 중 SAT 안 내도 되는 곳 있어?', 'Which of my targets don’t need the SAT?')]
+  return [t('이번 시즌에 뭐 해야 해?', 'What should I do this season?'), t('내 활동이랑 수상 정리해서 부족한 점 알려줘', 'Summarize my activities and honors — what’s missing?'), t('국제학생 need-blind인 학교 어디야?', 'Which schools are need-blind for international students?')]
 }
 
 // 답변 표시: [S1]·[P]는 작은 번호, 본문 URL은 지움(링크는 출처 칩으로만), 사이트 경로는 누르면 이동, **굵게**·목록·표
@@ -242,11 +242,12 @@ export default function AssistantDock() {
                 <p className="text-base font-bold text-gray-900">{t('AI 도우미가 내 정보를 참고해도 될까요?', 'Can the assistant use your info?')}</p>
                 <p className="mt-2 text-sm leading-relaxed text-gray-600">{t('동의하면 질문할 때 아래 정보가 Anthropic(Claude AI 제공사, 미국)으로 전송돼 맞춤 답변에 쓰여요.', 'If you agree, the info below is sent to Anthropic (the Claude AI provider, U.S.) with each question to personalize answers.')}</p>
                 <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-gray-700">
-                  <li>{t('학년, 지원 신분, 희망 전공', 'Grade, applicant status, intended major')}</li>
-                  <li>{t('목표 학교, GPA·SAT·영어 시험 점수(구간)', 'Target schools, GPA/SAT/English test scores (or bands)')}</li>
-                  <li>{t('이번 시즌 체크리스트 진행 상황, 지원 라운드', 'This season’s checklist progress, application rounds')}</li>
+                  <li>{t('학년, 지원 신분, 희망 전공, 목표 학교', 'Grade, applicant status, intended majors, target schools')}</li>
+                  <li>{t('GPA 구간, 과목과 성적, 시험 점수', 'GPA band, courses and grades, test scores')}</li>
+                  <li>{t('활동·수상, 계획, 관심 표현 기록', 'Activities, honors, plans, demonstrated-interest logs')}</li>
+                  <li>{t('지원 학교·라운드, 추천서·에세이 진행 상황, 할 일·체크리스트', 'Your college list and rounds, recommender and essay progress, tasks and checklist')}</li>
                 </ul>
-                <p className="mt-3 text-sm text-gray-600">{t('이름·이메일·다니는 학교는 보내지 않아요. 질문과 답변은 품질 점검을 위해 90일 동안 보관한 뒤 지워요. 설정에서 언제든 바꿀 수 있어요.', 'Your name, email and school are never sent. Questions and answers are kept 90 days for quality checks, then deleted. Change this anytime in Settings.')}</p>
+                <p className="mt-3 text-sm text-gray-600">{t('이름·이메일·다니는 학교, 에세이 본문·메모, 추천인 이름은 보내지 않아요. 질문과 답변은 품질 점검을 위해 90일 동안 보관한 뒤 지워요. 설정에서 언제든 바꿀 수 있어요.', 'Your name, email, school, essay drafts/notes and recommender names are never sent. Questions and answers are kept 90 days for quality checks, then deleted. Change this anytime in Settings.')}</p>
                 <label className="mt-4 flex items-center gap-2 text-sm text-gray-800">
                   <input type="checkbox" checked={age} onChange={(e) => setAge(e.target.checked)} className="h-4 w-4 accent-gray-900" />
                   {t('만 14세 이상이에요', 'I am 14 or older')}
@@ -268,7 +269,7 @@ export default function AssistantDock() {
                           </button>
                         ))}
                       </div>
-                      <p className="mt-4 text-xs text-gray-400">{personal ? t('내 학년·전공·목표 학교·체크리스트를 참고해서 답해요.', 'Answers use your grade, major, targets and checklist.') : t('지금은 일반 답변이에요. 맞춤 답변은 설정에서 켤 수 있어요.', 'General answers only. Turn on personalization in Settings.')}</p>
+                      <p className="mt-4 text-xs text-gray-400">{personal ? t('내가 입력한 기록(과목·성적·활동·점수·지원 학교 등)도 물어볼 수 있어요.', 'You can also ask about your own records (courses, grades, activities, scores, college list…).') : t('지금은 일반 답변이에요. 맞춤 답변은 설정에서 켤 수 있어요.', 'General answers only. Turn on personalization in Settings.')}</p>
                     </div>
                   )}
                   {msgs.map((m, i) => {
