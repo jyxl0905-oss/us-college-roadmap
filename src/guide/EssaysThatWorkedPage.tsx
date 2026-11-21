@@ -6,7 +6,7 @@ import data from '../data/essays-that-worked.json'
 
 // 대학이 자기 공식 사이트에 공개한 합격 에세이 분석 — 원문은 옮기지 않고 요약·분석 + 공식 원문 링크 (사용자 승인 2026-09-29)
 interface Essay {
-  i: number; school: string; y: number | null; url: string; title: string | null; type: string; len: string
+  i: number; school: string; y: number | null; url: string; title: string | null; hl?: [string, string]; type: string; len: string
   topic: string; st: string; tech: string[]; sum: [string, string]; ao: [string, string] | null; take: [string, string]; intl: boolean; kr: boolean
 }
 const essays = (data as unknown as { essays: Essay[] }).essays
@@ -120,7 +120,9 @@ export default function EssaysThatWorkedPage() {
           {list.slice(0, shown).map((e) => (
             <article key={e.i} className="rounded-xl border-2 border-gray-200 bg-white px-4 py-3.5">
               <p className="text-[12px] font-semibold text-gray-500">{schoolName(e.school)}{e.y ? ` · Class of ${e.y}` : ''} · {L(TYPE[e.type])}</p>
-              <h3 className="mt-0.5 text-[15px] font-bold text-gray-900">{e.title ?? t('(제목 없음)', '(untitled)')}{e.kr && <span className="ml-1.5 rounded-full bg-red-50 px-1.5 py-0.5 align-middle text-[10px] font-semibold text-red-700">{t('한국 관련', 'Korea')}</span>}</h3>
+              <h3 className="mt-0.5 text-[15px] font-bold text-gray-900">{e.title ?? (e.hl ? t(e.hl[0], e.hl[1]) : t('(제목 없음)', '(untitled)'))}
+                {!e.title && e.hl && <span className="ml-1.5 align-middle text-[10.5px] font-medium text-gray-400" title={t('대학이 제목 없이 공개해서 내용을 요약한 제목이에요', 'Published without a title — this is a summary title')}>{t('· 내용 요약 제목', '· summary title')}</span>}
+                {e.kr && <span className="ml-1.5 rounded-full bg-red-50 px-1.5 py-0.5 align-middle text-[10px] font-semibold text-red-700">{t('한국 관련', 'Korea')}</span>}</h3>
               <div className="mt-1.5 flex flex-wrap gap-1 text-[11px] font-semibold">
                 <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-700">{L(TOPIC[e.topic])}</span>
                 <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-700">{L(STRUCT[e.st])}</span>

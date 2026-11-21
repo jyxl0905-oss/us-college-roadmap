@@ -259,3 +259,6 @@ h1.text-xl, h1.text-2xl { font-weight: 800; }
 /* 가로 스크롤 칩 줄 — 스크롤바 숨김 */
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* 왼쪽 메뉴 목록 스크롤 — 얇은 스크롤바 */
+.side-scroll { scrollbar-width: thin; overscroll-behavior: contain; }

@@ -38,22 +38,35 @@ export default function AppNav() {
     { to: '/app', label: t('내 원서', 'My App'), icon: FileText, active: (p) => p.startsWith('/app') },
     { to: '/schools', label: t('학교 둘러보기', 'Schools'), icon: Search, active: (p) => p.startsWith('/schools') || p.startsWith('/compare') || p === '/map' },
   ]
-  const more: Item[] = [
-    ...(onboarded ? [] : [{ to: '/report', label: t('리포트', 'Report'), icon: BarChart3, active: (p: string) => p.startsWith('/report') }]),
-    { to: '/deadlines', label: t('마감 캘린더', 'Deadlines'), icon: CalendarDays, active: (p) => p.startsWith('/deadlines') },
-    { to: '/majors', label: t('전공 가이드', 'Major guides'), icon: Compass, active: (p) => p.startsWith('/major') },
-    { to: '/guide/ap', label: t('AP 가이드', 'AP guide'), icon: BookOpen, active: (p) => p === '/guide/ap' },
-    { to: '/guide/courses', label: t('수업 난이도', 'Course rigor'), icon: GraduationCap, active: (p) => p === '/guide/courses' },
-    { to: '/guide/english', label: t('영어 시험', 'English tests'), icon: Languages, active: (p) => p === '/guide/english' },
-    { to: '/guide/programs', label: t('대회·서머', 'Programs'), icon: Trophy, active: (p) => p === '/guide/programs' },
-    { to: '/guide/cost', label: t('비용·재정지원', 'Cost & aid'), icon: Wallet, active: (p) => p === '/guide/cost' },
-    { to: '/guide/essays', label: t('합격 에세이', 'Essays that worked'), icon: PenLine, active: (p) => p === '/guide/essays' },
-    { to: '/guide/music', label: t('음악 학교', 'Music schools'), icon: Music, active: (p) => p === '/guide/music' },
-    { to: '/guide/scholarships', label: t('장학금 찾기', 'Scholarships'), icon: Award, active: (p) => p === '/guide/scholarships' },
-    { to: '/map', label: t('대학 지도', 'College map'), icon: Map, active: (p) => p === '/map' },
-    { to: '/settings', label: t('설정', 'Settings'), icon: Settings, active: (p) => p.startsWith('/settings') },
-    ...(admin ? [{ to: '/admin', label: t('관리자', 'Admin'), icon: Shield, active: (p: string) => p.startsWith('/admin') }] : []),
+  // 기능이 많아져서 '더보기'를 성격별로 묶음 (기능은 그대로, 순서·묶음만)
+  const allGroups: { title: string | null; items: Item[] }[] = [
+    { title: null, items: onboarded ? [] : [{ to: '/report', label: t('리포트', 'Report'), icon: BarChart3, active: (p: string) => p.startsWith('/report') }] },
+    { title: t('학교·일정', 'Schools & dates'), items: [
+      { to: '/deadlines', label: t('마감 캘린더', 'Deadlines'), icon: CalendarDays, active: (p) => p.startsWith('/deadlines') },
+      { to: '/map', label: t('대학 지도', 'College map'), icon: Map, active: (p) => p === '/map' },
+    ] },
+    { title: t('수업·시험', 'Classes & tests'), items: [
+      { to: '/guide/ap', label: t('AP 가이드', 'AP guide'), icon: BookOpen, active: (p) => p === '/guide/ap' },
+      { to: '/guide/courses', label: t('수업 난이도', 'Course rigor'), icon: GraduationCap, active: (p) => p === '/guide/courses' },
+      { to: '/guide/english', label: t('영어 시험', 'English tests'), icon: Languages, active: (p) => p === '/guide/english' },
+    ] },
+    { title: t('전공·활동', 'Majors & activities'), items: [
+      { to: '/majors', label: t('전공 가이드', 'Major guides'), icon: Compass, active: (p) => p.startsWith('/major') },
+      { to: '/guide/programs', label: t('대회·서머', 'Programs'), icon: Trophy, active: (p) => p === '/guide/programs' },
+      { to: '/guide/music', label: t('음악 학교', 'Music schools'), icon: Music, active: (p) => p === '/guide/music' },
+    ] },
+    { title: t('에세이·비용', 'Essays & cost'), items: [
+      { to: '/guide/essays', label: t('합격 에세이', 'Essays that worked'), icon: PenLine, active: (p) => p === '/guide/essays' },
+      { to: '/guide/cost', label: t('비용·재정지원', 'Cost & aid'), icon: Wallet, active: (p) => p === '/guide/cost' },
+      { to: '/guide/scholarships', label: t('장학금 찾기', 'Scholarships'), icon: Award, active: (p) => p === '/guide/scholarships' },
+    ] },
+    { title: t('계정', 'Account'), items: [
+      { to: '/settings', label: t('설정', 'Settings'), icon: Settings, active: (p) => p.startsWith('/settings') },
+      ...(admin ? [{ to: '/admin', label: t('관리자', 'Admin'), icon: Shield, active: (p: string) => p.startsWith('/admin') }] : []),
+    ] },
   ]
+  const groups = allGroups.filter((g) => g.items.length > 0)
+  const more = groups.flatMap((g) => g.items)
   const moreActive = more.some((m) => m.active(path))
 
   const sideLink = (it: Item) => {
@@ -79,10 +92,17 @@ export default function AppNav() {
           <img src="/icons/favicon-64.png" alt="" width={26} height={26} className="h-[26px] w-[26px] rounded-lg" />
           {t('미국 대입 로드맵', 'US College Roadmap')}
         </button>
-        <nav className="flex flex-col gap-0.5">{main.map(sideLink)}</nav>
-        <div className="mx-2 my-3 h-px bg-gray-100" />
-        <nav className="flex flex-col gap-0.5">{more.map(sideLink)}</nav>
-        <div className="mt-auto flex items-center gap-1 px-1 pt-4">
+        {/* 창이 낮아도 아래 메뉴까지 닿도록 목록만 스크롤 (로고·하단 버튼은 고정) */}
+        <div className="side-scroll -mx-3 min-h-0 flex-1 overflow-y-auto px-3 pb-2">
+          <nav className="flex flex-col gap-0.5">{main.map(sideLink)}</nav>
+          {groups.map((g, i) => (
+            <nav key={g.title ?? i} className="mt-3 flex flex-col gap-0.5" aria-label={g.title ?? undefined}>
+              {g.title && <p className="px-3 pb-1 text-[11px] font-bold uppercase tracking-wide text-gray-400">{g.title}</p>}
+              {g.items.map(sideLink)}
+            </nav>
+          ))}
+        </div>
+        <div className="flex items-center gap-1 border-t border-gray-100 px-1 pt-3">
           <button onClick={() => setFeedbackOpen(true)} title={t('의견 보내기', 'Send feedback')} aria-label={t('의견 보내기', 'Send feedback')} className="flex h-8 w-8 items-center justify-center rounded-full text-gray-500 hover:bg-gray-100"><MessageCircle size={17} strokeWidth={1.9} /></button>
           <LangToggle />
           <ThemeToggle />
@@ -113,27 +133,34 @@ export default function AppNav() {
       {moreOpen && (
         <div className="no-print fixed inset-0 z-50 md:hidden" onClick={() => setMoreOpen(false)}>
           <div className="absolute inset-0 bg-gray-900/30" />
-          <div className="absolute inset-x-0 bottom-0 rounded-t-3xl bg-white px-4 pb-[calc(1.25rem+env(safe-area-inset-bottom))] pt-4 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+          <div className="absolute inset-x-0 bottom-0 max-h-[85dvh] overflow-y-auto rounded-t-3xl bg-white px-4 pb-[calc(1.25rem+env(safe-area-inset-bottom))] pt-4 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <div className="mb-2 flex items-center justify-between px-1">
               <p className="font-bold text-gray-900">{t('더보기', 'More')}</p>
               <button onClick={() => setMoreOpen(false)} aria-label={t('닫기', 'Close')} className="flex h-8 w-8 items-center justify-center rounded-full text-gray-500 hover:bg-gray-100"><X size={18} /></button>
             </div>
-            <div className="grid grid-cols-3 gap-2">
-              {more.map((it) => {
-                const Icon = it.icon
-                const on = it.active(path)
-                return (
-                  <button key={it.to} onClick={() => navigate(it.to)} className={`flex flex-col items-center gap-1.5 rounded-2xl px-2 py-3.5 text-xs font-semibold ${on ? 'bg-blue-50 text-gray-900' : 'bg-gray-50 text-gray-700'}`}>
-                    <Icon size={20} strokeWidth={1.9} className={on ? 'text-blue-600' : 'text-gray-500'} />
-                    {it.label}
-                  </button>
-                )
-              })}
-              <button onClick={() => { setMoreOpen(false); setFeedbackOpen(true) }} className="flex flex-col items-center gap-1.5 rounded-2xl bg-gray-50 px-2 py-3.5 text-xs font-semibold text-gray-700">
-                <MessageCircle size={20} strokeWidth={1.9} className="text-gray-500" />
-                {t('의견 보내기', 'Feedback')}
-              </button>
-            </div>
+            {groups.map((g, gi) => (
+              <div key={g.title ?? gi} className={gi > 0 || g.title ? 'mt-3' : ''}>
+                {g.title && <p className="mb-1.5 px-1 text-[11px] font-bold uppercase tracking-wide text-gray-400">{g.title}</p>}
+                <div className="grid grid-cols-3 gap-2">
+                  {g.items.map((it) => {
+                    const Icon = it.icon
+                    const on = it.active(path)
+                    return (
+                      <button key={it.to} onClick={() => navigate(it.to)} className={`flex flex-col items-center gap-1.5 rounded-2xl px-2 py-3 text-xs font-semibold ${on ? 'bg-blue-50 text-gray-900' : 'bg-gray-50 text-gray-700'}`}>
+                        <Icon size={20} strokeWidth={1.9} className={on ? 'text-blue-600' : 'text-gray-500'} />
+                        {it.label}
+                      </button>
+                    )
+                  })}
+                  {gi === groups.length - 1 && (
+                    <button onClick={() => { setMoreOpen(false); setFeedbackOpen(true) }} className="flex flex-col items-center gap-1.5 rounded-2xl bg-gray-50 px-2 py-3 text-xs font-semibold text-gray-700">
+                      <MessageCircle size={20} strokeWidth={1.9} className="text-gray-500" />
+                      {t('의견 보내기', 'Feedback')}
+                    </button>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
