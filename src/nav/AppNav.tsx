@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { BarChart3, Target, FileText, Search, Menu, Compass, CalendarDays, BookOpen, GraduationCap, Map, MessageCircle, X, Home, Shield, Wallet, Trophy, Languages, Settings, Award, PenLine, Music } from 'lucide-react'
+import { BarChart3, Target, FileText, Search, Menu, Compass, CalendarDays, BookOpen, GraduationCap, Map, MessageCircle, X, Home, Shield, Wallet, Trophy, Languages, Settings, Award, PenLine, Music, ListChecks } from 'lucide-react'
 import { navigate, usePath } from '../lib/router'
 import { t } from '../i18n'
 import LangToggle from '../i18n/LangToggle'
@@ -42,6 +42,7 @@ export default function AppNav() {
   const allGroups: { title: string | null; items: Item[] }[] = [
     { title: null, items: onboarded ? [] : [{ to: '/report', label: t('리포트', 'Report'), icon: BarChart3, active: (p: string) => p.startsWith('/report') }] },
     { title: t('학교·일정', 'Schools & dates'), items: [
+      { to: '/guide/apply', label: t('지원 방식 가이드', 'Application plans'), icon: ListChecks, active: (p) => p === '/guide/apply' },
       { to: '/deadlines', label: t('마감 캘린더', 'Deadlines'), icon: CalendarDays, active: (p) => p.startsWith('/deadlines') },
       { to: '/map', label: t('대학 지도', 'College map'), icon: Map, active: (p) => p === '/map' },
     ] },

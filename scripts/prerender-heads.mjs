@@ -121,6 +121,9 @@ pair('/guide/programs',
 pair('/guide/english',
   ['미국 대학 영어 시험(TOEFL·IELTS·Duolingo) 기준과 면제 조건 | 미국 대입 로드맵', '미국 대학 147곳의 TOEFL·IELTS·Duolingo 최소 점수, SAT 영어 점수로 대체 가능 여부, 면제 조건(2·3·4년)과 면제를 받으려면 직접 요청해야 하는지를 각 대학 공식 입학처 페이지로 확인해 정리했어요.'],
   ['TOEFL, IELTS & Duolingo requirements and waivers at U.S. colleges | US College Roadmap', 'Minimum TOEFL, IELTS and Duolingo scores at 147 U.S. colleges, whether SAT scores can replace them, waiver rules (2, 3 or 4 years of English-medium school) and whether you must request a waiver — checked on official admissions pages.'])
+pair('/guide/apply',
+  ['미국 대학 지원 방식 가이드 — ED·ED2·EA·REA·RD·롤링 차이 | 미국 대입 로드맵', 'ED(구속력)·ED2·EA·REA/SCEA·RD·롤링 지원이 뭐가 다른지, 합격하면 꼭 가야 하는지, 학교별 REA 규칙과 보류(defer) 대처를 Common App·NACAC·각 대학 공식 자료로 쉽게 정리하고, 내 목표 학교의 지원 방식과 ED 학교 고민 비교를 보여줘요.'],
+  ['US college application plans — ED, ED2, EA, REA, RD & rolling explained | US College Roadmap', 'What ED (binding), ED2, EA, REA/SCEA, RD and rolling admission mean, whether you must attend, school-by-school REA rules and what to do if deferred — from Common App, NACAC and official college pages — plus your target schools’ plans and an ED comparison.'])
 pair('/majors/trends',
   ['미국 대학 전공 트렌드 — 인기 전공·뜨는 전공·취업 잘되는 전공 (공식 통계) | 미국 대입 로드맵', '미 교육부 통계청(NCES) 학사 학위 수로 본 인기·성장·감소 전공과, 뉴욕 연방준비은행 자료로 본 전공별 최근 졸업생 실업률·불완전 취업·초봉, 덜 알려졌지만 지표가 좋은 전공을 정리했어요.'],
   ['College major trends — popular, rising and high-outcome majors (official data) | US College Roadmap', 'Popular, growing and shrinking majors by bachelor’s degrees awarded (NCES), plus recent-graduate unemployment, underemployment and early-career wages by major (Federal Reserve Bank of New York) and lesser-known majors with strong outcomes.'])

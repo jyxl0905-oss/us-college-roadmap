@@ -50,6 +50,7 @@ const EssaysThatWorkedPage = lazy(() => import('./guide/EssaysThatWorkedPage'))
 const MusicSchoolsPage = lazy(() => import('./guide/MusicSchoolsPage'))
 const ProgramsGuidePage = lazy(() => import('./guide/ProgramsGuidePage'))
 const EnglishGuidePage = lazy(() => import('./guide/EnglishGuidePage'))
+const ApplyPlansPage = lazy(() => import('./guide/ApplyPlansPage'))
 const MajorTrendsPage = lazy(() => import('./major/MajorTrendsPage'))
 const AboutPage = lazy(() => import('./about/AboutPage'))
 const LegalPage = lazy(() => import('./about/LegalPage'))
@@ -645,6 +646,9 @@ function AppRoutes() {
   // 수업 난이도 가이드 (비로그인도 열람 가능, 로그인 시 '지금 여기' 표시)
   if (path === '/guide/ap' || path === '/guide/ap/') {
     return <ApGuidePage />
+  }
+  if (path === '/guide/apply' || path === '/guide/apply/') {
+    return <ApplyPlansPage profile={profile} />
   }
   if (path === '/guide/english' || path === '/guide/english/') {
     return <EnglishGuidePage profile={profile} />
