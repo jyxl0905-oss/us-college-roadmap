@@ -242,6 +242,9 @@ export default function DeadlinesPage({ userId, profile }: DeadlinesPageProps) {
             'Deadlines can change every year — always confirm on each school\'s official page before applying.',
           )}
         </p>
+        <button onClick={() => navigate('/guide/apply')} className="mt-2 text-[13px] font-semibold text-blue-600 underline">
+          {t('ED·EA·REA가 뭐가 다른지 헷갈린다면 → 지원 방식 가이드', 'Not sure how ED, EA and REA differ? → Application plans guide')}
+        </button>
 
         {all.length === 0 && (
           <p className="mt-10 text-center text-sm text-gray-400">

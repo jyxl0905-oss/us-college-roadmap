@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { CalendarDays, ChevronDown, Scale, Check, AlertTriangle, ExternalLink, Search, X } from 'lucide-react'
+import { CalendarDays, Scale, Check, AlertTriangle, ExternalLink, Search, X } from 'lucide-react'
 import { t } from '../i18n'
 import { goBack, navigate, slugify } from '../lib/router'
 import type { ProfileRow } from '../lib/profile'
@@ -36,6 +36,8 @@ const hasPlanData = (s: School) => s.ed_offered !== undefined && s.ed_offered !=
 const edRate = (s: School) => (s.ed_applied && s.ed_admitted && s.ed_applied >= 30 ? (s.ed_admitted / s.ed_applied) * 100 : null)
 
 interface Point { ok: boolean; ko: string; en: string }
+const TABS = ['plans', 'timeline', 'mine', 'ed'] as const
+type Tab = (typeof TABS)[number]
 
 // 규칙 기반 "맞는 점·고려할 점" — 공식 수치와 내 프로필만 사용
 function pointsFor(s: School, p: ProfileRow | null, c7: C7Row | undefined): Point[] {
@@ -64,7 +66,18 @@ function pointsFor(s: School, p: ProfileRow | null, c7: C7Row | undefined): Poin
 }
 
 export default function ApplyPlansPage({ profile }: { profile: ProfileRow | null }) {
-  const [open, setOpen] = useState<PlanKey | null>('ed')
+  const [open, setOpen] = useState<PlanKey>('ed')
+  // 길게 스크롤하지 않도록 탭으로 나눔 — ?tab= 으로 바로 열기·공유 가능
+  const [tab, setTabState] = useState<Tab>(() => {
+    const v = new URLSearchParams(window.location.search).get('tab')
+    return (TABS as readonly string[]).includes(v ?? '') ? (v as Tab) : 'plans'
+  })
+  const setTab = (v: Tab) => {
+    setTabState(v)
+    const u = new URL(window.location.href)
+    if (v === 'plans') u.searchParams.delete('tab'); else u.searchParams.set('tab', v)
+    window.history.replaceState(window.history.state, '', u.toString())
+  }
   const [schools, setSchools] = useState<School[] | null>(null)
   const [c7, setC7] = useState<Map<number, C7Row> | null>(null)
   const [picked, setPicked] = useState<number[]>([])
@@ -112,8 +125,25 @@ export default function ApplyPlansPage({ profile }: { profile: ProfileRow | null
           {t('ED·EA·REA·RD가 뭐가 다른지, 합격하면 꼭 가야 하는지, 몇 군데까지 쓸 수 있는지를 쉽게 정리했어요. 설명은 Common App·College Board·각 대학 공식 페이지 기준이고, 학교마다 규칙이 조금씩 달라서 최종 확인은 지원하는 학교 입학처에서 하세요.', 'What ED, EA, REA and RD mean, whether you must attend if admitted, and how many you can use — in plain language, based on Common App, College Board and official college pages. Rules vary a little by school, so confirm with each admissions office.')}
         </p>
 
-        {/* 한눈에 비교 */}
-        <h2 className="mt-6 text-sm font-bold text-gray-900">{t('한눈에 비교', 'At a glance')}</h2>
+        {/* 탭 — 스크롤해도 위에 붙어 있음 */}
+        <div className="under-topnav sticky top-[49px] z-20 -mx-5 mt-4 border-b border-gray-200 bg-gray-50/95 px-5 py-2 backdrop-blur">
+          <div className="grid grid-cols-4 gap-1 rounded-xl bg-gray-200/70 p-1" role="tablist">
+            {([
+              ['plans', t('제도 비교', 'Plans')],
+              ['timeline', t('일정·결과', 'Timeline')],
+              ['mine', t('내 학교', 'My schools')],
+              ['ed', t('ED 고민', 'ED choice')],
+            ] as [Tab, string][]).map(([k, label]) => (
+              <button key={k} role="tab" aria-selected={tab === k} onClick={() => setTab(k)} className={`rounded-lg px-1 py-1.5 text-[12.5px] font-semibold ${tab === k ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-600'}`}>
+                {label}{k === 'mine' && mine.length > 0 && <span className="ml-1 text-[10.5px] text-gray-400">{mine.length}</span>}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {tab === 'plans' && (<>
+        {/* 한눈에 비교 — 줄을 누르면 아래 설명이 그 방식으로 바뀜 */}
+        <h2 className="mt-4 text-sm font-bold text-gray-900">{t('한눈에 비교', 'At a glance')} <span className="text-[11.5px] font-medium text-gray-400">{t('· 줄을 누르면 자세한 설명', '· tap a row for details')}</span></h2>
         <div className="mt-2 overflow-x-auto rounded-2xl border-2 border-gray-200 bg-white">
           <table className="w-full min-w-[560px] text-left text-[12px]">
             <thead className="bg-gray-50 text-[11px] font-semibold text-gray-500">
@@ -127,7 +157,7 @@ export default function ApplyPlansPage({ profile }: { profile: ProfileRow | null
             </thead>
             <tbody className="divide-y divide-gray-100">
               {PLANS.map((x) => (
-                <tr key={x.key}>
+                <tr key={x.key} onClick={() => setOpen(x.key)} className={`cursor-pointer ${open === x.key ? 'bg-blue-50/60' : 'hover:bg-gray-50'}`}>
                   <td className="px-3 py-2 font-bold text-gray-900">{x.short}<span className="block text-[10.5px] font-medium text-gray-400">{x.full}</span></td>
                   <td className={`px-3 py-2 font-semibold ${x.binding ? 'text-red-700' : 'text-green-700'}`}>{t(x.bindingText[0], x.bindingText[1])}</td>
                   <td className="px-3 py-2 text-gray-700">{t(x.others[0], x.others[1])}</td>
@@ -139,52 +169,48 @@ export default function ApplyPlansPage({ profile }: { profile: ProfileRow | null
           </table>
         </div>
 
-        {/* 제도별 설명 */}
-        <h2 className="mt-6 text-sm font-bold text-gray-900">{t('하나씩 쉽게', 'Each plan, simply')}</h2>
-        <div className="mt-2 flex flex-col gap-2">
-          {PLANS.map((x) => {
-            const on = open === x.key
-            const n = x.key === 'ed' ? counts.ed : x.key === 'ed2' ? counts.ed2 : x.key === 'ea' ? counts.ea : x.key === 'rea' ? counts.rea : null
-            return (
-              <div key={x.key} className="rounded-2xl border-2 border-gray-200 bg-white">
-                <button onClick={() => setOpen(on ? null : x.key)} aria-expanded={on} className="flex w-full items-center justify-between gap-2 px-4 py-3 text-left">
-                  <span>
-                    <span className="text-[15px] font-bold text-gray-900">{x.short}</span>
-                    <span className="ml-1.5 text-[12px] font-medium text-gray-500">{t(x.oneLine[0], x.oneLine[1])}</span>
-                  </span>
-                  <ChevronDown size={18} className={`shrink-0 text-gray-400 transition-transform ${on ? 'rotate-180' : ''}`} />
-                </button>
-                {on && (
-                  <div className="border-t border-gray-100 px-4 pb-4 pt-3 text-[13px] leading-relaxed text-gray-700">
-                    <ul className="flex flex-col gap-1.5">
-                      {x.points.map((pt, i) => <li key={i} className="flex gap-2"><span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-gray-400" />{t(pt[0], pt[1])}</li>)}
-                    </ul>
-                    {x.caution && <p className="mt-2.5 flex gap-2 rounded-lg bg-amber-50 px-3 py-2 text-[12.5px] text-amber-900"><AlertTriangle size={15} className="mt-0.5 shrink-0" />{t(x.caution[0], x.caution[1])}</p>}
-                    {n !== null && schools && <p className="mt-2.5 text-[12px] text-gray-500">{t(`이 사이트 학교 데이터 기준 ${x.short} 있는 학교: ${n}곳 (지원 방식이 확인된 ${counts.total}곳 중)`, `Schools offering ${x.short} in our data: ${n} (of ${counts.total} with verified plans)`)}</p>}
-                    {x.key === 'rea' && (
-                      <div className="mt-3 overflow-x-auto">
-                        <p className="mb-1.5 text-[12px] font-semibold text-gray-900">{t('REA·SCEA 학교별로 같이 쓸 수 있는 것', 'What each REA/SCEA school still allows')}</p>
-                        <table className="w-full min-w-[480px] text-[12px]">
-                          <tbody className="divide-y divide-gray-100">
-                            {REA_RULES.map((r) => (
-                              <tr key={r.school}>
-                                <td className="py-1.5 pr-2 align-top font-semibold text-gray-900">{t(r.ko, r.school)}<span className="block text-[10.5px] font-medium text-gray-400">{r.plan}</span></td>
-                                <td className="py-1.5 align-top text-gray-700">{t(r.allows[0], r.allows[1])} <a href={r.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-0.5 text-blue-600 underline">{t('공식', 'Official')}<ExternalLink size={10} /></a></td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            )
-          })}
+        {/* 제도별 설명 — 한 번에 하나만 */}
+        <div className="mt-4 flex flex-wrap gap-1.5" role="tablist" aria-label={t('방식 고르기', 'Pick a plan')}>
+          {PLANS.map((x) => (
+            <button key={x.key} role="tab" aria-selected={open === x.key} onClick={() => setOpen(x.key)} className={`rounded-full border-2 px-3 py-1 text-xs font-bold ${open === x.key ? 'border-gray-900 bg-gray-900 text-white' : 'border-gray-200 bg-white text-gray-600'}`}>{x.short}</button>
+          ))}
         </div>
+        {PLANS.filter((x) => x.key === open).map((x) => {
+          const n = x.key === 'ed' ? counts.ed : x.key === 'ed2' ? counts.ed2 : x.key === 'ea' ? counts.ea : x.key === 'rea' ? counts.rea : null
+          return (
+            <div key={x.key} className="mt-2 rounded-2xl border-2 border-gray-200 bg-white px-4 py-3.5 text-[13px] leading-relaxed text-gray-700">
+              <p><span className="text-[15px] font-bold text-gray-900">{x.short}</span><span className="ml-1.5 text-[12px] font-medium text-gray-500">{x.full} · {t(x.oneLine[0], x.oneLine[1])}</span></p>
+              <ul className="mt-2 flex flex-col gap-1.5">
+                {x.points.map((pt, i) => <li key={i} className="flex gap-2"><span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-gray-400" />{t(pt[0], pt[1])}</li>)}
+              </ul>
+              {x.caution && <p className="mt-2.5 flex gap-2 rounded-lg bg-amber-50 px-3 py-2 text-[12.5px] text-amber-900"><AlertTriangle size={15} className="mt-0.5 shrink-0" />{t(x.caution[0], x.caution[1])}</p>}
+              {n !== null && schools && <p className="mt-2.5 text-[12px] text-gray-500">{t(`이 사이트 학교 데이터 기준 ${x.short} 있는 학교: ${n}곳 (지원 방식이 확인된 ${counts.total}곳 중)`, `Schools offering ${x.short} in our data: ${n} (of ${counts.total} with verified plans)`)}</p>}
+              {x.key === 'rea' && (
+                <div className="mt-3 overflow-x-auto">
+                  <p className="mb-1.5 text-[12px] font-semibold text-gray-900">{t('REA·SCEA 학교별로 같이 쓸 수 있는 것', 'What each REA/SCEA school still allows')}</p>
+                  <table className="w-full min-w-[480px] text-[12px]">
+                    <tbody className="divide-y divide-gray-100">
+                      {REA_RULES.map((r) => (
+                        <tr key={r.school}>
+                          <td className="py-1.5 pr-2 align-top font-semibold text-gray-900">{t(r.ko, r.school)}<span className="block text-[10.5px] font-medium text-gray-400">{r.plan}</span></td>
+                          <td className="py-1.5 align-top text-gray-700">{t(r.allows[0], r.allows[1])} <a href={r.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-0.5 text-blue-600 underline">{t('공식', 'Official')}<ExternalLink size={10} /></a></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              {(x.key === 'ed' || x.key === 'ed2') && (
+                <button onClick={() => setTab('ed')} className="mt-2.5 text-[12px] font-semibold text-blue-600 underline">{t('ED를 어디에 쓸지 고민된다면 → ED 고민 탭', 'Deciding where to use ED? → ED choice tab')}</button>
+              )}
+            </div>
+          )
+        })}
+        </>)}
 
+        {tab === 'timeline' && (<>
         {/* 일정 */}
-        <h2 className="mt-6 text-sm font-bold text-gray-900">{t('1년 일정 (보통)', 'Typical timeline')}</h2>
+        <h2 className="mt-4 text-sm font-bold text-gray-900">{t('1년 일정 (보통)', 'Typical timeline')}</h2>
         <ol className="mt-2 rounded-2xl border-2 border-gray-200 bg-white px-4 py-3">
           {TIMELINE.map((x, i) => (
             <li key={i} className="flex gap-3 py-1.5 text-[13px]">
@@ -205,8 +231,11 @@ export default function ApplyPlansPage({ profile }: { profile: ProfileRow | null
           ))}
         </div>
 
+        </>)}
+
+        {tab === 'mine' && (<>
         {/* 내 목표 학교의 지원 방식 */}
-        <h2 className="mt-8 text-sm font-bold text-gray-900">{t('내 목표 학교는 어떤 방식으로 지원할 수 있나', 'How you can apply to your target schools')}</h2>
+        <h2 className="mt-4 text-sm font-bold text-gray-900">{t('내 목표 학교는 어떤 방식으로 지원할 수 있나', 'How you can apply to your target schools')}</h2>
         {!profile ? (
           <p className="mt-2 rounded-2xl border-2 border-dashed border-gray-200 bg-white px-4 py-4 text-[13px] text-gray-600">
             {t('로그인하고 목표 학교를 고르면, 학교마다 ED·EA·REA·RD 중 무엇이 되는지 여기서 한 번에 보여줘요.', 'Sign in and pick target schools to see which plans each one offers here.')}
@@ -238,8 +267,11 @@ export default function ApplyPlansPage({ profile }: { profile: ProfileRow | null
           </div>
         )}
 
+        </>)}
+
+        {tab === 'ed' && (<>
         {/* ED 학교 고민 비교 */}
-        <h2 className="mt-8 flex items-center gap-1.5 text-sm font-bold text-gray-900"><Scale size={16} strokeWidth={2} />{t('ED를 어디에 쓸지 고민될 때', 'Deciding where to use ED')}</h2>
+        <h2 className="mt-4 flex items-center gap-1.5 text-sm font-bold text-gray-900"><Scale size={16} strokeWidth={2} />{t('ED를 어디에 쓸지 고민될 때', 'Deciding where to use ED')}</h2>
         <p className="mt-1 text-[12.5px] leading-relaxed text-gray-600">
           {t('ED는 합격하면 꼭 가야 해서, "가장 가고 싶은 학교"이면서 "비용을 감당할 수 있는 학교"여야 해요. 후보를 최대 3곳 고르면 공식 자료와 내 프로필로 맞는 점과 고려할 점을 나란히 보여줘요. 합격 가능성을 예측하는 게 아니라, 판단에 필요한 사실을 모아 주는 거예요.', 'ED is binding, so it should be your clear first choice and a school you can afford. Pick up to 3 candidates to see official facts and your profile side by side. This doesn’t predict admission — it gathers the facts you need to decide.')}
         </p>
@@ -327,6 +359,8 @@ export default function ApplyPlansPage({ profile }: { profile: ProfileRow | null
             <p className="mt-1.5 text-[11.5px] text-blue-900/80">{t('ED 합격률은 지원자 구성(체육 특기생 등)이 RD와 달라서 그대로 비교하기 어려워요. 숫자보다 "정말 1지망인지"가 먼저예요.', 'ED admit rates reflect a different applicant pool than RD, so compare with care — being sure it’s your first choice comes first.')}</p>
           </div>
         )}
+
+        </>)}
 
         <h2 className="mt-8 text-sm font-bold text-gray-900">{t('출처', 'Sources')}</h2>
         <ul className="mt-1.5 flex flex-col gap-1 text-[12px]">
