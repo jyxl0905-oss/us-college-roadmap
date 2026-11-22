@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { navigate } from '../lib/router'
-import { Compass, TrendingUp } from 'lucide-react'
+import { Compass, TrendingUp, MessageSquarePlus } from 'lucide-react'
+import FeedbackModal from '../nav/FeedbackModal'
 import { t, getLang } from '../i18n'
 import { majorsByTrack, majorDisplay, majorClusters, majorCategories, type MajorCategory } from '../data/majors'
 import careersData from '../data/major-careers.json'
@@ -85,6 +86,7 @@ const KEYWORDS: Record<string, string> = {
 // 전공 알아보기 — 전체 전공 카드 인덱스 (로그인 불필요). 각 카드는 전공 가이드 맵으로
 export default function MajorsIndexPage() {
   const [query, setQuery] = useState('')
+  const [requestOpen, setRequestOpen] = useState(false)
 
   // 검색용 페이지 제목
   useEffect(() => {
@@ -102,6 +104,8 @@ export default function MajorsIndexPage() {
       (KEYWORDS[m.value] ?? '').includes(q)
     )
   }
+
+  const noResults = q !== '' && majorsByTrack('stem').filter(matches).length + majorsByTrack('liberal').filter(matches).length === 0
 
   const byValue = new Map(majorCategories.map((m) => [m.value, m]))
   const section = (title: string, track: 'stem' | 'liberal') => {
@@ -168,16 +172,36 @@ export default function MajorsIndexPage() {
           placeholder={t('전공 검색 (예: 심리, data, 로켓, 약)', 'Search majors (e.g., psych, data, rockets)')}
           className="mt-4 w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-base focus:border-blue-600 focus:outline-none"
         />
-        {q !== '' && majorsByTrack('stem').filter(matches).length + majorsByTrack('liberal').filter(matches).length === 0 && (
-          <p className="mt-6 text-center text-sm text-gray-400">
-            {t('검색 결과가 없어요 — 다른 말로 찾아보거나, 비슷한 상위 계열(공학·자연과학·사회과학 등)을 눌러보세요.', 'No results — try another word, or open a nearby broader category (engineering, natural sciences, social sciences...).')}
-          </p>
+        {noResults && (
+          <div className="mt-6 text-center">
+            <p className="text-sm text-gray-400">
+              {t('검색 결과가 없어요 — 다른 말로 찾아보거나, 비슷한 상위 계열(공학·자연과학·사회과학 등)을 눌러보세요.', 'No results — try another word, or open a nearby broader category (engineering, natural sciences, social sciences...).')}
+            </p>
+            <button onClick={() => setRequestOpen(true)} className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white active:bg-blue-700">
+              <MessageSquarePlus size={16} strokeWidth={2} />
+              {t(`'${query.trim()}' 전공 추가 요청하기`, `Request '${query.trim()}'`)}
+            </button>
+          </div>
         )}
         <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-6">
           {section(t('이과 계열 (STEM)', 'STEM'), 'stem')}
           {section(t('문과 계열 (Humanities & Social)', 'Humanities & Social'), 'liberal')}
         </div>
+        {/* 전공 추가 요청 — 없는 전공·더 알고 싶은 전공을 운영자에게 (관리자 피드백 탭에서 확인) */}
+        {!noResults && (
+          <div className="mt-8 flex flex-col items-start gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-4 sm:flex-row sm:items-center">
+            <MessageSquarePlus size={22} strokeWidth={1.9} className="shrink-0 text-blue-600" />
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-semibold text-gray-900">{t('찾는 전공이 없거나 더 알고 싶은 전공이 있나요?', 'Missing a major, or want to know more?')}</p>
+              <p className="mt-0.5 text-xs text-gray-500">{t('알려주시면 운영자가 확인하고 공식 자료로 정리해서 추가할게요.', 'Tell us — we’ll review it and add it using official sources.')}</p>
+            </div>
+            <button onClick={() => setRequestOpen(true)} className="w-full shrink-0 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white active:bg-blue-700 sm:w-auto">
+              {t('전공 추가 요청하기', 'Request a major')}
+            </button>
+          </div>
+        )}
       </div>
+      {requestOpen && <FeedbackModal kind="major" initial={noResults ? query.trim() : ''} onClose={() => setRequestOpen(false)} />}
     </div>
   )
 }

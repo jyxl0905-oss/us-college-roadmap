@@ -786,12 +786,13 @@ export default function AdminPage({ email, demo }: { email: string | null; demo?
 
         {tab === 'feedback' && (
           <div className="grid gap-4">
-            <Card title="💬 사용자 피드백" hint="상단 바 💬 버튼으로 보낸 의견 (최근 100건) — 이름·이메일 없이 학년·학교만 표시">
+            <Card title="💬 사용자 피드백" hint="상단 바 💬 버튼·전공 알아보기의 전공 추가 요청 (최근 100건) — 이름·이메일 없이 학년·학교만 표시">
           {!feedback ? <p className="text-sm text-gray-400">불러오는 중…</p> : feedback.length === 0 ? <p className="text-sm text-gray-400">아직 피드백이 없어요</p> : (
             <ul className="space-y-2">
               {feedback.map((f, i) => (
-                <li key={i} className="rounded-xl bg-gray-50 px-3 py-2.5">
-                  <p className="whitespace-pre-wrap text-sm text-gray-800">{f.message}</p>
+                <li key={i} className={`rounded-xl px-3 py-2.5 ${f.message.startsWith('[전공 추가 요청]') ? 'bg-blue-50' : 'bg-gray-50'}`}>
+                  {f.message.startsWith('[전공 추가 요청]') && <span className="mb-1 inline-block rounded-full bg-blue-600 px-2 py-0.5 text-[11px] font-semibold text-white">전공 추가 요청</span>}
+                  <p className="whitespace-pre-wrap text-sm text-gray-800">{f.message.replace(/^\[전공 추가 요청\]\s*/, '')}</p>
                   <p className="mt-1 text-xs text-gray-400">
                     {new Date(f.created_at).toLocaleString('ko-KR')}
                     {f.grad_year && ` · Class of ${f.grad_year}`}{f.school && ` · ${f.school}`}{f.page && ` · ${f.page}`}
