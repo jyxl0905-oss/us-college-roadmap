@@ -172,6 +172,13 @@ export default function MajorsIndexPage() {
           placeholder={t('전공 검색 (예: 심리, data, 로켓, 약)', 'Search majors (e.g., psych, data, rockets)')}
           className="mt-4 w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-base focus:border-blue-600 focus:outline-none"
         />
+        {!noResults && (
+          <button onClick={() => setRequestOpen(true)} className="mt-2 flex w-full items-center gap-2 rounded-xl border border-dashed border-blue-300 bg-white px-3 py-2.5 text-left text-sm active:bg-blue-50">
+            <MessageSquarePlus size={17} strokeWidth={2} className="shrink-0 text-blue-600" />
+            <span className="min-w-0 flex-1 text-gray-700">{t('찾는 전공이 없나요?', 'Can’t find a major?')} <span className="font-semibold text-blue-600">{t('전공 추가 요청하기', 'Request it')}</span></span>
+            <span className="text-blue-400">→</span>
+          </button>
+        )}
         {noResults && (
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-400">
@@ -189,7 +196,7 @@ export default function MajorsIndexPage() {
         </div>
         {/* 전공 추가 요청 — 없는 전공·더 알고 싶은 전공을 운영자에게 (관리자 피드백 탭에서 확인) */}
         {!noResults && (
-          <div className="mt-8 flex flex-col items-start gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-4 sm:flex-row sm:items-center">
+          <div className="mt-8 flex flex-col items-start gap-3 rounded-2xl border-2 border-blue-200 bg-blue-50 px-4 py-4 sm:flex-row sm:items-center">
             <MessageSquarePlus size={22} strokeWidth={1.9} className="shrink-0 text-blue-600" />
             <div className="min-w-0 flex-1">
               <p className="text-sm font-semibold text-gray-900">{t('찾는 전공이 없거나 더 알고 싶은 전공이 있나요?', 'Missing a major, or want to know more?')}</p>
